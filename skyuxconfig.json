@@ -1,0 +1,24 @@
+{
+  "$schema": "./node_modules/@skyux/config/skyuxconfig-schema.json",
+  "mode": "easy",
+  "compileMode": "aot",
+  "name": "skyux-demos",
+  "plugins": [
+    "@skyux-sdk/builder-plugin-skyux"
+  ],
+  "app": {
+    "styles": [
+      "src/app/public/scss/global-tmp.scss"
+    ]
+  },
+  "appSettings": {
+    "packageName": "@skyux/docs",
+    "gitRepoUrl": "https://github.com/blackbaud/skyux-docs",
+    "stache": {}
+  },
+  "testSettings": {
+    "unit": {
+      "browserSet": "paranoid"
+    }
+  }
+}
