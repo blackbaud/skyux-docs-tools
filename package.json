@@ -1,13 +1,13 @@
 {
-  "name": "@skyux/docs",
-  "version": "0.0.1",
+  "name": "@skyux/docs-tools",
+  "version": "3.0.0-alpha.0",
   "description": "Library for skyux-lib-docs",
   "main": "bundles/bundle.umd.js",
   "module": "index.ts",
   "scripts": {
     "build": "skyux build-public-library",
-    "test": "skyux test",
-    "test:watch": "skyux watch",
+    "test": "skyux test --coverage library",
+    "test:watch": "skyux watch --coverage library",
     "start": "skyux serve",
     "e2e": "skyux e2e",
     "pact": "skyux pact",
