@@ -2,7 +2,7 @@
   "$schema": "./node_modules/@skyux/config/skyuxconfig-schema.json",
   "mode": "easy",
   "compileMode": "aot",
-  "name": "skyux-demos",
+  "name": "skyux-docs-tools",
   "declareComponentsAutomatically": false,
   "plugins": [
     "@skyux-sdk/builder-plugin-skyux"
