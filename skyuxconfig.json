@@ -3,6 +3,7 @@
   "mode": "easy",
   "compileMode": "aot",
   "name": "skyux-demos",
+  "declareComponentsAutomatically": false,
   "plugins": [
     "@skyux-sdk/builder-plugin-skyux"
   ],
@@ -10,11 +11,6 @@
     "styles": [
       "src/app/public/scss/global-tmp.scss"
     ]
-  },
-  "appSettings": {
-    "packageName": "@skyux/docs",
-    "gitRepoUrl": "https://github.com/blackbaud/skyux-docs",
-    "stache": {}
   },
   "testSettings": {
     "unit": {
