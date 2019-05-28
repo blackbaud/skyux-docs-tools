@@ -3,7 +3,6 @@
   "mode": "easy",
   "compileMode": "aot",
   "name": "skyux-docs-tools",
-  "declareComponentsAutomatically": false,
   "plugins": [
     "@skyux-sdk/builder-plugin-skyux"
   ],
