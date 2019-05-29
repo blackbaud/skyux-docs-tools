@@ -8,7 +8,7 @@
   ],
   "app": {
     "styles": [
-      "src/app/public/scss/global-tmp.scss"
+      "node_modules/@skyux/theme/css/sky.css"
     ]
   },
   "testSettings": {
