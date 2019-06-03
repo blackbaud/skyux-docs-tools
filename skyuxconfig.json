@@ -6,6 +6,9 @@
   "plugins": [
     "@skyux-sdk/builder-plugin-skyux"
   ],
+  "moduleAliases": {
+    "@skyux/docs-tools": "src/app/public/index.ts"
+  },
   "app": {
     "styles": [
       "node_modules/@skyux/theme/css/sky.css"
