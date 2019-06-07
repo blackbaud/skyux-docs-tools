@@ -4,7 +4,8 @@
   "compileMode": "aot",
   "name": "skyux-docs-tools",
   "plugins": [
-    "@skyux-sdk/builder-plugin-skyux"
+    "@skyux-sdk/builder-plugin-skyux",
+    "@blackbaud/skyux-builder-plugin-code-block"
   ],
   "moduleAliases": {
     "@skyux/docs-tools": "src/app/public/index.ts"
