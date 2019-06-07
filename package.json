@@ -57,7 +57,7 @@
     "@blackbaud/skyux-lib-code-block": "1.2.0",
     "@blackbaud/skyux-lib-stache": "3.0.0",
     "@pact-foundation/pact-web": "7.4.0",
-    "@skyux-sdk/builder": "blackbaud/skyux-sdk-builder#fix-module-alias-aot",
+    "@skyux-sdk/builder": "3.6.7",
     "@skyux-sdk/builder-plugin-skyux": "blackbaud/skyux-builder-plugin-skyux#source-code-provider",
     "@skyux-sdk/e2e": "3.1.2",
     "@skyux-sdk/pact": "3.2.0",
