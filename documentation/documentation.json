@@ -1,0 +1,278 @@
+{
+    "pipes": [],
+    "interfaces": [
+        {
+            "name": "Foo",
+            "id": "interface-Foo-58e1428e8115e162a7730a544c7849f0",
+            "file": "src/app/public/modules/documentation-test/foo.ts",
+            "type": "interface",
+            "sourceCode": "export interface Foo {\n\n  /**\n   * This is the description for bar.\n   */\n  bar: string;\n\n  /**\n   * This is the description for baz.\n   */\n  baz?: string;\n}\n",
+            "properties": [
+                {
+                    "name": "bar",
+                    "type": "string",
+                    "optional": false,
+                    "description": "<p>This is the description for bar.</p>\n",
+                    "line": 9
+                },
+                {
+                    "name": "baz",
+                    "type": "string",
+                    "optional": true,
+                    "description": "<p>This is the description for baz.</p>\n",
+                    "line": 14
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 150,
+            "description": "<p>This is the description for Foo interface.</p>\n",
+            "methods": []
+        }
+    ],
+    "injectables": [
+        {
+            "name": "FooService",
+            "id": "injectable-FooService-faa75122e538e1b7a66156e399339f82",
+            "file": "src/app/public/modules/documentation-test/foo.service.ts",
+            "properties": [
+                {
+                    "name": "FOOS",
+                    "defaultValue": "[]",
+                    "type": "string[]",
+                    "optional": false,
+                    "description": "<p>This is the description for FOOS.</p>\n",
+                    "line": 14,
+                    "modifierKind": [
+                        114
+                    ]
+                }
+            ],
+            "methods": [
+                {
+                    "name": "createFoo",
+                    "args": [
+                        {
+                            "name": "bar",
+                            "type": "string"
+                        },
+                        {
+                            "name": "baz",
+                            "type": "string",
+                            "optional": true
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "string[]",
+                    "typeParameters": [],
+                    "line": 19,
+                    "description": "<p>This is the description for createFoo().</p>\n",
+                    "modifierKind": [
+                        114
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "bar",
+                            "type": "string",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "baz",
+                            "type": "string",
+                            "optional": true,
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "description": "<p>This is the description for FooService.</p>\n",
+            "sourceCode": "import {\n  Injectable\n} from '@angular/core';\n\n/**\n * This is the description for FooService.\n */\n@Injectable()\nexport class FooService {\n\n  /**\n   * This is the description for FOOS.\n   */\n  public FOOS: string[] = [];\n\n  /**\n   * This is the description for createFoo().\n   */\n  public createFoo(bar: string, baz?: string): string[] {\n    this.FOOS.push(`${bar}${baz}`);\n    return this.FOOS;\n  }\n}\n",
+            "type": "injectable"
+        }
+    ],
+    "classes": [],
+    "directives": [
+        {
+            "name": "FooDirective",
+            "id": "directive-FooDirective-57d3dd4eb70c40c5f47674baf5165cfd",
+            "file": "src/app/public/modules/documentation-test/foo.directive.ts",
+            "type": "directive",
+            "description": "<p>This is the description for FooDirective.</p>\n",
+            "sourceCode": "import {\n  Directive\n} from '@angular/core';\n\n/**\n * This is the description for FooDirective.\n */\n@Directive({\n  selector: '[foo]'\n})\nexport class FooDirective { }\n",
+            "selector": "[foo]",
+            "providers": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "propertiesClass": [],
+            "methodsClass": []
+        }
+    ],
+    "components": [
+        {
+            "name": "FooComponent",
+            "id": "component-FooComponent-3769482141d3bf0a880dfc6f260a85e0",
+            "file": "src/app/public/modules/documentation-test/foo.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-foo",
+            "styleUrls": [],
+            "styles": [],
+            "template": "",
+            "templateUrl": [],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "bar",
+                    "description": "<p>This is the description for bar input.</p>\n",
+                    "line": 28,
+                    "type": "string"
+                },
+                {
+                    "name": "foo",
+                    "description": "<p>This is the description for foo input.</p>\n",
+                    "line": 22,
+                    "type": "FooEnum"
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 37,
+                    "modifierKind": [
+                        114
+                    ]
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "<p>This is the description for FooComponent.</p>\n",
+            "rawdescription": "This is the description for FooComponent.",
+            "type": "component",
+            "sourceCode": "import {\n  Component,\n  OnInit,\n  Input\n} from '@angular/core';\n\nimport { FooEnum } from './foo-enum';\n\n/**\n * This is the description for FooComponent.\n */\n@Component({\n  selector: 'app-foo',\n  template: ''\n})\nexport class FooComponent implements OnInit {\n\n  /**\n   * This is the description for foo input.\n   */\n  @Input()\n  public foo: FooEnum;\n\n  /**\n   * This is the description for bar input.\n   */\n  @Input()\n  public set bar(value: string) {\n    this._bar = value;\n  }\n  public get bar(): string {\n    return this._bar || 'bar';\n  }\n\n  private _bar: string;\n\n  public ngOnInit(): void {}\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "implements": [
+                "OnInit"
+            ],
+            "accessors": {
+                "bar": {
+                    "name": "bar",
+                    "setSignature": {
+                        "name": "bar",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "value",
+                                "type": "string"
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 28,
+                        "description": "<p>This is the description for bar input.</p>\n",
+                        "jsdoctags": [
+                            {
+                                "name": "value",
+                                "type": "string",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    },
+                    "getSignature": {
+                        "name": "bar",
+                        "type": "string",
+                        "returnType": "string",
+                        "line": 31
+                    }
+                }
+            }
+        }
+    ],
+    "modules": [],
+    "miscellaneous": {
+        "variables": [],
+        "functions": [],
+        "typealiases": [
+            {
+                "name": "FooType",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "\"top\" | \"right\" | \"bottom\" | \"left\"",
+                "file": "src/app/public/modules/documentation-test/foo-type-alias.ts",
+                "description": "<p>This is the description for FooType.</p>\n",
+                "kind": 168
+            }
+        ],
+        "enumerations": [
+            {
+                "name": "FooEnum",
+                "childs": [
+                    {
+                        "name": "Bar",
+                        "value": "0"
+                    },
+                    {
+                        "name": "Baz"
+                    }
+                ],
+                "ctype": "miscellaneous",
+                "subtype": "enum",
+                "description": "<p>This is the description for FooEnum</p>\n",
+                "file": "src/app/public/modules/documentation-test/foo-enum.ts"
+            }
+        ],
+        "groupedVariables": {},
+        "groupedFunctions": {},
+        "groupedEnumerations": {
+            "src/app/public/modules/documentation-test/foo-enum.ts": [
+                {
+                    "name": "FooEnum",
+                    "childs": [
+                        {
+                            "name": "Bar",
+                            "value": "0"
+                        },
+                        {
+                            "name": "Baz"
+                        }
+                    ],
+                    "ctype": "miscellaneous",
+                    "subtype": "enum",
+                    "description": "<p>This is the description for FooEnum</p>\n",
+                    "file": "src/app/public/modules/documentation-test/foo-enum.ts"
+                }
+            ]
+        },
+        "groupedTypeAliases": {
+            "src/app/public/modules/documentation-test/foo-type-alias.ts": [
+                {
+                    "name": "FooType",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "\"top\" | \"right\" | \"bottom\" | \"left\"",
+                    "file": "src/app/public/modules/documentation-test/foo-type-alias.ts",
+                    "description": "<p>This is the description for FooType.</p>\n",
+                    "kind": 168
+                }
+            ]
+        }
+    },
+    "routes": [],
+    "coverage": {}
+}
