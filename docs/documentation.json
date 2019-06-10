@@ -5,7 +5,7 @@
 	"flags": {},
 	"children": [
 		{
-			"id": 4,
+			"id": 5,
 			"name": "FooEnum",
 			"kind": 4,
 			"kindString": "Enumeration",
@@ -17,7 +17,7 @@
 			},
 			"children": [
 				{
-					"id": 5,
+					"id": 6,
 					"name": "Bar",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -37,7 +37,7 @@
 					"defaultValue": "0"
 				},
 				{
-					"id": 6,
+					"id": 7,
 					"name": "Baz",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -61,8 +61,8 @@
 					"title": "Enumeration members",
 					"kind": 16,
 					"children": [
-						5,
-						6
+						6,
+						7
 					]
 				}
 			],
@@ -75,7 +75,7 @@
 			]
 		},
 		{
-			"id": 14,
+			"id": 15,
 			"name": "FooComponent",
 			"kind": 128,
 			"kindString": "Class",
@@ -99,7 +99,42 @@
 			],
 			"children": [
 				{
-					"id": 20,
+					"id": 17,
+					"name": "baz",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {
+						"isPublic": true,
+						"isExported": true
+					},
+					"comment": {
+						"shortText": "This is the description for baz input."
+					},
+					"decorators": [
+						{
+							"name": "Input",
+							"type": {
+								"type": "reference",
+								"name": "Input"
+							},
+							"arguments": {}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "foo.component.ts",
+							"line": 30,
+							"character": 12
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "boolean"
+					},
+					"defaultValue": "false"
+				},
+				{
+					"id": 22,
 					"name": "click",
 					"kind": 1024,
 					"kindString": "Property",
@@ -120,7 +155,7 @@
 					"sources": [
 						{
 							"fileName": "foo.component.ts",
-							"line": 38,
+							"line": 44,
 							"character": 14
 						}
 					],
@@ -137,7 +172,7 @@
 					"defaultValue": " new EventEmitter<boolean>()"
 				},
 				{
-					"id": 15,
+					"id": 16,
 					"name": "foo",
 					"kind": 1024,
 					"kindString": "Property",
@@ -168,11 +203,11 @@
 					"type": {
 						"type": "reference",
 						"name": "FooEnum",
-						"id": 4
+						"id": 5
 					}
 				},
 				{
-					"id": 16,
+					"id": 18,
 					"name": "bar",
 					"kind": 262144,
 					"kindString": "Accessor",
@@ -195,7 +230,7 @@
 					],
 					"getSignature": [
 						{
-							"id": 19,
+							"id": 21,
 							"name": "__get",
 							"kind": 524288,
 							"kindString": "Get signature",
@@ -211,7 +246,7 @@
 					],
 					"setSignature": [
 						{
-							"id": 17,
+							"id": 19,
 							"name": "__set",
 							"kind": 1048576,
 							"kindString": "Set signature",
@@ -221,7 +256,7 @@
 							},
 							"parameters": [
 								{
-									"id": 18,
+									"id": 20,
 									"name": "value",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -241,18 +276,18 @@
 					"sources": [
 						{
 							"fileName": "foo.component.ts",
-							"line": 30,
+							"line": 36,
 							"character": 16
 						},
 						{
 							"fileName": "foo.component.ts",
-							"line": 33,
+							"line": 39,
 							"character": 16
 						}
 					]
 				},
 				{
-					"id": 21,
+					"id": 23,
 					"name": "ngOnInit",
 					"kind": 2048,
 					"kindString": "Method",
@@ -262,7 +297,7 @@
 					},
 					"signatures": [
 						{
-							"id": 22,
+							"id": 24,
 							"name": "ngOnInit",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -276,7 +311,7 @@
 					"sources": [
 						{
 							"fileName": "foo.component.ts",
-							"line": 42,
+							"line": 48,
 							"character": 17
 						}
 					]
@@ -287,22 +322,23 @@
 					"title": "Properties",
 					"kind": 1024,
 					"children": [
-						20,
-						15
+						17,
+						22,
+						16
 					]
 				},
 				{
 					"title": "Accessors",
 					"kind": 262144,
 					"children": [
-						16
+						18
 					]
 				},
 				{
 					"title": "Methods",
 					"kind": 2048,
 					"children": [
-						21
+						23
 					]
 				}
 			],
@@ -321,7 +357,7 @@
 			]
 		},
 		{
-			"id": 23,
+			"id": 25,
 			"name": "FooDirective",
 			"kind": 128,
 			"kindString": "Class",
@@ -352,7 +388,7 @@
 			]
 		},
 		{
-			"id": 24,
+			"id": 26,
 			"name": "FooService",
 			"kind": 128,
 			"kindString": "Class",
@@ -374,7 +410,7 @@
 			],
 			"children": [
 				{
-					"id": 25,
+					"id": 27,
 					"name": "FOOS",
 					"kind": 1024,
 					"kindString": "Property",
@@ -388,7 +424,7 @@
 					"sources": [
 						{
 							"fileName": "foo.service.ts",
-							"line": 14,
+							"line": 15,
 							"character": 13
 						}
 					],
@@ -402,7 +438,40 @@
 					"defaultValue": " []"
 				},
 				{
-					"id": 26,
+					"id": 33,
+					"name": "anotherFoo",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isPublic": true,
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 34,
+							"name": "anotherFoo",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "This is the description for anotherFoo()."
+							},
+							"type": {
+								"type": "intrinsic",
+								"name": "void"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "foo.service.ts",
+							"line": 28,
+							"character": 19
+						}
+					]
+				},
+				{
+					"id": 28,
 					"name": "createFoo",
 					"kind": 2048,
 					"kindString": "Method",
@@ -412,7 +481,7 @@
 					},
 					"signatures": [
 						{
-							"id": 27,
+							"id": 29,
 							"name": "createFoo",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -422,7 +491,7 @@
 							},
 							"parameters": [
 								{
-									"id": 28,
+									"id": 30,
 									"name": "bar",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -433,7 +502,7 @@
 									}
 								},
 								{
-									"id": 29,
+									"id": 31,
 									"name": "baz",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -444,6 +513,18 @@
 										"type": "intrinsic",
 										"name": "string"
 									}
+								},
+								{
+									"id": 32,
+									"name": "lorem",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									},
+									"defaultValue": "\"ipsum\""
 								}
 							],
 							"type": {
@@ -458,8 +539,38 @@
 					"sources": [
 						{
 							"fileName": "foo.service.ts",
-							"line": 19,
+							"line": 20,
 							"character": 18
+						}
+					]
+				},
+				{
+					"id": 35,
+					"name": "ngOnDestroy",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isPublic": true,
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 36,
+							"name": "ngOnDestroy",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"type": {
+								"type": "intrinsic",
+								"name": "void"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "foo.service.ts",
+							"line": 30,
+							"character": 20
 						}
 					]
 				}
@@ -469,27 +580,35 @@
 					"title": "Properties",
 					"kind": 1024,
 					"children": [
-						25
+						27
 					]
 				},
 				{
 					"title": "Methods",
 					"kind": 2048,
 					"children": [
-						26
+						33,
+						28,
+						35
 					]
 				}
 			],
 			"sources": [
 				{
 					"fileName": "foo.service.ts",
-					"line": 9,
+					"line": 10,
 					"character": 23
+				}
+			],
+			"implementedTypes": [
+				{
+					"type": "reference",
+					"name": "OnDestroy"
 				}
 			]
 		},
 		{
-			"id": 30,
+			"id": 37,
 			"name": "Foo",
 			"kind": 256,
 			"kindString": "Interface",
@@ -501,7 +620,7 @@
 			},
 			"children": [
 				{
-					"id": 31,
+					"id": 38,
 					"name": "bar",
 					"kind": 1024,
 					"kindString": "Property",
@@ -524,7 +643,7 @@
 					}
 				},
 				{
-					"id": 32,
+					"id": 39,
 					"name": "baz",
 					"kind": 1024,
 					"kindString": "Property",
@@ -553,8 +672,8 @@
 					"title": "Properties",
 					"kind": 1024,
 					"children": [
-						31,
-						32
+						38,
+						39
 					]
 				}
 			],
@@ -574,6 +693,9 @@
 			"flags": {
 				"isExported": true
 			},
+			"comment": {
+				"shortText": "This is te description for FooDate."
+			},
 			"children": [
 				{
 					"id": 3,
@@ -586,7 +708,7 @@
 					"sources": [
 						{
 							"fileName": "foo-date.ts",
-							"line": 3,
+							"line": 6,
 							"character": 5
 						}
 					],
@@ -606,8 +728,32 @@
 					"sources": [
 						{
 							"fileName": "foo-date.ts",
-							"line": 2,
+							"line": 5,
 							"character": 7
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "number"
+					}
+				},
+				{
+					"id": 4,
+					"name": "year",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {
+						"isExported": true,
+						"isOptional": true
+					},
+					"comment": {
+						"shortText": "The year is optional."
+					},
+					"sources": [
+						{
+							"fileName": "foo-date.ts",
+							"line": 11,
+							"character": 6
 						}
 					],
 					"type": {
@@ -622,20 +768,21 @@
 					"kind": 1024,
 					"children": [
 						3,
-						2
+						2,
+						4
 					]
 				}
 			],
 			"sources": [
 				{
 					"fileName": "foo-date.ts",
-					"line": 1,
+					"line": 4,
 					"character": 24
 				}
 			]
 		},
 		{
-			"id": 12,
+			"id": 13,
 			"name": "FooTypeUnionComplex",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -672,7 +819,7 @@
 			}
 		},
 		{
-			"id": 7,
+			"id": 8,
 			"name": "FooTypeUnionFunction",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -680,33 +827,45 @@
 				"isExported": true
 			},
 			"comment": {
-				"shortText": "This is the description for FooTypeFunction."
+				"shortText": "This is the description for FooTypeFunction.",
+				"tags": [
+					{
+						"tag": "param",
+						"text": "The string to find.",
+						"param": "needle"
+					},
+					{
+						"tag": "param",
+						"text": "The string to search.\n",
+						"param": "haystack"
+					}
+				]
 			},
 			"sources": [
 				{
 					"fileName": "foo-type-function.ts",
-					"line": 4,
+					"line": 6,
 					"character": 32
 				}
 			],
 			"type": {
 				"type": "reflection",
 				"declaration": {
-					"id": 8,
+					"id": 9,
 					"name": "__type",
 					"kind": 65536,
 					"kindString": "Type literal",
 					"flags": {},
 					"signatures": [
 						{
-							"id": 9,
+							"id": 10,
 							"name": "__call",
 							"kind": 4096,
 							"kindString": "Call signature",
 							"flags": {},
 							"parameters": [
 								{
-									"id": 10,
+									"id": 11,
 									"name": "needle",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -717,11 +876,13 @@
 									}
 								},
 								{
-									"id": 11,
+									"id": 12,
 									"name": "haystack",
 									"kind": 32768,
 									"kindString": "Parameter",
-									"flags": {},
+									"flags": {
+										"isOptional": true
+									},
 									"type": {
 										"type": "intrinsic",
 										"name": "string"
@@ -737,7 +898,7 @@
 					"sources": [
 						{
 							"fileName": "foo-type-function.ts",
-							"line": 4,
+							"line": 6,
 							"character": 34
 						}
 					]
@@ -745,7 +906,7 @@
 			}
 		},
 		{
-			"id": 13,
+			"id": 14,
 			"name": "FooTypeUnionString",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -790,23 +951,23 @@
 			"title": "Enumerations",
 			"kind": 4,
 			"children": [
-				4
+				5
 			]
 		},
 		{
 			"title": "Classes",
 			"kind": 128,
 			"children": [
-				14,
-				23,
-				24
+				15,
+				25,
+				26
 			]
 		},
 		{
 			"title": "Interfaces",
 			"kind": 256,
 			"children": [
-				30,
+				37,
 				1
 			]
 		},
@@ -814,9 +975,9 @@
 			"title": "Type aliases",
 			"kind": 4194304,
 			"children": [
-				12,
-				7,
-				13
+				13,
+				8,
+				14
 			]
 		}
 	]
