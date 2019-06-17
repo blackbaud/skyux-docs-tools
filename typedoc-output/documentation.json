@@ -5,7 +5,7 @@
 	"flags": {},
 	"children": [
 		{
-			"id": 249,
+			"id": 195,
 			"name": "FooEnum",
 			"kind": 4,
 			"kindString": "Enumeration",
@@ -17,7 +17,7 @@
 			},
 			"children": [
 				{
-					"id": 250,
+					"id": 196,
 					"name": "Bar",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -37,7 +37,7 @@
 					"defaultValue": "0"
 				},
 				{
-					"id": 251,
+					"id": 197,
 					"name": "Baz",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -61,8 +61,8 @@
 					"title": "Enumeration members",
 					"kind": 16,
 					"children": [
-						250,
-						251
+						196,
+						197
 					]
 				}
 			],
@@ -75,7 +75,7 @@
 			]
 		},
 		{
-			"id": 259,
+			"id": 205,
 			"name": "FooComponent",
 			"kind": 128,
 			"kindString": "Class",
@@ -99,7 +99,7 @@
 			],
 			"children": [
 				{
-					"id": 261,
+					"id": 207,
 					"name": "baz",
 					"kind": 1024,
 					"kindString": "Property",
@@ -134,7 +134,7 @@
 					"defaultValue": "false"
 				},
 				{
-					"id": 266,
+					"id": 212,
 					"name": "click",
 					"kind": 1024,
 					"kindString": "Property",
@@ -172,7 +172,7 @@
 					"defaultValue": " new EventEmitter<boolean>()"
 				},
 				{
-					"id": 260,
+					"id": 206,
 					"name": "foo",
 					"kind": 1024,
 					"kindString": "Property",
@@ -203,11 +203,11 @@
 					"type": {
 						"type": "reference",
 						"name": "FooEnum",
-						"id": 249
+						"id": 195
 					}
 				},
 				{
-					"id": 262,
+					"id": 208,
 					"name": "bar",
 					"kind": 262144,
 					"kindString": "Accessor",
@@ -230,7 +230,7 @@
 					],
 					"getSignature": [
 						{
-							"id": 265,
+							"id": 211,
 							"name": "__get",
 							"kind": 524288,
 							"kindString": "Get signature",
@@ -246,7 +246,7 @@
 					],
 					"setSignature": [
 						{
-							"id": 263,
+							"id": 209,
 							"name": "__set",
 							"kind": 1048576,
 							"kindString": "Set signature",
@@ -256,7 +256,7 @@
 							},
 							"parameters": [
 								{
-									"id": 264,
+									"id": 210,
 									"name": "value",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -287,7 +287,7 @@
 					]
 				},
 				{
-					"id": 267,
+					"id": 213,
 					"name": "ngOnInit",
 					"kind": 2048,
 					"kindString": "Method",
@@ -297,7 +297,7 @@
 					},
 					"signatures": [
 						{
-							"id": 268,
+							"id": 214,
 							"name": "ngOnInit",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -322,23 +322,23 @@
 					"title": "Properties",
 					"kind": 1024,
 					"children": [
-						261,
-						266,
-						260
+						207,
+						212,
+						206
 					]
 				},
 				{
 					"title": "Accessors",
 					"kind": 262144,
 					"children": [
-						262
+						208
 					]
 				},
 				{
 					"title": "Methods",
 					"kind": 2048,
 					"children": [
-						267
+						213
 					]
 				}
 			],
@@ -357,7 +357,7 @@
 			]
 		},
 		{
-			"id": 269,
+			"id": 215,
 			"name": "FooDirective",
 			"kind": 128,
 			"kindString": "Class",
@@ -381,7 +381,7 @@
 			],
 			"children": [
 				{
-					"id": 270,
+					"id": 216,
 					"name": "fooOptions",
 					"kind": 1024,
 					"kindString": "Property",
@@ -417,7 +417,7 @@
 					"title": "Properties",
 					"kind": 1024,
 					"children": [
-						270
+						216
 					]
 				}
 			],
@@ -430,7 +430,101 @@
 			]
 		},
 		{
-			"id": 271,
+			"id": 217,
+			"name": "FooPipe",
+			"kind": 128,
+			"kindString": "Class",
+			"flags": {
+				"isExported": true
+			},
+			"comment": {
+				"shortText": "This is the description for the FooPipe."
+			},
+			"decorators": [
+				{
+					"name": "Pipe",
+					"type": {
+						"type": "reference",
+						"name": "Pipe"
+					},
+					"arguments": {
+						"obj": "{\n  name: 'foo'\n}"
+					}
+				}
+			],
+			"children": [
+				{
+					"id": 218,
+					"name": "transform",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isPublic": true,
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 219,
+							"name": "transform",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Transforms the content."
+							},
+							"parameters": [
+								{
+									"id": 220,
+									"name": "content",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "string"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "documentation-test/foo.pipe.ts",
+							"line": 17,
+							"character": 18
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Methods",
+					"kind": 2048,
+					"children": [
+						218
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "documentation-test/foo.pipe.ts",
+					"line": 12,
+					"character": 20
+				}
+			],
+			"implementedTypes": [
+				{
+					"type": "reference",
+					"name": "PipeTransform"
+				}
+			]
+		},
+		{
+			"id": 221,
 			"name": "FooService",
 			"kind": 128,
 			"kindString": "Class",
@@ -452,7 +546,7 @@
 			],
 			"children": [
 				{
-					"id": 272,
+					"id": 222,
 					"name": "FOOS",
 					"kind": 1024,
 					"kindString": "Property",
@@ -480,7 +574,7 @@
 					"defaultValue": " []"
 				},
 				{
-					"id": 278,
+					"id": 228,
 					"name": "anotherFoo",
 					"kind": 2048,
 					"kindString": "Method",
@@ -490,7 +584,7 @@
 					},
 					"signatures": [
 						{
-							"id": 279,
+							"id": 229,
 							"name": "anotherFoo",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -513,7 +607,7 @@
 					]
 				},
 				{
-					"id": 273,
+					"id": 223,
 					"name": "createFoo",
 					"kind": 2048,
 					"kindString": "Method",
@@ -523,7 +617,7 @@
 					},
 					"signatures": [
 						{
-							"id": 274,
+							"id": 224,
 							"name": "createFoo",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -533,7 +627,7 @@
 							},
 							"parameters": [
 								{
-									"id": 275,
+									"id": 225,
 									"name": "bar",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -544,7 +638,7 @@
 									}
 								},
 								{
-									"id": 276,
+									"id": 226,
 									"name": "baz",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -557,7 +651,7 @@
 									}
 								},
 								{
-									"id": 277,
+									"id": 227,
 									"name": "lorem",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -587,7 +681,7 @@
 					]
 				},
 				{
-					"id": 280,
+					"id": 230,
 					"name": "ngOnDestroy",
 					"kind": 2048,
 					"kindString": "Method",
@@ -597,7 +691,7 @@
 					},
 					"signatures": [
 						{
-							"id": 281,
+							"id": 231,
 							"name": "ngOnDestroy",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -622,16 +716,16 @@
 					"title": "Properties",
 					"kind": 1024,
 					"children": [
-						272
+						222
 					]
 				},
 				{
 					"title": "Methods",
 					"kind": 2048,
 					"children": [
-						278,
-						273,
-						280
+						228,
+						223,
+						230
 					]
 				}
 			],
@@ -650,449 +744,7 @@
 			]
 		},
 		{
-			"id": 1,
-			"name": "SkyDocsDataTableColumnComponent",
-			"kind": 128,
-			"kindString": "Class",
-			"flags": {
-				"isExported": true
-			},
-			"decorators": [
-				{
-					"name": "Component",
-					"type": {
-						"type": "reference",
-						"name": "Component"
-					},
-					"arguments": {
-						"obj": "{\n  selector: 'sky-docs-data-table-column',\n  templateUrl: './data-table-column.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush\n}"
-					}
-				}
-			],
-			"children": [
-				{
-					"id": 2,
-					"name": "dataPropertyReference",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isPublic": true,
-						"isExported": true
-					},
-					"comment": {
-						"shortText": "The data property key to reference."
-					},
-					"decorators": [
-						{
-							"name": "Input",
-							"type": {
-								"type": "reference",
-								"name": "Input"
-							},
-							"arguments": {}
-						}
-					],
-					"sources": [
-						{
-							"fileName": "data-table/data-table-column.component.ts",
-							"line": 18,
-							"character": 30
-						}
-					],
-					"type": {
-						"type": "intrinsic",
-						"name": "string"
-					}
-				},
-				{
-					"id": 3,
-					"name": "heading",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isPublic": true,
-						"isExported": true
-					},
-					"decorators": [
-						{
-							"name": "Input",
-							"type": {
-								"type": "reference",
-								"name": "Input"
-							},
-							"arguments": {}
-						}
-					],
-					"sources": [
-						{
-							"fileName": "data-table/data-table-column.component.ts",
-							"line": 21,
-							"character": 16
-						}
-					],
-					"type": {
-						"type": "intrinsic",
-						"name": "string"
-					}
-				},
-				{
-					"id": 4,
-					"name": "foo",
-					"kind": 262144,
-					"kindString": "Accessor",
-					"flags": {
-						"isPublic": true,
-						"isExported": true
-					},
-					"comment": {
-						"shortText": "The foo for the baz!",
-						"tags": [
-							{
-								"tag": "defaultvalue",
-								"text": "baz\n"
-							}
-						]
-					},
-					"decorators": [
-						{
-							"name": "Input",
-							"type": {
-								"type": "reference",
-								"name": "Input"
-							},
-							"arguments": {}
-						}
-					],
-					"getSignature": [
-						{
-							"id": 7,
-							"name": "__get",
-							"kind": 524288,
-							"kindString": "Get signature",
-							"flags": {},
-							"comment": {
-								"shortText": "The foo for the baz!",
-								"tags": [
-									{
-										"tag": "defaultvalue",
-										"text": "baz\n"
-									}
-								]
-							},
-							"type": {
-								"type": "intrinsic",
-								"name": "string"
-							}
-						}
-					],
-					"setSignature": [
-						{
-							"id": 5,
-							"name": "__set",
-							"kind": 1048576,
-							"kindString": "Set signature",
-							"flags": {},
-							"comment": {
-								"shortText": "The foo for the baz!"
-							},
-							"parameters": [
-								{
-									"id": 6,
-									"name": "value",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"type": {
-										"type": "intrinsic",
-										"name": "string"
-									}
-								}
-							],
-							"type": {
-								"type": "intrinsic",
-								"name": "void"
-							}
-						}
-					],
-					"sources": [
-						{
-							"fileName": "data-table/data-table-column.component.ts",
-							"line": 27,
-							"character": 16
-						},
-						{
-							"fileName": "data-table/data-table-column.component.ts",
-							"line": 34,
-							"character": 16
-						}
-					]
-				}
-			],
-			"groups": [
-				{
-					"title": "Properties",
-					"kind": 1024,
-					"children": [
-						2,
-						3
-					]
-				},
-				{
-					"title": "Accessors",
-					"kind": 262144,
-					"children": [
-						4
-					]
-				}
-			],
-			"sources": [
-				{
-					"fileName": "data-table/data-table-column.component.ts",
-					"line": 12,
-					"character": 44
-				}
-			]
-		},
-		{
-			"id": 8,
-			"name": "SkyDocsDataTableComponent",
-			"kind": 128,
-			"kindString": "Class",
-			"flags": {
-				"isExported": true
-			},
-			"decorators": [
-				{
-					"name": "Component",
-					"type": {
-						"type": "reference",
-						"name": "Component"
-					},
-					"arguments": {
-						"obj": "{\n  selector: 'sky-docs-data-table',\n  templateUrl: './data-table.component.html',\n  styleUrls: ['./data-table.component.scss'],\n  changeDetection: ChangeDetectionStrategy.OnPush\n}"
-					}
-				}
-			],
-			"children": [
-				{
-					"id": 10,
-					"name": "columns",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isPublic": true,
-						"isExported": true
-					},
-					"comment": {
-						"tags": [
-							{
-								"tag": "internal",
-								"text": "\n"
-							}
-						]
-					},
-					"sources": [
-						{
-							"fileName": "data-table/data-table.component.ts",
-							"line": 28,
-							"character": 16
-						}
-					],
-					"type": {
-						"type": "array",
-						"elementType": {
-							"type": "reflection",
-							"declaration": {
-								"id": 11,
-								"name": "__type",
-								"kind": 65536,
-								"kindString": "Type literal",
-								"flags": {},
-								"sources": [
-									{
-										"fileName": "data-table/data-table.component.ts",
-										"line": 28,
-										"character": 17
-									}
-								]
-							}
-						}
-					},
-					"defaultValue": " []"
-				},
-				{
-					"id": 9,
-					"name": "data",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isPublic": true,
-						"isExported": true
-					},
-					"decorators": [
-						{
-							"name": "Input",
-							"type": {
-								"type": "reference",
-								"name": "Input"
-							},
-							"arguments": {}
-						}
-					],
-					"sources": [
-						{
-							"fileName": "data-table/data-table.component.ts",
-							"line": 23,
-							"character": 13
-						}
-					],
-					"type": {
-						"type": "array",
-						"elementType": {
-							"type": "intrinsic",
-							"name": "any"
-						}
-					}
-				},
-				{
-					"id": 12,
-					"name": "ngAfterContentInit",
-					"kind": 2048,
-					"kindString": "Method",
-					"flags": {
-						"isPublic": true,
-						"isExported": true
-					},
-					"signatures": [
-						{
-							"id": 13,
-							"name": "ngAfterContentInit",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"type": {
-								"type": "intrinsic",
-								"name": "void"
-							}
-						}
-					],
-					"sources": [
-						{
-							"fileName": "data-table/data-table.component.ts",
-							"line": 36,
-							"character": 27
-						}
-					]
-				},
-				{
-					"id": 14,
-					"name": "objectKeys",
-					"kind": 2048,
-					"kindString": "Method",
-					"flags": {
-						"isPublic": true,
-						"isExported": true
-					},
-					"signatures": [
-						{
-							"id": 15,
-							"name": "objectKeys",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"parameters": [
-								{
-									"id": 16,
-									"name": "obj",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"type": {
-										"type": "intrinsic",
-										"name": "any"
-									}
-								}
-							],
-							"type": {
-								"type": "array",
-								"elementType": {
-									"type": "intrinsic",
-									"name": "string"
-								}
-							}
-						}
-					],
-					"sources": [
-						{
-							"fileName": "data-table/data-table.component.ts",
-							"line": 45,
-							"character": 19
-						}
-					]
-				}
-			],
-			"groups": [
-				{
-					"title": "Properties",
-					"kind": 1024,
-					"children": [
-						10,
-						9
-					]
-				},
-				{
-					"title": "Methods",
-					"kind": 2048,
-					"children": [
-						12,
-						14
-					]
-				}
-			],
-			"sources": [
-				{
-					"fileName": "data-table/data-table.component.ts",
-					"line": 20,
-					"character": 38
-				}
-			],
-			"implementedTypes": [
-				{
-					"type": "reference",
-					"name": "AfterContentInit"
-				}
-			]
-		},
-		{
-			"id": 17,
-			"name": "SkyDocsDataTableModule",
-			"kind": 128,
-			"kindString": "Class",
-			"flags": {
-				"isExported": true
-			},
-			"decorators": [
-				{
-					"name": "NgModule",
-					"type": {
-						"type": "reference",
-						"name": "NgModule"
-					},
-					"arguments": {
-						"obj": "{\n  imports: [\n    CommonModule\n  ],\n  declarations: [\n    SkyDocsDataTableColumnComponent,\n    SkyDocsDataTableComponent\n  ],\n  exports: [\n    SkyDocsDataTableColumnComponent,\n    SkyDocsDataTableComponent\n  ]\n}"
-					}
-				}
-			],
-			"sources": [
-				{
-					"fileName": "data-table/data-table.module.ts",
-					"line": 24,
-					"character": 35
-				}
-			]
-		},
-		{
-			"id": 68,
+			"id": 58,
 			"name": "SkyDocsDemoComponent",
 			"kind": 128,
 			"kindString": "Class",
@@ -1113,7 +765,7 @@
 			],
 			"children": [
 				{
-					"id": 69,
+					"id": 59,
 					"name": "heading",
 					"kind": 1024,
 					"kindString": "Property",
@@ -1150,7 +802,7 @@
 					"title": "Properties",
 					"kind": 1024,
 					"children": [
-						69
+						59
 					]
 				}
 			],
@@ -1163,7 +815,7 @@
 			]
 		},
 		{
-			"id": 21,
+			"id": 7,
 			"name": "SkyDocsDemoControlPanelCheckboxComponent",
 			"kind": 128,
 			"kindString": "Class",
@@ -1184,7 +836,7 @@
 			],
 			"children": [
 				{
-					"id": 29,
+					"id": 19,
 					"name": "constructor",
 					"kind": 512,
 					"kindString": "Constructor",
@@ -1193,14 +845,14 @@
 					},
 					"signatures": [
 						{
-							"id": 30,
+							"id": 20,
 							"name": "new SkyDocsDemoControlPanelCheckboxComponent",
 							"kind": 16384,
 							"kindString": "Constructor signature",
 							"flags": {},
 							"parameters": [
 								{
-									"id": 31,
+									"id": 21,
 									"name": "changeDetector",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1214,20 +866,20 @@
 							"type": {
 								"type": "reference",
 								"name": "SkyDocsDemoControlPanelCheckboxComponent",
-								"id": 21
+								"id": 7
 							}
 						}
 					],
 					"sources": [
 						{
 							"fileName": "demo/demo-control-panel-checkbox.component.ts",
-							"line": 57,
+							"line": 69,
 							"character": 28
 						}
 					]
 				},
 				{
-					"id": 26,
+					"id": 12,
 					"name": "label",
 					"kind": 1024,
 					"kindString": "Property",
@@ -1248,7 +900,7 @@
 					"sources": [
 						{
 							"fileName": "demo/demo-control-panel-checkbox.component.ts",
-							"line": 40,
+							"line": 44,
 							"character": 14
 						}
 					],
@@ -1258,7 +910,7 @@
 					}
 				},
 				{
-					"id": 27,
+					"id": 13,
 					"name": "name",
 					"kind": 1024,
 					"kindString": "Property",
@@ -1279,7 +931,7 @@
 					"sources": [
 						{
 							"fileName": "demo/demo-control-panel-checkbox.component.ts",
-							"line": 43,
+							"line": 47,
 							"character": 13
 						}
 					],
@@ -1289,7 +941,7 @@
 					}
 				},
 				{
-					"id": 28,
+					"id": 18,
 					"name": "selectionChange",
 					"kind": 1024,
 					"kindString": "Property",
@@ -1308,7 +960,7 @@
 					"sources": [
 						{
 							"fileName": "demo/demo-control-panel-checkbox.component.ts",
-							"line": 48,
+							"line": 63,
 							"character": 24
 						}
 					],
@@ -1319,14 +971,14 @@
 							{
 								"type": "reference",
 								"name": "SkyDocsDemoControlPanelChange",
-								"id": 18
+								"id": 1
 							}
 						]
 					},
 					"defaultValue": " new Subject<SkyDocsDemoControlPanelChange>()"
 				},
 				{
-					"id": 22,
+					"id": 8,
 					"name": "checked",
 					"kind": 262144,
 					"kindString": "Accessor",
@@ -1346,7 +998,7 @@
 					],
 					"getSignature": [
 						{
-							"id": 25,
+							"id": 11,
 							"name": "__get",
 							"kind": 524288,
 							"kindString": "Get signature",
@@ -1359,14 +1011,14 @@
 					],
 					"setSignature": [
 						{
-							"id": 23,
+							"id": 9,
 							"name": "__set",
 							"kind": 1048576,
 							"kindString": "Set signature",
 							"flags": {},
 							"parameters": [
 								{
-									"id": 24,
+									"id": 10,
 									"name": "value",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1386,18 +1038,109 @@
 					"sources": [
 						{
 							"fileName": "demo/demo-control-panel-checkbox.component.ts",
-							"line": 27,
+							"line": 31,
 							"character": 20
 						},
 						{
 							"fileName": "demo/demo-control-panel-checkbox.component.ts",
-							"line": 35,
+							"line": 39,
 							"character": 20
 						}
 					]
 				},
 				{
-					"id": 34,
+					"id": 14,
+					"name": "foo",
+					"kind": 262144,
+					"kindString": "Accessor",
+					"flags": {
+						"isPublic": true,
+						"isExported": true
+					},
+					"decorators": [
+						{
+							"name": "Input",
+							"type": {
+								"type": "reference",
+								"name": "Input"
+							},
+							"arguments": {}
+						}
+					],
+					"getSignature": [
+						{
+							"id": 17,
+							"name": "__get",
+							"kind": 524288,
+							"kindString": "Get signature",
+							"flags": {},
+							"type": {
+								"type": "array",
+								"elementType": {
+									"type": "reference",
+									"name": "FooThing",
+									"id": 4,
+									"typeArguments": [
+										{
+											"type": "intrinsic",
+											"name": "string"
+										}
+									]
+								}
+							}
+						}
+					],
+					"setSignature": [
+						{
+							"id": 15,
+							"name": "__set",
+							"kind": 1048576,
+							"kindString": "Set signature",
+							"flags": {},
+							"parameters": [
+								{
+									"id": 16,
+									"name": "value",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "array",
+										"elementType": {
+											"type": "reference",
+											"name": "FooThing",
+											"id": 4,
+											"typeArguments": [
+												{
+													"type": "intrinsic",
+													"name": "string"
+												}
+											]
+										}
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "void"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "demo/demo-control-panel-checkbox.component.ts",
+							"line": 50,
+							"character": 16
+						},
+						{
+							"fileName": "demo/demo-control-panel-checkbox.component.ts",
+							"line": 53,
+							"character": 16
+						}
+					]
+				},
+				{
+					"id": 24,
 					"name": "ngOnDestroy",
 					"kind": 2048,
 					"kindString": "Method",
@@ -1407,7 +1150,7 @@
 					},
 					"signatures": [
 						{
-							"id": 35,
+							"id": 25,
 							"name": "ngOnDestroy",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -1421,13 +1164,13 @@
 					"sources": [
 						{
 							"fileName": "demo/demo-control-panel-checkbox.component.ts",
-							"line": 69,
+							"line": 81,
 							"character": 20
 						}
 					]
 				},
 				{
-					"id": 32,
+					"id": 22,
 					"name": "ngOnInit",
 					"kind": 2048,
 					"kindString": "Method",
@@ -1437,7 +1180,7 @@
 					},
 					"signatures": [
 						{
-							"id": 33,
+							"id": 23,
 							"name": "ngOnInit",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -1451,13 +1194,13 @@
 					"sources": [
 						{
 							"fileName": "demo/demo-control-panel-checkbox.component.ts",
-							"line": 63,
+							"line": 75,
 							"character": 17
 						}
 					]
 				},
 				{
-					"id": 36,
+					"id": 26,
 					"name": "onModelChange",
 					"kind": 2048,
 					"kindString": "Method",
@@ -1467,7 +1210,7 @@
 					},
 					"signatures": [
 						{
-							"id": 37,
+							"id": 27,
 							"name": "onModelChange",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -1481,13 +1224,13 @@
 					"sources": [
 						{
 							"fileName": "demo/demo-control-panel-checkbox.component.ts",
-							"line": 73,
+							"line": 85,
 							"character": 22
 						}
 					]
 				},
 				{
-					"id": 38,
+					"id": 28,
 					"name": "resetState",
 					"kind": 2048,
 					"kindString": "Method",
@@ -1497,7 +1240,7 @@
 					},
 					"signatures": [
 						{
-							"id": 39,
+							"id": 29,
 							"name": "resetState",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -1511,7 +1254,7 @@
 					"sources": [
 						{
 							"fileName": "demo/demo-control-panel-checkbox.component.ts",
-							"line": 77,
+							"line": 89,
 							"character": 19
 						}
 					]
@@ -1522,40 +1265,41 @@
 					"title": "Constructors",
 					"kind": 512,
 					"children": [
-						29
+						19
 					]
 				},
 				{
 					"title": "Properties",
 					"kind": 1024,
 					"children": [
-						26,
-						27,
-						28
+						12,
+						13,
+						18
 					]
 				},
 				{
 					"title": "Accessors",
 					"kind": 262144,
 					"children": [
-						22
+						8,
+						14
 					]
 				},
 				{
 					"title": "Methods",
 					"kind": 2048,
 					"children": [
-						34,
-						32,
-						36,
-						38
+						24,
+						22,
+						26,
+						28
 					]
 				}
 			],
 			"sources": [
 				{
 					"fileName": "demo/demo-control-panel-checkbox.component.ts",
-					"line": 24,
+					"line": 28,
 					"character": 53
 				}
 			],
@@ -1571,7 +1315,7 @@
 			]
 		},
 		{
-			"id": 60,
+			"id": 50,
 			"name": "SkyDocsDemoControlPanelComponent",
 			"kind": 128,
 			"kindString": "Class",
@@ -1592,7 +1336,7 @@
 			],
 			"children": [
 				{
-					"id": 61,
+					"id": 51,
 					"name": "selectionChange",
 					"kind": 1024,
 					"kindString": "Property",
@@ -1624,14 +1368,14 @@
 							{
 								"type": "reference",
 								"name": "SkyDocsDemoControlPanelChange",
-								"id": 18
+								"id": 1
 							}
 						]
 					},
 					"defaultValue": " new EventEmitter<SkyDocsDemoControlPanelChange>()"
 				},
 				{
-					"id": 62,
+					"id": 52,
 					"name": "ngAfterContentInit",
 					"kind": 2048,
 					"kindString": "Method",
@@ -1641,7 +1385,7 @@
 					},
 					"signatures": [
 						{
-							"id": 63,
+							"id": 53,
 							"name": "ngAfterContentInit",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -1661,7 +1405,7 @@
 					]
 				},
 				{
-					"id": 64,
+					"id": 54,
 					"name": "ngOnDestroy",
 					"kind": 2048,
 					"kindString": "Method",
@@ -1671,7 +1415,7 @@
 					},
 					"signatures": [
 						{
-							"id": 65,
+							"id": 55,
 							"name": "ngOnDestroy",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -1691,7 +1435,7 @@
 					]
 				},
 				{
-					"id": 66,
+					"id": 56,
 					"name": "onResetButtonClick",
 					"kind": 2048,
 					"kindString": "Method",
@@ -1701,7 +1445,7 @@
 					},
 					"signatures": [
 						{
-							"id": 67,
+							"id": 57,
 							"name": "onResetButtonClick",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -1726,16 +1470,16 @@
 					"title": "Properties",
 					"kind": 1024,
 					"children": [
-						61
+						51
 					]
 				},
 				{
 					"title": "Methods",
 					"kind": 2048,
 					"children": [
-						62,
-						64,
-						66
+						52,
+						54,
+						56
 					]
 				}
 			],
@@ -1758,7 +1502,7 @@
 			]
 		},
 		{
-			"id": 40,
+			"id": 30,
 			"name": "SkyDocsDemoControlPanelRadioGroupComponent",
 			"kind": 128,
 			"kindString": "Class",
@@ -1779,7 +1523,7 @@
 			],
 			"children": [
 				{
-					"id": 48,
+					"id": 38,
 					"name": "constructor",
 					"kind": 512,
 					"kindString": "Constructor",
@@ -1788,14 +1532,14 @@
 					},
 					"signatures": [
 						{
-							"id": 49,
+							"id": 39,
 							"name": "new SkyDocsDemoControlPanelRadioGroupComponent",
 							"kind": 16384,
 							"kindString": "Constructor signature",
 							"flags": {},
 							"parameters": [
 								{
-									"id": 50,
+									"id": 40,
 									"name": "changeDetector",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1809,7 +1553,7 @@
 							"type": {
 								"type": "reference",
 								"name": "SkyDocsDemoControlPanelRadioGroupComponent",
-								"id": 40
+								"id": 30
 							}
 						}
 					],
@@ -1822,7 +1566,7 @@
 					]
 				},
 				{
-					"id": 41,
+					"id": 31,
 					"name": "choices",
 					"kind": 1024,
 					"kindString": "Property",
@@ -1852,7 +1596,7 @@
 						"elementType": {
 							"type": "reflection",
 							"declaration": {
-								"id": 42,
+								"id": 32,
 								"name": "__type",
 								"kind": 65536,
 								"kindString": "Type literal",
@@ -1869,7 +1613,7 @@
 					}
 				},
 				{
-					"id": 43,
+					"id": 33,
 					"name": "heading",
 					"kind": 1024,
 					"kindString": "Property",
@@ -1900,7 +1644,7 @@
 					}
 				},
 				{
-					"id": 45,
+					"id": 35,
 					"name": "initialValue",
 					"kind": 1024,
 					"kindString": "Property",
@@ -1931,7 +1675,7 @@
 					}
 				},
 				{
-					"id": 44,
+					"id": 34,
 					"name": "name",
 					"kind": 1024,
 					"kindString": "Property",
@@ -1962,7 +1706,7 @@
 					}
 				},
 				{
-					"id": 46,
+					"id": 36,
 					"name": "selectionChange",
 					"kind": 1024,
 					"kindString": "Property",
@@ -1992,14 +1736,14 @@
 							{
 								"type": "reference",
 								"name": "SkyDocsDemoControlPanelChange",
-								"id": 18
+								"id": 1
 							}
 						]
 					},
 					"defaultValue": " new Subject<SkyDocsDemoControlPanelChange>()"
 				},
 				{
-					"id": 47,
+					"id": 37,
 					"name": "value",
 					"kind": 1024,
 					"kindString": "Property",
@@ -2028,7 +1772,7 @@
 					}
 				},
 				{
-					"id": 53,
+					"id": 43,
 					"name": "ngOnDestroy",
 					"kind": 2048,
 					"kindString": "Method",
@@ -2038,7 +1782,7 @@
 					},
 					"signatures": [
 						{
-							"id": 54,
+							"id": 44,
 							"name": "ngOnDestroy",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -2058,7 +1802,7 @@
 					]
 				},
 				{
-					"id": 51,
+					"id": 41,
 					"name": "ngOnInit",
 					"kind": 2048,
 					"kindString": "Method",
@@ -2068,7 +1812,7 @@
 					},
 					"signatures": [
 						{
-							"id": 52,
+							"id": 42,
 							"name": "ngOnInit",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -2088,7 +1832,7 @@
 					]
 				},
 				{
-					"id": 55,
+					"id": 45,
 					"name": "onModelChange",
 					"kind": 2048,
 					"kindString": "Method",
@@ -2098,7 +1842,7 @@
 					},
 					"signatures": [
 						{
-							"id": 56,
+							"id": 46,
 							"name": "onModelChange",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -2118,7 +1862,7 @@
 					]
 				},
 				{
-					"id": 57,
+					"id": 47,
 					"name": "resetValue",
 					"kind": 2048,
 					"kindString": "Method",
@@ -2128,7 +1872,7 @@
 					},
 					"signatures": [
 						{
-							"id": 58,
+							"id": 48,
 							"name": "resetValue",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -2153,29 +1897,29 @@
 					"title": "Constructors",
 					"kind": 512,
 					"children": [
-						48
+						38
 					]
 				},
 				{
 					"title": "Properties",
 					"kind": 1024,
 					"children": [
-						41,
-						43,
-						45,
-						44,
-						46,
-						47
+						31,
+						33,
+						35,
+						34,
+						36,
+						37
 					]
 				},
 				{
 					"title": "Methods",
 					"kind": 2048,
 					"children": [
-						53,
-						51,
-						55,
-						57
+						43,
+						41,
+						45,
+						47
 					]
 				}
 			],
@@ -2198,7 +1942,7 @@
 			]
 		},
 		{
-			"id": 59,
+			"id": 49,
 			"name": "SkyDocsDemoControlPanelSectionComponent",
 			"kind": 128,
 			"kindString": "Class",
@@ -2226,7 +1970,7 @@
 			]
 		},
 		{
-			"id": 71,
+			"id": 61,
 			"name": "SkyDocsDemoModule",
 			"kind": 128,
 			"kindString": "Class",
@@ -2254,7 +1998,7 @@
 			]
 		},
 		{
-			"id": 157,
+			"id": 99,
 			"name": "SkyDocsDemoPageComponent",
 			"kind": 128,
 			"kindString": "Class",
@@ -2275,7 +2019,7 @@
 			],
 			"children": [
 				{
-					"id": 165,
+					"id": 108,
 					"name": "constructor",
 					"kind": 512,
 					"kindString": "Constructor",
@@ -2284,14 +2028,14 @@
 					},
 					"signatures": [
 						{
-							"id": 166,
+							"id": 109,
 							"name": "new SkyDocsDemoPageComponent",
 							"kind": 16384,
 							"kindString": "Constructor signature",
 							"flags": {},
 							"parameters": [
 								{
-									"id": 167,
+									"id": 110,
 									"name": "titleService",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -2299,27 +2043,27 @@
 									"type": {
 										"type": "reference",
 										"name": "SkyDocsDemoPageTitleService",
-										"id": 76
+										"id": 66
 									}
 								}
 							],
 							"type": {
 								"type": "reference",
 								"name": "SkyDocsDemoPageComponent",
-								"id": 157
+								"id": 99
 							}
 						}
 					],
 					"sources": [
 						{
 							"fileName": "demo-page/demo-page.component.ts",
-							"line": 59,
+							"line": 62,
 							"character": 73
 						}
 					]
 				},
 				{
-					"id": 162,
+					"id": 105,
 					"name": "enableCodeExamples",
 					"kind": 1024,
 					"kindString": "Property",
@@ -2330,7 +2074,7 @@
 					"sources": [
 						{
 							"fileName": "demo-page/demo-page.component.ts",
-							"line": 48,
+							"line": 51,
 							"character": 27
 						}
 					],
@@ -2341,7 +2085,7 @@
 					"defaultValue": "false"
 				},
 				{
-					"id": 163,
+					"id": 106,
 					"name": "enableDemo",
 					"kind": 1024,
 					"kindString": "Property",
@@ -2352,7 +2096,7 @@
 					"sources": [
 						{
 							"fileName": "demo-page/demo-page.component.ts",
-							"line": 49,
+							"line": 52,
 							"character": 19
 						}
 					],
@@ -2363,7 +2107,7 @@
 					"defaultValue": "false"
 				},
 				{
-					"id": 164,
+					"id": 107,
 					"name": "enableTabLayout",
 					"kind": 1024,
 					"kindString": "Property",
@@ -2374,7 +2118,7 @@
 					"sources": [
 						{
 							"fileName": "demo-page/demo-page.component.ts",
-							"line": 50,
+							"line": 53,
 							"character": 24
 						}
 					],
@@ -2385,7 +2129,7 @@
 					"defaultValue": "false"
 				},
 				{
-					"id": 158,
+					"id": 100,
 					"name": "gitRepoUrl",
 					"kind": 1024,
 					"kindString": "Property",
@@ -2416,7 +2160,7 @@
 					}
 				},
 				{
-					"id": 159,
+					"id": 101,
 					"name": "moduleName",
 					"kind": 1024,
 					"kindString": "Property",
@@ -2447,7 +2191,7 @@
 					}
 				},
 				{
-					"id": 160,
+					"id": 102,
 					"name": "packageName",
 					"kind": 1024,
 					"kindString": "Property",
@@ -2478,7 +2222,7 @@
 					}
 				},
 				{
-					"id": 161,
+					"id": 103,
 					"name": "pageTitle",
 					"kind": 1024,
 					"kindString": "Property",
@@ -2509,7 +2253,38 @@
 					}
 				},
 				{
-					"id": 170,
+					"id": 104,
+					"name": "sourceCodeLocation",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {
+						"isPublic": true,
+						"isExported": true
+					},
+					"decorators": [
+						{
+							"name": "Input",
+							"type": {
+								"type": "reference",
+								"name": "Input"
+							},
+							"arguments": {}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "demo-page/demo-page.component.ts",
+							"line": 49,
+							"character": 27
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					}
+				},
+				{
+					"id": 113,
 					"name": "ngAfterContentInit",
 					"kind": 2048,
 					"kindString": "Method",
@@ -2519,7 +2294,7 @@
 					},
 					"signatures": [
 						{
-							"id": 171,
+							"id": 114,
 							"name": "ngAfterContentInit",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -2533,13 +2308,13 @@
 					"sources": [
 						{
 							"fileName": "demo-page/demo-page.component.ts",
-							"line": 69,
+							"line": 72,
 							"character": 27
 						}
 					]
 				},
 				{
-					"id": 168,
+					"id": 111,
 					"name": "ngOnInit",
 					"kind": 2048,
 					"kindString": "Method",
@@ -2549,7 +2324,7 @@
 					},
 					"signatures": [
 						{
-							"id": 169,
+							"id": 112,
 							"name": "ngOnInit",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -2563,7 +2338,7 @@
 					"sources": [
 						{
 							"fileName": "demo-page/demo-page.component.ts",
-							"line": 65,
+							"line": 68,
 							"character": 17
 						}
 					]
@@ -2574,28 +2349,29 @@
 					"title": "Constructors",
 					"kind": 512,
 					"children": [
-						165
+						108
 					]
 				},
 				{
 					"title": "Properties",
 					"kind": 1024,
 					"children": [
-						162,
-						163,
-						164,
-						158,
-						159,
-						160,
-						161
+						105,
+						106,
+						107,
+						100,
+						101,
+						102,
+						103,
+						104
 					]
 				},
 				{
 					"title": "Methods",
 					"kind": 2048,
 					"children": [
-						170,
-						168
+						113,
+						111
 					]
 				}
 			],
@@ -2618,7 +2394,7 @@
 			]
 		},
 		{
-			"id": 72,
+			"id": 62,
 			"name": "SkyDocsDemoPageDesignGuidelinesComponent",
 			"kind": 128,
 			"kindString": "Class",
@@ -2646,7 +2422,7 @@
 			]
 		},
 		{
-			"id": 244,
+			"id": 190,
 			"name": "SkyDocsDemoPageModule",
 			"kind": 128,
 			"kindString": "Class",
@@ -2661,20 +2437,20 @@
 						"name": "NgModule"
 					},
 					"arguments": {
-						"obj": "{\n  imports: [\n    CommonModule,\n    SkyCodeBlockModule,\n    SkyCodeModule,\n    SkyDocsDemoModule,\n    SkyDocsMarkdownModule,\n    SkyDocsModuleInfoModule,\n    SkyDocsTypeDefinitionsModule,\n    SkyTabsModule,\n    StachePageAnchorModule,\n    StachePageSummaryModule,\n    StacheWrapperModule\n  ],\n  declarations: [\n    SkyDocsDemoPageComponent,\n    SkyDocsDemoPageDesignGuidelinesComponent,\n    SkyDocsDemoPageSectionComponent,\n    SkyDocsDemoPageSummaryComponent,\n    SkyDocsDemoPageTypeDefinitionsComponent\n  ],\n  exports: [\n    SkyDocsDemoModule,\n    SkyDocsCodeExamplesModule,\n    SkyDocsDemoPageComponent,\n    SkyDocsDemoPageDesignGuidelinesComponent,\n    SkyDocsDemoPageSectionComponent,\n    SkyDocsDemoPageSummaryComponent,\n    SkyDocsTypeDefinitionsModule,\n    SkyDocsDemoPageTypeDefinitionsComponent\n  ],\n  providers: [\n    SkyDocsDemoPageTitleService,\n    SkyDocsDemoPageTypeDefinitionsProvider\n  ]\n}"
+						"obj": "{\n  imports: [\n    CommonModule,\n    SkyCodeBlockModule,\n    SkyCodeModule,\n    SkyDocsDemoModule,\n    SkyDocsMarkdownModule,\n    SkyDocsModuleInfoModule,\n    SkyDocsTypeDefinitionsModule,\n    SkyTabsModule,\n    StachePageAnchorModule,\n    StachePageSummaryModule,\n    StacheWrapperModule\n  ],\n  declarations: [\n    SkyDocsDemoPageComponent,\n    SkyDocsDemoPageDesignGuidelinesComponent,\n    SkyDocsDemoPageSectionComponent,\n    SkyDocsDemoPageSummaryComponent,\n    SkyDocsDemoPageTypeDefinitionsComponent\n  ],\n  exports: [\n    SkyDocsDemoPageComponent,\n    SkyDocsDemoPageDesignGuidelinesComponent,\n    SkyDocsDemoPageSectionComponent,\n    SkyDocsDemoPageSummaryComponent,\n    SkyDocsDemoPageTypeDefinitionsComponent\n  ],\n  providers: [\n    SkyDocsDemoPageTitleService,\n    SkyDocsDemoPageTypeDefinitionsProvider\n  ]\n}"
 					}
 				}
 			],
 			"sources": [
 				{
 					"fileName": "demo-page/demo-page.module.ts",
-					"line": 95,
+					"line": 101,
 					"character": 34
 				}
 			]
 		},
 		{
-			"id": 73,
+			"id": 63,
 			"name": "SkyDocsDemoPageSectionComponent",
 			"kind": 128,
 			"kindString": "Class",
@@ -2695,7 +2471,7 @@
 			],
 			"children": [
 				{
-					"id": 74,
+					"id": 64,
 					"name": "heading",
 					"kind": 1024,
 					"kindString": "Property",
@@ -2731,7 +2507,7 @@
 					"title": "Properties",
 					"kind": 1024,
 					"children": [
-						74
+						64
 					]
 				}
 			],
@@ -2744,7 +2520,7 @@
 			]
 		},
 		{
-			"id": 75,
+			"id": 65,
 			"name": "SkyDocsDemoPageSummaryComponent",
 			"kind": 128,
 			"kindString": "Class",
@@ -2772,7 +2548,7 @@
 			]
 		},
 		{
-			"id": 76,
+			"id": 66,
 			"name": "SkyDocsDemoPageTitleService",
 			"kind": 128,
 			"kindString": "Class",
@@ -2799,7 +2575,7 @@
 			],
 			"children": [
 				{
-					"id": 77,
+					"id": 67,
 					"name": "constructor",
 					"kind": 512,
 					"kindString": "Constructor",
@@ -2808,14 +2584,14 @@
 					},
 					"signatures": [
 						{
-							"id": 78,
+							"id": 68,
 							"name": "new SkyDocsDemoPageTitleService",
 							"kind": 16384,
 							"kindString": "Constructor signature",
 							"flags": {},
 							"parameters": [
 								{
-									"id": 79,
+									"id": 69,
 									"name": "title",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -2829,7 +2605,7 @@
 							"type": {
 								"type": "reference",
 								"name": "SkyDocsDemoPageTitleService",
-								"id": 76
+								"id": 66
 							}
 						}
 					],
@@ -2842,7 +2618,7 @@
 					]
 				},
 				{
-					"id": 80,
+					"id": 70,
 					"name": "setTitle",
 					"kind": 2048,
 					"kindString": "Method",
@@ -2852,14 +2628,14 @@
 					},
 					"signatures": [
 						{
-							"id": 81,
+							"id": 71,
 							"name": "setTitle",
 							"kind": 4096,
 							"kindString": "Call signature",
 							"flags": {},
 							"parameters": [
 								{
-									"id": 82,
+									"id": 72,
 									"name": "parts",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -2895,14 +2671,14 @@
 					"title": "Constructors",
 					"kind": 512,
 					"children": [
-						77
+						67
 					]
 				},
 				{
 					"title": "Methods",
 					"kind": 2048,
 					"children": [
-						80
+						70
 					]
 				}
 			],
@@ -2915,7 +2691,7 @@
 			]
 		},
 		{
-			"id": 136,
+			"id": 77,
 			"name": "SkyDocsDemoPageTypeDefinitionsComponent",
 			"kind": 128,
 			"kindString": "Class",
@@ -2930,13 +2706,13 @@
 						"name": "Component"
 					},
 					"arguments": {
-						"obj": "{\n  selector: 'sky-docs-demo-page-type-definitions',\n  templateUrl: './demo-page-type-definitions.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush\n}"
+						"obj": "{\n  selector: 'sky-docs-demo-page-type-definitions',\n  templateUrl: './demo-page-type-definitions.component.html',\n  styleUrls: ['./demo-page-type-definitions.component.scss'],\n  changeDetection: ChangeDetectionStrategy.OnPush\n}"
 					}
 				}
 			],
 			"children": [
 				{
-					"id": 143,
+					"id": 85,
 					"name": "constructor",
 					"kind": 512,
 					"kindString": "Constructor",
@@ -2945,14 +2721,14 @@
 					},
 					"signatures": [
 						{
-							"id": 144,
+							"id": 86,
 							"name": "new SkyDocsDemoPageTypeDefinitionsComponent",
 							"kind": 16384,
 							"kindString": "Constructor signature",
 							"flags": {},
 							"parameters": [
 								{
-									"id": 145,
+									"id": 87,
 									"name": "typeDefinitions",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -2960,27 +2736,27 @@
 									"type": {
 										"type": "reference",
 										"name": "SkyDocsDemoPageTypeDefinitionsProvider",
-										"id": 83
+										"id": 73
 									}
 								}
 							],
 							"type": {
 								"type": "reference",
 								"name": "SkyDocsDemoPageTypeDefinitionsComponent",
-								"id": 136
+								"id": 77
 							}
 						}
 					],
 					"sources": [
 						{
 							"fileName": "demo-page/demo-page-type-definitions.component.ts",
-							"line": 97,
-							"character": 46
+							"line": 109,
+							"character": 50
 						}
 					]
 				},
 				{
-					"id": 137,
+					"id": 79,
 					"name": "componentConfigs",
 					"kind": 1024,
 					"kindString": "Property",
@@ -2991,7 +2767,7 @@
 					"sources": [
 						{
 							"fileName": "demo-page/demo-page-type-definitions.component.ts",
-							"line": 87,
+							"line": 99,
 							"character": 25
 						}
 					],
@@ -2999,14 +2775,13 @@
 						"type": "array",
 						"elementType": {
 							"type": "reference",
-							"name": "DirectiveConfig",
-							"id": 94
+							"name": "DirectiveConfig"
 						}
 					},
 					"defaultValue": " []"
 				},
 				{
-					"id": 138,
+					"id": 80,
 					"name": "directiveConfigs",
 					"kind": 1024,
 					"kindString": "Property",
@@ -3017,7 +2792,7 @@
 					"sources": [
 						{
 							"fileName": "demo-page/demo-page-type-definitions.component.ts",
-							"line": 89,
+							"line": 101,
 							"character": 25
 						}
 					],
@@ -3025,14 +2800,13 @@
 						"type": "array",
 						"elementType": {
 							"type": "reference",
-							"name": "DirectiveConfig",
-							"id": 94
+							"name": "DirectiveConfig"
 						}
 					},
 					"defaultValue": " []"
 				},
 				{
-					"id": 141,
+					"id": 81,
 					"name": "enumerationConfigs",
 					"kind": 1024,
 					"kindString": "Property",
@@ -3043,7 +2817,7 @@
 					"sources": [
 						{
 							"fileName": "demo-page/demo-page-type-definitions.component.ts",
-							"line": 95,
+							"line": 103,
 							"character": 27
 						}
 					],
@@ -3051,14 +2825,13 @@
 						"type": "array",
 						"elementType": {
 							"type": "reference",
-							"name": "EnumerationConfig",
-							"id": 112
+							"name": "EnumerationConfig"
 						}
 					},
 					"defaultValue": " []"
 				},
 				{
-					"id": 139,
+					"id": 82,
 					"name": "interfaceConfigs",
 					"kind": 1024,
 					"kindString": "Property",
@@ -3069,7 +2842,7 @@
 					"sources": [
 						{
 							"fileName": "demo-page/demo-page-type-definitions.component.ts",
-							"line": 91,
+							"line": 105,
 							"character": 25
 						}
 					],
@@ -3077,14 +2850,13 @@
 						"type": "array",
 						"elementType": {
 							"type": "reference",
-							"name": "InterfaceConfig",
-							"id": 104
+							"name": "InterfaceConfig"
 						}
 					},
 					"defaultValue": " []"
 				},
 				{
-					"id": 142,
+					"id": 83,
 					"name": "serviceConfigs",
 					"kind": 1024,
 					"kindString": "Property",
@@ -3095,7 +2867,7 @@
 					"sources": [
 						{
 							"fileName": "demo-page/demo-page-type-definitions.component.ts",
-							"line": 97,
+							"line": 107,
 							"character": 23
 						}
 					],
@@ -3103,14 +2875,44 @@
 						"type": "array",
 						"elementType": {
 							"type": "reference",
-							"name": "ServiceConfig",
-							"id": 131
+							"name": "ServiceConfig"
 						}
 					},
 					"defaultValue": " []"
 				},
 				{
-					"id": 140,
+					"id": 78,
+					"name": "sourceCodeLocation",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {
+						"isPublic": true,
+						"isExported": true
+					},
+					"decorators": [
+						{
+							"name": "Input",
+							"type": {
+								"type": "reference",
+								"name": "Input"
+							},
+							"arguments": {}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "demo-page/demo-page-type-definitions.component.ts",
+							"line": 97,
+							"character": 27
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					}
+				},
+				{
+					"id": 84,
 					"name": "typeAliasConfigs",
 					"kind": 1024,
 					"kindString": "Property",
@@ -3121,7 +2923,7 @@
 					"sources": [
 						{
 							"fileName": "demo-page/demo-page-type-definitions.component.ts",
-							"line": 93,
+							"line": 109,
 							"character": 25
 						}
 					],
@@ -3129,13 +2931,13 @@
 						"type": "array",
 						"elementType": {
 							"type": "reference",
-							"name": "__type"
+							"name": "TypeAliasConfig"
 						}
 					},
 					"defaultValue": " []"
 				},
 				{
-					"id": 146,
+					"id": 88,
 					"name": "ngOnInit",
 					"kind": 2048,
 					"kindString": "Method",
@@ -3145,7 +2947,7 @@
 					},
 					"signatures": [
 						{
-							"id": 147,
+							"id": 89,
 							"name": "ngOnInit",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -3159,7 +2961,7 @@
 					"sources": [
 						{
 							"fileName": "demo-page/demo-page-type-definitions.component.ts",
-							"line": 103,
+							"line": 115,
 							"character": 17
 						}
 					]
@@ -3170,33 +2972,34 @@
 					"title": "Constructors",
 					"kind": 512,
 					"children": [
-						143
+						85
 					]
 				},
 				{
 					"title": "Properties",
 					"kind": 1024,
 					"children": [
-						137,
-						138,
-						141,
-						139,
-						142,
-						140
+						79,
+						80,
+						81,
+						82,
+						83,
+						78,
+						84
 					]
 				},
 				{
 					"title": "Methods",
 					"kind": 2048,
 					"children": [
-						146
+						88
 					]
 				}
 			],
 			"sources": [
 				{
 					"fileName": "demo-page/demo-page-type-definitions.component.ts",
-					"line": 85,
+					"line": 94,
 					"character": 52
 				}
 			],
@@ -3208,7 +3011,7 @@
 			]
 		},
 		{
-			"id": 83,
+			"id": 73,
 			"name": "SkyDocsDemoPageTypeDefinitionsProvider",
 			"kind": 128,
 			"kindString": "Class",
@@ -3227,7 +3030,7 @@
 			],
 			"children": [
 				{
-					"id": 84,
+					"id": 74,
 					"name": "getTypeDefinitions",
 					"kind": 1024,
 					"kindString": "Property",
@@ -3245,14 +3048,14 @@
 					"type": {
 						"type": "reflection",
 						"declaration": {
-							"id": 85,
+							"id": 75,
 							"name": "__type",
 							"kind": 65536,
 							"kindString": "Type literal",
 							"flags": {},
 							"signatures": [
 								{
-									"id": 86,
+									"id": 76,
 									"name": "__call",
 									"kind": 4096,
 									"kindString": "Call signature",
@@ -3279,7 +3082,7 @@
 					"title": "Properties",
 					"kind": 1024,
 					"children": [
-						84
+						74
 					]
 				}
 			],
@@ -3292,7 +3095,7 @@
 			]
 		},
 		{
-			"id": 211,
+			"id": 159,
 			"name": "SkyDocsDirectiveDefinitionComponent",
 			"kind": 128,
 			"kindString": "Class",
@@ -3313,7 +3116,7 @@
 			],
 			"children": [
 				{
-					"id": 212,
+					"id": 160,
 					"name": "directiveName",
 					"kind": 1024,
 					"kindString": "Property",
@@ -3344,7 +3147,7 @@
 					}
 				},
 				{
-					"id": 213,
+					"id": 161,
 					"name": "directiveSelector",
 					"kind": 1024,
 					"kindString": "Property",
@@ -3375,7 +3178,7 @@
 					}
 				},
 				{
-					"id": 214,
+					"id": 162,
 					"name": "hasPropertyDefinitions",
 					"kind": 1024,
 					"kindString": "Property",
@@ -3397,8 +3200,8 @@
 					"defaultValue": "false"
 				},
 				{
-					"id": 215,
-					"name": "ngAfterViewInit",
+					"id": 163,
+					"name": "ngAfterContentInit",
 					"kind": 2048,
 					"kindString": "Method",
 					"flags": {
@@ -3407,8 +3210,8 @@
 					},
 					"signatures": [
 						{
-							"id": 216,
-							"name": "ngAfterViewInit",
+							"id": 164,
+							"name": "ngAfterContentInit",
 							"kind": 4096,
 							"kindString": "Call signature",
 							"flags": {},
@@ -3422,7 +3225,7 @@
 						{
 							"fileName": "type-definitions/directive-definition.component.ts",
 							"line": 32,
-							"character": 24
+							"character": 27
 						}
 					]
 				}
@@ -3432,16 +3235,16 @@
 					"title": "Properties",
 					"kind": 1024,
 					"children": [
-						212,
-						213,
-						214
+						160,
+						161,
+						162
 					]
 				},
 				{
 					"title": "Methods",
 					"kind": 2048,
 					"children": [
-						215
+						163
 					]
 				}
 			],
@@ -3455,12 +3258,12 @@
 			"implementedTypes": [
 				{
 					"type": "reference",
-					"name": "AfterViewInit"
+					"name": "AfterContentInit"
 				}
 			]
 		},
 		{
-			"id": 217,
+			"id": 165,
 			"name": "SkyDocsInterfaceDefinitionComponent",
 			"kind": 128,
 			"kindString": "Class",
@@ -3481,7 +3284,29 @@
 			],
 			"children": [
 				{
-					"id": 218,
+					"id": 168,
+					"name": "hasProperties",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {
+						"isPublic": true,
+						"isExported": true
+					},
+					"sources": [
+						{
+							"fileName": "type-definitions/interface-definition.component.ts",
+							"line": 27,
+							"character": 22
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "boolean"
+					},
+					"defaultValue": "false"
+				},
+				{
+					"id": 166,
 					"name": "interfaceName",
 					"kind": 1024,
 					"kindString": "Property",
@@ -3502,7 +3327,7 @@
 					"sources": [
 						{
 							"fileName": "type-definitions/interface-definition.component.ts",
-							"line": 16,
+							"line": 22,
 							"character": 22
 						}
 					],
@@ -3512,7 +3337,7 @@
 					}
 				},
 				{
-					"id": 219,
+					"id": 167,
 					"name": "sourceCode",
 					"kind": 1024,
 					"kindString": "Property",
@@ -3533,7 +3358,7 @@
 					"sources": [
 						{
 							"fileName": "type-definitions/interface-definition.component.ts",
-							"line": 19,
+							"line": 25,
 							"character": 19
 						}
 					],
@@ -3541,6 +3366,36 @@
 						"type": "intrinsic",
 						"name": "string"
 					}
+				},
+				{
+					"id": 169,
+					"name": "ngAfterContentInit",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isPublic": true,
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 170,
+							"name": "ngAfterContentInit",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"type": {
+								"type": "intrinsic",
+								"name": "void"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "type-definitions/interface-definition.component.ts",
+							"line": 32,
+							"character": 27
+						}
+					]
 				}
 			],
 			"groups": [
@@ -3548,21 +3403,35 @@
 					"title": "Properties",
 					"kind": 1024,
 					"children": [
-						218,
-						219
+						168,
+						166,
+						167
+					]
+				},
+				{
+					"title": "Methods",
+					"kind": 2048,
+					"children": [
+						169
 					]
 				}
 			],
 			"sources": [
 				{
 					"fileName": "type-definitions/interface-definition.component.ts",
-					"line": 13,
+					"line": 19,
 					"character": 48
+				}
+			],
+			"implementedTypes": [
+				{
+					"type": "reference",
+					"name": "AfterContentInit"
 				}
 			]
 		},
 		{
-			"id": 242,
+			"id": 119,
 			"name": "SkyDocsMarkdownModule",
 			"kind": 128,
 			"kindString": "Class",
@@ -3590,7 +3459,7 @@
 			]
 		},
 		{
-			"id": 238,
+			"id": 115,
 			"name": "SkyDocsMarkdownPipe",
 			"kind": 128,
 			"kindString": "Class",
@@ -3611,7 +3480,7 @@
 			],
 			"children": [
 				{
-					"id": 239,
+					"id": 116,
 					"name": "transform",
 					"kind": 2048,
 					"kindString": "Method",
@@ -3621,14 +3490,14 @@
 					},
 					"signatures": [
 						{
-							"id": 240,
+							"id": 117,
 							"name": "transform",
 							"kind": 4096,
 							"kindString": "Call signature",
 							"flags": {},
 							"parameters": [
 								{
-									"id": 241,
+									"id": 118,
 									"name": "markdown",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -3659,7 +3528,7 @@
 					"title": "Methods",
 					"kind": 2048,
 					"children": [
-						239
+						116
 					]
 				}
 			],
@@ -3678,7 +3547,7 @@
 			]
 		},
 		{
-			"id": 220,
+			"id": 171,
 			"name": "SkyDocsMethodDefinitionComponent",
 			"kind": 128,
 			"kindString": "Class",
@@ -3699,7 +3568,7 @@
 			],
 			"children": [
 				{
-					"id": 221,
+					"id": 172,
 					"name": "methodName",
 					"kind": 1024,
 					"kindString": "Property",
@@ -3730,7 +3599,7 @@
 					}
 				},
 				{
-					"id": 223,
+					"id": 174,
 					"name": "parameters",
 					"kind": 1024,
 					"kindString": "Property",
@@ -3760,7 +3629,7 @@
 						"elementType": {
 							"type": "reflection",
 							"declaration": {
-								"id": 224,
+								"id": 175,
 								"name": "__type",
 								"kind": 65536,
 								"kindString": "Type literal",
@@ -3777,7 +3646,7 @@
 					}
 				},
 				{
-					"id": 222,
+					"id": 173,
 					"name": "returnType",
 					"kind": 1024,
 					"kindString": "Property",
@@ -3809,7 +3678,7 @@
 					"defaultValue": "\"void\""
 				},
 				{
-					"id": 225,
+					"id": 176,
 					"name": "methodSignature",
 					"kind": 262144,
 					"kindString": "Accessor",
@@ -3827,7 +3696,7 @@
 					},
 					"getSignature": [
 						{
-							"id": 226,
+							"id": 177,
 							"name": "__get",
 							"kind": 524288,
 							"kindString": "Get signature",
@@ -3860,16 +3729,16 @@
 					"title": "Properties",
 					"kind": 1024,
 					"children": [
-						221,
-						223,
-						222
+						172,
+						174,
+						173
 					]
 				},
 				{
 					"title": "Accessors",
 					"kind": 262144,
 					"children": [
-						225
+						176
 					]
 				}
 			],
@@ -3882,7 +3751,7 @@
 			]
 		},
 		{
-			"id": 172,
+			"id": 120,
 			"name": "SkyDocsModuleInfoComponent",
 			"kind": 128,
 			"kindString": "Class",
@@ -3903,7 +3772,7 @@
 			],
 			"children": [
 				{
-					"id": 173,
+					"id": 121,
 					"name": "gitRepoUrl",
 					"kind": 1024,
 					"kindString": "Property",
@@ -3934,7 +3803,7 @@
 					}
 				},
 				{
-					"id": 174,
+					"id": 122,
 					"name": "moduleName",
 					"kind": 1024,
 					"kindString": "Property",
@@ -3965,7 +3834,7 @@
 					}
 				},
 				{
-					"id": 175,
+					"id": 123,
 					"name": "packageName",
 					"kind": 1024,
 					"kindString": "Property",
@@ -3996,7 +3865,7 @@
 					}
 				},
 				{
-					"id": 176,
+					"id": 124,
 					"name": "externalLinks",
 					"kind": 262144,
 					"kindString": "Accessor",
@@ -4006,7 +3875,7 @@
 					},
 					"getSignature": [
 						{
-							"id": 177,
+							"id": 125,
 							"name": "__get",
 							"kind": 524288,
 							"kindString": "Get signature",
@@ -4016,7 +3885,7 @@
 								"elementType": {
 									"type": "reflection",
 									"declaration": {
-										"id": 178,
+										"id": 126,
 										"name": "__type",
 										"kind": 65536,
 										"kindString": "Type literal",
@@ -4042,7 +3911,7 @@
 					]
 				},
 				{
-					"id": 179,
+					"id": 127,
 					"name": "installationCommand",
 					"kind": 262144,
 					"kindString": "Accessor",
@@ -4052,7 +3921,7 @@
 					},
 					"getSignature": [
 						{
-							"id": 180,
+							"id": 128,
 							"name": "__get",
 							"kind": 524288,
 							"kindString": "Get signature",
@@ -4072,7 +3941,7 @@
 					]
 				},
 				{
-					"id": 181,
+					"id": 129,
 					"name": "packageUrl",
 					"kind": 262144,
 					"kindString": "Accessor",
@@ -4082,7 +3951,7 @@
 					},
 					"getSignature": [
 						{
-							"id": 182,
+							"id": 130,
 							"name": "__get",
 							"kind": 524288,
 							"kindString": "Get signature",
@@ -4107,18 +3976,18 @@
 					"title": "Properties",
 					"kind": 1024,
 					"children": [
-						173,
-						174,
-						175
+						121,
+						122,
+						123
 					]
 				},
 				{
 					"title": "Accessors",
 					"kind": 262144,
 					"children": [
-						176,
-						179,
-						181
+						124,
+						127,
+						129
 					]
 				}
 			],
@@ -4131,7 +4000,7 @@
 			]
 		},
 		{
-			"id": 183,
+			"id": 131,
 			"name": "SkyDocsModuleInfoModule",
 			"kind": 128,
 			"kindString": "Class",
@@ -4159,7 +4028,7 @@
 			]
 		},
 		{
-			"id": 227,
+			"id": 178,
 			"name": "SkyDocsParameterDefinitionComponent",
 			"kind": 128,
 			"kindString": "Class",
@@ -4180,7 +4049,7 @@
 			],
 			"children": [
 				{
-					"id": 229,
+					"id": 180,
 					"name": "defaultValue",
 					"kind": 1024,
 					"kindString": "Property",
@@ -4211,7 +4080,7 @@
 					}
 				},
 				{
-					"id": 230,
+					"id": 181,
 					"name": "isOptional",
 					"kind": 1024,
 					"kindString": "Property",
@@ -4243,7 +4112,7 @@
 					"defaultValue": "false"
 				},
 				{
-					"id": 231,
+					"id": 182,
 					"name": "parameterName",
 					"kind": 1024,
 					"kindString": "Property",
@@ -4274,7 +4143,7 @@
 					}
 				},
 				{
-					"id": 228,
+					"id": 179,
 					"name": "parameterType",
 					"kind": 1024,
 					"kindString": "Property",
@@ -4305,7 +4174,7 @@
 					}
 				},
 				{
-					"id": 232,
+					"id": 183,
 					"name": "templateRef",
 					"kind": 1024,
 					"kindString": "Property",
@@ -4350,11 +4219,11 @@
 					"title": "Properties",
 					"kind": 1024,
 					"children": [
-						229,
-						230,
-						231,
-						228,
-						232
+						180,
+						181,
+						182,
+						179,
+						183
 					]
 				}
 			],
@@ -4367,7 +4236,7 @@
 			]
 		},
 		{
-			"id": 233,
+			"id": 184,
 			"name": "SkyDocsParameterDefinitionsComponent",
 			"kind": 128,
 			"kindString": "Class",
@@ -4388,7 +4257,7 @@
 			],
 			"children": [
 				{
-					"id": 234,
+					"id": 185,
 					"name": "parameters",
 					"kind": 1024,
 					"kindString": "Property",
@@ -4408,7 +4277,7 @@
 						"elementType": {
 							"type": "reflection",
 							"declaration": {
-								"id": 235,
+								"id": 186,
 								"name": "__type",
 								"kind": 65536,
 								"kindString": "Type literal",
@@ -4425,7 +4294,7 @@
 					}
 				},
 				{
-					"id": 236,
+					"id": 187,
 					"name": "ngAfterContentInit",
 					"kind": 2048,
 					"kindString": "Method",
@@ -4435,7 +4304,7 @@
 					},
 					"signatures": [
 						{
-							"id": 237,
+							"id": 188,
 							"name": "ngAfterContentInit",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -4468,14 +4337,14 @@
 					"title": "Properties",
 					"kind": 1024,
 					"children": [
-						234
+						185
 					]
 				},
 				{
 					"title": "Methods",
 					"kind": 2048,
 					"children": [
-						236
+						187
 					]
 				}
 			],
@@ -4494,7 +4363,7 @@
 			]
 		},
 		{
-			"id": 184,
+			"id": 132,
 			"name": "SkyDocsPropertyDefinitionComponent",
 			"kind": 128,
 			"kindString": "Class",
@@ -4515,7 +4384,7 @@
 			],
 			"children": [
 				{
-					"id": 186,
+					"id": 134,
 					"name": "defaultValue",
 					"kind": 1024,
 					"kindString": "Property",
@@ -4546,7 +4415,7 @@
 					}
 				},
 				{
-					"id": 188,
+					"id": 136,
 					"name": "deprecationWarning",
 					"kind": 1024,
 					"kindString": "Property",
@@ -4577,7 +4446,7 @@
 					}
 				},
 				{
-					"id": 187,
+					"id": 135,
 					"name": "isOptional",
 					"kind": 1024,
 					"kindString": "Property",
@@ -4609,7 +4478,7 @@
 					"defaultValue": "false"
 				},
 				{
-					"id": 189,
+					"id": 137,
 					"name": "propertyDecorator",
 					"kind": 1024,
 					"kindString": "Property",
@@ -4649,7 +4518,7 @@
 					}
 				},
 				{
-					"id": 190,
+					"id": 138,
 					"name": "propertyName",
 					"kind": 1024,
 					"kindString": "Property",
@@ -4680,7 +4549,7 @@
 					}
 				},
 				{
-					"id": 185,
+					"id": 133,
 					"name": "propertyType",
 					"kind": 1024,
 					"kindString": "Property",
@@ -4711,7 +4580,7 @@
 					}
 				},
 				{
-					"id": 191,
+					"id": 139,
 					"name": "templateRef",
 					"kind": 1024,
 					"kindString": "Property",
@@ -4756,13 +4625,13 @@
 					"title": "Properties",
 					"kind": 1024,
 					"children": [
-						186,
-						188,
-						187,
-						189,
-						190,
-						185,
-						191
+						134,
+						136,
+						135,
+						137,
+						138,
+						133,
+						139
 					]
 				}
 			],
@@ -4775,7 +4644,7 @@
 			]
 		},
 		{
-			"id": 201,
+			"id": 149,
 			"name": "SkyDocsPropertyDefinitionsComponent",
 			"kind": 128,
 			"kindString": "Class",
@@ -4796,7 +4665,7 @@
 			],
 			"children": [
 				{
-					"id": 203,
+					"id": 151,
 					"name": "constructor",
 					"kind": 512,
 					"kindString": "Constructor",
@@ -4805,14 +4674,14 @@
 					},
 					"signatures": [
 						{
-							"id": 204,
+							"id": 152,
 							"name": "new SkyDocsPropertyDefinitionsComponent",
 							"kind": 16384,
 							"kindString": "Constructor signature",
 							"flags": {},
 							"parameters": [
 								{
-									"id": 205,
+									"id": 153,
 									"name": "changeDetector",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -4826,7 +4695,7 @@
 							"type": {
 								"type": "reference",
 								"name": "SkyDocsPropertyDefinitionsComponent",
-								"id": 201
+								"id": 149
 							}
 						}
 					],
@@ -4839,7 +4708,7 @@
 					]
 				},
 				{
-					"id": 202,
+					"id": 150,
 					"name": "data",
 					"kind": 1024,
 					"kindString": "Property",
@@ -4859,13 +4728,13 @@
 						"elementType": {
 							"type": "reference",
 							"name": "SkyPropertyDefinition",
-							"id": 192
+							"id": 140
 						}
 					},
 					"defaultValue": " []"
 				},
 				{
-					"id": 208,
+					"id": 156,
 					"name": "getPropertySignature",
 					"kind": 2048,
 					"kindString": "Method",
@@ -4875,7 +4744,7 @@
 					},
 					"signatures": [
 						{
-							"id": 209,
+							"id": 157,
 							"name": "getPropertySignature",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -4890,7 +4759,7 @@
 							},
 							"parameters": [
 								{
-									"id": 210,
+									"id": 158,
 									"name": "item",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -4898,7 +4767,7 @@
 									"type": {
 										"type": "reference",
 										"name": "SkyPropertyDefinition",
-										"id": 192
+										"id": 140
 									}
 								}
 							],
@@ -4917,7 +4786,7 @@
 					]
 				},
 				{
-					"id": 206,
+					"id": 154,
 					"name": "ngAfterContentInit",
 					"kind": 2048,
 					"kindString": "Method",
@@ -4927,7 +4796,7 @@
 					},
 					"signatures": [
 						{
-							"id": 207,
+							"id": 155,
 							"name": "ngAfterContentInit",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -4952,22 +4821,22 @@
 					"title": "Constructors",
 					"kind": 512,
 					"children": [
-						203
+						151
 					]
 				},
 				{
 					"title": "Properties",
 					"kind": 1024,
 					"children": [
-						202
+						150
 					]
 				},
 				{
 					"title": "Methods",
 					"kind": 2048,
 					"children": [
-						208,
-						206
+						156,
+						154
 					]
 				}
 			],
@@ -4986,7 +4855,7 @@
 			]
 		},
 		{
-			"id": 152,
+			"id": 94,
 			"name": "SkyDocsSourceCodeProvider",
 			"kind": 128,
 			"kindString": "Class",
@@ -5006,7 +4875,7 @@
 			],
 			"children": [
 				{
-					"id": 153,
+					"id": 95,
 					"name": "getSourceCode",
 					"kind": 1024,
 					"kindString": "Property",
@@ -5024,21 +4893,21 @@
 					"type": {
 						"type": "reflection",
 						"declaration": {
-							"id": 154,
+							"id": 96,
 							"name": "__type",
 							"kind": 65536,
 							"kindString": "Type literal",
 							"flags": {},
 							"signatures": [
 								{
-									"id": 155,
+									"id": 97,
 									"name": "__call",
 									"kind": 4096,
 									"kindString": "Call signature",
 									"flags": {},
 									"parameters": [
 										{
-											"id": 156,
+											"id": 98,
 											"name": "path",
 											"kind": 32768,
 											"kindString": "Parameter",
@@ -5054,7 +4923,7 @@
 										"elementType": {
 											"type": "reference",
 											"name": "SkyDocsSourceCodeFile",
-											"id": 148
+											"id": 90
 										}
 									}
 								}
@@ -5075,7 +4944,7 @@
 					"title": "Properties",
 					"kind": 1024,
 					"children": [
-						153
+						95
 					]
 				}
 			],
@@ -5088,7 +4957,7 @@
 			]
 		},
 		{
-			"id": 70,
+			"id": 60,
 			"name": "SkyDocsToolsResourcesModule",
 			"kind": 128,
 			"kindString": "Class",
@@ -5116,7 +4985,7 @@
 			]
 		},
 		{
-			"id": 243,
+			"id": 189,
 			"name": "SkyDocsTypeDefinitionsModule",
 			"kind": 128,
 			"kindString": "Class",
@@ -5144,451 +5013,7 @@
 			]
 		},
 		{
-			"id": 94,
-			"name": "DirectiveConfig",
-			"kind": 256,
-			"kindString": "Interface",
-			"flags": {
-				"isExported": true
-			},
-			"children": [
-				{
-					"id": 97,
-					"name": "description",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isExported": true,
-						"isOptional": true
-					},
-					"sources": [
-						{
-							"fileName": "demo-page/demo-page-type-definitions.component.ts",
-							"line": 23,
-							"character": 13
-						}
-					],
-					"type": {
-						"type": "intrinsic",
-						"name": "string"
-					}
-				},
-				{
-					"id": 95,
-					"name": "name",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isExported": true
-					},
-					"sources": [
-						{
-							"fileName": "demo-page/demo-page-type-definitions.component.ts",
-							"line": 21,
-							"character": 6
-						}
-					],
-					"type": {
-						"type": "intrinsic",
-						"name": "string"
-					}
-				},
-				{
-					"id": 98,
-					"name": "properties",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isExported": true,
-						"isOptional": true
-					},
-					"sources": [
-						{
-							"fileName": "demo-page/demo-page-type-definitions.component.ts",
-							"line": 24,
-							"character": 12
-						}
-					],
-					"type": {
-						"type": "array",
-						"elementType": {
-							"type": "reference",
-							"name": "DirectiveProperty",
-							"id": 87
-						}
-					}
-				},
-				{
-					"id": 96,
-					"name": "selector",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isExported": true
-					},
-					"sources": [
-						{
-							"fileName": "demo-page/demo-page-type-definitions.component.ts",
-							"line": 22,
-							"character": 10
-						}
-					],
-					"type": {
-						"type": "intrinsic",
-						"name": "string"
-					}
-				}
-			],
-			"groups": [
-				{
-					"title": "Properties",
-					"kind": 1024,
-					"children": [
-						97,
-						95,
-						98,
-						96
-					]
-				}
-			],
-			"sources": [
-				{
-					"fileName": "demo-page/demo-page-type-definitions.component.ts",
-					"line": 20,
-					"character": 32
-				}
-			]
-		},
-		{
-			"id": 87,
-			"name": "DirectiveProperty",
-			"kind": 256,
-			"kindString": "Interface",
-			"flags": {
-				"isExported": true
-			},
-			"children": [
-				{
-					"id": 90,
-					"name": "decorator",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isExported": true,
-						"isOptional": true
-					},
-					"sources": [
-						{
-							"fileName": "demo-page/demo-page-type-definitions.component.ts",
-							"line": 14,
-							"character": 11
-						}
-					],
-					"type": {
-						"type": "union",
-						"types": [
-							{
-								"type": "stringLiteral",
-								"value": "Input"
-							},
-							{
-								"type": "stringLiteral",
-								"value": "Output"
-							}
-						]
-					}
-				},
-				{
-					"id": 91,
-					"name": "defaultValue",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isExported": true,
-						"isOptional": true
-					},
-					"sources": [
-						{
-							"fileName": "demo-page/demo-page-type-definitions.component.ts",
-							"line": 15,
-							"character": 14
-						}
-					],
-					"type": {
-						"type": "intrinsic",
-						"name": "string"
-					}
-				},
-				{
-					"id": 92,
-					"name": "description",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isExported": true,
-						"isOptional": true
-					},
-					"sources": [
-						{
-							"fileName": "demo-page/demo-page-type-definitions.component.ts",
-							"line": 16,
-							"character": 13
-						}
-					],
-					"type": {
-						"type": "intrinsic",
-						"name": "string"
-					}
-				},
-				{
-					"id": 93,
-					"name": "isOptional",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isExported": true,
-						"isOptional": true
-					},
-					"sources": [
-						{
-							"fileName": "demo-page/demo-page-type-definitions.component.ts",
-							"line": 17,
-							"character": 12
-						}
-					],
-					"type": {
-						"type": "intrinsic",
-						"name": "boolean"
-					}
-				},
-				{
-					"id": 88,
-					"name": "name",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isExported": true
-					},
-					"sources": [
-						{
-							"fileName": "demo-page/demo-page-type-definitions.component.ts",
-							"line": 12,
-							"character": 6
-						}
-					],
-					"type": {
-						"type": "intrinsic",
-						"name": "string"
-					}
-				},
-				{
-					"id": 89,
-					"name": "type",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isExported": true
-					},
-					"sources": [
-						{
-							"fileName": "demo-page/demo-page-type-definitions.component.ts",
-							"line": 13,
-							"character": 6
-						}
-					],
-					"type": {
-						"type": "intrinsic",
-						"name": "string"
-					}
-				}
-			],
-			"groups": [
-				{
-					"title": "Properties",
-					"kind": 1024,
-					"children": [
-						90,
-						91,
-						92,
-						93,
-						88,
-						89
-					]
-				}
-			],
-			"sources": [
-				{
-					"fileName": "demo-page/demo-page-type-definitions.component.ts",
-					"line": 11,
-					"character": 34
-				}
-			]
-		},
-		{
-			"id": 112,
-			"name": "EnumerationConfig",
-			"kind": 256,
-			"kindString": "Interface",
-			"flags": {
-				"isExported": true
-			},
-			"children": [
-				{
-					"id": 114,
-					"name": "description",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isExported": true,
-						"isOptional": true
-					},
-					"sources": [
-						{
-							"fileName": "demo-page/demo-page-type-definitions.component.ts",
-							"line": 48,
-							"character": 13
-						}
-					],
-					"type": {
-						"type": "intrinsic",
-						"name": "string"
-					}
-				},
-				{
-					"id": 113,
-					"name": "name",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isExported": true
-					},
-					"sources": [
-						{
-							"fileName": "demo-page/demo-page-type-definitions.component.ts",
-							"line": 47,
-							"character": 6
-						}
-					],
-					"type": {
-						"type": "intrinsic",
-						"name": "string"
-					}
-				},
-				{
-					"id": 115,
-					"name": "values",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isExported": true
-					},
-					"sources": [
-						{
-							"fileName": "demo-page/demo-page-type-definitions.component.ts",
-							"line": 49,
-							"character": 8
-						}
-					],
-					"type": {
-						"type": "array",
-						"elementType": {
-							"type": "reference",
-							"name": "EnumerationValue",
-							"id": 109
-						}
-					}
-				}
-			],
-			"groups": [
-				{
-					"title": "Properties",
-					"kind": 1024,
-					"children": [
-						114,
-						113,
-						115
-					]
-				}
-			],
-			"sources": [
-				{
-					"fileName": "demo-page/demo-page-type-definitions.component.ts",
-					"line": 46,
-					"character": 34
-				}
-			]
-		},
-		{
-			"id": 109,
-			"name": "EnumerationValue",
-			"kind": 256,
-			"kindString": "Interface",
-			"flags": {
-				"isExported": true
-			},
-			"children": [
-				{
-					"id": 111,
-					"name": "description",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isExported": true,
-						"isOptional": true
-					},
-					"sources": [
-						{
-							"fileName": "demo-page/demo-page-type-definitions.component.ts",
-							"line": 43,
-							"character": 13
-						}
-					],
-					"type": {
-						"type": "intrinsic",
-						"name": "string"
-					}
-				},
-				{
-					"id": 110,
-					"name": "name",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isExported": true
-					},
-					"sources": [
-						{
-							"fileName": "demo-page/demo-page-type-definitions.component.ts",
-							"line": 42,
-							"character": 6
-						}
-					],
-					"type": {
-						"type": "intrinsic",
-						"name": "string"
-					}
-				}
-			],
-			"groups": [
-				{
-					"title": "Properties",
-					"kind": 1024,
-					"children": [
-						111,
-						110
-					]
-				}
-			],
-			"sources": [
-				{
-					"fileName": "demo-page/demo-page-type-definitions.component.ts",
-					"line": 41,
-					"character": 33
-				}
-			]
-		},
-		{
-			"id": 282,
+			"id": 232,
 			"name": "Foo",
 			"kind": 256,
 			"kindString": "Interface",
@@ -5600,7 +5025,7 @@
 			},
 			"children": [
 				{
-					"id": 283,
+					"id": 233,
 					"name": "bar",
 					"kind": 1024,
 					"kindString": "Property",
@@ -5623,7 +5048,7 @@
 					}
 				},
 				{
-					"id": 284,
+					"id": 234,
 					"name": "baz",
 					"kind": 1024,
 					"kindString": "Property",
@@ -5652,8 +5077,8 @@
 					"title": "Properties",
 					"kind": 1024,
 					"children": [
-						283,
-						284
+						233,
+						234
 					]
 				}
 			],
@@ -5666,7 +5091,7 @@
 			]
 		},
 		{
-			"id": 245,
+			"id": 191,
 			"name": "FooDate",
 			"kind": 256,
 			"kindString": "Interface",
@@ -5678,7 +5103,7 @@
 			},
 			"children": [
 				{
-					"id": 247,
+					"id": 193,
 					"name": "day",
 					"kind": 1024,
 					"kindString": "Property",
@@ -5698,7 +5123,7 @@
 					}
 				},
 				{
-					"id": 246,
+					"id": 192,
 					"name": "month",
 					"kind": 1024,
 					"kindString": "Property",
@@ -5718,7 +5143,7 @@
 					}
 				},
 				{
-					"id": 248,
+					"id": 194,
 					"name": "year",
 					"kind": 1024,
 					"kindString": "Property",
@@ -5747,9 +5172,9 @@
 					"title": "Properties",
 					"kind": 1024,
 					"children": [
-						247,
-						246,
-						248
+						193,
+						192,
+						194
 					]
 				}
 			],
@@ -5762,38 +5187,26 @@
 			]
 		},
 		{
-			"id": 104,
-			"name": "InterfaceConfig",
+			"id": 4,
+			"name": "FooThing",
 			"kind": 256,
 			"kindString": "Interface",
 			"flags": {
 				"isExported": true
 			},
+			"typeParameter": [
+				{
+					"id": 5,
+					"name": "T",
+					"kind": 131072,
+					"kindString": "Type parameter",
+					"flags": {}
+				}
+			],
 			"children": [
 				{
-					"id": 108,
-					"name": "description",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isExported": true,
-						"isOptional": true
-					},
-					"sources": [
-						{
-							"fileName": "demo-page/demo-page-type-definitions.component.ts",
-							"line": 38,
-							"character": 13
-						}
-					],
-					"type": {
-						"type": "intrinsic",
-						"name": "string"
-					}
-				},
-				{
-					"id": 105,
-					"name": "name",
+					"id": 6,
+					"name": "value",
 					"kind": 1024,
 					"kindString": "Property",
 					"flags": {
@@ -5801,58 +5214,14 @@
 					},
 					"sources": [
 						{
-							"fileName": "demo-page/demo-page-type-definitions.component.ts",
-							"line": 35,
-							"character": 6
+							"fileName": "demo/demo-control-panel-checkbox.component.ts",
+							"line": 19,
+							"character": 7
 						}
 					],
 					"type": {
-						"type": "intrinsic",
-						"name": "string"
-					}
-				},
-				{
-					"id": 106,
-					"name": "properties",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isExported": true
-					},
-					"sources": [
-						{
-							"fileName": "demo-page/demo-page-type-definitions.component.ts",
-							"line": 36,
-							"character": 12
-						}
-					],
-					"type": {
-						"type": "array",
-						"elementType": {
-							"type": "reference",
-							"name": "InterfaceProperty",
-							"id": 99
-						}
-					}
-				},
-				{
-					"id": 107,
-					"name": "sourceCode",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isExported": true
-					},
-					"sources": [
-						{
-							"fileName": "demo-page/demo-page-type-definitions.component.ts",
-							"line": 37,
-							"character": 12
-						}
-					],
-					"type": {
-						"type": "intrinsic",
-						"name": "string"
+						"type": "typeParameter",
+						"name": "T"
 					}
 				}
 			],
@@ -5861,596 +5230,20 @@
 					"title": "Properties",
 					"kind": 1024,
 					"children": [
-						108,
-						105,
-						106,
-						107
+						6
 					]
 				}
 			],
 			"sources": [
 				{
-					"fileName": "demo-page/demo-page-type-definitions.component.ts",
-					"line": 34,
-					"character": 32
+					"fileName": "demo/demo-control-panel-checkbox.component.ts",
+					"line": 18,
+					"character": 25
 				}
 			]
 		},
 		{
-			"id": 99,
-			"name": "InterfaceProperty",
-			"kind": 256,
-			"kindString": "Interface",
-			"flags": {
-				"isExported": true
-			},
-			"children": [
-				{
-					"id": 102,
-					"name": "description",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isExported": true,
-						"isOptional": true
-					},
-					"sources": [
-						{
-							"fileName": "demo-page/demo-page-type-definitions.component.ts",
-							"line": 30,
-							"character": 13
-						}
-					],
-					"type": {
-						"type": "intrinsic",
-						"name": "string"
-					}
-				},
-				{
-					"id": 103,
-					"name": "isOptional",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isExported": true,
-						"isOptional": true
-					},
-					"sources": [
-						{
-							"fileName": "demo-page/demo-page-type-definitions.component.ts",
-							"line": 31,
-							"character": 12
-						}
-					],
-					"type": {
-						"type": "intrinsic",
-						"name": "boolean"
-					}
-				},
-				{
-					"id": 100,
-					"name": "name",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isExported": true
-					},
-					"sources": [
-						{
-							"fileName": "demo-page/demo-page-type-definitions.component.ts",
-							"line": 28,
-							"character": 6
-						}
-					],
-					"type": {
-						"type": "intrinsic",
-						"name": "string"
-					}
-				},
-				{
-					"id": 101,
-					"name": "type",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isExported": true
-					},
-					"sources": [
-						{
-							"fileName": "demo-page/demo-page-type-definitions.component.ts",
-							"line": 29,
-							"character": 6
-						}
-					],
-					"type": {
-						"type": "intrinsic",
-						"name": "string"
-					}
-				}
-			],
-			"groups": [
-				{
-					"title": "Properties",
-					"kind": 1024,
-					"children": [
-						102,
-						103,
-						100,
-						101
-					]
-				}
-			],
-			"sources": [
-				{
-					"fileName": "demo-page/demo-page-type-definitions.component.ts",
-					"line": 27,
-					"character": 34
-				}
-			]
-		},
-		{
-			"id": 126,
-			"name": "MethodConfig",
-			"kind": 256,
-			"kindString": "Interface",
-			"flags": {
-				"isExported": true
-			},
-			"children": [
-				{
-					"id": 129,
-					"name": "description",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isExported": true,
-						"isOptional": true
-					},
-					"sources": [
-						{
-							"fileName": "demo-page/demo-page-type-definitions.component.ts",
-							"line": 69,
-							"character": 13
-						}
-					],
-					"type": {
-						"type": "intrinsic",
-						"name": "string"
-					}
-				},
-				{
-					"id": 127,
-					"name": "name",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isExported": true
-					},
-					"sources": [
-						{
-							"fileName": "demo-page/demo-page-type-definitions.component.ts",
-							"line": 67,
-							"character": 6
-						}
-					],
-					"type": {
-						"type": "intrinsic",
-						"name": "string"
-					}
-				},
-				{
-					"id": 130,
-					"name": "parameters",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isExported": true,
-						"isOptional": true
-					},
-					"sources": [
-						{
-							"fileName": "demo-page/demo-page-type-definitions.component.ts",
-							"line": 70,
-							"character": 12
-						}
-					],
-					"type": {
-						"type": "array",
-						"elementType": {
-							"type": "reference",
-							"name": "ParameterConfig",
-							"id": 120
-						}
-					}
-				},
-				{
-					"id": 128,
-					"name": "returnType",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isExported": true
-					},
-					"sources": [
-						{
-							"fileName": "demo-page/demo-page-type-definitions.component.ts",
-							"line": 68,
-							"character": 12
-						}
-					],
-					"type": {
-						"type": "intrinsic",
-						"name": "string"
-					}
-				}
-			],
-			"groups": [
-				{
-					"title": "Properties",
-					"kind": 1024,
-					"children": [
-						129,
-						127,
-						130,
-						128
-					]
-				}
-			],
-			"sources": [
-				{
-					"fileName": "demo-page/demo-page-type-definitions.component.ts",
-					"line": 66,
-					"character": 29
-				}
-			]
-		},
-		{
-			"id": 120,
-			"name": "ParameterConfig",
-			"kind": 256,
-			"kindString": "Interface",
-			"flags": {
-				"isExported": true
-			},
-			"children": [
-				{
-					"id": 123,
-					"name": "defaultValue",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isExported": true,
-						"isOptional": true
-					},
-					"sources": [
-						{
-							"fileName": "demo-page/demo-page-type-definitions.component.ts",
-							"line": 61,
-							"character": 14
-						}
-					],
-					"type": {
-						"type": "intrinsic",
-						"name": "string"
-					}
-				},
-				{
-					"id": 124,
-					"name": "description",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isExported": true,
-						"isOptional": true
-					},
-					"sources": [
-						{
-							"fileName": "demo-page/demo-page-type-definitions.component.ts",
-							"line": 62,
-							"character": 13
-						}
-					],
-					"type": {
-						"type": "intrinsic",
-						"name": "string"
-					}
-				},
-				{
-					"id": 125,
-					"name": "isOptional",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isExported": true,
-						"isOptional": true
-					},
-					"sources": [
-						{
-							"fileName": "demo-page/demo-page-type-definitions.component.ts",
-							"line": 63,
-							"character": 12
-						}
-					],
-					"type": {
-						"type": "intrinsic",
-						"name": "boolean"
-					}
-				},
-				{
-					"id": 121,
-					"name": "name",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isExported": true
-					},
-					"sources": [
-						{
-							"fileName": "demo-page/demo-page-type-definitions.component.ts",
-							"line": 59,
-							"character": 6
-						}
-					],
-					"type": {
-						"type": "intrinsic",
-						"name": "string"
-					}
-				},
-				{
-					"id": 122,
-					"name": "type",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isExported": true
-					},
-					"sources": [
-						{
-							"fileName": "demo-page/demo-page-type-definitions.component.ts",
-							"line": 60,
-							"character": 6
-						}
-					],
-					"type": {
-						"type": "intrinsic",
-						"name": "string"
-					}
-				}
-			],
-			"groups": [
-				{
-					"title": "Properties",
-					"kind": 1024,
-					"children": [
-						123,
-						124,
-						125,
-						121,
-						122
-					]
-				}
-			],
-			"sources": [
-				{
-					"fileName": "demo-page/demo-page-type-definitions.component.ts",
-					"line": 58,
-					"character": 32
-				}
-			]
-		},
-		{
-			"id": 131,
-			"name": "ServiceConfig",
-			"kind": 256,
-			"kindString": "Interface",
-			"flags": {
-				"isExported": true
-			},
-			"children": [
-				{
-					"id": 133,
-					"name": "description",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isExported": true,
-						"isOptional": true
-					},
-					"sources": [
-						{
-							"fileName": "demo-page/demo-page-type-definitions.component.ts",
-							"line": 75,
-							"character": 13
-						}
-					],
-					"type": {
-						"type": "intrinsic",
-						"name": "string"
-					}
-				},
-				{
-					"id": 134,
-					"name": "methods",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isExported": true,
-						"isOptional": true
-					},
-					"sources": [
-						{
-							"fileName": "demo-page/demo-page-type-definitions.component.ts",
-							"line": 76,
-							"character": 9
-						}
-					],
-					"type": {
-						"type": "array",
-						"elementType": {
-							"type": "reference",
-							"name": "MethodConfig",
-							"id": 126
-						}
-					}
-				},
-				{
-					"id": 132,
-					"name": "name",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isExported": true
-					},
-					"sources": [
-						{
-							"fileName": "demo-page/demo-page-type-definitions.component.ts",
-							"line": 74,
-							"character": 6
-						}
-					],
-					"type": {
-						"type": "intrinsic",
-						"name": "string"
-					}
-				},
-				{
-					"id": 135,
-					"name": "properties",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isExported": true,
-						"isOptional": true
-					},
-					"sources": [
-						{
-							"fileName": "demo-page/demo-page-type-definitions.component.ts",
-							"line": 77,
-							"character": 12
-						}
-					],
-					"type": {
-						"type": "array",
-						"elementType": {
-							"type": "reference",
-							"name": "ServiceProperty",
-							"id": 116
-						}
-					}
-				}
-			],
-			"groups": [
-				{
-					"title": "Properties",
-					"kind": 1024,
-					"children": [
-						133,
-						134,
-						132,
-						135
-					]
-				}
-			],
-			"sources": [
-				{
-					"fileName": "demo-page/demo-page-type-definitions.component.ts",
-					"line": 73,
-					"character": 30
-				}
-			]
-		},
-		{
-			"id": 116,
-			"name": "ServiceProperty",
-			"kind": 256,
-			"kindString": "Interface",
-			"flags": {
-				"isExported": true
-			},
-			"children": [
-				{
-					"id": 119,
-					"name": "description",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isExported": true,
-						"isOptional": true
-					},
-					"sources": [
-						{
-							"fileName": "demo-page/demo-page-type-definitions.component.ts",
-							"line": 55,
-							"character": 13
-						}
-					],
-					"type": {
-						"type": "intrinsic",
-						"name": "string"
-					}
-				},
-				{
-					"id": 117,
-					"name": "name",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isExported": true
-					},
-					"sources": [
-						{
-							"fileName": "demo-page/demo-page-type-definitions.component.ts",
-							"line": 53,
-							"character": 6
-						}
-					],
-					"type": {
-						"type": "intrinsic",
-						"name": "string"
-					}
-				},
-				{
-					"id": 118,
-					"name": "type",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isExported": true
-					},
-					"sources": [
-						{
-							"fileName": "demo-page/demo-page-type-definitions.component.ts",
-							"line": 54,
-							"character": 6
-						}
-					],
-					"type": {
-						"type": "intrinsic",
-						"name": "string"
-					}
-				}
-			],
-			"groups": [
-				{
-					"title": "Properties",
-					"kind": 1024,
-					"children": [
-						119,
-						117,
-						118
-					]
-				}
-			],
-			"sources": [
-				{
-					"fileName": "demo-page/demo-page-type-definitions.component.ts",
-					"line": 52,
-					"character": 32
-				}
-			]
-		},
-		{
-			"id": 18,
+			"id": 1,
 			"name": "SkyDocsDemoControlPanelChange",
 			"kind": 256,
 			"kindString": "Interface",
@@ -6459,14 +5252,14 @@
 			},
 			"indexSignature": [
 				{
-					"id": 19,
+					"id": 2,
 					"name": "__index",
 					"kind": 8192,
 					"kindString": "Index signature",
 					"flags": {},
 					"parameters": [
 						{
-							"id": 20,
+							"id": 3,
 							"name": "key",
 							"kind": 32768,
 							"kindString": "Parameter",
@@ -6492,7 +5285,7 @@
 			]
 		},
 		{
-			"id": 148,
+			"id": 90,
 			"name": "SkyDocsSourceCodeFile",
 			"kind": 256,
 			"kindString": "Interface",
@@ -6501,7 +5294,7 @@
 			},
 			"children": [
 				{
-					"id": 149,
+					"id": 91,
 					"name": "fileName",
 					"kind": 1024,
 					"kindString": "Property",
@@ -6521,7 +5314,7 @@
 					}
 				},
 				{
-					"id": 150,
+					"id": 92,
 					"name": "filePath",
 					"kind": 1024,
 					"kindString": "Property",
@@ -6541,7 +5334,7 @@
 					}
 				},
 				{
-					"id": 151,
+					"id": 93,
 					"name": "rawContents",
 					"kind": 1024,
 					"kindString": "Property",
@@ -6566,9 +5359,9 @@
 					"title": "Properties",
 					"kind": 1024,
 					"children": [
-						149,
-						150,
-						151
+						91,
+						92,
+						93
 					]
 				}
 			],
@@ -6581,7 +5374,7 @@
 			]
 		},
 		{
-			"id": 192,
+			"id": 140,
 			"name": "SkyPropertyDefinition",
 			"kind": 256,
 			"kindString": "Interface",
@@ -6590,7 +5383,7 @@
 			},
 			"children": [
 				{
-					"id": 194,
+					"id": 142,
 					"name": "defaultValue",
 					"kind": 1024,
 					"kindString": "Property",
@@ -6613,7 +5406,7 @@
 					}
 				},
 				{
-					"id": 197,
+					"id": 145,
 					"name": "deprecationWarning",
 					"kind": 1024,
 					"kindString": "Property",
@@ -6633,7 +5426,7 @@
 					}
 				},
 				{
-					"id": 195,
+					"id": 143,
 					"name": "description",
 					"kind": 1024,
 					"kindString": "Property",
@@ -6654,7 +5447,7 @@
 					}
 				},
 				{
-					"id": 196,
+					"id": 144,
 					"name": "isOptional",
 					"kind": 1024,
 					"kindString": "Property",
@@ -6674,7 +5467,7 @@
 					}
 				},
 				{
-					"id": 198,
+					"id": 146,
 					"name": "propertyDecorator",
 					"kind": 1024,
 					"kindString": "Property",
@@ -6703,7 +5496,7 @@
 					}
 				},
 				{
-					"id": 199,
+					"id": 147,
 					"name": "propertyName",
 					"kind": 1024,
 					"kindString": "Property",
@@ -6723,7 +5516,7 @@
 					}
 				},
 				{
-					"id": 193,
+					"id": 141,
 					"name": "propertyType",
 					"kind": 1024,
 					"kindString": "Property",
@@ -6746,7 +5539,7 @@
 					}
 				},
 				{
-					"id": 200,
+					"id": 148,
 					"name": "templateRef",
 					"kind": 1024,
 					"kindString": "Property",
@@ -6777,14 +5570,14 @@
 					"title": "Properties",
 					"kind": 1024,
 					"children": [
-						194,
-						197,
-						195,
-						196,
-						198,
-						199,
-						193,
-						200
+						142,
+						145,
+						143,
+						144,
+						146,
+						147,
+						141,
+						148
 					]
 				}
 			],
@@ -6797,7 +5590,7 @@
 			]
 		},
 		{
-			"id": 257,
+			"id": 203,
 			"name": "FooTypeUnionComplex",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -6824,7 +5617,7 @@
 					{
 						"type": "reference",
 						"name": "FooDate",
-						"id": 245
+						"id": 191
 					},
 					{
 						"type": "intrinsic",
@@ -6834,7 +5627,7 @@
 			}
 		},
 		{
-			"id": 252,
+			"id": 198,
 			"name": "FooTypeUnionFunction",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -6866,21 +5659,21 @@
 			"type": {
 				"type": "reflection",
 				"declaration": {
-					"id": 253,
+					"id": 199,
 					"name": "__type",
 					"kind": 65536,
 					"kindString": "Type literal",
 					"flags": {},
 					"signatures": [
 						{
-							"id": 254,
+							"id": 200,
 							"name": "__call",
 							"kind": 4096,
 							"kindString": "Call signature",
 							"flags": {},
 							"parameters": [
 								{
-									"id": 255,
+									"id": 201,
 									"name": "needle",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -6891,7 +5684,7 @@
 									}
 								},
 								{
-									"id": 256,
+									"id": 202,
 									"name": "haystack",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -6921,7 +5714,7 @@
 			}
 		},
 		{
-			"id": 258,
+			"id": 204,
 			"name": "FooTypeUnionString",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -6966,77 +5759,66 @@
 			"title": "Enumerations",
 			"kind": 4,
 			"children": [
-				249
+				195
 			]
 		},
 		{
 			"title": "Classes",
 			"kind": 128,
 			"children": [
-				259,
-				269,
-				271,
-				1,
-				8,
-				17,
-				68,
-				21,
-				60,
-				40,
-				59,
-				71,
-				157,
-				72,
-				244,
-				73,
-				75,
-				76,
-				136,
-				83,
-				211,
+				205,
+				215,
 				217,
-				242,
-				238,
-				220,
-				172,
-				183,
-				227,
-				233,
+				221,
+				58,
+				7,
+				50,
+				30,
+				49,
+				61,
+				99,
+				62,
+				190,
+				63,
+				65,
+				66,
+				77,
+				73,
+				159,
+				165,
+				119,
+				115,
+				171,
+				120,
+				131,
+				178,
 				184,
-				201,
-				152,
-				70,
-				243
+				132,
+				149,
+				94,
+				60,
+				189
 			]
 		},
 		{
 			"title": "Interfaces",
 			"kind": 256,
 			"children": [
-				94,
-				87,
-				112,
-				109,
-				282,
-				245,
-				104,
-				99,
-				126,
-				120,
-				131,
-				116,
-				18,
-				148,
-				192
+				232,
+				191,
+				4,
+				1,
+				90,
+				140
 			]
 		},
 		{
 			"title": "Type aliases",
 			"kind": 4194304,
 			"children": [
-				257,
-				252,
-				258
+				203,
+				198,
+				204
 			]
 		}
 	]
