@@ -1,7 +1,7 @@
 {
   "mode": "file",
-  "out": "docs",
-  "json": "./docs/documentation.json",
+  "out": "typedoc-output",
+  "json": "./typedoc-output/documentation.json",
   "excludeExternals": true,
   "excludeNotExported": true,
   "excludePrivate": true,
