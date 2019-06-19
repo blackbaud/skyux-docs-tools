@@ -18,6 +18,7 @@ yarn.lock
 .node_repl_history
 
 # SKY UX temp directory
+.skypagesdocs
 .skyuxtmp
 .skypageslocales
 .skypagestmp
@@ -30,6 +31,3 @@ dist
 
 # IntelliJ files
 .idea
-
-# Documentation files
-.typedoc-output
