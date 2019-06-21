@@ -57,6 +57,7 @@
     "@blackbaud/skyux-builder-plugin-code-block": "1.1.0",
     "@blackbaud/skyux-lib-clipboard": "1.1.0",
     "@blackbaud/skyux-lib-code-block": "1.2.0",
+    "@blackbaud/skyux-lib-media": "1.0.0",
     "@blackbaud/skyux-lib-stache": "3.0.0",
     "@pact-foundation/pact-web": "7.4.0",
     "@skyux-sdk/builder": "3.6.7",
