@@ -1,6 +1,6 @@
 {
   "name": "@skyux/docs-tools",
-  "version": "3.0.0-alpha.3",
+  "version": "3.0.0-alpha.4",
   "description": "Library for skyux-lib-docs",
   "main": "bundles/bundle.umd.js",
   "module": "index.ts",
@@ -19,7 +19,7 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/blackbaud/skyux-docs-tools.git"
   },
   "peerDependencies": {
     "@angular/common": "^7.0.0",
