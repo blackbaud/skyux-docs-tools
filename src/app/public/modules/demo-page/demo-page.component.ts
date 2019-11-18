@@ -33,9 +33,12 @@ import {
 } from '../shared/docs-tools-supportal.service';
 
 import {
+  SkyDocsComponentInfo
+} from '../shared/docs-tools-component-info';
+
+import {
   SkyDocsDemoPageTitleService
 } from './demo-page-title.service';
-import { SkyDocsComponentInfo } from '../shared/docs-tools-component-info';
 
 /**
  * The demo page component wraps all documentation components and handles the configuration and layout of the page.
