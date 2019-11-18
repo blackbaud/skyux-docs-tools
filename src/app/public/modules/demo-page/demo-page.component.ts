@@ -1,8 +1,4 @@
 import {
-  HttpClient
-} from '@angular/common/http';
-
-import {
   AfterContentInit,
   AfterViewInit,
   ChangeDetectionStrategy,
@@ -33,8 +29,13 @@ import {
 } from '../design-guidelines/design-guidelines.component';
 
 import {
+  SkyDocsSupportalService
+} from '../shared/docs-tools-supportal.service';
+
+import {
   SkyDocsDemoPageTitleService
 } from './demo-page-title.service';
+import { SkyDocsComponentInfo } from '../shared/docs-tools-component-info';
 
 /**
  * The demo page component wraps all documentation components and handles the configuration and layout of the page.
@@ -124,20 +125,20 @@ export class SkyDocsDemoPageComponent implements OnInit, AfterContentInit, After
   constructor(
     private activatedRoute: ActivatedRoute,
     private changeDetector: ChangeDetectorRef,
-    private http: HttpClient,
     private router: Router,
+    private supportService: SkyDocsSupportalService,
     private titleService: SkyDocsDemoPageTitleService
   ) { }
 
   public ngOnInit(): void {
     this.updateTitle();
 
-    this.http.get('https://sky-pusa01.app.blackbaud.net/skysp/v1/docs/components-info')
-      .subscribe((results: any) => {
+    this.supportService.getComponentsInfo()
+      .subscribe((results: SkyDocsComponentInfo[]) => {
         this.sidebarRoutes = [{
           name: 'Components',
           path: '/',
-          children: results.components.map((component: any) => {
+          children: results.map((component: SkyDocsComponentInfo) => {
             return {
               name: component.name,
               path: component.url
