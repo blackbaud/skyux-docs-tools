@@ -129,14 +129,15 @@ export class SkyDocsDemoPageComponent implements OnInit, AfterContentInit, After
     private activatedRoute: ActivatedRoute,
     private changeDetector: ChangeDetectorRef,
     private router: Router,
-    private supportService: SkyDocsSupportalService,
+    private supportalService: SkyDocsSupportalService,
     private titleService: SkyDocsDemoPageTitleService
   ) { }
 
   public ngOnInit(): void {
     this.updateTitle();
 
-    this.supportService.getComponentsInfo()
+    this.supportalService
+      .getComponentsInfo()
       .subscribe((results: SkyDocsComponentInfo[]) => {
         this.sidebarRoutes = [{
           name: 'Components',
