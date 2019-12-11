@@ -1,6 +1,6 @@
 # 3.0.0-alpha.26 (2019-12-11)
 
-- Updated sidebar heading. [#7](https://github.com/blackbaud/skyux-docs-tools/pull/7)
+- Updated the sidebar header. [#7](https://github.com/blackbaud/skyux-docs-tools/pull/7)
 
 # 3.0.0-alpha.25 (2019-12-02)
 
