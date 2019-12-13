@@ -22,6 +22,9 @@
 {
   // ...
 
+  "host": {
+    "url": "https://developer.blackbaud.com"
+  },
   "omnibar": {
     "experimental": true
   },
