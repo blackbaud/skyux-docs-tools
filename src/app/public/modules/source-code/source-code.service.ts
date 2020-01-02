@@ -20,7 +20,7 @@ export class SkyDocsSourceCodeService {
   public getSourceCode(path: string): SkyDocsSourceCodeFile[] {
     const sourceCode = this.sourceCodeProvider.sourceCode;
 
-    if (!sourceCode.length) {
+    if (!sourceCode || !sourceCode.length) {
       return [];
     }
 
