@@ -12,7 +12,8 @@
   },
   "app": {
     "styles": [
-      "node_modules/@skyux/theme/css/sky.css"
+      "node_modules/@skyux/theme/css/sky.css",
+      "src/app/public/styles/docs-tools.scss"
     ]
   },
   "testSettings": {
