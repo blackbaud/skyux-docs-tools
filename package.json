@@ -29,7 +29,7 @@
     "@angular/platform-browser": "^7.0.0",
     "@blackbaud/skyux-lib-code-block": "^1.2.0",
     "@blackbaud/skyux-lib-clipboard": "^1.0.0",
-    "@blackbaud/skyux-lib-media": "^1.0.0",
+    "@blackbaud/skyux-lib-media": "^1.1.0",
     "@blackbaud/skyux-lib-stache": "^3.0.0",
     "@skyux/forms": "^3.0.0",
     "@skyux/i18n": "^3.0.0",
