@@ -4,7 +4,9 @@ import {
   Input
 } from '@angular/core';
 
-export type SkyDocsDemoContentAlignment = 'left' | 'center';
+import {
+  SkyDocsDemoContentAlignment
+} from './demo-content-alignment';
 
 /**
  * Wraps all behavior demo components and handles the configuration and appearance of the behavior demo.
@@ -24,12 +26,12 @@ export type SkyDocsDemoContentAlignment = 'left' | 'center';
 export class SkyDocsDemoComponent {
 
   @Input()
-  public set contentAlignment(value: SkyDocsDemoContentAlignment) {
-    this._contentAlignment = value;
+  public set alignContents(value: SkyDocsDemoContentAlignment) {
+    this._alignContents = value;
   }
 
-  public get contentAlignment(): SkyDocsDemoContentAlignment {
-    return this._contentAlignment || 'center';
+  public get alignContents(): SkyDocsDemoContentAlignment {
+    return this._alignContents || 'left';
   }
 
   public get toggleOptionsButtonIcon(): string {
@@ -38,7 +40,7 @@ export class SkyDocsDemoComponent {
 
   public areOptionsVisible = false;
 
-  private _contentAlignment: SkyDocsDemoContentAlignment;
+  private _alignContents: SkyDocsDemoContentAlignment;
 
   public onToggleOptionsButtonClick(): void {
     this.areOptionsVisible = !this.areOptionsVisible;
