@@ -54,7 +54,7 @@ import {
 
 @NgModule({
   exports: [
-    SkyDocsToolsModules
+    SkyDocsToolsModule
   ],
   providers: [
     {
