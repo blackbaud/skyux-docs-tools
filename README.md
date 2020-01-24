@@ -6,7 +6,7 @@
 
 ## Getting Started
 
-- Run `npm i -ED @skyux/docs-tools@^3.0.0-alpha.0`. Pay attention to the peer dependency warnings and install any missing packages as `devDependencies`.
+- Run `npm i -ED @skyux/docs-tools@latest`. Pay attention to the peer dependency warnings and install any missing packages as `devDependencies`.
 
 - Run `npm i -ED @skyux-sdk/builder-plugin-skyux@latest`.
 
