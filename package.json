@@ -1,6 +1,6 @@
 {
   "name": "@skyux/docs-tools",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "description": "Library for skyux-lib-docs",
   "main": "bundles/bundle.umd.js",
   "module": "index.ts",
