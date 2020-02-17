@@ -7,13 +7,16 @@
     "@skyux-sdk/builder-plugin-skyux",
     "@blackbaud/skyux-builder-plugin-code-block"
   ],
-  "moduleAliases": {
-    "@skyux/docs-tools": "src/app/public/index.ts"
-  },
   "app": {
     "styles": [
-      "node_modules/@skyux/theme/css/sky.css",
+      "@skyux/theme/css/sky.css",
       "src/app/public/styles/docs-tools.scss"
+    ]
+  },
+  "librarySettings": {
+    "whitelistedNonPeerDependencies": [
+      "@stackblitz/sdk",
+      "marked"
     ]
   },
   "testSettings": {
