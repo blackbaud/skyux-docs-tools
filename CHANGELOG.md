@@ -1,3 +1,14 @@
+# 4.0.0-rc.0 (2020-02-22)
+
+### New features
+
+- Added support for `@angular/core@^9`. [#32](https://github.com/blackbaud/skyux-docs-tools/pull/32)
+- Updated the pipeline to transpile to the [Angular Package Format](https://docs.google.com/document/d/1CZC2rcpxffTDfRDs6p1cfbmKNLA6x5O-NtkJglDaBVs/preview). [#32](https://github.com/blackbaud/skyux-docs-tools/pull/32)
+
+### Breaking changes
+
+- Dropped support for `rxjs@5`. Consumers may install `rxjs-compat@^6` to support older versions of `rxjs`. [#32](https://github.com/blackbaud/skyux-docs-tools/pull/32)
+
 # 3.1.0 (2020-01-29)
 
 - Added a `reset` emitter to the demo control panel component that fires when users click the reset button. [#21](https://github.com/blackbaud/skyux-docs-tools/pull/21)
