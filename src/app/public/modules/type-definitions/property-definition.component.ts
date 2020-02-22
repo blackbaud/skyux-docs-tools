@@ -34,7 +34,10 @@ export class SkyDocsPropertyDefinitionComponent {
   @Input()
   public propertyType: string;
 
-  @ViewChild('templateRef', { read: TemplateRef })
+  @ViewChild('templateRef', {
+    read: TemplateRef,
+    static: false
+  })
   public templateRef: TemplateRef<any>;
 
 }
