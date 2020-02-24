@@ -1,3 +1,9 @@
+# 4.0.0-rc.1 (2020-02-24)
+
+### Bug fixes
+
+- Fixed the exports API to export the `SkyDemoModule`. [#34](https://github.com/blackbaud/skyux-docs-tools/pull/34)
+
 # 4.0.0-rc.0 (2020-02-22)
 
 ### New features
