@@ -271,7 +271,7 @@ export class SkyDocsTypeDefinitionsService {
         const parameter: SkyDocsParameterDefinition = {
           defaultValue,
           description: (p.comment) ? p.comment.text : '',
-          isOptional: this.isOptional(p),
+          isOptional: (defaultValue) ? true : this.isOptional(p),
           name: p.name,
           type: this.parseFormattedType(p.type)
         };
@@ -539,9 +539,7 @@ export class SkyDocsTypeDefinitionsService {
         comment.tags.forEach((tag: any) => {
           switch (tag.tag.toLowerCase()) {
             case 'deprecated':
-              if (
-                tag.text
-              ) {
+              if (tag.text) {
                 deprecationWarning = tag.text.trim();
               }
               break;
@@ -573,6 +571,10 @@ export class SkyDocsTypeDefinitionsService {
 
       if (comment.shortText) {
         description = this.anchorLinkService.buildAnchorLinks(comment.shortText);
+      }
+
+      if (deprecationWarning) {
+        deprecationWarning = this.anchorLinkService.buildAnchorLinks(deprecationWarning);
       }
     }
 
@@ -612,6 +614,14 @@ export class SkyDocsTypeDefinitionsService {
     const tags = this.parseCommentTags(item.comment);
     if (tags.extras.required) {
       return false;
+    }
+
+    if (item.flags) {
+      if (item.flags.isOptional) {
+        return true;
+      } else if (item.kindString === 'Parameter') {
+        return false;
+      }
     }
 
     return true;

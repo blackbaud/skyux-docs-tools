@@ -28,7 +28,7 @@ export class FooService implements OnDestroy {
 
   /**
    * This is the description for anotherFoo().
-   * @deprecated Please use `createFoo` instead.
+   * @deprecated Please use `createFoo` input on the [[FooComponent]] instead.
    */
   public anotherFoo(): void {}
 

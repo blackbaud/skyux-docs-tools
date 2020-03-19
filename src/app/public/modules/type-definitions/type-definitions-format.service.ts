@@ -26,8 +26,9 @@ export class SkyDocsTypeDefinitionsFormatService {
       const parameters: string[] = [];
       method.parameters.forEach((parameter) => {
         const optionalMarker = (parameter.defaultValue || parameter.isOptional) ? '?' : '';
+        const defaultValue = (parameter.defaultValue) ? ` = ${parameter.defaultValue}` : '';
         parameters.push(
-          `${parameter.name}${optionalMarker}: ${parameter.type}`
+          `${parameter.name}${optionalMarker}: ${parameter.type}${defaultValue}`
         );
       });
 
