@@ -6,4 +6,4 @@ import {
   selector: 'sky-docs-demo-page-module-info',
   template: '<ng-content></ng-content>'
 })
-export class SkyDocsDemoPageModuleInfo { }
+export class SkyDocsDemoPageModuleInfoComponent { }
