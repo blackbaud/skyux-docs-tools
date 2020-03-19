@@ -33,6 +33,7 @@ export interface SkyDocsMethodDefinition {
   deprecationWarning: string;
   name: string;
   returnType: string;
+  typeParameters: string[];
   codeExample: string;
   codeExampleLanguage: string;
   description: string;

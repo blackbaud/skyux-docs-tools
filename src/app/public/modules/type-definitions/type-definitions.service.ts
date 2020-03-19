@@ -265,6 +265,11 @@ export class SkyDocsTypeDefinitionsService {
     const signature: any = item.signatures[0];
     const parameters: SkyDocsParameterDefinition[] = [];
 
+    let typeParameters: string[] = [];
+    if (signature.typeParameter) {
+      typeParameters = signature.typeParameter.map((t: any) => t.name);
+    }
+
     if (signature.parameters) {
       signature.parameters.forEach((p: any) => {
         const defaultValue = this.getDefaultValue(p);
@@ -294,7 +299,8 @@ export class SkyDocsTypeDefinitionsService {
       description,
       name: item.name,
       parameters,
-      returnType: this.parseFormattedType(signature.type)
+      returnType: this.parseFormattedType(signature.type),
+      typeParameters
     };
   }
 

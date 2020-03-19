@@ -20,15 +20,20 @@ export class SkyDocsTypeDefinitionsFormatService {
   ) { }
 
   public getMethodSignature(method: SkyDocsMethodDefinition): string {
-    let signature = `public ${method.name}(`;
+    const typeParameterSignature: string = (method.typeParameters.length)
+      ? `<${method.typeParameters.join(', ')}>`
+      : '';
+
+    let signature = `public ${method.name}${typeParameterSignature}(`;
 
     if (method.parameters.length) {
       const parameters: string[] = [];
       method.parameters.forEach((parameter) => {
         const optionalMarker = (parameter.defaultValue || parameter.isOptional) ? '?' : '';
         const defaultValue = (parameter.defaultValue) ? ` = ${parameter.defaultValue}` : '';
+        const parameterType = parameter.type.replace(/&lt;/g, '<').replace(/&gt;/g, '>');
         parameters.push(
-          `${parameter.name}${optionalMarker}: ${parameter.type}${defaultValue}`
+          `${parameter.name}${optionalMarker}: ${parameterType}${defaultValue}`
         );
       });
 
