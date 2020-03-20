@@ -176,6 +176,22 @@ describe('Type definitions format service', () => {
     expect(definition).toEqual('@Input()<br />foobar: string');
   });
 
+  it('should generate a deprecated property signature', () => {
+    const service = new SkyDocsTypeDefinitionsFormatService(anchorLinkService);
+    const propertyDef: SkyDocsPropertyDefinition = {
+      name: 'click',
+      isOptional: true,
+      decorator: 'Output',
+      type: 'EventEmitter<FooUser>',
+      deprecationWarning: 'Do not use this feature.'
+    };
+
+    const definition = service.getPropertySignature(propertyDef);
+    expect(definition).toEqual(
+      '@Output()<br /><strike>click</strike>: EventEmitter<<a href="#foo-user" class="sky-docs-anchor-link">FooUser</a>>'
+    );
+  });
+
   it('should wrap anchor tags around a property\'s known types', () => {
     const service = new SkyDocsTypeDefinitionsFormatService(anchorLinkService);
     const propertyDef: SkyDocsPropertyDefinition = {

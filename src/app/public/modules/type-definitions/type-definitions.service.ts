@@ -295,7 +295,13 @@ export class SkyDocsTypeDefinitionsService {
 
     let typeParameters: string[] = [];
     if (signature.typeParameter) {
-      typeParameters = signature.typeParameter.map((t: any) => t.name);
+      typeParameters = signature.typeParameter.map((t: any) => {
+        if (t.type && t.type.type === 'reference') {
+          return `${t.name} extends ${t.type.name}`;
+        }
+
+        return t.name;
+      });
     }
 
     if (signature.parameters) {
