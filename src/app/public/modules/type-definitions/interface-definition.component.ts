@@ -6,7 +6,7 @@ import {
 
 import {
   SkyDocsInterfaceDefinition
-} from './type-definitions';
+} from './interface-definition';
 
 @Component({
   selector: 'sky-docs-interface-definition',

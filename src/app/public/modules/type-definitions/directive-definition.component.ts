@@ -5,9 +5,12 @@ import {
 } from '@angular/core';
 
 import {
-  SkyDocsDirectiveDefinition,
+  SkyDocsDirectiveDefinition
+} from './directive-definition';
+
+import {
   SkyDocsPropertyDefinition
-} from './type-definitions';
+} from './property-definition';
 
 @Component({
   selector: 'sky-docs-directive-definition',

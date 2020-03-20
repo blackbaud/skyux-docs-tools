@@ -6,7 +6,7 @@ import {
 
 import {
   SkyDocsTypeAliasDefinition
-} from './type-definitions';
+} from './type-alias-definition';
 
 @Component({
   selector: 'sky-docs-type-alias-definition',

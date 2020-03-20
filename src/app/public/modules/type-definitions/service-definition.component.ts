@@ -5,9 +5,16 @@ import {
 } from '@angular/core';
 
 import {
-  SkyDocsMethodDefinition,
+  SkyDocsAnchorLinkService
+} from './anchor-link.service';
+
+import {
+  SkyDocsMethodDefinition
+} from './method-definition';
+
+import {
   SkyDocsServiceDefinition
-} from './type-definitions';
+} from './service-definition';
 
 import {
   SkyDocsTypeDefinitionsFormatService
@@ -25,11 +32,16 @@ export class SkyDocsServiceDefinitionComponent {
   public config: SkyDocsServiceDefinition;
 
   constructor(
+    private anchorLinkService: SkyDocsAnchorLinkService,
     private formatService: SkyDocsTypeDefinitionsFormatService
   ) { }
 
   public getMethodSignature(method: SkyDocsMethodDefinition): string {
     return this.formatService.getMethodSignature(method);
+  }
+
+  public formatReturnType(value: string): string {
+    return this.anchorLinkService.wrapWithAnchorLink(value);
   }
 
 }

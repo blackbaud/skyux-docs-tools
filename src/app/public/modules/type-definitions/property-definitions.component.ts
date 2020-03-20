@@ -24,7 +24,7 @@ import {
 
 import {
   SkyDocsPropertyDefinition
-} from './type-definitions';
+} from './property-definition';
 
 import {
   SkyDocsTypeDefinitionsFormatService

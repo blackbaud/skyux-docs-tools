@@ -7,32 +7,60 @@ import {
 } from './anchor-link.service';
 
 import {
-  SkyDocsDirectiveDefinition,
-  SkyDocsDirectivePropertyDefinition,
-  SkyDocsEnumerationDefinition,
-  SkyDocsInterfaceDefinition,
-  SkyDocsInterfacePropertyDefinition,
-  SkyDocsMethodDefinition,
-  SkyDocsParameterDefinition,
-  SkyDocsPipeDefinition,
-  SkyDocsPropertyDefinition,
-  SkyDocsServiceDefinition,
-  SkyDocsTypeAliasDefinition,
+  SkyDocsCommentTags
+} from './comment-tags';
+
+import {
+  SkyDocsDirectiveDefinition
+} from './directive-definition';
+
+import {
+  SkyDocsDirectivePropertyDefinition
+} from './directive-property-definition';
+
+import {
+  SkyDocsEnumerationDefinition
+} from './enumeration-definition';
+
+import {
+  SkyDocsInterfaceDefinition
+} from './interface-definition';
+
+import {
+  SkyDocsInterfacePropertyDefinition
+} from './interface-property-definition';
+
+import {
+  SkyDocsMethodDefinition
+} from './method-definition';
+
+import {
+  SkyDocsParameterDefinition
+} from './parameter-definition';
+
+import {
+  SkyDocsPipeDefinition
+} from './pipe-definition';
+
+import {
+  SkyDocsPropertyDefinition
+} from './property-definition';
+
+import {
+  SkyDocsServiceDefinition
+} from './service-definition';
+
+import {
+  SkyDocsTypeAliasDefinition
+} from './type-alias-definition';
+
+import {
   SkyDocsTypeDefinitions
 } from './type-definitions';
 
 import {
   SkyDocsTypeDefinitionsProvider
 } from './type-definitions-provider';
-
-interface SkyDocsTypeDefinitionCommentTags {
-  codeExample: string;
-  codeExampleLanguage: string;
-  defaultValue: string;
-  deprecationWarning: string;
-  description: string;
-  extras?: { [key: string]: string };
-}
 
 @Injectable()
 export class SkyDocsTypeDefinitionsService {
@@ -278,7 +306,7 @@ export class SkyDocsTypeDefinitionsService {
           description: (p.comment) ? p.comment.text : '',
           isOptional: (defaultValue) ? true : this.isOptional(p),
           name: p.name,
-          type: this.parseFormattedType(p.type)
+          type: this.parseFormattedType(p.type, false)
         };
 
         parameters.push(parameter);
@@ -532,7 +560,7 @@ export class SkyDocsTypeDefinitionsService {
     return formatted;
   }
 
-  private parseCommentTags(comment: any): SkyDocsTypeDefinitionCommentTags {
+  private parseCommentTags(comment: any): SkyDocsCommentTags {
     let codeExample: string;
     let codeExampleLanguage: string = 'markup';
     let deprecationWarning: string;

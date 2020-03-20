@@ -57,9 +57,6 @@
 </div>
 
 <ng-template let-property #nameTemplate>
-  <ng-container *ngIf="property.decorator">
-    <sky-code>@{{property.decorator}}()</sky-code><br>
-  </ng-container>
   <sky-code><span [innerHtml]="getPropertySignature(property)"></span></sky-code>
 </ng-template>
 

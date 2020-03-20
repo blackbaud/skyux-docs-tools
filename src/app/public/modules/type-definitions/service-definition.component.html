@@ -61,7 +61,11 @@
         </h4>
 
         <p class="sky-docs-service-definition-return-type">
-          <sky-code>{{ method.returnType }}</sky-code>
+          <sky-code>
+            <span
+              [innerHtml]="formatReturnType(method.returnType)"
+            ></span>
+          </sky-code>
         </p>
 
         <ng-container *ngIf="method.codeExample">

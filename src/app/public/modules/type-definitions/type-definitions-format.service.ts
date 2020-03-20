@@ -7,10 +7,16 @@ import {
 } from './anchor-link.service';
 
 import {
-  SkyDocsMethodDefinition,
-  SkyDocsParameterDefinition,
+  SkyDocsMethodDefinition
+} from './method-definition';
+
+import {
+  SkyDocsParameterDefinition
+} from './parameter-definition';
+
+import {
   SkyDocsPropertyDefinition
-} from './type-definitions';
+} from './property-definition';
 
 @Injectable()
 export class SkyDocsTypeDefinitionsFormatService {
@@ -20,51 +26,52 @@ export class SkyDocsTypeDefinitionsFormatService {
   ) { }
 
   public getMethodSignature(method: SkyDocsMethodDefinition): string {
-    const typeParameterSignature: string = (method.typeParameters.length)
+    const typeParameterSignature: string = (method.typeParameters && method.typeParameters.length)
       ? `<${method.typeParameters.join(', ')}>`
       : '';
 
     let signature = `public ${method.name}${typeParameterSignature}(`;
 
-    if (method.parameters.length) {
-      const parameters: string[] = [];
-      method.parameters.forEach((parameter) => {
-        const optionalMarker = (parameter.defaultValue || parameter.isOptional) ? '?' : '';
-        const defaultValue = (parameter.defaultValue) ? ` = ${parameter.defaultValue}` : '';
-        const parameterType = parameter.type.replace(/&lt;/g, '<').replace(/&gt;/g, '>');
-        parameters.push(
-          `${parameter.name}${optionalMarker}: ${parameterType}${defaultValue}`
-        );
-      });
-
-      signature += parameters.join(', ');
+    if (method.parameters) {
+      signature += method.parameters
+        .map((parameter) => this.getParameterSignature(parameter, false))
+        .join(', ');
     }
 
-    signature += `): ${method.returnType}`;
+    const returnType = (method.returnType)
+      ? method.returnType
+      : 'void';
+
+    signature += `): ${returnType}`;
 
     return signature;
   }
 
-  public getParameterSignature(item: SkyDocsParameterDefinition): string {
-    let signature: string = item.name || '';
+  public getParameterSignature(
+    parameter: SkyDocsParameterDefinition,
+    createAnchorLinks: boolean = true
+  ): string {
+    const optionalMarker = (parameter.isOptional && !parameter.defaultValue) ? '?' : '';
+    const defaultValue = (parameter.defaultValue) ? ` = ${parameter.defaultValue}` : '';
+    const parameterType = (createAnchorLinks)
+      ? this.anchorLinkService.wrapWithAnchorLink(parameter.type)
+      : parameter.type;
 
-    if (item.isOptional) {
-      signature += '?';
-    }
-
-    if (item.type) {
-      if (item.name) {
-        signature += ': ';
-      }
-      const parameterType = this.anchorLinkService.wrapWithAnchorLink(item.type);
-      signature += parameterType;
-    }
-
-    return signature;
+    return `${parameter.name}${optionalMarker}: ${parameterType}${defaultValue}`;
   }
 
   public getPropertySignature(item: SkyDocsPropertyDefinition): string {
-    let signature = `${item.name}`;
+    let signature = '';
+
+    if (item.decorator) {
+      signature += `@${item.decorator}()<br />`;
+    }
+
+    if (item.deprecationWarning) {
+      signature += `<strike>${item.name}</strike>`;
+    } else {
+      signature += `${item.name}`;
+    }
 
     // Don't use the '?' indicator if the property has a decorator.
     if (item.isOptional && !item.decorator) {
