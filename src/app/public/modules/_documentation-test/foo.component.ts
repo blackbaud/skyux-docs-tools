@@ -60,7 +60,7 @@ export class FooComponent implements OnInit {
   }
 
   /**
-   * Use the latest and greatest features!
+   * Use the latest and greatest features for FooPipe!
    * @deprecated This is no longer needed; all new features are available now. Set the `foobar` property on the [[FooPipe]] instead.
    */
   @Input()

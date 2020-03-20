@@ -15,10 +15,6 @@ import {
 } from '@skyux/core';
 
 import {
-  SkyDocsAnchorLinkService
-} from './anchor-link.service';
-
-import {
   SkyDocsPropertyDefinitionComponent
 } from './property-definition.component';
 
@@ -50,7 +46,6 @@ export class SkyDocsPropertyDefinitionsComponent implements OnInit, AfterContent
 
   constructor(
     private changeDetector: ChangeDetectorRef,
-    private anchorLinkService: SkyDocsAnchorLinkService,
     private formatService: SkyDocsTypeDefinitionsFormatService,
     private mediaQueryService: SkyMediaQueryService
   ) { }
@@ -80,14 +75,6 @@ export class SkyDocsPropertyDefinitionsComponent implements OnInit, AfterContent
 
   public getPropertySignature(item: SkyDocsPropertyDefinition): string {
     return this.formatService.getPropertySignature(item);
-  }
-
-  public formatDeprecationMessage(value: string): string {
-    return this.anchorLinkService.buildAnchorLinks(value);
-  }
-
-  public formatDefaultValue(value: string): string {
-    return this.anchorLinkService.wrapWithAnchorLink(value);
   }
 
 }

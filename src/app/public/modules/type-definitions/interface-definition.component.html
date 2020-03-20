@@ -7,7 +7,7 @@
   </sky-docs-heading-anchor>
 
   <sky-docs-safe-html
-    [innerHtml]="config.description"
+    [innerHtml]="config.description | skyDocsTypeAnchorLinks"
   ></sky-docs-safe-html>
 
   <sky-code-block
@@ -26,7 +26,7 @@
         [propertyType]="property.type"
       >
         <sky-docs-safe-html
-          [innerHtml]="property.description"
+          [innerHtml]="property.description | skyDocsTypeAnchorLinks"
         ></sky-docs-safe-html>
       </sky-docs-property-definition>
     </sky-docs-property-definitions>

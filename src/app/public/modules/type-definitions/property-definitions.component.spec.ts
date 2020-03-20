@@ -83,6 +83,24 @@ describe('Property definitions component', function () {
     expect(signatureElement.textContent).toEqual('@Input()foobar: number');
   }));
 
+  it('should display default value', fakeAsync(() => {
+    fixture.componentInstance.propertyName = 'foobar';
+    fixture.componentInstance.propertyType = 'number';
+    fixture.componentInstance.defaultValue = '5';
+    fixture.componentInstance.isOptional = true;
+
+    fixture.detectChanges();
+    tick();
+
+    const descriptionElement = fixture.nativeElement.querySelector(
+      '.sky-docs-property-definitions-table-cell-description'
+    );
+
+    expect(descriptionElement.innerText).toContain(
+      'Optional. Default is 5.'
+    );
+  }));
+
   it('should display deprecation messages', fakeAsync(() => {
     fixture.componentInstance.deprecationWarning = 'Do not use this feature.';
     fixture.componentInstance.description = 'This is the description.';
@@ -101,7 +119,7 @@ describe('Property definitions component', function () {
     );
   }));
 
-  it('should add links within deprecation messages', fakeAsync(() => {
+  it('should add links to types within deprecation messages', fakeAsync(() => {
     fixture.componentInstance.deprecationWarning = 'Use [[FooUser]] instead.';
     fixture.componentInstance.description = 'This is the description.';
     fixture.componentInstance.propertyName = 'foobar';
@@ -116,6 +134,40 @@ describe('Property definitions component', function () {
 
     expect(descriptionElement.innerHTML).toContain(
       '<a href="#foo-user" class="sky-docs-anchor-link">FooUser</a>'
+    );
+  }));
+
+  it('should add links around property types', fakeAsync(() => {
+    fixture.componentInstance.propertyName = 'user';
+    fixture.componentInstance.propertyType = 'FooUser';
+
+    fixture.detectChanges();
+    tick();
+
+    const nameElement = fixture.nativeElement.querySelector(
+      '.sky-docs-property-definitions-table-cell-name'
+    );
+
+    expect(nameElement.innerHTML).toContain(
+      '<a href="#foo-user" class="sky-docs-anchor-link">FooUser</a>'
+    );
+  }));
+
+  it('should add links around default value', fakeAsync(() => {
+    fixture.componentInstance.propertyName = 'foobar';
+    fixture.componentInstance.propertyType = 'FooUser';
+    fixture.componentInstance.defaultValue = 'new FooUser()';
+    fixture.componentInstance.isOptional = true;
+
+    fixture.detectChanges();
+    tick();
+
+    const descriptionElement = fixture.nativeElement.querySelector(
+      '.sky-docs-property-definitions-table-cell-description'
+    );
+
+    expect(descriptionElement.innerHTML).toContain(
+      'new <a href="#foo-user" class="sky-docs-anchor-link">FooUser</a>()'
     );
   }));
 

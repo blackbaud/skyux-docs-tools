@@ -63,7 +63,9 @@
 </div>
 
 <ng-template let-property #nameTemplate>
-  <sky-code><span [innerHtml]="getPropertySignature(property)"></span></sky-code>
+  <sky-code><span
+    [innerHtml]="getPropertySignature(property)"
+  ></span></sky-code>
 </ng-template>
 
 <ng-template let-property #descriptionTemplate>
@@ -73,7 +75,11 @@
 
   <p *ngIf="property.deprecationWarning"
     class="sky-docs-property-definition-label sky-text-warning"
-  ><strong>Deprecated.</strong>&nbsp;<span [innerHtml]="formatDeprecationMessage(property.deprecationWarning | skyDocsMarkdown:'inline')"></span></p>
+  >
+    <strong>Deprecated.</strong>&nbsp;<span
+      [innerHtml]="property.deprecationWarning | skyDocsMarkdown:'inline' | skyDocsTypeAnchorLinks"
+    ></span>
+  </p>
 
   <ng-container
     [ngTemplateOutlet]="property.templateRef"
@@ -81,5 +87,12 @@
 
   <p *ngIf="property.isOptional"
     class="sky-docs-property-definition-label sky-docs-property-definition-label-optional"
-  >Optional. <ng-container *ngIf="property.defaultValue">Default is <sky-code><span [innerHtml]="formatDefaultValue(property.defaultValue)"></span></sky-code>.</ng-container></p>
+  >Optional.
+    <ng-container *ngIf="property.defaultValue">
+      Default is
+      <sky-code><span
+        [innerHtml]="property.defaultValue | skyDocsTypeAnchorLinks"
+      ></span></sky-code>.
+    </ng-container>
+  </p>
 </ng-template>

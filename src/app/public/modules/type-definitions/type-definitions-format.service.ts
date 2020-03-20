@@ -54,7 +54,7 @@ export class SkyDocsTypeDefinitionsFormatService {
     const optionalMarker = (parameter.isOptional && !parameter.defaultValue) ? '?' : '';
     const defaultValue = (parameter.defaultValue) ? ` = ${parameter.defaultValue}` : '';
     const parameterType = (createAnchorLinks)
-      ? this.anchorLinkService.wrapWithAnchorLink(parameter.type)
+      ? this.anchorLinkService.applyTypeAnchorLinks(parameter.type)
       : parameter.type;
 
     return `${parameter.name}${optionalMarker}: ${parameterType}${defaultValue}`;
@@ -79,7 +79,7 @@ export class SkyDocsTypeDefinitionsFormatService {
     }
 
     if (item.type) {
-      const propertyType = this.anchorLinkService.wrapWithAnchorLink(item.type);
+      const propertyType = this.anchorLinkService.applyTypeAnchorLinks(item.type);
       signature += `: ${propertyType}`;
     }
 

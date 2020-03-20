@@ -17,28 +17,17 @@ export class SkyDocsAnchorLinkService {
     this.anchorIds = typeDefinitionsProvider.anchorIds;
   }
 
-  /**
-   * Replace all instances of '[[sometype]]' with the link to the element.
-   */
-  public buildAnchorLinks(content: string): string {
-    const match = content.match(/\[\[.*\]\]/);
-
-    if (match) {
-      const typeName = match[0].replace('[[', '').replace(']]', '');
-      const anchorId = this.anchorIds[typeName];
-
-      if (anchorId) {
-        const replacement = match[0].replace('[[', `<a href="#${anchorId}" class="sky-docs-anchor-link">`).replace(']]', '</a>');
-        return content.replace(match[0], replacement);
-      }
-    }
-
-    return content;
-  }
-
-  public wrapWithAnchorLink(content: string): string {
+  public applyTypeAnchorLinks(content: string): string {
     if (!this.anchorIds) {
       return content;
+    }
+
+    // For backwards compatibility, we need to remove any double brackets wrapped around types.
+    // e.g., `[[SampleType]]`
+    const match = content.match(/\[\[.*\]\]/);
+    if (match) {
+      const typeName = match[0].replace('[[', '').replace(']]', '');
+      content = content.replace(match[0], typeName);
     }
 
     const matchingTypes = Object.keys(this.anchorIds)

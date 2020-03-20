@@ -95,6 +95,10 @@ import {
   SkyDocsTypeDefinitionsProvider
 } from './type-definitions-provider';
 
+import {
+  SkyDocsTypeAnchorLinksPipe
+} from './type-anchor-links.pipe';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -118,7 +122,8 @@ import {
     SkyDocsPropertyDefinitionComponent,
     SkyDocsPropertyDefinitionsComponent,
     SkyDocsServiceDefinitionComponent,
-    SkyDocsTypeAliasDefinitionComponent
+    SkyDocsTypeAliasDefinitionComponent,
+    SkyDocsTypeAnchorLinksPipe
   ],
   exports: [
     SkyDocsDirectiveDefinitionComponent,
@@ -134,6 +139,7 @@ import {
   ],
   providers: [
     SkyDocsAnchorLinkService,
+    SkyDocsTypeAnchorLinksPipe,
     SkyDocsTypeDefinitionsFormatService,
     SkyDocsTypeDefinitionsProvider,
     SkyDocsTypeDefinitionsService

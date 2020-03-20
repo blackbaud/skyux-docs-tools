@@ -7,7 +7,7 @@
   </sky-docs-heading-anchor>
 
   <sky-docs-safe-html
-    [innerHtml]="config.description"
+    [innerHtml]="config.description | skyDocsTypeAnchorLinks"
   ></sky-docs-safe-html>
 
   <ng-container *ngIf="config.properties && config.properties.length">
@@ -17,7 +17,7 @@
         [propertyType]="property.type"
       >
         <sky-docs-safe-html
-          [innerHtml]="property.description"
+          [innerHtml]="property.description | skyDocsTypeAnchorLinks"
         ></sky-docs-safe-html>
       </sky-docs-property-definition>
     </sky-docs-property-definitions>
@@ -31,7 +31,9 @@
         [deprecationWarning]="method.deprecationWarning"
         [propertyName]="method.name + '()'"
       >
-        <p [innerHtml]="method.description"></p>
+        <p
+          [innerHtml]="method.description | skyDocsTypeAnchorLinks"
+        ></p>
 
         <sky-code-block
           class="sky-docs-code-block"
@@ -51,7 +53,9 @@
               [parameterName]="parameter.name"
               [parameterType]="parameter.type"
             >
-              <span [innerHtml]="parameter.description"></span>
+              <span
+                [innerHtml]="parameter.description | skyDocsTypeAnchorLinks"
+              ></span>
             </sky-docs-parameter-definition>
           </sky-docs-parameter-definitions>
         </ng-container>
@@ -63,7 +67,7 @@
         <p class="sky-docs-service-definition-return-type">
           <sky-code>
             <span
-              [innerHtml]="formatReturnType(method.returnType)"
+              [innerHtml]="method.returnType | skyDocsTypeAnchorLinks"
             ></span>
           </sky-code>
         </p>

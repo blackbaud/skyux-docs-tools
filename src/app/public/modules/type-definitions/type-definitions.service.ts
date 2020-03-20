@@ -3,10 +3,6 @@ import {
 } from '@angular/core';
 
 import {
-  SkyDocsAnchorLinkService
-} from './anchor-link.service';
-
-import {
   SkyDocsCommentTags
 } from './comment-tags';
 
@@ -66,7 +62,6 @@ import {
 export class SkyDocsTypeDefinitionsService {
 
   constructor(
-    private anchorLinkService: SkyDocsAnchorLinkService,
     private typeDefinitionsProvider: SkyDocsTypeDefinitionsProvider
   ) { }
 
@@ -610,11 +605,7 @@ export class SkyDocsTypeDefinitionsService {
       }
 
       if (comment.shortText) {
-        description = this.anchorLinkService.buildAnchorLinks(comment.shortText);
-      }
-
-      if (deprecationWarning) {
-        deprecationWarning = this.anchorLinkService.buildAnchorLinks(deprecationWarning);
+        description = comment.shortText;
       }
     }
 
