@@ -31,9 +31,9 @@
         [deprecationWarning]="method.deprecationWarning"
         [propertyName]="method.name + '()'"
       >
-        <p
+        <sky-docs-safe-html
           [innerHtml]="method.description | skyDocsTypeAnchorLinks"
-        ></p>
+        ></sky-docs-safe-html>
 
         <sky-code-block
           class="sky-docs-code-block"
@@ -53,9 +53,9 @@
               [parameterName]="parameter.name"
               [parameterType]="parameter.type"
             >
-              <span
+              <sky-docs-safe-html
                 [innerHtml]="parameter.description | skyDocsTypeAnchorLinks"
-              ></span>
+              ></sky-docs-safe-html>
             </sky-docs-parameter-definition>
           </sky-docs-parameter-definitions>
         </ng-container>
