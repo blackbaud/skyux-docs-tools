@@ -63,8 +63,8 @@ export class SkyDocsPropertyDefinitionsComponent implements OnInit, AfterContent
   }
 
   public ngAfterContentInit(): void {
-    this.definitionRefs.forEach((definitionRef) => {
-      this.properties.push({
+    this.properties = this.definitionRefs.map((definitionRef) => {
+      return {
         type: definitionRef.propertyType,
         defaultValue: definitionRef.defaultValue,
         deprecationWarning: definitionRef.deprecationWarning,
@@ -72,7 +72,7 @@ export class SkyDocsPropertyDefinitionsComponent implements OnInit, AfterContent
         name: definitionRef.propertyName,
         templateRef: definitionRef.templateRef,
         isOptional: definitionRef.isOptional
-      });
+      };
     });
 
     this.changeDetector.markForCheck();
@@ -80,6 +80,10 @@ export class SkyDocsPropertyDefinitionsComponent implements OnInit, AfterContent
 
   public getPropertySignature(item: SkyDocsPropertyDefinition): string {
     return this.formatService.getPropertySignature(item);
+  }
+
+  public formatDeprecationMessage(value: string): string {
+    return this.anchorLinkService.buildAnchorLinks(value);
   }
 
   public formatDefaultValue(value: string): string {

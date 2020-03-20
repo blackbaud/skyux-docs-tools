@@ -37,6 +37,10 @@ export class SkyDocsAnchorLinkService {
   }
 
   public wrapWithAnchorLink(content: string): string {
+    if (!this.anchorIds) {
+      return content;
+    }
+
     const matchingTypes = Object.keys(this.anchorIds)
       .filter(typeName => new RegExp(typeName).test(content));
 
