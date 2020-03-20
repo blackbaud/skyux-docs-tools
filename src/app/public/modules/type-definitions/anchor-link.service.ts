@@ -18,7 +18,7 @@ export class SkyDocsAnchorLinkService {
   }
 
   public applyTypeAnchorLinks(content: string): string {
-    if (!this.anchorIds) {
+    if (!this.anchorIds || !content) {
       return content;
     }
 
@@ -31,7 +31,7 @@ export class SkyDocsAnchorLinkService {
     }
 
     const matchingTypes = Object.keys(this.anchorIds)
-      .filter(typeName => new RegExp(typeName).test(content));
+      .filter(typeName => new RegExp(`(^|[^a-zA-Z]+)(${typeName})([^a-zA-Z]+|$)`, 'g').test(content));
 
     let html: string;
     if (matchingTypes.length) {
