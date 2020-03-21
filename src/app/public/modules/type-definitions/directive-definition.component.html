@@ -1,4 +1,6 @@
-<div class="sky-docs-directive-definition sky-docs-type-definition-wrapper">
+<div *ngIf="config"
+  class="sky-docs-directive-definition sky-docs-type-definition-wrapper"
+>
   <sky-docs-heading-anchor
     headingLevel="3"
     [anchorId]="config.anchorId"
@@ -7,6 +9,7 @@
   </sky-docs-heading-anchor>
 
   <sky-docs-safe-html
+    class="sky-docs-directive-definition-description"
     [innerHtml]="config.description | skyDocsTypeAnchorLinks"
   ></sky-docs-safe-html>
 

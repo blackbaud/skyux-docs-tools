@@ -11,6 +11,10 @@ import {
 } from '../type-definitions.module';
 
 import {
+  DirectiveDefinitionFixtureComponent
+} from './directive-definition.component.fixture';
+
+import {
   PropertyDefinitionsFixtureComponent
 } from './property-definitions.component.fixture';
 
@@ -24,10 +28,12 @@ import {
     SkyDocsTypeDefinitionsModule
   ],
   exports: [
+    DirectiveDefinitionFixtureComponent,
     ParameterDefinitionsFixtureComponent,
     PropertyDefinitionsFixtureComponent
   ],
   declarations: [
+    DirectiveDefinitionFixtureComponent,
     ParameterDefinitionsFixtureComponent,
     PropertyDefinitionsFixtureComponent
   ]

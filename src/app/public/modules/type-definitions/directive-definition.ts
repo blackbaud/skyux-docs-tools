@@ -4,15 +4,15 @@ import {
 
 export interface SkyDocsDirectiveDefinition {
 
-  anchorId: string;
-
   name: string;
 
   selector: string;
 
-  description: string;
+  properties?: SkyDocsDirectivePropertyDefinition[];
 
-  properties: SkyDocsDirectivePropertyDefinition[];
+  description?: string;
+
+  anchorId?: string;
 
   codeExample?: string;
 

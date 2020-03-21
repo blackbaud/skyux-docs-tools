@@ -35,9 +35,13 @@ describe('Property definitions component', function () {
           provide: SkyDocsTypeDefinitionsProvider,
           useValue: {
             anchorIds: {
+              'Foo': 'foo',
               'FooUser': 'foo-user'
             },
             typeDefinitions: [
+              {
+                name: 'Foo'
+              },
               {
                 name: 'FooUser'
               }
@@ -120,8 +124,7 @@ describe('Property definitions component', function () {
   }));
 
   it('should add links to types within deprecation messages', fakeAsync(() => {
-    fixture.componentInstance.deprecationWarning = 'Use [[FooUser]] instead.';
-    fixture.componentInstance.description = 'This is the description.';
+    fixture.componentInstance.deprecationWarning = 'Use Foo from FooUser instead, because Foo is now supported.';
     fixture.componentInstance.propertyName = 'foobar';
     fixture.componentInstance.propertyType = 'number';
 
@@ -132,14 +135,16 @@ describe('Property definitions component', function () {
       '.sky-docs-property-definitions-table-cell-description .sky-text-warning'
     );
 
-    expect(descriptionElement.innerHTML).toContain(
-      '<a href="#foo-user" class="sky-docs-anchor-link">FooUser</a>'
-    );
+    expect(descriptionElement.innerHTML).toContain([
+      'Use <a href="#foo" class="sky-docs-anchor-link">Foo</a> from',
+      '<a href="#foo-user" class="sky-docs-anchor-link">FooUser</a> instead,',
+      'because <a href="#foo" class="sky-docs-anchor-link">Foo</a> is now supported.'
+    ].join(' '));
   }));
 
   it('should add links around property types', fakeAsync(() => {
     fixture.componentInstance.propertyName = 'user';
-    fixture.componentInstance.propertyType = 'FooUser';
+    fixture.componentInstance.propertyType = 'Foo';
 
     fixture.detectChanges();
     tick();
@@ -149,7 +154,7 @@ describe('Property definitions component', function () {
     );
 
     expect(nameElement.innerHTML).toContain(
-      '<a href="#foo-user" class="sky-docs-anchor-link">FooUser</a>'
+      '<a href="#foo" class="sky-docs-anchor-link">Foo</a>'
     );
   }));
 
