@@ -43,8 +43,8 @@ import {
 } from './property-definition';
 
 import {
-  SkyDocsServiceDefinition
-} from './service-definition';
+  SkyDocsClassDefinition
+} from './class-definition';
 
 import {
   SkyDocsTypeAliasDefinition
@@ -128,7 +128,7 @@ export class SkyDocsTypeDefinitionsService {
 
       // Services.
       if (this.endsWith(item.name, 'Service')) {
-        const definition = this.parseServiceDefinition(item);
+        const definition = this.parseClassDefinition(item);
         types.services.push(definition);
         return;
       }
@@ -247,7 +247,7 @@ export class SkyDocsTypeDefinitionsService {
     };
   }
 
-  private parseServiceDefinition(item: any): SkyDocsServiceDefinition {
+  private parseClassDefinition(item: any): SkyDocsClassDefinition {
     const properties: SkyDocsPropertyDefinition[] = [];
     const methods: SkyDocsMethodDefinition[] = [];
 

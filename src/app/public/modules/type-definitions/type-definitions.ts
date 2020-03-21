@@ -15,8 +15,8 @@ import {
 } from './pipe-definition';
 
 import {
-  SkyDocsServiceDefinition
-} from './service-definition';
+  SkyDocsClassDefinition
+} from './class-definition';
 
 import {
   SkyDocsTypeAliasDefinition
@@ -37,7 +37,7 @@ export interface SkyDocsTypeDefinitions {
 
   pipes: SkyDocsPipeDefinition[];
 
-  services: SkyDocsServiceDefinition[];
+  services: SkyDocsClassDefinition[];
 
   typeAliases: SkyDocsTypeAliasDefinition[];
 

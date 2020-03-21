@@ -76,8 +76,8 @@ import {
 } from './property-definitions.component';
 
 import {
-  SkyDocsServiceDefinitionComponent
-} from './service-definition.component';
+  SkyDocsClassDefinitionComponent
+} from './class-definition.component';
 
 import {
   SkyDocsTypeAliasDefinitionComponent
@@ -113,6 +113,7 @@ import {
     SkyMediaQueryModule
   ],
   declarations: [
+    SkyDocsClassDefinitionComponent,
     SkyDocsDirectiveDefinitionComponent,
     SkyDocsEnumerationDefinitionComponent,
     SkyDocsInterfaceDefinitionComponent,
@@ -121,11 +122,11 @@ import {
     SkyDocsPipeDefinitionComponent,
     SkyDocsPropertyDefinitionComponent,
     SkyDocsPropertyDefinitionsComponent,
-    SkyDocsServiceDefinitionComponent,
     SkyDocsTypeAliasDefinitionComponent,
     SkyDocsTypeAnchorLinksPipe
   ],
   exports: [
+    SkyDocsClassDefinitionComponent,
     SkyDocsDirectiveDefinitionComponent,
     SkyDocsEnumerationDefinitionComponent,
     SkyDocsInterfaceDefinitionComponent,
@@ -134,7 +135,6 @@ import {
     SkyDocsPipeDefinitionComponent,
     SkyDocsPropertyDefinitionComponent,
     SkyDocsPropertyDefinitionsComponent,
-    SkyDocsServiceDefinitionComponent,
     SkyDocsTypeAliasDefinitionComponent
   ],
   providers: [

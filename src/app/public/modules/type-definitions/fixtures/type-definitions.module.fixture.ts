@@ -11,6 +11,10 @@ import {
 } from '../type-definitions.module';
 
 import {
+  ClassDefinitionFixtureComponent
+} from './class-definition.component.fixture';
+
+import {
   DirectiveDefinitionFixtureComponent
 } from './directive-definition.component.fixture';
 
@@ -28,11 +32,13 @@ import {
     SkyDocsTypeDefinitionsModule
   ],
   exports: [
+    ClassDefinitionFixtureComponent,
     DirectiveDefinitionFixtureComponent,
     ParameterDefinitionsFixtureComponent,
     PropertyDefinitionsFixtureComponent
   ],
   declarations: [
+    ClassDefinitionFixtureComponent,
     DirectiveDefinitionFixtureComponent,
     ParameterDefinitionsFixtureComponent,
     PropertyDefinitionsFixtureComponent

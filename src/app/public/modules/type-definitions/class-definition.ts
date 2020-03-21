@@ -6,15 +6,15 @@ import {
   SkyDocsPropertyDefinition
 } from './property-definition';
 
-export interface SkyDocsServiceDefinition {
+export interface SkyDocsClassDefinition {
 
   name: string;
-
-  methods: SkyDocsMethodDefinition[];
 
   anchorId?: string;
 
   description?: string;
+
+  methods?: SkyDocsMethodDefinition[];
 
   properties?: SkyDocsPropertyDefinition[];
 

@@ -9,23 +9,23 @@ import {
 } from './method-definition';
 
 import {
-  SkyDocsServiceDefinition
-} from './service-definition';
+  SkyDocsClassDefinition
+} from './class-definition';
 
 import {
   SkyDocsTypeDefinitionsFormatService
 } from './type-definitions-format.service';
 
 @Component({
-  selector: 'sky-docs-service-definition',
-  templateUrl: './service-definition.component.html',
-  styleUrls: ['./service-definition.component.scss'],
+  selector: 'sky-docs-class-definition',
+  templateUrl: './class-definition.component.html',
+  styleUrls: ['./class-definition.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SkyDocsServiceDefinitionComponent {
+export class SkyDocsClassDefinitionComponent {
 
   @Input()
-  public config: SkyDocsServiceDefinition;
+  public config: SkyDocsClassDefinition;
 
   constructor(
     private formatService: SkyDocsTypeDefinitionsFormatService
