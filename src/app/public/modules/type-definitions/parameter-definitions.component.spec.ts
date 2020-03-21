@@ -110,7 +110,7 @@ describe('Parameter definitions component', function () {
     );
 
     expect(signatureElement.innerHTML).toContain(
-      '<a href="#foo-user" class="sky-docs-anchor-link">FooUser</a>'
+      '<a class="sky-docs-anchor-link" href="#foo-user">FooUser</a>'
     );
   }));
 
@@ -128,7 +128,7 @@ describe('Parameter definitions component', function () {
     );
 
     expect(optionalElement.innerHTML).toContain(
-      'new <a href="#foo-user" class="sky-docs-anchor-link">FooUser</a>()'
+      'new <a class="sky-docs-anchor-link" href="#foo-user">FooUser</a>()'
     );
   }));
 

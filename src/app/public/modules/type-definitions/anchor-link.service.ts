@@ -34,7 +34,7 @@ export class SkyDocsAnchorLinkService {
 
     Object.keys(this.anchorIds).forEach((typeName) => {
       const anchorId = this.anchorIds[typeName];
-      const anchorHtml = `<a href="#${anchorId}" class="sky-docs-anchor-link">${typeName}</a>`;
+      const anchorHtml = `<a class="sky-docs-anchor-link" href="#${anchorId}">${typeName}</a>`;
       const regex = createRegex(typeName);
 
       let matches: RegExpExecArray;

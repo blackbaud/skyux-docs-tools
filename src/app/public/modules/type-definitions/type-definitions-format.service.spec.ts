@@ -188,7 +188,7 @@ describe('Type definitions format service', () => {
 
     const definition = service.getPropertySignature(propertyDef);
     expect(definition).toEqual(
-      '@Output()<br /><strike>click</strike>: EventEmitter<<a href="#foo-user" class="sky-docs-anchor-link">FooUser</a>>'
+      '@Output()<br /><strike>click</strike>: EventEmitter<<a class="sky-docs-anchor-link" href="#foo-user">FooUser</a>>'
     );
   });
 
@@ -202,7 +202,7 @@ describe('Type definitions format service', () => {
 
     const definition = service.getPropertySignature(propertyDef);
     expect(definition).toEqual(
-      'foobar: <a href="#foo-user" class="sky-docs-anchor-link">FooUser</a>'
+      'foobar: <a class="sky-docs-anchor-link" href="#foo-user">FooUser</a>'
     );
   });
 

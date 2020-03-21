@@ -37,15 +37,15 @@ describe('Anchor link service', function () {
     const result = service.applyTypeAnchorLinks(content);
 
     expect(result).toEqual([
-      '<a href="#foo" class="sky-docs-anchor-link">Foo</a>',
-      '<a href="#foo-component" class="sky-docs-anchor-link">FooComponent</a>',
-      '<a href="#foo-user" class="sky-docs-anchor-link">FooUser</a>',
-      '<a href="#foo" class="sky-docs-anchor-link">Foo</a>',
-      '<a href="#foo" class="sky-docs-anchor-link">Foo</a>',
-      '<a href="#foo-user" class="sky-docs-anchor-link">FooUser</a>',
-      '<a href="#foo-component" class="sky-docs-anchor-link">FooComponent</a>',
-      '<a href="#foo" class="sky-docs-anchor-link">Foo</a>',
-      '(<a href="#foo-user" class="sky-docs-anchor-link">FooUser</a>)',
+      '<a class="sky-docs-anchor-link" href="#foo">Foo</a>',
+      '<a class="sky-docs-anchor-link" href="#foo-component">FooComponent</a>',
+      '<a class="sky-docs-anchor-link" href="#foo-user">FooUser</a>',
+      '<a class="sky-docs-anchor-link" href="#foo">Foo</a>',
+      '<a class="sky-docs-anchor-link" href="#foo">Foo</a>',
+      '<a class="sky-docs-anchor-link" href="#foo-user">FooUser</a>',
+      '<a class="sky-docs-anchor-link" href="#foo-component">FooComponent</a>',
+      '<a class="sky-docs-anchor-link" href="#foo">Foo</a>',
+      '(<a class="sky-docs-anchor-link" href="#foo-user">FooUser</a>)',
       'FooUnknown',
       'UnknownFoo'
     ].join(' '));

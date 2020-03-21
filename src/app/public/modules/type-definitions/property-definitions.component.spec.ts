@@ -136,9 +136,9 @@ describe('Property definitions component', function () {
     );
 
     expect(descriptionElement.innerHTML).toContain([
-      'Use <a href="#foo" class="sky-docs-anchor-link">Foo</a> from',
-      '<a href="#foo-user" class="sky-docs-anchor-link">FooUser</a> instead,',
-      'because <a href="#foo" class="sky-docs-anchor-link">Foo</a> is now supported.'
+      'Use <a class="sky-docs-anchor-link" href="#foo">Foo</a> from',
+      '<a class="sky-docs-anchor-link" href="#foo-user">FooUser</a> instead,',
+      'because <a class="sky-docs-anchor-link" href="#foo">Foo</a> is now supported.'
     ].join(' '));
   }));
 
@@ -154,7 +154,7 @@ describe('Property definitions component', function () {
     );
 
     expect(nameElement.innerHTML).toContain(
-      '<a href="#foo" class="sky-docs-anchor-link">Foo</a>'
+      '<a class="sky-docs-anchor-link" href="#foo">Foo</a>'
     );
   }));
 
@@ -172,7 +172,7 @@ describe('Property definitions component', function () {
     );
 
     expect(descriptionElement.innerHTML).toContain(
-      'new <a href="#foo-user" class="sky-docs-anchor-link">FooUser</a>()'
+      'new <a class="sky-docs-anchor-link" href="#foo-user">FooUser</a>()'
     );
   }));
 

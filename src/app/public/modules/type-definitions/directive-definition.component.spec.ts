@@ -82,7 +82,7 @@ describe('Directive definition component', function () {
           decorator: 'Output',
           isOptional: true,
           name: 'bar',
-          type: 'EventEmitter<void>'
+          type: 'EventEmitter&lt;void&gt;'
         },
         {
           decorator: 'Input',
@@ -116,7 +116,7 @@ describe('Directive definition component', function () {
     );
 
     expect(descriptionElement.innerHTML).toContain(
-      '<a href="#foo-user" class="sky-docs-anchor-link">FooUser</a>'
+      '<a class="sky-docs-anchor-link" href="#foo-user">FooUser</a>'
     );
   }));
 
