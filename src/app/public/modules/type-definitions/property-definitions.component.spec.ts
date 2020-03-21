@@ -119,7 +119,7 @@ describe('Property definitions component', function () {
     );
 
     expect(descriptionElement.innerText).toContain(
-      'Deprecated. Do not use this feature.'
+      'Do not use this feature.'
     );
   }));
 
