@@ -73,11 +73,11 @@ export class SkyDocsTypeDefinitionsService {
   public getTypeDefinitions(sourceCodePath: string): SkyDocsTypeDefinitions {
 
     if (sourceCodePath.charAt(sourceCodePath.length - 1) !== '/') {
-      throw 'The source code path must end with a forward slash (`/`).';
+      throw new Error('The source code path must end with a forward slash (`/`).');
     }
 
     if (sourceCodePath.indexOf('\\') > -1) {
-      throw 'The source code path may only be constructed with forward slashes (`/`).';
+      throw new Error('The source code path may only be constructed with forward slashes (`/`).');
     }
 
     const typeDefinitions = this.typeDefinitionsProvider.typeDefinitions;

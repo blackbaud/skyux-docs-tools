@@ -147,8 +147,6 @@ describe('Demo component', () => {
       fixture.detectChanges();
       tick();
 
-      console.log(selectionSpy.calls.allArgs());
-
       // Resetting the controls should emit their original values.
       expect(selectionSpy.calls.allArgs()).toEqual([
         [{ showIcon: true }],
