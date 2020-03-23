@@ -1,3 +1,7 @@
+import {
+  FooUser
+} from './foo-user';
+
 /**
  * This is the description for FooTypeFunction.
  * @param needle  The string to find.
@@ -6,4 +10,4 @@
 export type FooTypeUnionFunction = (
   needle: string,
   haystack?: string
-) => boolean;
+) => FooUser;

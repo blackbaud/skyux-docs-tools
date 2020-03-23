@@ -23,6 +23,12 @@ import {
 } from './property-definition';
 
 import {
+  SkyDocsTypeAliasFunctionDefinition,
+  SkyDocsTypeAliasIndexSignatureDefinition,
+  SkyDocsTypeAliasUnionDefinition
+} from './type-alias-definition';
+
+import {
   SkyDocsTypeDefinitionsFormatService
 } from './type-definitions-format.service';
 
@@ -139,8 +145,8 @@ describe('Type definitions format service', () => {
       type: 'string'
     };
 
-    const definition = service.getParameterSignature(paramDef);
-    expect(definition).toEqual('foobar: string');
+    const signature = service.getParameterSignature(paramDef);
+    expect(signature).toEqual('foobar: string');
   });
 
   it('should generate an interface signature', () => {
@@ -161,8 +167,8 @@ describe('Type definitions format service', () => {
       ]
     };
 
-    const definition = service.getInterfaceSignature(interfaceDef);
-    expect(definition).toEqual('interface Foobar {\n  foo: Type<T>;\n  bar?: string;\n}');
+    const signature = service.getInterfaceSignature(interfaceDef);
+    expect(signature).toEqual('interface Foobar {\n  foo: Type<T>;\n  bar?: string;\n}');
   });
 
   it('should generate an interface signature with type params', () => {
@@ -182,8 +188,8 @@ describe('Type definitions format service', () => {
       ]
     };
 
-    const definition = service.getInterfaceSignature(interfaceDef);
-    expect(definition).toEqual('interface Foobar<T, U extends User> {\n  foo: Type<T>;\n}');
+    const signature = service.getInterfaceSignature(interfaceDef);
+    expect(signature).toEqual('interface Foobar<T, U extends User> {\n  foo: Type<T>;\n}');
   });
 
   it('should generate a property signature', () => {
@@ -194,8 +200,8 @@ describe('Type definitions format service', () => {
       type: 'string'
     };
 
-    const definition = service.getPropertySignature(propertyDef);
-    expect(definition).toEqual('foobar: string');
+    const signature = service.getPropertySignature(propertyDef);
+    expect(signature).toEqual('foobar: string');
   });
 
   it('should generate an optional property signature', () => {
@@ -206,8 +212,8 @@ describe('Type definitions format service', () => {
       type: 'string'
     };
 
-    const definition = service.getPropertySignature(propertyDef);
-    expect(definition).toEqual('foobar?: string');
+    const signature = service.getPropertySignature(propertyDef);
+    expect(signature).toEqual('foobar?: string');
   });
 
   it('should generate a property signature with a decorator', () => {
@@ -219,8 +225,8 @@ describe('Type definitions format service', () => {
       type: 'string'
     };
 
-    const definition = service.getPropertySignature(propertyDef);
-    expect(definition).toEqual('@Input()<br />foobar: string');
+    const signature = service.getPropertySignature(propertyDef);
+    expect(signature).toEqual('@Input()<br />foobar: string');
   });
 
   it('should generate a deprecated property signature', () => {
@@ -233,8 +239,8 @@ describe('Type definitions format service', () => {
       deprecationWarning: 'Do not use this feature.'
     };
 
-    const definition = service.getPropertySignature(propertyDef);
-    expect(definition).toEqual(
+    const signature = service.getPropertySignature(propertyDef);
+    expect(signature).toEqual(
       '@Output()<br /><strike>click</strike>: EventEmitter&lt;<a class="sky-docs-anchor-link" href="#foo-user">FooUser</a>&gt;'
     );
   });
@@ -247,10 +253,51 @@ describe('Type definitions format service', () => {
       type: 'FooUser'
     };
 
-    const definition = service.getPropertySignature(propertyDef);
-    expect(definition).toEqual(
+    const signature = service.getPropertySignature(propertyDef);
+    expect(signature).toEqual(
       'foobar: <a class="sky-docs-anchor-link" href="#foo-user">FooUser</a>'
     );
+  });
+
+  it('should generate a type alias index signature', () => {
+    const service = new SkyDocsTypeDefinitionsFormatService(anchorLinkService);
+    const definition: SkyDocsTypeAliasIndexSignatureDefinition = {
+      name: 'foo',
+      keyName: '_',
+      valueType: 'FooUser'
+    };
+
+    const signature = service.getTypeAliasSignature(definition);
+    expect(signature).toEqual('type foo = { [_: string]: FooUser }');
+  });
+
+  it('should generate a type alias union signature', () => {
+    const service = new SkyDocsTypeDefinitionsFormatService(anchorLinkService);
+    const definition: SkyDocsTypeAliasUnionDefinition = {
+      name: 'foo',
+      types: ['string', 'boolean', '\'above\'', 'FooUser']
+    };
+
+    const signature = service.getTypeAliasSignature(definition);
+    expect(signature).toEqual('type foo = string | boolean | \'above\' | FooUser');
+  });
+
+  it('should generate a type alias function signature', () => {
+    const service = new SkyDocsTypeDefinitionsFormatService(anchorLinkService);
+    const definition: SkyDocsTypeAliasFunctionDefinition = {
+      name: 'foo',
+      parameters: [
+        {
+          name: 'id',
+          type: 'number',
+          isOptional: false
+        }
+      ],
+      returnType: 'FooUser'
+    };
+
+    const signature = service.getTypeAliasSignature(definition);
+    expect(signature).toEqual('type foo = (id: number) => FooUser');
   });
 
 });

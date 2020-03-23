@@ -1,4 +1,6 @@
-<div class="sky-docs-type-alias-definition sky-docs-type-definition-wrapper">
+<div *ngIf="config"
+  class="sky-docs-type-alias-definition sky-docs-type-definition-wrapper"
+>
   <sky-docs-heading-anchor
     headingLevel="3"
     [anchorId]="config.anchorId"
@@ -7,13 +9,14 @@
   </sky-docs-heading-anchor>
 
   <sky-docs-safe-html
+    class="sky-docs-type-alias-definition-description"
     [innerHtml]="config.description | skyDocsTypeAnchorLinks"
   ></sky-docs-safe-html>
 
   <sky-code-block
     class="sky-docs-code-block"
     languageType="typescript"
-    [code]="config.sourceCode"
+    [code]="sourceCode"
     [hideHeader]="true"
   ></sky-code-block>
 
@@ -23,7 +26,9 @@
     </h4>
 
     <p class="sky-docs-type-alias-definition-return-type">
-      <sky-code>{{ config.returnType | skyDocsTypeAnchorLinks }}</sky-code>
+      <sky-code><span
+        [innerHtml]="config.returnType | skyDocsTypeAnchorLinks"
+      ></span></sky-code>
     </p>
   </ng-container>
 

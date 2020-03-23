@@ -30,6 +30,10 @@ import {
   ParameterDefinitionsFixtureComponent
 } from './parameter-definitions.component.fixture';
 
+import {
+  TypeAliasDefinitionFixtureComponent
+} from './type-alias-definition.component.fixture';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -40,14 +44,16 @@ import {
     DirectiveDefinitionFixtureComponent,
     InterfaceDefinitionFixtureComponent,
     ParameterDefinitionsFixtureComponent,
-    PropertyDefinitionsFixtureComponent
+    PropertyDefinitionsFixtureComponent,
+    TypeAliasDefinitionFixtureComponent
   ],
   declarations: [
     ClassDefinitionFixtureComponent,
     DirectiveDefinitionFixtureComponent,
     InterfaceDefinitionFixtureComponent,
     ParameterDefinitionsFixtureComponent,
-    PropertyDefinitionsFixtureComponent
+    PropertyDefinitionsFixtureComponent,
+    TypeAliasDefinitionFixtureComponent
   ]
 })
 export class TypeDefinitionsFixturesModule { }

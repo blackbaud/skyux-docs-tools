@@ -22,6 +22,12 @@ import {
   SkyDocsPropertyDefinition
 } from './property-definition';
 
+import {
+  SkyDocsTypeAliasFunctionDefinition,
+  SkyDocsTypeAliasIndexSignatureDefinition,
+  SkyDocsTypeAliasUnionDefinition
+} from './type-alias-definition';
+
 @Injectable()
 export class SkyDocsTypeDefinitionsFormatService {
 
@@ -115,17 +121,49 @@ export class SkyDocsTypeDefinitionsFormatService {
       signature += '?';
     }
 
-    if (item.type) {
-      const propertyType = this.anchorLinkService.applyTypeAnchorLinks(
-        this.escapeSpecialCharacters(item.type)
-      );
-      signature += `: ${propertyType}`;
+    const propertyType = this.anchorLinkService.applyTypeAnchorLinks(
+      this.escapeSpecialCharacters(item.type)
+    );
+
+    signature += `: ${propertyType}`;
+
+    return signature;
+  }
+
+  public getTypeAliasSignature(
+    definition: SkyDocsTypeAliasIndexSignatureDefinition |
+      SkyDocsTypeAliasFunctionDefinition |
+      SkyDocsTypeAliasUnionDefinition
+  ): string {
+    let signature = `type ${definition.name} = `;
+
+    // Function type
+    if ('returnType' in definition) {
+      const parameters = (definition.parameters)
+        ? definition.parameters.map(p => this.getParameterSignature(p))
+        : [];
+
+      signature += `(${parameters.join(', ')}) => ${definition.returnType}`;
+    }
+
+    // Index signature
+    if ('keyName' in definition) {
+      signature += `{ [${definition.keyName}: string]: ${definition.valueType} }`;
+    }
+
+    // Union type
+    if ('types' in definition) {
+      signature += definition.types.join(' | ');
     }
 
     return signature;
   }
 
   private escapeSpecialCharacters(value: string): string {
+    if (!value) {
+      return;
+    }
+
     return value.replace(/</g, '&lt;').replace(/>/g, '&gt;');
   }
 

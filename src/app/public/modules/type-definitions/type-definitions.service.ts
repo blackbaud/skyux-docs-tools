@@ -47,7 +47,10 @@ import {
 } from './class-definition';
 
 import {
-  SkyDocsTypeAliasDefinition
+  SkyDocsTypeAliasDefinition,
+  SkyDocsTypeAliasFunctionDefinition,
+  SkyDocsTypeAliasIndexSignatureDefinition,
+  SkyDocsTypeAliasUnionDefinition
 } from './type-alias-definition';
 
 import {
@@ -418,12 +421,12 @@ export class SkyDocsTypeDefinitionsService {
   }
 
   private parseTypeAliasDefinition(item: any): SkyDocsTypeAliasDefinition {
-    let sourceCode = `type ${item.name} = `;
-
-    const parameters: any[] = [];
+    const {
+      description
+    } = this.parseCommentTags(item.comment);
 
     if (item.type.type === 'union') {
-      sourceCode += item.type.types.map((t: any) => {
+      const types = item.type.types.map((t: any) => {
         if (t.type === 'intrinsic' || t.type === 'reference') {
           return t.name;
         }
@@ -431,67 +434,64 @@ export class SkyDocsTypeDefinitionsService {
         let value = t.value;
         if (t.type === 'stringLiteral') {
           return `'${value}'`;
-        } else {
-          return value;
         }
-      }).join(' | ');
-    }
 
-    let returnType: string;
+        return value;
+      });
+
+      const typeAlias: SkyDocsTypeAliasUnionDefinition = {
+        anchorId: item.anchorId,
+        description,
+        name: item.name,
+        types
+      };
+
+      return typeAlias;
+    }
 
     if (item.type.type === 'reflection') {
       if (item.type.declaration.signatures) {
         const callSignature = item.type.declaration.signatures[0];
-
-        sourceCode += '(';
-        sourceCode += callSignature.parameters.map((p: any) => {
-          const foundTag = item.comment.tags.find((tag: any) => {
-            return (tag.tag === 'param' && tag.param === p.name);
-          });
-
+        const parameters = callSignature.parameters.map((p: any) => {
           const isOptional = this.isOptional(p);
-          const defaultValue = this.getDefaultValue(p);
+          const tags = this.parseCommentTags(item.comment);
+          const parameter: SkyDocsParameterDefinition = {
+            defaultValue: tags.defaultValue,
+            description: tags.description,
+            isOptional,
+            name: p.name,
+            type: p.type.name
+          };
 
-          if (foundTag) {
-            parameters.push({
-              defaultValue,
-              description: foundTag.text,
-              isOptional,
-              name: p.name,
-              type: p.type.name
-            });
-          }
+          return parameter;
+        });
 
-          const optionalIndicator = (isOptional) ? '?' : '';
-          return `${p.name}${optionalIndicator}: ${p.type.name}`;
+        const typeAlias: SkyDocsTypeAliasFunctionDefinition = {
+          anchorId: item.anchorId,
+          description,
+          name: item.name,
+          parameters,
+          returnType: callSignature.type.name
+        };
 
-        }).join(', ');
-
-        sourceCode += `) => ${callSignature.type.name}`;
-        returnType = callSignature.type.name;
+        return typeAlias;
       }
 
       if (item.type.declaration.indexSignature) {
         const indexSignature = item.type.declaration.indexSignature[0];
         const param = indexSignature.parameters[0];
-        sourceCode += `{\n  [${param.name}: ${param.type.name}]: ${indexSignature.type.name}\n}`;
+
+        const typeAlias: SkyDocsTypeAliasIndexSignatureDefinition = {
+          anchorId: item.anchorId,
+          description,
+          name: item.name,
+          keyName: param.name,
+          valueType: indexSignature.type.name
+        };
+
+        return typeAlias;
       }
     }
-
-    sourceCode += ';';
-
-    const {
-      description
-    } = this.parseCommentTags(item.comment);
-
-    return {
-      anchorId: item.anchorId,
-      description,
-      name: item.name,
-      parameters,
-      returnType,
-      sourceCode
-    };
   }
 
   private parseFormattedType(
