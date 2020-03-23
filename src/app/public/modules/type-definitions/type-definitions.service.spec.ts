@@ -15,20 +15,106 @@ describe('Type definitions service', function () {
   let definitionsProvider: SkyDocsTypeDefinitionsProvider;
 
   beforeEach(() => {
+    const interfaces = [
+      {
+        anchorId: 'interface-foo-basic',
+        comment: {
+          shortText: ''
+        },
+        kindString: 'Interface',
+        name: 'FooBasic',
+        sources: [{
+          fileName: '/modules/foobar/foo-basic.ts'
+        }]
+      },
+      {
+        anchorId: 'interface-foo',
+        children: [
+          {
+            comment: {
+              shortText: 'This is the description for bar.'
+            },
+            kindString: 'Property',
+            name: 'bar',
+            type: {
+              name: 'T',
+              type: 'typeParameter'
+            }
+          },
+          {
+            comment: {
+              shortText: 'This is the description for baz.'
+            },
+            flags: {
+              isOptional: true
+            },
+            kindString: 'Property',
+            name: 'baz',
+            type: {
+              constraint: {
+                type: 'reference',
+                name: 'FooUser'
+              },
+              name: 'U',
+              type: 'typeParameter'
+            }
+          },
+          {
+            name: 'user',
+            kindString: 'Property',
+            type: {
+              type: 'reference',
+              name: 'FooUser'
+            }
+          }
+        ],
+        comment: {
+          shortText: 'Description for Foo.'
+        },
+        indexSignature: [
+          {
+            comment: {
+              shortText: 'The key/value pair.'
+            },
+            parameters: [
+              {
+                name: 'key',
+                type: {
+                  name: 'string'
+                }
+              }
+            ],
+            type: {
+              name: 'any'
+            }
+          }
+        ],
+        kindString: 'Interface',
+        name: 'Foo',
+        sources: [{
+          fileName: '/modules/foobar/foo.ts'
+        }],
+        typeParameter: [
+          {
+            kindString: 'Type parameter',
+            name: 'T'
+          },
+          {
+            kindString: 'Type parameter',
+            name: 'U',
+            type: {
+              name: 'FooUser',
+              type: 'reference'
+            }
+          }
+        ]
+      }
+    ];
+
     definitionsProvider = {
       anchorIds: {},
       typeDefinitions: [
-        {
-          anchorId: 'foo-user',
-          kindString: 'Interface',
-          name: 'FooUser',
-          sources: [{
-            fileName: '/modules/foobar/foo-user.ts'
-          }],
-          comment: {
-            shortText: 'Description for FooUser.'
-          }
-        }
+        ...interfaces
       ]
     };
   });
@@ -42,11 +128,43 @@ describe('Type definitions service', function () {
       enumerations: [],
       interfaces: [
         {
-          anchorId: 'foo-user',
-          description: 'Description for FooUser.',
-          name: 'FooUser',
+          anchorId: 'interface-foo-basic',
+          description: '',
+          name: 'FooBasic',
           properties: [],
           typeParameters: []
+        },
+        {
+          anchorId: 'interface-foo',
+          description: 'Description for Foo.',
+          name: 'Foo',
+          properties: [
+            {
+              description: 'This is the description for bar.',
+              isOptional: true,
+              name: 'bar',
+              type: 'T'
+            },
+            {
+              description: 'This is the description for baz.',
+              isOptional: true,
+              name: 'baz',
+              type: 'U'
+            },
+            {
+              description: '',
+              isOptional: true,
+              name: 'user',
+              type: 'FooUser'
+            },
+            {
+              description: 'The key/value pair.',
+              isOptional: false,
+              name: '[key: string]',
+              type: 'any'
+            }
+          ],
+          typeParameters: ['T', 'U extends FooUser']
         }
       ],
       pipes: [],
@@ -56,6 +174,8 @@ describe('Type definitions service', function () {
   });
 
   it('should return empty type arrays if the path does not include types', () => {
+    (definitionsProvider as any).typeDefinitions = undefined;
+
     const service = new SkyDocsTypeDefinitionsService(definitionsProvider);
     const result = service.getTypeDefinitions('/src/app/public/modules/empty/');
     expect(result).toEqual({

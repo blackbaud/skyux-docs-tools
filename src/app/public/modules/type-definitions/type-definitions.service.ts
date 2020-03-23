@@ -79,10 +79,6 @@ export class SkyDocsTypeDefinitionsService {
       throw new Error('The source code path must end with a forward slash (`/`).');
     }
 
-    if (sourceCodePath.indexOf('\\') > -1) {
-      throw new Error('The source code path may only be constructed with forward slashes (`/`).');
-    }
-
     const typeDefinitions = this.typeDefinitionsProvider.typeDefinitions;
     const requestedDir = sourceCodePath.replace(
       /src(\/|\\)app(\/|\\)public(\/|\\)/,
