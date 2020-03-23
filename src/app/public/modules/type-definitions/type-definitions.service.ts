@@ -80,10 +80,9 @@ export class SkyDocsTypeDefinitionsService {
     }
 
     const typeDefinitions = this.typeDefinitionsProvider.typeDefinitions;
-    const requestedDir = sourceCodePath.replace(
-      /src(\/|\\)app(\/|\\)public(\/|\\)/,
-      ''
-    );
+    const requestedDir = sourceCodePath
+      .replace(/src\/app\/public\//, '')
+      .replace(/^\//, ''); // remove first slash.
 
     const types: SkyDocsTypeDefinitions = {
       components: [],
@@ -166,10 +165,12 @@ export class SkyDocsTypeDefinitionsService {
       description
     } = this.parseCommentTags(item.comment);
 
+    /*istanbul ignore else*/
     if (item.children) {
       item.children.forEach((c: any) => {
         const kindString = c.kindString;
 
+        /*istanbul ignore else*/
         if (
           kindString === 'Property' ||
           kindString === 'Accessor'
@@ -180,6 +181,7 @@ export class SkyDocsTypeDefinitionsService {
 
           const decorator = c.decorators[0].name;
 
+          /*istanbul ignore else*/
           if (
             decorator === 'Input' ||
             decorator === 'Output'
@@ -217,6 +219,7 @@ export class SkyDocsTypeDefinitionsService {
     const deprecationWarning = tags.deprecationWarning;
     const defaultValue = this.getDefaultValue(item);
 
+    /*tslint:disable-next-line:switch-default*/
     switch (kindString) {
       case 'Property':
         description = tags.description;
@@ -224,15 +227,13 @@ export class SkyDocsTypeDefinitionsService {
         break;
 
       case 'Accessor':
+        /*istanbul ignore else*/
         if (item.setSignature) {
           const setSignature: any = item.setSignature[0];
           description = setSignature.comment && setSignature.comment.shortText || '';
           typeName = this.parseFormattedType(setSignature.parameters[0].type);
         }
         break;
-
-      default:
-        return;
     }
 
     return {
@@ -252,9 +253,12 @@ export class SkyDocsTypeDefinitionsService {
 
     item.children.forEach((child: any) => {
       if (child.kindString === 'Property') {
-        const propertyDescription = (child.comment) ? child.comment.shortText : '';
+        const {
+          description: propertyDescription
+        } = this.parseCommentTags(child.comment);
 
         properties.push({
+          defaultValue: this.getDefaultValue(child),
           description: propertyDescription,
           name: child.name,
           type: this.parseFormattedType(child.type)
@@ -402,15 +406,23 @@ export class SkyDocsTypeDefinitionsService {
 
   private parseEnumerationDefinition(item: any): SkyDocsEnumerationDefinition {
     const members = item.children.map((p: any) => {
+      const {
+        description: memberDescription
+      } = this.parseCommentTags(p.comment);
+
       return {
-        description: (p.comment) ? p.comment.shortText : '',
+        description: memberDescription,
         name: `${item.name}.${p.name}`
       };
     });
 
+    const {
+      description
+    } = this.parseCommentTags(item.comment);
+
     return {
       anchorId: item.anchorId,
-      description: (item.comment) ? item.comment.shortText : '',
+      description,
       members,
       name: item.name
     };
@@ -534,9 +546,11 @@ export class SkyDocsTypeDefinitionsService {
     let deprecationWarning: string;
     let defaultValue: string;
     let description: string = '';
+
     const extras: {[key: string]: string} = {};
 
     if (comment) {
+      /*istanbul ignore else*/
       if (comment.tags) {
         comment.tags.forEach((tag: any) => {
           switch (tag.tag.toLowerCase()) {
@@ -552,9 +566,7 @@ export class SkyDocsTypeDefinitionsService {
               break;
 
             case 'example':
-              if (
-                tag.text
-              ) {
+              if (tag.text) {
                 codeExample = tag.text.trim().split('```')[1].trim();
                 const language = codeExample.split('\n')[0];
                 if (language === 'markup' || language === 'typescript') {
