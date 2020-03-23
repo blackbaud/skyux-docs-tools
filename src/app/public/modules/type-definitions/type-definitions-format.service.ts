@@ -7,6 +7,10 @@ import {
 } from './anchor-link.service';
 
 import {
+  SkyDocsInterfaceDefinition
+} from './interface-definition';
+
+import {
   SkyDocsMethodDefinition
 } from './method-definition';
 
@@ -25,6 +29,23 @@ export class SkyDocsTypeDefinitionsFormatService {
     private anchorLinkService: SkyDocsAnchorLinkService
   ) { }
 
+  public getInterfaceSignature(definition: SkyDocsInterfaceDefinition): string {
+    const typeParameterSignature: string = (definition.typeParameters && definition.typeParameters.length)
+      ? `<${definition.typeParameters.join(', ')}>`
+      : '';
+
+    let signature: string = `interface ${definition.name}${typeParameterSignature} {`;
+
+    definition.properties.forEach((property) => {
+      const optionalIndicator = (property.isOptional) ? '?' : '';
+      signature += `\n  ${property.name}${optionalIndicator}: ${property.type.replace(/\"/g, '\'')};`;
+    });
+
+    signature += '\n}';
+
+    return signature;
+  }
+
   public getMethodSignature(method: SkyDocsMethodDefinition): string {
     const typeParameterSignature: string = (method.typeParameters && method.typeParameters.length)
       ? `<${method.typeParameters.join(', ')}>`
@@ -34,7 +55,10 @@ export class SkyDocsTypeDefinitionsFormatService {
 
     if (method.parameters) {
       signature += method.parameters
-        .map((parameter) => this.getParameterSignature(parameter, false))
+        .map((parameter) => this.getParameterSignature(parameter, {
+          createAnchorLinks: false,
+          escapeSpecialCharacters: false
+        }))
         .join(', ');
     }
 
@@ -49,15 +73,28 @@ export class SkyDocsTypeDefinitionsFormatService {
 
   public getParameterSignature(
     parameter: SkyDocsParameterDefinition,
-    createAnchorLinks: boolean = true
+    config: {
+      createAnchorLinks?: boolean;
+      escapeSpecialCharacters?: boolean;
+    } = {
+      createAnchorLinks: true,
+      escapeSpecialCharacters: true
+    }
   ): string {
     const optionalMarker = (parameter.isOptional && !parameter.defaultValue) ? '?' : '';
     const defaultValue = (parameter.defaultValue) ? ` = ${parameter.defaultValue}` : '';
-    const parameterType = (createAnchorLinks)
-      ? this.anchorLinkService.applyTypeAnchorLinks(parameter.type)
-      : parameter.type;
 
-    return `${parameter.name}${optionalMarker}: ${parameterType}${defaultValue}`;
+    let signature = `${parameter.name}${optionalMarker}: ${parameter.type}${defaultValue}`;
+
+    if (config.escapeSpecialCharacters) {
+      signature = this.escapeSpecialCharacters(signature);
+    }
+
+    if (config.createAnchorLinks) {
+      signature = this.anchorLinkService.applyTypeAnchorLinks(signature);
+    }
+
+    return signature;
   }
 
   public getPropertySignature(item: SkyDocsPropertyDefinition): string {
@@ -79,11 +116,17 @@ export class SkyDocsTypeDefinitionsFormatService {
     }
 
     if (item.type) {
-      const propertyType = this.anchorLinkService.applyTypeAnchorLinks(item.type);
+      const propertyType = this.anchorLinkService.applyTypeAnchorLinks(
+        this.escapeSpecialCharacters(item.type)
+      );
       signature += `: ${propertyType}`;
     }
 
     return signature;
+  }
+
+  private escapeSpecialCharacters(value: string): string {
+    return value.replace(/</g, '&lt;').replace(/>/g, '&gt;');
   }
 
 }

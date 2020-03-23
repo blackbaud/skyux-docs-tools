@@ -288,16 +288,7 @@ export class SkyDocsTypeDefinitionsService {
     const signature: any = item.signatures[0];
     const parameters: SkyDocsParameterDefinition[] = [];
 
-    let typeParameters: string[] = [];
-    if (signature.typeParameter) {
-      typeParameters = signature.typeParameter.map((t: any) => {
-        if (t.type && t.type.type === 'reference') {
-          return `${t.name} extends ${t.type.name}`;
-        }
-
-        return t.name;
-      });
-    }
+    const typeParameters = this.parseTypeParameters(signature);
 
     if (signature.parameters) {
       signature.parameters.forEach((p: any) => {
@@ -307,7 +298,7 @@ export class SkyDocsTypeDefinitionsService {
           description: (p.comment) ? p.comment.text : '',
           isOptional: (defaultValue) ? true : this.isOptional(p),
           name: p.name,
-          type: this.parseFormattedType(p.type, false)
+          type: this.parseFormattedType(p.type)
         };
 
         parameters.push(parameter);
@@ -367,22 +358,13 @@ export class SkyDocsTypeDefinitionsService {
 
   private parseInterfaceDefinition(item: any): SkyDocsInterfaceDefinition {
     const properties: SkyDocsInterfacePropertyDefinition[] = [];
-
-    let interfaceName = item.name;
-    let typeParams = '';
-
-    if (item.typeParameter) {
-      const typeParameterNames = item.typeParameter.map((t: any) => t.name);
-      typeParams = `<${typeParameterNames.join(', ')}>`;
-    }
-
-    let sourceCode: string = `interface ${interfaceName}${typeParams} {`;
+    const typeParameters = this.parseTypeParameters(item);
 
     if (item.children) {
       item.children.forEach((p: any) => {
         const { description: propertyDescription } = this.parseCommentTags(p.comment);
         const isOptional = this.isOptional(p);
-        const typeName = this.parseFormattedType(p.type, false);
+        const typeName = this.parseFormattedType(p.type);
         const property: SkyDocsInterfacePropertyDefinition = {
           description: propertyDescription,
           isOptional,
@@ -406,13 +388,6 @@ export class SkyDocsTypeDefinitionsService {
       });
     }
 
-    properties.forEach((property) => {
-      const optionalIndicator = (property.isOptional) ? '?' : '';
-      sourceCode += `\n  ${property.name}${optionalIndicator}: ${property.type.replace(/\"/g, '\'')};`;
-    });
-
-    sourceCode += '\n}';
-
     const {
       description
     } = this.parseCommentTags(item.comment);
@@ -420,9 +395,9 @@ export class SkyDocsTypeDefinitionsService {
     return {
       anchorId: item.anchorId,
       description,
-      name: interfaceName,
+      name: item.name,
       properties,
-      sourceCode
+      typeParameters
     };
   }
 
@@ -525,8 +500,7 @@ export class SkyDocsTypeDefinitionsService {
       name: string;
       type: string;
       typeArguments?: any[];
-    },
-    escapeCharacters: boolean = true
+    }
   ): string {
     let formatted: string;
 
@@ -548,10 +522,7 @@ export class SkyDocsTypeDefinitionsService {
         return typeArgument.name;
       });
 
-      const lessThan = (escapeCharacters) ? '&lt;' : '<';
-      const greaterThan = (escapeCharacters) ? '&gt;' : '>';
-
-      formatted += `${lessThan}${typeArguments.join(', ')}${greaterThan}`;
+      formatted += `<${typeArguments.join(', ')}>`;
     }
 
     if (typeConfig.type === 'array') {
@@ -617,6 +588,21 @@ export class SkyDocsTypeDefinitionsService {
       description,
       extras
     };
+  }
+
+  private parseTypeParameters(item: { typeParameter?: any[] }): string[] {
+    let typeParameters: string[] = [];
+    if (item.typeParameter) {
+      typeParameters = item.typeParameter.map((t: any) => {
+        if (t.type && t.type.type === 'reference') {
+          return `${t.name} extends ${t.type.name}`;
+        }
+
+        return t.name;
+      });
+    }
+
+    return typeParameters;
   }
 
   private sortDirectiveProperties(properties: SkyDocsDirectivePropertyDefinition[], key: keyof SkyDocsDirectivePropertyDefinition): void {

@@ -46,7 +46,7 @@ describe('Type definitions service', function () {
           description: 'Description for FooUser.',
           name: 'FooUser',
           properties: [],
-          sourceCode: 'interface FooUser {\n}'
+          typeParameters: []
         }
       ],
       pipes: [],

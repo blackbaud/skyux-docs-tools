@@ -7,6 +7,10 @@ import {
 } from './anchor-link.service';
 
 import {
+  SkyDocsInterfaceDefinition
+} from './interface-definition';
+
+import {
   SkyDocsMethodDefinition
 } from './method-definition';
 
@@ -139,6 +143,49 @@ describe('Type definitions format service', () => {
     expect(definition).toEqual('foobar: string');
   });
 
+  it('should generate an interface signature', () => {
+    const service = new SkyDocsTypeDefinitionsFormatService(anchorLinkService);
+    const interfaceDef: SkyDocsInterfaceDefinition = {
+      name: 'Foobar',
+      properties: [
+        {
+          isOptional: false,
+          name: 'foo',
+          type: 'Type<T>'
+        },
+        {
+          isOptional: true,
+          name: 'bar',
+          type: 'string'
+        }
+      ]
+    };
+
+    const definition = service.getInterfaceSignature(interfaceDef);
+    expect(definition).toEqual('interface Foobar {\n  foo: Type<T>;\n  bar?: string;\n}');
+  });
+
+  it('should generate an interface signature with type params', () => {
+    const service = new SkyDocsTypeDefinitionsFormatService(anchorLinkService);
+    const interfaceDef: SkyDocsInterfaceDefinition = {
+      name: 'Foobar',
+      properties: [
+        {
+          isOptional: false,
+          name: 'foo',
+          type: 'Type<T>'
+        }
+      ],
+      typeParameters: [
+        'T',
+        'U extends User'
+      ]
+    };
+
+    const definition = service.getInterfaceSignature(interfaceDef);
+    expect(definition).toEqual('interface Foobar<T, U extends User> {\n  foo: Type<T>;\n}');
+  });
+
   it('should generate a property signature', () => {
     const service = new SkyDocsTypeDefinitionsFormatService(anchorLinkService);
     const propertyDef: SkyDocsPropertyDefinition = {
@@ -188,7 +235,7 @@ describe('Type definitions format service', () => {
 
     const definition = service.getPropertySignature(propertyDef);
     expect(definition).toEqual(
-      '@Output()<br /><strike>click</strike>: EventEmitter<<a class="sky-docs-anchor-link" href="#foo-user">FooUser</a>>'
+      '@Output()<br /><strike>click</strike>: EventEmitter&lt;<a class="sky-docs-anchor-link" href="#foo-user">FooUser</a>&gt;'
     );
   });
 

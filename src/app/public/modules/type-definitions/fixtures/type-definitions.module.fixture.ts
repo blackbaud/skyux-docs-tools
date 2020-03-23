@@ -19,6 +19,10 @@ import {
 } from './directive-definition.component.fixture';
 
 import {
+  InterfaceDefinitionFixtureComponent
+} from './interface-definition.component.fixture';
+
+import {
   PropertyDefinitionsFixtureComponent
 } from './property-definitions.component.fixture';
 
@@ -34,12 +38,14 @@ import {
   exports: [
     ClassDefinitionFixtureComponent,
     DirectiveDefinitionFixtureComponent,
+    InterfaceDefinitionFixtureComponent,
     ParameterDefinitionsFixtureComponent,
     PropertyDefinitionsFixtureComponent
   ],
   declarations: [
     ClassDefinitionFixtureComponent,
     DirectiveDefinitionFixtureComponent,
+    InterfaceDefinitionFixtureComponent,
     ParameterDefinitionsFixtureComponent,
     PropertyDefinitionsFixtureComponent
   ]

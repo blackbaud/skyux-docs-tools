@@ -25,13 +25,16 @@ import {
   selector: 'app-foo',
   template: ''
 })
-export class FooComponent implements OnInit {
+export class FooComponent<U extends FooUser> implements OnInit {
 
   /**
    * This is the description for foo input. You must provide [[FooEnum]] values.
    */
   @Input()
   public foo: FooEnum;
+
+  @Input()
+  public user: U;
 
   @Input()
   public sample: string;
@@ -75,6 +78,9 @@ export class FooComponent implements OnInit {
    */
   @Output()
   public click = new EventEmitter<FooUser>();
+
+  @Output()
+  public newUser = new EventEmitter<U>();
 
   /**
    * @hidden

@@ -12,5 +12,6 @@ export interface SkyDocsInterfaceDefinition {
 
   description?: string;
 
-  sourceCode?: string;
+  typeParameters?: string[];
+
 }

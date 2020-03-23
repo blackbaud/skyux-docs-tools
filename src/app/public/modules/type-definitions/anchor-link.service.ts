@@ -7,11 +7,14 @@ import {
 } from './type-definitions-provider';
 
 /**
- * Finds any type name that is NOT surrounded by alpha-numeric characters.
+ * Finds any type name that is NOT surrounded by alpha-numeric (and '>', '<', '.') characters.
  * (This is to avoid matching types that share similar words, such as `Foo` and `FooUser`.)
+ * Notes:
+ *  - If the type name is surrounded by angle brackets, then it has already been processed as a link.
+ *  - If the type name starts with a period '.', then it is a sub property of an enumeration, etc. and should not be processed as a link.
  */
 function createRegex(keyword: string): RegExp {
-  return new RegExp(`(^|[^a-zA-Z>]+)(${keyword})([^a-zA-Z<]+|$)`, 'g');
+  return new RegExp(`(^|[^a-zA-Z0-9>.]+)(${keyword})([^a-zA-Z0-9<]+|$)`, 'g');
 }
 
 @Injectable()
