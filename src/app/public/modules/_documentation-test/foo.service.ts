@@ -33,6 +33,8 @@ export class FooService implements OnDestroy {
 
   /**
    * This is the description for anotherFoo().
+   * @param component The component to create.
+   * @param user The user to use.
    * @deprecated Please use `createFoo` input on the [[FooComponent]] instead.
    */
   public anotherFoo<T, U extends FooUser>(component: Type<T>, user: U): void {}

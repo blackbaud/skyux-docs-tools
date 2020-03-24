@@ -312,6 +312,9 @@ describe('Type definitions service', function () {
                   {
                     name: 'component',
                     kindString: 'Parameter',
+                    comment: {
+                      text: 'The component to create.'
+                    },
                     type: {
                       type: 'reference',
                       typeArguments: [
@@ -326,6 +329,9 @@ describe('Type definitions service', function () {
                   {
                     name: 'user',
                     kindString: 'Parameter',
+                    comment: {
+                      text: 'The user to use.'
+                    },
                     type: {
                       type: 'typeParameter',
                       name: 'U',
@@ -479,6 +485,127 @@ describe('Type definitions service', function () {
       }
     ];
 
+    const typeAliases = [
+      {
+        name: 'FooTypeIndexSignature',
+        kindString: 'Type alias',
+        sources: [{
+          fileName: '/modules/foobar/foo-type-index-signature.ts'
+        }],
+        anchorId: 'type-alias-footypeindexsignature',
+        type: {
+          type: 'reflection',
+          declaration: {
+            kindString: 'Type literal',
+            indexSignature: [
+              {
+                kindString: 'Index signature',
+                parameters: [
+                  {
+                    name: '_',
+                    kindString: 'Parameter',
+                    type: {
+                      type: 'intrinsic',
+                      name: 'string'
+                    }
+                  }
+                ],
+                type: {
+                  type: 'reference',
+                  name: 'FooUser'
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        name: 'FooTypeUnion',
+        kindString: 'Type alias',
+        description: 'This is the description for FooTypeUnion. It can be of type [[FooDate]].',
+        sources: [{
+          fileName: '/modules/foobar/foo-type-union.ts'
+        }],
+        anchorId: 'type-alias-footypeunion',
+        type: {
+          type: 'union',
+          types: [
+            {
+              type: 'intrinsic',
+              name: 'string'
+            },
+            {
+              type: 'reference',
+              name: 'FooDate'
+            },
+            {
+              type: 'intrinsic',
+              name: 'number'
+            }
+          ]
+        }
+      },
+      {
+        name: 'FooTypeFunction',
+        kindString: 'Type alias',
+        sources: [{
+          fileName: '/modules/foobar/foo-type-function.ts'
+        }],
+        anchorId: 'type-alias-footypefunction',
+        comment: {
+          shortText: 'This is the description for FooTypeFunction.',
+          tags: [
+            {
+              tag: 'param',
+              text: 'The string to find.',
+              param: 'needle'
+            },
+            {
+              tag: 'param',
+              text: 'The string to search.\n',
+              param: 'haystack'
+            }
+          ]
+        },
+        type: {
+          type: 'reflection',
+          declaration: {
+            kindString: 'Type literal',
+            signatures: [
+              {
+                kindString: 'Call signature',
+                parameters: [
+                  {
+                    name: 'needle',
+                    kindString: 'Parameter',
+                    type: {
+                      type: 'intrinsic',
+                      name: 'string'
+                    }
+                  },
+                  {
+                    name: 'haystack',
+                    kindString: 'Parameter',
+                    flags: {
+                      isOptional: true
+                    },
+                    type: {
+                      type: 'intrinsic',
+                      name: 'string'
+                    }
+                  }
+                ],
+                type: {
+                  type: 'reference',
+                  name: 'FooUser'
+                }
+              }
+            ]
+          }
+        }
+      }
+    ];
+
     definitionsProvider = {
       anchorIds: {},
       typeDefinitions: [
@@ -487,7 +614,8 @@ describe('Type definitions service', function () {
         ...pipes,
         ...services,
         ...enumerations,
-        ...interfaces
+        ...interfaces,
+        ...typeAliases
       ]
     };
   });
@@ -673,15 +801,15 @@ describe('Type definitions service', function () {
               parameters: [
                 {
                   defaultValue: undefined,
-                  description: '',
-                  isOptional: true,
+                  description: 'The component to create.',
+                  isOptional: false,
                   name: 'component',
                   type: 'Type<T>'
                 },
                 {
                   defaultValue: undefined,
-                  description: '',
-                  isOptional: true,
+                  description: 'The user to use.',
+                  isOptional: false,
                   name: 'user',
                   type: 'U'
                 }
@@ -714,7 +842,41 @@ describe('Type definitions service', function () {
           ]
         }
       ],
-      typeAliases: []
+      typeAliases: [
+        {
+          anchorId: 'type-alias-footypeindexsignature',
+          description: '',
+          name: 'FooTypeIndexSignature',
+          keyName: '_',
+          valueType: 'FooUser'
+        },
+        {
+          anchorId: 'type-alias-footypeunion',
+          description: '',
+          name: 'FooTypeUnion',
+          types: [ 'string', 'FooDate', 'number' ]
+        },
+        {
+          anchorId: 'type-alias-footypefunction',
+          description: 'This is the description for FooTypeFunction.',
+          name: 'FooTypeFunction',
+          parameters: [
+            {
+              description: 'The string to find.',
+              isOptional: false,
+              name: 'needle',
+              type: 'string'
+            },
+            {
+              description: 'The string to search.',
+              isOptional: true,
+              name: 'haystack',
+              type: 'string'
+            }
+          ],
+          returnType: 'FooUser'
+        }
+      ]
     });
   });
 

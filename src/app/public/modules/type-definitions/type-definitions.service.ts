@@ -462,10 +462,11 @@ export class SkyDocsTypeDefinitionsService {
         const callSignature = item.type.declaration.signatures[0];
         const parameters = callSignature.parameters.map((p: any) => {
           const isOptional = this.isOptional(p);
-          const tags = this.parseCommentTags(item.comment);
+          const { extras } = this.parseCommentTags(item.comment);
+          const tagParam = extras.parameters.find((param: any) => param.name === p.name);
+
           const parameter: SkyDocsParameterDefinition = {
-            defaultValue: tags.defaultValue,
-            description: tags.description,
+            description: tagParam.description,
             isOptional,
             name: p.name,
             type: p.type.name
@@ -547,7 +548,9 @@ export class SkyDocsTypeDefinitionsService {
     let defaultValue: string;
     let description: string = '';
 
-    const extras: {[key: string]: string} = {};
+    const extras: {
+      [key: string]: any
+    } = {};
 
     if (comment) {
       /*istanbul ignore else*/
@@ -574,6 +577,14 @@ export class SkyDocsTypeDefinitionsService {
                   codeExampleLanguage = language;
                 }
               }
+              break;
+
+            case 'param':
+              extras.parameters = extras.parameters || [];
+              extras.parameters.push({
+                name: tag.param,
+                description: (tag.text) ? tag.text.trim() : ''
+              });
               break;
 
             default:
@@ -636,17 +647,16 @@ export class SkyDocsTypeDefinitionsService {
   }
 
   private isOptional(item: any): boolean {
+    console.log('isOptional?', item);
+
+    // If `@required` is in the comment, mark it as required.
     const tags = this.parseCommentTags(item.comment);
     if (tags.extras.required) {
       return false;
     }
 
-    if (item.flags) {
-      if (item.flags.isOptional) {
-        return true;
-      } else if (item.kindString === 'Parameter') {
-        return false;
-      }
+    if (item.kindString === 'Parameter') {
+      return !!(item.flags && item.flags.isOptional);
     }
 
     return true;

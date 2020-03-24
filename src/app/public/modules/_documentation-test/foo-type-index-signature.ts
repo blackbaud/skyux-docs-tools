@@ -2,7 +2,7 @@ import {
   FooUser
 } from './foo-user';
 
-export type FooIndexSignature = {
+export type FooTypeIndexSignature = {
 
   [_: string]: FooUser
 
