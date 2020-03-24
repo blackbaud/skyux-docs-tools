@@ -230,7 +230,10 @@ export class SkyDocsTypeDefinitionsService {
         /*istanbul ignore else*/
         if (item.setSignature) {
           const setSignature: any = item.setSignature[0];
-          description = setSignature.comment && setSignature.comment.shortText || '';
+          const {
+            description: setSignatureDescription
+          } = this.parseCommentTags(setSignature.comment);
+          description = setSignatureDescription;
           typeName = this.parseFormattedType(setSignature.parameters[0].type);
         }
         break;
@@ -298,7 +301,7 @@ export class SkyDocsTypeDefinitionsService {
         const defaultValue = this.getDefaultValue(p);
         const parameter: SkyDocsParameterDefinition = {
           defaultValue,
-          description: (p.comment) ? p.comment.text : '',
+          description: (p.comment) ? p.comment.text.trim() : '',
           isOptional: (defaultValue) ? true : this.isOptional(p),
           name: p.name,
           type: this.parseFormattedType(p.type)
@@ -363,6 +366,7 @@ export class SkyDocsTypeDefinitionsService {
     const properties: SkyDocsInterfacePropertyDefinition[] = [];
     const typeParameters = this.parseTypeParameters(item);
 
+    /*istanbul ignore else*/
     if (item.children) {
       item.children.forEach((p: any) => {
         const { description: propertyDescription } = this.parseCommentTags(p.comment);
@@ -435,16 +439,17 @@ export class SkyDocsTypeDefinitionsService {
 
     if (item.type.type === 'union') {
       const types = item.type.types.map((t: any) => {
+        const typeName = t.name;
+
         if (t.type === 'intrinsic' || t.type === 'reference') {
-          return t.name;
+          return typeName;
         }
 
-        let value = t.value;
         if (t.type === 'stringLiteral') {
-          return `'${value}'`;
+          return `'${t.value}'`;
         }
 
-        return value;
+        return typeName;
       });
 
       const typeAlias: SkyDocsTypeAliasUnionDefinition = {
@@ -457,6 +462,7 @@ export class SkyDocsTypeDefinitionsService {
       return typeAlias;
     }
 
+    /*istanbul ignore else*/
     if (item.type.type === 'reflection') {
       if (item.type.declaration.signatures) {
         const callSignature = item.type.declaration.signatures[0];
@@ -486,6 +492,7 @@ export class SkyDocsTypeDefinitionsService {
         return typeAlias;
       }
 
+      /*istanbul ignore else*/
       if (item.type.declaration.indexSignature) {
         const indexSignature = item.type.declaration.indexSignature[0];
         const param = indexSignature.parameters[0];
@@ -558,9 +565,8 @@ export class SkyDocsTypeDefinitionsService {
         comment.tags.forEach((tag: any) => {
           switch (tag.tag.toLowerCase()) {
             case 'deprecated':
-              if (tag.text) {
-                deprecationWarning = tag.text.trim();
-              }
+              /*istanbul ignore else*/
+              deprecationWarning = tag.text.trim();
               break;
 
             case 'default':
@@ -569,13 +575,12 @@ export class SkyDocsTypeDefinitionsService {
               break;
 
             case 'example':
-              if (tag.text) {
-                codeExample = tag.text.trim().split('```')[1].trim();
-                const language = codeExample.split('\n')[0];
-                if (language === 'markup' || language === 'typescript') {
-                  codeExample = codeExample.slice(language.length).trim();
-                  codeExampleLanguage = language;
-                }
+              /*istanbul ignore else*/
+              codeExample = tag.text.trim().split('```')[1].trim();
+              const language = codeExample.split('\n')[0];
+              if (language === 'markup' || language === 'typescript') {
+                codeExample = codeExample.slice(language.length).trim();
+                codeExampleLanguage = language;
               }
               break;
 
@@ -583,7 +588,7 @@ export class SkyDocsTypeDefinitionsService {
               extras.parameters = extras.parameters || [];
               extras.parameters.push({
                 name: tag.param,
-                description: (tag.text) ? tag.text.trim() : ''
+                description: tag.text.trim()
               });
               break;
 
@@ -647,8 +652,6 @@ export class SkyDocsTypeDefinitionsService {
   }
 
   private isOptional(item: any): boolean {
-    console.log('isOptional?', item);
-
     // If `@required` is in the comment, mark it as required.
     const tags = this.parseCommentTags(item.comment);
     if (tags.extras.required) {

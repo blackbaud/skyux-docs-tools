@@ -10,624 +10,27 @@ import {
   SkyDocsTypeDefinitionsService
 } from './type-definitions.service';
 
+import * as mockTypeDocJson from './fixtures/mock-documentation.json';
+
 describe('Type definitions service', function () {
 
   let definitionsProvider: SkyDocsTypeDefinitionsProvider;
 
   beforeEach(() => {
-    const components = [
-      {
-        anchorId: 'component-foo',
-        children: [
-          {
-            kindString: 'Property',
-            name: 'ignoreMe'
-          },
-          {
-            decorators: [{
-              name: 'Input'
-            }],
-            kindString: 'Property',
-            name: 'zed',
-            type: {
-              name: 'string'
-            }
-          },
-          {
-            comment: {
-              shortText: 'Description for userIds.',
-              tags: [
-                {
-                  tag: 'required',
-                  text: '\n'
-                },
-                {
-                  tag: 'deprecated',
-                  text: 'This is no longer needed.'
-                },
-                {
-                  tag: 'example',
-                  text: '\n```typescript\nconst a: string;\n```\n'
-                }
-              ]
-            },
-            decorators: [{
-              name: 'Input'
-            }],
-            kindString: 'Property',
-            name: 'userIds',
-            type: {
-              type: 'array',
-              elementType: {
-                type: 'reference',
-                name: 'number'
-              }
-            }
-          },
-          {
-            decorators: [{
-              name: 'Output'
-            }],
-            defaultValue: 'new EventEmitter<FooUser>()',
-            kindString: 'Property',
-            name: 'click',
-            type: {
-              name: 'EventEmitter',
-              typeArguments: [{
-                type: 'reference',
-                name: 'FooUser'
-              }]
-            }
-          },
-          {
-            comment: {
-              tags: [
-                {
-                  tag: 'default',
-                  text: 'new FooUser()'
-                }
-              ]
-            },
-            decorators: [{
-              name: 'Input'
-            }],
-            kindString: 'Accessor',
-            name: 'bar',
-            setSignature: [{
-              comment: {
-                shortText: 'Description for bar.'
-              },
-              parameters: [{
-                type: {
-                  type: 'reference',
-                  name: 'FooUser'
-                }
-              }]
-            }]
-          },
-          {
-            decorators: [{
-              name: 'Input'
-            }],
-            kindString: 'Accessor',
-            name: 'basicAccessor',
-            setSignature: [{
-              parameters: [{
-                type: {
-                  type: 'reference',
-                  name: 'string'
-                }
-              }]
-            }]
-          }
-        ],
-        comment: {
-          shortText: 'This is the description for FooComponent.',
-          tags: [
-            {
-              tag: 'deprecated',
-              text: 'This is no longer needed.'
-            },
-            {
-              tag: 'example',
-              text: '\n```markup\n<app-foo [baz]=\"true\"></app-foo>\n```\n'
-            }
-          ]
-        },
-        decorators: [
-          {
-            arguments: {
-              obj: "{\n  selector: 'app-foo',\n  template: ''\n}"
-            }
-          }
-        ],
-        kindString: 'Class',
-        name: 'FooComponent',
-        sources: [{
-          fileName: '/modules/foobar/foo.component.ts'
-        }]
-      }
-    ];
-
-    const directives = [
-      {
-        anchorId: 'directive-foo',
-        children: [
-          {
-            decorators: [{
-              name: 'Input'
-            }],
-            kindString: 'Property',
-            name: 'basic',
-            type: {
-              name: 'string'
-            }
-          }
-        ],
-        comment: {
-          shortText: 'This is the description for FooDirective.'
-        },
-        decorators: [
-          {
-            arguments: {
-              obj: "{\n  selector: 'appFoo'\n \n}"
-            }
-          }
-        ],
-        kindString: 'Class',
-        name: 'FooDirective',
-        sources: [{
-          fileName: '/modules/foobar/foo.directive.ts'
-        }]
-      }
-    ];
-
-    const pipes = [
-      {
-        name: 'FooPipe',
-        kindString: 'Class',
-        sources: [{
-          fileName: '/modules/foobar/foo.pipe.ts'
-        }],
-        children: [
-          {
-            kindString: 'Method',
-            name: 'transform',
-            signatures: [
-              {
-                name: 'transform',
-                kindString: 'Call signature',
-                comment: {
-                  shortText: 'Transforms the content.'
-                },
-                parameters: [
-                  {
-                    name: 'value',
-                    kindString: 'Parameter',
-                    comment: {
-                      text: 'The date to transform.'
-                    },
-                    type: {
-                      type: 'reference',
-                      name: 'Date'
-                    }
-                  },
-                  {
-                    name: 'format',
-                    kindString: 'Parameter',
-                    flags: {
-                      isOptional: true
-                    },
-                    comment: {
-                      text: 'The date format to use.'
-                    },
-                    type: {
-                      type: 'intrinsic',
-                      name: 'string'
-                    }
-                  },
-                  {
-                    name: 'locale',
-                    kindString: 'Parameter',
-                    flags: {
-                      isOptional: true
-                    },
-                    comment: {
-                      text: 'The desired locale.'
-                    },
-                    type: {
-                      type: 'intrinsic',
-                      name: 'string'
-                    }
-                  }
-                ],
-                type: {
-                  type: 'intrinsic',
-                  name: 'string'
-                }
-              }
-            ]
-          }
-        ],
-        comment: {}
-      }
-    ];
-
-    const services = [
-      {
-        name: 'FooService',
-        sources: [{
-          fileName: '/modules/foobar/foo.service.ts'
-        }],
-        comment: {
-          shortText: 'This is the description for FooService.'
-        },
-        children: [
-          {
-            name: 'FOOS',
-            kindString: 'Property',
-            comment: {
-              shortText: 'This is the description for FOOS.'
-            },
-            type: {
-              type: 'array',
-              elementType: {
-                type: 'intrinsic',
-                name: 'string'
-              }
-            },
-            defaultValue: '[]'
-          },
-          {
-            name: 'anotherFoo',
-            kindString: 'Method',
-            signatures: [
-              {
-                name: 'anotherFoo',
-                kindString: 'Call signature',
-                comment: {
-                  shortText: 'This is the description for anotherFoo().',
-                  tags: [
-                    {
-                      tag: 'deprecated',
-                      text: 'Please use `createFoo` input on the [[FooComponent]] instead.'
-                    }
-                  ]
-                },
-                typeParameter: [
-                  {
-                    name: 'T',
-                    kindString: 'Type parameter'
-                  },
-                  {
-                    name: 'U',
-                    kindString: 'Type parameter',
-                    type: {
-                      type: 'reference',
-                      name: 'FooUser'
-                    }
-                  }
-                ],
-                parameters: [
-                  {
-                    name: 'component',
-                    kindString: 'Parameter',
-                    comment: {
-                      text: 'The component to create.'
-                    },
-                    type: {
-                      type: 'reference',
-                      typeArguments: [
-                        {
-                          type: 'typeParameter',
-                          name: 'T'
-                        }
-                      ],
-                      name: 'Type'
-                    }
-                  },
-                  {
-                    name: 'user',
-                    kindString: 'Parameter',
-                    comment: {
-                      text: 'The user to use.'
-                    },
-                    type: {
-                      type: 'typeParameter',
-                      name: 'U',
-                      constraint: {
-                        type: 'reference',
-                        name: 'FooUser'
-                      }
-                    }
-                  }
-                ],
-                type: {
-                  type: 'intrinsic',
-                  name: 'void'
-                }
-              }
-            ]
-          },
-          {
-            name: 'basic',
-            kindString: 'Method',
-            signatures: [
-              {
-                name: 'basic',
-                kindString: 'Call signature',
-                type: {
-                  type: 'intrinsic',
-                  name: 'void'
-                }
-              }
-            ]
-          }
-        ]
-      }
-    ];
-
-    const enumerations = [
-      {
-        anchorId: 'enumeration-foo',
-        name: 'FooEnum',
-        kindString: 'Enumeration',
-        sources: [{
-          fileName: '/modules/foobar/foo-enum.ts'
-        }],
-        children: [{
-          name: 'Bar',
-          kindString: 'Enumeration member',
-          comment: {
-            shortText: 'The bar of the foo.'
-          },
-          defaultValue: '0'
-        }],
-        comment: {
-          shortText: 'This is the description for FooEnum.'
-        }
-      }
-    ];
-
-    const interfaces = [
-      {
-        anchorId: 'interface-foo-basic',
-        comment: {
-          shortText: ''
-        },
-        kindString: 'Interface',
-        name: 'FooBasic',
-        sources: [{
-          fileName: '/modules/foobar/foo-basic.ts'
-        }]
-      },
-      {
-        anchorId: 'interface-foo',
-        children: [
-          {
-            comment: {
-              shortText: 'This is the description for bar.'
-            },
-            kindString: 'Property',
-            name: 'bar',
-            type: {
-              name: 'T',
-              type: 'typeParameter'
-            }
-          },
-          {
-            comment: {
-              shortText: 'This is the description for baz.'
-            },
-            flags: {
-              isOptional: true
-            },
-            kindString: 'Property',
-            name: 'baz',
-            type: {
-              constraint: {
-                type: 'reference',
-                name: 'FooUser'
-              },
-              name: 'U',
-              type: 'typeParameter'
-            }
-          },
-          {
-            name: 'user',
-            kindString: 'Property',
-            type: {
-              type: 'reference',
-              name: 'FooUser'
-            }
-          }
-        ],
-        comment: {
-          shortText: 'Description for Foo.'
-        },
-        indexSignature: [
-          {
-            comment: {
-              shortText: 'The key/value pair.'
-            },
-            parameters: [
-              {
-                name: 'key',
-                type: {
-                  name: 'string'
-                }
-              }
-            ],
-            type: {
-              name: 'any'
-            }
-          }
-        ],
-        kindString: 'Interface',
-        name: 'Foo',
-        sources: [{
-          fileName: '/modules/foobar/foo.ts'
-        }],
-        typeParameter: [
-          {
-            kindString: 'Type parameter',
-            name: 'T'
-          },
-          {
-            kindString: 'Type parameter',
-            name: 'U',
-            type: {
-              name: 'FooUser',
-              type: 'reference'
-            }
-          }
-        ]
-      }
-    ];
-
-    const typeAliases = [
-      {
-        name: 'FooTypeIndexSignature',
-        kindString: 'Type alias',
-        sources: [{
-          fileName: '/modules/foobar/foo-type-index-signature.ts'
-        }],
-        anchorId: 'type-alias-footypeindexsignature',
-        type: {
-          type: 'reflection',
-          declaration: {
-            kindString: 'Type literal',
-            indexSignature: [
-              {
-                kindString: 'Index signature',
-                parameters: [
-                  {
-                    name: '_',
-                    kindString: 'Parameter',
-                    type: {
-                      type: 'intrinsic',
-                      name: 'string'
-                    }
-                  }
-                ],
-                type: {
-                  type: 'reference',
-                  name: 'FooUser'
-                }
-              }
-            ]
-          }
-        }
-      },
-      {
-        name: 'FooTypeUnion',
-        kindString: 'Type alias',
-        description: 'This is the description for FooTypeUnion. It can be of type [[FooDate]].',
-        sources: [{
-          fileName: '/modules/foobar/foo-type-union.ts'
-        }],
-        anchorId: 'type-alias-footypeunion',
-        type: {
-          type: 'union',
-          types: [
-            {
-              type: 'intrinsic',
-              name: 'string'
-            },
-            {
-              type: 'reference',
-              name: 'FooDate'
-            },
-            {
-              type: 'intrinsic',
-              name: 'number'
-            }
-          ]
-        }
-      },
-      {
-        name: 'FooTypeFunction',
-        kindString: 'Type alias',
-        sources: [{
-          fileName: '/modules/foobar/foo-type-function.ts'
-        }],
-        anchorId: 'type-alias-footypefunction',
-        comment: {
-          shortText: 'This is the description for FooTypeFunction.',
-          tags: [
-            {
-              tag: 'param',
-              text: 'The string to find.',
-              param: 'needle'
-            },
-            {
-              tag: 'param',
-              text: 'The string to search.\n',
-              param: 'haystack'
-            }
-          ]
-        },
-        type: {
-          type: 'reflection',
-          declaration: {
-            kindString: 'Type literal',
-            signatures: [
-              {
-                kindString: 'Call signature',
-                parameters: [
-                  {
-                    name: 'needle',
-                    kindString: 'Parameter',
-                    type: {
-                      type: 'intrinsic',
-                      name: 'string'
-                    }
-                  },
-                  {
-                    name: 'haystack',
-                    kindString: 'Parameter',
-                    flags: {
-                      isOptional: true
-                    },
-                    type: {
-                      type: 'intrinsic',
-                      name: 'string'
-                    }
-                  }
-                ],
-                type: {
-                  type: 'reference',
-                  name: 'FooUser'
-                }
-              }
-            ]
-          }
-        }
-      }
-    ];
-
     definitionsProvider = {
       anchorIds: {},
-      typeDefinitions: [
-        ...components,
-        ...directives,
-        ...pipes,
-        ...services,
-        ...enumerations,
-        ...interfaces,
-        ...typeAliases
-      ]
+      typeDefinitions: mockTypeDocJson.children
     };
   });
 
   it('should return type definitions from a specific source code path', () => {
     const service = new SkyDocsTypeDefinitionsService(definitionsProvider);
-    const result = service.getTypeDefinitions('/src/app/public/modules/foobar/');
+    const result = service.getTypeDefinitions('/src/app/public/modules/_documentation-test/');
 
     expect(result).toEqual({
       components: [
         {
-          anchorId: 'component-foo',
+          anchorId: 'class-foocomponent',
           codeExample: '<app-foo [baz]="true"></app-foo>',
           codeExampleLanguage: 'markup',
           description: 'This is the description for FooComponent.',
@@ -635,39 +38,103 @@ describe('Type definitions service', function () {
           properties: [
             {
               decorator: 'Input',
-              defaultValue: undefined,
-              deprecationWarning: 'This is no longer needed.',
-              description: 'Description for userIds.',
+              defaultValue: 'false',
+              deprecationWarning: undefined,
+              description: '',
               isOptional: false,
-              name: 'userIds',
-              type: 'number[]'
+              name: 'requiredProperty',
+              type: 'boolean'
             },
             {
               decorator: 'Input',
-              defaultValue: 'new FooUser()',
+              defaultValue: 'FooEnum.Foo',
               deprecationWarning: undefined,
-              description: 'Description for bar.',
+              description: 'This is the description for bar input. You must provide FooEnum values.',
               isOptional: true,
               name: 'bar',
+              type: 'string'
+            },
+            {
+              decorator: 'Input',
+              defaultValue: 'false',
+              deprecationWarning: undefined,
+              description: 'This is the description for baz input.',
+              isOptional: true,
+              name: 'baz',
+              type: 'boolean'
+            },
+            {
+              decorator: 'Input',
+              defaultValue: 'false',
+              deprecationWarning: 'This is no longer needed; all new features are available now. Set the `foobar` property on the [[FooPipe]] instead.',
+              description: 'Use the latest and greatest features for FooPipe!',
+              isOptional: true,
+              name: 'experimental',
+              type: 'boolean'
+            },
+            {
+              decorator: 'Input',
+              defaultValue: undefined,
+              deprecationWarning: undefined,
+              description: 'This is the description for foo input. You must provide [[FooEnum]] values.',
+              isOptional: true,
+              name: 'foo',
+              type: 'FooEnum'
+            },
+            {
+              decorator: 'Input',
+              defaultValue: '\'foobar\'',
+              deprecationWarning: undefined,
+              description: '',
+              isOptional: true,
+              name: 'sample',
+              type: 'string'
+            },
+            {
+              decorator: 'Input',
+              defaultValue: undefined,
+              deprecationWarning: undefined,
+              description: '',
+              isOptional: true,
+              name: 'user',
+              type: 'U'
+            },
+            {
+              decorator: 'Output',
+              defaultValue: 'new EventEmitter<FooUser>()',
+              deprecationWarning: undefined,
+              description: 'This is the description for the click event.',
+              isOptional: false,
+              name: 'click',
+              type: 'EventEmitter<FooUser>'
+            },
+            {
+              decorator: 'Output',
+              defaultValue: 'new EventEmitter<U>()',
+              deprecationWarning: '',
+              description: 'This property doesn\'t include a deprecation message.',
+              isOptional: false,
+              name: 'newUser',
+              type: 'EventEmitter<U>'
+            }
+          ],
+          selector: 'app-foo'
+        },
+        {
+          anchorId: 'class-foousercomponent',
+          codeExample: undefined,
+          codeExampleLanguage: 'markup',
+          description: 'This is the description for FooUserComponent.',
+          name: 'FooUserComponent',
+          properties: [
+            {
+              decorator: 'Input',
+              defaultValue: undefined,
+              deprecationWarning: undefined,
+              description: 'The user, which is a [[FooUser]] value.',
+              isOptional: true,
+              name: 'user',
               type: 'FooUser'
-            },
-            {
-              decorator: 'Input',
-              defaultValue: undefined,
-              deprecationWarning: undefined,
-              description: '',
-              isOptional: true,
-              name: 'basicAccessor',
-              type: 'string'
-            },
-            {
-              decorator: 'Input',
-              defaultValue: undefined,
-              deprecationWarning: undefined,
-              description: '',
-              isOptional: true,
-              name: 'zed',
-              type: 'string'
             },
             {
               decorator: 'Output',
@@ -675,16 +142,16 @@ describe('Type definitions service', function () {
               deprecationWarning: undefined,
               description: '',
               isOptional: false,
-              name: 'click',
+              name: 'save',
               type: 'EventEmitter<FooUser>'
             }
           ],
-          selector: 'app-foo'
+          selector: 'app-foo-user'
         }
       ],
       directives: [
         {
-          anchorId: 'directive-foo',
+          anchorId: 'class-foodirective',
           codeExample: undefined,
           codeExampleLanguage: 'markup',
           description: 'This is the description for FooDirective.',
@@ -696,21 +163,25 @@ describe('Type definitions service', function () {
               deprecationWarning: undefined,
               description: '',
               isOptional: true,
-              name: 'basic',
-              type: 'string'
+              name: 'fooOptions',
+              type: 'any'
             }
           ],
-          selector: 'appFoo'
+          selector: '[foo]'
         }
       ],
       enumerations: [
         {
-          anchorId: 'enumeration-foo',
+          anchorId: 'enumeration-fooenum',
           description: 'This is the description for FooEnum.',
           members: [
             {
               description: 'The bar of the foo.',
               name: 'FooEnum.Bar'
+            },
+            {
+              description: 'The baz of the foo.',
+              name: 'FooEnum.Baz'
             }
           ],
           name: 'FooEnum'
@@ -718,15 +189,8 @@ describe('Type definitions service', function () {
       ],
       interfaces: [
         {
-          anchorId: 'interface-foo-basic',
-          description: '',
-          name: 'FooBasic',
-          properties: [],
-          typeParameters: []
-        },
-        {
           anchorId: 'interface-foo',
-          description: 'Description for Foo.',
+          description: 'This is the description for Foo interface.',
           name: 'Foo',
           properties: [
             {
@@ -748,21 +212,67 @@ describe('Type definitions service', function () {
               type: 'FooUser'
             },
             {
-              description: 'The key/value pair.',
+              description: 'Allow any other properties.',
               isOptional: false,
-              name: '[key: string]',
+              name: '[_: string]',
               type: 'any'
             }
           ],
-          typeParameters: ['T', 'U extends FooUser']
+          typeParameters: [ 'T', 'U extends FooUser' ]
+        },
+        {
+          anchorId: 'interface-foodate',
+          description: 'This is the description for FooDate.',
+          name: 'FooDate',
+          properties: [
+            {
+              description: '',
+              isOptional: true,
+              name: 'day',
+              type: 'number'
+            },
+            {
+              description: '',
+              isOptional: true,
+              name: 'month',
+              type: 'number'
+            },
+            {
+              description: 'The year is optional.',
+              isOptional: true,
+              name: 'year',
+              type: 'number'
+            }
+          ],
+          typeParameters: []
+        },
+        {
+          anchorId: 'interface-foouser',
+          description: 'This is the description for FooUser.',
+          name: 'FooUser',
+          properties: [
+            {
+              description: 'The user\'s first name.',
+              isOptional: true,
+              name: 'firstName',
+              type: 'string'
+            },
+            {
+              description: 'The user\'s last name.',
+              isOptional: true,
+              name: 'lastName',
+              type: 'string'
+            }
+          ],
+          typeParameters: [  ]
         }
       ],
       pipes: [
         {
-          anchorId: undefined,
-          codeExample: undefined,
+          anchorId: 'class-foopipe',
+          codeExample: '{{ myDate | foo }}\n{{ myDate | foo:\'medium\' }}\n{{ myDate | foo:\'medium\':\'en-GA\' }}',
           codeExampleLanguage: 'markup',
-          description: '',
+          description: 'This is the description for the FooPipe.',
           inputValue: {
             description: 'The date to transform.',
             name: 'value',
@@ -785,11 +295,24 @@ describe('Type definitions service', function () {
               type: 'string'
             }
           ]
+        },
+        {
+          anchorId: 'class-foouserpipe',
+          codeExample: undefined,
+          codeExampleLanguage: 'markup',
+          description: 'This is the description for the FooUserPipe.',
+          inputValue: {
+            description: '',
+            name: 'value',
+            type: 'FooUser'
+          },
+          name: 'FooUserPipe',
+          parameters: []
         }
       ],
       services: [
         {
-          anchorId: undefined,
+          anchorId: 'class-fooservice',
           description: 'This is the description for FooService.',
           methods: [
             {
@@ -821,13 +344,35 @@ describe('Type definitions service', function () {
               ]
             },
             {
-              codeExample: undefined,
-              codeExampleLanguage: 'markup',
+              codeExample: 'const instance = this.fooService.createFoo(\'baz\');',
+              codeExampleLanguage: 'typescript',
               deprecationWarning: undefined,
-              description: '',
-              name: 'basic',
-              parameters: [],
-              returnType: 'void',
+              description: 'This is the description for createFoo().',
+              name: 'createFoo',
+              parameters: [
+                {
+                  defaultValue: undefined,
+                  description: '',
+                  isOptional: false,
+                  name: 'bar',
+                  type: 'string'
+                },
+                {
+                  defaultValue: undefined,
+                  description: '',
+                  isOptional: true,
+                  name: 'baz',
+                  type: 'string'
+                },
+                {
+                  defaultValue: '\'ipsum\'',
+                  description: '',
+                  isOptional: true,
+                  name: 'lorem',
+                  type: 'string'
+                }
+              ],
+              returnType: 'any[]',
               typeParameters: []
             }
           ],
@@ -840,22 +385,27 @@ describe('Type definitions service', function () {
               type: 'any[]'
             }
           ]
+        },
+        {
+          anchorId: 'class-foouserservice',
+          description: 'This is the description for FooUserService.',
+          methods: [
+            {
+              codeExample: undefined,
+              codeExampleLanguage: 'markup',
+              deprecationWarning: undefined,
+              description: 'This is the description for createFoo(). It creates a [[FooUser]].',
+              name: 'getUsers',
+              parameters: [],
+              returnType: 'FooUser[]',
+              typeParameters: []
+            }
+          ],
+          name: 'FooUserService',
+          properties: []
         }
       ],
       typeAliases: [
-        {
-          anchorId: 'type-alias-footypeindexsignature',
-          description: '',
-          name: 'FooTypeIndexSignature',
-          keyName: '_',
-          valueType: 'FooUser'
-        },
-        {
-          anchorId: 'type-alias-footypeunion',
-          description: '',
-          name: 'FooTypeUnion',
-          types: [ 'string', 'FooDate', 'number' ]
-        },
         {
           anchorId: 'type-alias-footypefunction',
           description: 'This is the description for FooTypeFunction.',
@@ -875,6 +425,25 @@ describe('Type definitions service', function () {
             }
           ],
           returnType: 'FooUser'
+        },
+        {
+          anchorId: 'type-alias-footypeindexsignature',
+          description: '',
+          name: 'FooTypeIndexSignature',
+          keyName: '_',
+          valueType: 'FooUser'
+        },
+        {
+          anchorId: 'type-alias-footypeunioncomplex',
+          description: 'This is the description for FooTypeUnionComplex. It can be of type [[FooDate]].',
+          name: 'FooTypeUnionComplex',
+          types: [ 'string', 'FooDate', 'number', 'false', '1' ]
+        },
+        {
+          anchorId: 'type-alias-footypeunionstring',
+          description: 'This is the description for FooTypeUnionString.',
+          name: 'FooTypeUnionString',
+          types: [ '\'top\'', '\'right\'', '\'bottom\'', '\'left\'' ]
         }
       ]
     });

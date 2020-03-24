@@ -73,7 +73,7 @@
     class="sky-docs-property-definition-label sky-text-danger"
   >Required.</p>
 
-  <p *ngIf="property.deprecationWarning"
+  <p *ngIf="property.deprecationWarning !== undefined"
     class="sky-docs-property-definition-label sky-text-warning"
   >
     <strong>Deprecated.</strong>&nbsp;<span

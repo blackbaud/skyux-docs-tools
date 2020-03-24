@@ -18,4 +18,9 @@ export interface Foo<T, U extends FooUser> {
    * This is the description for baz.
    */
   baz?: U;
+
+  /**
+   * Allow any other properties.
+   */
+  [_: string]: any;
 }

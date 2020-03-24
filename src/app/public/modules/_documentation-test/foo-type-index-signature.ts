@@ -4,6 +4,6 @@ import {
 
 export type FooTypeIndexSignature = {
 
-  [_: string]: FooUser
+  [_: string]: FooUser;
 
 };

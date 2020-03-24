@@ -36,6 +36,9 @@ export class FooComponent<U extends FooUser> implements OnInit {
   @Input()
   public user: U;
 
+  /**
+   * @default 'foobar'
+   */
   @Input()
   public sample: string;
 
@@ -79,11 +82,15 @@ export class FooComponent<U extends FooUser> implements OnInit {
   @Output()
   public click = new EventEmitter<FooUser>();
 
+  /**
+   * This property doesn't include a deprecation message.
+   * @deprecated
+   */
   @Output()
   public newUser = new EventEmitter<U>();
 
   /**
-   * @hidden
+   * @internal
    */
   @Input()
   public internalConfig: any;
@@ -93,6 +100,8 @@ export class FooComponent<U extends FooUser> implements OnInit {
    */
   @Input()
   public requiredProperty: boolean = false;
+
+  public propertyShouldNotBeDocumented: string;
 
   private _bar: string;
 
