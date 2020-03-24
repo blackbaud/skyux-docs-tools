@@ -5,6 +5,10 @@ import {
 } from '@angular/core';
 
 import {
+  SkyDocsParameterDefinition
+} from './parameter-definition';
+
+import {
   SkyDocsTypeAliasFunctionDefinition,
   SkyDocsTypeAliasIndexSignatureDefinition,
   SkyDocsTypeAliasUnionDefinition
@@ -13,7 +17,6 @@ import {
 import {
   SkyDocsTypeDefinitionsFormatService
 } from './type-definitions-format.service';
-import { SkyDocsParameterDefinition } from './parameter-definition';
 
 @Component({
   selector: 'sky-docs-type-alias-definition',
