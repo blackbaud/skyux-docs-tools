@@ -116,6 +116,10 @@ export class SkyDocsTypeDefinitionsFormatService {
       signature += `${item.name}`;
     }
 
+    if (!item.type) {
+      return signature;
+    }
+
     // Don't use the '?' indicator if the property has a decorator.
     if (item.isOptional && !item.decorator) {
       signature += '?';
@@ -160,10 +164,6 @@ export class SkyDocsTypeDefinitionsFormatService {
   }
 
   private escapeSpecialCharacters(value: string): string {
-    if (!value) {
-      return;
-    }
-
     return value.replace(/</g, '&lt;').replace(/>/g, '&gt;');
   }
 

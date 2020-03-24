@@ -11,8 +11,12 @@
       {{ heading || ('sky-docs-demo-heading' | skyLibResources) }}
     </span>
 
-    <div class="sky-docs-demo-control-panel-wrapper">
-      <div class="sky-docs-demo-control-panel-wrapper-header">
+    <div
+      class="sky-docs-demo-control-panel-wrapper"
+    >
+      <div
+        class="sky-docs-demo-control-panel-wrapper-header"
+      >
         <button *ngIf="hasOptions"
           class="sky-btn"
           type="button"
@@ -33,7 +37,9 @@
           </ng-container>
         </button>
       </div>
-      <div class="sky-docs-demo-control-panel-wrapper-body">
+      <div
+        class="sky-docs-demo-control-panel-wrapper-body"
+      >
         <ng-container *ngIf="areOptionsVisible">
           <ng-container *ngTemplateOutlet="controlPanels"></ng-container>
         </ng-container>

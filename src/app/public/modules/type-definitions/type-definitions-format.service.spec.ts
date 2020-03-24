@@ -204,6 +204,18 @@ describe('Type definitions format service', () => {
     expect(signature).toEqual('foobar: string');
   });
 
+  it('should generate a property signature without a type', () => {
+    const service = new SkyDocsTypeDefinitionsFormatService(anchorLinkService);
+    const propertyDef: SkyDocsPropertyDefinition = {
+      name: 'foobar',
+      isOptional: false,
+      type: undefined
+    };
+
+    const signature = service.getPropertySignature(propertyDef);
+    expect(signature).toEqual('foobar');
+  });
+
   it('should generate an optional property signature', () => {
     const service = new SkyDocsTypeDefinitionsFormatService(anchorLinkService);
     const propertyDef: SkyDocsPropertyDefinition = {

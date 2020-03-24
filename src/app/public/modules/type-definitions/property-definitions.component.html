@@ -15,13 +15,17 @@
     <tr *ngFor="let property of properties"
       class="sky-docs-table-row"
     >
-      <td class="sky-docs-table-cell sky-docs-property-definitions-table-cell-name">
+      <td
+        class="sky-docs-table-cell sky-docs-property-definitions-table-cell-name"
+      >
         <ng-template
           [ngTemplateOutlet]="nameTemplate"
           [ngTemplateOutletContext]="{$implicit: property}"
         ></ng-template>
       </td>
-      <td class="sky-docs-table-cell sky-docs-property-definitions-table-cell-description">
+      <td
+        class="sky-docs-table-cell sky-docs-property-definitions-table-cell-description"
+      >
         <ng-template
           [ngTemplateOutlet]="descriptionTemplate"
           [ngTemplateOutletContext]="{$implicit: property}"
