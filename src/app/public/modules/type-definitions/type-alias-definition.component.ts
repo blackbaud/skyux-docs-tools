@@ -13,6 +13,7 @@ import {
 import {
   SkyDocsTypeDefinitionsFormatService
 } from './type-definitions-format.service';
+import { SkyDocsParameterDefinition } from './parameter-definition';
 
 @Component({
   selector: 'sky-docs-type-alias-definition',
@@ -26,6 +27,14 @@ export class SkyDocsTypeAliasDefinitionComponent {
   public config: SkyDocsTypeAliasIndexSignatureDefinition |
     SkyDocsTypeAliasFunctionDefinition |
     SkyDocsTypeAliasUnionDefinition;
+
+  public get parameters(): SkyDocsParameterDefinition[] {
+    return (this.config as SkyDocsTypeAliasFunctionDefinition).parameters;
+  }
+
+  public get returnType(): string {
+    return (this.config as SkyDocsTypeAliasFunctionDefinition).returnType;
+  }
 
   public get sourceCode(): string {
     return this.formatService.getTypeAliasSignature(this.config);
