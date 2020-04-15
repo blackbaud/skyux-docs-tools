@@ -1,3 +1,16 @@
+# 3.2.0 (2020-03-30)
+
+- Added a `heading` attribute to the demo component to allow consumers to provide a custom heading. [#26](https://github.com/blackbaud/skyux-docs-tools/pull/26)
+- Added the ability to provide additional content for the module info component. [#42](https://github.com/blackbaud/skyux-docs-tools/pull/42)
+- Updated the default text in the module info component's Installation popover. [#42](https://github.com/blackbaud/skyux-docs-tools/pull/42)
+- Fixed the pipe definition component to display the input value's property name. [#27](https://github.com/blackbaud/skyux-docs-tools/pull/27)
+- Fixed the heading styles to conform to the heading styles provided in the Stache component library. [#42](https://github.com/blackbaud/skyux-docs-tools/pull/42)
+- Fixed the Design/Development tabset border to extend to the full width of the page. [#42](https://github.com/blackbaud/skyux-docs-tools/pull/42)
+- Fixed the method definition component to decode special characters in the method signature. [#42](https://github.com/blackbaud/skyux-docs-tools/pull/42)
+- Fixed the demo control panel component to display properly when only the Reset button is shown. [#42](https://github.com/blackbaud/skyux-docs-tools/pull/42)
+- Fixed the method definition component to display required parameters properly. [#42](https://github.com/blackbaud/skyux-docs-tools/pull/42)
+- Fixed the property definition component to provide in-page links to known types in the deprecation messages. [#42](https://github.com/blackbaud/skyux-docs-tools/pull/42)
+
 # 4.0.0-rc.1 (2020-02-24)
 
 ### Bug fixes

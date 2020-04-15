@@ -17,7 +17,13 @@ export class SkyDocsParameterDefinitionComponent {
   public defaultValue: string;
 
   @Input()
-  public isOptional: boolean = false;
+  public set isOptional(value: boolean) {
+    this._isOptional = value;
+  }
+
+  public get isOptional(): boolean {
+    return this._isOptional || false;
+  }
 
   @Input()
   public parameterName: string;
@@ -30,5 +36,7 @@ export class SkyDocsParameterDefinitionComponent {
     static: false
   })
   public templateRef: TemplateRef<any>;
+
+  private _isOptional: boolean;
 
 }
