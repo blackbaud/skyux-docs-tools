@@ -103,7 +103,7 @@ export class AppExtrasModule { }
 
 ### Features:
 - Accepts markdown.
-- Link to internal types by using double square brackets: `[[SkyFooType]]`.
+- Links to internal types are automatically added.
 
 ### Tags:
 - `@example` Specifies an inline code example.

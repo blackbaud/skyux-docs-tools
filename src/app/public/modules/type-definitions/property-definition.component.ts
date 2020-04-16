@@ -6,6 +6,10 @@ import {
   ViewChild
 } from '@angular/core';
 
+import {
+  SkyDocsPropertyDecorator
+} from './property-decorator';
+
 @Component({
   selector: 'sky-docs-property-definition',
   template: `
@@ -23,10 +27,16 @@ export class SkyDocsPropertyDefinitionComponent {
   public deprecationWarning: string;
 
   @Input()
-  public isOptional: boolean = false;
+  public set isOptional(value: boolean) {
+    this._isOptional = value;
+  }
+
+  public get isOptional(): boolean {
+    return this._isOptional || false;
+  }
 
   @Input()
-  public propertyDecorator: 'Input' | 'Output';
+  public propertyDecorator: SkyDocsPropertyDecorator;
 
   @Input()
   public propertyName: string;
@@ -39,5 +49,7 @@ export class SkyDocsPropertyDefinitionComponent {
     static: false
   })
   public templateRef: TemplateRef<any>;
+
+  private _isOptional: boolean;
 
 }
