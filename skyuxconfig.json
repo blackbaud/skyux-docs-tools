@@ -16,6 +16,7 @@
   "librarySettings": {
     "whitelistedNonPeerDependencies": [
       "@stackblitz/sdk",
+      "@types/marked",
       "marked"
     ]
   },

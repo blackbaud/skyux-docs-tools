@@ -3,7 +3,9 @@ import {
   PipeTransform
 } from '@angular/core';
 
-const marked = require('marked/lib/marked.js');
+// See: https://github.com/jvandemo/generator-angular2-library/issues/221
+import * as marked_ from 'marked';
+const marked = marked_;
 
 @Pipe({
   name: 'skyDocsMarkdown'
