@@ -1,3 +1,7 @@
+# 4.0.0-rc.2 (2020-04-16)
+
+- Added bug fixes and features from the `master` branch. [#44](https://github.com/blackbaud/skyux-docs-tools/pull/44)
+
 # 3.2.0 (2020-03-30)
 
 - Added a `heading` attribute to the demo component to allow consumers to provide a custom heading. [#26](https://github.com/blackbaud/skyux-docs-tools/pull/26)
