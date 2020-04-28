@@ -1,6 +1,6 @@
 {
   "name": "@skyux/docs-tools",
-  "version": "4.0.0-rc.2",
+  "version": "4.0.0-rc.3",
   "description": "Library for skyux-lib-docs",
   "scripts": {
     "build": "skyux build-public-library && node ./scripts/prepare-package.js",
@@ -33,7 +33,7 @@
     "@skyux/layout": "^4.0.0-rc.3",
     "@skyux/lists": "^4.0.0-rc.2",
     "@skyux/modals": "^4.0.0-rc.3",
-    "@skyux/popovers": "^4.0.0-rc.2",
+    "@skyux/popovers": "^4.0.0-rc.3",
     "@skyux/tabs": "^4.0.0-rc.0"
   },
   "dependencies": {
@@ -74,10 +74,10 @@
     "@skyux/layout": "4.0.0-rc.3",
     "@skyux/lists": "4.0.0-rc.2",
     "@skyux/lookup": "4.0.0-rc.2",
-    "@skyux/modals": "4.0.0-rc.3",
+    "@skyux/modals": "4.0.0-rc.4",
     "@skyux/navbar": "4.0.0-rc.0",
     "@skyux/omnibar-interop": "4.0.0-rc.0",
-    "@skyux/popovers": "4.0.0-rc.2",
+    "@skyux/popovers": "4.0.0-rc.3",
     "@skyux/router": "4.0.0-rc.0",
     "@skyux/tabs": "4.0.0-rc.0",
     "@skyux/theme": "4.0.0-rc.5",

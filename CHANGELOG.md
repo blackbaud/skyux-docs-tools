@@ -1,3 +1,7 @@
+# 4.0.0-rc.3 (2020-04-28)
+
+- Added bug fixes and features from the `master` branch. [#51](https://github.com/blackbaud/skyux-docs-tools/pull/51)
+
 # 3.2.1 (2020-04-27)
 
 - Fixed the anchor link service to handle types wrapped within markdown links. [#49](https://github.com/blackbaud/skyux-docs-tools/pull/49)
