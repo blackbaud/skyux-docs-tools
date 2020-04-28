@@ -9,7 +9,6 @@
   ],
   "app": {
     "styles": [
-      "@skyux/theme/css/sky.css",
       "src/app/public/styles/docs-tools.scss"
     ]
   },
@@ -22,6 +21,11 @@
   "testSettings": {
     "unit": {
       "browserSet": "paranoid"
+    }
+  },
+  "host": {
+    "frameOptions": {
+      "none": true
     }
   }
 }
