@@ -4,6 +4,7 @@ import {
   Component,
   ContentChildren,
   EventEmitter,
+  Input,
   OnDestroy,
   Output,
   QueryList
@@ -20,6 +21,10 @@ import {
 } from 'rxjs/operators';
 
 import {
+  SkyThemeSettings
+} from '@skyux/theme';
+
+import {
   SkyDocsDemoControlPanelCheckboxComponent
 } from './demo-control-panel-checkbox.component';
 
@@ -30,6 +35,10 @@ import {
 import {
   SkyDocsDemoControlPanelChange
 } from './demo-control-panel-change';
+
+import {
+  SkyDocsDemoThemeService
+} from './demo-theme.service';
 
 /**
  * Handles the appearance and configuration of the behavior demo control panel.
@@ -49,6 +58,9 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SkyDocsDemoControlPanelComponent implements OnDestroy, AfterContentInit {
+
+  @Input()
+  public supportsTheming: boolean;
 
   /**
    * Fires when the user clicks the reset button.
@@ -70,6 +82,8 @@ export class SkyDocsDemoControlPanelComponent implements OnDestroy, AfterContent
 
   private eventListeners: Subscription;
   private ngUnsubscribe = new Subject<boolean>();
+
+  constructor(public demoThemeSvc: SkyDocsDemoThemeService) { }
 
   public ngAfterContentInit(): void {
     this.addEventListeners();
@@ -103,6 +117,10 @@ export class SkyDocsDemoControlPanelComponent implements OnDestroy, AfterContent
     });
 
     this.reset.emit();
+  }
+
+  public themeSettingsChange(themeSettings: SkyThemeSettings) {
+    this.demoThemeSvc.themeSettings.next(themeSettings);
   }
 
   private addEventListeners(): void {
