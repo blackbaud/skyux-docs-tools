@@ -4,7 +4,6 @@ import {
   Component,
   ContentChildren,
   EventEmitter,
-  Input,
   OnDestroy,
   Output,
   QueryList
@@ -58,9 +57,6 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SkyDocsDemoControlPanelComponent implements OnDestroy, AfterContentInit {
-
-  @Input()
-  public supportsTheming: boolean;
 
   /**
    * Fires when the user clicks the reset button.

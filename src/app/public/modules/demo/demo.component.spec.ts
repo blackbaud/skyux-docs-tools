@@ -1,4 +1,8 @@
 import {
+  DebugElement
+} from '@angular/core';
+
+import {
   ComponentFixture,
   fakeAsync,
   TestBed,
@@ -10,12 +14,24 @@ import {
 } from '@skyux-sdk/testing';
 
 import {
+  SkyRestrictedViewAuthService
+} from '@blackbaud/skyux-lib-restricted-view/modules/restricted-view/restricted-view-auth.service';
+
+import {
   DemoFixturesModule
 } from './fixtures/demo-fixtures.module';
 
 import {
   DemoFixtureComponent
 } from './fixtures/demo.component.fixture';
+
+import {
+  RestrictedViewAuthMockService
+} from './fixtures/restricted-view-auth-mock.service';
+
+import {
+  By
+} from '@angular/platform-browser';
 
 describe('Demo component', () => {
 
@@ -154,5 +170,45 @@ describe('Demo component', () => {
         [{ user: { name: 'John' } }]
       ]);
     }));
+
+    it('should show the theme control panel when theming is enabled and a Blackbaud employee is signed in', () => {
+      function getThemeEl(): DebugElement {
+        return fixture.debugElement.query(
+          By.css('sky-docs-demo-control-panel-theme')
+        );
+      }
+
+      fixture.detectChanges();
+
+      showControlPanel();
+
+      fixture.detectChanges();
+
+      // Both `supportsTheming` and `isAuthenticated` must be true to display the theme switcher. Validate all for combinations.
+      expect(getThemeEl()).not.toExist();
+
+      const restrictedViewMockSvc = TestBed.get(SkyRestrictedViewAuthService) as RestrictedViewAuthMockService;
+
+      fixture.componentInstance.supportsTheming = false;
+      restrictedViewMockSvc.isAuthenticated.next(true);
+
+      fixture.detectChanges();
+
+      expect(getThemeEl()).not.toExist();
+
+      fixture.componentInstance.supportsTheming = true;
+      restrictedViewMockSvc.isAuthenticated.next(false);
+
+      fixture.detectChanges();
+
+      expect(getThemeEl()).not.toExist();
+
+      fixture.componentInstance.supportsTheming = true;
+      restrictedViewMockSvc.isAuthenticated.next(true);
+
+      fixture.detectChanges();
+
+      expect(getThemeEl()).toExist();
+    });
   });
 });
