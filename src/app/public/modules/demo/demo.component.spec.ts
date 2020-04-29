@@ -31,7 +31,7 @@ import {
 
 import {
   DemoAuthTokenMockProvider
-} from './fixtures/auth-token-mock-provider';
+} from './fixtures/demo-auth-token-mock-provider';
 
 describe('Demo component', () => {
 

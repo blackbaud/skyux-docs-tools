@@ -20,7 +20,7 @@ import {
 
 import {
   DemoAuthTokenMockProvider
-} from './auth-token-mock-provider';
+} from './demo-auth-token-mock-provider';
 
 @NgModule({
   imports: [
