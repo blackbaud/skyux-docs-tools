@@ -19,7 +19,9 @@
         <div
           class="sky-docs-demo-control-panel-column sky-docs-demo-control-panel-theme-column"
         >
-          <sky-docs-demo-control-panel-theme (themeSettingsChange)="themeSettingsChange($event)"></sky-docs-demo-control-panel-theme>
+          <sky-docs-demo-control-panel-theme
+            (themeSettingsChange)="onThemeSettingsChange($event)"
+          ></sky-docs-demo-control-panel-theme>
         </div>
       </sky-restricted-view>
     </ng-container>

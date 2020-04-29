@@ -12,6 +12,12 @@ import {
 } from '@angular/platform-browser';
 
 import {
+  SkyTheme,
+  SkyThemeMode,
+  SkyThemeSettings
+} from '@skyux/theme';
+
+import {
   expect
 } from '@skyux-sdk/testing';
 
@@ -22,12 +28,6 @@ import {
 import {
   SkyDocsDemoControlPanelThemeComponent
 } from './demo-control-panel-theme.component';
-
-import {
-  SkyTheme,
-  SkyThemeMode,
-  SkyThemeSettings
-} from '@skyux/theme';
 
 describe('Demo control panel theme', () => {
 

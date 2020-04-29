@@ -7,8 +7,8 @@ import {
 } from '@angular/core';
 
 import {
-  SkyRestrictedViewAuthService
-} from '@blackbaud/skyux-lib-restricted-view/modules/restricted-view/restricted-view-auth.service';
+  SkyAuthTokenProvider
+} from '@skyux/http';
 
 import {
   SkyDocsDemoModule
@@ -19,8 +19,8 @@ import {
 } from './demo.component.fixture';
 
 import {
-  RestrictedViewAuthMockService
-} from './restricted-view-auth-mock.service';
+  DemoAuthTokenMockProvider
+} from './auth-token-mock-provider';
 
 @NgModule({
   imports: [
@@ -35,8 +35,8 @@ import {
   ],
   providers: [
     {
-      provide: SkyRestrictedViewAuthService,
-      useClass: RestrictedViewAuthMockService
+      provide: SkyAuthTokenProvider,
+      useClass: DemoAuthTokenMockProvider
     }
   ]
 })

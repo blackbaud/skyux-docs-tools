@@ -115,7 +115,7 @@ export class SkyDocsDemoControlPanelComponent implements OnDestroy, AfterContent
     this.reset.emit();
   }
 
-  public themeSettingsChange(themeSettings: SkyThemeSettings) {
+  public onThemeSettingsChange(themeSettings: SkyThemeSettings): void {
     this.demoThemeSvc.themeSettings.next(themeSettings);
   }
 

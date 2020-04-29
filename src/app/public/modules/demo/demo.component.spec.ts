@@ -10,12 +10,16 @@ import {
 } from '@angular/core/testing';
 
 import {
-  expect
-} from '@skyux-sdk/testing';
+  By
+} from '@angular/platform-browser';
 
 import {
-  SkyRestrictedViewAuthService
-} from '@blackbaud/skyux-lib-restricted-view/modules/restricted-view/restricted-view-auth.service';
+  SkyAuthTokenProvider
+} from '@skyux/http';
+
+import {
+  expect
+} from '@skyux-sdk/testing';
 
 import {
   DemoFixturesModule
@@ -26,12 +30,8 @@ import {
 } from './fixtures/demo.component.fixture';
 
 import {
-  RestrictedViewAuthMockService
-} from './fixtures/restricted-view-auth-mock.service';
-
-import {
-  By
-} from '@angular/platform-browser';
+  DemoAuthTokenMockProvider
+} from './fixtures/auth-token-mock-provider';
 
 describe('Demo component', () => {
 
@@ -171,7 +171,7 @@ describe('Demo component', () => {
       ]);
     }));
 
-    it('should show the theme control panel when theming is enabled and a Blackbaud employee is signed in', () => {
+    it('should hide the theme control panel when theming is disabled or a Blackbaud employee is not signed in', () => {
       function getThemeEl(): DebugElement {
         return fixture.debugElement.query(
           By.css('sky-docs-demo-control-panel-theme')
@@ -184,31 +184,48 @@ describe('Demo component', () => {
 
       fixture.detectChanges();
 
-      // Both `supportsTheming` and `isAuthenticated` must be true to display the theme switcher. Validate all for combinations.
       expect(getThemeEl()).not.toExist();
 
-      const restrictedViewMockSvc = TestBed.get(SkyRestrictedViewAuthService) as RestrictedViewAuthMockService;
+      // The mock auth token provider should return a JWT that indicates the user is not a Blackbaud employee, so the
+      // picker should still not be rendered.
+      fixture.componentInstance.supportsTheming = true;
 
-      fixture.componentInstance.supportsTheming = false;
-      restrictedViewMockSvc.isAuthenticated.next(true);
+      fixture.detectChanges();
+
+      expect(getThemeEl()).not.toExist();
+    });
+
+    it('should show the theme control panel when theming is enabled and a Blackbaud employee is signed in', fakeAsync(() => {
+      function getThemeEl(): DebugElement {
+        return fixture.debugElement.query(
+          By.css('sky-docs-demo-control-panel-theme')
+        );
+      }
+
+      const mockAuthProvider = TestBed.get(SkyAuthTokenProvider) as DemoAuthTokenMockProvider;
+
+      mockAuthProvider.testToken = {
+        '1bb.perms': [1]
+      };
+
+      fixture.detectChanges();
+
+      showControlPanel();
 
       fixture.detectChanges();
 
       expect(getThemeEl()).not.toExist();
 
       fixture.componentInstance.supportsTheming = true;
-      restrictedViewMockSvc.isAuthenticated.next(false);
 
       fixture.detectChanges();
 
-      expect(getThemeEl()).not.toExist();
-
-      fixture.componentInstance.supportsTheming = true;
-      restrictedViewMockSvc.isAuthenticated.next(true);
-
+      // Need to call tick() and detectChanges() to flush the auth token mock's Promise and apply the result
+      // to the view.
+      tick();
       fixture.detectChanges();
 
       expect(getThemeEl()).toExist();
-    });
+    }));
   });
 });
