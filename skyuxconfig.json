@@ -12,9 +12,12 @@
   },
   "app": {
     "styles": [
-      "node_modules/@skyux/theme/css/sky.css",
       "src/app/public/styles/docs-tools.scss"
-    ]
+    ],
+    "theming": {
+      "supportedThemes": ["default", "modern"],
+      "theme": "default"
+    }
   },
   "testSettings": {
     "unit": {
