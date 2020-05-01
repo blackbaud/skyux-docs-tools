@@ -26,6 +26,7 @@
     "@blackbaud/skyux-lib-code-block": "^2.0.0-rc.3",
     "@blackbaud/skyux-lib-clipboard": "^2.0.0-rc.0",
     "@blackbaud/skyux-lib-media": "^2.0.0-rc.0",
+    "@blackbaud/skyux-lib-restricted-view": "^2.0.0-rc.0",
     "@blackbaud/skyux-lib-stache": "^4.0.0-rc.2",
     "@skyux/forms": "^4.0.0-rc.0",
     "@skyux/i18n": "^4.0.0-rc.5",
