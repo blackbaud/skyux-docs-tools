@@ -1,3 +1,7 @@
+# 4.0.0-rc.4 (2020-05-01)
+
+- Added bug fixes and features from the `master` branch. [#55](https://github.com/blackbaud/skyux-docs-tools/pull/55)
+
 # 3.3.0 (2020-04-30)
 
 - Added a theme switcher control panel to the demo component. [#52](https://github.com/blackbaud/skyux-docs-tools/pull/52)
