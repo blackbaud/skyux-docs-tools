@@ -10,7 +10,11 @@
   "app": {
     "styles": [
       "src/app/public/styles/docs-tools.scss"
-    ]
+    ],
+    "theming": {
+      "supportedThemes": ["default", "modern"],
+      "theme": "default"
+    }
   },
   "librarySettings": {
     "whitelistedNonPeerDependencies": [
