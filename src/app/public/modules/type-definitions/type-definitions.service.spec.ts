@@ -11,6 +11,7 @@ import {
 } from './type-definitions.service';
 
 import * as mockTypeDocJson from './fixtures/mock-documentation.json';
+import { SkyDocsTypeAliasFunctionDefinition, SkyDocsTypeAliasIndexSignatureDefinition, SkyDocsTypeAliasUnionDefinition } from './type-alias-definition';
 
 describe('Type definitions service', function () {
 
@@ -425,26 +426,26 @@ describe('Type definitions service', function () {
             }
           ],
           returnType: 'FooUser'
-        },
+        } as SkyDocsTypeAliasFunctionDefinition,
         {
           anchorId: 'type-alias-footypeindexsignature',
           description: '',
           name: 'FooTypeIndexSignature',
           keyName: '_',
           valueType: 'FooUser'
-        },
+        } as SkyDocsTypeAliasIndexSignatureDefinition,
         {
           anchorId: 'type-alias-footypeunioncomplex',
           description: 'This is the description for FooTypeUnionComplex. It can be of type [[FooDate]].',
           name: 'FooTypeUnionComplex',
           types: [ 'string', 'FooDate', 'number', 'false', '1' ]
-        },
+        } as SkyDocsTypeAliasUnionDefinition,
         {
           anchorId: 'type-alias-footypeunionstring',
           description: 'This is the description for FooTypeUnionString.',
           name: 'FooTypeUnionString',
           types: [ '\'top\'', '\'right\'', '\'bottom\'', '\'left\'' ]
-        }
+        } as SkyDocsTypeAliasUnionDefinition
       ]
     });
   });

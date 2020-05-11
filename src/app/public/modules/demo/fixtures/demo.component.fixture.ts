@@ -8,6 +8,10 @@ import {
 } from '../demo-content-alignment';
 
 import {
+  SkyDocsDemoControlPanelChange
+} from '../demo-control-panel-change';
+
+import {
   SkyDocsDemoControlPanelRadioChoice
 } from '../demo-control-panel-radio-choice';
 
@@ -57,7 +61,7 @@ export class DemoFixtureComponent {
 
   public onDemoReset(): void { }
 
-  public onDemoSelectionChange(): void { }
+  public onDemoSelectionChange(change: SkyDocsDemoControlPanelChange): void { }
 
   public changeFormControls(): void {
     this.showRadios = false;
