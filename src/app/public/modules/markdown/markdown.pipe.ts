@@ -19,7 +19,7 @@ export class SkyDocsMarkdownPipe implements PipeTransform {
       return marked.inlineLexer(markdown, []);
     }
 
-    return marked(markdown);
+    return marked.parse(markdown);
   }
 
 }
