@@ -20,7 +20,6 @@ import {
 } from '@skyux/router';
 
 import {
-  SkyDocsSafeHtmlModule,
   SkyDocsToolsModule,
   SkyDocsToolsOptions
 } from './public/public_api';
@@ -31,7 +30,6 @@ import {
     SkyAppLinkModule,
     SkyCodeBlockModule,
     SkyCodeModule,
-    SkyDocsSafeHtmlModule,
     SkyDocsToolsModule,
     SkyPopoverModule
   ],
