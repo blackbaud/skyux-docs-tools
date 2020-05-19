@@ -1,3 +1,7 @@
+# 4.0.0-rc.6 (2020-05-19)
+
+- Added `code` element styles to the safe HTML component. [#58](https://github.com/blackbaud/skyux-docs-tools/pull/58)
+
 # 4.0.0-rc.5 (2020-05-19)
 
 - Added `SkyDocsHeadingAnchorModule`, `SkyDocsMarkdownModule`, `SkyDocsModuleInfoModule`, and `SkyDocsSafeHtmlModule` to the exports API. [#57](https://github.com/blackbaud/skyux-docs-tools/pull/57)
