@@ -1,0 +1,9 @@
+@import '../../styles/mixins';
+
+.sky-docs-safe-html {
+  ::ng-deep {
+    code {
+      @include sky-docs-tools-code();
+    }
+  }
+}
