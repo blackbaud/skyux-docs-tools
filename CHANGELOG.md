@@ -1,3 +1,7 @@
+# 4.0.0-rc.5 (2020-05-19)
+
+- Added `SkyDocsHeadingAnchorModule`, `SkyDocsMarkdownModule`, `SkyDocsModuleInfoModule`, and `SkyDocsSafeHtmlModule` to the exports API. [#57](https://github.com/blackbaud/skyux-docs-tools/pull/57)
+
 # 4.0.0-rc.4 (2020-05-01)
 
 - Added bug fixes and features from the `master` branch. [#55](https://github.com/blackbaud/skyux-docs-tools/pull/55)
