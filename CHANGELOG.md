@@ -1,3 +1,7 @@
+# 4.0.0-rc.7 (2020-05-20)
+
+- Fixed the type definition components to run the markdown pipe in the correct order. [#59](https://github.com/blackbaud/skyux-docs-tools/pull/59)
+
 # 4.0.0-rc.6 (2020-05-19)
 
 - Added `code` element styles to the safe HTML component. [#58](https://github.com/blackbaud/skyux-docs-tools/pull/58)
