@@ -19,6 +19,10 @@ import {
 } from '@skyux/indicators';
 
 import {
+  SkyAlertModule
+} from '@skyux/indicators';
+
+import {
   SkyPopoverModule
 } from '@skyux/popovers';
 
