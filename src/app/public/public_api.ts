@@ -18,8 +18,6 @@ export * from './modules/markdown/markdown.pipe';
 
 export * from './modules/module-info/module-info.module';
 
-export * from './modules/safe-html/safe-html.module';
-
 export * from './modules/shared/docs-tools-component-info';
 export * from './modules/shared/docs-tools-options';
 export * from './modules/shared/docs-tools-supportal.service';
