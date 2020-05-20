@@ -465,6 +465,15 @@ describe('Type definitions service', function () {
     });
   });
 
+  it('should warn if the provider does not include types', () => {
+    (definitionsProvider as any).typeDefinitions = [];
+
+    const spy = spyOn(console, 'warn');
+    const service = new SkyDocsTypeDefinitionsService(definitionsProvider);
+    service.getTypeDefinitions('/src/app/public/modules/empty/');
+    expect(spy).toHaveBeenCalledWith('Type definitions were not found for location: modules/empty/');
+  });
+
   it('should throw an error if the source code path does not end in a slash', () => {
     const service = new SkyDocsTypeDefinitionsService(definitionsProvider);
     expect(function () {
