@@ -12,7 +12,6 @@ import {
 @Component({
   selector: 'sky-docs-safe-html',
   templateUrl: './safe-html.component.html',
-  styleUrls: ['./safe-html.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SkyDocsSafeHtmlComponent {

@@ -7,12 +7,6 @@
       margin: $sky-margin-plus-half 0;
     }
 
-    // Auto-generated code elements need to be styled like sky-code component.
-    // TODO: Need to address this so that there isn't duplicate code.
-    code:not([class]) {
-      @include sky-docs-tools-code();
-    }
-
     table {
       margin-top: $sky-margin-plus-half;
       margin-bottom: $sky-margin-plus-half;
