@@ -62,6 +62,8 @@
   }
 }
 
+// Auto-generated code elements need to be styled like `sky-code` component.
+// TODO: Need to address this so that there isn't duplicate code.
 @mixin sky-docs-tools-code {
   @include sky-border("dark", "top", "right", "bottom", "left");
   overflow-wrap: break-word;
