@@ -1,3 +1,7 @@
+# 4.0.0-rc.8 (2020-05-22)
+
+- Added a global style reference for the native `code` element to match what's provided by `@blackbaud/skyux-lib-stache`. [#60](https://github.com/blackbaud/skyux-docs-tools/pull/60)
+
 # 4.0.0-rc.7 (2020-05-20)
 
 - Fixed the type definition components to run the markdown pipe in the correct order. [#59](https://github.com/blackbaud/skyux-docs-tools/pull/59)
