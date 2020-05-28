@@ -67,8 +67,4 @@ export class DemoFixtureComponent {
     this.showRadios = false;
   }
 
-  public changeFormControls(): void {
-    this.showRadios = false;
-  }
-
 }
