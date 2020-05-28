@@ -1,3 +1,7 @@
+# 4.0.0-rc.9 (2020-05-28)
+
+- Upgraded all `@blackbaud/skyux-lib-*` dependencies to `4.0.0`. [#61](https://github.com/blackbaud/skyux-docs-tools/pull/61)
+
 # 4.0.0-rc.8 (2020-05-22)
 
 - Added a global style reference for the native `code` element to match what's provided by `@blackbaud/skyux-lib-stache`. [#60](https://github.com/blackbaud/skyux-docs-tools/pull/60)
