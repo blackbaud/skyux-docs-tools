@@ -7,9 +7,6 @@
     "@skyux-sdk/builder-plugin-skyux",
     "@blackbaud/skyux-builder-plugin-code-block"
   ],
-  "moduleAliases": {
-    "@skyux/docs-tools": "src/app/public/index.ts"
-  },
   "app": {
     "styles": [
       "src/app/public/styles/docs-tools.scss"
@@ -19,9 +16,20 @@
       "theme": "default"
     }
   },
+  "librarySettings": {
+    "whitelistedNonPeerDependencies": [
+      "@stackblitz/sdk",
+      "marked"
+    ]
+  },
   "testSettings": {
     "unit": {
       "browserSet": "paranoid"
+    }
+  },
+  "host": {
+    "frameOptions": {
+      "none": true
     }
   }
 }
