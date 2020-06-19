@@ -98,6 +98,8 @@ export class AppExtrasModule { }
 </sky-docs-demo-page>
 ```
 
+- Add package dependencies for demos
+
 ## JSDoc comments
 
 ### Features:
