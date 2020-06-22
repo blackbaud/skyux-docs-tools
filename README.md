@@ -98,6 +98,16 @@ export class AppExtrasModule { }
 </sky-docs-demo-page>
 ```
 
+- Add package dependencies for demos
+```
+  <sky-docs-code-examples
+    [packageDependencies]="{
+      '@skyux/lookup': '*',
+      'intl-tel-input': '*'
+    }"
+  >
+```
+
 ## JSDoc comments
 
 ### Features:
