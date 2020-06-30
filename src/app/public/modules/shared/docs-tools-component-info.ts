@@ -5,8 +5,8 @@ export interface SkyDocsComponentInfo {
   children?: SkyDocsComponentInfo[];
   icon?: string;
   name?: string;
+  restricted?: boolean;
   summary?: string;
   thumbnail?: string;
   url?: string;
-  restricted?: boolean;
 }
