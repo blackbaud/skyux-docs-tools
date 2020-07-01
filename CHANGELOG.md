@@ -1,3 +1,7 @@
+# 3.4.0 (2020-07-01)
+
+- Added `restricted` property to `SkyDocsComponentInfo`. [#75](https://github.com/blackbaud/skyux-docs-tools/pull/75)
+
 # 3.3.0 (2020-04-30)
 
 - Added a theme switcher control panel to the demo component. [#52](https://github.com/blackbaud/skyux-docs-tools/pull/52)
