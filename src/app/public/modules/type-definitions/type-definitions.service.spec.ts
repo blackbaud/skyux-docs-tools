@@ -27,7 +27,7 @@ describe('Type definitions service', function () {
     const service = new SkyDocsTypeDefinitionsService(definitionsProvider);
     const result = service.getTypeDefinitions('/src/app/public/modules/_documentation-test/');
 
-    expect(result).toEqual({
+    const expected: any = {
       components: [
         {
           anchorId: 'class-foocomponent',
@@ -446,7 +446,9 @@ describe('Type definitions service', function () {
           types: [ '\'top\'', '\'right\'', '\'bottom\'', '\'left\'' ]
         }
       ]
-    });
+    };
+
+    expect(result).toEqual(expected);
   });
 
   it('should return empty type arrays if the path does not include types', () => {

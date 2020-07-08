@@ -1,3 +1,7 @@
+# 3.5.0 (2020-07-07)
+
+- Updated the `restricted` property in `SkyDocsComponentInfo` to a `boolean` type. [#76](https://github.com/blackbaud/skyux-docs-tools/pull/76)
+
 # 3.4.0 (2020-07-01)
 
 - Added `restricted` property to `SkyDocsComponentInfo`. [#75](https://github.com/blackbaud/skyux-docs-tools/pull/75)
