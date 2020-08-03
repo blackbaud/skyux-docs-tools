@@ -17,8 +17,11 @@ export class SkyDocsTypeAnchorLinksPipe implements PipeTransform {
     private anchorLinkService: SkyDocsAnchorLinkService
   ) { }
 
-  public transform(value: string): string {
-    return this.anchorLinkService.applyTypeAnchorLinks(value);
+  public transform(
+    value: string,
+    addCodeFormatting?: boolean
+  ): string {
+    return this.anchorLinkService.applyTypeAnchorLinks(value, addCodeFormatting);
   }
 
 }

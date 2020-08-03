@@ -38,9 +38,9 @@ export class SkyDocsAnchorLinkService {
     Object.keys(this.anchorIds).forEach((typeName) => {
       content = this.removeBackticks(typeName, content);
 
-      let matches;
+      let matches: RegExpExecArray;
       let counter = 0;
-      let max = 100;
+      const max = 100;
 
       let regex = createRegex(typeName);
 
@@ -55,9 +55,9 @@ export class SkyDocsAnchorLinkService {
 
           let replacement;
           if (addCode) {
-            replacement = '<code>' + anchorHtml + matches[3] ? matches[3] : '' + '</code>';
+            replacement = '<code>' + anchorHtml + (matches[3] ? matches[3] : '') + '</code>';
           } else {
-            replacement = anchorHtml + matches[3] ? matches[3] : '';
+            replacement = anchorHtml + (matches[3] ? matches[3] : '');
           }
 
           let contentWithCodeTags = content.substr(0, matches.index) + replacement + content.substr(matches.index + matches[0].length);
@@ -68,6 +68,8 @@ export class SkyDocsAnchorLinkService {
         }
       } while (matches !== null && counter < max);
     });
+
+    return content;
   }
 
   /**
