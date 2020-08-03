@@ -14,7 +14,7 @@ import {
  *  - If the type name starts with a period '.', then it is a sub property of an enumeration, etc. and should not be processed as a link.
  */
 function createRegex(keyword: string): RegExp {
-  return new RegExp(`(^|(?<=[^a-zA-Z0-9>.&lt;[/]+))(${keyword})(\\.\\w+)?(?=[^a-zA-Z0-9<])`, 'g');
+  return new RegExp(`(^|(?<=[^a-zA-Z0-9>.[/]+))(${keyword})(\\.\\w+)?(?=[^a-zA-Z0-9<]+|$)`, 'g');
 }
 
 @Injectable()

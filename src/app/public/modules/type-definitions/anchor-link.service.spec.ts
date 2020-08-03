@@ -41,26 +41,26 @@ describe('Anchor link service', function () {
     };
   });
 
-  it('should add anchor links to known types', () => {
+  it('should add anchor links and code tags to known types', () => {
     const service = new SkyDocsAnchorLinkService(mockTypeDefinitionsProvider);
     const content = 'Foo FooComponent FooUser Foo2 [[Foo]] [[FooUser]] FooComponent [[Foo]] (FooUser) >Foo< FooUnknown UnknownFoo FooEnum.Foo `FooUser` <a href="#">FooUser</a>';
     const result = service.applyTypeAnchorLinks(content);
 
     expect(result).toEqual([
-      '<a class="sky-docs-anchor-link" href="#foo">Foo</a>',
-      '<a class="sky-docs-anchor-link" href="#foo-component">FooComponent</a>',
-      '<a class="sky-docs-anchor-link" href="#foo-user">FooUser</a>',
-      '<a class="sky-docs-anchor-link" href="#foo2">Foo2</a>',
-      '<a class="sky-docs-anchor-link" href="#foo">Foo</a>',
-      '<a class="sky-docs-anchor-link" href="#foo-user">FooUser</a>',
-      '<a class="sky-docs-anchor-link" href="#foo-component">FooComponent</a>',
-      '<a class="sky-docs-anchor-link" href="#foo">Foo</a>',
-      '(<a class="sky-docs-anchor-link" href="#foo-user">FooUser</a>)',
+      '<code><a class="sky-docs-anchor-link" href="#foo">Foo</a></code>',
+      '<code><a class="sky-docs-anchor-link" href="#foo-component">FooComponent</a></code>',
+      '<code><a class="sky-docs-anchor-link" href="#foo-user">FooUser</a></code>',
+      '<code><a class="sky-docs-anchor-link" href="#foo2">Foo2</a></code>',
+      '<code><a class="sky-docs-anchor-link" href="#foo">Foo</a></code>',
+      '<code><a class="sky-docs-anchor-link" href="#foo-user">FooUser</a></code>',
+      '<code><a class="sky-docs-anchor-link" href="#foo-component">FooComponent</a></code>',
+      '<code><a class="sky-docs-anchor-link" href="#foo">Foo</a></code>',
+      '(<code><a class="sky-docs-anchor-link" href="#foo-user">FooUser</a></code>)',
       '>Foo<',
       'FooUnknown',
       'UnknownFoo',
-      '<a class="sky-docs-anchor-link" href="#foo-enum">FooEnum</a>.Foo',
-      '<a class="sky-docs-anchor-link" href="#foo-user">FooUser</a>',
+      '<code><a class="sky-docs-anchor-link" href="#foo-enum">FooEnum</a>.Foo</code>',
+      '<code><a class="sky-docs-anchor-link" href="#foo-user">FooUser</a></code>',
       '<a href="#">FooUser</a>'
     ].join(' '));
   });
