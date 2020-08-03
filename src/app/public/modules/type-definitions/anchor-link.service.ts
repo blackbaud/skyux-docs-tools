@@ -14,7 +14,7 @@ import {
  *  - If the type name starts with a period '.', then it is a sub property of an enumeration, etc. and should not be processed as a link.
  */
 function createRegex(keyword: string): RegExp {
-  return new RegExp(`(^|[^a-zA-Z0-9>.[/]+)(${keyword})([^a-zA-Z0-9<]+|$)`, 'g');
+  return new RegExp(`(^|(?<=[^a-zA-Z0-9>.&lt;[/]+))(${keyword})(\\.\\w+)?(?=[^a-zA-Z0-9<])`, 'g');
 }
 
 @Injectable()
@@ -28,7 +28,7 @@ export class SkyDocsAnchorLinkService {
     this.anchorIds = typeDefinitionsProvider.anchorIds;
   }
 
-  public applyTypeAnchorLinks(content: string): string {
+  public applyTypeAnchorLinks(content: string, addCode: boolean = true): string {
     if (!this.anchorIds || !content) {
       return content;
     }
@@ -37,29 +37,37 @@ export class SkyDocsAnchorLinkService {
 
     Object.keys(this.anchorIds).forEach((typeName) => {
       content = this.removeBackticks(typeName, content);
-      const anchorId = this.anchorIds[typeName];
-      const anchorHtml = `<a class="sky-docs-anchor-link" href="#${anchorId}">${typeName}</a>`;
-      const regex = createRegex(typeName);
 
-      let matches: RegExpExecArray;
+      let matches;
       let counter = 0;
-      const max = 100;
+      let max = 100;
+
+      let regex = createRegex(typeName);
 
       do {
         matches = regex.exec(content);
         if (matches) {
-          const replacement = matches[0].replace(typeName, anchorHtml);
-          content = content.replace(
-            matches[0],
-            replacement
-          );
-          regex.lastIndex = 0;
+          console.log(matches);
+          console.log(content);
+
+          let anchorId = this.anchorIds[typeName];
+          let anchorHtml = '<a class="sky-docs-anchor-link" href="#' + anchorId + '">' + typeName + '</a>';
+
+          let replacement;
+          if (addCode) {
+            replacement = '<code>' + anchorHtml + matches[3] ? matches[3] : '' + '</code>';
+          } else {
+            replacement = anchorHtml + matches[3] ? matches[3] : '';
+          }
+
+          let contentWithCodeTags = content.substr(0, matches.index) + replacement + content.substr(matches.index + matches[0].length);
+
+          content = contentWithCodeTags;
+          console.log(content);
+          counter++;
         }
-        counter++;
       } while (matches !== null && counter < max);
     });
-
-    return content;
   }
 
   /**
