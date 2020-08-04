@@ -32,7 +32,7 @@ export class SkyDocsAnchorLinkService {
 
   /**
    * Formats known type names with `<code>` tags and wraps them with anchor tags, linking to the appropriate type.
-   * If the content is already contained within a `<code>` tag, set `addCode = false` to prevent extra `<code>` tags from being added.
+   * If the content is already contained within a `<code>` tag, set `codeFormat = false` to prevent extra `<code>` tags from being added.
    */
   public applyTypeAnchorLinks(content: string, codeFormat: boolean = true): string {
     if (!this.anchorIds || !content) {

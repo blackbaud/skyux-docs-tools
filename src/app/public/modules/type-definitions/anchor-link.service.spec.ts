@@ -65,6 +65,30 @@ describe('Anchor link service', function () {
     ].join(' '));
   });
 
+  it('should not add anchor links if codeFormat is set to false', () => {
+    const service = new SkyDocsAnchorLinkService(mockTypeDefinitionsProvider);
+    const content = 'Foo FooComponent FooUser Foo2 [[Foo]] [[FooUser]] FooComponent [[Foo]] (FooUser) >Foo< FooUnknown UnknownFoo FooEnum.Foo `FooUser` <a href="#">FooUser</a>';
+    const result = service.applyTypeAnchorLinks(content, false);
+
+    expect(result).toEqual([
+      '<a class="sky-docs-anchor-link" href="#foo">Foo</a>',
+      '<a class="sky-docs-anchor-link" href="#foo-component">FooComponent</a>',
+      '<a class="sky-docs-anchor-link" href="#foo-user">FooUser</a>',
+      '<a class="sky-docs-anchor-link" href="#foo2">Foo2</a>',
+      '<a class="sky-docs-anchor-link" href="#foo">Foo</a>',
+      '<a class="sky-docs-anchor-link" href="#foo-user">FooUser</a>',
+      '<a class="sky-docs-anchor-link" href="#foo-component">FooComponent</a>',
+      '<a class="sky-docs-anchor-link" href="#foo">Foo</a>',
+      '(<a class="sky-docs-anchor-link" href="#foo-user">FooUser</a>)',
+      '>Foo<',
+      'FooUnknown',
+      'UnknownFoo',
+      '<a class="sky-docs-anchor-link" href="#foo-enum">FooEnum</a>.Foo',
+      '<a class="sky-docs-anchor-link" href="#foo-user">FooUser</a>',
+      '<a href="#">FooUser</a>'
+    ].join(' '));
+  });
+
   it('should handle markdown', () => {
     const service = new SkyDocsAnchorLinkService(mockTypeDefinitionsProvider);
     const content = 'Accepts [foouser](https://foouser.com/).';

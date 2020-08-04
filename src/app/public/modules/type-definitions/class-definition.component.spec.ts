@@ -100,7 +100,7 @@ describe('Class definition component', function () {
     );
   }));
 
-  it('should add links to types within property descriptions that are contain code ticks', fakeAsync(() => {
+  it('should add links to types within property descriptions that have properties', fakeAsync(() => {
     fixture.componentInstance.config = {
       name: 'FooService',
       properties: [{
@@ -118,7 +118,7 @@ describe('Class definition component', function () {
     );
 
     expect(descriptionElement.innerHTML).toContain(
-      '<a class="sky-docs-anchor-link" href="#foo-user">FooUser</a>'
+      '<code><a class="sky-docs-anchor-link" href="#foo-user">FooUser</a>.Baz</code>'
     );
   }));
 
