@@ -14,7 +14,7 @@ import {
  *  - If the type name starts with a period '.', then it is a sub property of an enumeration, etc. and should not be processed as a link.
  */
 function createRegex(keyword: string): RegExp {
-  return new RegExp(`(^|(?<=[^a-zA-Z0-9>.[/]+))(${keyword})(\\.\\w+)?(?=[^a-zA-Z0-9<]+|$)`, 'g');
+  return new RegExp(`(^|[^a-zA-Z0-9>.[/])(${keyword})(\\.\\w+)?(?=[^a-zA-Z0-9<]+|$)`, 'g');
 }
 
 @Injectable()
@@ -47,11 +47,8 @@ export class SkyDocsAnchorLinkService {
       do {
         matches = regex.exec(content);
         if (matches) {
-          console.log(matches);
-          console.log(content);
-
-          let anchorId = this.anchorIds[typeName];
-          let anchorHtml = '<a class="sky-docs-anchor-link" href="#' + anchorId + '">' + typeName + '</a>';
+          const anchorId = this.anchorIds[typeName];
+          const anchorHtml = '<a class="sky-docs-anchor-link" href="#' + anchorId + '">' + typeName + '</a>';
 
           let replacement;
           if (addCode) {
@@ -60,10 +57,13 @@ export class SkyDocsAnchorLinkService {
             replacement = anchorHtml + (matches[3] ? matches[3] : '');
           }
 
-          let contentWithCodeTags = content.substr(0, matches.index) + replacement + content.substr(matches.index + matches[0].length);
+          // matches.index + 1
+          const isKey = matches[0] === typeName;
+          const startIndex = isKey ? matches.index : matches.index + 1;
+          const endIndex = isKey ? matches[0].length : matches[0].length - 1;
+          let contentWithCodeTags = content.substr(0, startIndex) + replacement + content.substr(startIndex + endIndex);
 
           content = contentWithCodeTags;
-          console.log(content);
           counter++;
         }
       } while (matches !== null && counter < max);
