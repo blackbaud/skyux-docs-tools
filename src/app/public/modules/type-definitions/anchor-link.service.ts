@@ -12,6 +12,8 @@ import {
  * Notes:
  *  - If the type name is surrounded by angle brackets, then it has already been processed as a link.
  *  - If the type name starts with a period '.', then it is a sub property of an enumeration, etc. and should not be processed as a link.
+ *  - If the type name ends with a period followed immediately by any word character, then it is a method or property (Foo.bar).
+ *    Only the type name should be processed as a link.
  */
 function createRegex(keyword: string): RegExp {
   return new RegExp(`(^|[^a-zA-Z0-9>.[/])(${keyword})(\\.\\w+)?(?=[^a-zA-Z0-9<]+|$)`, 'g');
@@ -28,7 +30,11 @@ export class SkyDocsAnchorLinkService {
     this.anchorIds = typeDefinitionsProvider.anchorIds;
   }
 
-  public applyTypeAnchorLinks(content: string, addCode: boolean = true): string {
+  /**
+   * Formats known type names with `<code>` tags and wraps them with anchor tags, linking to the appropriate type.
+   * If the content is already contained within a `<code>` tag, set `addCode = false` to prevent extra `<code>` tags from being added.
+   */
+  public applyTypeAnchorLinks(content: string, codeFormat: boolean = true): string {
     if (!this.anchorIds || !content) {
       return content;
     }
@@ -42,7 +48,7 @@ export class SkyDocsAnchorLinkService {
       let counter = 0;
       const max = 100;
 
-      let regex = createRegex(typeName);
+      const regex = createRegex(typeName);
 
       do {
         matches = regex.exec(content);
@@ -50,11 +56,15 @@ export class SkyDocsAnchorLinkService {
           const anchorId = this.anchorIds[typeName];
           const anchorHtml = '<a class="sky-docs-anchor-link" href="#' + anchorId + '">' + typeName + '</a>';
 
+          // Group 3 of the regex pattern captures type properties like Foo.bar.
+          // If these are found, they do not need hyperlinked, but add them to the encapsulating code tag.
+          const typeProperty = (matches[3] ? matches[3] : '');
+
           let replacement;
-          if (addCode) {
-            replacement = '<code>' + anchorHtml + (matches[3] ? matches[3] : '') + '</code>';
+          if (codeFormat) {
+            replacement = '<code>' + anchorHtml + typeProperty + '</code>';
           } else {
-            replacement = anchorHtml + (matches[3] ? matches[3] : '');
+            replacement = anchorHtml + typeProperty;
           }
 
           // matches.index + 1
