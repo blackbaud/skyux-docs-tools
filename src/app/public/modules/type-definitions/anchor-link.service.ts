@@ -3,7 +3,7 @@ import {
 } from '@angular/core';
 
 import {
-  SkyAnchorLinkConfig
+  SkyDocsAnchorLinkConfig
 } from './anchor-link-service-config';
 
 import {
@@ -38,7 +38,7 @@ export class SkyDocsAnchorLinkService {
    * Formats known type names with `<code>` tags and wraps them with anchor tags, linking to the appropriate type.
    * If the content is already contained within a `<code>` tag, set `codeFormat = false` to prevent extra `<code>` tags from being added.
    */
-  public applyTypeAnchorLinks(content: string, config?: SkyAnchorLinkConfig): string {
+  public applyTypeAnchorLinks(content: string, config?: SkyDocsAnchorLinkConfig): string {
     if (!this.anchorIds || !content) {
       return content;
     }
