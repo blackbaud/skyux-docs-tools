@@ -3,9 +3,12 @@ import {
 } from '@angular/core';
 
 import {
+  SkyAnchorLinkConfig
+} from './anchor-link-service-config';
+
+import {
   SkyDocsTypeDefinitionsProvider
 } from './type-definitions-provider';
-import { SkyAnchorLinkConfig } from './anchor-link-service-config';
 
 /**
  * Finds any type name that is NOT surrounded by alpha-numeric (and '>', '<', '.') characters.
