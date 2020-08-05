@@ -127,7 +127,9 @@ export class SkyDocsTypeDefinitionsFormatService {
 
     const propertyType = this.anchorLinkService.applyTypeAnchorLinks(
       this.escapeSpecialCharacters(item.type),
-      false
+      {
+        applyCodeFormatting: false
+      }
     );
 
     signature += `: ${propertyType}`;

@@ -5,6 +5,7 @@ import {
 import {
   SkyDocsTypeDefinitionsProvider
 } from './type-definitions-provider';
+import { SkyAnchorLinkConfig } from './anchor-link-service-config';
 
 /**
  * Finds any type name that is NOT surrounded by alpha-numeric (and '>', '<', '.') characters.
@@ -34,9 +35,16 @@ export class SkyDocsAnchorLinkService {
    * Formats known type names with `<code>` tags and wraps them with anchor tags, linking to the appropriate type.
    * If the content is already contained within a `<code>` tag, set `codeFormat = false` to prevent extra `<code>` tags from being added.
    */
-  public applyTypeAnchorLinks(content: string, codeFormat: boolean = true): string {
+  public applyTypeAnchorLinks(content: string, config?: SkyAnchorLinkConfig): string {
     if (!this.anchorIds || !content) {
       return content;
+    }
+
+    // Set default for code formatting.
+    if (!config) {
+      config = {
+        applyCodeFormatting: true
+      };
     }
 
     content = this.removeDoubleSquareBrackets(content);
@@ -61,7 +69,7 @@ export class SkyDocsAnchorLinkService {
           const typeProperty = (matches[3] ? matches[3] : '');
 
           let replacement;
-          if (codeFormat) {
+          if (config.applyCodeFormatting) {
             replacement = '<code>' + anchorHtml + typeProperty + '</code>';
           } else {
             replacement = anchorHtml + typeProperty;
@@ -69,7 +77,7 @@ export class SkyDocsAnchorLinkService {
 
           // Regex Positive lookbehinds aren't supported in IE11 and Safari, so we have to check if the match has a starting extra character
           // (usually whitespace " Foo"), and then modify the starting/ending indexes to account for the extra character.
-          const isMatchExact = matches[0] === typeName;
+          const isMatchExact = matches[0].substr(0, typeName.length) === typeName;
           const startIndex = isMatchExact ? matches.index : matches.index + 1;
           const endIndex = isMatchExact ? matches[0].length : matches[0].length - 1;
           let contentWithCodeTags = content.substr(0, startIndex) + replacement + content.substr(startIndex + endIndex);

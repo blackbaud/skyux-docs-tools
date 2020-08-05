@@ -68,7 +68,11 @@ describe('Anchor link service', function () {
   it('should not add anchor links if codeFormat is set to false', () => {
     const service = new SkyDocsAnchorLinkService(mockTypeDefinitionsProvider);
     const content = 'Foo FooComponent FooUser Foo2 [[Foo]] [[FooUser]] FooComponent [[Foo]] (FooUser) >Foo< FooUnknown UnknownFoo FooEnum.Foo `FooUser` <a href="#">FooUser</a>';
-    const result = service.applyTypeAnchorLinks(content, false);
+    const result = service.applyTypeAnchorLinks(content,
+      {
+        applyCodeFormatting: false
+      }
+    );
 
     expect(result).toEqual([
       '<a class="sky-docs-anchor-link" href="#foo">Foo</a>',
