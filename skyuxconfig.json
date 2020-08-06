@@ -34,7 +34,7 @@
           "browserSet": false
         },
         "unit": {
-          "browserSet": false
+          "browserSet": "speedy"
         }
       }
     }
