@@ -6,9 +6,9 @@
 
 ## Getting Started
 
-- Run `npm i -ED @skyux/docs-tools@latest`. Pay attention to the peer dependency warnings and install any missing packages as `devDependencies`.
+- Run `npm i -ED @skyux/docs-tools`. Pay attention to the peer dependency warnings and install any missing packages as `devDependencies`.
 
-- Run `npm i -ED @skyux-sdk/builder-plugin-skyux@latest`.
+- Run `npm i -ED @skyux-sdk/builder-plugin-skyux`.
 
 - Remove any custom styles that are hiding the Omnibar. Instead, create a **skyuxconfig.e2e.json** file with the following contents:
 ```
@@ -25,9 +25,7 @@
   "host": {
     "url": "https://developer.blackbaud.com"
   },
-  "omnibar": {
-    "experimental": true
-  },
+  "omnibar": {},
   "params": {
     "svcid": {
       "value": "skyux"
