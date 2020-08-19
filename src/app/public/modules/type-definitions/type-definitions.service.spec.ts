@@ -242,7 +242,7 @@ describe('Type definitions service', function () {
             },
             {
               description: 'Gets a user from the database.',
-              isOptional: true,
+              isOptional: false,
               name: 'getUser',
               type: {
                 callSignature: {
@@ -263,6 +263,17 @@ describe('Type definitions service', function () {
                       type: 'string'
                     }
                   ]
+                }
+              }
+            },
+            {
+              description: '',
+              isOptional: true,
+              name: 'getUsers',
+              type: {
+                callSignature: {
+                  returnType: 'void',
+                  parameters: []
                 }
               }
             },
