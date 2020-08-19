@@ -241,6 +241,32 @@ describe('Type definitions service', function () {
               type: 'U'
             },
             {
+              description: 'Gets a user from the database.',
+              isOptional: true,
+              name: 'getUser',
+              type: {
+                callSignature: {
+                  returnType: 'FooUser',
+                  parameters: [
+                    {
+                      defaultValue: undefined,
+                      description: '',
+                      isOptional: false,
+                      name: 'id',
+                      type: 'string'
+                    },
+                    {
+                      defaultValue: undefined,
+                      description: '',
+                      isOptional: true,
+                      name: 'locale',
+                      type: 'string'
+                    }
+                  ]
+                }
+              }
+            },
+            {
               description: '',
               isOptional: true,
               name: 'user',
