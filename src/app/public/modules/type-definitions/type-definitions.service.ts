@@ -379,11 +379,12 @@ export class SkyDocsTypeDefinitionsService {
     /*istanbul ignore else*/
     if (item.children) {
       item.children.forEach((p: any) => {
-        const commentTags = this.parseCommentTags(p.comment);
+        const { description: propertyDescription } = this.parseCommentTags(p.comment);
+        const isOptional = this.isOptional(p);
         const typeName = this.parseFormattedType(p.type);
         const property: SkyDocsInterfacePropertyDefinition = {
-          description: commentTags.description,
-          isOptional: this.isOptional(p),
+          description: propertyDescription,
+          isOptional,
           name: p.name,
           type: typeName
         };
@@ -705,10 +706,7 @@ export class SkyDocsTypeDefinitionsService {
     }
 
     if (item.kindString === 'Parameter') {
-      if (item.flags && item.flags.isOptional === true) {
-        return true;
-      }
-      return false;
+      return !!(item.flags && item.flags.isOptional);
     }
 
     return true;
