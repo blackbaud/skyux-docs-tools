@@ -9,4 +9,5 @@ export interface SkyDocsComponentInfo {
   summary?: string;
   thumbnail?: string;
   url?: string;
+  modern?: string;
 }
