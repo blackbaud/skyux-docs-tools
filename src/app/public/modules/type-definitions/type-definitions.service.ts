@@ -85,6 +85,7 @@ export class SkyDocsTypeDefinitionsService {
       .replace(/^\//, ''); // remove first slash.
 
     const types: SkyDocsTypeDefinitions = {
+      classes: [],
       components: [],
       directives: [],
       enumerations: [],
@@ -133,6 +134,11 @@ export class SkyDocsTypeDefinitionsService {
         const definition = this.parseClassDefinition(item);
         types.services.push(definition);
         return;
+
+      // Classes.
+      } else if (item.kindString === 'Class' && !item.decorators) {
+        const definition = this.parseClassDefinition(item);
+        types.classes.push(definition);
       }
 
       // Interfaces.
@@ -521,6 +527,9 @@ export class SkyDocsTypeDefinitionsService {
 
     if (typeConfig.typeArguments) {
       const typeArguments = typeConfig.typeArguments.map((typeArgument: any) => {
+        if (typeArgument.type === 'array') {
+          return `${typeArgument.elementType.name}[]`;
+        }
         return typeArgument.name;
       });
 
