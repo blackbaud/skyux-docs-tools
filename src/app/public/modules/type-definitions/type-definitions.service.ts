@@ -296,24 +296,8 @@ export class SkyDocsTypeDefinitionsService {
 
   private parseMethodDefinition(item: any): SkyDocsMethodDefinition {
     const signature: any = item.signatures[0];
-    const parameters: SkyDocsParameterDefinition[] = [];
-
     const typeParameters = this.parseTypeParameters(signature);
-
-    if (signature.parameters) {
-      signature.parameters.forEach((p: any) => {
-        const defaultValue = this.getDefaultValue(p);
-        const parameter: SkyDocsParameterDefinition = {
-          defaultValue,
-          description: (p.comment) ? p.comment.text.trim() : '',
-          isOptional: (defaultValue) ? true : this.isOptional(p),
-          name: p.name,
-          type: this.parseFormattedType(p.type)
-        };
-
-        parameters.push(parameter);
-      });
-    }
+    const parameters = this.parseFunctionParameters(signature);
 
     const {
       codeExample,
@@ -359,7 +343,7 @@ export class SkyDocsTypeDefinitionsService {
       inputValue: {
         description: firstParameter.description,
         name: firstParameter.name,
-        type: firstParameter.type
+        type: firstParameter.type as string
       },
       name: item.name,
       parameters
@@ -382,6 +366,18 @@ export class SkyDocsTypeDefinitionsService {
           name: p.name,
           type: typeName
         };
+
+        if (p.type.type === 'reflection') {
+          if (p.type.declaration.signatures) {
+            const callSignature = p.type.declaration.signatures[0];
+            property.type = {
+              callSignature: {
+                returnType: callSignature.type.name,
+                parameters: this.parseFunctionParameters(callSignature)
+              }
+            };
+          }
+        }
 
         properties.push(property);
       });
@@ -470,21 +466,7 @@ export class SkyDocsTypeDefinitionsService {
     if (item.type.type === 'reflection') {
       if (item.type.declaration.signatures) {
         const callSignature = item.type.declaration.signatures[0];
-        const parameters = callSignature.parameters.map((p: any) => {
-          const isOptional = this.isOptional(p);
-          const { extras } = this.parseCommentTags(item.comment);
-          const tagParam = extras.parameters.find((param: any) => param.name === p.name);
-
-          const parameter: SkyDocsParameterDefinition = {
-            description: tagParam.description,
-            isOptional,
-            name: p.name,
-            type: p.type.name
-          };
-
-          return parameter;
-        });
-
+        const parameters = this.parseFunctionParameters(callSignature);
         const typeAlias: SkyDocsTypeAliasFunctionDefinition = {
           anchorId: item.anchorId,
           description,
@@ -616,6 +598,36 @@ export class SkyDocsTypeDefinitionsService {
       description,
       extras
     };
+  }
+
+  private parseFunctionParameters(item: any): SkyDocsParameterDefinition[] {
+    if (!item.parameters) {
+      return [];
+    }
+
+    const { extras } = this.parseCommentTags(item.comment);
+
+    console.log('extras:', extras);
+
+    return item.parameters.map((p: any) => {
+      let description = '';
+      if (extras.parameters) {
+        const tagParam = extras.parameters.find((param: any) => param.name === p.name);
+        description = tagParam.description;
+      }
+
+      const defaultValue = this.getDefaultValue(p);
+
+      const parameter: SkyDocsParameterDefinition = {
+        defaultValue,
+        description,
+        isOptional: (defaultValue) ? true : this.isOptional(p),
+        name: p.name,
+        type: this.parseFormattedType(p.type)
+      };
+
+      return parameter;
+    });
   }
 
   private parseTypeParameters(item: { typeParameter?: any[] }): string[] {

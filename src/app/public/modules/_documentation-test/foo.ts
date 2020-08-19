@@ -7,6 +7,13 @@ import {
  */
 export interface Foo<T, U extends FooUser> {
 
+  /**
+   * Gets a user from the database.
+   * @param id The unique identifier.
+   * @param locale The locale of the user.
+   */
+  getUser: (id: string, locale?: string) => FooUser;
+
   user: FooUser;
 
   /**
