@@ -142,6 +142,15 @@ describe('Type definitions service', function () {
               isOptional: false,
               name: 'newUser',
               type: 'EventEmitter<U>'
+            },
+            {
+              decorator: 'Output',
+              defaultValue: 'new EventEmitter<any[]>()',
+              deprecationWarning: undefined,
+              description: '',
+              isOptional: false,
+              name: 'rows',
+              type: 'EventEmitter<any[]>'
             }
           ],
           selector: 'app-foo'
