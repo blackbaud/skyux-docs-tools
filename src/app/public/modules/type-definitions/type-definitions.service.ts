@@ -65,127 +65,11 @@ import {
   SkyDocsTypeDefinitionsProvider
 } from './type-definitions-provider';
 
-export interface TypeDocComment {
-  shortText?: string;
-  tags?: {
-    param?: string;
-    tag: 'default' | 'defaultValue' | 'deprecated' | 'example' | 'param';
-    text: string;
-  }[];
-  text?: string;
-}
-
-export interface TypeDocSource {
-  fileName: string;
-}
-
-export interface TypeDocSignature {
-  comment?: TypeDocComment;
-  name: string;
-  parameters?: TypeDocParameter[];
-  type: TypeDocType;
-}
-
-export interface TypeDocType {
-  declaration?: {
-    signatures?: TypeDocSignature[];
-    indexSignature?: TypeDocSignature[];
-  };
-  elementType?: TypeDocType;
-  type: 'array' | 'intrinsic' | 'reference' | 'reflection' | 'stringLiteral' | 'typeParameter' | 'union';
-  typeArguments?: TypeDocType[];
-  types?: {
-    name: string;
-    type: 'intrinsic' | 'reference' | 'stringLiteral';
-    value: string;
-  }[];
-  name: string;
-  constraint?: {
-    name: string;
-  };
-}
-
-export interface TypeDocParameter {
-  comment?: TypeDocComment;
-  name: string;
-  type: TypeDocType;
-  flags?: {
-    isOptional?: boolean;
-  };
-}
-
-export interface TypeDocItemMember {
-
-  comment?: TypeDocComment;
-
-  decorators?: {
-    name: 'Input' | 'Output';
-    type: TypeDocType;
-  }[];
-
-  defaultValue?: string;
-
-  flags?: {
-    isOptional?: boolean;
-  };
-
-  kindString?: 'Accessor' | 'Parameter' | 'Property' | 'Method';
-
-  getSignature?: {
-    comment: TypeDocComment;
-    type: TypeDocType;
-  }[];
-
-  name: string;
-
-  setSignature?: {
-    comment: TypeDocComment;
-    parameters?: TypeDocParameter[];
-    type: TypeDocType;
-  }[];
-
-  signatures?: TypeDocSignature[];
-
-  sources?: TypeDocSource[];
-
-  type?: TypeDocType;
-}
-
-export interface TypeDocItem {
-  anchorId?: string;
-
-  children?: TypeDocItemMember[];
-
-  comment?: TypeDocComment;
-
-  decorators?: {
-    arguments?: {
-      obj: string;
-    };
-    name: 'Component' | 'Injectable';
-    type: TypeDocType;
-  }[];
-
-  kindString?: 'Class' | 'Enumeration' | 'Interface' | 'Type alias';
-
-  indexSignature?: {
-    comment: TypeDocComment;
-    parameters: TypeDocParameter[];
-    type: TypeDocType;
-  }[];
-
-  name: string;
-
-  sources?: TypeDocSource[];
-
-  type?: TypeDocType;
-
-  typeParameter?: {
-    name: string;
-    type: TypeDocType;
-  }[];
-
-}
+import {
+  TypeDocComment,
+  TypeDocItem,
+  TypeDocItemMember
+} from './typedoc-types';
 
 @Injectable()
 export class SkyDocsTypeDefinitionsService {
@@ -666,12 +550,11 @@ export class SkyDocsTypeDefinitionsService {
 
     if (item.type.name) {
       formatted = item.type.name;
-    } else if (item.type.elementType?.name) {
-      formatted = item.type.elementType.name;
-    }
-
-    if (item.type.elementType?.type === 'reference') {
-      formatted = this.parseFormattedType(item) as string;
+    } else {
+      /*istanbul ignore else*/
+      if (item.type.elementType.name) {
+        formatted = item.type.elementType.name;
+      }
     }
 
     if (item.type.typeArguments) {
@@ -715,6 +598,7 @@ export class SkyDocsTypeDefinitionsService {
               break;
 
             case 'default':
+            case 'defaultvalue':
             case 'defaultValue':
               defaultValue = tag.text.trim();
               break;
@@ -761,58 +645,32 @@ export class SkyDocsTypeDefinitionsService {
   }
 
   private parseCallSignatureParameters(item: TypeDocItemMember): SkyDocsParameterDefinition[] {
-    if (item.type.declaration.signatures) {
-      const { parameters } = this.parseCommentTags(item.comment);
-      return item.type.declaration.signatures[0].parameters.map((p) => {
-
-        let description: string;
-        if (parameters) {
-          description = parameters.find(param => param.name === p.name).description;
-        }
-
-        const parameter: SkyDocsParameterDefinition = {
-          description,
-          isOptional: false,
-          name: p.name,
-          type: this.parseFormattedType(p)
-        };
-
-        return parameter;
-      });
+    if (
+      !item.type.declaration.signatures ||
+      !item.type.declaration.signatures[0].parameters
+    ) {
+      return [];
     }
 
-    return [];
-    // if (!signature.parameters) {
-    //   return [];
-    // }
+    const { parameters } = this.parseCommentTags(item.comment);
 
-    // // let commentTags: SkyDocsCommentTags;
-    // // if (item && item.name === 'Foo') {
-    // //   console.log('Item:', JSON.stringify(item));
-    // //   commentTags = this.parseCommentTags(item.comment);
-    // // }
+    return item.type.declaration.signatures[0].parameters.map((p) => {
 
-    // return signature.parameters.map((p) => {
-    //   const { extras } = this.parseCommentTags(p.comment);
-    //   console.log('Eh?', p.name, extras);
-    //   const defaultValue = this.getDefaultValue(p);
+      let description = '';
+      if (parameters) {
+        description = parameters.find(param => param.name === p.name).description;
+      }
 
-    //   let description: string;
-    //   if (extras.parameters) {
-    //     const tagParam = extras.parameters.find((param) => param.name === p.name);
-    //     description = tagParam.description;
-    //   }
+      const parameter: SkyDocsParameterDefinition = {
+        defaultValue: this.getDefaultValue(p),
+        description,
+        isOptional: this.isOptional(p),
+        name: p.name,
+        type: this.parseFormattedType(p)
+      };
 
-    //   const parameter: SkyDocsParameterDefinition = {
-    //     defaultValue,
-    //     description,
-    //     isOptional: this.isOptional(p),
-    //     name: p.name,
-    //     type: this.parseFormattedType(p.type)
-    //   };
-
-    //   return parameter;
-    // });
+      return parameter;
+    });
   }
 
   private parseTypeParameters(item: TypeDocItem): string[] {
@@ -855,7 +713,7 @@ export class SkyDocsTypeDefinitionsService {
   private isOptional(item: TypeDocItemMember): boolean {
     // If `@required` is in the comment, mark it as required.
     const commentTags = this.parseCommentTags(item.comment);
-    if (commentTags.extras.tags.required) {
+    if (commentTags.extras.required) {
       return false;
     }
 
