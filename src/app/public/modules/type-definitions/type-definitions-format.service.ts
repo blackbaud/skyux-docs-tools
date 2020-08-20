@@ -28,6 +28,10 @@ import {
   SkyDocsTypeAliasUnionDefinition
 } from './type-alias-definition';
 
+import {
+  SkyDocsTypeDefinition
+} from './type-definition';
+
 @Injectable()
 export class SkyDocsTypeDefinitionsFormatService {
 
@@ -176,7 +180,7 @@ export class SkyDocsTypeDefinitionsFormatService {
 
   private formatCallSignature(definition: {
     parameters?: SkyDocsParameterDefinition[];
-    returnType?: string;
+    returnType?: SkyDocsTypeDefinition;
   }): string {
     const parameters = (definition.parameters)
       ? definition.parameters.map(p => this.getParameterSignature(p))

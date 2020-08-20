@@ -5,6 +5,6 @@ import {
 export type SkyDocsTypeDefinition = string | {
   callSignature?: {
     parameters?: SkyDocsParameterDefinition[];
-    returnType?: string;
+    returnType?: SkyDocsTypeDefinition;
   };
 };
