@@ -187,7 +187,7 @@ export class SkyDocsTypeDefinitionsService {
 
     /*istanbul ignore else*/
     if (item.children) {
-      item.children.forEach(c => {
+      item.children.forEach((c) => {
         const kindString = c.kindString;
 
         /*istanbul ignore else*/
@@ -317,7 +317,7 @@ export class SkyDocsTypeDefinitionsService {
     const typeParameters = this.parseTypeParameters(signature);
 
     if (signature.parameters) {
-      signature.parameters.forEach(p => {
+      signature.parameters.forEach((p) => {
         const defaultValue = this.getDefaultValue(p);
         const parameter: SkyDocsParameterDefinition = {
           defaultValue,
@@ -389,16 +389,14 @@ export class SkyDocsTypeDefinitionsService {
     /*istanbul ignore else*/
     if (item.children) {
       item.children.forEach((p) => {
-        const {
-          description: propertyDescription
-        } = this.parseCommentTags(p.comment);
-
+        const { description: propertyDescription } = this.parseCommentTags(p.comment);
         const isOptional = this.isOptional(p);
+        const typeName = this.parseFormattedType(p);
         const property: SkyDocsInterfacePropertyDefinition = {
           description: propertyDescription,
           isOptional,
           name: p.name,
-          type: this.parseFormattedType(p)
+          type: typeName
         };
 
         properties.push(property);
@@ -431,7 +429,7 @@ export class SkyDocsTypeDefinitionsService {
   }
 
   private parseEnumerationDefinition(item: TypeDocItem): SkyDocsEnumerationDefinition {
-    const members = item.children.map(p => {
+    const members = item.children.map((p) => {
       const {
         description: memberDescription
       } = this.parseCommentTags(p.comment);
@@ -533,12 +531,14 @@ export class SkyDocsTypeDefinitionsService {
   }
 
   private parseFormattedType(item: TypeDocItemMember): SkyDocsTypeDefinition {
+    const typeConfig = item.type;
+
     let formatted = 'any';
 
-    if (item.type.type === 'reflection') {
+    if (typeConfig.type === 'reflection') {
       /*istanbul ignore else*/
-      if (item.type.declaration.signatures) {
-        const callSignature = item.type.declaration.signatures[0];
+      if (typeConfig.declaration.signatures) {
+        const callSignature = typeConfig.declaration.signatures[0];
         return {
           callSignature: {
             returnType: this.parseFormattedType(callSignature),
@@ -548,17 +548,17 @@ export class SkyDocsTypeDefinitionsService {
       }
     }
 
-    if (item.type.name) {
-      formatted = item.type.name;
+    if (typeConfig.name) {
+      formatted = typeConfig.name;
     } else {
       /*istanbul ignore else*/
-      if (item.type.elementType.name) {
-        formatted = item.type.elementType.name;
+      if (typeConfig.elementType.name) {
+        formatted = typeConfig.elementType.name;
       }
     }
 
-    if (item.type.typeArguments) {
-      const typeArguments = item.type.typeArguments.map((typeArgument) => {
+    if (typeConfig.typeArguments) {
+      const typeArguments = typeConfig.typeArguments.map((typeArgument) => {
         if (typeArgument.type === 'array') {
           return `${typeArgument.elementType.name}[]`;
         }
@@ -568,7 +568,7 @@ export class SkyDocsTypeDefinitionsService {
       formatted += `<${typeArguments.join(', ')}>`;
     }
 
-    if (item.type.type === 'array') {
+    if (typeConfig.type === 'array') {
       formatted += '[]';
     }
 
@@ -581,16 +581,16 @@ export class SkyDocsTypeDefinitionsService {
     let deprecationWarning: string;
     let defaultValue: string;
     let description: string = '';
-    let parameters: {name: string; description: string}[];
+    let parameters: { name: string; description: string }[];
 
     const extras: {
-      [key: string]: any;
+      [key: string]: any
     } = {};
 
     if (comment) {
       /*istanbul ignore else*/
       if (comment.tags) {
-        comment.tags.forEach(tag => {
+        comment.tags.forEach((tag) => {
           switch (tag.tag) {
             case 'deprecated':
               /*istanbul ignore else*/
@@ -676,7 +676,7 @@ export class SkyDocsTypeDefinitionsService {
   private parseTypeParameters(item: TypeDocItem): string[] {
     let typeParameters: string[] = [];
     if (item.typeParameter) {
-      typeParameters = item.typeParameter.map(t => {
+      typeParameters = item.typeParameter.map((t) => {
         if (t.type && t.type.type === 'reference') {
           return `${t.name} extends ${t.type.name}`;
         }
@@ -712,8 +712,8 @@ export class SkyDocsTypeDefinitionsService {
 
   private isOptional(item: TypeDocItemMember): boolean {
     // If `@required` is in the comment, mark it as required.
-    const commentTags = this.parseCommentTags(item.comment);
-    if (commentTags.extras.required) {
+    const tags = this.parseCommentTags(item.comment);
+    if (tags.extras.required) {
       return false;
     }
 
