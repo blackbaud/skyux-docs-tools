@@ -1,50 +1,74 @@
 export interface TypeDocComment {
+
   shortText?: string;
+
   tags?: {
     param?: string;
     tag: 'default' | 'defaultvalue' | 'defaultValue' | 'deprecated' | 'example' | 'param';
     text: string;
   }[];
+
   text?: string;
+
 }
 
 export interface TypeDocSource {
+
   fileName: string;
+
 }
 
 export interface TypeDocSignature {
+
   comment?: TypeDocComment;
+
   name: string;
+
   parameters?: TypeDocParameter[];
+
   type: TypeDocType;
+
 }
 
 export interface TypeDocType {
+
   declaration?: {
     signatures?: TypeDocSignature[];
     indexSignature?: TypeDocSignature[];
   };
+
   elementType?: TypeDocType;
+
   type: 'array' | 'intrinsic' | 'reference' | 'reflection' | 'stringLiteral' | 'typeParameter' | 'union';
+
   typeArguments?: TypeDocType[];
+
   types?: {
     name: string;
     type: 'intrinsic' | 'reference' | 'stringLiteral';
     value: string;
   }[];
+
   name: string;
+
   constraint?: {
     name: string;
   };
+
 }
 
 export interface TypeDocParameter {
+
   comment?: TypeDocComment;
+
   name: string;
+
   type: TypeDocType;
+
   flags?: {
     isOptional?: boolean;
   };
+
 }
 
 export interface TypeDocItemMember {
@@ -85,6 +109,7 @@ export interface TypeDocItemMember {
 }
 
 export interface TypeDocItem {
+
   anchorId?: string;
 
   children?: TypeDocItemMember[];
