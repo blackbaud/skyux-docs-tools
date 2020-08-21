@@ -43,7 +43,7 @@ describe('Type definitions service', function () {
               codeExample: undefined,
               codeExampleLanguage: 'markup',
               deprecationWarning: undefined,
-              description: '',
+              description: 'This is the description for `getValue()`.',
               name: 'getValue',
               parameters: [],
               returnType: 'string',
@@ -51,7 +51,26 @@ describe('Type definitions service', function () {
             }
           ],
           name: 'FooClass',
-          properties: []
+          properties: [
+            {
+              decorator: undefined,
+              defaultValue: '10',
+              deprecationWarning: undefined,
+              description: 'The foo of the FooClass.',
+              isOptional: true,
+              name: 'foo',
+              type: 'number'
+            },
+            {
+              decorator: undefined,
+              defaultValue: '\'foobar\'',
+              deprecationWarning: undefined,
+              description: 'This is the description for `publicProperty`.',
+              isOptional: true,
+              name: 'publicProperty',
+              type: 'string'
+            }
+          ]
         }
       ],
       components: [
@@ -130,6 +149,24 @@ describe('Type definitions service', function () {
               type: 'FooEnum'
             },
             {
+              decorator: 'Output',
+              defaultValue: 'new EventEmitter<FooUser>()',
+              deprecationWarning: undefined,
+              description: 'This is the description for the click event.',
+              isOptional: true,
+              name: 'click',
+              type: 'EventEmitter<FooUser>'
+            },
+            {
+              decorator: 'Output',
+              defaultValue: 'new EventEmitter<U>()',
+              deprecationWarning: '',
+              description: 'This property doesn\'t include a deprecation message.',
+              isOptional: true,
+              name: 'newUser',
+              type: 'EventEmitter<U>'
+            },
+            {
               decorator: 'Input',
               defaultValue: '\'foobar\'',
               deprecationWarning: undefined,
@@ -149,33 +186,24 @@ describe('Type definitions service', function () {
             },
             {
               decorator: 'Output',
-              defaultValue: 'new EventEmitter<FooUser>()',
-              deprecationWarning: undefined,
-              description: 'This is the description for the click event.',
-              isOptional: false,
-              name: 'click',
-              type: 'EventEmitter<FooUser>'
-            },
-            {
-              decorator: 'Output',
-              defaultValue: 'new EventEmitter<U>()',
-              deprecationWarning: '',
-              description: 'This property doesn\'t include a deprecation message.',
-              isOptional: false,
-              name: 'newUser',
-              type: 'EventEmitter<U>'
-            },
-            {
-              decorator: 'Output',
               defaultValue: 'new EventEmitter<any[]>()',
               deprecationWarning: undefined,
               description: '',
-              isOptional: false,
+              isOptional: true,
               name: 'rows',
               type: 'EventEmitter<any[]>'
             }
           ],
           selector: 'app-foo'
+        },
+        {
+          anchorId: 'class-fooemptycomponent',
+          codeExample: undefined,
+          codeExampleLanguage: 'markup',
+          description: 'This component has no properties.',
+          name: 'FooEmptyComponent',
+          properties: [],
+          selector: 'app-foo-empty'
         },
         {
           anchorId: 'class-foousercomponent',
@@ -198,7 +226,7 @@ describe('Type definitions service', function () {
               defaultValue: 'new EventEmitter<FooUser>()',
               deprecationWarning: undefined,
               description: '',
-              isOptional: false,
+              isOptional: true,
               name: 'save',
               type: 'EventEmitter<FooUser>'
             }
@@ -473,14 +501,20 @@ describe('Type definitions service', function () {
           name: 'FooService',
           properties: [
             {
+              decorator: undefined,
               defaultValue: '[]',
+              deprecationWarning: undefined,
               description: 'This is the description for FOOS.',
+              isOptional: true,
               name: 'FOOS',
               type: 'string[]'
             },
             {
+              decorator: undefined,
               defaultValue: undefined,
+              deprecationWarning: undefined,
               description: 'This is the description for getFoos call signature.',
+              isOptional: true,
               name: 'getFoos',
               type: {
                 callSignature: {
