@@ -231,12 +231,15 @@ export class SkyDocsTypeDefinitionsService {
       signature.parameters.forEach((p) => {
         const defaultValue = this.getDefaultValue(p);
         const parameter: SkyDocsParameterDefinition = {
-          defaultValue,
           description: (p.comment) ? p.comment.text.trim() : '',
           isOptional: (defaultValue) ? true : this.isOptional(p),
           name: p.name,
           type: this.parseFormattedType(p)
         };
+
+        if (defaultValue !== undefined) {
+          parameter.defaultValue = defaultValue;
+        }
 
         parameters.push(parameter);
       });
@@ -249,16 +252,21 @@ export class SkyDocsTypeDefinitionsService {
       description
     } = this.parseCommentTags(signature.comment);
 
-    return {
+    const method: SkyDocsMethodDefinition = {
       codeExample,
       codeExampleLanguage,
-      deprecationWarning,
       description,
       name: item.name,
       parameters,
       returnType: this.parseFormattedType(signature),
       typeParameters
     };
+
+    if (deprecationWarning !== undefined) {
+      method.deprecationWarning = deprecationWarning;
+    }
+
+    return method;
   }
 
   private parsePipeDefinition(item: TypeDocItem): SkyDocsPipeDefinition {
@@ -566,19 +574,21 @@ export class SkyDocsTypeDefinitionsService {
     const { parameters } = this.parseCommentTags(item.comment);
 
     return item.type.declaration.signatures[0].parameters.map((p) => {
-
       let description = '';
       if (parameters) {
         description = parameters.find(param => param.name === p.name).description;
       }
 
       const parameter: SkyDocsParameterDefinition = {
-        defaultValue: this.getDefaultValue(p),
-        description,
         isOptional: this.isOptional(p),
         name: p.name,
         type: this.parseFormattedType(p)
       };
+
+      /* istanbul ignore else */
+      if (description !== undefined) {
+        parameter.description = description;
+      }
 
       return parameter;
     });
@@ -643,14 +653,23 @@ export class SkyDocsTypeDefinitionsService {
       const isOptional = (decorator === 'Output') ? true : this.isOptional(child);
 
       const property: SkyDocsPropertyDefinition = {
-        decorator,
-        defaultValue,
-        deprecationWarning,
         description,
         isOptional,
         name: child.name,
         type
       };
+
+      if (decorator !== undefined) {
+        property.decorator = decorator;
+      }
+
+      if (defaultValue !== undefined) {
+        property.defaultValue = defaultValue;
+      }
+
+      if (deprecationWarning !== undefined) {
+        property.deprecationWarning = deprecationWarning;
+      }
 
       properties.push(property);
     });
