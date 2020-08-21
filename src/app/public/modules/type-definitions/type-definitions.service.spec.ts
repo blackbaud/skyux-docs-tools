@@ -215,6 +215,15 @@ describe('Type definitions service', function () {
       ],
       directives: [
         {
+          anchorId: 'class-foocomplexdirective',
+          codeExample: undefined,
+          codeExampleLanguage: 'markup',
+          description: 'This is the description for FooComplexDirective.',
+          name: 'FooComplexDirective',
+          properties: [],
+          selector: 'input[fooComplex], textarea[fooComplex], [required][fooComplex]'
+        },
+        {
           anchorId: 'class-foodirective',
           codeExample: undefined,
           codeExampleLanguage: 'markup',
@@ -235,7 +244,7 @@ describe('Type definitions service', function () {
       enumerations: [
         {
           anchorId: 'enumeration-fooenum',
-          description: 'This is the description for FooEnum.',
+          description: 'This is the description for FooEnum. It includes `Date` values.',
           members: [
             {
               description: 'The bar of the foo.',
@@ -244,6 +253,10 @@ describe('Type definitions service', function () {
             {
               description: 'The baz of the foo.',
               name: 'FooEnum.Baz'
+            },
+            {
+              description: 'The `FooUser` birthday as a `Date` object.',
+              name: 'FooEnum.FooUserId'
             }
           ],
           name: 'FooEnum'
