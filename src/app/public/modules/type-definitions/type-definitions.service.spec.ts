@@ -78,6 +78,13 @@ describe('Type definitions service', function () {
           properties: [
             {
               decorator: 'Input',
+              description: '',
+              isOptional: false,
+              name: 'alphabeticallyFirst',
+              type: 'boolean'
+            },
+            {
+              decorator: 'Input',
               defaultValue: 'false',
               description: '',
               isOptional: false,
@@ -136,6 +143,21 @@ describe('Type definitions service', function () {
               type: 'FooEnum'
             },
             {
+              decorator: 'Input',
+              defaultValue: '\'foobar\'',
+              description: '',
+              isOptional: true,
+              name: 'sample',
+              type: 'string'
+            },
+            {
+              decorator: 'Input',
+              description: '',
+              isOptional: true,
+              name: 'user',
+              type: 'U'
+            },
+            {
               decorator: 'Output',
               defaultValue: 'new EventEmitter<FooUser>()',
               description: 'This is the description for the click event.',
@@ -151,21 +173,6 @@ describe('Type definitions service', function () {
               isOptional: true,
               name: 'newUser',
               type: 'EventEmitter<U>'
-            },
-            {
-              decorator: 'Input',
-              defaultValue: '\'foobar\'',
-              description: '',
-              isOptional: true,
-              name: 'sample',
-              type: 'string'
-            },
-            {
-              decorator: 'Input',
-              description: '',
-              isOptional: true,
-              name: 'user',
-              type: 'U'
             },
             {
               decorator: 'Output',

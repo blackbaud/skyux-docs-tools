@@ -678,29 +678,26 @@ export class SkyDocsTypeDefinitionsService {
       properties.push(property);
     });
 
-    this.sortProperties(properties, 'name');
-    this.sortProperties(properties, 'isOptional');
-    this.sortProperties(properties, 'decorator');
+    // Sort alphabetically by name.
+    properties.sort((a, b) => (a.name > b.name) ? 1 : -1);
 
-    return properties;
-  }
+    // Put required properties at the top of the list.
+    properties.sort((a, b) => (a.isOptional === b.isOptional) ? 0 : b.isOptional ? -1 : 1);
 
-  private sortProperties(properties: SkyDocsPropertyDefinition[], key: keyof SkyDocsPropertyDefinition): void {
+    // Sort decorator properties, `Input` first, then `Output`, then everything else.
     properties.sort((a, b) => {
-      if (a[key] === undefined || b[key] === undefined) {
-        return 0;
-      }
-
-      if (a[key] > b[key]) {
-        return 1;
-      }
-
-      if (a[key] < b[key]) {
+      if (a.decorator !== undefined && b.decorator === undefined) {
         return -1;
       }
 
-      return 0;
+      if (a.decorator === undefined || b.decorator === undefined || a.decorator === b.decorator) {
+        return 0;
+      }
+
+      return (a.decorator > b.decorator) ? 1 : -1;
     });
+
+    return properties;
   }
 
   /**
