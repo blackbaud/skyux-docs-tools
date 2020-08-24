@@ -687,6 +687,10 @@ export class SkyDocsTypeDefinitionsService {
 
   private sortProperties(properties: SkyDocsPropertyDefinition[], key: keyof SkyDocsPropertyDefinition): void {
     properties.sort((a, b) => {
+      if (a[key] === undefined || b[key] === undefined) {
+        return 0;
+      }
+
       if (a[key] > b[key]) {
         return 1;
       }
