@@ -42,6 +42,7 @@ describe('Type definitions service', function () {
             {
               codeExample: undefined,
               codeExampleLanguage: 'markup',
+              deprecationWarning: undefined,
               description: 'This is the description for `getValue()`.',
               name: 'getValue',
               parameters: [],
@@ -52,14 +53,18 @@ describe('Type definitions service', function () {
           name: 'FooClass',
           properties: [
             {
+              decorator: undefined,
               defaultValue: '10',
+              deprecationWarning: undefined,
               description: 'The foo of the FooClass.',
               isOptional: true,
               name: 'foo',
               type: 'number'
             },
             {
+              decorator: undefined,
               defaultValue: '\'foobar\'',
+              deprecationWarning: undefined,
               description: 'This is the description for `publicProperty`.',
               isOptional: true,
               name: 'publicProperty',
@@ -78,6 +83,8 @@ describe('Type definitions service', function () {
           properties: [
             {
               decorator: 'Input',
+              defaultValue: undefined,
+              deprecationWarning: undefined,
               description: '',
               isOptional: false,
               name: 'alphabeticallyFirst',
@@ -86,6 +93,7 @@ describe('Type definitions service', function () {
             {
               decorator: 'Input',
               defaultValue: 'false',
+              deprecationWarning: undefined,
               description: '',
               isOptional: false,
               name: 'requiredProperty',
@@ -93,6 +101,8 @@ describe('Type definitions service', function () {
             },
             {
               decorator: 'Input',
+              defaultValue: undefined,
+              deprecationWarning: undefined,
               description: '',
               isOptional: false,
               name: 'searchFunction',
@@ -101,6 +111,7 @@ describe('Type definitions service', function () {
                   returnType: 'any[]',
                   parameters: [
                     {
+                      defaultValue: undefined,
                       description: '',
                       isOptional: false,
                       name: 'searchTerm',
@@ -113,6 +124,7 @@ describe('Type definitions service', function () {
             {
               decorator: 'Input',
               defaultValue: 'FooEnum.Foo',
+              deprecationWarning: undefined,
               description: 'This is the description for bar input. You must provide `FooEnum` values. If you provide FooEnum.Baz amazing things will happen.',
               isOptional: true,
               name: 'bar',
@@ -121,6 +133,7 @@ describe('Type definitions service', function () {
             {
               decorator: 'Input',
               defaultValue: 'false',
+              deprecationWarning: undefined,
               description: 'This is the description for baz input.',
               isOptional: true,
               name: 'baz',
@@ -137,6 +150,8 @@ describe('Type definitions service', function () {
             },
             {
               decorator: 'Input',
+              defaultValue: undefined,
+              deprecationWarning: undefined,
               description: 'This is the description for foo input. You must provide [[FooEnum]] values.',
               isOptional: true,
               name: 'foo',
@@ -145,6 +160,7 @@ describe('Type definitions service', function () {
             {
               decorator: 'Input',
               defaultValue: '\'foobar\'',
+              deprecationWarning: undefined,
               description: '',
               isOptional: true,
               name: 'sample',
@@ -152,6 +168,8 @@ describe('Type definitions service', function () {
             },
             {
               decorator: 'Input',
+              defaultValue: undefined,
+              deprecationWarning: undefined,
               description: '',
               isOptional: true,
               name: 'user',
@@ -160,6 +178,7 @@ describe('Type definitions service', function () {
             {
               decorator: 'Output',
               defaultValue: 'new EventEmitter<FooUser>()',
+              deprecationWarning: undefined,
               description: 'This is the description for the click event.',
               isOptional: true,
               name: 'click',
@@ -177,6 +196,7 @@ describe('Type definitions service', function () {
             {
               decorator: 'Output',
               defaultValue: 'new EventEmitter<any[]>()',
+              deprecationWarning: undefined,
               description: '',
               isOptional: true,
               name: 'rows',
@@ -203,6 +223,8 @@ describe('Type definitions service', function () {
           properties: [
             {
               decorator: 'Input',
+              defaultValue: undefined,
+              deprecationWarning: undefined,
               description: 'The user, which is a [[FooUser]] value.',
               isOptional: true,
               name: 'user',
@@ -211,6 +233,7 @@ describe('Type definitions service', function () {
             {
               decorator: 'Output',
               defaultValue: 'new EventEmitter<FooUser>()',
+              deprecationWarning: undefined,
               description: '',
               isOptional: true,
               name: 'save',
@@ -239,6 +262,8 @@ describe('Type definitions service', function () {
           properties: [
             {
               decorator: 'Input',
+              defaultValue: undefined,
+              deprecationWarning: undefined,
               description: '',
               isOptional: true,
               name: 'fooOptions',
@@ -296,12 +321,14 @@ describe('Type definitions service', function () {
                   returnType: 'FooUser',
                   parameters: [
                     {
+                      defaultValue: undefined,
                       description: 'The unique identifier.',
                       isOptional: false,
                       name: 'id',
                       type: 'FooUser'
                     },
                     {
+                      defaultValue: undefined,
                       description: 'The locale of the user.',
                       isOptional: true,
                       name: 'locale',
@@ -398,12 +425,14 @@ describe('Type definitions service', function () {
           name: 'FooPipe',
           parameters: [
             {
+              defaultValue: undefined,
               description: 'The date format to use.',
               isOptional: true,
               name: 'format',
               type: 'string'
             },
             {
+              defaultValue: undefined,
               description: 'The desired locale.',
               isOptional: true,
               name: 'locale',
@@ -438,12 +467,14 @@ describe('Type definitions service', function () {
               name: 'anotherFoo',
               parameters: [
                 {
+                  defaultValue: undefined,
                   description: 'The component to create.',
                   isOptional: false,
                   name: 'component',
                   type: 'Type<T>'
                 },
                 {
+                  defaultValue: undefined,
                   description: 'The user to use.',
                   isOptional: false,
                   name: 'user',
@@ -459,16 +490,19 @@ describe('Type definitions service', function () {
             {
               codeExample: 'const instance = this.fooService.createFoo(\'baz\');',
               codeExampleLanguage: 'typescript',
+              deprecationWarning: undefined,
               description: 'This is the description for createFoo().',
               name: 'createFoo',
               parameters: [
                 {
+                  defaultValue: undefined,
                   description: '',
                   isOptional: false,
                   name: 'bar',
                   type: 'string'
                 },
                 {
+                  defaultValue: undefined,
                   description: '',
                   isOptional: true,
                   name: 'baz',
@@ -489,13 +523,18 @@ describe('Type definitions service', function () {
           name: 'FooService',
           properties: [
             {
+              decorator: undefined,
               defaultValue: '[]',
+              deprecationWarning: undefined,
               description: 'This is the description for FOOS.',
               isOptional: true,
               name: 'FOOS',
               type: 'string[]'
             },
             {
+              decorator: undefined,
+              defaultValue: undefined,
+              deprecationWarning: undefined,
               description: 'This is the description for getFoos call signature.',
               isOptional: true,
               name: 'getFoos',
@@ -515,6 +554,7 @@ describe('Type definitions service', function () {
             {
               codeExample: undefined,
               codeExampleLanguage: 'markup',
+              deprecationWarning: undefined,
               description: 'This is the description for createFoo(). It creates a [[FooUser]].',
               name: 'getUsers',
               parameters: [],
