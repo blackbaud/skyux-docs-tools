@@ -292,7 +292,7 @@ describe('Type definitions service', function () {
                       description: 'The unique identifier.',
                       isOptional: false,
                       name: 'id',
-                      type: 'string'
+                      type: 'FooUser'
                     },
                     {
                       description: 'The locale of the user.',
@@ -374,7 +374,7 @@ describe('Type definitions service', function () {
               type: 'string'
             }
           ],
-          typeParameters: [  ]
+          typeParameters: [ ]
         }
       ],
       pipes: [
@@ -536,6 +536,12 @@ describe('Type definitions service', function () {
               isOptional: true,
               name: 'haystack',
               type: 'string'
+            },
+            {
+              description: undefined,
+              isOptional: true,
+              name: 'user',
+              type: 'FooUser'
             }
           ],
           returnType: 'FooUser'
