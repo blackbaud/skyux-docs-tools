@@ -19,6 +19,7 @@
   "librarySettings": {
     "whitelistedNonPeerDependencies": [
       "@stackblitz/sdk",
+      "lodash.orderby",
       "marked"
     ]
   },

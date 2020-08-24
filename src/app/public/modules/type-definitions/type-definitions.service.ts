@@ -67,6 +67,8 @@ import {
   TypeDocItemMember
 } from './typedoc-types';
 
+import orderBy from 'lodash.orderby';
+
 @Injectable()
 export class SkyDocsTypeDefinitionsService {
 
@@ -177,8 +179,7 @@ export class SkyDocsTypeDefinitionsService {
       ? decoratorSource.split('selector: `')[1].split('`')[0].replace(/\s\s+/g, ' ')
       : decoratorSource.split('selector: \'')[1].split('\'')[0];
 
-    const properties = this.parseClassProperties(item)
-      .filter(p => (p.decorator === 'Input' || p.decorator === 'Output'));
+    const properties = this.parseClassProperties(item).filter(p => (p.decorator === 'Input' || p.decorator === 'Output'));
 
     const {
       codeExample,
@@ -236,12 +237,15 @@ export class SkyDocsTypeDefinitionsService {
       signature.parameters.forEach((p) => {
         const defaultValue = this.getDefaultValue(p);
         const parameter: SkyDocsParameterDefinition = {
-          defaultValue,
           description: (p.comment) ? p.comment.text.trim() : '',
           isOptional: (defaultValue) ? true : this.isOptional(p),
           name: p.name,
           type: this.parseFormattedType(p)
         };
+
+        if (defaultValue !== undefined) {
+          parameter.defaultValue = defaultValue;
+        }
 
         parameters.push(parameter);
       });
@@ -257,13 +261,16 @@ export class SkyDocsTypeDefinitionsService {
     const method: SkyDocsMethodDefinition = {
       codeExample,
       codeExampleLanguage,
-      deprecationWarning,
       description,
       name: item.name,
       parameters,
       returnType: this.parseFormattedType(signature),
       typeParameters
     };
+
+    if (deprecationWarning !== undefined) {
+      method.deprecationWarning = deprecationWarning;
+    }
 
     return method;
   }
@@ -580,12 +587,15 @@ export class SkyDocsTypeDefinitionsService {
       }
 
       const parameter: SkyDocsParameterDefinition = {
-        defaultValue: this.getDefaultValue(p),
-        description,
         isOptional: this.isOptional(p),
         name: p.name,
         type: this.parseFormattedType(p)
       };
+
+      /* istanbul ignore else */
+      if (description !== undefined) {
+        parameter.description = description;
+      }
 
       return parameter;
     });
@@ -607,7 +617,7 @@ export class SkyDocsTypeDefinitionsService {
   }
 
   private parseClassProperties(item: TypeDocItem): SkyDocsPropertyDefinition[] {
-    const properties: SkyDocsPropertyDefinition[] = [];
+    let properties: SkyDocsPropertyDefinition[] = [];
 
     if (!item.children) {
       return properties;
@@ -650,36 +660,32 @@ export class SkyDocsTypeDefinitionsService {
       const isOptional = (decorator === 'Output') ? true : this.isOptional(child);
 
       const property: SkyDocsPropertyDefinition = {
-        decorator,
-        defaultValue,
-        deprecationWarning,
         description,
         isOptional,
         name: child.name,
         type
       };
 
+      if (decorator !== undefined) {
+        property.decorator = decorator;
+      }
+
+      if (defaultValue !== undefined) {
+        property.defaultValue = defaultValue;
+      }
+
+      if (deprecationWarning !== undefined) {
+        property.deprecationWarning = deprecationWarning;
+      }
+
       properties.push(property);
     });
 
-    // Sort alphabetically by name.
-    properties.sort((a, b) => (a.name > b.name) ? 1 : -1);
-
-    // Put required properties at the top of the list.
-    properties.sort((a, b) => (a.isOptional === b.isOptional) ? 0 : b.isOptional ? -1 : 1);
-
-    // Sort decorator properties, `Input` first, then `Output`, then everything else.
-    properties.sort((a, b) => {
-      if (a.decorator !== undefined && b.decorator === undefined) {
-        return -1;
-      }
-
-      if (a.decorator === undefined || b.decorator === undefined || a.decorator === b.decorator) {
-        return 0;
-      }
-
-      return (a.decorator > b.decorator) ? 1 : -1;
-    });
+    properties = orderBy(
+      properties,
+      ['decorator', 'isOptional', 'name'],
+      ['asc', 'asc', 'asc']
+    );
 
     return properties;
   }
