@@ -179,7 +179,8 @@ export class SkyDocsTypeDefinitionsService {
       ? decoratorSource.split('selector: `')[1].split('`')[0].replace(/\s\s+/g, ' ')
       : decoratorSource.split('selector: \'')[1].split('\'')[0];
 
-    const properties = this.parseClassProperties(item).filter(p => (p.decorator === 'Input' || p.decorator === 'Output'));
+    const properties = this.parseClassProperties(item)
+      .filter(p => (p.decorator === 'Input' || p.decorator === 'Output'));
 
     const {
       codeExample,
