@@ -159,6 +159,13 @@ describe('Type definitions service', function () {
             },
             {
               decorator: 'Output',
+              description: 'Fires when a user is selected.',
+              isOptional: true,
+              name: 'change',
+              type: 'Observable<FooUser>'
+            },
+            {
+              decorator: 'Output',
               defaultValue: 'new EventEmitter<FooUser>()',
               description: 'This is the description for the click event.',
               isOptional: true,
