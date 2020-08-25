@@ -7,6 +7,11 @@ import {
 } from '@angular/core';
 
 import {
+  Observable,
+  of
+} from 'rxjs';
+
+import {
   FooEnum
 } from './foo-enum';
 
@@ -115,6 +120,17 @@ export class FooComponent<U extends FooUser> implements OnInit {
    */
   @Input()
   public requiredProperty: boolean = false;
+
+  /**
+   * Fires when a user is selected.
+   */
+  @Output()
+  public get change(): Observable<FooUser> {
+    return of({
+      firstName: 'Foo',
+      lastName: 'Bar'
+    });
+  }
 
   public propertyShouldNotBeDocumented: string;
 

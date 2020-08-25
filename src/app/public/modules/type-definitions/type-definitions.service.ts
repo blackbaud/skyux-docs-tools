@@ -650,6 +650,13 @@ export class SkyDocsTypeDefinitionsService {
             } = this.parseCommentTags(setSignature.comment);
             description = setSignatureDescription;
             type = this.parseFormattedType(setSignature.parameters[0]);
+          } else if (child.getSignature) {
+            const getSignature = child.getSignature[0];
+            const {
+              description: getSignatureDescription
+            } = this.parseCommentTags(getSignature.comment);
+            description = getSignatureDescription;
+            type = this.parseFormattedType(getSignature);
           }
           break;
 
