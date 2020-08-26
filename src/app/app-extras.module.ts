@@ -10,7 +10,6 @@ import {
 // Do not import from public_api since the SKY UX plugin needs to assign providers from the same place.
 // (The SKY UX plugin pulls types from node_modules.)
 import {
-  SkyDocsThumbnailModule,
   SkyDocsToolsModule,
   SkyDocsToolsOptions
 } from '@skyux/docs-tools'; // <-- Important!
@@ -27,15 +26,19 @@ import {
   SkyAppLinkModule
 } from '@skyux/router';
 
+import {
+  SkyDocsThumbnailModule
+} from './public/public_api';
+
 @NgModule({
   exports: [
     SkyAlertModule,
     SkyAppLinkModule,
     SkyCodeBlockModule,
     SkyCodeModule,
+    SkyDocsThumbnailModule,
     SkyDocsToolsModule,
-    SkyPopoverModule,
-    SkyDocsThumbnailModule
+    SkyPopoverModule
   ],
   providers: [
     {
