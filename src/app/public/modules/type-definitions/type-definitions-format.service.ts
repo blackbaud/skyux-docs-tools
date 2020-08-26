@@ -39,7 +39,9 @@ export class SkyDocsTypeDefinitionsFormatService {
     private anchorLinkService: SkyDocsAnchorLinkService
   ) { }
 
-  public getInterfaceSignature(definition: SkyDocsInterfaceDefinition): string {
+  public getInterfaceSignature(definition: SkyDocsInterfaceDefinition, config?: {
+    createAnchorLinks: boolean;
+  }): string {
     const typeParameterSignature: string = (definition.typeParameters && definition.typeParameters.length)
       ? `<${definition.typeParameters.join(', ')}>`
       : '';
@@ -49,7 +51,9 @@ export class SkyDocsTypeDefinitionsFormatService {
     definition.properties.forEach((property) => {
       const propertyType = (typeof property.type === 'string')
         ? property.type
-        : this.formatCallSignature(property.type.callSignature);
+        : this.formatCallSignature(property.type.callSignature, {
+          createAnchorLinks: config.createAnchorLinks
+        });
 
       const optionalIndicator = (property.isOptional) ? '?' : '';
       signature += `\n  ${property.name}${optionalIndicator}: ${propertyType.replace(/\"/g, '\'')};`;
