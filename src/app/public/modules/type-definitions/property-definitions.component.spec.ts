@@ -113,6 +113,36 @@ describe('Property definitions component', function () {
     expect(signatureElement.textContent).toEqual('foobar?: (userId: number) => string[]');
   }));
 
+  it('should should display object literal types', fakeAsync(() => {
+    fixture.componentInstance.isOptional = true;
+    fixture.componentInstance.propertyName = 'foobar';
+    fixture.componentInstance.propertyType = {
+      objectLiteral: {
+        children: [
+          {
+            isOptional: false,
+            name: 'userId',
+            type: 'number'
+          },
+          {
+            isOptional: true,
+            name: 'bar',
+            type: 'FooUser'
+          }
+        ]
+      }
+    };
+
+    fixture.detectChanges();
+    tick();
+
+    const signatureElement = fixture.nativeElement.querySelector(
+      '.sky-docs-property-definitions-table-cell-name'
+    );
+
+    expect(signatureElement.textContent).toEqual('foobar?: { userId: number; bar?: FooUser; }');
+  }));
+
   it('should display default value', fakeAsync(() => {
     fixture.componentInstance.propertyName = 'foobar';
     fixture.componentInstance.propertyType = 'number';

@@ -32,28 +32,27 @@ export interface TypeDocSignature {
 
 export interface TypeDocType {
 
+  constraint?: {
+    name: string;
+  };
+
   declaration?: {
+    children?: TypeDocItemMember[];
     signatures?: TypeDocSignature[];
     indexSignature?: TypeDocSignature[];
   };
 
   elementType?: TypeDocType;
 
+  name: string;
+
   type: 'array' | 'intrinsic' | 'reference' | 'reflection' | 'stringLiteral' | 'typeParameter' | 'union';
 
   typeArguments?: TypeDocType[];
 
-  types?: {
-    name: string;
-    type: 'intrinsic' | 'reference' | 'stringLiteral';
-    value: string;
-  }[];
+  types?: TypeDocType[];
 
-  name: string;
-
-  constraint?: {
-    name: string;
-  };
+  value?: string;
 
 }
 
@@ -89,7 +88,7 @@ export interface TypeDocItemMember {
     isOptional?: boolean;
   };
 
-  kindString?: 'Accessor' | 'Parameter' | 'Property' | 'Method';
+  kindString?: 'Accessor' | 'Parameter' | 'Property' | 'Method' | 'Variable';
 
   getSignature?: {
     comment: TypeDocComment;
@@ -97,7 +96,7 @@ export interface TypeDocItemMember {
     type: TypeDocType;
   }[];
 
-  name: string;
+  name?: string;
 
   setSignature?: {
     comment: TypeDocComment;
@@ -132,7 +131,7 @@ export interface TypeDocItem {
 
   indexSignature?: TypeDocSignature[];
 
-  name: string;
+  name?: string;
 
   sources?: TypeDocSource[];
 

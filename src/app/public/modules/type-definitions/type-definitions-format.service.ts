@@ -3,10 +3,6 @@ import {
 } from '@angular/core';
 
 import {
-  SkyDocsAnchorLinkService
-} from './anchor-link.service';
-
-import {
   SkyDocsInterfaceDefinition
 } from './interface-definition';
 
@@ -34,10 +30,6 @@ import {
 
 @Injectable()
 export class SkyDocsTypeDefinitionsFormatService {
-
-  constructor(
-    private anchorLinkService: SkyDocsAnchorLinkService
-  ) { }
 
   public getInterfaceSignature(definition: SkyDocsInterfaceDefinition, config?: {
     createAnchorLinks: boolean;
@@ -92,7 +84,6 @@ export class SkyDocsTypeDefinitionsFormatService {
   public getParameterSignature(
     parameter: SkyDocsParameterDefinition,
     config: {
-      applyCodeFormatting?: boolean;
       createAnchorLinks?: boolean;
       escapeSpecialCharacters?: boolean;
     } = {
@@ -113,12 +104,6 @@ export class SkyDocsTypeDefinitionsFormatService {
 
     if (config.escapeSpecialCharacters) {
       signature = this.escapeSpecialCharacters(signature);
-    }
-
-    if (config.createAnchorLinks) {
-      signature = this.anchorLinkService.applyTypeAnchorLinks(signature, {
-        applyCodeFormatting: config.applyCodeFormatting
-      });
     }
 
     return signature;
@@ -146,18 +131,16 @@ export class SkyDocsTypeDefinitionsFormatService {
       signature += '?';
     }
 
-    let propertyType = (typeof item.type === 'string')
-      ? item.type
-      : this.formatCallSignature(item.type.callSignature, {
+    let propertyType: string;
+    if (typeof item.type === 'string') {
+      propertyType = item.type;
+    } else if (typeof item.type.callSignature !== 'undefined') {
+      propertyType = this.formatCallSignature(item.type.callSignature, {
         createAnchorLinks: false
       });
-
-    propertyType = this.anchorLinkService.applyTypeAnchorLinks(
-      this.escapeSpecialCharacters(propertyType),
-      {
-        applyCodeFormatting: false
-      }
-    );
+    } else /*istanbul ignore else */if (typeof item.type.objectLiteral !== 'undefined') {
+      propertyType = this.formatObjectLiteral(item.type.objectLiteral);
+    }
 
     signature += `: ${propertyType}`;
 
@@ -211,6 +194,13 @@ export class SkyDocsTypeDefinitionsFormatService {
       : [];
 
     return `(${parameters.join(', ')}) => ${definition.returnType}`;
+  }
+
+  private formatObjectLiteral(definition: {
+    children?: SkyDocsPropertyDefinition[];
+  }): string {
+    const members = definition.children.map(c => `${this.getPropertySignature(c)};`);
+    return `{ ${members.join(' ')} }`;
   }
 
 }
