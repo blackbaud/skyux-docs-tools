@@ -139,7 +139,7 @@ export class SkyDocsTypeDefinitionsService {
       }
 
       // Services.
-      if (this.endsWith(item.name, 'Service') || (item.decorators && item.decorators[0].name === 'Injectable')) {
+      if (item.decorators && item.decorators[0].name === 'Injectable') {
         const definition = this.parseClassDefinition(item);
         types.services.push(definition);
         return;
