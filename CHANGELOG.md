@@ -1,3 +1,7 @@
+# 4.5.1 (2020-09-09)
+
+- Fixed demo page component to properly render links in the sidebar nav to components with URL parameters. [#121](https://github.com/blackbaud/skyux-docs-tools/pull/121)
+
 # 4.5.0 (2020-09-04)
 
 - Added support for `marked@1.1.1`. [#120](https://github.com/blackbaud/skyux-docs-tools/pull/120)
