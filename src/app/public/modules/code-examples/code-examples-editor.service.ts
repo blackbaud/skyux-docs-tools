@@ -77,7 +77,8 @@ export class SkyDocsCodeExamplesEditorService {
 
     const files = this.parseStackBlitzFiles(
       codeExample.sourceCode,
-      mergedDependencies
+      mergedDependencies,
+      codeExample.modernTheme
     );
 
     return {
@@ -96,7 +97,8 @@ export class SkyDocsCodeExamplesEditorService {
 
   private parseStackBlitzFiles(
     sourceCode: SkyDocsSourceCodeFile[],
-    dependencies: SkyDocsCodeExampleModuleDependencies
+    dependencies: SkyDocsCodeExampleModuleDependencies,
+    modernTheme: boolean
   ): {
     [path: string]: string;
   } {
@@ -188,7 +190,7 @@ export class AppComponent { }`;
 export class AppModule { }
 `;
 
-    files[`${srcPath}index.html`] = `<sky-demo-app>
+    files[`${srcPath}index.html`] = `<sky-demo-app${modernTheme ? ' class="sky-theme-modern"' : ''}>
   Loading...
 </sky-demo-app>`;
 
@@ -223,6 +225,7 @@ import 'zone.js/dist/zone';
 `;
 
     files[`${srcPath}styles.scss`] = `@import '~@skyux/theme/css/sky';
+${modernTheme ? `@import '~@skyux/theme/css/themes/modern/styles';` : ''}
 
 body {
   background-color: #fff;

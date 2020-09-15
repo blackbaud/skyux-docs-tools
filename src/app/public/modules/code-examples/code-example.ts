@@ -13,8 +13,10 @@ export interface SkyDocsCodeExample {
 
   heading: string;
 
-  sourceCode: SkyDocsSourceCodeFile[];
+  modernTheme: boolean;
 
   packageDependencies: SkyDocsCodeExampleModuleDependencies;
+
+  sourceCode: SkyDocsSourceCodeFile[];
 
 }
