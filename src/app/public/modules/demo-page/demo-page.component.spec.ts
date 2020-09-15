@@ -109,7 +109,7 @@ describe('Demo page component', () => {
       of([
         {
           name: 'foo',
-          url: 'https://www.notmatchingsite.com/foo?svcid=test-svcid'
+          url: 'https://www.notmatchingsite.com/foo?svcid=test-svcid' // Hostname matches MockSkyAppConfig.skyux.host.url
         },
         {
           name: 'bar',
