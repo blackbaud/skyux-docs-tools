@@ -4,6 +4,10 @@ import {
   Input
 } from '@angular/core';
 
+import {
+  SkyDocsCodeExampleTheme
+} from './code-example-theme';
+
 /**
  * Renders a single code example.
  * @example
@@ -30,16 +34,16 @@ export class SkyDocsCodeExampleComponent {
   public heading: string;
 
   /**
-   * Specifies if the editor service should show the example in modern theme.
-   */
-  @Input()
-  public modernTheme: boolean = false;
-
-  /**
    * Specifies the local path to the code example's source code. The value is relative to the root directory.
    * @required
    */
   @Input()
   public sourceCodePath: string;
+
+  /**
+   * Specifies if the editor service should show the example in modern theme.
+   */
+  @Input()
+  public theme: SkyDocsCodeExampleTheme = SkyDocsCodeExampleTheme.Default;
 
 }

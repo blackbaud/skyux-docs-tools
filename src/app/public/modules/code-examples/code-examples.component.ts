@@ -93,9 +93,9 @@ export class SkyDocsCodeExamplesComponent implements AfterContentInit {
 
       this.codeExamples.push({
         heading: component.heading,
-        modernTheme: component.modernTheme,
         packageDependencies: this.packageDependencies,
-        sourceCode
+        sourceCode,
+        theme: component.theme
       });
     });
   }

@@ -4,6 +4,10 @@ import {
 } from '@angular/core';
 
 import {
+  SkyDocsCodeExampleTheme
+} from '../../public/modules/code-examples/code-example-theme';
+
+import {
   SkyDocsDemoControlPanelChange,
   SkyDocsDemoControlPanelRadioChoice
 } from '../../public/public_api';
@@ -22,6 +26,8 @@ export class AppTypeDocComponent {
   ];
 
   public demoSettings: any = {};
+
+  public modernTheme: SkyDocsCodeExampleTheme = SkyDocsCodeExampleTheme.Modern;
 
   public placementChoices: SkyDocsDemoControlPanelRadioChoice[] = [
     { value: 'above', label: 'Above' },

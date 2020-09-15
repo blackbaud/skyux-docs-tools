@@ -18,6 +18,10 @@ import {
 } from './code-example-module-dependencies';
 
 import {
+  SkyDocsCodeExampleTheme
+} from './code-example-theme';
+
+import {
   SkyDocsCodeExample
 } from './code-example';
 
@@ -78,7 +82,7 @@ export class SkyDocsCodeExamplesEditorService {
     const files = this.parseStackBlitzFiles(
       codeExample.sourceCode,
       mergedDependencies,
-      codeExample.modernTheme
+      codeExample.theme
     );
 
     return {
@@ -98,7 +102,7 @@ export class SkyDocsCodeExamplesEditorService {
   private parseStackBlitzFiles(
     sourceCode: SkyDocsSourceCodeFile[],
     dependencies: SkyDocsCodeExampleModuleDependencies,
-    modernTheme: boolean
+    theme: SkyDocsCodeExampleTheme
   ): {
     [path: string]: string;
   } {
@@ -123,6 +127,9 @@ export class SkyDocsCodeExamplesEditorService {
       `import {\n  of as observableOf\n} from 'rxjs';`,
       `import {\n  AppComponent\n} from './app.component';`
     ];
+    if (theme === SkyDocsCodeExampleTheme.Modern) {
+      moduleImportStatements.push(`import {\n  SkyThemeService\n} from '@skyux/theme';`);
+    }
 
     const moduleImports: string[] = [
       'BrowserModule',
@@ -153,7 +160,46 @@ export class SkyDocsCodeExamplesEditorService {
       }
     });
 
-    files[`${appPath}app.component.ts`] = `${banner}
+    if (theme === SkyDocsCodeExampleTheme.Modern) {
+      files[`${appPath}app.component.ts`] = `${banner}
+import {
+  Component,
+  Renderer2
+} from '@angular/core';
+
+import {
+  SkyTheme,
+  SkyThemeMode,
+  SkyThemeService,
+  SkyThemeSettings
+} from '@skyux/theme';
+
+@Component({
+  selector: 'sky-demo-app',
+  template: '${appComponentTemplate}'
+})
+export class AppComponent {
+
+  constructor(
+    renderer?: Renderer2,
+    private themeSvc?: SkyThemeService
+  ) {
+    if (themeSvc) {
+      const themeSettings = new SkyThemeSettings(
+      SkyTheme.presets['modern'],
+      SkyThemeMode.presets.light
+    );
+
+      this.themeSvc.init(
+        document.body,
+        renderer,
+        themeSettings
+      );
+    }
+  }
+}`;
+    } else {
+      files[`${appPath}app.component.ts`] = `${banner}
 import {
   Component
 } from '@angular/core';
@@ -162,7 +208,8 @@ import {
   selector: 'sky-demo-app',
   template: '${appComponentTemplate}'
 })
-export class AppComponent { }`;
+export class AppComponent {}`;
+    }
 
     files[`${appPath}app.module.ts`] = `${moduleImportStatements.join('\n\n')}
 
@@ -176,7 +223,7 @@ export class AppComponent { }`;
   bootstrap: [
     AppComponent
   ],
-  providers: [
+  providers: [${theme === SkyDocsCodeExampleTheme.Modern ? '\n    SkyThemeService,' : ''}
     {
       provide: SkyAppLocaleProvider,
       useValue: {
@@ -190,7 +237,7 @@ export class AppComponent { }`;
 export class AppModule { }
 `;
 
-    files[`${srcPath}index.html`] = `<sky-demo-app${modernTheme ? ' class="sky-theme-modern"' : ''}>
+    files[`${srcPath}index.html`] = `<sky-demo-app>
   Loading...
 </sky-demo-app>`;
 
@@ -225,8 +272,7 @@ import 'zone.js/dist/zone';
 `;
 
     files[`${srcPath}styles.scss`] = `@import '~@skyux/theme/css/sky';
-${modernTheme ? `@import '~@skyux/theme/css/themes/modern/styles';` : ''}
-
+${theme === SkyDocsCodeExampleTheme.Modern ? `@import '~@skyux/theme/css/themes/modern/styles';` : ``}
 body {
   background-color: #fff;
   margin: 15px;
