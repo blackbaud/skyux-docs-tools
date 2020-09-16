@@ -1,4 +1,4 @@
 export enum SkyDocsCodeExampleTheme {
-  Default,
-  Modern
+  Default = 'default',
+  Modern = 'modern'
 }
