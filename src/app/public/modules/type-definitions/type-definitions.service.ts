@@ -43,10 +43,7 @@ import {
 } from './class-definition';
 
 import {
-  SkyDocsTypeAliasDefinition,
-  SkyDocsTypeAliasFunctionDefinition,
-  SkyDocsTypeAliasIndexSignatureDefinition,
-  SkyDocsTypeAliasUnionDefinition
+  SkyDocsTypeAliasDefinition
 } from './type-alias-definition';
 
 import {
@@ -367,80 +364,32 @@ export class SkyDocsTypeDefinitionsService {
 
   private parseTypeAliasDefinition(item: TypeDocItem): SkyDocsTypeAliasDefinition {
     const {
-      description,
-      parameters: paramTags
+      description
     } = this.parseCommentTags(item.comment);
 
-    if (item.type.type === 'union') {
-      const types = item.type.types.map((t) => {
-        const typeName = t.name;
+    const typeAlias: SkyDocsTypeAliasDefinition = {
+      anchorId: item.anchorId,
+      description,
+      name: item.name
+    };
 
-        if (t.type === 'intrinsic' || t.type === 'reference') {
-          return typeName;
-        }
-
-        if (t.type === 'stringLiteral') {
-          return `'${t.value}'`;
-        }
-
-        return typeName;
+    if (item.type.declaration?.indexSignature) {
+      const properties: SkyDocsPropertyDefinition[] = [];
+      const indexSignature = item.type.declaration.indexSignature[0];
+      const param = indexSignature.parameters[0];
+      const { description: propertyDescription } = this.parseCommentTags(indexSignature.comment);
+      properties.push({
+        description: propertyDescription,
+        isOptional: false,
+        name: `[${param.name}: ${param.type.name}]`,
+        type: this.parseFormattedType(indexSignature)
       });
-
-      const typeAlias: SkyDocsTypeAliasUnionDefinition = {
-        anchorId: item.anchorId,
-        description,
-        name: item.name,
-        types
-      };
-
-      return typeAlias;
+      typeAlias.properties = properties;
+    } else {
+      typeAlias.type = this.parseFormattedType({ type: item.type });
     }
 
-    /*istanbul ignore else*/
-    if (item.type.type === 'reflection') {
-      if (item.type.declaration.signatures) {
-        const callSignature = item.type.declaration.signatures[0];
-        const parameters = callSignature.parameters.map((p) => {
-          const isOptional = this.isOptional(p);
-          const tagParam = (paramTags) ? paramTags.find((param) => param.name === p.name) : undefined;
-
-          const parameter: SkyDocsParameterDefinition = {
-            description: tagParam?.description,
-            isOptional,
-            name: p.name,
-            type: p.type.name
-          };
-
-          return parameter;
-        });
-
-        const typeAlias: SkyDocsTypeAliasFunctionDefinition = {
-          anchorId: item.anchorId,
-          description,
-          name: item.name,
-          parameters,
-          returnType: callSignature.type.name
-        };
-
-        return typeAlias;
-      }
-
-      /*istanbul ignore else*/
-      if (item.type.declaration.indexSignature) {
-        const indexSignature = item.type.declaration.indexSignature[0];
-        const param = indexSignature.parameters[0];
-
-        const typeAlias: SkyDocsTypeAliasIndexSignatureDefinition = {
-          anchorId: item.anchorId,
-          description,
-          name: item.name,
-          keyName: param.name,
-          valueType: indexSignature.type.name
-        };
-
-        return typeAlias;
-      }
-    }
+    return typeAlias;
   }
 
   private parseFormattedType(item: TypeDocItemMember): SkyDocsTypeDefinition {
@@ -465,6 +414,10 @@ export class SkyDocsTypeDefinitionsService {
     // Parse union types.
     if (typeConfig.type === 'union') {
       return this.parseUnionType(typeConfig);
+    }
+
+    if (typeConfig.type === 'stringLiteral') {
+      return `'${typeConfig.value}'`;
     }
 
     if (typeConfig.name) {

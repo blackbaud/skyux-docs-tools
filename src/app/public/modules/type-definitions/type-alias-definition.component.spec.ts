@@ -64,7 +64,7 @@ describe('Type alias definition component', function () {
     fixture.componentInstance.config = {
       name: 'Foo',
       description: 'This description has a FooUser.',
-      types: ['string', 'number']
+      type: 'string | number'
     };
 
     fixture.detectChanges();
@@ -82,7 +82,11 @@ describe('Type alias definition component', function () {
   it('should add links to types around return type', fakeAsync(() => {
     fixture.componentInstance.config = {
       name: 'Foo',
-      returnType: 'FooUser'
+      type: {
+        callSignature: {
+          returnType: 'FooUser'
+        }
+      }
     };
 
     fixture.detectChanges();
@@ -100,13 +104,17 @@ describe('Type alias definition component', function () {
   it('should add links to types for parameters', fakeAsync(() => {
     fixture.componentInstance.config = {
       name: 'Foo',
-      returnType: 'void',
-      parameters: [{
-        description: 'This description has a FooUser.',
-        isOptional: false,
-        name: 'user',
-        type: 'string'
-      }]
+      type: {
+        callSignature: {
+          returnType: 'void',
+          parameters: [{
+            description: 'This description has a FooUser.',
+            isOptional: false,
+            name: 'user',
+            type: 'string'
+          }]
+        }
+      }
     };
 
     fixture.detectChanges();

@@ -1,6 +1,10 @@
 import {
-  SkyDocsParameterDefinition
-} from './parameter-definition';
+  SkyDocsPropertyDefinition
+} from './property-definition';
+
+import {
+  SkyDocsTypeDefinition
+} from './type-definition';
 
 export interface SkyDocsTypeAliasDefinition {
 
@@ -10,26 +14,8 @@ export interface SkyDocsTypeAliasDefinition {
 
   description?: string;
 
-}
+  properties?: SkyDocsPropertyDefinition[];
 
-export interface SkyDocsTypeAliasFunctionDefinition extends SkyDocsTypeAliasDefinition {
-
-  returnType: string;
-
-  parameters?: SkyDocsParameterDefinition[];
-
-}
-
-export interface SkyDocsTypeAliasIndexSignatureDefinition extends SkyDocsTypeAliasDefinition {
-
-  keyName: string;
-
-  valueType: string;
-
-}
-
-export interface SkyDocsTypeAliasUnionDefinition extends SkyDocsTypeAliasDefinition {
-
-  types: string[];
+  type?: SkyDocsTypeDefinition;
 
 }

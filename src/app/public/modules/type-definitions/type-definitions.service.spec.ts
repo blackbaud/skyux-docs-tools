@@ -12,12 +12,6 @@ import {
   SkyDocsTypeDefinitionsService
 } from './type-definitions.service';
 
-import {
-  SkyDocsTypeAliasFunctionDefinition,
-  SkyDocsTypeAliasIndexSignatureDefinition,
-  SkyDocsTypeAliasUnionDefinition
-} from './type-alias-definition';
-
 describe('Type definitions service', function () {
 
   let definitionsProvider: SkyDocsTypeDefinitionsProvider;
@@ -46,6 +40,22 @@ describe('Type definitions service', function () {
               name: 'getValue',
               parameters: [],
               returnType: 'string',
+              typeParameters: []
+            },
+            {
+              codeExample: undefined,
+              codeExampleLanguage: 'markup',
+              description: 'This is the init function.',
+              name: 'init',
+              parameters: [
+                {
+                  description: 'The init args.\n- `args.foo` This defaults to \'bar\'.',
+                  isOptional: false,
+                  name: 'args',
+                  type: 'FooInitArgs'
+                }
+              ],
+              returnType: 'void',
               typeParameters: []
             }
           ],
@@ -422,6 +432,26 @@ describe('Type definitions service', function () {
           typeParameters: []
         },
         {
+          anchorId: 'interface-fooinitargs',
+          description: '',
+          name: 'FooInitArgs',
+          properties: [
+            {
+              description: 'The string of the init.',
+              isOptional: true,
+              name: 'bar',
+              type: 'string'
+            },
+            {
+              description: 'The foo of the init.',
+              isOptional: true,
+              name: 'foo',
+              type: 'FooUser'
+            }
+          ],
+          typeParameters: []
+        },
+        {
           anchorId: 'interface-foouser',
           description: 'This is the description for FooUser.',
           name: 'FooUser',
@@ -603,60 +633,78 @@ describe('Type definitions service', function () {
           anchorId: 'type-alias-footypefunction',
           description: 'This is the description for FooTypeFunction.',
           name: 'FooTypeFunction',
-          parameters: [
-            {
-              description: 'The string to find.',
-              isOptional: false,
-              name: 'needle',
-              type: 'string'
-            },
-            {
-              description: 'The string to search.',
-              isOptional: true,
-              name: 'haystack',
-              type: 'string'
-            },
-            {
-              description: undefined,
-              isOptional: true,
-              name: 'user',
-              type: 'FooUser'
+          type: {
+            callSignature: {
+              returnType: 'FooUser',
+              parameters: [
+                {
+                  isOptional: false,
+                  name: 'needle',
+                  type: 'string',
+                  description: ''
+                },
+                {
+                  isOptional: true,
+                  name: 'haystack',
+                  type: 'string',
+                  description: ''
+                },
+                {
+                  isOptional: true,
+                  name: 'user',
+                  type: 'FooUser',
+                  description: ''
+                }
+              ]
             }
-          ],
-          returnType: 'FooUser'
-        } as SkyDocsTypeAliasFunctionDefinition,
+          }
+        },
         {
           anchorId: 'type-alias-footypefunctionnoargsdescription',
           description: 'This type doesn\'t have descriptions for the arguments.',
           name: 'FooTypeFunctionNoArgsDescription',
-          parameters: [
-            {
-              description: undefined,
-              isOptional: false,
-              name: 'args',
-              type: 'FooUser'
+          type: {
+            callSignature: {
+              returnType: 'void',
+              parameters: [
+                {
+                  isOptional: false,
+                  name: 'args',
+                  type: 'FooUser',
+                  description: ''
+                },
+                {
+                  isOptional: false,
+                  name: 'data',
+                  type: 'any[]',
+                  description: ''
+                }
+              ]
             }
-          ],
-          returnType: 'void'
-        } as SkyDocsTypeAliasFunctionDefinition,
+          }
+        },
         {
           anchorId: 'type-alias-footypeindexsignature',
           description: '',
           name: 'FooTypeIndexSignature',
-          keyName: '_',
-          valueType: 'FooUser'
-        } as SkyDocsTypeAliasIndexSignatureDefinition,
+          properties: [{
+            description: '',
+            isOptional: false,
+            name: '[_: string]',
+            type: 'FooUser'
+          }]
+        },
         {
           anchorId: 'type-alias-footypeunioncomplex',
           description: 'This is the description for FooTypeUnionComplex. It can be of type [[FooDate]].',
           name: 'FooTypeUnionComplex',
-          types: [ 'string', 'FooDate', 'number', 'false', '1' ]
-        } as SkyDocsTypeAliasUnionDefinition,
+          type: 'string | FooDate | number | false | 1 | any[]'
+        },
         {
           anchorId: 'type-alias-footypeunionstring',
           description: 'This is the description for FooTypeUnionString.',
           name: 'FooTypeUnionString',
-          types: [ '\'top\'', '\'right\'', '\'bottom\'', '\'left\'' ]
+          type: '\'top\' | \'right\' | \'bottom\' | \'left\''
         }
       ]
     });

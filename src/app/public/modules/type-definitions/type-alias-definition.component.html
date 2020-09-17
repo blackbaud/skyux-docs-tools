@@ -20,33 +20,34 @@
     [hideHeader]="true"
   ></sky-code-block>
 
-  <ng-container *ngIf="returnType">
+  <ng-container *ngIf="callSignature">
     <h4 class="sky-docs-type-alias-definition-heading">
       Returns
     </h4>
 
     <p class="sky-docs-type-alias-definition-return-type">
       <sky-code><span
-        [innerHtml]="returnType | skyDocsTypeAnchorLinks:'no-code-tags'"
+        [innerHtml]="callSignature.returnType | skyDocsTypeAnchorLinks:'no-code-tags'"
       ></span></sky-code>
     </p>
+
+    <ng-container *ngIf="callSignature.parameters?.length">
+      <h4 class="sky-docs-type-alias-definition-heading">
+        Parameters
+      </h4>
+      <sky-docs-parameter-definitions>
+        <sky-docs-parameter-definition *ngFor="let parameter of callSignature.parameters"
+          [defaultValue]="parameter.defaultValue"
+          [isOptional]="parameter.isOptional"
+          [parameterName]="parameter.name"
+          [parameterType]="parameter.type"
+        >
+          <sky-docs-safe-html
+            [innerHtml]="parameter.description | skyDocsTypeAnchorLinks | skyDocsMarkdown"
+          ></sky-docs-safe-html>
+        </sky-docs-parameter-definition>
+      </sky-docs-parameter-definitions>
+    </ng-container>
   </ng-container>
 
-  <ng-container *ngIf="parameters && parameters.length">
-    <h4 class="sky-docs-type-alias-definition-heading">
-      Parameters
-    </h4>
-    <sky-docs-parameter-definitions>
-      <sky-docs-parameter-definition *ngFor="let parameter of parameters"
-        [defaultValue]="parameter.defaultValue"
-        [isOptional]="parameter.isOptional"
-        [parameterName]="parameter.name"
-        [parameterType]="parameter.type"
-      >
-        <sky-docs-safe-html
-          [innerHtml]="parameter.description | skyDocsTypeAnchorLinks | skyDocsMarkdown"
-        ></sky-docs-safe-html>
-      </sky-docs-parameter-definition>
-    </sky-docs-parameter-definitions>
-  </ng-container>
 </div>

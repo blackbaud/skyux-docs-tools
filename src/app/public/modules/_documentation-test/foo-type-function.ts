@@ -16,4 +16,4 @@ export type FooTypeFunction = (
 /**
  * This type doesn't have descriptions for the arguments.
  */
-export type FooTypeFunctionNoArgsDescription = (args: FooUser) => void;
+export type FooTypeFunctionNoArgsDescription = (args: FooUser, data: any[]) => void;

@@ -19,9 +19,7 @@ import {
 } from './property-definition';
 
 import {
-  SkyDocsTypeAliasFunctionDefinition,
-  SkyDocsTypeAliasIndexSignatureDefinition,
-  SkyDocsTypeAliasUnionDefinition
+  SkyDocsTypeAliasDefinition
 } from './type-alias-definition';
 
 import {
@@ -231,41 +229,22 @@ describe('Type definitions format service', () => {
     );
   });
 
-  it('should generate a type alias index signature', () => {
-    const service = new SkyDocsTypeDefinitionsFormatService();
-    const definition: SkyDocsTypeAliasIndexSignatureDefinition = {
-      name: 'foo',
-      keyName: '_',
-      valueType: 'FooUser'
-    };
-
-    const signature = service.getTypeAliasSignature(definition);
-    expect(signature).toEqual('type foo = { [_: string]: FooUser }');
-  });
-
-  it('should generate a type alias union signature', () => {
-    const service = new SkyDocsTypeDefinitionsFormatService();
-    const definition: SkyDocsTypeAliasUnionDefinition = {
-      name: 'foo',
-      types: ['string', 'boolean', '\'above\'', 'FooUser']
-    };
-
-    const signature = service.getTypeAliasSignature(definition);
-    expect(signature).toEqual('type foo = string | boolean | \'above\' | FooUser');
-  });
-
   it('should generate a type alias function signature', () => {
     const service = new SkyDocsTypeDefinitionsFormatService();
-    const definition: SkyDocsTypeAliasFunctionDefinition = {
+    const definition: SkyDocsTypeAliasDefinition = {
       name: 'foo',
-      parameters: [
-        {
-          name: 'id',
-          type: 'number',
-          isOptional: false
+      type: {
+        callSignature: {
+          parameters: [
+            {
+              name: 'id',
+              type: 'number',
+              isOptional: false
+            }
+          ],
+          returnType: 'FooUser'
         }
-      ],
-      returnType: 'FooUser'
+      }
     };
 
     const signature = service.getTypeAliasSignature(definition);

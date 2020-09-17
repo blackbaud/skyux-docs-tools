@@ -19,9 +19,7 @@ import {
 } from './property-definition';
 
 import {
-  SkyDocsTypeAliasFunctionDefinition,
-  SkyDocsTypeAliasIndexSignatureDefinition,
-  SkyDocsTypeAliasUnionDefinition
+  SkyDocsTypeAliasDefinition
 } from './type-alias-definition';
 
 import {
@@ -143,32 +141,21 @@ export class SkyDocsTypeDefinitionsFormatService {
   }
 
   public getTypeAliasSignature(
-    definition: SkyDocsTypeAliasIndexSignatureDefinition |
-      SkyDocsTypeAliasFunctionDefinition |
-      SkyDocsTypeAliasUnionDefinition,
-    config: {
-      createAnchorLinks: boolean;
-    } = {
-      createAnchorLinks: true
-    }
+    definition: SkyDocsTypeAliasDefinition
   ): string {
     let signature = `type ${definition.name} = `;
 
-    // Function type
-    if ('returnType' in definition) {
-      signature += this.formatCallSignature(definition, {
-        createAnchorLinks: config.createAnchorLinks
-      });
-    }
-
-    // Index signature
-    if ('keyName' in definition) {
-      signature += `{ [${definition.keyName}: string]: ${definition.valueType} }`;
-    }
-
-    // Union type
-    if ('types' in definition) {
-      signature += definition.types.join(' | ');
+    if (definition.type) {
+      const propertyType = (typeof definition.type === 'string')
+        ? definition.type
+        : this.formatCallSignature(definition.type.callSignature, {
+          createAnchorLinks: false
+        });
+      signature += propertyType;
+    } else if (definition.properties) {
+      signature += '{';
+      signature += definition.properties.map(p => `\n  ${this.getPropertySignature(p)}`);
+      signature += '\n}';
     }
 
     return signature;
