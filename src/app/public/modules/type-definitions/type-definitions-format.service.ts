@@ -3,192 +3,291 @@ import {
 } from '@angular/core';
 
 import {
-  SkyDocsInterfaceDefinition
-} from './interface-definition';
+  SkyDocsCommentTags
+} from './comment-tags';
 
 import {
-  SkyDocsMethodDefinition
-} from './method-definition';
+  SkyDocsJSDocsService
+} from './jsdoc.service';
 
 import {
-  SkyDocsParameterDefinition
-} from './parameter-definition';
+  SkyDocsTypeDefinitionsService
+} from './type-definitions.service';
 
 import {
-  SkyDocsPropertyDefinition
-} from './property-definition';
-
-import {
-  SkyDocsTypeAliasFunctionDefinition,
-  SkyDocsTypeAliasIndexSignatureDefinition,
-  SkyDocsTypeAliasUnionDefinition
-} from './type-alias-definition';
-
-import {
-  SkyDocsTypeDefinition
-} from './type-definition';
+  TypeDocItemMember,
+  TypeDocParameter,
+  TypeDocType
+} from './typedoc-types';
 
 @Injectable()
 export class SkyDocsTypeDefinitionsFormatService {
 
-  public getInterfaceSignature(definition: SkyDocsInterfaceDefinition, config?: {
-    createAnchorLinks: boolean;
-  }): string {
-    const typeParameterSignature: string = (definition.typeParameters && definition.typeParameters.length)
-      ? `<${definition.typeParameters.join(', ')}>`
-      : '';
+  constructor(
+    private jsDocService: SkyDocsJSDocsService,
+    private typeDefinitionService: SkyDocsTypeDefinitionsService
+  ) { }
 
-    let signature: string = `interface ${definition.name}${typeParameterSignature} {`;
+  // public getInterfaceSignature(definition: SkyDocsInterfaceDefinition, config?: {
+  //   createAnchorLinks: boolean;
+  // }): string {
+  //   const typeParameterSignature: string = (definition.typeParameters && definition.typeParameters.length)
+  //     ? `<${definition.typeParameters.join(', ')}>`
+  //     : '';
 
-    definition.properties.forEach((property) => {
-      const propertyType = (typeof property.type === 'string')
-        ? property.type
-        : this.formatCallSignature(property.type.callSignature, {
-          createAnchorLinks: config.createAnchorLinks
-        });
+  //   let signature: string = `interface ${definition.name}${typeParameterSignature} {`;
 
-      const optionalIndicator = (property.isOptional) ? '?' : '';
-      signature += `\n  ${property.name}${optionalIndicator}: ${propertyType.replace(/\"/g, '\'')};`;
-    });
+  //   definition.properties.forEach((property) => {
+  //     const propertyType = (typeof property.type === 'string')
+  //       ? property.type
+  //       : this.formatCallSignature(property.type.callSignature, {
+  //         createAnchorLinks: config.createAnchorLinks
+  //       });
 
-    signature += '\n}';
+  //     const optionalIndicator = (property.isOptional) ? '?' : '';
+  //     signature += `\n  ${property.name}${optionalIndicator}: ${propertyType.replace(/\"/g, '\'')};`;
+  //   });
 
-    return signature;
-  }
+  //   signature += '\n}';
 
-  public getMethodSignature(method: SkyDocsMethodDefinition): string {
-    const typeParameterSignature: string = (method.typeParameters && method.typeParameters.length)
-      ? `<${method.typeParameters.join(', ')}>`
-      : '';
+  //   return signature;
+  // }
 
-    let signature = `public ${method.name}${typeParameterSignature}(`;
+  // public getMethodSignature(method: SkyDocsMethodDefinition): string {
+  //   const typeParameterSignature: string = (method.typeParameters && method.typeParameters.length)
+  //     ? `<${method.typeParameters.join(', ')}>`
+  //     : '';
 
-    if (method.parameters) {
-      signature += method.parameters
-        .map((parameter) => this.getParameterSignature(parameter, {
-          createAnchorLinks: false,
-          escapeSpecialCharacters: false
-        }))
-        .join(', ');
-    }
+  //   let signature = `public ${method.name}${typeParameterSignature}(`;
 
-    const returnType = (method.returnType)
-      ? method.returnType
-      : 'void';
+  //   if (method.parameters) {
+  //     signature += method.parameters
+  //       .map((parameter) => this.getParameterSignature(parameter, {
+  //         createAnchorLinks: false,
+  //         escapeSpecialCharacters: false
+  //       }))
+  //       .join(', ');
+  //   }
 
-    signature += `): ${returnType}`;
+  //   const returnType = (method.returnType)
+  //     ? method.returnType
+  //     : 'void';
 
-    return signature;
-  }
+  //   signature += `): ${returnType}`;
 
-  public getParameterSignature(
-    parameter: SkyDocsParameterDefinition,
-    config: {
-      createAnchorLinks?: boolean;
-      escapeSpecialCharacters?: boolean;
-    } = {
-      createAnchorLinks: true,
-      escapeSpecialCharacters: true
-    }
-  ): string {
-    const optionalMarker = (parameter.isOptional && !parameter.defaultValue) ? '?' : '';
-    const defaultValue = (parameter.defaultValue) ? ` = ${parameter.defaultValue}` : '';
+  //   return signature;
+  // }
 
-    const parameterType = (!parameter.type || typeof parameter.type === 'string')
-      ? parameter.type
-      : this.formatCallSignature(parameter.type.callSignature, {
-        createAnchorLinks: false
-      });
-
-    let signature = `${parameter.name}${optionalMarker}: ${parameterType}${defaultValue}`;
-
-    if (config.escapeSpecialCharacters) {
-      signature = this.escapeSpecialCharacters(signature);
-    }
-
-    return signature;
-  }
-
-  public getPropertySignature(item: SkyDocsPropertyDefinition): string {
+  public getParameterSignatureHTML(parameter: TypeDocParameter): string {
     let signature = '';
 
-    if (item.decorator) {
-      signature += `@${item.decorator}()<br />`;
+    const tags = this.jsDocService.parseCommentTags(parameter.comment);
+
+    const isOptional = this.typeDefinitionService.isOptional(parameter, tags);
+    const optionalMarker = (isOptional) ? '?' : '';
+
+    const parameterType = this.parseFormattedType(parameter);
+    const defaultValue = this.getDefaultValueHTML(parameter, tags);
+    const defaultValueFormatted = (defaultValue) ? ` = ${defaultValue}` : '';
+
+    signature = `${parameter.name}${optionalMarker}: ${parameterType}${defaultValueFormatted}`;
+    signature = this.escapeSpecialCharacters(signature);
+
+    return signature;
+  }
+
+  public getPropertySignatureHTML(item: TypeDocItemMember): string {
+    let signature = '';
+
+    if (item.decorators && item.decorators[0].name) {
+      signature += `@${item.decorators[0].name}()<br>`;
     }
 
-    if (item.deprecationWarning) {
+    const tags = this.jsDocService.parseCommentTags(item.comment);
+    if (tags.deprecationWarning !== undefined) {
       signature += `<strike>${item.name}</strike>`;
     } else {
-      signature += `${item.name}`;
+      signature += item.name;
     }
 
-    if (!item.type) {
-      return signature;
-    }
-
-    // Don't use the '?' indicator if the property has a decorator.
-    if (item.isOptional && !item.decorator) {
+    const isOptional = this.typeDefinitionService.isOptional(item, tags);
+    if (isOptional) {
       signature += '?';
     }
 
-    let propertyType = (typeof item.type === 'string')
-      ? item.type
-      : this.formatCallSignature(item.type.callSignature, {
-        createAnchorLinks: false
-      });
-
-    signature += `: ${propertyType}`;
+    signature += `: ${this.parseFormattedType(item)}`;
 
     return signature;
   }
 
-  public getTypeAliasSignature(
-    definition: SkyDocsTypeAliasIndexSignatureDefinition |
-      SkyDocsTypeAliasFunctionDefinition |
-      SkyDocsTypeAliasUnionDefinition,
-    config: {
-      createAnchorLinks: boolean;
-    } = {
-      createAnchorLinks: true
-    }
-  ): string {
-    let signature = `type ${definition.name} = `;
-
-    // Function type
-    if ('returnType' in definition) {
-      signature += this.formatCallSignature(definition, {
-        createAnchorLinks: config.createAnchorLinks
-      });
-    }
-
-    // Index signature
-    if ('keyName' in definition) {
-      signature += `{ [${definition.keyName}: string]: ${definition.valueType} }`;
-    }
-
-    // Union type
-    if ('types' in definition) {
-      signature += definition.types.join(' | ');
-    }
-
-    return signature;
+  public getDefaultValueHTML(item: TypeDocItemMember, tags: SkyDocsCommentTags): string {
+    const defaultValue: string = tags.defaultValue || item.defaultValue || '';
+    return this.escapeSpecialCharacters(defaultValue.replace(/\"/g, '\''));
   }
+
+  public parseFormattedType(item: TypeDocItemMember): string {
+    let formatted = 'any';
+
+    const kindString = item.kindString;
+    /*tslint:disable-next-line:switch-default*/
+    switch (kindString) {
+      case 'Call signature':
+      case 'Parameter':
+      case 'Property':
+        const typeConfig = item.type;
+        // Parse call signature types.
+        if (typeConfig.type === 'reflection') {
+          formatted = this.getCallSignatureHTML(item);
+        }
+
+        // Parse union types.
+        if (typeConfig.type === 'union') {
+          return this.parseUnionType(typeConfig);
+        }
+
+        // Parse primitive types.
+        if (typeConfig.name) {
+          formatted = typeConfig.name;
+        } else {
+          const elementType = typeConfig.elementType;
+          /*istanbul ignore else*/
+          if (elementType?.name) {
+            formatted = elementType.name;
+          }
+        }
+
+        // Parse any type arguments e.g. `<T, F>`.
+        if (typeConfig.typeArguments) {
+          const typeArguments = typeConfig.typeArguments.map((typeArgument) => {
+            if (typeArgument.type === 'array') {
+              return `${typeArgument.elementType.name}[]`;
+            } else if (typeArgument.type === 'union') {
+              return this.parseUnionType(typeArgument);
+            }
+            return typeArgument.name;
+          });
+
+          formatted += `<${typeArguments.join(', ')}>`;
+        }
+
+        // Format array types.
+        if (typeConfig.type === 'array') {
+          formatted += '[]';
+        }
+
+        break;
+
+      case 'Accessor':
+        /*istanbul ignore else*/
+        if (item.setSignature) {
+          formatted = this.parseFormattedType(item.setSignature[0].parameters[0]);
+        } else if (item.getSignature) {
+          formatted = this.parseFormattedType(item.getSignature[0]);
+        }
+        break;
+    }
+
+    return this.escapeSpecialCharacters(formatted);
+  }
+
+  // private parseCallSignatureParameters(item: TypeDocItemMember): SkyDocsParameterDefinition[] {
+  //   if (
+  //     !item.type.declaration.signatures ||
+  //     !item.type.declaration.signatures[0].parameters
+  //   ) {
+  //     return [];
+  //   }
+
+  //   const { parameters } = this.parseCommentTags(item.comment);
+
+  //   return item.type.declaration.signatures[0].parameters.map((p) => {
+
+  //     let description = '';
+  //     if (parameters) {
+  //       description = parameters.find(param => param.name === p.name).description;
+  //     }
+
+  //     const parameter: SkyDocsParameterDefinition = {
+  //       isOptional: this.isOptional(p),
+  //       name: p.name,
+  //       type: this.parseFormattedType(p)
+  //     };
+
+  //     /* istanbul ignore else */
+  //     if (description !== undefined) {
+  //       parameter.description = description;
+  //     }
+
+  //     return parameter;
+  //   });
+  // }
+
+  private getCallSignatureHTML(item: TypeDocItemMember): string {
+    const callSignatures = item.type.declaration.signatures;
+    const returnType = this.parseFormattedType(callSignatures[0]) || 'void';
+
+    if (!callSignatures[0].parameters) {
+      return `() => ${returnType}`;
+    }
+
+    const paramSignatures = callSignatures[0].parameters.map(p => {
+      return this.getParameterSignatureHTML(p);
+    }).join(', ');
+
+    return `(${paramSignatures}) => ${returnType}`;
+  }
+
+  private parseUnionType(typeConfig: TypeDocType): string {
+    return typeConfig.types.map(t => this.parseFormattedType({ type: t })).join(' | ');
+  }
+
+  // public getTypeAliasSignature(
+  //   definition: SkyDocsTypeAliasIndexSignatureDefinition |
+  //     SkyDocsTypeAliasFunctionDefinition |
+  //     SkyDocsTypeAliasUnionDefinition,
+  //   config: {
+  //     createAnchorLinks: boolean;
+  //   } = {
+  //     createAnchorLinks: true
+  //   }
+  // ): string {
+  //   let signature = `type ${definition.name} = `;
+
+  //   // Function type
+  //   if ('returnType' in definition) {
+  //     signature += this.formatCallSignature(definition, {
+  //       createAnchorLinks: config.createAnchorLinks
+  //     });
+  //   }
+
+  //   // Index signature
+  //   if ('keyName' in definition) {
+  //     signature += `{ [${definition.keyName}: string]: ${definition.valueType} }`;
+  //   }
+
+  //   // Union type
+  //   if ('types' in definition) {
+  //     signature += definition.types.join(' | ');
+  //   }
+
+  //   return signature;
+  // }
 
   private escapeSpecialCharacters(value: string): string {
     return value.replace(/</g, '&lt;').replace(/>/g, '&gt;');
   }
 
-  private formatCallSignature(definition: {
-    parameters?: SkyDocsParameterDefinition[];
-    returnType?: SkyDocsTypeDefinition;
-  }, config?: {
-    createAnchorLinks?: boolean;
-  }): string {
-    const parameters = (definition.parameters)
-      ? definition.parameters.map(p => this.getParameterSignature(p, config))
-      : [];
+  // private formatCallSignature(definition: {
+  //   parameters?: SkyDocsParameterDefinition[];
+  //   returnType?: SkyDocsTypeDefinition;
+  // }, config?: {
+  //   createAnchorLinks?: boolean;
+  // }): string {
+  //   const parameters = (definition.parameters)
+  //     ? definition.parameters.map(p => this.getParameterSignature(p, config))
+  //     : [];
 
-    return `(${parameters.join(', ')}) => ${definition.returnType}`;
-  }
+  //   return `(${parameters.join(', ')}) => ${definition.returnType}`;
+  // }
 
 }

@@ -1,46 +1,26 @@
 import {
-  SkyDocsDirectiveDefinition
-} from './directive-definition';
-
-import {
-  SkyDocsEnumerationDefinition
-} from './enumeration-definition';
-
-import {
-  SkyDocsInterfaceDefinition
-} from './interface-definition';
-
-import {
-  SkyDocsPipeDefinition
-} from './pipe-definition';
-
-import {
-  SkyDocsClassDefinition
-} from './class-definition';
-
-import {
-  SkyDocsTypeAliasDefinition
-} from './type-alias-definition';
+  TypeDocItem
+} from './typedoc-types';
 
 /**
  * @internal
  */
 export interface SkyDocsTypeDefinitions {
 
-  classes: SkyDocsClassDefinition[];
+  classes: TypeDocItem[];
 
-  components: SkyDocsDirectiveDefinition[];
+  components: TypeDocItem[];
 
-  directives: SkyDocsDirectiveDefinition[];
+  directives: TypeDocItem[];
 
-  enumerations: SkyDocsEnumerationDefinition[];
+  enumerations: TypeDocItem[];
 
-  interfaces: SkyDocsInterfaceDefinition[];
+  interfaces: TypeDocItem[];
 
-  pipes: SkyDocsPipeDefinition[];
+  pipes: TypeDocItem[];
 
-  services: SkyDocsClassDefinition[];
+  services: TypeDocItem[];
 
-  typeAliases: SkyDocsTypeAliasDefinition[];
+  typeAliases: TypeDocItem[];
 
 }

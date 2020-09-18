@@ -1,30 +1,28 @@
 import {
-  AfterContentInit,
   ChangeDetectionStrategy,
   Component,
-  ContentChildren,
-  QueryList,
-  TemplateRef
+  Input
 } from '@angular/core';
 
 import {
-  SkyDocsParameterDefinitionComponent
-} from './parameter-definition.component';
-
-import {
-  SkyDocsTypeDefinition
-} from './type-definition';
+  SkyDocsJSDocsService
+} from './jsdoc.service';
 
 import {
   SkyDocsTypeDefinitionsFormatService
 } from './type-definitions-format.service';
 
-interface SkyDocsParameterModel {
-  defaultValue: string;
-  isOptional: boolean;
-  name: string;
-  templateRef: TemplateRef<any>;
-  type: SkyDocsTypeDefinition;
+import {
+  SkyDocsTypeDefinitionsService
+} from './type-definitions.service';
+
+import {
+  TypeDocItemMember
+} from './typedoc-types';
+
+interface Parameter {
+  description: string;
+  signature: string;
 }
 
 @Component({
@@ -33,30 +31,37 @@ interface SkyDocsParameterModel {
   styleUrls: ['./parameter-definitions.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SkyDocsParameterDefinitionsComponent implements AfterContentInit {
+export class SkyDocsParameterDefinitionsComponent {
 
-  public parameters: SkyDocsParameterModel[];
-
-  @ContentChildren(SkyDocsParameterDefinitionComponent)
-  private parameterComponents: QueryList<SkyDocsParameterDefinitionComponent>;
-
-  constructor(
-    private formatService: SkyDocsTypeDefinitionsFormatService
-  ) { }
-
-  public ngAfterContentInit(): void {
-    this.parameters = this.parameterComponents.map((parameterComponent) => {
-      return {
-        isOptional: parameterComponent.isOptional,
-        name: parameterComponent.parameterName,
-        type: parameterComponent.parameterType,
-        defaultValue: parameterComponent.defaultValue,
-        templateRef: parameterComponent.templateRef
-      };
-    });
+  @Input()
+  public set config(value: TypeDocItemMember) {
+    this._config = value;
+    this.updateView();
   }
 
-  public getParameterSignature(item: SkyDocsParameterModel): string {
-    return this.formatService.getParameterSignature(item);
+  public get config(): TypeDocItemMember {
+    return this._config;
+  }
+
+  public parameters: Parameter[];
+
+  private _config: TypeDocItemMember;
+
+  constructor(
+    private jsDocsService: SkyDocsJSDocsService,
+    private formatService: SkyDocsTypeDefinitionsFormatService,
+    private typeDefinitionsService: SkyDocsTypeDefinitionsService
+  ) { }
+
+  private updateView(): void {
+    const parentTags = this.jsDocsService.parseCommentTags(this.config.comment);
+    this.parameters = this.config.type.declaration.signatures[0].parameters.map(p => {
+      const tags = this.jsDocsService.parseParameterCommentTags(p, parentTags);
+      return {
+        description: tags.description,
+        isOptional: this.typeDefinitionsService.isOptional(p, tags),
+        signature: this.formatService.getParameterSignatureHTML(p)
+      };
+    });
   }
 }

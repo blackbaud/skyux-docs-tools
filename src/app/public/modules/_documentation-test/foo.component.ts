@@ -84,10 +84,11 @@ export class FooComponent<U extends FooUser> implements OnInit {
   public experimental: boolean = false;
 
   /**
+   * @param searchTerm The keywords used to search.
    * @required
    */
   @Input()
-  public searchFunction: (searchTerm: string) => any[];
+  public searchFunction: (searchTerm: string, debounceTime?: number) => any[];
 
   /**
    * This is the description for the click event.

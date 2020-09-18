@@ -1,12 +1,9 @@
 import {
-  AfterContentInit,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
-  ContentChildren,
   Input,
-  OnInit,
-  QueryList
+  OnInit
 } from '@angular/core';
 
 import {
@@ -15,16 +12,29 @@ import {
 } from '@skyux/core';
 
 import {
-  SkyDocsPropertyDefinitionComponent
-} from './property-definition.component';
-
-import {
-  SkyDocsPropertyDefinition
-} from './property-definition';
+  SkyDocsJSDocsService
+} from './jsdoc.service';
 
 import {
   SkyDocsTypeDefinitionsFormatService
 } from './type-definitions-format.service';
+
+import {
+  SkyDocsTypeDefinitionsService
+} from './type-definitions.service';
+
+import {
+  TypeDocItemMember
+} from './typedoc-types';
+
+interface Property {
+  callSignature?: TypeDocItemMember;
+  defaultValue: string;
+  deprecationWarning: string;
+  description: string;
+  isOptional: boolean;
+  signature: string;
+}
 
 @Component({
   selector: 'sky-docs-property-definitions',
@@ -32,7 +42,17 @@ import {
   styleUrls: ['./property-definitions.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SkyDocsPropertyDefinitionsComponent implements OnInit, AfterContentInit {
+export class SkyDocsPropertyDefinitionsComponent implements OnInit {
+
+  @Input()
+  public set config(value: { properties: TypeDocItemMember[]; }) {
+    this._config = value;
+    this.updateView();
+  }
+
+  public get config(): { properties: TypeDocItemMember[]; } {
+    return this._config || { properties: [] };
+  }
 
   @Input()
   public propertyType = 'Property';
@@ -41,14 +61,15 @@ export class SkyDocsPropertyDefinitionsComponent implements OnInit, AfterContent
 
   public isMobile: boolean = true;
 
-  public properties: SkyDocsPropertyDefinition[] = [];
+  public properties: Property[] = [];
 
-  @ContentChildren(SkyDocsPropertyDefinitionComponent)
-  private definitionRefs: QueryList<SkyDocsPropertyDefinitionComponent>;
+  private _config: { properties: TypeDocItemMember[]; };
 
   constructor(
     private changeDetector: ChangeDetectorRef,
+    private jsDocsService: SkyDocsJSDocsService,
     private formatService: SkyDocsTypeDefinitionsFormatService,
+    private typeDefinitionService: SkyDocsTypeDefinitionsService,
     private mediaQueryService: SkyMediaQueryService
   ) { }
 
@@ -59,24 +80,23 @@ export class SkyDocsPropertyDefinitionsComponent implements OnInit, AfterContent
     });
   }
 
-  public ngAfterContentInit(): void {
-    this.properties = this.definitionRefs.map((definitionRef) => {
-      return {
-        type: definitionRef.propertyType,
-        defaultValue: definitionRef.defaultValue,
-        deprecationWarning: definitionRef.deprecationWarning,
-        decorator: definitionRef.propertyDecorator,
-        name: definitionRef.propertyName,
-        templateRef: definitionRef.templateRef,
-        isOptional: definitionRef.isOptional
-      };
-    });
-
-    this.changeDetector.markForCheck();
+  private getPropertySignature(item: TypeDocItemMember): string {
+    return this.formatService.getPropertySignatureHTML(item);
   }
 
-  public getPropertySignature(item: SkyDocsPropertyDefinition): string {
-    return this.formatService.getPropertySignature(item);
+  private updateView(): void {
+    this.properties = this.config.properties.map(p => {
+      const tags = this.jsDocsService.parseCommentTags(p.comment);
+      const property: Property = {
+        callSignature: (p.type?.declaration?.signatures) ? p : undefined,
+        defaultValue: this.formatService.getDefaultValueHTML(p, tags),
+        deprecationWarning: tags.deprecationWarning,
+        description: tags.description,
+        isOptional: this.typeDefinitionService.isOptional(p, tags),
+        signature: this.getPropertySignature(p)
+      };
+      return property;
+    });
   }
 
 }

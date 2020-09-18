@@ -1,10 +1,7 @@
 import {
-  SkyDocsParameterDefinition
-} from './parameter-definition';
+  SkyDocsCallSignatureDefinition
+} from './call-signature-definition';
 
 export type SkyDocsTypeDefinition = string | {
-  callSignature?: {
-    parameters?: SkyDocsParameterDefinition[];
-    returnType?: SkyDocsTypeDefinition;
-  };
+  callSignature?: SkyDocsCallSignatureDefinition;
 };

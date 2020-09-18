@@ -5,12 +5,13 @@ import {
 } from '@angular/core';
 
 import {
-  SkyDocsDirectiveDefinition
-} from './directive-definition';
+  SkyDocsJSDocsService
+} from './jsdoc.service';
 
 import {
-  SkyDocsPropertyDefinition
-} from './property-definition';
+  TypeDocItem,
+  TypeDocItemMember
+} from './typedoc-types';
 
 @Component({
   selector: 'sky-docs-directive-definition',
@@ -21,20 +22,52 @@ import {
 export class SkyDocsDirectiveDefinitionComponent {
 
   @Input()
-  public config: SkyDocsDirectiveDefinition;
-
-  public get inputProperties(): SkyDocsPropertyDefinition[] {
-    const properties = this.config.properties || [];
-    return properties.filter((property) => {
-      return (property.decorator === 'Input');
-    });
+  public set config(value: TypeDocItem) {
+    this._config = value;
+    this.updateView();
   }
 
-  public get eventProperties(): SkyDocsPropertyDefinition[] {
-    const properties = this.config.properties || [];
-    return properties.filter((property) => {
-      return (property.decorator === 'Output');
-    });
+  public get config(): TypeDocItem {
+    return this._config;
+  }
+
+  public codeExample: string;
+
+  public codeExampleLanguage: string;
+
+  public description: string;
+
+  public eventProperties: TypeDocItemMember[];
+
+  public inputProperties: TypeDocItemMember[];
+
+  public selector: string;
+
+  private _config: TypeDocItem;
+
+  constructor(
+    private jsDocsService: SkyDocsJSDocsService
+  ) { }
+
+  private parseSelector(item: TypeDocItem): string {
+    const decoratorSource = item.decorators[0].arguments.obj;
+    return (decoratorSource.indexOf('selector: `') > -1)
+      ? decoratorSource.split('selector: `')[1].split('`')[0].replace(/\s\s+/g, ' ')
+      : decoratorSource.split('selector: \'')[1].split('\'')[0];
+  }
+
+  private updateView(): void {
+    this.selector = this.parseSelector(this.config);
+
+    const tags = this.jsDocsService.parseCommentTags(this.config.comment);
+    this.codeExample = tags.codeExample;
+    this.codeExampleLanguage = tags.codeExampleLanguage;
+    this.description = tags.description;
+
+    if (this.config.children) {
+      this.inputProperties = this.config.children.filter(c => c.decorators && c.decorators[0].name === 'Input');
+      this.eventProperties = this.config.children.filter(c => c.decorators && c.decorators[0].name === 'Output');
+    }
   }
 
 }

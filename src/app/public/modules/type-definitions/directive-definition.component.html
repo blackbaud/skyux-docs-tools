@@ -10,7 +10,7 @@
 
   <sky-docs-safe-html
     class="sky-docs-directive-definition-description"
-    [innerHtml]="config.description | skyDocsTypeAnchorLinks | skyDocsMarkdown"
+    [innerHtml]="description | skyDocsTypeAnchorLinks | skyDocsMarkdown"
   ></sky-docs-safe-html>
 
   <h4 class="sky-docs-directive-definition-h4">
@@ -18,46 +18,27 @@
   </h4>
 
   <p class="sky-docs-directive-selector">
-    <sky-code>{{ config.selector }}</sky-code>
+    <sky-code>{{ selector }}</sky-code>
   </p>
 
-  <ng-container *ngIf="config.codeExample">
+  <ng-container *ngIf="codeExample">
     <h4 class="sky-docs-directive-definition-h4">
       Example
     </h4>
     <sky-code-block
       class="sky-docs-code-block"
-      [code]="config.codeExample"
+      [code]="codeExample"
       [hideHeader]="true"
-      [languageType]="config.codeExampleLanguage"
+      [languageType]="codeExampleLanguage"
     >
     </sky-code-block>
   </ng-container>
 
-  <sky-docs-property-definitions *ngIf="inputProperties.length || eventProperties.length">
-    <sky-docs-property-definition *ngFor="let property of inputProperties"
-      [defaultValue]="property.defaultValue"
-      [deprecationWarning]="property.deprecationWarning"
-      [isOptional]="property.isOptional"
-      [propertyDecorator]="property.decorator"
-      [propertyName]="property.name"
-      [propertyType]="property.type"
-    >
-      <sky-docs-safe-html
-        [innerHtml]="property.description | skyDocsTypeAnchorLinks | skyDocsMarkdown"
-      ></sky-docs-safe-html>
-    </sky-docs-property-definition>
-    <sky-docs-property-definition *ngFor="let property of eventProperties"
-      [defaultValue]="property.defaultValue"
-      [deprecationWarning]="property.deprecationWarning"
-      [isOptional]="property.isOptional"
-      [propertyDecorator]="property.decorator"
-      [propertyName]="property.name"
-      [propertyType]="property.type"
-    >
-      <sky-docs-safe-html
-        [innerHtml]="property.description | skyDocsTypeAnchorLinks | skyDocsMarkdown"
-      ></sky-docs-safe-html>
-    </sky-docs-property-definition>
-  </sky-docs-property-definitions>
+  <sky-docs-property-definitions *ngIf="inputProperties?.length"
+    [config]="{ properties: inputProperties }"
+  ></sky-docs-property-definitions>
+
+  <sky-docs-property-definitions *ngIf="eventProperties?.length"
+    [config]="{ properties: eventProperties }"
+  ></sky-docs-property-definitions>
 </div>

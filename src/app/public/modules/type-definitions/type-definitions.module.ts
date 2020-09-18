@@ -44,6 +44,10 @@ import {
 } from './anchor-link.service';
 
 import {
+  SkyDocsCallSignatureDefinitionComponent
+} from './call-signature-definition.component';
+
+import {
   SkyDocsDirectiveDefinitionComponent
 } from './directive-definition.component';
 
@@ -54,6 +58,10 @@ import {
 import {
   SkyDocsInterfaceDefinitionComponent
 } from './interface-definition.component';
+
+import {
+  SkyDocsJSDocsService
+} from './jsdoc.service';
 
 import {
   SkyDocsParameterDefinitionComponent
@@ -113,6 +121,7 @@ import {
     SkyMediaQueryModule
   ],
   declarations: [
+    SkyDocsCallSignatureDefinitionComponent,
     SkyDocsClassDefinitionComponent,
     SkyDocsDirectiveDefinitionComponent,
     SkyDocsEnumerationDefinitionComponent,
@@ -126,6 +135,7 @@ import {
     SkyDocsTypeAnchorLinksPipe
   ],
   exports: [
+    SkyDocsCallSignatureDefinitionComponent,
     SkyDocsClassDefinitionComponent,
     SkyDocsDirectiveDefinitionComponent,
     SkyDocsEnumerationDefinitionComponent,
@@ -139,6 +149,7 @@ import {
   ],
   providers: [
     SkyDocsAnchorLinkService,
+    SkyDocsJSDocsService,
     SkyDocsTypeAnchorLinksPipe,
     SkyDocsTypeDefinitionsFormatService,
     SkyDocsTypeDefinitionsProvider,
