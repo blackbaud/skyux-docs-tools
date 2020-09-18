@@ -55,7 +55,8 @@ export class SkyDocsParameterDefinitionsComponent {
 
   private updateView(): void {
     const parentTags = this.jsDocsService.parseCommentTags(this.config.comment);
-    this.parameters = this.config.type.declaration.signatures[0].parameters.map(p => {
+    const callSignatures = this.config.signatures || this.config.type.declaration.signatures;
+    this.parameters = callSignatures[0].parameters.map(p => {
       const tags = this.jsDocsService.parseParameterCommentTags(p, parentTags);
       return {
         description: tags.description,

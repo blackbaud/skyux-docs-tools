@@ -69,6 +69,8 @@ export class SkyDocsJSDocsService {
 
       if (comment.shortText) {
         description = comment.shortText;
+      } else if (comment.text) {
+        description = comment.text;
       }
     }
 
@@ -83,15 +85,22 @@ export class SkyDocsJSDocsService {
     };
   }
 
+  /**
+   * Parameter descriptions are derived from the parent (function/method) comment.
+   */
   public parseParameterCommentTags(parameter: TypeDocParameter, parentTags: SkyDocsCommentTags): SkyDocsCommentTags {
     const tags = this.parseCommentTags(parameter.comment);
     const paramTags = parentTags.parameters;
     const tagParam = (paramTags) ? paramTags.find((param) => param.name === parameter.name) : undefined;
 
+    if (!tagParam || !tagParam.description) {
+      return tags;
+    }
+
     return {
       ...tags,
       ...{
-        description: tagParam?.description
+        description: tagParam.description
       }
     };
   }

@@ -1,4 +1,6 @@
-<div class="sky-docs-pipe-definition sky-docs-type-definition-wrapper">
+<div *ngIf="config"
+  class="sky-docs-pipe-definition sky-docs-type-definition-wrapper"
+>
   <sky-docs-heading-anchor
     headingLevel="3"
     [anchorId]="config.anchorId"
@@ -6,52 +8,26 @@
     {{ config.name }}
   </sky-docs-heading-anchor>
 
-  <sky-docs-safe-html
-    [innerHtml]="config.description | skyDocsTypeAnchorLinks | skyDocsMarkdown"
+  <sky-docs-safe-html *ngIf="description"
+    [innerHtml]="description | skyDocsTypeAnchorLinks | skyDocsMarkdown"
   ></sky-docs-safe-html>
 
-  <ng-container *ngIf="config.codeExample">
+  <ng-container *ngIf="codeExample">
     <h4 class="sky-docs-pipe-definition-heading">
       Example
     </h4>
     <sky-code-block
       class="sky-docs-code-block"
-      [code]="config.codeExample"
+      [code]="codeExample"
       [hideHeader]="true"
-      [languageType]="config.codeExampleLanguage"
+      [languageType]="codeExampleLanguage"
     ></sky-code-block>
   </ng-container>
 
-  <h4 class="sky-docs-pipe-definition-heading">
-    Input value
-  </h4>
-
-  <sky-docs-parameter-definitions>
-    <sky-docs-parameter-definition
-      [parameterName]="'value'"
-      [parameterType]="config.inputValue.type"
-    >
-      <sky-docs-safe-html
-        [innerHtml]="config.inputValue.description | skyDocsTypeAnchorLinks | skyDocsMarkdown"
-      ></sky-docs-safe-html>
-    </sky-docs-parameter-definition>
-  </sky-docs-parameter-definitions>
-
-  <ng-container *ngIf="config.parameters.length">
-    <h4 class="sky-docs-pipe-definition-heading">
-      Parameters
-    </h4>
-    <sky-docs-parameter-definitions>
-      <sky-docs-parameter-definition *ngFor="let parameter of config.parameters"
-        [defaultValue]="parameter.defaultValue"
-        [isOptional]="parameter.isOptional"
-        [parameterName]="parameter.name"
-        [parameterType]="parameter.type"
-      >
-        <sky-docs-safe-html
-          [innerHtml]="parameter.description | skyDocsTypeAnchorLinks | skyDocsMarkdown"
-        ></sky-docs-safe-html>
-      </sky-docs-parameter-definition>
-    </sky-docs-parameter-definitions>
-  </ng-container>
+  <sky-docs-property-definitions
+    propertyType="Method"
+    [config]="{
+      properties: [transformMethod]
+    }"
+  ></sky-docs-property-definitions>
 </div>

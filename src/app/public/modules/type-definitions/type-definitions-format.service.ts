@@ -53,27 +53,27 @@ export class SkyDocsTypeDefinitionsFormatService {
   //   return signature;
   // }
 
-  // public getMethodSignature(method: SkyDocsMethodDefinition): string {
-  //   const typeParameterSignature: string = (method.typeParameters && method.typeParameters.length)
-  //     ? `<${method.typeParameters.join(', ')}>`
-  //     : '';
+  // public getMethodSignatureHTML(method: TypeDocItemMember): string {
+  //   // const typeParameterSignature: string = (method.typeParameters && method.typeParameters.length)
+  //   //   ? `<${method.typeParameters.join(', ')}>`
+  //   //   : '';
 
   //   let signature = `public ${method.name}${typeParameterSignature}(`;
 
-  //   if (method.parameters) {
-  //     signature += method.parameters
-  //       .map((parameter) => this.getParameterSignature(parameter, {
-  //         createAnchorLinks: false,
-  //         escapeSpecialCharacters: false
-  //       }))
-  //       .join(', ');
-  //   }
+  //   // if (method.parameters) {
+  //   //   signature += method.parameters
+  //   //     .map((parameter) => this.getParameterSignature(parameter, {
+  //   //       createAnchorLinks: false,
+  //   //       escapeSpecialCharacters: false
+  //   //     }))
+  //   //     .join(', ');
+  //   // }
 
-  //   const returnType = (method.returnType)
-  //     ? method.returnType
-  //     : 'void';
+  //   // const returnType = (method.returnType)
+  //   //   ? method.returnType
+  //   //   : 'void';
 
-  //   signature += `): ${returnType}`;
+  //   // signature += `): ${returnType}`;
 
   //   return signature;
   // }
@@ -98,6 +98,10 @@ export class SkyDocsTypeDefinitionsFormatService {
 
   public getPropertySignatureHTML(item: TypeDocItemMember): string {
     let signature = '';
+
+    if (item.kindString === 'Method') {
+      return `${item.name}()`;
+    }
 
     if (item.decorators && item.decorators[0].name) {
       signature += `@${item.decorators[0].name}()<br>`;
@@ -131,7 +135,14 @@ export class SkyDocsTypeDefinitionsFormatService {
     const kindString = item.kindString;
     /*tslint:disable-next-line:switch-default*/
     switch (kindString) {
-      case 'Call signature':
+      case 'Method':
+        const typeArguments = this.parseTypeArguments(item);
+        const returnType = this.parseFormattedType(item.signatures[0]) || 'void';
+        const params = item.signatures[0].parameters.map(p => this.getParameterSignatureHTML(p)).join(', ');
+        formatted = `public ${item.name}${typeArguments}(${params}): ${returnType}`;
+        break;
+
+      case 'Call signature': // <-- move up?
       case 'Parameter':
       case 'Property':
         const typeConfig = item.type;
@@ -156,19 +167,7 @@ export class SkyDocsTypeDefinitionsFormatService {
           }
         }
 
-        // Parse any type arguments e.g. `<T, F>`.
-        if (typeConfig.typeArguments) {
-          const typeArguments = typeConfig.typeArguments.map((typeArgument) => {
-            if (typeArgument.type === 'array') {
-              return `${typeArgument.elementType.name}[]`;
-            } else if (typeArgument.type === 'union') {
-              return this.parseUnionType(typeArgument);
-            }
-            return typeArgument.name;
-          });
-
-          formatted += `<${typeArguments.join(', ')}>`;
-        }
+        formatted += this.parseTypeArguments(item);
 
         // Format array types.
         if (typeConfig.type === 'array') {
@@ -190,38 +189,7 @@ export class SkyDocsTypeDefinitionsFormatService {
     return this.escapeSpecialCharacters(formatted);
   }
 
-  // private parseCallSignatureParameters(item: TypeDocItemMember): SkyDocsParameterDefinition[] {
-  //   if (
-  //     !item.type.declaration.signatures ||
-  //     !item.type.declaration.signatures[0].parameters
-  //   ) {
-  //     return [];
-  //   }
-
-  //   const { parameters } = this.parseCommentTags(item.comment);
-
-  //   return item.type.declaration.signatures[0].parameters.map((p) => {
-
-  //     let description = '';
-  //     if (parameters) {
-  //       description = parameters.find(param => param.name === p.name).description;
-  //     }
-
-  //     const parameter: SkyDocsParameterDefinition = {
-  //       isOptional: this.isOptional(p),
-  //       name: p.name,
-  //       type: this.parseFormattedType(p)
-  //     };
-
-  //     /* istanbul ignore else */
-  //     if (description !== undefined) {
-  //       parameter.description = description;
-  //     }
-
-  //     return parameter;
-  //   });
-  // }
-
+  // TODO: Add this logic to the parseFormattedType method?
   private getCallSignatureHTML(item: TypeDocItemMember): string {
     const callSignatures = item.type.declaration.signatures;
     const returnType = this.parseFormattedType(callSignatures[0]) || 'void';
@@ -239,6 +207,26 @@ export class SkyDocsTypeDefinitionsFormatService {
 
   private parseUnionType(typeConfig: TypeDocType): string {
     return typeConfig.types.map(t => this.parseFormattedType({ type: t })).join(' | ');
+  }
+
+  /**
+   * Parse any type arguments e.g. `<T, F>`.
+   */
+  private parseTypeArguments(item: TypeDocItemMember): string {
+    const typeConfig = item.type;
+    if (!typeConfig || !typeConfig.typeArguments) {
+      return '';
+    }
+    const typeArguments = typeConfig.typeArguments.map((typeArgument) => {
+    if (typeArgument.type === 'array') {
+      return `${typeArgument.elementType.name}[]`;
+    } else if (typeArgument.type === 'union') {
+      return this.parseUnionType(typeArgument);
+    }
+    return typeArgument.name;
+  });
+
+  return `<${typeArguments.join(', ')}>`;
   }
 
   // public getTypeAliasSignature(

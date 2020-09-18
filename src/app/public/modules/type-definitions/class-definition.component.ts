@@ -5,16 +5,13 @@ import {
 } from '@angular/core';
 
 import {
-  SkyDocsMethodDefinition
-} from './method-definition';
+  SkyDocsJSDocsService
+} from './jsdoc.service';
 
 import {
-  SkyDocsClassDefinition
-} from './class-definition';
-
-import {
-  SkyDocsTypeDefinitionsFormatService
-} from './type-definitions-format.service';
+  TypeDocItem,
+  TypeDocItemMember
+} from './typedoc-types';
 
 @Component({
   selector: 'sky-docs-class-definition',
@@ -25,14 +22,37 @@ import {
 export class SkyDocsClassDefinitionComponent {
 
   @Input()
-  public config: SkyDocsClassDefinition;
+  public set config(value: TypeDocItem) {
+    this._config = value;
+    this.updateView();
+  }
+
+  public get config(): TypeDocItem {
+    return this._config;
+  }
+
+  public description: string;
+
+  public methods: TypeDocItemMember[];
+
+  public properties: TypeDocItemMember[];
+
+  private _config: TypeDocItem;
 
   constructor(
-    private formatService: SkyDocsTypeDefinitionsFormatService
+    private jsDocsService: SkyDocsJSDocsService
   ) { }
 
-  public getMethodSignature(method: SkyDocsMethodDefinition): string {
-    return this.formatService.getMethodSignature(method);
+  private updateView(): void {
+    const tags = this.jsDocsService.parseCommentTags(this.config.comment);
+    this.description = tags.description;
+
+    if (this.config.children) {
+      this.properties = this.config.children.filter(c => c.kindString === 'Property');
+      this.methods = this.config.children
+        .filter(c => c.kindString === 'Method' && c.name !== 'ngOnDestroy')
+        .map(c => c.signatures[0]);
+    }
   }
 
 }

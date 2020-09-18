@@ -89,9 +89,9 @@ export class SkyDocsPropertyDefinitionsComponent implements OnInit {
 
   private updateView(): void {
     const properties = this.config.properties.map(p => {
-      const tags = this.jsDocsService.parseCommentTags(p.comment);
+      const tags = this.jsDocsService.parseCommentTags((p.signatures && p.signatures[0].comment) || p.comment);
       const property: Property = {
-        callSignature: (p.type?.declaration?.signatures) ? p : undefined,
+        callSignature: (p.signatures || p.type?.declaration?.signatures) ? p : undefined,
         defaultValue: this.formatService.getDefaultValueHTML(p, tags),
         deprecationWarning: tags.deprecationWarning,
         description: tags.description,
