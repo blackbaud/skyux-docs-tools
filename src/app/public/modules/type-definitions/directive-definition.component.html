@@ -35,10 +35,12 @@
   </ng-container>
 
   <sky-docs-property-definitions *ngIf="inputProperties?.length"
+    propertyType="Input"
     [config]="{ properties: inputProperties }"
   ></sky-docs-property-definitions>
 
   <sky-docs-property-definitions *ngIf="eventProperties?.length"
+    propertyType="Event"
     [config]="{ properties: eventProperties }"
   ></sky-docs-property-definitions>
 </div>

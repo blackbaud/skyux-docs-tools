@@ -27,12 +27,15 @@ import {
   TypeDocItemMember
 } from './typedoc-types';
 
+import orderBy from 'lodash.orderby';
+
 interface Property {
   callSignature?: TypeDocItemMember;
   defaultValue: string;
   deprecationWarning: string;
   description: string;
   isOptional: boolean;
+  name: string;
   signature: string;
 }
 
@@ -85,7 +88,7 @@ export class SkyDocsPropertyDefinitionsComponent implements OnInit {
   }
 
   private updateView(): void {
-    this.properties = this.config.properties.map(p => {
+    const properties = this.config.properties.map(p => {
       const tags = this.jsDocsService.parseCommentTags(p.comment);
       const property: Property = {
         callSignature: (p.type?.declaration?.signatures) ? p : undefined,
@@ -93,10 +96,17 @@ export class SkyDocsPropertyDefinitionsComponent implements OnInit {
         deprecationWarning: tags.deprecationWarning,
         description: tags.description,
         isOptional: this.typeDefinitionService.isOptional(p, tags),
+        name: p.name,
         signature: this.getPropertySignature(p)
       };
       return property;
     });
+
+    this.properties = orderBy(
+      properties,
+      ['isOptional', 'name'],
+      ['asc', 'asc']
+    );
   }
 
 }
