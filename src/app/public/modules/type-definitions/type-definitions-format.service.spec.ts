@@ -251,4 +251,18 @@ describe('Type definitions format service', () => {
     expect(signature).toEqual('type foo = (id: number) => FooUser');
   });
 
+  it('should generate a type alias with properties', () => {
+    const service = new SkyDocsTypeDefinitionsFormatService();
+    const definition: SkyDocsTypeAliasDefinition = {
+      name: 'foo',
+      properties: [{
+        name: '[_: string]',
+        type: 'any[]'
+      }]
+    };
+
+    const signature = service.getTypeAliasSignature(definition);
+    expect(signature).toEqual('type foo = {\n  [_: string]: any[]\n}');
+  });
+
 });
