@@ -217,16 +217,17 @@ export class SkyDocsTypeDefinitionsFormatService {
     if (!typeConfig || !typeConfig.typeArguments) {
       return '';
     }
-    const typeArguments = typeConfig.typeArguments.map((typeArgument) => {
-    if (typeArgument.type === 'array') {
-      return `${typeArgument.elementType.name}[]`;
-    } else if (typeArgument.type === 'union') {
-      return this.parseUnionType(typeArgument);
-    }
-    return typeArgument.name;
-  });
 
-  return `<${typeArguments.join(', ')}>`;
+    const typeArguments = typeConfig.typeArguments.map((typeArgument) => {
+      if (typeArgument.type === 'array') {
+        return `${typeArgument.elementType.name}[]`;
+      } else if (typeArgument.type === 'union') {
+        return this.parseUnionType(typeArgument);
+      }
+      return typeArgument.name;
+    });
+
+    return `<${typeArguments.join(', ')}>`;
   }
 
   // public getTypeAliasSignature(
