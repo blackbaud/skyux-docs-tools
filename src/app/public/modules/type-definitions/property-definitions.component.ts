@@ -12,17 +12,16 @@ import {
 } from '@skyux/core';
 
 import {
+  isOptional
+} from './is-optional';
+
+import {
   SkyDocsJSDocsService
 } from './jsdoc.service';
 
 import {
   SkyDocsTypeDefinitionsFormatService
 } from './type-definitions-format.service';
-
-import {
-  SkyDocsTypeDefinitionsService
-} from './type-definitions.service';
-
 import {
   TypeDocItemMember
 } from './typedoc-types';
@@ -74,7 +73,6 @@ export class SkyDocsPropertyDefinitionsComponent implements OnInit {
     private changeDetector: ChangeDetectorRef,
     private jsDocsService: SkyDocsJSDocsService,
     private formatService: SkyDocsTypeDefinitionsFormatService,
-    private typeDefinitionService: SkyDocsTypeDefinitionsService,
     private mediaQueryService: SkyMediaQueryService
   ) { }
 
@@ -97,7 +95,7 @@ export class SkyDocsPropertyDefinitionsComponent implements OnInit {
         defaultValue: this.formatService.getDefaultValueHTML(p, tags),
         deprecationWarning: tags.deprecationWarning,
         description: tags.description,
-        isOptional: this.typeDefinitionService.isOptional(p, tags),
+        isOptional: isOptional(p, tags),
         name: p.name,
         showOptionalStatus: (p.kindString !== 'Enumeration member'),
         signature: this.getPropertySignature(p),

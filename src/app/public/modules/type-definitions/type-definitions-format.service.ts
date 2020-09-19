@@ -7,12 +7,12 @@ import {
 } from './comment-tags';
 
 import {
-  SkyDocsJSDocsService
-} from './jsdoc.service';
+  isOptional
+} from './is-optional';
 
 import {
-  SkyDocsTypeDefinitionsService
-} from './type-definitions.service';
+  SkyDocsJSDocsService
+} from './jsdoc.service';
 
 import {
   TypeDocItem,
@@ -25,8 +25,7 @@ import {
 export class SkyDocsTypeDefinitionsFormatService {
 
   constructor(
-    private jsDocService: SkyDocsJSDocsService,
-    private typeDefinitionService: SkyDocsTypeDefinitionsService
+    private jsDocService: SkyDocsJSDocsService
   ) { }
 
   public getTypeAliasSignatureHTML(item: TypeDocItem): string {
@@ -52,8 +51,7 @@ export class SkyDocsTypeDefinitionsFormatService {
 
     item.children.forEach(property => {
       const tags = this.jsDocService.parseCommentTags(property.comment);
-      const isOptional = this.typeDefinitionService.isOptional(property, tags);
-      const optionalIndicator = (isOptional) ? '?' : '';
+      const optionalIndicator = (isOptional(property, tags)) ? '?' : '';
       const propertyType = this.parseFormattedType(property, {
         escapeSpecialCharacters: false
       });
@@ -73,9 +71,7 @@ export class SkyDocsTypeDefinitionsFormatService {
     let signature = '';
 
     const tags = this.jsDocService.parseCommentTags(parameter.comment);
-
-    const isOptional = this.typeDefinitionService.isOptional(parameter, tags);
-    const optionalMarker = (isOptional) ? '?' : '';
+    const optionalMarker = (isOptional(parameter, tags)) ? '?' : '';
 
     const parameterType = this.parseFormattedType(parameter, config);
     const defaultValue = this.getDefaultValueHTML(parameter, tags);
@@ -112,8 +108,7 @@ export class SkyDocsTypeDefinitionsFormatService {
       signature += item.name;
     }
 
-    const isOptional = this.typeDefinitionService.isOptional(item, tags);
-    if (isOptional) {
+    if (isOptional(item, tags)) {
       signature += '?';
     }
 

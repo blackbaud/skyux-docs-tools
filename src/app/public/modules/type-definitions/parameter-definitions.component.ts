@@ -5,16 +5,16 @@ import {
 } from '@angular/core';
 
 import {
+  isOptional
+} from './is-optional';
+
+import {
   SkyDocsJSDocsService
 } from './jsdoc.service';
 
 import {
   SkyDocsTypeDefinitionsFormatService
 } from './type-definitions-format.service';
-
-import {
-  SkyDocsTypeDefinitionsService
-} from './type-definitions.service';
 
 import {
   TypeDocItemMember
@@ -49,8 +49,7 @@ export class SkyDocsParameterDefinitionsComponent {
 
   constructor(
     private jsDocsService: SkyDocsJSDocsService,
-    private formatService: SkyDocsTypeDefinitionsFormatService,
-    private typeDefinitionsService: SkyDocsTypeDefinitionsService
+    private formatService: SkyDocsTypeDefinitionsFormatService
   ) { }
 
   private updateView(): void {
@@ -60,7 +59,7 @@ export class SkyDocsParameterDefinitionsComponent {
       const tags = this.jsDocsService.parseParameterCommentTags(p, parentTags);
       return {
         description: tags.description,
-        isOptional: this.typeDefinitionsService.isOptional(p, tags),
+        isOptional: isOptional(p, tags),
         signature: this.formatService.getParameterSignatureHTML(p)
       };
     });
