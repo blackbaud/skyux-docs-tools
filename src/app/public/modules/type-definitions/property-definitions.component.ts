@@ -36,7 +36,9 @@ interface Property {
   description: string;
   isOptional: boolean;
   name: string;
+  showOptionalStatus: boolean;
   signature: string;
+  sourceCode: string;
 }
 
 @Component({
@@ -97,7 +99,11 @@ export class SkyDocsPropertyDefinitionsComponent implements OnInit {
         description: tags.description,
         isOptional: this.typeDefinitionService.isOptional(p, tags),
         name: p.name,
-        signature: this.getPropertySignature(p)
+        showOptionalStatus: (p.kindString !== 'Enumeration member'),
+        signature: this.getPropertySignature(p),
+        sourceCode: (p.signatures)
+          ? this.formatService.parseFormattedType(p, { escapeSpecialCharacters: false })
+          : undefined
       };
       return property;
     });

@@ -87,7 +87,7 @@ export interface TypeDocItemMember {
     isOptional?: boolean;
   };
 
-  kindString?: 'Accessor' | 'Call signature' | 'Parameter' | 'Property' | 'Method';
+  kindString?: 'Accessor' | 'Call signature' | 'Enumeration member' | 'Parameter' | 'Property' | 'Method';
 
   getSignature?: {
     comment: TypeDocComment;

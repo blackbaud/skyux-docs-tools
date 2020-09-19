@@ -5,18 +5,17 @@ import {
 } from '@angular/core';
 
 import {
-  SkyDocsParameterDefinition
-} from './parameter-definition';
-
-import {
-  SkyDocsTypeAliasFunctionDefinition,
-  SkyDocsTypeAliasIndexSignatureDefinition,
-  SkyDocsTypeAliasUnionDefinition
-} from './type-alias-definition';
+  SkyDocsJSDocsService
+} from './jsdoc.service';
 
 import {
   SkyDocsTypeDefinitionsFormatService
 } from './type-definitions-format.service';
+
+import {
+  TypeDocItem,
+  TypeDocItemMember
+} from './typedoc-types';
 
 @Component({
   selector: 'sky-docs-type-alias-definition',
@@ -27,26 +26,42 @@ import {
 export class SkyDocsTypeAliasDefinitionComponent {
 
   @Input()
-  public config: SkyDocsTypeAliasIndexSignatureDefinition |
-    SkyDocsTypeAliasFunctionDefinition |
-    SkyDocsTypeAliasUnionDefinition;
-
-  public get parameters(): SkyDocsParameterDefinition[] {
-    return (this.config as SkyDocsTypeAliasFunctionDefinition).parameters;
+  public set config(value: TypeDocItem) {
+    this._config = value;
+    this.updateView();
   }
 
-  public get returnType(): string {
-    return (this.config as SkyDocsTypeAliasFunctionDefinition).returnType;
+  public get config(): TypeDocItem {
+    return this._config;
   }
 
-  public get sourceCode(): string {
-    return this.formatService.getTypeAliasSignature(this.config, {
-      createAnchorLinks: false
-    });
-  }
+  public description: string;
+
+  public sourceCode: string;
+
+  public callSignature: TypeDocItemMember;
+
+  private _config: TypeDocItem;
 
   constructor(
+    private jsDocsService: SkyDocsJSDocsService,
     private formatService: SkyDocsTypeDefinitionsFormatService
   ) { }
+
+  private updateView(): void {
+    const tags = this.jsDocsService.parseCommentTags(this.config.comment);
+
+    this.description = tags.description;
+    this.sourceCode = this.formatService.getTypeAliasSignatureHTML(this.config);
+
+    if (this.config.type.declaration?.signatures) {
+      this.callSignature = {
+        comment: this.config.comment,
+        type: this.config.type
+      };
+    } else {
+      this.callSignature = undefined;
+    }
+  }
 
 }

@@ -115,6 +115,11 @@ export class SkyDocsTypeDefinitionsService {
       return false;
     }
 
+    // Enumeration members can't be optional.
+    if (item.kindString === 'Enumeration member') {
+      return false;
+    }
+
     if (item.kindString === 'Parameter') {
       return !!(item.flags && item.flags.isOptional);
     }

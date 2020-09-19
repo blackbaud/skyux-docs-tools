@@ -73,9 +73,9 @@
 </ng-template>
 
 <ng-template let-property #descriptionTemplate>
-  <p *ngIf="!property.isOptional"
+  <div *ngIf="!property.isOptional && property.showOptionalStatus"
     class="sky-docs-property-definition-label sky-text-danger"
-  >Required.</p>
+  >Required.</div>
 
   <sky-docs-safe-html *ngIf="property.deprecationWarning !== undefined"
     class="sky-docs-property-definitions-deprecation-warning"
@@ -87,12 +87,20 @@
     [innerHtml]="property.description | skyDocsMarkdown | skyDocsTypeAnchorLinks"
   ></sky-docs-safe-html>
 
-  <p *ngIf="property.isOptional"
+  <div *ngIf="property.isOptional && property.showOptionalStatus"
     class="sky-docs-property-definition-label sky-docs-property-definition-label-optional"
-  >Optional. <ng-container *ngIf="property.defaultValue">Default is <sky-code><span
+  >
+    Optional. <ng-container *ngIf="property.defaultValue">Default is <sky-code><span
     [innerHtml]="property.defaultValue | skyDocsTypeAnchorLinks:'no-code-tags'"
-  ></span></sky-code>.</ng-container>
-  </p>
+    ></span></sky-code>.</ng-container>
+  </div>
+
+  <sky-code-block *ngIf="property.sourceCode"
+    class="sky-docs-code-block"
+    languageType="typescript"
+    [code]="property.sourceCode"
+    [hideHeader]="true"
+  ></sky-code-block>
 
   <sky-docs-call-signature-definition *ngIf="property.callSignature"
     [config]="property.callSignature"

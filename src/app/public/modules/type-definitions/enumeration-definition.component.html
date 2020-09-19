@@ -10,18 +10,13 @@
 
   <sky-docs-safe-html
     class="sky-docs-enumeration-definition-description"
-    [innerHtml]="config.description | skyDocsTypeAnchorLinks | skyDocsMarkdown"
+    [innerHtml]="description | skyDocsTypeAnchorLinks | skyDocsMarkdown"
   ></sky-docs-safe-html>
 
   <sky-docs-property-definitions
     propertyType="Member"
-  >
-    <sky-docs-property-definition *ngFor="let member of config.members"
-      [propertyName]="member.name"
-    >
-      <sky-docs-safe-html
-        [innerHtml]="member.description | skyDocsTypeAnchorLinks | skyDocsMarkdown"
-      ></sky-docs-safe-html>
-    </sky-docs-property-definition>
-  </sky-docs-property-definitions>
+    [config]="{
+      properties: config.children
+    }"
+  ></sky-docs-property-definitions>
 </div>

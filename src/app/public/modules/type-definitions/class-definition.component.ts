@@ -49,9 +49,7 @@ export class SkyDocsClassDefinitionComponent {
 
     if (this.config.children) {
       this.properties = this.config.children.filter(c => c.kindString === 'Property');
-      this.methods = this.config.children
-        .filter(c => c.kindString === 'Method' && c.name !== 'ngOnDestroy')
-        .map(c => c.signatures[0]);
+      this.methods = this.config.children.filter(c => c.kindString === 'Method' && c.name !== 'ngOnDestroy');
     }
   }
 

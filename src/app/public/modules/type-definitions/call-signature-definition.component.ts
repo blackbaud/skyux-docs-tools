@@ -19,15 +19,10 @@ import {
 @Component({
   selector: 'sky-docs-call-signature-definition',
   template: `
-  <sky-code-block
-    class="sky-docs-code-block"
-    languageType="typescript"
-    [code]="signature"
-    [hideHeader]="true"
-  ></sky-code-block>
-
   <ng-container *ngIf="hasParameters">
-    <h4 class="sky-docs-type-alias-definition-heading">
+    <h4
+      class="sky-docs-type-alias-definition-heading"
+    >
       Parameters
     </h4>
     <sky-docs-parameter-definitions
@@ -36,15 +31,19 @@ import {
   </ng-container>
 
   <ng-container *ngIf="returnType">
-    <h4 class="sky-docs-type-alias-definition-heading">
+    <h4
+      class="sky-docs-type-alias-definition-heading"
+    >
       Returns
     </h4>
 
-    <p class="sky-docs-type-alias-definition-return-type">
+    <div
+      class="sky-docs-type-alias-definition-return-type"
+    >
       <sky-code><span
         [innerHtml]="returnType | skyDocsTypeAnchorLinks:'no-code-tags'"
       ></span></sky-code>
-    </p>
+    </div>
   </ng-container>
 
   <ng-container *ngIf="codeExample">
@@ -82,8 +81,6 @@ export class SkyDocsCallSignatureDefinitionComponent {
 
   public returnType: string;
 
-  public signature: string;
-
   private _config: TypeDocItemMember;
 
   constructor(
@@ -96,7 +93,6 @@ export class SkyDocsCallSignatureDefinitionComponent {
     const tags = this.jsDocsService.parseCommentTags(callSignatures[0].comment);
     this.returnType = this.formatService.parseFormattedType(callSignatures[0]);
     this.hasParameters = !!(callSignatures[0].parameters);
-    this.signature = this.formatService.parseFormattedType(this.config);
     this.codeExample = tags.codeExample;
     this.codeExampleLanguage = tags.codeExampleLanguage;
   }

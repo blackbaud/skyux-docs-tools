@@ -5,12 +5,17 @@ import {
 } from '@angular/core';
 
 import {
-  SkyDocsInterfaceDefinition
-} from './interface-definition';
+  SkyDocsJSDocsService
+} from './jsdoc.service';
 
 import {
   SkyDocsTypeDefinitionsFormatService
 } from './type-definitions-format.service';
+
+import {
+  TypeDocItem,
+  TypeDocItemMember
+} from './typedoc-types';
 
 @Component({
   selector: 'sky-docs-interface-definition',
@@ -20,16 +25,32 @@ import {
 export class SkyDocsInterfaceDefinitionComponent {
 
   @Input()
-  public config: SkyDocsInterfaceDefinition;
-
-  public get sourceCode(): string {
-    return this.formatService.getInterfaceSignature(this.config, {
-      createAnchorLinks: false
-    });
+  public set config(value: TypeDocItem) {
+    this._config = value;
+    this.updateView();
   }
 
+  public get config(): TypeDocItem {
+    return this._config;
+  }
+
+  public description: string;
+
+  public properties: TypeDocItemMember[];
+
+  public sourceCode: string;
+
+  private _config: TypeDocItem;
+
   constructor(
+    private jsDocsService: SkyDocsJSDocsService,
     private formatService: SkyDocsTypeDefinitionsFormatService
   ) { }
+
+  private updateView(): void {
+    const tags = this.jsDocsService.parseCommentTags(this.config.comment);
+    this.description = tags.description;
+    this.sourceCode = this.formatService.getInterfaceSignatureHTML(this.config);
+  }
 
 }
