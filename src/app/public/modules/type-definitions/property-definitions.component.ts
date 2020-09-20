@@ -28,7 +28,7 @@ import {
 
 import orderBy from 'lodash.orderby';
 
-interface Property {
+interface PropertyViewModel {
   callSignature?: TypeDocItemMember;
   defaultValue: string;
   deprecationWarning: string;
@@ -65,7 +65,7 @@ export class SkyDocsPropertyDefinitionsComponent implements OnInit {
 
   public isMobile: boolean = true;
 
-  public properties: Property[] = [];
+  public properties: PropertyViewModel[] = [];
 
   private _config: { properties: TypeDocItemMember[]; };
 
@@ -90,7 +90,7 @@ export class SkyDocsPropertyDefinitionsComponent implements OnInit {
   private updateView(): void {
     const properties = this.config.properties.map(p => {
       const tags = this.jsDocsService.parseCommentTags((p.signatures && p.signatures[0].comment) || p.comment);
-      const property: Property = {
+      const property: PropertyViewModel = {
         callSignature: (p.signatures || p.type?.declaration?.signatures) ? p : undefined,
         defaultValue: this.formatService.getDefaultValueHTML(p, tags),
         deprecationWarning: tags.deprecationWarning,

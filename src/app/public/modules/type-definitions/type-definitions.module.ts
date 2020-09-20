@@ -64,20 +64,12 @@ import {
 } from './jsdoc.service';
 
 import {
-  SkyDocsParameterDefinitionComponent
-} from './parameter-definition.component';
-
-import {
   SkyDocsParameterDefinitionsComponent
 } from './parameter-definitions.component';
 
 import {
   SkyDocsPipeDefinitionComponent
 } from './pipe-definition.component';
-
-import {
-  SkyDocsPropertyDefinitionComponent
-} from './property-definition.component';
 
 import {
   SkyDocsPropertyDefinitionsComponent
@@ -126,10 +118,8 @@ import {
     SkyDocsDirectiveDefinitionComponent,
     SkyDocsEnumerationDefinitionComponent,
     SkyDocsInterfaceDefinitionComponent,
-    SkyDocsParameterDefinitionComponent,
     SkyDocsParameterDefinitionsComponent,
     SkyDocsPipeDefinitionComponent,
-    SkyDocsPropertyDefinitionComponent,
     SkyDocsPropertyDefinitionsComponent,
     SkyDocsTypeAliasDefinitionComponent,
     SkyDocsTypeAnchorLinksPipe
@@ -140,10 +130,8 @@ import {
     SkyDocsDirectiveDefinitionComponent,
     SkyDocsEnumerationDefinitionComponent,
     SkyDocsInterfaceDefinitionComponent,
-    SkyDocsParameterDefinitionComponent,
     SkyDocsParameterDefinitionsComponent,
     SkyDocsPipeDefinitionComponent,
-    SkyDocsPropertyDefinitionComponent,
     SkyDocsPropertyDefinitionsComponent,
     SkyDocsTypeAliasDefinitionComponent
   ],

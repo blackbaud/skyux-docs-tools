@@ -54,14 +54,12 @@ export class SkyDocsTypeAliasDefinitionComponent {
     this.description = tags.description;
     this.sourceCode = this.formatService.getTypeAliasSignatureHTML(this.config);
 
-    if (this.config.type.declaration?.signatures) {
-      this.callSignature = {
+    this.callSignature = (this.config.type.declaration?.signatures)
+      ? {
         comment: this.config.comment,
         type: this.config.type
-      };
-    } else {
-      this.callSignature = undefined;
-    }
+      }
+      : undefined;
   }
 
 }

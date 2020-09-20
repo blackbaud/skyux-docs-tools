@@ -20,19 +20,21 @@ export class SkyDocsJSDocsService {
     let deprecationWarning: string;
     let defaultValue: string;
     let description: string = '';
-    let parameters: { name: string; description: string }[];
+
+    let parameters: {
+      name: string;
+      description: string
+    }[];
 
     const extras: {
       [key: string]: any
     } = {};
 
     if (comment) {
-      /*istanbul ignore else*/
       if (comment.tags) {
         comment.tags.forEach(tag => {
           switch (tag.tag) {
             case 'deprecated':
-              /*istanbul ignore else*/
               deprecationWarning = tag.text.trim();
               break;
 
@@ -43,7 +45,6 @@ export class SkyDocsJSDocsService {
               break;
 
             case 'example':
-              /*istanbul ignore else*/
               codeExample = tag.text.trim().split('```')[1].trim();
               const language = codeExample.split('\n')[0];
               if (language === 'markup' || language === 'typescript') {

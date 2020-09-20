@@ -13,7 +13,9 @@
     [innerHtml]="description | skyDocsTypeAnchorLinks | skyDocsMarkdown"
   ></sky-docs-safe-html>
 
-  <h4 class="sky-docs-directive-definition-h4">
+  <h4
+    class="sky-docs-directive-definition-h4"
+  >
     Selector
   </h4>
 
@@ -24,7 +26,9 @@
   </p>
 
   <ng-container *ngIf="codeExample">
-    <h4 class="sky-docs-directive-definition-h4">
+    <h4
+      class="sky-docs-directive-definition-h4"
+    >
       Example
     </h4>
     <sky-code-block
@@ -38,11 +42,15 @@
 
   <sky-docs-property-definitions *ngIf="inputProperties?.length"
     propertyType="Input"
-    [config]="{ properties: inputProperties }"
+    [config]="{
+      properties: inputProperties
+    }"
   ></sky-docs-property-definitions>
 
   <sky-docs-property-definitions *ngIf="eventProperties?.length"
     propertyType="Event"
-    [config]="{ properties: eventProperties }"
+    [config]="{
+      properties: eventProperties
+    }"
   ></sky-docs-property-definitions>
 </div>

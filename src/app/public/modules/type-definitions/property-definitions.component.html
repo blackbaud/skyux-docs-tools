@@ -4,11 +4,17 @@
   <table *ngIf="!isMobile else mobileTemplate"
     class="sky-docs-table"
   >
-    <tr class="sky-docs-table-row">
-      <th class="sky-docs-table-column-header sky-docs-table-column-header-name">
+    <tr
+      class="sky-docs-table-row"
+    >
+      <th
+        class="sky-docs-table-column-header sky-docs-table-column-header-name"
+      >
         {{ propertyType }}
       </th>
-      <th class="sky-docs-table-column-header sky-docs-table-column-header-description">
+      <th
+        class="sky-docs-table-column-header sky-docs-table-column-header-description"
+      >
         Description
       </th>
     </tr>
@@ -35,7 +41,9 @@
   </table>
 
   <ng-template #mobileTemplate>
-    <dl class="sky-docs-property-definition-list">
+    <dl
+      class="sky-docs-property-definition-list"
+    >
       <div *ngFor="let property of properties"
         class="sky-docs-property-definition-list-item"
       >

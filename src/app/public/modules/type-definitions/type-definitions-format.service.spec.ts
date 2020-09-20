@@ -3,28 +3,6 @@ import {
 } from '@skyux-sdk/testing';
 
 import {
-  SkyDocsInterfaceDefinition
-} from './interface-definition';
-
-import {
-  SkyDocsMethodDefinition
-} from './method-definition';
-
-import {
-  SkyDocsParameterDefinition
-} from './parameter-definition';
-
-import {
-  SkyDocsPropertyDefinition
-} from './property-definition';
-
-import {
-  SkyDocsTypeAliasFunctionDefinition,
-  SkyDocsTypeAliasIndexSignatureDefinition,
-  SkyDocsTypeAliasUnionDefinition
-} from './type-alias-definition';
-
-import {
   SkyDocsTypeDefinitionsFormatService
 } from './type-definitions-format.service';
 

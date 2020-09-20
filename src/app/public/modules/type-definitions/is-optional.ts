@@ -7,6 +7,7 @@ import {
 } from './typedoc-types';
 
 export function isOptional(item: TypeDocItemMember, tags: SkyDocsCommentTags): boolean {
+
   // If `@required` is in the comment, mark it as required.
   if (tags.extras.required) {
     return false;
