@@ -80,7 +80,9 @@ export class SkyDocsTypeDefinitionsFormatService {
    */
   public parseFormattedParameterName(
     parameter: TypeDocParameter,
-    config?: ParseFormattedTypeConfig
+    config: ParseFormattedTypeConfig = {
+      escapeSpecialCharacters: true
+    }
   ): string {
     let signature = '';
 
@@ -217,7 +219,9 @@ export class SkyDocsTypeDefinitionsFormatService {
 
   private parseFormattedCallSignature(
     typeConfig: TypeDocType,
-    config: ParseFormattedTypeConfig
+    config: ParseFormattedTypeConfig = {
+      escapeSpecialCharacters: true
+    }
   ): string {
     const callSignatures = typeConfig.declaration.signatures;
     const returnType = this.parseFormattedType(callSignatures[0], config) || 'void';
