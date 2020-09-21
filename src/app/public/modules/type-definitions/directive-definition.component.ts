@@ -4,14 +4,11 @@ import {
   Input
 } from '@angular/core';
 
-import {
-  SkyDocsJSDocsService
-} from './jsdoc.service';
+// import {
+//   SkyDocsJSDocsService
+// } from './jsdoc.service';
 
-import {
-  TypeDocEntry,
-  TypeDocEntryChild
-} from './typedoc-types';
+import { SkyDocsDirectiveDefinition } from './type-definitions';
 
 @Component({
   selector: 'sky-docs-directive-definition',
@@ -22,62 +19,51 @@ import {
 export class SkyDocsDirectiveDefinitionComponent {
 
   @Input()
-  public set config(value: TypeDocEntry) {
+  public set config(value: SkyDocsDirectiveDefinition) {
     this._config = value;
     this.updateView();
   }
 
-  public get config(): TypeDocEntry {
+  public get config(): SkyDocsDirectiveDefinition {
     return this._config;
   }
 
-  public codeExample: string;
+  // public codeExample: string;
 
-  public codeExampleLanguage: string;
+  // public codeExampleLanguage: string;
 
-  public description: string;
+  // public description: string;
 
-  public eventProperties: TypeDocEntryChild[];
+  // public eventProperties: SkyDocsClassPropertyDefinition[];
 
-  public inputProperties: TypeDocEntryChild[];
+  // public inputProperties: SkyDocsClassPropertyDefinition[];
 
-  public selector: string;
+  // public selector: string;
 
-  private _config: TypeDocEntry;
+  private _config: SkyDocsDirectiveDefinition;
 
-  constructor(
-    private jsDocsService: SkyDocsJSDocsService
-  ) { }
-
-  private parseSelector(entry: TypeDocEntry): string {
-    if (!entry) {
-      return '';
-    }
-
-    const decoratorSource = entry.decorators[0].arguments.obj;
-    return (decoratorSource.indexOf('selector: `') > -1)
-      ? decoratorSource.split('selector: `')[1].split('`')[0].replace(/\s\s+/g, ' ')
-      : decoratorSource.split('selector: \'')[1].split('\'')[0];
-  }
+  // constructor(
+  //   private jsDocsService: SkyDocsJSDocsService
+  // ) { }
 
   private updateView(): void {
 
     // Reset view properties when the config changes.
-    delete this.codeExample;
-    delete this.codeExampleLanguage;
-    delete this.description;
-    delete this.eventProperties;
-    delete this.inputProperties;
-    delete this.selector;
+    // delete this.codeExample;
+    // delete this.codeExampleLanguage;
+    // delete this.description;
+    // delete this.eventProperties;
+    // delete this.inputProperties;
+    // delete this.selector;
 
-    const tags = this.jsDocsService.parseCommentTags(this.config?.comment);
-    this.codeExample = tags.codeExample;
-    this.codeExampleLanguage = tags.codeExampleLanguage;
-    this.description = tags.description;
+    // const tags = this.jsDocsService.parseCommentTags(this.config?.comment);
+    // this.codeExample = tags.codeExample;
+    // this.codeExampleLanguage = tags.codeExampleLanguage;
+    // this.description = tags.description;
 
-    this.selector = this.parseSelector(this.config);
-    this.inputProperties = this.config?.children?.filter(c => c.decorators && c.decorators[0].name === 'Input');
-    this.eventProperties = this.config?.children?.filter(c => c.decorators && c.decorators[0].name === 'Output');
+    // this.selector = this.config?.selector;
+    // this.inputProperties = this.config?.children?.filter(c => c.decorators && c.decorators[0].name === 'Input');
+    // this.eventProperties = this.config?.children?.filter(c => c.decorators && c.decorators[0].name === 'Output');
   }
 
 }

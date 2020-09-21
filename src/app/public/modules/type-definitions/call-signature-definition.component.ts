@@ -4,17 +4,7 @@ import {
   Input
 } from '@angular/core';
 
-import {
-  SkyDocsJSDocsService
-} from './jsdoc.service';
-
-import {
-  SkyDocsTypeDefinitionsFormatService
-} from './type-definitions-format.service';
-
-import {
-  TypeDocEntryChild
-} from './typedoc-types';
+import { SkyDocsCallSignatureDefinition } from './type-definitions';
 
 /**
  * "Call signatures" include methods, functions, and inline arrow functions.
@@ -29,12 +19,12 @@ import {
 export class SkyDocsCallSignatureDefinitionComponent {
 
   @Input()
-  public set config(value: TypeDocEntryChild) {
+  public set config(value: SkyDocsCallSignatureDefinition) {
     this._config = value;
     this.updateView();
   }
 
-  public get config(): TypeDocEntryChild {
+  public get config(): SkyDocsCallSignatureDefinition {
     return this._config;
   }
 
@@ -46,29 +36,27 @@ export class SkyDocsCallSignatureDefinitionComponent {
 
   public returnType: string;
 
-  private _config: TypeDocEntryChild;
+  private _config: SkyDocsCallSignatureDefinition;
 
   constructor(
-    private jsDocsService: SkyDocsJSDocsService,
-    private formatService: SkyDocsTypeDefinitionsFormatService
   ) { }
 
   private updateView(): void {
 
     // Reset view properties when the config changes.
-    delete this.codeExample;
-    delete this.codeExampleLanguage;
-    delete this.hasParameters;
-    delete this.returnType;
+    // delete this.codeExample;
+    // delete this.codeExampleLanguage;
+    // delete this.hasParameters;
+    // delete this.returnType;
 
-    const callSignatures = this.config?.signatures || this.config?.type?.declaration?.signatures;
-    if (callSignatures) {
-      const tags = this.jsDocsService.parseCommentTags(callSignatures[0].comment);
-      this.returnType = this.formatService.parseFormattedType(callSignatures[0]);
-      this.hasParameters = !!(callSignatures[0].parameters);
-      this.codeExample = tags.codeExample;
-      this.codeExampleLanguage = tags.codeExampleLanguage;
-    }
+    // const callSignatures = this.config?.signatures || this.config?.type?.declaration?.signatures;
+    // if (callSignatures) {
+    //   const tags = this.jsDocsService.parseCommentTags(callSignatures[0].comment);
+    //   this.returnType = this.formatService.parseFormattedType(callSignatures[0]);
+    //   this.hasParameters = !!(callSignatures[0].parameters);
+    //   this.codeExample = tags.codeExample;
+    //   this.codeExampleLanguage = tags.codeExampleLanguage;
+    // }
   }
 
 }

@@ -8,9 +8,9 @@
     {{ config.name }}
   </sky-docs-heading-anchor>
 
-  <sky-docs-safe-html
+  <sky-docs-safe-html *ngIf="config.description"
     class="sky-docs-directive-definition-description"
-    [innerHtml]="description | skyDocsTypeAnchorLinks | skyDocsMarkdown"
+    [innerHtml]="config.description | skyDocsTypeAnchorLinks | skyDocsMarkdown"
   ></sky-docs-safe-html>
 
   <h4
@@ -22,10 +22,10 @@
   <p
     class="sky-docs-directive-selector"
   >
-    <sky-code>{{ selector }}</sky-code>
+    <sky-code>{{ config.selector }}</sky-code>
   </p>
 
-  <ng-container *ngIf="codeExample">
+  <ng-container *ngIf="config.codeExample">
     <h4
       class="sky-docs-directive-definition-h4"
     >
@@ -33,24 +33,24 @@
     </h4>
     <sky-code-block
       class="sky-docs-code-block"
-      [code]="codeExample"
+      [code]="config.codeExample"
       [hideHeader]="true"
-      [languageType]="codeExampleLanguage"
+      [languageType]="config.codeExampleLanguage"
     >
     </sky-code-block>
   </ng-container>
 
-  <sky-docs-property-definitions *ngIf="inputProperties?.length"
+  <sky-docs-property-definitions *ngIf="config.inputProperties?.length"
     propertyType="Input"
     [config]="{
-      properties: inputProperties
+      properties: config.inputProperties
     }"
   ></sky-docs-property-definitions>
 
-  <sky-docs-property-definitions *ngIf="eventProperties?.length"
+  <sky-docs-property-definitions *ngIf="config.eventProperties?.length"
     propertyType="Event"
     [config]="{
-      properties: eventProperties
+      properties: config.eventProperties
     }"
   ></sky-docs-property-definitions>
 </div>

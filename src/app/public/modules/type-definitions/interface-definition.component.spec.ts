@@ -1,148 +1,148 @@
-import {
-  ComponentFixture,
-  fakeAsync,
-  TestBed,
-  tick
-} from '@angular/core/testing';
+// import {
+//   ComponentFixture,
+//   fakeAsync,
+//   TestBed,
+//   tick
+// } from '@angular/core/testing';
 
-import {
-  expect
-} from '@skyux-sdk/testing';
+// import {
+//   expect
+// } from '@skyux-sdk/testing';
 
-import {
-  InterfaceDefinitionFixtureComponent
-} from './fixtures/interface-definition.component.fixture';
+// import {
+//   InterfaceDefinitionFixtureComponent
+// } from './fixtures/interface-definition.component.fixture';
 
-import {
-  TypeDefinitionsFixturesModule
-} from './fixtures/type-definitions.module.fixture';
+// import {
+//   TypeDefinitionsFixturesModule
+// } from './fixtures/type-definitions.module.fixture';
 
-import {
-  SkyDocsTypeDefinitionsProvider
-} from './type-definitions-provider';
+// import {
+//   SkyDocsTypeDefinitionsProvider
+// } from './type-definitions-provider';
 
-describe('Interface definition component', function () {
+// describe('Interface definition component', function () {
 
-  let fixture: ComponentFixture<InterfaceDefinitionFixtureComponent>;
+//   let fixture: ComponentFixture<InterfaceDefinitionFixtureComponent>;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [
-        TypeDefinitionsFixturesModule
-      ],
-      providers: [
-        {
-          provide: SkyDocsTypeDefinitionsProvider,
-          useValue: {
-            anchorIds: {
-              'FooUser': 'foo-user'
-            },
-            typeDefinitions: [
-              {
-                name: 'FooUser'
-              }
-            ]
-          }
-        }
-      ]
-    });
+//   beforeEach(() => {
+//     TestBed.configureTestingModule({
+//       imports: [
+//         TypeDefinitionsFixturesModule
+//       ],
+//       providers: [
+//         {
+//           provide: SkyDocsTypeDefinitionsProvider,
+//           useValue: {
+//             anchorIds: {
+//               'FooUser': 'foo-user'
+//             },
+//             typeDefinitions: [
+//               {
+//                 name: 'FooUser'
+//               }
+//             ]
+//           }
+//         }
+//       ]
+//     });
 
-    fixture = TestBed.createComponent(InterfaceDefinitionFixtureComponent);
-  });
+//     fixture = TestBed.createComponent(InterfaceDefinitionFixtureComponent);
+//   });
 
-  afterEach(() => {
-    fixture.destroy();
-  });
+//   afterEach(() => {
+//     fixture.destroy();
+//   });
 
-  it('should set defaults', () => {
-    fixture.detectChanges();
-    const interfaceDefinitionRef = fixture.componentInstance.interfaceDefinitionRef;
-    expect(interfaceDefinitionRef.config).toBeUndefined();
-  });
+//   it('should set defaults', () => {
+//     fixture.detectChanges();
+//     const interfaceDefinitionRef = fixture.componentInstance.interfaceDefinitionRef;
+//     expect(interfaceDefinitionRef.config).toBeUndefined();
+//   });
 
-  it('should add links to types within description', fakeAsync(() => {
-    fixture.componentInstance.config = {
-      name: 'Foo',
-      description: 'This description has a FooUser.',
-      properties: [
-        {
-          isOptional: true,
-          name: 'foo',
-          type: 'string'
-        }
-      ]
-    };
+//   it('should add links to types within description', fakeAsync(() => {
+//     fixture.componentInstance.config = {
+//       name: 'Foo',
+//       description: 'This description has a FooUser.',
+//       properties: [
+//         {
+//           isOptional: true,
+//           name: 'foo',
+//           type: 'string'
+//         }
+//       ]
+//     };
 
-    fixture.detectChanges();
-    tick();
+//     fixture.detectChanges();
+//     tick();
 
-    const descriptionElement = fixture.nativeElement.querySelector(
-      '.sky-docs-interface-definition-description'
-    );
+//     const descriptionElement = fixture.nativeElement.querySelector(
+//       '.sky-docs-interface-definition-description'
+//     );
 
-    expect(descriptionElement.innerHTML).toContain(
-      '<a class="sky-docs-anchor-link" href="#foo-user">FooUser</a>'
-    );
-  }));
+//     expect(descriptionElement.innerHTML).toContain(
+//       '<a class="sky-docs-anchor-link" href="#foo-user">FooUser</a>'
+//     );
+//   }));
 
-  it('should add links to types within property descriptions', fakeAsync(() => {
-    fixture.componentInstance.config = {
-      name: 'Foo',
-      description: '',
-      properties: [
-        {
-          description: 'This description has a FooUser.',
-          isOptional: true,
-          name: 'foo',
-          type: 'string'
-        }
-      ]
-    };
+//   it('should add links to types within property descriptions', fakeAsync(() => {
+//     fixture.componentInstance.config = {
+//       name: 'Foo',
+//       description: '',
+//       properties: [
+//         {
+//           description: 'This description has a FooUser.',
+//           isOptional: true,
+//           name: 'foo',
+//           type: 'string'
+//         }
+//       ]
+//     };
 
-    fixture.detectChanges();
-    tick();
+//     fixture.detectChanges();
+//     tick();
 
-    const descriptionElement = fixture.nativeElement.querySelector(
-      '.sky-docs-property-definitions-table-cell-description'
-    );
+//     const descriptionElement = fixture.nativeElement.querySelector(
+//       '.sky-docs-property-definitions-table-cell-description'
+//     );
 
-    expect(descriptionElement.innerHTML).toContain(
-      '<a class="sky-docs-anchor-link" href="#foo-user">FooUser</a>'
-    );
-  }));
+//     expect(descriptionElement.innerHTML).toContain(
+//       '<a class="sky-docs-anchor-link" href="#foo-user">FooUser</a>'
+//     );
+//   }));
 
-  it('should display call signature types', fakeAsync(() => {
-    fixture.componentInstance.config = {
-      name: 'Foo',
-      description: 'This description has a FooUser.',
-      properties: [
-        {
-          isOptional: true,
-          name: 'foo',
-          type: {
-            callSignature: {
-              returnType: 'string[]',
-              parameters: [
-                {
-                  isOptional: false,
-                  name: 'userId',
-                  type: 'number'
-                }
-              ]
-            }
-          }
-        }
-      ]
-    };
+//   it('should display call signature types', fakeAsync(() => {
+//     fixture.componentInstance.config = {
+//       name: 'Foo',
+//       description: 'This description has a FooUser.',
+//       properties: [
+//         {
+//           isOptional: true,
+//           name: 'foo',
+//           type: {
+//             callSignature: {
+//               returnType: 'string[]',
+//               parameters: [
+//                 {
+//                   isOptional: false,
+//                   name: 'userId',
+//                   type: 'number'
+//                 }
+//               ]
+//             }
+//           }
+//         }
+//       ]
+//     };
 
-    fixture.detectChanges();
-    tick();
+//     fixture.detectChanges();
+//     tick();
 
-    const nameElement = fixture.nativeElement.querySelector(
-      '.sky-docs-property-definitions-table-cell-name:first-child'
-    );
+//     const nameElement = fixture.nativeElement.querySelector(
+//       '.sky-docs-property-definitions-table-cell-name:first-child'
+//     );
 
-    expect(nameElement.textContent).toEqual('foo?: (userId: number) => string[]');
-  }));
+//     expect(nameElement.textContent).toEqual('foo?: (userId: number) => string[]');
+//   }));
 
-});
+// });

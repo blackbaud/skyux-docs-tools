@@ -11,34 +11,18 @@ import {
   SkyMediaQueryService
 } from '@skyux/core';
 
-import {
-  isTypeOptional
-} from './is-type-optional';
-
-import {
-  SkyDocsJSDocsService
-} from './jsdoc.service';
-
-import {
-  SkyDocsTypeDefinitionsFormatService
-} from './type-definitions-format.service';
-
-import {
-  TypeDocEntryChild
-} from './typedoc-types';
+import { SkyDocsCallSignatureDefinition, SkyDocsClassPropertyDefinition } from './type-definitions';
+import { SkyDocsTypeDefinitionsFormatService } from './type-definitions-format.service';
 
 import orderBy from 'lodash.orderby';
 
 interface PropertyViewModel {
-  callSignature?: TypeDocEntryChild;
+  callSignature: SkyDocsCallSignatureDefinition;
   defaultValue: string;
   deprecationWarning: string;
   description: string;
   formattedName: string;
   isOptional: boolean;
-  name: string;
-  showOptionalStatus: boolean;
-  sourceCode: string;
 }
 
 @Component({
@@ -50,17 +34,20 @@ interface PropertyViewModel {
 export class SkyDocsPropertyDefinitionsComponent implements OnInit {
 
   @Input()
-  public set config(value: { properties: TypeDocEntryChild[]; }) {
+  public set config(value: { properties: SkyDocsClassPropertyDefinition[]; }) {
     this._config = value;
     this.updateView();
   }
 
-  public get config(): { properties: TypeDocEntryChild[]; } {
+  public get config(): { properties: SkyDocsClassPropertyDefinition[]; } {
     return this._config || { properties: [] };
   }
 
   @Input()
   public propertyType = 'Property';
+
+  @Input()
+  public showOptionalStatus: boolean = true;
 
   public deprecationWarningPrefix = `<span class="sky-text-warning"></span>**Deprecated.** `;
 
@@ -69,12 +56,11 @@ export class SkyDocsPropertyDefinitionsComponent implements OnInit {
   public properties: PropertyViewModel[] = [];
 
   private _config: {
-    properties: TypeDocEntryChild[];
+    properties: SkyDocsClassPropertyDefinition[];
   };
 
   constructor(
     private changeDetector: ChangeDetectorRef,
-    private jsDocsService: SkyDocsJSDocsService,
     private formatService: SkyDocsTypeDefinitionsFormatService,
     private mediaQueryService: SkyMediaQueryService
   ) { }
@@ -87,42 +73,52 @@ export class SkyDocsPropertyDefinitionsComponent implements OnInit {
   }
 
   private updateView(): void {
-    const properties = this.config?.properties?.map(property => {
-
-      const isMethodType: boolean = (property.kindString === 'Method');
-      const isCallSignatureType: boolean = (property.kindString === 'Call signature');
-
-      // Comments for methods are stored in a different location.
-      const comment = (isMethodType && property.signatures[0].comment) || property.comment;
-
-      const sourceCode = (isMethodType)
-        ? this.formatService.parseFormattedType(property, {
-            escapeSpecialCharacters: false
-          })
-        : undefined;
-
-      const tags = this.jsDocsService.parseCommentTags(comment);
-
-      const vm: PropertyViewModel = {
-        callSignature: (isMethodType || isCallSignatureType) ? property : undefined,
-        defaultValue: this.formatService.parseFormattedDefaultValue(property, tags),
-        deprecationWarning: tags.deprecationWarning,
-        description: tags.description,
-        formattedName: this.formatService.parseFormattedPropertyName(property),
-        isOptional: isTypeOptional(property, tags),
-        name: property.name,
-        showOptionalStatus: !(property.kindString === 'Method'),
-        sourceCode
-      };
-
-      return vm;
-    });
-
-    this.properties = orderBy(
-      properties,
+    const properties = orderBy(
+      this.config.properties,
       ['isOptional', 'name'],
       ['asc', 'asc']
     );
+
+    this.properties = properties.map(property => {
+      const vm: PropertyViewModel = {
+        defaultValue: this.formatService.escapeSpecialCharacters(property.defaultValue),
+        deprecationWarning: property.deprecationWarning,
+        description: property.description,
+        formattedName: this.formatService.parseFormattedPropertyName(property),
+        isOptional: property.isOptional,
+        callSignature: property.type.callSignature
+      };
+
+      return vm;
+
+      // const isMethodType: boolean = (property.kindString === 'Method');
+      // const isCallSignatureType: boolean = (property.kindString === 'Call signature');
+
+      // // Comments for methods are stored in a different location.
+      // const comment = (isMethodType && property.signatures[0].comment) || property.comment;
+
+      // const sourceCode = (isMethodType)
+      //   ? this.formatService.parseFormattedType(property, {
+      //       escapeSpecialCharacters: false
+      //     })
+      //   : undefined;
+
+      // const tags = this.jsDocsService.parseCommentTags(comment);
+
+      // const vm: PropertyViewModel = {
+      //   callSignature: (isMethodType || isCallSignatureType) ? property : undefined,
+      //   defaultValue: this.formatService.parseFormattedDefaultValue(property, tags),
+      //   deprecationWarning: tags.deprecationWarning,
+      //   description: tags.description,
+      //   formattedName: this.formatService.parseFormattedPropertyName(property),
+      //   isOptional: isTypeOptional(property, tags),
+      //   name: property.name,
+      //   showOptionalStatus: !(property.kindString === 'Method'),
+      //   sourceCode
+      // };
+
+      // return vm;
+    });
   }
 
 }

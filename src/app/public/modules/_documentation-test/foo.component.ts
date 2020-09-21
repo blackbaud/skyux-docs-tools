@@ -110,6 +110,9 @@ export class FooComponent<U extends FooUser> implements OnInit {
   @Output()
   public rows = new EventEmitter<any[]>();
 
+  @Output()
+  public stream = new EventEmitter<Array<string> | Observable<Array<string>>>();
+
   /**
    * @internal
    */

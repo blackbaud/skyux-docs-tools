@@ -18,7 +18,7 @@ export interface TypeDocSource {
 
 }
 
-export interface TypeDocSignature {
+export interface TypeDocCallSignature {
 
   comment?: TypeDocComment;
 
@@ -30,6 +30,12 @@ export interface TypeDocSignature {
 
   type: TypeDocType;
 
+  typeParameter?: [{
+    name: string;
+    kindString: 'Type parameter';
+    type: TypeDocType;
+  }];
+
 }
 
 export interface TypeDocType {
@@ -39,8 +45,8 @@ export interface TypeDocType {
   };
 
   declaration?: {
-    signatures?: TypeDocSignature[];
-    indexSignature?: TypeDocSignature[];
+    signatures?: TypeDocCallSignature[];
+    indexSignature?: TypeDocCallSignature[];
   };
 
   elementType?: TypeDocType;
@@ -107,7 +113,7 @@ export interface TypeDocEntryChild {
     type: TypeDocType;
   }[];
 
-  signatures?: TypeDocSignature[];
+  signatures?: TypeDocCallSignature[];
 
   sources?: TypeDocSource[];
 
@@ -132,7 +138,7 @@ export interface TypeDocEntry {
 
   kindString?: 'Class' | 'Enumeration' | 'Interface' | 'Type alias';
 
-  indexSignature?: TypeDocSignature[];
+  indexSignature?: TypeDocCallSignature[];
 
   name?: string;
 
