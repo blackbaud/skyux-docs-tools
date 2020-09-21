@@ -12,8 +12,8 @@ import {
 } from '@skyux/core';
 
 import {
-  isOptional
-} from './is-optional';
+  isTypeOptional
+} from './is-type-optional';
 
 import {
   SkyDocsJSDocsService
@@ -22,21 +22,22 @@ import {
 import {
   SkyDocsTypeDefinitionsFormatService
 } from './type-definitions-format.service';
+
 import {
-  TypeDocItemMember
+  TypeDocEntryChild
 } from './typedoc-types';
 
 import orderBy from 'lodash.orderby';
 
 interface PropertyViewModel {
-  callSignature?: TypeDocItemMember;
+  callSignature?: TypeDocEntryChild;
   defaultValue: string;
   deprecationWarning: string;
   description: string;
+  formattedName: string;
   isOptional: boolean;
   name: string;
   showOptionalStatus: boolean;
-  signature: string;
   sourceCode: string;
 }
 
@@ -49,12 +50,12 @@ interface PropertyViewModel {
 export class SkyDocsPropertyDefinitionsComponent implements OnInit {
 
   @Input()
-  public set config(value: { properties: TypeDocItemMember[]; }) {
+  public set config(value: { properties: TypeDocEntryChild[]; }) {
     this._config = value;
     this.updateView();
   }
 
-  public get config(): { properties: TypeDocItemMember[]; } {
+  public get config(): { properties: TypeDocEntryChild[]; } {
     return this._config || { properties: [] };
   }
 
@@ -67,7 +68,9 @@ export class SkyDocsPropertyDefinitionsComponent implements OnInit {
 
   public properties: PropertyViewModel[] = [];
 
-  private _config: { properties: TypeDocItemMember[]; };
+  private _config: {
+    properties: TypeDocEntryChild[];
+  };
 
   constructor(
     private changeDetector: ChangeDetectorRef,
@@ -83,27 +86,36 @@ export class SkyDocsPropertyDefinitionsComponent implements OnInit {
     });
   }
 
-  private getPropertySignature(item: TypeDocItemMember): string {
-    return this.formatService.getPropertySignatureHTML(item);
-  }
-
   private updateView(): void {
-    const properties = this.config.properties.map(p => {
-      const tags = this.jsDocsService.parseCommentTags((p.signatures && p.signatures[0].comment) || p.comment);
-      const property: PropertyViewModel = {
-        callSignature: (p.signatures || p.type?.declaration?.signatures) ? p : undefined,
-        defaultValue: this.formatService.getDefaultValueHTML(p, tags),
+    const properties = this.config?.properties?.map(property => {
+
+      const isMethodType: boolean = (property.kindString === 'Method');
+      const isCallSignatureType: boolean = (property.kindString === 'Call signature');
+
+      // Comments for methods are stored in a different location.
+      const comment = (isMethodType && property.signatures[0].comment) || property.comment;
+
+      const sourceCode = (isMethodType)
+        ? this.formatService.parseFormattedType(property, {
+            escapeSpecialCharacters: false
+          })
+        : undefined;
+
+      const tags = this.jsDocsService.parseCommentTags(comment);
+
+      const vm: PropertyViewModel = {
+        callSignature: (isMethodType || isCallSignatureType) ? property : undefined,
+        defaultValue: this.formatService.parseFormattedDefaultValue(property, tags),
         deprecationWarning: tags.deprecationWarning,
         description: tags.description,
-        isOptional: isOptional(p, tags),
-        name: p.name,
-        showOptionalStatus: (p.kindString !== 'Enumeration member'),
-        signature: this.getPropertySignature(p),
-        sourceCode: (p.signatures)
-          ? this.formatService.parseFormattedType(p, { escapeSpecialCharacters: false })
-          : undefined
+        formattedName: this.formatService.parseFormattedPropertyName(property),
+        isOptional: isTypeOptional(property, tags),
+        name: property.name,
+        showOptionalStatus: !(property.kindString === 'Method'),
+        sourceCode
       };
-      return property;
+
+      return vm;
     });
 
     this.properties = orderBy(

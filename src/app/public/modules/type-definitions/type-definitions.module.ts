@@ -133,7 +133,8 @@ import {
     SkyDocsParameterDefinitionsComponent,
     SkyDocsPipeDefinitionComponent,
     SkyDocsPropertyDefinitionsComponent,
-    SkyDocsTypeAliasDefinitionComponent
+    SkyDocsTypeAliasDefinitionComponent,
+    SkyDocsTypeAnchorLinksPipe
   ],
   providers: [
     SkyDocsAnchorLinkService,

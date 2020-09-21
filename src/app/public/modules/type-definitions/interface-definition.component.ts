@@ -13,8 +13,8 @@ import {
 } from './type-definitions-format.service';
 
 import {
-  TypeDocItem,
-  TypeDocItemMember
+  TypeDocEntry,
+  TypeDocEntryChild
 } from './typedoc-types';
 
 @Component({
@@ -25,22 +25,22 @@ import {
 export class SkyDocsInterfaceDefinitionComponent {
 
   @Input()
-  public set config(value: TypeDocItem) {
+  public set config(value: TypeDocEntry) {
     this._config = value;
     this.updateView();
   }
 
-  public get config(): TypeDocItem {
+  public get config(): TypeDocEntry {
     return this._config;
   }
 
   public description: string;
 
-  public properties: TypeDocItemMember[];
+  public properties: TypeDocEntryChild[];
 
   public sourceCode: string;
 
-  private _config: TypeDocItem;
+  private _config: TypeDocEntry;
 
   constructor(
     private jsDocsService: SkyDocsJSDocsService,
@@ -48,9 +48,14 @@ export class SkyDocsInterfaceDefinitionComponent {
   ) { }
 
   private updateView(): void {
-    const tags = this.jsDocsService.parseCommentTags(this.config.comment);
+
+    // Reset view properties when the config changes.
+    delete this.description;
+    delete this.sourceCode;
+
+    const tags = this.jsDocsService.parseCommentTags(this.config?.comment);
     this.description = tags.description;
-    this.sourceCode = this.formatService.getInterfaceSignatureHTML(this.config);
+    this.sourceCode = this.formatService.parseInterfaceSourceCodeSignature(this.config);
   }
 
 }

@@ -41,4 +41,8 @@ export class FooClass {
     return 'Hello, World.';
   }
 
+  public getEmail(locale: string = 'en-US'): string {
+    return 'email@domain.com';
+  }
+
 }

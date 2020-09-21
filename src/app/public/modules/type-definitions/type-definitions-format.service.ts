@@ -7,19 +7,23 @@ import {
 } from './comment-tags';
 
 import {
-  isOptional
-} from './is-optional';
+  isTypeOptional
+} from './is-type-optional';
 
 import {
   SkyDocsJSDocsService
 } from './jsdoc.service';
 
 import {
-  TypeDocItem,
-  TypeDocItemMember,
+  TypeDocEntry,
+  TypeDocEntryChild,
   TypeDocParameter,
   TypeDocType
 } from './typedoc-types';
+
+interface ParseFormattedTypeConfig {
+  escapeSpecialCharacters: boolean;
+}
 
 @Injectable()
 export class SkyDocsTypeDefinitionsFormatService {
@@ -28,30 +32,37 @@ export class SkyDocsTypeDefinitionsFormatService {
     private jsDocService: SkyDocsJSDocsService
   ) { }
 
-  public getTypeAliasSignatureHTML(item: TypeDocItem): string {
-    let signature: string = `type ${item.name} = `;
+  /**
+   * Returns an HTML-formatted representation of the provided type alias config.
+   */
+  public parseTypeAliasSourceCodeSignature(entry: TypeDocEntry): string {
+    const entryType = entry.type;
 
-    if (item.type.declaration?.signatures) {
-      signature += this.getCallSignatureHTML(item.type, { escapeSpecialCharacters: false });
-    } else if (item.type.declaration?.indexSignature) {
-      const indexSignature = item.type.declaration.indexSignature[0];
+    let signature: string = `type ${entry.name} = `;
+    if (entryType.declaration?.signatures) {
+      signature += this.parseFormattedCallSignature(entryType, { escapeSpecialCharacters: false });
+    } else if (entryType.declaration?.indexSignature) {
+      const indexSignature = entryType.declaration.indexSignature[0];
       const param = indexSignature.parameters[0];
       signature += `{\n  [${param.name}: ${this.parseFormattedType(param)}]: ${this.parseFormattedType(indexSignature)};\n}`;
-    } else if (item.type.type === 'union') {
-      signature += this.parseUnionType(item.type);
+    } else if (entryType.type === 'union') {
+      signature += this.parseUnionType(entryType);
     }
 
     return signature;
   }
 
-  public getInterfaceSignatureHTML(item: TypeDocItem): string {
-    const typeParameterSignature = this.parseTypeArguments(item.type);
+  /**
+   * Returns an HTML-formatted representation of the provided interface config.
+   */
+  public parseInterfaceSourceCodeSignature(entry: TypeDocEntry): string {
+    const typeParameterSignature = this.parseTypeArguments(entry.type);
 
-    let signature: string = `interface ${item.name}${typeParameterSignature} {`;
+    let signature: string = `interface ${entry.name}${typeParameterSignature} {`;
 
-    item.children.forEach(property => {
+    entry.children.forEach(property => {
       const tags = this.jsDocService.parseCommentTags(property.comment);
-      const optionalIndicator = (isOptional(property, tags)) ? '?' : '';
+      const optionalIndicator = (isTypeOptional(property, tags)) ? '?' : '';
       const propertyType = this.parseFormattedType(property, {
         escapeSpecialCharacters: false
       });
@@ -60,24 +71,24 @@ export class SkyDocsTypeDefinitionsFormatService {
     });
 
     signature += '\n}';
+
     return signature;
   }
 
-  public getParameterSignatureHTML(parameter: TypeDocParameter, config: {
-    escapeSpecialCharacters: boolean;
-  } = {
-    escapeSpecialCharacters: true
-  }): string {
+  /**
+   * Returns a formatted string representing a parameter's name and value. For example: `'foo: string'`.
+   */
+  public parseFormattedParameterName(
+    parameter: TypeDocParameter,
+    config?: ParseFormattedTypeConfig
+  ): string {
     let signature = '';
 
     const tags = this.jsDocService.parseCommentTags(parameter.comment);
-    const optionalMarker = (isOptional(parameter, tags)) ? '?' : '';
-
+    const optionalMarker = isTypeOptional(parameter, tags) ? '?' : '';
     const parameterType = this.parseFormattedType(parameter, config);
-    const defaultValue = this.getDefaultValueHTML(parameter, tags);
-    const defaultValueFormatted = (defaultValue) ? ` = ${defaultValue}` : '';
 
-    signature = `${parameter.name}${optionalMarker}: ${parameterType}${defaultValueFormatted}`;
+    signature = `${parameter.name}${optionalMarker}: ${parameterType}`;
 
     if (config.escapeSpecialCharacters) {
       signature = this.escapeSpecialCharacters(signature);
@@ -86,7 +97,10 @@ export class SkyDocsTypeDefinitionsFormatService {
     return signature;
   }
 
-  public getPropertySignatureHTML(item: TypeDocItemMember): string {
+  /**
+   * Returns a formatted string representing a property (or method's) name and value. For example: `'public foo: string'`.
+   */
+  public parseFormattedPropertyName(item: TypeDocEntryChild): string {
     let signature = '';
 
     if (item.kindString === 'Enumeration member') {
@@ -108,7 +122,7 @@ export class SkyDocsTypeDefinitionsFormatService {
       signature += item.name;
     }
 
-    if (isOptional(item, tags)) {
+    if (isTypeOptional(item, tags)) {
       signature += '?';
     }
 
@@ -117,19 +131,23 @@ export class SkyDocsTypeDefinitionsFormatService {
     return signature;
   }
 
-  public getDefaultValueHTML(item: TypeDocItemMember, tags: SkyDocsCommentTags): string {
+  /**
+   * Returns a formatted string representing a call signature's returned value.
+   */
+  public parseFormattedDefaultValue(item: TypeDocEntryChild, tags: SkyDocsCommentTags): string {
     const defaultValue: string = tags.defaultValue || item.defaultValue || '';
     return this.escapeSpecialCharacters(defaultValue.replace(/\"/g, '\''));
   }
 
   /**
-   * TODO: Put all methods in this one? Or have specific ones for code signatures?
+   * Returns a formatted string representing the provided type.
    */
-  public parseFormattedType(item: TypeDocItemMember, config: {
-    escapeSpecialCharacters: boolean;
-  } = {
-    escapeSpecialCharacters: true
-  }): string {
+  public parseFormattedType(
+    item: TypeDocEntryChild,
+    config: ParseFormattedTypeConfig = {
+      escapeSpecialCharacters: true
+    }
+  ): string {
     let formatted = 'any';
 
     const kindString = item.kindString;
@@ -140,20 +158,22 @@ export class SkyDocsTypeDefinitionsFormatService {
         let params: string = '';
         if (item.signatures[0].parameters) {
           params += '\n  ';
-          params += item.signatures[0].parameters.map(p => this.getParameterSignatureHTML(p, config)).join(',\n  ');
+          params += item.signatures[0].parameters
+            .map(p => this.parseFormattedParameterName(p, config))
+            .join(',\n  ');
           params += '\n';
         }
         formatted = `public ${item.name}${typeArguments}(${params}): ${returnType}`;
         break;
 
-      case 'Call signature': // <-- move up?
+      case 'Call signature':
       case 'Parameter':
       case 'Property':
       default:
         const typeConfig = item.type;
         // Parse call signature types.
         if (typeConfig.type === 'reflection') {
-          return this.getCallSignatureHTML(item.type, config);
+          return this.parseFormattedCallSignature(typeConfig, config);
         }
 
         // Parse union types.
@@ -180,7 +200,6 @@ export class SkyDocsTypeDefinitionsFormatService {
         break;
 
       case 'Accessor':
-        /*istanbul ignore else*/
         if (item.setSignature) {
           formatted = this.parseFormattedType(item.setSignature[0].parameters[0], config);
         } else if (item.getSignature) {
@@ -196,12 +215,10 @@ export class SkyDocsTypeDefinitionsFormatService {
     return formatted;
   }
 
-  // TODO: Add this logic to the parseFormattedType method?
-  private getCallSignatureHTML(typeConfig: TypeDocType, config: {
-    escapeSpecialCharacters: boolean;
-  } = {
-    escapeSpecialCharacters: true
-  }): string {
+  private parseFormattedCallSignature(
+    typeConfig: TypeDocType,
+    config: ParseFormattedTypeConfig
+  ): string {
     const callSignatures = typeConfig.declaration.signatures;
     const returnType = this.parseFormattedType(callSignatures[0], config) || 'void';
 
@@ -209,11 +226,11 @@ export class SkyDocsTypeDefinitionsFormatService {
       return `() => ${returnType}`;
     }
 
-    const paramSignatures = callSignatures[0].parameters.map(p => {
-      return this.getParameterSignatureHTML(p, config);
-    }).join(', ');
+    const formattedParams = callSignatures[0].parameters
+      .map(p => this.parseFormattedParameterName(p, config))
+      .join(', ');
 
-    return `(${paramSignatures}) => ${returnType}`;
+    return `(${formattedParams}) => ${returnType}`;
   }
 
   private parseUnionType(typeConfig: TypeDocType): string {

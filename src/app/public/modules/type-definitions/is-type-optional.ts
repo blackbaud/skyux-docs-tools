@@ -3,13 +3,21 @@ import {
 } from './comment-tags';
 
 import {
-  TypeDocItemMember
+  TypeDocEntryChild
 } from './typedoc-types';
 
-export function isOptional(item: TypeDocItemMember, tags: SkyDocsCommentTags): boolean {
+/**
+ * Determines if a given TypeDoc type is marked as "optional".
+ */
+export function isTypeOptional(item: TypeDocEntryChild, tags: SkyDocsCommentTags): boolean {
 
   // If `@required` is in the comment, mark it as required.
   if (tags.extras.required) {
+    return false;
+  }
+
+  // Class methods can't be optional.
+  if (item.kindString === 'Method') {
     return false;
   }
 

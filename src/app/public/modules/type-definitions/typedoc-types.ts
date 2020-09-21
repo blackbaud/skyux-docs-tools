@@ -22,6 +22,8 @@ export interface TypeDocSignature {
 
   comment?: TypeDocComment;
 
+  kindString: 'Call signature';
+
   name: string;
 
   parameters?: TypeDocParameter[];
@@ -43,9 +45,9 @@ export interface TypeDocType {
 
   elementType?: TypeDocType;
 
-  name: string;
+  name?: string;
 
-  type: 'array' | 'intrinsic' | 'reference' | 'reflection' | 'stringLiteral' | 'typeParameter' | 'union';
+  type?: 'array' | 'intrinsic' | 'reference' | 'reflection' | 'stringLiteral' | 'typeParameter' | 'union';
 
   typeArguments?: TypeDocType[];
 
@@ -59,6 +61,8 @@ export interface TypeDocParameter {
 
   comment?: TypeDocComment;
 
+  defaultValue?: string;
+
   name: string;
 
   type: TypeDocType;
@@ -69,7 +73,7 @@ export interface TypeDocParameter {
 
 }
 
-export interface TypeDocItemMember {
+export interface TypeDocEntryChild {
 
   comment?: TypeDocComment;
 
@@ -110,11 +114,11 @@ export interface TypeDocItemMember {
   type?: TypeDocType;
 }
 
-export interface TypeDocItem {
+export interface TypeDocEntry {
 
   anchorId?: string;
 
-  children?: TypeDocItemMember[];
+  children?: TypeDocEntryChild[];
 
   comment?: TypeDocComment;
 

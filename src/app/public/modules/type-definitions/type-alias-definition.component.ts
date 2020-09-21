@@ -13,8 +13,8 @@ import {
 } from './type-definitions-format.service';
 
 import {
-  TypeDocItem,
-  TypeDocItemMember
+  TypeDocEntry,
+  TypeDocEntryChild
 } from './typedoc-types';
 
 @Component({
@@ -26,12 +26,12 @@ import {
 export class SkyDocsTypeAliasDefinitionComponent {
 
   @Input()
-  public set config(value: TypeDocItem) {
+  public set config(value: TypeDocEntry) {
     this._config = value;
     this.updateView();
   }
 
-  public get config(): TypeDocItem {
+  public get config(): TypeDocEntry {
     return this._config;
   }
 
@@ -39,9 +39,9 @@ export class SkyDocsTypeAliasDefinitionComponent {
 
   public sourceCode: string;
 
-  public callSignature: TypeDocItemMember;
+  public callSignature: TypeDocEntryChild;
 
-  private _config: TypeDocItem;
+  private _config: TypeDocEntry;
 
   constructor(
     private jsDocsService: SkyDocsJSDocsService,
@@ -49,15 +49,22 @@ export class SkyDocsTypeAliasDefinitionComponent {
   ) { }
 
   private updateView(): void {
-    const tags = this.jsDocsService.parseCommentTags(this.config.comment);
 
+    // Reset view properties when the config changes.
+    delete this.callSignature;
+    delete this.description;
+    delete this.sourceCode;
+
+    const tags = this.jsDocsService.parseCommentTags(this.config?.comment);
     this.description = tags.description;
-    this.sourceCode = this.formatService.getTypeAliasSignatureHTML(this.config);
 
-    this.callSignature = (this.config.type.declaration?.signatures)
+    this.sourceCode = this.formatService.parseTypeAliasSourceCodeSignature(this.config);
+
+    this.callSignature = (this.config?.type?.declaration?.signatures)
       ? {
-        comment: this.config.comment,
-        type: this.config.type
+        comment: this.config?.comment,
+        kindString: 'Call signature',
+        type: this.config?.type
       }
       : undefined;
   }

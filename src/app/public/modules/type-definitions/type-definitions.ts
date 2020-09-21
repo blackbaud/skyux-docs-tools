@@ -1,5 +1,5 @@
 import {
-  TypeDocItem
+  TypeDocEntry
 } from './typedoc-types';
 
 /**
@@ -7,20 +7,20 @@ import {
  */
 export interface SkyDocsTypeDefinitions {
 
-  classes: TypeDocItem[];
+  classes: TypeDocEntry[];
 
-  components: TypeDocItem[];
+  components: TypeDocEntry[];
 
-  directives: TypeDocItem[];
+  directives: TypeDocEntry[];
 
-  enumerations: TypeDocItem[];
+  enumerations: TypeDocEntry[];
 
-  interfaces: TypeDocItem[];
+  interfaces: TypeDocEntry[];
 
-  pipes: TypeDocItem[];
+  pipes: TypeDocEntry[];
 
-  services: TypeDocItem[];
+  services: TypeDocEntry[];
 
-  typeAliases: TypeDocItem[];
+  typeAliases: TypeDocEntry[];
 
 }

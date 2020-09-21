@@ -9,8 +9,8 @@ import {
 } from './jsdoc.service';
 
 import {
-  TypeDocItem,
-  TypeDocItemMember
+  TypeDocEntry,
+  TypeDocEntryChild
 } from './typedoc-types';
 
 @Component({
@@ -22,35 +22,38 @@ import {
 export class SkyDocsClassDefinitionComponent {
 
   @Input()
-  public set config(value: TypeDocItem) {
+  public set config(value: TypeDocEntry) {
     this._config = value;
     this.updateView();
   }
 
-  public get config(): TypeDocItem {
+  public get config(): TypeDocEntry {
     return this._config;
   }
 
   public description: string;
 
-  public methods: TypeDocItemMember[];
+  public methods: TypeDocEntryChild[];
 
-  public properties: TypeDocItemMember[];
+  public properties: TypeDocEntryChild[];
 
-  private _config: TypeDocItem;
+  private _config: TypeDocEntry;
 
   constructor(
     private jsDocsService: SkyDocsJSDocsService
   ) { }
 
   private updateView(): void {
-    const tags = this.jsDocsService.parseCommentTags(this.config.comment);
-    this.description = tags.description;
 
-    if (this.config.children) {
-      this.properties = this.config.children.filter(c => c.kindString === 'Property');
-      this.methods = this.config.children.filter(c => c.kindString === 'Method' && c.name !== 'ngOnDestroy');
-    }
+    // Reset view properties when the config changes.
+    delete this.description;
+    delete this.properties;
+    delete this.methods;
+
+    const tags = this.jsDocsService.parseCommentTags(this.config?.comment);
+    this.description = tags.description;
+    this.properties = this.config?.children?.filter(c => c.kindString === 'Property');
+    this.methods = this.config?.children?.filter(c => c.kindString === 'Method' && c.name !== 'ngOnDestroy');
   }
 
 }

@@ -4,16 +4,12 @@ import {
 } from '@angular/core';
 
 import {
-  SkyDocsParameterDefinitionComponent
-} from '../parameter-definition.component';
-
-import {
   SkyDocsParameterDefinitionsComponent
 } from '../parameter-definitions.component';
 
 import {
-  SkyDocsTypeDefinition
-} from '../type-definition';
+  TypeDocEntryChild
+} from '../typedoc-types';
 
 @Component({
   selector: 'parameter-definition-test',
@@ -21,18 +17,7 @@ import {
 })
 export class ParameterDefinitionsFixtureComponent {
 
-  public defaultValue: string;
-
-  public description: string;
-
-  public isOptional: boolean;
-
-  public parameterName: string;
-
-  public parameterType: SkyDocsTypeDefinition;
-
-  @ViewChild(SkyDocsParameterDefinitionComponent)
-  public parameterDefinitionRef: SkyDocsParameterDefinitionComponent;
+  public config: TypeDocEntryChild;
 
   @ViewChild(SkyDocsParameterDefinitionsComponent)
   public parameterDefinitionsRef: SkyDocsParameterDefinitionsComponent;

@@ -9,8 +9,8 @@ import {
 } from './jsdoc.service';
 
 import {
-  TypeDocItem,
-  TypeDocItemMember
+  TypeDocEntry,
+  TypeDocEntryChild
 } from './typedoc-types';
 
 @Component({
@@ -22,12 +22,12 @@ import {
 export class SkyDocsPipeDefinitionComponent {
 
   @Input()
-  public set config(value: TypeDocItem) {
+  public set config(value: TypeDocEntry) {
     this._config = value;
     this.updateView();
   }
 
-  public get config(): TypeDocItem {
+  public get config(): TypeDocEntry {
     return this._config;
   }
 
@@ -37,25 +37,29 @@ export class SkyDocsPipeDefinitionComponent {
 
   public description: string;
 
-  public transformMethod: TypeDocItemMember;
+  public transformMethod: TypeDocEntryChild;
 
-  private _config: TypeDocItem;
+  private _config: TypeDocEntry;
 
   constructor(
     private jsDocsService: SkyDocsJSDocsService
   ) { }
 
   private updateView(): void {
+
+    // Reset view properties when the config changes.
+    delete this.codeExample;
+    delete this.codeExampleLanguage;
+    delete this.description;
+    delete this.transformMethod;
+
     const tags = this.jsDocsService.parseCommentTags(this.config.comment);
     this.description = tags.description;
     this.codeExample = tags.codeExample;
     this.codeExampleLanguage = tags.codeExampleLanguage;
 
-    const transformMethod = this.config.children.find(child => {
-      return (child.kindString === 'Method' && child.name === 'transform');
-    });
-
-    this.transformMethod = transformMethod;
+    this.transformMethod = this.config.children
+      .find(c => !!(c.kindString === 'Method' && c.name === 'transform'));
   }
 
 }

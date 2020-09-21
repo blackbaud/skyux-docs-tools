@@ -63,7 +63,9 @@ describe('Class definition component', function () {
   it('should add links to types within description', fakeAsync(() => {
     fixture.componentInstance.config = {
       name: 'FooService',
-      description: 'This description has a FooUser.'
+      comment: {
+        shortText: 'This description has a FooUser.'
+      }
     };
 
     fixture.detectChanges();
@@ -78,116 +80,52 @@ describe('Class definition component', function () {
     );
   }));
 
-  it('should add links to types within property descriptions', fakeAsync(() => {
+  it('should separate properties from methods', () => {
     fixture.componentInstance.config = {
-      name: 'FooService',
-      properties: [{
-        description: 'This description has a FooUser.',
-        name: 'foo',
-        type: 'string'
-      }]
-    };
-
-    fixture.detectChanges();
-    tick();
-
-    const descriptionElement = fixture.nativeElement.querySelector(
-      '.sky-docs-property-definitions-table-cell-description'
-    );
-
-    expect(descriptionElement.innerHTML).toContain(
-      '<a class="sky-docs-anchor-link" href="#foo-user">FooUser</a>'
-    );
-  }));
-
-  it('should add links to types within property descriptions that have properties', fakeAsync(() => {
-    fixture.componentInstance.config = {
-      name: 'FooService',
-      properties: [{
-        description: 'This description has a FooUser.Baz and some other things.',
-        name: 'foo',
-        type: 'string'
-      }]
-    };
-
-    fixture.detectChanges();
-    tick();
-
-    const descriptionElement = fixture.nativeElement.querySelector(
-      '.sky-docs-property-definitions-table-cell-description'
-    );
-
-    expect(descriptionElement.innerHTML).toContain(
-      '<code><a class="sky-docs-anchor-link" href="#foo-user">FooUser</a>.Baz</code>'
-    );
-  }));
-
-  it('should add links to types within method descriptions', fakeAsync(() => {
-    fixture.componentInstance.config = {
-      name: 'FooService',
-      methods: [{
-        description: 'This description has a FooUser.',
-        name: 'createFoo'
-      }]
-    };
-
-    fixture.detectChanges();
-    tick();
-
-    const descriptionElement = fixture.nativeElement.querySelector(
-      '.sky-docs-class-definition-method-description'
-    );
-
-    expect(descriptionElement.innerHTML).toContain(
-      '<a class="sky-docs-anchor-link" href="#foo-user">FooUser</a>'
-    );
-  }));
-
-  it('should add links to types for method return types', fakeAsync(() => {
-    fixture.componentInstance.config = {
-      name: 'FooService',
-      methods: [{
-        name: 'createFoo',
-        returnType: 'FooUser'
-      }]
-    };
-
-    fixture.detectChanges();
-    tick();
-
-    const descriptionElement = fixture.nativeElement.querySelector(
-      '.sky-docs-class-definition-return-type'
-    );
-
-    expect(descriptionElement.innerHTML).toContain(
-      '<a class="sky-docs-anchor-link" href="#foo-user">FooUser</a>'
-    );
-  }));
-
-  it('should add links to types within parameter descriptions', fakeAsync(() => {
-    fixture.componentInstance.config = {
-      name: 'FooService',
-      methods: [{
-        name: 'createFoo',
-        parameters: [{
-          description: 'This description has a FooUser.',
-          isOptional: true,
+      name: 'FooClass',
+      children: [
+        {
           name: 'foo',
-          type: 'string'
-        }]
-      }]
+          kindString: 'Property',
+          type: {
+            type: 'intrinsic',
+            name: 'string'
+          }
+        },
+        {
+          name: 'getFoo',
+          kindString: 'Method',
+          signatures: [{
+            name: 'getFoo',
+            kindString: 'Call signature',
+            type: {
+              type: 'intrinsic',
+              name: 'string'
+            }
+          }]
+        },
+        {
+          name: 'ngOnDestroy',
+          kindString: 'Method',
+          signatures: [{
+            name: 'ngOnDestroy',
+            kindString: 'Call signature',
+            type: {
+              type: 'intrinsic',
+              name: 'void'
+            }
+          }]
+        }
+      ]
     };
 
     fixture.detectChanges();
-    tick();
 
-    const descriptionElement = fixture.nativeElement.querySelector(
-      '.sky-docs-parameter-definition-description'
-    );
-
-    expect(descriptionElement.innerHTML).toContain(
-      '<a class="sky-docs-anchor-link" href="#foo-user">FooUser</a>'
-    );
-  }));
+    const classDefinitionComponent = fixture.componentInstance.classDefinitionRef;
+    expect(classDefinitionComponent.properties.length).toEqual(1);
+    expect(classDefinitionComponent.properties[0].name).toEqual('foo');
+    expect(classDefinitionComponent.methods.length).toEqual(1, 'Angular ngOnDestroy methods should be removed!');
+    expect(classDefinitionComponent.methods[0].name).toEqual('getFoo');
+  });
 
 });

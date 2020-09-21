@@ -5,8 +5,8 @@ import {
 } from '@angular/core';
 
 import {
-  isOptional
-} from './is-optional';
+  isTypeOptional
+} from './is-type-optional';
 
 import {
   SkyDocsJSDocsService
@@ -17,12 +17,14 @@ import {
 } from './type-definitions-format.service';
 
 import {
-  TypeDocItemMember
+  TypeDocEntryChild
 } from './typedoc-types';
 
-interface Parameter {
+interface ParameterViewModel {
+  defaultValue: string;
   description: string;
-  signature: string;
+  formattedName: string;
+  isOptional: boolean;
 }
 
 @Component({
@@ -34,18 +36,18 @@ interface Parameter {
 export class SkyDocsParameterDefinitionsComponent {
 
   @Input()
-  public set config(value: TypeDocItemMember) {
+  public set config(value: TypeDocEntryChild) {
     this._config = value;
     this.updateView();
   }
 
-  public get config(): TypeDocItemMember {
+  public get config(): TypeDocEntryChild {
     return this._config;
   }
 
-  public parameters: Parameter[];
+  public parameters: ParameterViewModel[];
 
-  private _config: TypeDocItemMember;
+  private _config: TypeDocEntryChild;
 
   constructor(
     private jsDocsService: SkyDocsJSDocsService,
@@ -53,15 +55,29 @@ export class SkyDocsParameterDefinitionsComponent {
   ) { }
 
   private updateView(): void {
-    const parentTags = this.jsDocsService.parseCommentTags(this.config.comment);
-    const callSignatures = this.config.signatures || this.config.type.declaration.signatures;
+
+    // Reset view properties when the config changes.
+    delete this.parameters;
+
+    const callSignatures = this.config?.signatures || this.config?.type?.declaration.signatures;
+    if (!callSignatures) {
+      return;
+    }
+
+    const parentTags = this.jsDocsService.parseCommentTags(this.config?.comment);
+
     this.parameters = callSignatures[0].parameters.map(p => {
       const tags = this.jsDocsService.parseParameterCommentTags(p, parentTags);
-      return {
+      const defaultValue = this.formatService.parseFormattedDefaultValue(p, tags);
+
+      const vm: ParameterViewModel = {
+        defaultValue,
         description: tags.description,
-        isOptional: isOptional(p, tags),
-        signature: this.formatService.getParameterSignatureHTML(p)
+        formattedName: this.formatService.parseFormattedParameterName(p),
+        isOptional: !!(defaultValue || isTypeOptional(p, tags))
       };
+
+      return vm;
     });
   }
 }

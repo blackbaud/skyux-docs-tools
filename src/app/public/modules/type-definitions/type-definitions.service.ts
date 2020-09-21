@@ -11,7 +11,7 @@ import {
 } from './type-definitions-provider';
 
 import {
-  TypeDocItem
+  TypeDocEntry
 } from './typedoc-types';
 
 @Injectable()
@@ -54,7 +54,7 @@ export class SkyDocsTypeDefinitionsService {
     }
 
     // Only process types that match the requested source code location.
-    const typeDefinitions: TypeDocItem[] = allDefinitions.filter((i) => i.sources[0].fileName.match(requestedDir));
+    const typeDefinitions: TypeDocEntry[] = allDefinitions.filter((i) => i.sources[0].fileName.match(requestedDir));
     if (typeDefinitions.length === 0) {
       console.warn(`Type definitions were not found for location: ${requestedDir}`);
     }

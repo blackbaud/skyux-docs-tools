@@ -76,7 +76,7 @@
 
 <ng-template let-property #nameTemplate>
   <sky-code><span
-    [innerHtml]="property.signature | skyDocsTypeAnchorLinks:'no-code-tags'"
+    [innerHtml]="property.formattedName | skyDocsTypeAnchorLinks:'no-code-tags'"
   ></span></sky-code>
 </ng-template>
 
