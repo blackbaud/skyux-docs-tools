@@ -47,7 +47,7 @@ export interface TypeDocType {
 
   name?: string;
 
-  type?: 'array' | 'intrinsic' | 'reference' | 'reflection' | 'stringLiteral' | 'typeParameter' | 'union';
+  type?: 'array' | 'intrinsic' | 'reference' | 'reflection' | 'stringLiteral' | 'typeParameter' | 'union' | 'unknown';
 
   typeArguments?: TypeDocType[];
 

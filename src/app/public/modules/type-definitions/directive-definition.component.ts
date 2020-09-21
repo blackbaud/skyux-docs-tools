@@ -49,12 +49,12 @@ export class SkyDocsDirectiveDefinitionComponent {
     private jsDocsService: SkyDocsJSDocsService
   ) { }
 
-  private parseSelector(item: TypeDocEntry): string {
-    if (!item) {
+  private parseSelector(entry: TypeDocEntry): string {
+    if (!entry) {
       return '';
     }
 
-    const decoratorSource = item.decorators[0].arguments.obj;
+    const decoratorSource = entry.decorators[0].arguments.obj;
     return (decoratorSource.indexOf('selector: `') > -1)
       ? decoratorSource.split('selector: `')[1].split('`')[0].replace(/\s\s+/g, ' ')
       : decoratorSource.split('selector: \'')[1].split('\'')[0];
@@ -70,7 +70,7 @@ export class SkyDocsDirectiveDefinitionComponent {
     delete this.inputProperties;
     delete this.selector;
 
-    const tags = this.jsDocsService.parseCommentTags(this.config.comment);
+    const tags = this.jsDocsService.parseCommentTags(this.config?.comment);
     this.codeExample = tags.codeExample;
     this.codeExampleLanguage = tags.codeExampleLanguage;
     this.description = tags.description;

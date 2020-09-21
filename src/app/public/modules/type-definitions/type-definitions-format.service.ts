@@ -113,15 +113,23 @@ export class SkyDocsTypeDefinitionsFormatService {
       return `${item.name}()`;
     }
 
-    if (item.decorators && item.decorators[0].name) {
-      signature += `@${item.decorators[0].name}()<br>`;
+    const decorators = item.decorators && item.decorators[0];
+
+    if (decorators) {
+      signature += `@${decorators.name}()<br>`;
     }
+
+    // Use the Input's bound property name, if found.
+    // e.g. @Input('foobar')
+    const name = (decorators?.arguments?.bindingPropertyName)
+      ? decorators?.arguments?.bindingPropertyName.replace(/(\'|\")/g, '')
+      : item.name;
 
     const tags = this.jsDocService.parseCommentTags(item.comment);
     if (tags.deprecationWarning !== undefined) {
-      signature += `<strike>${item.name}</strike>`;
+      signature += `<strike>${name}</strike>`;
     } else {
-      signature += item.name;
+      signature += name;
     }
 
     if (isTypeOptional(item, tags)) {

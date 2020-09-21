@@ -1,8 +1,6 @@
 import {
   ComponentFixture,
-  fakeAsync,
-  TestBed,
-  tick
+  TestBed
 } from '@angular/core/testing';
 
 import {
@@ -63,32 +61,91 @@ describe('Directive definition component', function () {
   it('should display the selector', () => {
     fixture.componentInstance.config = {
       name: 'FooComponent',
-      selector: 'app-foo'
+      decorators: [{
+        name: 'Component',
+        type: {},
+        arguments: {
+          obj: 'selector: \'app-foo\''
+        }
+      }]
     };
 
     fixture.detectChanges();
 
-    const selectorElement = fixture.nativeElement.querySelector('.sky-docs-directive-selector');
+    let selectorElement = fixture.nativeElement.querySelector('.sky-docs-directive-selector');
 
     expect(selectorElement.innerText).toEqual('app-foo');
+
+    // Use backticks for the selector name.
+    fixture.componentInstance.config = {
+      name: 'FooComponent',
+      decorators: [{
+        name: 'Component',
+        type: {},
+        arguments: {
+          obj: 'selector: `app-foo-backticks`'
+        }
+      }]
+    };
+
+    fixture.detectChanges();
+
+    selectorElement = fixture.nativeElement.querySelector('.sky-docs-directive-selector');
+
+    expect(selectorElement.innerText).toEqual('app-foo-backticks');
   });
 
   it('should order Input properties first and then Output properties', () => {
     fixture.componentInstance.config = {
       name: 'FooComponent',
-      selector: 'app-foo',
-      properties: [
+      decorators: [{
+        name: 'Component',
+        type: {},
+        arguments: {
+          obj: 'selector: \'app-foo\''
+        }
+      }],
+      children: [
         {
-          decorator: 'Output',
-          isOptional: true,
-          name: 'bar',
-          type: 'EventEmitter&lt;void&gt;'
+          name: 'click',
+          kindString: 'Property',
+          decorators: [{
+            name: 'Output',
+            type: {
+              type: 'reference',
+              name: 'Output'
+            }
+          }],
+          type: {
+            type: 'reference',
+            typeArguments: [{
+              type: 'intrinsic',
+              name: 'string'
+            }],
+            name: 'EventEmitter'
+          }
         },
         {
-          decorator: 'Input',
-          isOptional: true,
-          name: 'foo',
-          type: 'string'
+          name: 'complexConfig',
+          kindString: 'Property',
+          decorators: [{
+            arguments: {
+              bindingPropertyName: '\'config\''
+            },
+            name: 'Input',
+            type: {
+              type: 'reference',
+              name: 'Input'
+            }
+          }],
+          type: {
+            type: 'reference',
+            typeArguments: [{
+              type: 'unknown',
+              name: 'U'
+            }],
+            name: 'Config'
+          }
         }
       ]
     };
@@ -97,20 +154,39 @@ describe('Directive definition component', function () {
 
     const rowElements = fixture.nativeElement.querySelectorAll('.sky-docs-property-definitions-table-cell-name');
 
-    expect(rowElements.item(0).innerText).toContain('@Input()');
-    expect(rowElements.item(1).innerText).toContain('@Output()');
+    expect(rowElements.item(0).innerText).toEqual('@Input()\nconfig?: Config<U>');
+    expect(rowElements.item(1).innerText).toEqual('@Output()\nclick?: EventEmitter<string>');
   });
 
   it('should display Output properties if Inputs do not exist', () => {
     fixture.componentInstance.config = {
       name: 'FooComponent',
-      selector: 'app-foo',
-      properties: [
+      decorators: [{
+        name: 'Component',
+        type: {},
+        arguments: {
+          obj: 'selector: \'app-foo\''
+        }
+      }],
+      children: [
         {
-          decorator: 'Output',
-          isOptional: true,
-          name: 'bar',
-          type: 'EventEmitter&lt;void&gt;'
+          name: 'click',
+          kindString: 'Property',
+          decorators: [{
+            name: 'Output',
+            type: {
+              type: 'reference',
+              name: 'Output'
+            }
+          }],
+          type: {
+            type: 'reference',
+            typeArguments: [{
+              type: 'intrinsic',
+              name: 'string'
+            }],
+            name: 'EventEmitter'
+          }
         }
       ]
     };
@@ -122,15 +198,22 @@ describe('Directive definition component', function () {
     expect(rowElements.item(0).innerText).toContain('@Output()');
   });
 
-  it('should add links to types within description', fakeAsync(() => {
+  it('should add links to types within description', () => {
     fixture.componentInstance.config = {
       name: 'FooComponent',
-      description: 'This description has a [[FooUser]].',
-      selector: 'app-foo'
+      comment: {
+        shortText: 'This description has a [[FooUser]].'
+      },
+      decorators: [{
+        name: 'Component',
+        type: {},
+        arguments: {
+          obj: 'selector: \'app-foo\''
+        }
+      }]
     };
 
     fixture.detectChanges();
-    tick();
 
     const descriptionElement = fixture.nativeElement.querySelector(
       '.sky-docs-directive-definition-description'
@@ -139,6 +222,6 @@ describe('Directive definition component', function () {
     expect(descriptionElement.innerHTML).toContain(
       '<a class="sky-docs-anchor-link" href="#foo-user">FooUser</a>'
     );
-  }));
+  });
 
 });
