@@ -1,8 +1,6 @@
 import {
   ComponentFixture,
-  fakeAsync,
-  TestBed,
-  tick
+  TestBed
 } from '@angular/core/testing';
 
 import {
@@ -21,9 +19,14 @@ import {
   SkyDocsTypeDefinitionsProvider
 } from './type-definitions-provider';
 
+import {
+  TypeDocEntryChild
+} from './typedoc-types';
+
 describe('Parameter definitions component', function () {
 
   let fixture: ComponentFixture<ParameterDefinitionsFixtureComponent>;
+  let mockConfig: TypeDocEntryChild;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -47,6 +50,35 @@ describe('Parameter definitions component', function () {
       ]
     });
 
+    mockConfig = {
+      name: 'getFooById',
+      kindString: 'Method',
+      signatures: [{
+        name: 'getFooById',
+        kindString: 'Call signature',
+        comment: {
+          shortText: 'Returns a FooUser by ID.'
+        },
+        parameters: [
+          {
+            name: 'id',
+            comment: {
+              text: 'The numeric ID of a FooUser.'
+            },
+            type: {
+              type: 'intrinsic',
+              name: 'number'
+            },
+            defaultValue: 'new FooUser()'
+          }
+        ],
+        type: {
+          type: 'reference',
+          name: 'FooUser'
+        }
+      }]
+    };
+
     fixture = TestBed.createComponent(ParameterDefinitionsFixtureComponent);
   });
 
@@ -56,72 +88,52 @@ describe('Parameter definitions component', function () {
 
   it('should set defaults', () => {
     fixture.detectChanges();
-    const parameterDefinitionRef = fixture.componentInstance.parameterDefinitionRef;
-    expect(parameterDefinitionRef.defaultValue).toBeUndefined();
-    expect(parameterDefinitionRef.isOptional).toEqual(false);
-    expect(parameterDefinitionRef.parameterName).toBeUndefined();
-    expect(parameterDefinitionRef.parameterType).toBeUndefined();
-    expect(parameterDefinitionRef.templateRef).toBeDefined();
+    const parameterDefinitionsRef = fixture.componentInstance.parameterDefinitionsRef;
+    expect(parameterDefinitionsRef.config).toBeUndefined();
   });
 
-  it('should display the parameter\'s signature', fakeAsync(() => {
-    fixture.componentInstance.defaultValue = 'string';
-    fixture.componentInstance.isOptional = true;
-    fixture.componentInstance.parameterName = 'foobar';
-    fixture.componentInstance.parameterType = 'number';
+  it('should display default value', () => {
+    fixture.componentInstance.config = mockConfig;
 
     fixture.detectChanges();
-    tick();
-
-    const signatureElement = fixture.nativeElement.querySelector(
-      '.sky-docs-parameter-definition-header'
-    );
-
-    expect(signatureElement.textContent).toEqual('foobar: number = string');
-  }));
-
-  it('should display default value', fakeAsync(() => {
-    fixture.componentInstance.parameterName = 'foobar';
-    fixture.componentInstance.parameterType = 'number';
-    fixture.componentInstance.defaultValue = '5';
-    fixture.componentInstance.isOptional = true;
-
-    fixture.detectChanges();
-    tick();
 
     const optionalElement = fixture.nativeElement.querySelector(
       '.sky-docs-parameter-definition-label-optional'
     );
 
     expect(optionalElement.innerText).toContain(
-      'Optional. Default is 5.'
+      'Optional. Default is new FooUser().'
     );
-  }));
+  });
 
-  it('should add links around parameter types', fakeAsync(() => {
-    fixture.componentInstance.parameterName = 'user';
-    fixture.componentInstance.parameterType = 'FooUser';
+  it('should add links around parameter types', () => {
+    mockConfig.signatures[0].parameters = [
+      {
+        name: 'user',
+        type: {
+          type: 'reference',
+          name: 'FooUser'
+        }
+      }
+    ];
+
+    fixture.componentInstance.config = mockConfig;
 
     fixture.detectChanges();
-    tick();
 
-    const signatureElement = fixture.nativeElement.querySelector(
+    const nameElement = fixture.nativeElement.querySelector(
       '.sky-docs-parameter-definition-header'
     );
 
-    expect(signatureElement.innerHTML).toContain(
+    expect(nameElement.innerHTML).toContain(
       '<a class="sky-docs-anchor-link" href="#foo-user">FooUser</a>'
     );
-  }));
+  });
 
-  it('should add links around default value', fakeAsync(() => {
-    fixture.componentInstance.parameterName = 'foobar';
-    fixture.componentInstance.parameterType = 'FooUser';
-    fixture.componentInstance.defaultValue = 'new FooUser()';
-    fixture.componentInstance.isOptional = true;
+  it('should add links around default value', () => {
+    fixture.componentInstance.config = mockConfig;
 
     fixture.detectChanges();
-    tick();
 
     const optionalElement = fixture.nativeElement.querySelector(
       '.sky-docs-parameter-definition-label-optional'
@@ -130,44 +142,111 @@ describe('Parameter definitions component', function () {
     expect(optionalElement.innerHTML).toContain(
       'new <a class="sky-docs-anchor-link" href="#foo-user">FooUser</a>()'
     );
-  }));
+  });
 
-  it('should format parameters with call signature types', fakeAsync(() => {
-    fixture.componentInstance.isOptional = true;
-    fixture.componentInstance.parameterName = 'foobar';
-    fixture.componentInstance.parameterType = {
-      callSignature: {
-        returnType: 'void',
-        parameters: [
-          {
-            name: 'user',
-            type: 'FooUser',
-            isOptional: false
-          },
-          {
-            name: 'search',
-            type: {
-              callSignature: {
-                returnType: 'FooUser',
-                parameters: []
+  // it('should add links to types within parameter descriptions', fakeAsync(() => {
+  //   fixture.componentInstance.config = {
+  //     name: 'getFooById',
+  //     kindString: 'Method',
+  //     signatures: [{
+  //       name: 'getFooById',
+  //       kindString: 'Call signature',
+  //       comment: {
+  //         shortText: 'Returns a FooUser by ID.'
+  //       },
+  //       parameters: [
+  //         {
+  //           name: 'id',
+  //           comment: {
+  //             text: 'The numeric ID of a FooUser.'
+  //           },
+  //           type: {
+  //             type: 'intrinsic',
+  //             name: 'number'
+  //           }
+  //         }
+  //       ],
+  //       type: {
+  //         type: 'reference',
+  //         name: 'FooUser'
+  //       }
+  //     }]
+  //   };
+
+  //   fixture.detectChanges();
+  //   tick();
+
+  //   const descriptionElement = fixture.nativeElement.querySelector(
+  //     '.sky-docs-parameter-definition-description'
+  //   );
+
+  //   expect(descriptionElement.innerHTML).toContain(
+  //     '<a class="sky-docs-anchor-link" href="#foo-user">FooUser</a>'
+  //   );
+  // }));
+
+  it('should format parameters with call signature types', () => {
+    mockConfig.signatures[0].parameters = [
+      {
+        name: 'foobar',
+        type: {
+          type: 'reflection',
+          declaration: {
+            signatures: [
+              {
+                name: '__call',
+                kindString: 'Call signature',
+                parameters: [
+                  {
+                    name: 'users',
+                    type: {
+                      type: 'array',
+                      elementType: {
+                        type: 'reference',
+                        name: 'FooUser'
+                      }
+                    }
+                  },
+                  {
+                    name: 'search',
+                    type: {
+                      type: 'reflection',
+                      declaration: {
+                        signatures: [{
+                          name: '__call',
+                          kindString: 'Call signature',
+                          parameters: [],
+                          type: {
+                            type: 'reference',
+                            name: 'FooUser'
+                          }
+                        }]
+                      }
+                    }
+                  }
+                ],
+                type: {
+                  type: 'intrinsic',
+                  name: 'void'
+                }
               }
-            },
-            isOptional: true
+            ]
           }
-        ]
+        }
       }
-    };
+    ];
+
+    fixture.componentInstance.config = mockConfig;
 
     fixture.detectChanges();
-    tick();
 
-    const signatureElement = fixture.nativeElement.querySelector(
+    const nameElement = fixture.nativeElement.querySelector(
       '.sky-docs-parameter-definition-header'
     );
 
-    expect(signatureElement.textContent).toEqual(
-      'foobar?: (user: FooUser, search?: () => FooUser) => void'
+    expect(nameElement.textContent).toEqual(
+      'foobar?: (users?: FooUser[], search?: () => FooUser) => void'
     );
-  }));
+  });
 
 });
