@@ -18,7 +18,7 @@ import {
 
 describe('Code examples editor service', () => {
 
-  it('should provide SkyThemeService when theme property is set to Modern', () => {
+  it('should set SkyTheme to modern when theme property is set to Modern', () => {
     const service = new SkyDocsCodeExamplesEditorService();
     const stackblitzSpy = spyOn(StackBlitzSDK, 'openProject').and.callFake(() => {});
     const codeExample: SkyDocsCodeExample = {
@@ -38,11 +38,11 @@ describe('Code examples editor service', () => {
 
     expect(stackblitzSpy).toHaveBeenCalled();
     const spyArgs = stackblitzSpy.calls.mostRecent().args;
-    expect(spyArgs[0].files['src/app/app.component.ts']).toContain('SkyThemeService');
+    expect(spyArgs[0].files['src/app/app.component.ts']).toContain(`SkyTheme.presets['modern']`);
     expect(spyArgs[0].files['src/app/app.module.ts']).toContain('SkyThemeService');
   });
 
-  it('should NOT provide SkyThemeService when theme property is set to Default', () => {
+  it('should SkyTheme to default when theme property is set to Default', () => {
     const service = new SkyDocsCodeExamplesEditorService();
     const stackblitzSpy = spyOn(StackBlitzSDK, 'openProject').and.callFake(() => {});
     const codeExample: SkyDocsCodeExample = {
@@ -62,8 +62,8 @@ describe('Code examples editor service', () => {
 
     expect(stackblitzSpy).toHaveBeenCalled();
     const spyArgs = stackblitzSpy.calls.mostRecent().args;
-    expect(spyArgs[0].files['src/app/app.component.ts']).not.toContain('SkyThemeService');
-    expect(spyArgs[0].files['src/app/app.module.ts']).not.toContain('SkyThemeService');
+    expect(spyArgs[0].files['src/app/app.component.ts']).toContain(`SkyTheme.presets['default']`);
+    expect(spyArgs[0].files['src/app/app.module.ts']).toContain('SkyThemeService');
   });
 
 });
