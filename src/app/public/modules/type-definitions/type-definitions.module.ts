@@ -95,6 +95,10 @@ import {
   SkyDocsTypeAnchorLinksPipe
 } from './type-anchor-links.pipe';
 
+import {
+  SkyDocsTypeDocAdapterService
+} from './typedoc-adapter.service';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -135,7 +139,8 @@ import {
     SkyDocsTypeAnchorLinksPipe,
     SkyDocsTypeDefinitionsFormatService,
     SkyDocsTypeDefinitionsProvider,
-    SkyDocsTypeDefinitionsService
+    SkyDocsTypeDefinitionsService,
+    SkyDocsTypeDocAdapterService
   ]
 })
 export class SkyDocsTypeDefinitionsModule { }

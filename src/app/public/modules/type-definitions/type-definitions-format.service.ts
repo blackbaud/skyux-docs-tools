@@ -23,7 +23,6 @@ export class SkyDocsTypeDefinitionsFormatService {
    * Returns an HTML-formatted representation of the provided type alias config.
    */
   public getTypeAliasSourceCode(definition: SkyDocsTypeAliasDefinition): string {
-    console.log('eh?', definition);
     const typeParameters = this.getFormattedTypeParameters(definition.typeParameters);
     let signature: string = `type ${definition.name}${typeParameters} = `;
     if (definition.type.callSignature) {
@@ -121,14 +120,6 @@ export class SkyDocsTypeDefinitionsFormatService {
 
     return signature;
   }
-
-  /**
-   * Returns a formatted string representing a parameter or property's default value.
-   */
-  // public getFormattedDefaultValue(item: TypeDocEntryChild, tags: SkyDocsCommentTags): string {
-  //   const defaultValue: string = tags.defaultValue || item.defaultValue || '';
-  //   return this.escapeSpecialCharacters(defaultValue.replace(/\"/g, '\''));
-  // }
 
   /**
    * Returns a formatted string representing the provided type.
@@ -279,19 +270,8 @@ export class SkyDocsTypeDefinitionsFormatService {
       return '';
     }
 
-    console.log(typeParameters);
-
     const formatted = typeParameters.map(typeParameter => {
-      // if (typeParameter.type.type === 'array') {
-      //   return `${typeParameter.type.name}[]`;
-      // }
-
-      // if (typeParameter.type.unionTypes) {
-      //   return this.getFormattedUnion(typeParameter.type);
-      // }
-
       let result = typeParameter.name;
-
       if (typeParameter.type && typeParameter.type.type === 'reference') {
         result += ` extends ${typeParameter.type.name}`;
       }
