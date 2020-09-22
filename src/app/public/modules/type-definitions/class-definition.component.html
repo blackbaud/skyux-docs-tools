@@ -20,9 +20,8 @@
   </ng-container>
 
   <ng-container *ngIf="config.methods?.length">
-    <sky-docs-property-definitions
-      propertyType="Method"
-      [config]="{ properties: config.methods }"
-    ></sky-docs-property-definitions>
+    <sky-docs-method-definitions
+      [config]="{ methods: config.methods }"
+    ></sky-docs-method-definitions>
   </ng-container>
 </div>

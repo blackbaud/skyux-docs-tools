@@ -4,7 +4,9 @@ import {
   Input
 } from '@angular/core';
 
-import { SkyDocsClassDefinition } from './type-definitions';
+import {
+  SkyDocsClassDefinition
+} from './type-definitions';
 
 @Component({
   selector: 'sky-docs-class-definition',

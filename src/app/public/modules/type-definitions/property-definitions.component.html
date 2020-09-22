@@ -1,4 +1,4 @@
-<div
+<div *ngIf="properties"
   class="sky-docs-property-definitions"
 >
   <table *ngIf="!isMobile else mobileTemplate"
@@ -102,13 +102,6 @@
     [innerHtml]="property.defaultValue | skyDocsTypeAnchorLinks:'no-code-tags'"
     ></span></sky-code>.</ng-container>
   </div>
-
-  <sky-code-block *ngIf="property.sourceCode"
-    class="sky-docs-code-block"
-    languageType="typescript"
-    [code]="property.sourceCode"
-    [hideHeader]="true"
-  ></sky-code-block>
 
   <sky-docs-call-signature-definition *ngIf="property.callSignature"
     [config]="property.callSignature"

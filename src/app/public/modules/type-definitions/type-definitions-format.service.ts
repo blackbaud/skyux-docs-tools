@@ -4,6 +4,7 @@ import {
 
 import {
   SkyDocsCallSignatureDefinition,
+  SkyDocsClassMethodDefinition,
   SkyDocsClassPropertyDefinition,
   SkyDocsInterfaceDefinition,
   SkyDocsParameterDefinition,
@@ -63,6 +64,27 @@ export class SkyDocsTypeDefinitionsFormatService {
     return signature;
   }
 
+  public getMethodSourceCode(definition: SkyDocsClassMethodDefinition): string {
+    const config = {
+      escapeSpecialCharacters: false
+    };
+
+    const typeArguments = this.getFormattedTypeArguments(definition.type);
+    const callSignature = definition.type.callSignature;
+    const returnType = this.getFormattedType(callSignature.returnType, config) || 'void';
+
+    let params: string = '';
+    if (callSignature.parameters) {
+      params += '\n  ';
+      params += callSignature.parameters
+        .map(p => this.getFormattedParameterName(p, config))
+        .join(',\n  ');
+      params += '\n';
+    }
+
+    return `public ${definition.name}${typeArguments}(${params}): ${returnType}`;
+  }
+
   /**
    * Returns a formatted string representing a parameter's name and value. For example: `'foo: string'`.
    */
@@ -89,21 +111,10 @@ export class SkyDocsTypeDefinitionsFormatService {
   public getFormattedPropertyName(property: SkyDocsClassPropertyDefinition): string {
     let signature = '';
 
-    // if (item.kindString === 'Enumeration member') {
-    //   return item.name;
-    // }
-
-    // if (item.kindString === 'Method') {
-    //   return `${item.name}()`;
-    // }
-
-    // const decorators = item.decorators && item.decorators[0];
-
     if (property.decorator?.name) {
       signature += `@${property.decorator.name}()<br>`;
     }
 
-    // const tags = this.jsDocService.parseCommentTags(item.comment);
     if (property.deprecationWarning !== undefined) {
       signature += `<strike>${property.name}</strike>`;
     } else {
@@ -119,6 +130,18 @@ export class SkyDocsTypeDefinitionsFormatService {
     }
 
     return signature;
+  }
+
+  public getFormattedMethodName(definition: SkyDocsClassMethodDefinition): string {
+    let formatted = '';
+
+    if (definition.deprecationWarning !== undefined) {
+      formatted += `<strike>${definition.name}</strike>`;
+    } else {
+      formatted += definition.name;
+    }
+
+    return `${formatted}()`;
   }
 
   /**

@@ -98,6 +98,7 @@ import {
 import {
   SkyDocsTypeDocAdapterService
 } from './typedoc-adapter.service';
+import { SkyDocsMethodDefinitionsComponent } from './method-definitions.component';
 
 @NgModule({
   imports: [
@@ -118,6 +119,7 @@ import {
     SkyDocsDirectiveDefinitionComponent,
     SkyDocsEnumerationDefinitionComponent,
     SkyDocsInterfaceDefinitionComponent,
+    SkyDocsMethodDefinitionsComponent,
     SkyDocsPipeDefinitionComponent,
     SkyDocsPropertyDefinitionsComponent,
     SkyDocsTypeAliasDefinitionComponent,
@@ -129,6 +131,7 @@ import {
     SkyDocsDirectiveDefinitionComponent,
     SkyDocsEnumerationDefinitionComponent,
     SkyDocsInterfaceDefinitionComponent,
+    SkyDocsMethodDefinitionsComponent,
     SkyDocsPipeDefinitionComponent,
     SkyDocsPropertyDefinitionsComponent,
     SkyDocsTypeAliasDefinitionComponent,

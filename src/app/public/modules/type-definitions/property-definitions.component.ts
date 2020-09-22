@@ -32,13 +32,13 @@ interface PropertyViewModel {
 export class SkyDocsPropertyDefinitionsComponent implements OnInit {
 
   @Input()
-  public set config(value: { properties: SkyDocsClassPropertyDefinition[]; }) {
+  public set config(value: { properties?: SkyDocsClassPropertyDefinition[]; }) {
     this._config = value;
     this.updateView();
   }
 
-  public get config(): { properties: SkyDocsClassPropertyDefinition[]; } {
-    return this._config || { properties: [] };
+  public get config(): { properties?: SkyDocsClassPropertyDefinition[]; } {
+    return this._config || {};
   }
 
   @Input()
@@ -53,9 +53,7 @@ export class SkyDocsPropertyDefinitionsComponent implements OnInit {
 
   public properties: PropertyViewModel[] = [];
 
-  private _config: {
-    properties: SkyDocsClassPropertyDefinition[];
-  };
+  private _config: { properties?: SkyDocsClassPropertyDefinition[]; };
 
   constructor(
     private changeDetector: ChangeDetectorRef,
@@ -73,8 +71,8 @@ export class SkyDocsPropertyDefinitionsComponent implements OnInit {
   private updateView(): void {
     delete this.properties;
 
-    if (this.config?.properties) {
-      this.properties = this.config.properties.map(property => {
+    if (this.config) {
+      this.properties = this.config?.properties?.map(property => {
         const vm: PropertyViewModel = {
           defaultValue: this.formatService.escapeSpecialCharacters(property.defaultValue),
           deprecationWarning: property.deprecationWarning,

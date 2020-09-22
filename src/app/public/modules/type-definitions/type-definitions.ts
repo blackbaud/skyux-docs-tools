@@ -17,7 +17,6 @@ interface SkyDocsEntryChildDefinition {
   name: string;
   description: string;
   deprecationWarning: string;
-  isOptional: boolean;
   type: SkyDocsTypeDefinition;
   codeExample: string;
   codeExampleLanguage: string;
@@ -88,6 +87,7 @@ export interface SkyDocsClassPropertyDefinition extends SkyDocsEntryChildDefinit
   decorator: {
     name: string;
   };
+  isOptional: boolean;
   defaultValue: string;
 }
 
@@ -95,7 +95,6 @@ export interface SkyDocsClassPropertyDefinition extends SkyDocsEntryChildDefinit
  * Used to describe class methods.
  */
 export interface SkyDocsClassMethodDefinition extends SkyDocsEntryChildDefinition {
-  parameters: SkyDocsParameterDefinition[];
   typeParameters: SkyDocsTypeParameterDefinition[];
 }
 
@@ -103,6 +102,7 @@ export interface SkyDocsClassMethodDefinition extends SkyDocsEntryChildDefinitio
  * Used to describe interface properties.
  */
 export interface SkyDocsInterfacePropertyDefinition extends SkyDocsEntryChildDefinition {
+  isOptional: boolean;
 }
 
 export interface SkyDocsEnumerationMemberDefinition {

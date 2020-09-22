@@ -4,11 +4,9 @@ import {
   Input
 } from '@angular/core';
 
-// import {
-//   SkyDocsJSDocsService
-// } from './jsdoc.service';
-
-import { SkyDocsDirectiveDefinition } from './type-definitions';
+import {
+  SkyDocsDirectiveDefinition
+} from './type-definitions';
 
 @Component({
   selector: 'sky-docs-directive-definition',

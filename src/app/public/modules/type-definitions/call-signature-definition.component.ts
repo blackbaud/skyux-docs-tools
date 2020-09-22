@@ -4,8 +4,13 @@ import {
   Input
 } from '@angular/core';
 
-import { SkyDocsCallSignatureDefinition } from './type-definitions';
-import { SkyDocsTypeDefinitionsFormatService } from './type-definitions-format.service';
+import {
+  SkyDocsCallSignatureDefinition
+} from './type-definitions';
+
+import {
+  SkyDocsTypeDefinitionsFormatService
+} from './type-definitions-format.service';
 
 interface ParameterViewModel {
   defaultValue: string;

@@ -134,7 +134,6 @@ export class SkyDocsTypeDocAdapterService {
 
   public toTypeAliasDefinition(entry: TypeDocEntry): SkyDocsTypeAliasDefinition {
     const tags = this.getCommentTags(entry.comment);
-
     const definition: SkyDocsTypeAliasDefinition = {
       anchorId: entry.anchorId,
       name: entry.name,
@@ -215,9 +214,7 @@ export class SkyDocsTypeDocAdapterService {
           deprecationWarning: tags.deprecationWarning,
           description: tags.description,
           name: this.getPropertyName(child),
-          isOptional: this.isTypeOptional(child, tags),
           type: this.getTypeDefinition(child),
-          parameters: this.getParameterDefinitions(child.signatures[0], tags),
           typeParameters: this.getTypeParameterDefinitions(child.signatures[0].typeParameter)
         };
 
