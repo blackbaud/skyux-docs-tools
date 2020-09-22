@@ -421,14 +421,26 @@ export class SkyDocsTypeDocAdapterService {
     const parameters: SkyDocsParameterDefinition[] = callSignature.parameters?.map(p => {
       const tags = this.getParameterCommentTags(p, parentTags);
       const defaultValue = this.getDefaultValue(p, tags);
+      const typeArguments = this.getTypeArgumentDefinitions(p.type);
+
       const parameter: SkyDocsParameterDefinition = {
-        defaultValue,
-        description: tags.description,
         isOptional: !!(defaultValue || this.isTypeOptional(p, tags)),
         name: p.name,
-        type: this.getTypeDefinition(p),
-        typeArguments: this.getTypeArgumentDefinitions(p.type)
+        type: this.getTypeDefinition(p)
       };
+
+      if (defaultValue !== undefined) {
+        parameter.defaultValue = defaultValue;
+      }
+
+      if (tags.description) {
+        parameter.description = tags.description;
+      }
+
+      if (typeArguments?.length) {
+        parameter.typeArguments = typeArguments;
+      }
+
       return parameter;
     });
     return parameters;

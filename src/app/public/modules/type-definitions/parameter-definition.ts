@@ -8,9 +8,9 @@ import {
 
 export interface SkyDocsParameterDefinition {
 
-  defaultValue: string;
+  defaultValue?: string;
 
-  description: string;
+  description?: string;
 
   isOptional: boolean;
 
@@ -18,6 +18,6 @@ export interface SkyDocsParameterDefinition {
 
   type: SkyDocsTypeDefinition;
 
-  typeArguments: SkyDocsTypeArgumentDefinition[];
+  typeArguments?: SkyDocsTypeArgumentDefinition[];
 
 }
