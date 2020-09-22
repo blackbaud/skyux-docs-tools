@@ -59,13 +59,9 @@ import {
   SkyDocsInterfaceDefinitionComponent
 } from './interface-definition.component';
 
-import {
-  SkyDocsJSDocsService
-} from './jsdoc.service';
-
-import {
-  SkyDocsParameterDefinitionsComponent
-} from './parameter-definitions.component';
+// import {
+//   SkyDocsJSDocsService
+// } from './jsdoc.service';
 
 import {
   SkyDocsPipeDefinitionComponent
@@ -118,7 +114,6 @@ import {
     SkyDocsDirectiveDefinitionComponent,
     SkyDocsEnumerationDefinitionComponent,
     SkyDocsInterfaceDefinitionComponent,
-    SkyDocsParameterDefinitionsComponent,
     SkyDocsPipeDefinitionComponent,
     SkyDocsPropertyDefinitionsComponent,
     SkyDocsTypeAliasDefinitionComponent,
@@ -130,7 +125,6 @@ import {
     SkyDocsDirectiveDefinitionComponent,
     SkyDocsEnumerationDefinitionComponent,
     SkyDocsInterfaceDefinitionComponent,
-    SkyDocsParameterDefinitionsComponent,
     SkyDocsPipeDefinitionComponent,
     SkyDocsPropertyDefinitionsComponent,
     SkyDocsTypeAliasDefinitionComponent,
@@ -138,7 +132,6 @@ import {
   ],
   providers: [
     SkyDocsAnchorLinkService,
-    SkyDocsJSDocsService,
     SkyDocsTypeAnchorLinksPipe,
     SkyDocsTypeDefinitionsFormatService,
     SkyDocsTypeDefinitionsProvider,

@@ -14,8 +14,6 @@ import {
 import { SkyDocsCallSignatureDefinition, SkyDocsClassPropertyDefinition } from './type-definitions';
 import { SkyDocsTypeDefinitionsFormatService } from './type-definitions-format.service';
 
-import orderBy from 'lodash.orderby';
-
 interface PropertyViewModel {
   callSignature: SkyDocsCallSignatureDefinition;
   defaultValue: string;
@@ -73,52 +71,22 @@ export class SkyDocsPropertyDefinitionsComponent implements OnInit {
   }
 
   private updateView(): void {
-    const properties = orderBy(
-      this.config.properties,
-      ['isOptional', 'name'],
-      ['asc', 'asc']
-    );
+    delete this.properties;
 
-    this.properties = properties.map(property => {
-      const vm: PropertyViewModel = {
-        defaultValue: this.formatService.escapeSpecialCharacters(property.defaultValue),
-        deprecationWarning: property.deprecationWarning,
-        description: property.description,
-        formattedName: this.formatService.parseFormattedPropertyName(property),
-        isOptional: property.isOptional,
-        callSignature: property.type.callSignature
-      };
+    if (this.config?.properties) {
+      this.properties = this.config.properties.map(property => {
+        const vm: PropertyViewModel = {
+          defaultValue: this.formatService.escapeSpecialCharacters(property.defaultValue),
+          deprecationWarning: property.deprecationWarning,
+          description: property.description,
+          formattedName: this.formatService.getFormattedPropertyName(property),
+          isOptional: property.isOptional,
+          callSignature: property.type?.callSignature
+        };
 
-      return vm;
-
-      // const isMethodType: boolean = (property.kindString === 'Method');
-      // const isCallSignatureType: boolean = (property.kindString === 'Call signature');
-
-      // // Comments for methods are stored in a different location.
-      // const comment = (isMethodType && property.signatures[0].comment) || property.comment;
-
-      // const sourceCode = (isMethodType)
-      //   ? this.formatService.parseFormattedType(property, {
-      //       escapeSpecialCharacters: false
-      //     })
-      //   : undefined;
-
-      // const tags = this.jsDocsService.parseCommentTags(comment);
-
-      // const vm: PropertyViewModel = {
-      //   callSignature: (isMethodType || isCallSignatureType) ? property : undefined,
-      //   defaultValue: this.formatService.parseFormattedDefaultValue(property, tags),
-      //   deprecationWarning: tags.deprecationWarning,
-      //   description: tags.description,
-      //   formattedName: this.formatService.parseFormattedPropertyName(property),
-      //   isOptional: isTypeOptional(property, tags),
-      //   name: property.name,
-      //   showOptionalStatus: !(property.kindString === 'Method'),
-      //   sourceCode
-      // };
-
-      // return vm;
-    });
+        return vm;
+      });
+    }
   }
 
 }

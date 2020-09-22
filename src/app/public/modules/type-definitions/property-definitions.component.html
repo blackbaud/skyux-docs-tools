@@ -87,12 +87,12 @@
 
   <sky-docs-safe-html *ngIf="property.deprecationWarning !== undefined"
     class="sky-docs-property-definitions-deprecation-warning"
-    [innerHtml]="deprecationWarningPrefix + property.deprecationWarning | skyDocsMarkdown | skyDocsTypeAnchorLinks"
+    [innerHtml]="deprecationWarningPrefix + property.deprecationWarning | skyDocsTypeAnchorLinks | skyDocsMarkdown"
   ></sky-docs-safe-html>
 
   <sky-docs-safe-html *ngIf="property.description"
     class="sky-docs-property-definitions-description"
-    [innerHtml]="property.description | skyDocsMarkdown | skyDocsTypeAnchorLinks"
+    [innerHtml]="property.description | skyDocsTypeAnchorLinks | skyDocsMarkdown"
   ></sky-docs-safe-html>
 
   <div *ngIf="property.isOptional && showOptionalStatus"

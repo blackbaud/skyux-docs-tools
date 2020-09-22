@@ -30,12 +30,14 @@ export interface TypeDocCallSignature {
 
   type: TypeDocType;
 
-  typeParameter?: [{
-    name: string;
-    kindString: 'Type parameter';
-    type: TypeDocType;
-  }];
+  typeParameter?: TypeDocTypeParameter[];
 
+}
+
+export interface TypeDocTypeParameter {
+  name: string;
+  kindString: 'Type parameter';
+  type: TypeDocType;
 }
 
 export interface TypeDocType {
@@ -146,9 +148,6 @@ export interface TypeDocEntry {
 
   type?: TypeDocType;
 
-  typeParameter?: {
-    name: string;
-    type: TypeDocType;
-  }[];
+  typeParameter?: TypeDocTypeParameter[];
 
 }

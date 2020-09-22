@@ -4,13 +4,7 @@ import {
   Input
 } from '@angular/core';
 
-import {
-  SkyDocsJSDocsService
-} from './jsdoc.service';
-
-import {
-  TypeDocEntry
-} from './typedoc-types';
+import { SkyDocsEnumerationDefinition } from './type-definitions';
 
 @Component({
   selector: 'sky-docs-enumeration-definition',
@@ -20,30 +14,24 @@ import {
 export class SkyDocsEnumerationDefinitionComponent {
 
   @Input()
-  public set config(value: TypeDocEntry) {
+  public set config(value: SkyDocsEnumerationDefinition) {
     this._config = value;
     this.updateView();
   }
 
-  public get config(): TypeDocEntry {
+  public get config(): SkyDocsEnumerationDefinition {
     return this._config;
   }
 
-  public description: string;
-
-  private _config: TypeDocEntry;
-
-  constructor(
-    private jsDocsService: SkyDocsJSDocsService
-  ) { }
+  private _config: SkyDocsEnumerationDefinition;
 
   private updateView(): void {
 
     // Reset view properties when the config changes.
-    delete this.description;
+    // delete this.description;
 
-    const tags = this.jsDocsService.parseCommentTags(this.config.comment);
-    this.description = tags.description;
+    // const tags = this.jsDocsService.getCommentTags(this.config.comment);
+    // this.description = tags.description;
   }
 
 }

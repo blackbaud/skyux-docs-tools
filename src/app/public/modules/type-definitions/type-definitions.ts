@@ -2,6 +2,7 @@
  * Used to describe all entry-level types such as classes, directives, enumerations, etc.
  */
 interface SkyDocsEntryDefinition {
+  anchorId: string;
   name: string;
   description: string;
   codeExample: string;
@@ -101,7 +102,15 @@ export interface SkyDocsClassMethodDefinition extends SkyDocsEntryChildDefinitio
 /**
  * Used to describe interface properties.
  */
-interface SkyDocsInterfacePropertyDefinition extends SkyDocsEntryChildDefinition {
+export interface SkyDocsInterfacePropertyDefinition extends SkyDocsEntryChildDefinition {
+}
+
+export interface SkyDocsEnumerationMemberDefinition {
+  name: string;
+  description: string;
+  deprecationWarning: string;
+  codeExample: string;
+  codeExampleLanguage: string;
 }
 
 /**
@@ -112,7 +121,6 @@ export interface SkyDocsClassDefinition extends SkyDocsEntryDefinition {
   description: string;
   properties: SkyDocsClassPropertyDefinition[];
   methods: SkyDocsClassMethodDefinition[];
-  // typeParameters: SkyDocsTypeParameterDefinition[];
 }
 
 /**
@@ -122,36 +130,33 @@ export interface SkyDocsDirectiveDefinition extends SkyDocsEntryDefinition {
   selector: string;
   inputProperties: SkyDocsClassPropertyDefinition[];
   eventProperties: SkyDocsClassPropertyDefinition[];
-  // typeParameters: SkyDocsTypeParameterDefinition[];
 }
 
 /**
  * Used to describe interfaces.
  */
-interface SkyDocsInterfaceDefinition extends SkyDocsEntryDefinition {
+export interface SkyDocsInterfaceDefinition extends SkyDocsEntryDefinition {
   properties: SkyDocsInterfacePropertyDefinition[];
-  // typeParameters: SkyDocsTypeParameterDefinition[];
 }
 
 /**
  * Used to describe pipes.
  */
-interface SkyDocsPipeDefinition extends SkyDocsEntryDefinition {
-  pipeBindingName: string;
-  methods: SkyDocsClassMethodDefinition[];
-  // typeParameters: SkyDocsTypeParameterDefinition[];
+export interface SkyDocsPipeDefinition extends SkyDocsEntryDefinition {
+  transformMethod: SkyDocsClassMethodDefinition;
 }
 
 /**
  * Used to describe enumerations.
  */
-interface SkyDocsEnumerationDefinition extends SkyDocsEntryDefinition {
+export interface SkyDocsEnumerationDefinition extends SkyDocsEntryDefinition {
+  members: SkyDocsEnumerationMemberDefinition[];
 }
 
 /**
  * Used to describe type aliases.
  */
-interface SkyDocsTypeAliasDefinition extends SkyDocsEntryDefinition {
+export interface SkyDocsTypeAliasDefinition extends SkyDocsEntryDefinition {
   typeParameters: SkyDocsTypeParameterDefinition[];
   type: SkyDocsTypeDefinition;
 }

@@ -8,21 +8,21 @@
     {{ config.name }}
   </sky-docs-heading-anchor>
 
-  <sky-docs-safe-html *ngIf="description"
+  <sky-docs-safe-html *ngIf="config.description"
     class="sky-docs-class-definition-description"
-    [innerHtml]="description | skyDocsTypeAnchorLinks | skyDocsMarkdown"
+    [innerHtml]="config.description | skyDocsTypeAnchorLinks | skyDocsMarkdown"
   ></sky-docs-safe-html>
 
-  <ng-container *ngIf="properties?.length">
+  <ng-container *ngIf="config.properties?.length">
     <sky-docs-property-definitions
-      [config]="{ properties: properties }"
+      [config]="{ properties: config.properties }"
     ></sky-docs-property-definitions>
   </ng-container>
 
-  <ng-container *ngIf="methods?.length">
+  <ng-container *ngIf="config.methods?.length">
     <sky-docs-property-definitions
       propertyType="Method"
-      [config]="{ properties: methods }"
+      [config]="{ properties: config.methods }"
     ></sky-docs-property-definitions>
   </ng-container>
 </div>

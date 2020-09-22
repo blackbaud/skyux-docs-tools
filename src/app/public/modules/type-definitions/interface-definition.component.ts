@@ -3,19 +3,8 @@ import {
   Component,
   Input
 } from '@angular/core';
-
-import {
-  SkyDocsJSDocsService
-} from './jsdoc.service';
-
-import {
-  SkyDocsTypeDefinitionsFormatService
-} from './type-definitions-format.service';
-
-import {
-  TypeDocEntry,
-  TypeDocEntryChild
-} from './typedoc-types';
+import { SkyDocsInterfaceDefinition } from './type-definitions';
+import { SkyDocsTypeDefinitionsFormatService } from './type-definitions-format.service';
 
 @Component({
   selector: 'sky-docs-interface-definition',
@@ -25,37 +14,25 @@ import {
 export class SkyDocsInterfaceDefinitionComponent {
 
   @Input()
-  public set config(value: TypeDocEntry) {
+  public set config(value: SkyDocsInterfaceDefinition) {
     this._config = value;
     this.updateView();
   }
 
-  public get config(): TypeDocEntry {
+  public get config(): SkyDocsInterfaceDefinition {
     return this._config;
   }
 
-  public description: string;
-
-  public properties: TypeDocEntryChild[];
-
   public sourceCode: string;
 
-  private _config: TypeDocEntry;
+  private _config: SkyDocsInterfaceDefinition;
 
   constructor(
-    private jsDocsService: SkyDocsJSDocsService,
     private formatService: SkyDocsTypeDefinitionsFormatService
   ) { }
 
   private updateView(): void {
-
-    // Reset view properties when the config changes.
-    delete this.description;
-    delete this.sourceCode;
-
-    const tags = this.jsDocsService.parseCommentTags(this.config?.comment);
-    this.description = tags.description;
-    this.sourceCode = this.formatService.parseInterfaceSourceCodeSignature(this.config);
+    this.sourceCode = this.formatService.getInterfaceSourceCode(this.config);
   }
 
 }

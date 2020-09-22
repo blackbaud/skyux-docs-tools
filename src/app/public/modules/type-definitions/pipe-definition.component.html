@@ -8,11 +8,11 @@
     {{ config.name }}
   </sky-docs-heading-anchor>
 
-  <sky-docs-safe-html *ngIf="description"
-    [innerHtml]="description | skyDocsTypeAnchorLinks | skyDocsMarkdown"
+  <sky-docs-safe-html *ngIf="config.description"
+    [innerHtml]="config.description | skyDocsTypeAnchorLinks | skyDocsMarkdown"
   ></sky-docs-safe-html>
 
-  <ng-container *ngIf="codeExample">
+  <ng-container *ngIf="config.codeExample">
     <h4
       class="sky-docs-pipe-definition-heading"
     >
@@ -20,16 +20,16 @@
     </h4>
     <sky-code-block
       class="sky-docs-code-block"
-      [code]="codeExample"
+      [code]="config.codeExample"
       [hideHeader]="true"
-      [languageType]="codeExampleLanguage"
+      [languageType]="config.codeExampleLanguage"
     ></sky-code-block>
   </ng-container>
 
   <sky-docs-property-definitions
     propertyType="Method"
     [config]="{
-      properties: [transformMethod]
+      properties: [config.transformMethod]
     }"
   ></sky-docs-property-definitions>
 </div>

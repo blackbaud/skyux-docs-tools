@@ -5,6 +5,14 @@ import {
 } from '@angular/core';
 
 import { SkyDocsCallSignatureDefinition } from './type-definitions';
+import { SkyDocsTypeDefinitionsFormatService } from './type-definitions-format.service';
+
+interface ParameterViewModel {
+  defaultValue: string;
+  description: string;
+  formattedName: string;
+  isOptional: boolean;
+}
 
 /**
  * "Call signatures" include methods, functions, and inline arrow functions.
@@ -28,35 +36,34 @@ export class SkyDocsCallSignatureDefinitionComponent {
     return this._config;
   }
 
-  public codeExample: string;
+  public parameters: ParameterViewModel[];
 
-  public codeExampleLanguage: string;
-
-  public hasParameters: boolean;
-
-  public returnType: string;
+  public returnTypeFormatted: string;
 
   private _config: SkyDocsCallSignatureDefinition;
 
   constructor(
+    private formatService: SkyDocsTypeDefinitionsFormatService
   ) { }
 
   private updateView(): void {
 
     // Reset view properties when the config changes.
-    // delete this.codeExample;
-    // delete this.codeExampleLanguage;
-    // delete this.hasParameters;
-    // delete this.returnType;
+    delete this.parameters;
+    delete this.returnTypeFormatted;
 
-    // const callSignatures = this.config?.signatures || this.config?.type?.declaration?.signatures;
-    // if (callSignatures) {
-    //   const tags = this.jsDocsService.parseCommentTags(callSignatures[0].comment);
-    //   this.returnType = this.formatService.parseFormattedType(callSignatures[0]);
-    //   this.hasParameters = !!(callSignatures[0].parameters);
-    //   this.codeExample = tags.codeExample;
-    //   this.codeExampleLanguage = tags.codeExampleLanguage;
-    // }
+    this.parameters = this.config?.parameters?.map(p => {
+      const vm: ParameterViewModel = {
+        defaultValue: p.defaultValue,
+        description: p.description,
+        formattedName: this.formatService.getFormattedParameterName(p),
+        isOptional: p.isOptional
+      };
+
+      return vm;
+    });
+
+    this.returnTypeFormatted = this.formatService.getFormattedType(this.config?.returnType);
   }
 
 }

@@ -8,15 +8,16 @@
     {{ config.name }}
   </sky-docs-heading-anchor>
 
-  <sky-docs-safe-html
+  <sky-docs-safe-html *ngIf="config.description"
     class="sky-docs-enumeration-definition-description"
-    [innerHtml]="description | skyDocsTypeAnchorLinks | skyDocsMarkdown"
+    [innerHtml]="config.description | skyDocsTypeAnchorLinks | skyDocsMarkdown"
   ></sky-docs-safe-html>
 
-  <sky-docs-property-definitions
+  <sky-docs-property-definitions *ngIf="config.members"
     propertyType="Member"
     [config]="{
-      properties: config.children
+      properties: config.members
     }"
+    [showOptionalStatus]="false"
   ></sky-docs-property-definitions>
 </div>

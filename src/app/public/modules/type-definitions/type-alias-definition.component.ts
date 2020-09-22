@@ -3,19 +3,8 @@ import {
   Component,
   Input
 } from '@angular/core';
-
-import {
-  SkyDocsJSDocsService
-} from './jsdoc.service';
-
-import {
-  SkyDocsTypeDefinitionsFormatService
-} from './type-definitions-format.service';
-
-import {
-  TypeDocEntry,
-  TypeDocEntryChild
-} from './typedoc-types';
+import { SkyDocsTypeAliasDefinition } from './type-definitions';
+import { SkyDocsTypeDefinitionsFormatService } from './type-definitions-format.service';
 
 @Component({
   selector: 'sky-docs-type-alias-definition',
@@ -26,47 +15,29 @@ import {
 export class SkyDocsTypeAliasDefinitionComponent {
 
   @Input()
-  public set config(value: TypeDocEntry) {
+  public set config(value: SkyDocsTypeAliasDefinition) {
     this._config = value;
     this.updateView();
   }
 
-  public get config(): TypeDocEntry {
+  public get config(): SkyDocsTypeAliasDefinition {
     return this._config;
   }
 
-  public description: string;
-
   public sourceCode: string;
 
-  public callSignature: TypeDocEntryChild;
-
-  private _config: TypeDocEntry;
+  private _config: SkyDocsTypeAliasDefinition;
 
   constructor(
-    private jsDocsService: SkyDocsJSDocsService,
     private formatService: SkyDocsTypeDefinitionsFormatService
   ) { }
 
   private updateView(): void {
 
     // Reset view properties when the config changes.
-    delete this.callSignature;
-    delete this.description;
     delete this.sourceCode;
 
-    const tags = this.jsDocsService.parseCommentTags(this.config?.comment);
-    this.description = tags.description;
-
-    this.sourceCode = this.formatService.parseTypeAliasSourceCodeSignature(this.config);
-
-    this.callSignature = (this.config?.type?.declaration?.signatures)
-      ? {
-        comment: this.config?.comment,
-        kindString: 'Call signature',
-        type: this.config?.type
-      }
-      : undefined;
+    this.sourceCode = this.formatService.getTypeAliasSourceCode(this.config);
   }
 
 }

@@ -1,38 +1,77 @@
-<ng-container *ngIf="hasParameters">
-  <h4
-    class="sky-docs-call-signature-definition-heading"
-  >
-    Parameters
-  </h4>
-  <sky-docs-parameter-definitions
-    [config]="config"
-  ></sky-docs-parameter-definitions>
-</ng-container>
+<div *ngIf="config"
+  class="sky-docs-call-signature-definition"
+>
+  <ng-container *ngIf="parameters">
+    <h4
+      class="sky-docs-call-signature-definition-heading"
+    >
+      Parameters
+    </h4>
+    <table
+      class="sky-docs-parameter-definitions"
+    >
+      <tbody>
+        <tr *ngFor="let parameter of parameters">
+          <th
+            class="sky-docs-parameter-definition-header"
+          >
+            <sky-code><span
+              [innerHtml]="parameter.formattedName | skyDocsTypeAnchorLinks:'no-code-tags'"
+            ></span></sky-code>
+          </th>
+          <td
+            class="sky-docs-parameter-definition-body"
+          >
+            <div *ngIf="parameter.description"
+              class="sky-docs-parameter-definition-description"
+            >
+              <sky-docs-safe-html *ngIf="parameter.description"
+                [innerHtml]="parameter.description | skyDocsTypeAnchorLinks | skyDocsMarkdown"
+              ></sky-docs-safe-html>
+            </div>
+            <div *ngIf="parameter.isOptional"
+              class="sky-docs-parameter-definition-label-optional"
+            >
+              Optional.
+              <ng-container *ngIf="parameter.defaultValue">
+                Default is
+                <sky-code><span
+                  [innerHtml]="parameter.defaultValue | skyDocsTypeAnchorLinks:'no-code-tags'"
+                ></span></sky-code>.
+              </ng-container>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </ng-container>
 
-<ng-container *ngIf="returnType">
-  <h4
-    class="sky-docs-call-signature-definition-heading"
-  >
-    Returns
-  </h4>
+  <ng-container *ngIf="returnTypeFormatted">
+    <h4
+      class="sky-docs-call-signature-definition-heading"
+    >
+      Returns
+    </h4>
 
-  <div
-    class="sky-docs-call-signature-definition-return-type"
-  >
-    <sky-code><span
-      [innerHtml]="returnType | skyDocsTypeAnchorLinks:'no-code-tags'"
-    ></span></sky-code>
-  </div>
-</ng-container>
+    <div
+      class="sky-docs-call-signature-definition-return-type"
+    >
+      <sky-code><span
+        [innerHtml]="returnTypeFormatted | skyDocsTypeAnchorLinks:'no-code-tags'"
+      ></span></sky-code>
+    </div>
+  </ng-container>
 
-<ng-container *ngIf="codeExample">
-  <h4 class="sky-docs-call-signature-definition-heading">
-    Example
-  </h4>
-  <sky-code-block
-    class="sky-docs-code-block"
-    [code]="codeExample"
-    [hideHeader]="true"
-    [languageType]="codeExampleLanguage"
-  ></sky-code-block>
-</ng-container>
+  <ng-container *ngIf="config.codeExample">
+    <h4 class="sky-docs-call-signature-definition-heading">
+      Example
+    </h4>
+    <sky-code-block
+      class="sky-docs-code-block"
+      [code]="config.codeExample"
+      [hideHeader]="true"
+      [languageType]="config.codeExampleLanguage"
+    ></sky-code-block>
+  </ng-container>
+
+</div>

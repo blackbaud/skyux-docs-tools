@@ -4,7 +4,12 @@ import {
 
 import {
   SkyDocsCallSignatureDefinition,
-  SkyDocsTypeDefinitions
+  SkyDocsEnumerationDefinition,
+  SkyDocsEnumerationMemberDefinition,
+  SkyDocsInterfaceDefinition,
+  SkyDocsInterfacePropertyDefinition,
+  SkyDocsTypeDefinitions,
+  SkyDocsTypeAliasDefinition
 } from './type-definitions';
 
 import {
@@ -13,7 +18,8 @@ import {
 
 import {
   TypeDocCallSignature,
-  TypeDocEntry, TypeDocEntryChild, TypeDocType
+  TypeDocComment,
+  TypeDocEntry, TypeDocEntryChild, TypeDocParameter, TypeDocType, TypeDocTypeParameter
 } from './typedoc-types';
 
 import {
@@ -24,17 +30,18 @@ import {
   SkyDocsTypeArgumentDefinition,
   SkyDocsClassDefinition,
   SkyDocsClassMethodDefinition,
-  SkyDocsTypeParameterDefinition
+  SkyDocsTypeParameterDefinition,
+  SkyDocsPipeDefinition
 } from './type-definitions';
 
-import { SkyDocsJSDocsService } from './jsdoc.service';
 import { SkyDocsCommentTags } from './comment-tags';
+
+import orderBy from 'lodash.orderby';
 
 @Injectable()
 export class SkyDocsTypeDefinitionsService {
 
   constructor(
-    private jsDocsService: SkyDocsJSDocsService,
     private typeDefinitionsProvider: SkyDocsTypeDefinitionsProvider
   ) { }
 
@@ -78,73 +85,73 @@ export class SkyDocsTypeDefinitionsService {
 
     typeDefinitions.forEach((item) => {
       const decorator = item.decorators && item.decorators[0].name;
-      // const kindString = item.kindString;
 
-      /*tslint:disable-next-line*/
       switch (decorator) {
         case 'Component':
-          types.components.push(this.parseDirectiveDefinition(item));
+          types.components.push(this.toDirectiveDefinition(item));
           break;
         case 'Directive':
-          types.directives.push(this.parseDirectiveDefinition(item));
+          types.directives.push(this.toDirectiveDefinition(item));
           break;
         case 'Injectable':
-          types.services.push(this.parseClassDefinition(item));
+          types.services.push(this.toClassDefinition(item));
           break;
-        // case 'NgModule':
-        //   // Don't document modules.
-        //   break;
-        // case 'Pipe':
-        //   types.pipes.push(item);
-        //   break;
-        // default:
-        //   switch (kindString) {
-        //     case 'Class':
-        //       types.classes.push(item);
-        //       break;
-        //     case 'Interface':
-        //       types.interfaces.push(item);
-        //       break;
-        //     case 'Enumeration':
-        //       types.enumerations.push(item);
-        //       break;
-        //     case 'Type alias':
-        //       types.typeAliases.push(item);
-        //       break;
-        //     default:
-        //       break;
-        //   }
+        case 'Pipe':
+          types.pipes.push(this.toPipeDefinition(item));
+          break;
+        case 'NgModule':
+          // Don't document modules.
+          break;
+        default:
+          const kindString = item.kindString;
+          switch (kindString) {
+            case 'Class':
+              types.classes.push(this.toClassDefinition(item));
+              break;
+            case 'Interface':
+              types.interfaces.push(this.toInterfaceDefinition(item));
+              break;
+            case 'Enumeration':
+              types.enumerations.push(this.toEnumerationDefinition(item));
+              break;
+            case 'Type alias':
+              types.typeAliases.push(this.toTypeAliasDefinition(item));
+              break;
+            default:
+              break;
+          }
       }
     });
 
     return types;
   }
 
-  private parseDirectiveDefinition(entry: TypeDocEntry): SkyDocsDirectiveDefinition {
-    const tags = this.jsDocsService.parseCommentTags(entry.comment);
-    const properties = this.parseClassProperties(entry);
-    console.log('Properties:', properties);
+  private toDirectiveDefinition(entry: TypeDocEntry): SkyDocsDirectiveDefinition {
+    const tags = this.getCommentTags(entry.comment);
+    const properties = this.getClassProperties(entry);
 
-    const directive: SkyDocsDirectiveDefinition = {
+    const definition: SkyDocsDirectiveDefinition = {
+      anchorId: entry.anchorId,
       name: entry.name,
       deprecationWarning: tags.deprecationWarning,
       description: tags.description,
       codeExample: tags.codeExample,
       codeExampleLanguage: tags.codeExampleLanguage,
-      selector: this.parseSelector(entry),
+      selector: this.getSelector(entry),
       inputProperties: properties?.filter(p => p.decorator.name === 'Input'),
       eventProperties: properties?.filter(p => p.decorator.name === 'Output')
     };
 
-    return directive;
+    return definition;
   }
 
-  private parseClassDefinition(entry: TypeDocEntry): SkyDocsClassDefinition {
-    const tags = this.jsDocsService.parseCommentTags(entry.comment);
-    const properties = this.parseClassProperties(entry);
-    const methods = this.parseClassMethods(entry);
+  private toClassDefinition(entry: TypeDocEntry): SkyDocsClassDefinition {
+    const tags = this.getCommentTags(entry.comment);
+    const properties = this.getClassProperties(entry);
+    const methods = this.getClassMethods(entry);
 
     const definition: SkyDocsClassDefinition = {
+      anchorId: entry.anchorId,
       name: entry.name,
       deprecationWarning: tags.deprecationWarning,
       description: tags.description,
@@ -157,7 +164,79 @@ export class SkyDocsTypeDefinitionsService {
     return definition;
   }
 
-  private parseSelector(entry: TypeDocEntry): string {
+  private toPipeDefinition(entry: TypeDocEntry): SkyDocsPipeDefinition {
+    const methods = this.getClassMethods(entry);
+    const transformMethod = methods.find(m => m.name === 'transform');
+    const tags = this.getCommentTags(entry.comment);
+
+    const definition: SkyDocsPipeDefinition = {
+      anchorId: entry.anchorId,
+      name: entry.name,
+      deprecationWarning: tags.deprecationWarning,
+      description: tags.description,
+      codeExample: tags.codeExample,
+      codeExampleLanguage: tags.codeExampleLanguage,
+      transformMethod
+    };
+
+    return definition;
+  }
+
+  private toInterfaceDefinition(entry: TypeDocEntry): SkyDocsInterfaceDefinition {
+    const tags = this.getCommentTags(entry.comment);
+    const properties = this.getInterfaceProperties(entry);
+
+    const definition: SkyDocsInterfaceDefinition = {
+      anchorId: entry.anchorId,
+      name: entry.name,
+      deprecationWarning: tags.deprecationWarning,
+      description: tags.description,
+      codeExample: tags.codeExample,
+      codeExampleLanguage: tags.codeExampleLanguage,
+      properties
+    };
+
+    return definition;
+  }
+
+  private toEnumerationDefinition(entry: TypeDocEntry): SkyDocsEnumerationDefinition {
+    const tags = this.getCommentTags(entry.comment);
+    const members = this.getEnumerationMembers(entry);
+
+    const definition: SkyDocsEnumerationDefinition = {
+      anchorId: entry.anchorId,
+      name: entry.name,
+      deprecationWarning: tags.deprecationWarning,
+      description: tags.description,
+      codeExample: tags.codeExample,
+      codeExampleLanguage: tags.codeExampleLanguage,
+      members
+    };
+
+    return definition;
+  }
+
+  private toTypeAliasDefinition(entry: TypeDocEntry): SkyDocsTypeAliasDefinition {
+    const tags = this.getCommentTags(entry.comment);
+
+    const definition: SkyDocsTypeAliasDefinition = {
+      anchorId: entry.anchorId,
+      name: entry.name,
+      deprecationWarning: tags.deprecationWarning,
+      description: tags.description,
+      codeExample: tags.codeExample,
+      codeExampleLanguage: tags.codeExampleLanguage,
+      type: this.getTypeDefinition({
+        comment: entry.comment,
+        type: entry.type
+      }),
+      typeParameters: this.getTypeParameterDefinitions(entry.typeParameter)
+    };
+
+    return definition;
+  }
+
+  private getSelector(entry: TypeDocEntry): string {
     if (!entry) {
       return '';
     }
@@ -168,64 +247,114 @@ export class SkyDocsTypeDefinitionsService {
       : decoratorSource.split('selector: \'')[1].split('\'')[0];
   }
 
-  private parseClassProperties(entry: TypeDocEntry): SkyDocsClassPropertyDefinition[] {
+  private getClassProperties(entry: TypeDocEntry): SkyDocsClassPropertyDefinition[] {
     if (!entry.children) {
       return [];
     }
 
-    const properties = entry.children
+    const definitions = entry.children
       .filter(child => child.kindString === 'Property' || child.kindString === 'Accessor')
       .map(child => {
-        const tags = this.jsDocsService.parseCommentTags(child.comment);
+        const tags = this.getCommentTags(child.comment);
 
-        const property: SkyDocsClassPropertyDefinition = {
+        const definition: SkyDocsClassPropertyDefinition = {
           codeExample: tags.codeExample,
           codeExampleLanguage: tags.codeExampleLanguage,
           decorator: {
-            name: this.parseDecorator(child)
+            name: this.getDecoratorName(child)
           },
-          defaultValue: this.parseDefaultValue(child, tags),
+          defaultValue: this.getDefaultValue(child, tags),
           deprecationWarning: tags.deprecationWarning,
           description: tags.description,
-          name: this.parsePropertyName(child),
+          name: this.getPropertyName(child),
           isOptional: this.isTypeOptional(child, tags),
-          type: this.parseTypeDefinition(child)
+          type: this.getTypeDefinition(child)
         };
 
-        return property;
+        return definition;
       });
 
-    return properties;
+    return orderBy(
+      definitions,
+      ['isOptional', 'name'],
+      ['asc', 'asc']
+    );
   }
 
-  private parseClassMethods(entry: TypeDocEntry): SkyDocsClassMethodDefinition[] {
+  private getClassMethods(entry: TypeDocEntry): SkyDocsClassMethodDefinition[] {
     if (!entry.children) {
       return [];
     }
 
     const methods = entry.children
-      .filter(child => child.kindString === 'Method')
+      .filter(child => child.kindString === 'Method' && /^ng/.test(child.name) === false)
       .map(child => {
         // Comments for methods are stored in a different location.
         const comment = child.signatures[0].comment;
-        const tags = this.jsDocsService.parseCommentTags(comment);
+        const tags = this.getCommentTags(comment);
 
         const method: SkyDocsClassMethodDefinition = {
           codeExample: tags.codeExample,
           codeExampleLanguage: tags.codeExampleLanguage,
           deprecationWarning: tags.deprecationWarning,
           description: tags.description,
-          name: this.parsePropertyName(child),
+          name: this.getPropertyName(child),
           isOptional: this.isTypeOptional(child, tags),
-          type: this.parseTypeDefinition(child),
-          parameters: [],
-          typeParameters: this.parseTypeParameterDefinitions(child.signatures[0])
+          type: this.getTypeDefinition(child),
+          parameters: this.getParameterDefinitions(child.signatures[0], tags),
+          typeParameters: this.getTypeParameterDefinitions(child.signatures[0].typeParameter)
         };
 
         return method;
       });
 
-    return methods;
+    return orderBy(
+      methods,
+      ['name'],
+      ['asc']
+    );
+  }
+
+  private getInterfaceProperties(entry: TypeDocEntry): SkyDocsInterfacePropertyDefinition[] {
+    if (!entry.children) {
+      return [];
+    }
+
+    const definitions = entry.children.map(child => {
+      const tags = this.getCommentTags(child.comment);
+      const definition: SkyDocsInterfacePropertyDefinition = {
+        codeExample: tags.codeExample,
+        codeExampleLanguage: tags.codeExampleLanguage,
+        deprecationWarning: tags.deprecationWarning,
+        description: tags.description,
+        name: this.getPropertyName(child),
+        isOptional: this.isTypeOptional(child, tags),
+        type: this.getTypeDefinition(child)
+      };
+
+      return definition;
+    });
+
+    return orderBy(
+      definitions,
+      ['isOptional', 'name'],
+      ['asc', 'asc']
+    );
+  }
+
+  private getEnumerationMembers(entry: TypeDocEntry): SkyDocsEnumerationMemberDefinition[] {
+    const definitions: SkyDocsEnumerationMemberDefinition[] = entry.children?.map(child => {
+      const tags = this.getCommentTags(child.comment);
+      const definition: SkyDocsEnumerationMemberDefinition = {
+        name: child.name,
+        codeExample: tags.codeExample,
+        codeExampleLanguage: tags.codeExampleLanguage,
+        deprecationWarning: tags.deprecationWarning,
+        description: tags.description
+      };
+      return definition;
+    });
+    return definitions;
   }
 
   private isTypeOptional(child: TypeDocEntryChild, tags: SkyDocsCommentTags): boolean {
@@ -252,11 +381,11 @@ export class SkyDocsTypeDefinitionsService {
     return true;
   }
 
-  private parseDecorator(child: TypeDocEntryChild): string {
+  private getDecoratorName(child: TypeDocEntryChild): string {
     return child.decorators && child.decorators[0] && child.decorators[0].name;
   }
 
-  private parsePropertyName(property: TypeDocEntryChild): string {
+  private getPropertyName(property: TypeDocEntryChild): string {
     const decorators = property.decorators && property.decorators[0];
     // Use the Input's bound property name, if found.
     // e.g. @Input('foobar')
@@ -265,28 +394,26 @@ export class SkyDocsTypeDefinitionsService {
       : property.name;
   }
 
-  private parseDefaultValue(child: TypeDocEntryChild, tags: SkyDocsCommentTags): string {
+  private getDefaultValue(child: TypeDocEntryChild, tags: SkyDocsCommentTags): string {
     return tags.defaultValue || child.defaultValue || '';
   }
 
-  private parseTypeDefinition(child: TypeDocEntryChild): SkyDocsTypeDefinition {
+  private getTypeDefinition(child: TypeDocEntryChild): SkyDocsTypeDefinition {
     let callSignature: any;
-
-    console.log('Parse:', child);
 
     const kindString = child.kindString;
     switch (kindString) {
       case 'Accessor':
         if (child.setSignature) {
-          return this.parseTypeDefinition(child.setSignature[0].parameters[0]);
+          return this.getTypeDefinition(child.setSignature[0].parameters[0]);
         } else {
-          return this.parseTypeDefinition(child.getSignature[0]);
+          return this.getTypeDefinition(child.getSignature[0]);
         }
 
       case 'Method':
         callSignature = {
-          parameters: this.parseParameterDefinitions(child.signatures[0]),
-          returnType: this.parseTypeDefinition(child.signatures[0])
+          parameters: this.getParameterDefinitions(child.signatures[0], this.getCommentTags(child.comment)),
+          returnType: this.getTypeDefinition(child.signatures[0])
         };
 
         return {
@@ -311,33 +438,44 @@ export class SkyDocsTypeDefinitionsService {
 
         // Union?
         if (child.type.types) {
-          definition.unionTypes = child.type.types.map(t => this.parseTypeDefinition({ type: t }));
+          definition.unionTypes = child.type.types.map(t => this.getTypeDefinition({ type: t }));
         }
 
         // Parse call signature types.
         if (child.type.type === 'reflection') {
-          definition.callSignature = this.parseCallSignatureDefinition(child);
+          if (child.type.declaration?.signatures) {
+            definition.callSignature = this.getCallSignatureDefinition(child);
+          } else {
+            const indexSignature = child.type.declaration.indexSignature[0];
+            definition.indexSignature = {
+              keyName: indexSignature.parameters[0].name,
+              type: this.getTypeDefinition(indexSignature)
+            };
+          }
         }
 
         if (child.type.typeArguments) {
-          definition.typeArguments = this.parseTypeArgumentDefinitions(child.type);
+          definition.typeArguments = this.getTypeArgumentDefinitions(child.type);
         }
 
         return definition;
     }
   }
 
-  private parseParameterDefinitions(callSignature: TypeDocCallSignature): SkyDocsParameterDefinition[] {
+  private getParameterDefinitions(
+    callSignature: TypeDocCallSignature,
+    parentTags: SkyDocsCommentTags
+  ): SkyDocsParameterDefinition[] {
     const parameters: SkyDocsParameterDefinition[] = callSignature.parameters?.map(p => {
-      const tags = this.jsDocsService.parseCommentTags(p.comment);
-      const defaultValue = this.parseDefaultValue(p, tags);
+      const tags = this.getParameterCommentTags(p, parentTags);
+      const defaultValue = this.getDefaultValue(p, tags);
       const parameter: SkyDocsParameterDefinition = {
         name: p.name,
         defaultValue,
         description: tags.description,
         isOptional: !!(defaultValue || this.isTypeOptional(p, tags)),
-        type: this.parseTypeDefinition(p),
-        typeArguments: this.parseTypeArgumentDefinitions(p.type)
+        type: this.getTypeDefinition(p),
+        typeArguments: this.getTypeArgumentDefinitions(p.type)
       };
       return parameter;
     });
@@ -345,7 +483,7 @@ export class SkyDocsTypeDefinitionsService {
     return parameters;
   }
 
-  private parseTypeArgumentDefinitions(typeConfig: TypeDocType): SkyDocsTypeArgumentDefinition[] {
+  private getTypeArgumentDefinitions(typeConfig: TypeDocType): SkyDocsTypeArgumentDefinition[] {
     if (!typeConfig || !typeConfig.typeArguments) {
       return;
     }
@@ -353,32 +491,128 @@ export class SkyDocsTypeDefinitionsService {
     return typeConfig.typeArguments.map((typeArgument) => {
       const definition: SkyDocsTypeArgumentDefinition = {
         name: typeArgument.elementType?.name || typeArgument.name,
-        type: this.parseTypeDefinition({ type: typeArgument })
+        type: this.getTypeDefinition({ type: typeArgument })
       };
       return definition;
     });
   }
 
-  private parseCallSignatureDefinition(child: TypeDocEntryChild): SkyDocsCallSignatureDefinition {
+  private getCallSignatureDefinition(child: TypeDocEntryChild): SkyDocsCallSignatureDefinition {
     const definition: SkyDocsCallSignatureDefinition = {
-      parameters: this.parseParameterDefinitions(child.type.declaration.signatures[0]),
-      returnType: this.parseTypeDefinition(child.type.declaration.signatures[0])
+      parameters: this.getParameterDefinitions(child.type.declaration.signatures[0], this.getCommentTags(child.comment)),
+      returnType: this.getTypeDefinition(child.type.declaration.signatures[0])
     };
     return definition;
   }
 
-  private parseTypeParameterDefinitions(signature: TypeDocCallSignature): SkyDocsTypeParameterDefinition[] {
-    if (!signature.typeParameter) {
+  private getTypeParameterDefinitions(typeParameters: TypeDocTypeParameter[]): SkyDocsTypeParameterDefinition[] {
+    if (!typeParameters) {
       return;
     }
 
-    return signature.typeParameter.map(typeParam => {
+    return typeParameters.map(typeParam => {
       const definition: SkyDocsTypeParameterDefinition = {
         name: typeParam.name,
-        type: (typeParam.type) ? this.parseTypeDefinition({ type: typeParam.type }) : undefined
+        type: (typeParam.type)
+          ? this.getTypeDefinition({
+            type: typeParam.type
+          })
+          : undefined
       };
       return definition;
     });
+  }
+
+  private getCommentTags(comment: TypeDocComment): SkyDocsCommentTags {
+    let codeExample: string;
+    let codeExampleLanguage: string = 'markup';
+    let deprecationWarning: string;
+    let defaultValue: string;
+    let description: string = '';
+
+    let parameters: {
+      name: string;
+      description: string
+    }[];
+
+    const extras: {
+      [key: string]: any
+    } = {};
+
+    if (comment) {
+      if (comment.tags) {
+        comment.tags.forEach(tag => {
+          switch (tag.tag) {
+            case 'deprecated':
+              deprecationWarning = tag.text.trim();
+              break;
+
+            case 'default':
+            case 'defaultvalue':
+            case 'defaultValue':
+              defaultValue = tag.text.trim();
+              break;
+
+            case 'example':
+              codeExample = tag.text.trim().split('```')[1].trim();
+              const language = codeExample.split('\n')[0];
+              if (language === 'markup' || language === 'typescript') {
+                codeExample = codeExample.slice(language.length).trim();
+                codeExampleLanguage = language;
+              }
+              break;
+
+            case 'param':
+              parameters = parameters || [];
+              parameters.push({
+                name: tag.param,
+                description: tag.text.trim()
+              });
+              break;
+
+            default:
+              extras[tag.tag] = tag.text;
+              break;
+          }
+        });
+      }
+
+      if (comment.shortText) {
+        description = comment.shortText;
+      } else if (comment.text) {
+        description = comment.text;
+      }
+    }
+
+    return {
+      codeExample,
+      codeExampleLanguage,
+      defaultValue,
+      deprecationWarning,
+      description,
+      extras,
+      parameters
+    };
+  }
+
+  /**
+   * Parameter descriptions are derived from the parent (function/method) comment.
+   */
+  private getParameterCommentTags(parameter: TypeDocParameter, parentTags: SkyDocsCommentTags): SkyDocsCommentTags {
+    const tags = this.getCommentTags(parameter.comment);
+    const paramTags = parentTags.parameters;
+    const tagParam = (paramTags) ? paramTags.find((param) => param.name === parameter.name) : undefined;
+
+    if (!tagParam || !tagParam.description) {
+      return tags;
+    }
+
+    return {
+      ...tags,
+      ...{
+        description: tagParam.description
+      }
+    };
   }
 
 }
