@@ -11,8 +11,17 @@ import {
   SkyMediaQueryService
 } from '@skyux/core';
 
-import { SkyDocsCallSignatureDefinition, SkyDocsClassPropertyDefinition } from './type-definitions';
-import { SkyDocsTypeDefinitionsFormatService } from './type-definitions-format.service';
+import {
+  SkyDocsCallSignatureDefinition
+} from './call-signature-definition';
+
+import {
+  SkyDocsClassPropertyDefinition
+} from './class-property-definition';
+
+import {
+  SkyDocsTypeDefinitionsFormatService
+} from './type-definitions-format.service';
 
 interface PropertyViewModel {
   callSignature: SkyDocsCallSignatureDefinition;
@@ -69,22 +78,18 @@ export class SkyDocsPropertyDefinitionsComponent implements OnInit {
   }
 
   private updateView(): void {
-    delete this.properties;
+    this.properties = this.config?.properties?.map(property => {
+      const vm: PropertyViewModel = {
+        defaultValue: this.formatService.escapeSpecialCharacters(property.defaultValue),
+        deprecationWarning: property.deprecationWarning,
+        description: property.description,
+        formattedName: this.formatService.getFormattedPropertyName(property),
+        isOptional: property.isOptional,
+        callSignature: property.type?.callSignature
+      };
 
-    if (this.config) {
-      this.properties = this.config?.properties?.map(property => {
-        const vm: PropertyViewModel = {
-          defaultValue: this.formatService.escapeSpecialCharacters(property.defaultValue),
-          deprecationWarning: property.deprecationWarning,
-          description: property.description,
-          formattedName: this.formatService.getFormattedPropertyName(property),
-          isOptional: property.isOptional,
-          callSignature: property.type?.callSignature
-        };
-
-        return vm;
-      });
-    }
+      return vm;
+    });
   }
 
 }

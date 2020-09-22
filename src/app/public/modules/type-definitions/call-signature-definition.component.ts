@@ -6,7 +6,7 @@ import {
 
 import {
   SkyDocsCallSignatureDefinition
-} from './type-definitions';
+} from './call-signature-definition';
 
 import {
   SkyDocsTypeDefinitionsFormatService

@@ -3,13 +3,68 @@ import {
 } from '@angular/core';
 
 import {
-  SkyDocsCallSignatureDefinition,
-  SkyDocsEnumerationDefinition,
-  SkyDocsEnumerationMemberDefinition,
-  SkyDocsInterfaceDefinition,
-  SkyDocsInterfacePropertyDefinition,
+  SkyDocsCallSignatureDefinition
+} from './call-signature-definition';
+
+import {
+  SkyDocsClassDefinition
+} from './class-definition';
+
+import {
+  SkyDocsClassPropertyDefinition
+} from './class-property-definition';
+
+import {
+  SkyDocsCommentTags
+} from './comment-tags';
+
+import {
+  SkyDocsDirectiveDefinition
+} from './directive-definition';
+
+import {
+  SkyDocsEnumerationDefinition
+} from './enumeration-definition';
+
+import {
+  SkyDocsEnumerationMemberDefinition
+} from './enumeration-member-definition';
+
+import {
+  SkyDocsInterfaceDefinition
+} from './interface-definition';
+
+import {
+  SkyDocsInterfacePropertyDefinition
+} from './interface-property-definition';
+
+import {
+  SkyDocsClassMethodDefinition
+} from './method-definition';
+
+import {
+  SkyDocsParameterDefinition
+} from './parameter-definition';
+
+import {
+  SkyDocsPipeDefinition
+} from './pipe-definition';
+
+import {
   SkyDocsTypeAliasDefinition
-} from './type-definitions';
+} from './type-alias-definition';
+
+import {
+  SkyDocsTypeArgumentDefinition
+} from './type-argument-definition';
+
+import {
+  SkyDocsTypeDefinition
+} from './type-definition';
+
+import {
+  SkyDocsTypeParameterDefinition
+} from './type-parameter-definition';
 
 import {
   TypeDocCallSignature,
@@ -20,22 +75,6 @@ import {
   TypeDocType,
   TypeDocTypeParameter
 } from './typedoc-types';
-
-import {
-  SkyDocsClassPropertyDefinition,
-  SkyDocsDirectiveDefinition,
-  SkyDocsTypeDefinition,
-  SkyDocsParameterDefinition,
-  SkyDocsTypeArgumentDefinition,
-  SkyDocsClassDefinition,
-  SkyDocsClassMethodDefinition,
-  SkyDocsTypeParameterDefinition,
-  SkyDocsPipeDefinition
-} from './type-definitions';
-
-import {
-  SkyDocsCommentTags
-} from './comment-tags';
 
 import orderBy from 'lodash.orderby';
 

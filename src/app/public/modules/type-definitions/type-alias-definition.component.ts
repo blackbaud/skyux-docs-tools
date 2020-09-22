@@ -3,8 +3,14 @@ import {
   Component,
   Input
 } from '@angular/core';
-import { SkyDocsTypeAliasDefinition } from './type-definitions';
-import { SkyDocsTypeDefinitionsFormatService } from './type-definitions-format.service';
+
+import {
+  SkyDocsTypeAliasDefinition
+} from './type-alias-definition';
+
+import {
+  SkyDocsTypeDefinitionsFormatService
+} from './type-definitions-format.service';
 
 @Component({
   selector: 'sky-docs-type-alias-definition',

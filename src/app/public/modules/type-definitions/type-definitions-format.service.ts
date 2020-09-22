@@ -3,17 +3,38 @@ import {
 } from '@angular/core';
 
 import {
-  SkyDocsCallSignatureDefinition,
-  SkyDocsClassMethodDefinition,
-  SkyDocsClassPropertyDefinition,
-  SkyDocsInterfaceDefinition,
-  SkyDocsParameterDefinition,
-  SkyDocsTypeAliasDefinition,
-  SkyDocsTypeDefinition,
-  SkyDocsTypeParameterDefinition
-} from './type-definitions';
+  SkyDocsCallSignatureDefinition
+} from './call-signature-definition';
 
-interface ParseFormattedTypeConfig {
+import {
+  SkyDocsClassPropertyDefinition
+} from './class-property-definition';
+
+import {
+  SkyDocsInterfaceDefinition
+} from './interface-definition';
+
+import {
+  SkyDocsClassMethodDefinition
+} from './method-definition';
+
+import {
+  SkyDocsParameterDefinition
+} from './parameter-definition';
+
+import {
+  SkyDocsTypeAliasDefinition
+} from './type-alias-definition';
+
+import {
+  SkyDocsTypeDefinition
+} from './type-definition';
+
+import {
+  SkyDocsTypeParameterDefinition
+} from './type-parameter-definition';
+
+interface GetFormattedTypeConfig {
   escapeSpecialCharacters: boolean;
 }
 
@@ -90,7 +111,7 @@ export class SkyDocsTypeDefinitionsFormatService {
    */
   public getFormattedParameterName(
     parameter: SkyDocsParameterDefinition,
-    config: ParseFormattedTypeConfig = {
+    config: GetFormattedTypeConfig = {
       escapeSpecialCharacters: true
     }
   ): string {
@@ -149,7 +170,7 @@ export class SkyDocsTypeDefinitionsFormatService {
    */
   public getFormattedType(
     type: SkyDocsTypeDefinition,
-    config: ParseFormattedTypeConfig = {
+    config: GetFormattedTypeConfig = {
       escapeSpecialCharacters: true
     }
   ): string {
@@ -171,64 +192,6 @@ export class SkyDocsTypeDefinitionsFormatService {
       formatted += '[]';
     }
 
-    // const kindString = item.kindString;
-    // switch (kindString) {
-    //   case 'Method':
-    //     const typeArguments = this.parseTypeArguments(item.type);
-    //     const returnType = this.getFormattedType(item.signatures[0], config) || 'void';
-    //     let params: string = '';
-    //     if (item.signatures[0].parameters) {
-    //       params += '\n  ';
-    //       params += item.signatures[0].parameters
-    //         .map(p => this.parseFormattedParameterName(p, config))
-    //         .join(',\n  ');
-    //       params += '\n';
-    //     }
-    //     formatted = `public ${item.name}${typeArguments}(${params}): ${returnType}`;
-    //     break;
-
-    //   case 'Call signature':
-    //   case 'Parameter':
-    //   case 'Property':
-    //   default:
-    //     const typeConfig = item.type;
-    //     // Parse call signature types.
-    //     if (typeConfig.type === 'reflection') {
-    //       return this.parseFormattedCallSignature(typeConfig, config);
-    //     }
-
-    //     // Parse union types.
-    //     if (typeConfig.type === 'union') {
-    //       return this.parseUnionType(typeConfig);
-    //     }
-
-    //     // Parse primitive types.
-    //     if (typeConfig.name) {
-    //       formatted = typeConfig.name;
-    //     } else if (typeConfig.elementType) {
-    //       formatted = typeConfig.elementType.name;
-    //     } else if (typeConfig.type === 'stringLiteral') {
-    //       formatted = `'${typeConfig.value}'`;
-    //     }
-
-    //     formatted += this.parseTypeArguments(item.type);
-
-    //     // Format array types.
-    //     if (typeConfig.type === 'array') {
-    //       formatted += '[]';
-    //     }
-
-    //     break;
-
-    //   case 'Accessor':
-    //     if (item.setSignature) {
-    //       formatted = this.getFormattedType(item.setSignature[0].parameters[0], config);
-    //     } else if (item.getSignature) {
-    //       formatted = this.getFormattedType(item.getSignature[0], config);
-    //     }
-    //     break;
-    // }
-
     if (config.escapeSpecialCharacters) {
       return this.escapeSpecialCharacters(formatted);
     }
@@ -242,7 +205,7 @@ export class SkyDocsTypeDefinitionsFormatService {
 
   private getFormattedCallSignature(
     callSignature: SkyDocsCallSignatureDefinition,
-    config: ParseFormattedTypeConfig = {
+    config: GetFormattedTypeConfig = {
       escapeSpecialCharacters: true
     }
   ): string {

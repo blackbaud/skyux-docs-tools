@@ -4,7 +4,9 @@ import {
   Input
 } from '@angular/core';
 
-import { SkyDocsEnumerationDefinition } from './type-definitions';
+import {
+  SkyDocsEnumerationDefinition
+} from './enumeration-definition';
 
 @Component({
   selector: 'sky-docs-enumeration-definition',

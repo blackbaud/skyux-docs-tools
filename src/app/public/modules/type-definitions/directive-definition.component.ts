@@ -6,7 +6,7 @@ import {
 
 import {
   SkyDocsDirectiveDefinition
-} from './type-definitions';
+} from './directive-definition';
 
 @Component({
   selector: 'sky-docs-directive-definition',

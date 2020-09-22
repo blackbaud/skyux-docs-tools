@@ -12,13 +12,16 @@ import {
 } from '@skyux/core';
 
 import {
-  SkyDocsCallSignatureDefinition,
+  SkyDocsCallSignatureDefinition
+} from './call-signature-definition';
+
+import {
   SkyDocsClassMethodDefinition
-} from './type-definitions';
+} from './method-definition';
 
-import { SkyDocsTypeDefinitionsFormatService } from './type-definitions-format.service';
-
-// import { SkyDocsTypeDefinitionsFormatService } from './type-definitions-format.service';
+import {
+  SkyDocsTypeDefinitionsFormatService
+} from './type-definitions-format.service';
 
 interface MethodViewModel {
   deprecationWarning: string;
@@ -54,7 +57,9 @@ export class SkyDocsMethodDefinitionsComponent implements OnInit {
 
   public methods: MethodViewModel[];
 
-  private _config: { methods?: SkyDocsClassMethodDefinition[]; };
+  private _config: {
+    methods?: SkyDocsClassMethodDefinition[];
+  };
 
   constructor(
     private changeDetector: ChangeDetectorRef,

@@ -4,7 +4,9 @@ import {
   Input
 } from '@angular/core';
 
-import { SkyDocsPipeDefinition } from './type-definitions';
+import {
+  SkyDocsPipeDefinition
+} from './pipe-definition';
 
 @Component({
   selector: 'sky-docs-pipe-definition',

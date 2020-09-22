@@ -6,7 +6,7 @@ import {
 
 import {
   SkyDocsClassDefinition
-} from './type-definitions';
+} from './class-definition';
 
 @Component({
   selector: 'sky-docs-class-definition',
