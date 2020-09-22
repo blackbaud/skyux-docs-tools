@@ -59,65 +59,52 @@ describe('Call signature definition', () => {
     expect(fixture.componentInstance.callSignatureDefinitionRef.config).toBeUndefined();
   });
 
-  it('should add links to method return types', fakeAsync(() => {
+  it('should add links to types for method return types', fakeAsync(() => {
     fixture.componentInstance.config = {
-      name: 'getFoo',
-      kindString: 'Method',
-      signatures: [{
-        name: 'getFoo',
-        kindString: 'Call signature',
-        comment: {
-          shortText: 'Returns a FooUser.'
-        },
-        type: {
-          type: 'reference',
-          name: 'FooUser'
-        }
-      }]
-    };
-
-    fixture.detectChanges();
-    tick();
-
-    const descriptionElement = fixture.nativeElement.querySelector(
-      '.sky-docs-call-signature-definition-return-type'
-    );
-
-    expect(descriptionElement.innerHTML).toContain(
-      '<a class="sky-docs-anchor-link" href="#foo-user">FooUser</a>'
-    );
-  }));
-
-  it('should add links to arrow function return types', fakeAsync(() => {
-    fixture.componentInstance.config = {
-      name: 'getFoo',
-      kindString: 'Call signature',
-      type: {
-        type: 'reflection',
-        declaration: {
-          signatures: [{
-            name: 'getFoo',
-            kindString: 'Call signature',
-            comment: {
-              shortText: 'Returns a FooUser.'
-            },
-            type: {
-              type: 'reference',
-              name: 'FooUser'
-            }
-          }]
-        }
+      parameters: [],
+      returnType: {
+        type: 'reference',
+        name: 'FooUser'
       }
     };
 
     fixture.detectChanges();
     tick();
 
-    const descriptionElement = fixture.nativeElement.querySelector(
+    const element = fixture.nativeElement.querySelector(
       '.sky-docs-call-signature-definition-return-type'
     );
 
-    expect(descriptionElement.innerHTML).toContain(
+    expect(element.innerHTML).toContain(
+      '<a class="sky-docs-anchor-link" href="#foo-user">FooUser</a>'
+    );
+  }));
+
+  it('should add links to types within parameter descriptions', fakeAsync(() => {
+    fixture.componentInstance.config = {
+      parameters: [{
+        description: 'The FooUser to save.',
+        name: 'saveUser',
+        isOptional: true,
+        type: {
+          type: 'reference',
+          name: 'FooUser'
+        }
+      }],
+      returnType: {
+        type: 'intrinsic',
+        name: 'void'
+      }
+    };
+
+    fixture.detectChanges();
+    tick();
+
+    const element = fixture.nativeElement.querySelector(
+      '.sky-docs-parameter-definition-description'
+    );
+
+    expect(element.innerHTML).toContain(
       '<a class="sky-docs-anchor-link" href="#foo-user">FooUser</a>'
     );
   }));

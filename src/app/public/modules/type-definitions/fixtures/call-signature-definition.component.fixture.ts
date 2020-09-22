@@ -4,12 +4,12 @@ import {
 } from '@angular/core';
 
 import {
-  SkyDocsCallSignatureDefinitionComponent
-} from '../call-signature-definition.component';
+  SkyDocsCallSignatureDefinition
+} from '../call-signature-definition';
 
 import {
-  TypeDocEntryChild
-} from '../typedoc-types';
+  SkyDocsCallSignatureDefinitionComponent
+} from '../call-signature-definition.component';
 
 @Component({
   selector: 'call-signature-definition-test',
@@ -17,7 +17,7 @@ import {
 })
 export class CallSignatureDefinitionFixtureComponent {
 
-  public config: TypeDocEntryChild;
+  public config: SkyDocsCallSignatureDefinition;
 
   @ViewChild(SkyDocsCallSignatureDefinitionComponent)
   public callSignatureDefinitionRef: SkyDocsCallSignatureDefinitionComponent;

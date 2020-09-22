@@ -35,10 +35,6 @@ import {
 } from './property-definitions.component.fixture';
 
 import {
-  ParameterDefinitionsFixtureComponent
-} from './parameter-definitions.component.fixture';
-
-import {
   TypeAliasDefinitionFixtureComponent
 } from './type-alias-definition.component.fixture';
 
@@ -57,7 +53,6 @@ import {
     DirectiveDefinitionFixtureComponent,
     EnumerationDefinitionFixtureComponent,
     InterfaceDefinitionFixtureComponent,
-    ParameterDefinitionsFixtureComponent,
     PropertyDefinitionsFixtureComponent,
     TypeAliasDefinitionFixtureComponent,
     TypeAnchorLinksPipeFixtureComponent
@@ -68,7 +63,6 @@ import {
     DirectiveDefinitionFixtureComponent,
     EnumerationDefinitionFixtureComponent,
     InterfaceDefinitionFixtureComponent,
-    ParameterDefinitionsFixtureComponent,
     PropertyDefinitionsFixtureComponent,
     TypeAliasDefinitionFixtureComponent,
     TypeAnchorLinksPipeFixtureComponent

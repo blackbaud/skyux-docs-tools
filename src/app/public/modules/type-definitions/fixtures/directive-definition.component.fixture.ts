@@ -4,12 +4,12 @@ import {
 } from '@angular/core';
 
 import {
-  SkyDocsDirectiveDefinitionComponent
-} from '../directive-definition.component';
+  SkyDocsDirectiveDefinition
+} from '../directive-definition';
 
 import {
-  TypeDocEntry
-} from '../typedoc-types';
+  SkyDocsDirectiveDefinitionComponent
+} from '../directive-definition.component';
 
 @Component({
   selector: 'directive-definition-test',
@@ -17,7 +17,7 @@ import {
 })
 export class DirectiveDefinitionFixtureComponent {
 
-  public config: TypeDocEntry;
+  public config: SkyDocsDirectiveDefinition;
 
   @ViewChild(SkyDocsDirectiveDefinitionComponent)
   public directiveDefinitionRef: SkyDocsDirectiveDefinitionComponent;

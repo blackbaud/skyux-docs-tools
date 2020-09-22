@@ -4,12 +4,12 @@ import {
 } from '@angular/core';
 
 import {
-  SkyDocsClassDefinitionComponent
-} from '../class-definition.component';
+  SkyDocsClassDefinition
+} from '../class-definition';
 
 import {
-  TypeDocEntry
-} from '../typedoc-types';
+  SkyDocsClassDefinitionComponent
+} from '../class-definition.component';
 
 @Component({
   selector: 'class-definition-test',
@@ -17,7 +17,7 @@ import {
 })
 export class ClassDefinitionFixtureComponent {
 
-  public config: TypeDocEntry;
+  public config: SkyDocsClassDefinition;
 
   @ViewChild(SkyDocsClassDefinitionComponent)
   public classDefinitionRef: SkyDocsClassDefinitionComponent;
