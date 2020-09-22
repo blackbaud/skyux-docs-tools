@@ -81,25 +81,6 @@ import orderBy from 'lodash.orderby';
 @Injectable()
 export class SkyDocsTypeDocAdapterService {
 
-  public toDirectiveDefinition(entry: TypeDocEntry): SkyDocsDirectiveDefinition {
-    const tags = this.getCommentTags(entry.comment);
-    const properties = this.getClassProperties(entry);
-
-    const definition: SkyDocsDirectiveDefinition = {
-      anchorId: entry.anchorId,
-      codeExample: tags.codeExample,
-      codeExampleLanguage: tags.codeExampleLanguage,
-      deprecationWarning: tags.deprecationWarning,
-      description: tags.description,
-      eventProperties: properties?.filter(p => p.decorator.name === 'Output'),
-      inputProperties: properties?.filter(p => p.decorator.name === 'Input'),
-      name: entry.name,
-      selector: this.getSelector(entry)
-    };
-
-    return definition;
-  }
-
   public toClassDefinition(entry: TypeDocEntry): SkyDocsClassDefinition {
     const tags = this.getCommentTags(entry.comment);
     const properties = this.getClassProperties(entry);
@@ -119,19 +100,37 @@ export class SkyDocsTypeDocAdapterService {
     return definition;
   }
 
-  public toPipeDefinition(entry: TypeDocEntry): SkyDocsPipeDefinition {
-    const methods = this.getClassMethods(entry);
-    const transformMethod = methods.find(m => m.name === 'transform');
+  public toDirectiveDefinition(entry: TypeDocEntry): SkyDocsDirectiveDefinition {
     const tags = this.getCommentTags(entry.comment);
+    const properties = this.getClassProperties(entry);
 
-    const definition: SkyDocsPipeDefinition = {
+    const definition: SkyDocsDirectiveDefinition = {
       anchorId: entry.anchorId,
       codeExample: tags.codeExample,
       codeExampleLanguage: tags.codeExampleLanguage,
       deprecationWarning: tags.deprecationWarning,
       description: tags.description,
+      eventProperties: properties?.filter(p => p.decorator.name === 'Output'),
+      inputProperties: properties?.filter(p => p.decorator.name === 'Input'),
       name: entry.name,
-      transformMethod
+      selector: this.getSelector(entry)
+    };
+
+    return definition;
+  }
+
+  public toEnumerationDefinition(entry: TypeDocEntry): SkyDocsEnumerationDefinition {
+    const tags = this.getCommentTags(entry.comment);
+    const members = this.getEnumerationMembers(entry);
+
+    const definition: SkyDocsEnumerationDefinition = {
+      anchorId: entry.anchorId,
+      codeExample: tags.codeExample,
+      codeExampleLanguage: tags.codeExampleLanguage,
+      deprecationWarning: tags.deprecationWarning,
+      description: tags.description,
+      members,
+      name: entry.name
     };
 
     return definition;
@@ -154,18 +153,19 @@ export class SkyDocsTypeDocAdapterService {
     return definition;
   }
 
-  public toEnumerationDefinition(entry: TypeDocEntry): SkyDocsEnumerationDefinition {
+  public toPipeDefinition(entry: TypeDocEntry): SkyDocsPipeDefinition {
+    const methods = this.getClassMethods(entry);
+    const transformMethod = methods.find(m => m.name === 'transform');
     const tags = this.getCommentTags(entry.comment);
-    const members = this.getEnumerationMembers(entry);
 
-    const definition: SkyDocsEnumerationDefinition = {
+    const definition: SkyDocsPipeDefinition = {
       anchorId: entry.anchorId,
       codeExample: tags.codeExample,
       codeExampleLanguage: tags.codeExampleLanguage,
       deprecationWarning: tags.deprecationWarning,
       description: tags.description,
-      members,
-      name: entry.name
+      name: entry.name,
+      transformMethod
     };
 
     return definition;
