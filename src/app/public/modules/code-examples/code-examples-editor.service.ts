@@ -183,7 +183,7 @@ export class AppComponent {
   ) {
     if (themeSvc) {
       const themeSettings = new SkyThemeSettings(
-      SkyTheme.presets[${theme === SkyDocsCodeExampleTheme.Modern ? `'modern'` : `'default'`}],
+      SkyTheme.presets['${theme === SkyDocsCodeExampleTheme.Modern ? 'modern' : 'default'}'],
       SkyThemeMode.presets.light
     );
 
