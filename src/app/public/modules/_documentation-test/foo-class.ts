@@ -6,6 +6,18 @@ import {
   FooUser
 } from './foo-user';
 
+export interface FooInitArgs {
+  /**
+   * The foo of the init.
+   */
+  foo: FooUser;
+  /**
+   * The string of the init.
+   */
+  bar: string;
+}
+
+
 /**
  * This is the description for FooClass.
  */
@@ -44,5 +56,12 @@ export class FooClass {
   public getEmail(locale: string = 'en-US'): string {
     return 'email@domain.com';
   }
+
+  /**
+   * This is the init function.
+   * @param args The init args.
+   * - `args.foo` This defaults to 'bar'.
+   */
+  public init(args: FooInitArgs): void { }
 
 }

@@ -15,9 +15,7 @@
 
   <sky-docs-property-definitions *ngIf="config.members"
     propertyType="Member"
-    [config]="{
-      properties: config.members
-    }"
+    [config]="{ properties: config.members }"
     [showOptionalStatus]="false"
   ></sky-docs-property-definitions>
 </div>

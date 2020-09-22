@@ -62,6 +62,8 @@ export class SkyDocsTypeDefinitionsService {
 
     typeDefinitions.forEach((item) => {
       const decorator = item.decorators && item.decorators[0].name;
+      const kindString = item.kindString;
+
       switch (decorator) {
         case 'Component':
           types.components.push(this.adapter.toDirectiveDefinition(item));
@@ -72,14 +74,14 @@ export class SkyDocsTypeDefinitionsService {
         case 'Injectable':
           types.services.push(this.adapter.toClassDefinition(item));
           break;
-        case 'Pipe':
-          types.pipes.push(this.adapter.toPipeDefinition(item));
-          break;
         case 'NgModule':
           // Don't document modules.
           break;
+        case 'Pipe':
+          types.pipes.push(this.adapter.toPipeDefinition(item));
+          break;
         default:
-          switch (item.kindString) {
+          switch (kindString) {
             case 'Class':
               types.classes.push(this.adapter.toClassDefinition(item));
               break;

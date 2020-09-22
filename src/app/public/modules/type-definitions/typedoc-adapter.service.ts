@@ -87,14 +87,14 @@ export class SkyDocsTypeDocAdapterService {
 
     const definition: SkyDocsDirectiveDefinition = {
       anchorId: entry.anchorId,
-      name: entry.name,
-      deprecationWarning: tags.deprecationWarning,
-      description: tags.description,
       codeExample: tags.codeExample,
       codeExampleLanguage: tags.codeExampleLanguage,
-      selector: this.getSelector(entry),
+      deprecationWarning: tags.deprecationWarning,
+      description: tags.description,
+      eventProperties: properties?.filter(p => p.decorator.name === 'Output'),
       inputProperties: properties?.filter(p => p.decorator.name === 'Input'),
-      eventProperties: properties?.filter(p => p.decorator.name === 'Output')
+      name: entry.name,
+      selector: this.getSelector(entry)
     };
 
     return definition;
@@ -107,12 +107,12 @@ export class SkyDocsTypeDocAdapterService {
 
     const definition: SkyDocsClassDefinition = {
       anchorId: entry.anchorId,
-      name: entry.name,
-      deprecationWarning: tags.deprecationWarning,
-      description: tags.description,
       codeExample: tags.codeExample,
       codeExampleLanguage: tags.codeExampleLanguage,
+      deprecationWarning: tags.deprecationWarning,
+      description: tags.description,
       methods,
+      name: entry.name,
       properties
     };
 
@@ -126,11 +126,11 @@ export class SkyDocsTypeDocAdapterService {
 
     const definition: SkyDocsPipeDefinition = {
       anchorId: entry.anchorId,
-      name: entry.name,
-      deprecationWarning: tags.deprecationWarning,
-      description: tags.description,
       codeExample: tags.codeExample,
       codeExampleLanguage: tags.codeExampleLanguage,
+      deprecationWarning: tags.deprecationWarning,
+      description: tags.description,
+      name: entry.name,
       transformMethod
     };
 
@@ -143,11 +143,11 @@ export class SkyDocsTypeDocAdapterService {
 
     const definition: SkyDocsInterfaceDefinition = {
       anchorId: entry.anchorId,
-      name: entry.name,
-      deprecationWarning: tags.deprecationWarning,
-      description: tags.description,
       codeExample: tags.codeExample,
       codeExampleLanguage: tags.codeExampleLanguage,
+      deprecationWarning: tags.deprecationWarning,
+      description: tags.description,
+      name: entry.name,
       properties
     };
 
@@ -160,12 +160,12 @@ export class SkyDocsTypeDocAdapterService {
 
     const definition: SkyDocsEnumerationDefinition = {
       anchorId: entry.anchorId,
-      name: entry.name,
-      deprecationWarning: tags.deprecationWarning,
-      description: tags.description,
       codeExample: tags.codeExample,
       codeExampleLanguage: tags.codeExampleLanguage,
-      members
+      deprecationWarning: tags.deprecationWarning,
+      description: tags.description,
+      members,
+      name: entry.name
     };
 
     return definition;
@@ -175,11 +175,11 @@ export class SkyDocsTypeDocAdapterService {
     const tags = this.getCommentTags(entry.comment);
     const definition: SkyDocsTypeAliasDefinition = {
       anchorId: entry.anchorId,
-      name: entry.name,
-      deprecationWarning: tags.deprecationWarning,
-      description: tags.description,
       codeExample: tags.codeExample,
       codeExampleLanguage: tags.codeExampleLanguage,
+      deprecationWarning: tags.deprecationWarning,
+      description: tags.description,
+      name: entry.name,
       type: this.getTypeDefinition({
         comment: entry.comment,
         type: entry.type
@@ -220,8 +220,8 @@ export class SkyDocsTypeDocAdapterService {
           defaultValue: this.getDefaultValue(child, tags),
           deprecationWarning: tags.deprecationWarning,
           description: tags.description,
-          name: this.getPropertyName(child),
           isOptional: this.isTypeOptional(child, tags),
+          name: this.getPropertyName(child),
           type: this.getTypeDefinition(child)
         };
 
@@ -279,8 +279,8 @@ export class SkyDocsTypeDocAdapterService {
         codeExampleLanguage: tags.codeExampleLanguage,
         deprecationWarning: tags.deprecationWarning,
         description: tags.description,
-        name: this.getPropertyName(child),
         isOptional: this.isTypeOptional(child, tags),
+        name: this.getPropertyName(child),
         type: this.getTypeDefinition(child)
       };
 
@@ -298,11 +298,11 @@ export class SkyDocsTypeDocAdapterService {
     const definitions: SkyDocsEnumerationMemberDefinition[] = entry.children?.map(child => {
       const tags = this.getCommentTags(child.comment);
       const definition: SkyDocsEnumerationMemberDefinition = {
-        name: child.name,
         codeExample: tags.codeExample,
         codeExampleLanguage: tags.codeExampleLanguage,
         deprecationWarning: tags.deprecationWarning,
-        description: tags.description
+        description: tags.description,
+        name: child.name
       };
       return definition;
     });
@@ -422,16 +422,15 @@ export class SkyDocsTypeDocAdapterService {
       const tags = this.getParameterCommentTags(p, parentTags);
       const defaultValue = this.getDefaultValue(p, tags);
       const parameter: SkyDocsParameterDefinition = {
-        name: p.name,
         defaultValue,
         description: tags.description,
         isOptional: !!(defaultValue || this.isTypeOptional(p, tags)),
+        name: p.name,
         type: this.getTypeDefinition(p),
         typeArguments: this.getTypeArgumentDefinitions(p.type)
       };
       return parameter;
     });
-
     return parameters;
   }
 

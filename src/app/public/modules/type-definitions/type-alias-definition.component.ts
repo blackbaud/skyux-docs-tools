@@ -39,10 +39,6 @@ export class SkyDocsTypeAliasDefinitionComponent {
   ) { }
 
   private updateView(): void {
-
-    // Reset view properties when the config changes.
-    delete this.sourceCode;
-
     this.sourceCode = this.formatService.getTypeAliasSourceCode(this.config);
   }
 

@@ -42,28 +42,6 @@ interface GetFormattedTypeConfig {
 export class SkyDocsTypeDefinitionsFormatService {
 
   /**
-   * Returns an HTML-formatted representation of the provided type alias config.
-   */
-  public getTypeAliasSourceCode(definition: SkyDocsTypeAliasDefinition): string {
-    const typeParameters = this.getFormattedTypeParameters(definition.typeParameters);
-    let signature: string = `type ${definition.name}${typeParameters} = `;
-    if (definition.type.callSignature) {
-      signature += this.getFormattedCallSignature(definition.type.callSignature, {
-        escapeSpecialCharacters: false
-      });
-    } else if (definition.type.indexSignature) {
-      const indexSignature = definition.type.indexSignature;
-      const type = this.getFormattedType(indexSignature.type, {
-        escapeSpecialCharacters: false
-      });
-      signature += `{\n  [${indexSignature.keyName}: string]: ${type};\n}`;
-    } else if (definition.type.type === 'union') {
-      signature += this.getFormattedUnion(definition.type);
-    }
-    return signature;
-  }
-
-  /**
    * Returns an HTML-formatted representation of the provided interface config.
    */
   public getInterfaceSourceCode(definition: SkyDocsInterfaceDefinition): string {
@@ -104,6 +82,29 @@ export class SkyDocsTypeDefinitionsFormatService {
     }
 
     return `public ${definition.name}${typeArguments}(${params}): ${returnType}`;
+  }
+
+  /**
+   * Returns an HTML-formatted representation of the provided type alias config.
+   */
+  public getTypeAliasSourceCode(definition: SkyDocsTypeAliasDefinition): string {
+    const typeParameters = this.getFormattedTypeParameters(definition.typeParameters);
+
+    let signature = `type ${definition.name}${typeParameters} = `;
+    if (definition.type.callSignature) {
+      signature += this.getFormattedCallSignature(definition.type.callSignature, {
+        escapeSpecialCharacters: false
+      });
+    } else if (definition.type.indexSignature) {
+      const indexSignature = definition.type.indexSignature;
+      const type = this.getFormattedType(indexSignature.type, {
+        escapeSpecialCharacters: false
+      });
+      signature += `{\n  [${indexSignature.keyName}: string]: ${type};\n}`;
+    } else if (definition.type.type === 'union') {
+      signature += this.getFormattedUnion(definition.type);
+    }
+    return signature;
   }
 
   /**

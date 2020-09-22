@@ -62,7 +62,9 @@ export class SkyDocsPropertyDefinitionsComponent implements OnInit {
 
   public properties: PropertyViewModel[] = [];
 
-  private _config: { properties?: SkyDocsClassPropertyDefinition[]; };
+  private _config: {
+    properties?: SkyDocsClassPropertyDefinition[];
+  };
 
   constructor(
     private changeDetector: ChangeDetectorRef,
@@ -80,12 +82,12 @@ export class SkyDocsPropertyDefinitionsComponent implements OnInit {
   private updateView(): void {
     this.properties = this.config?.properties?.map(property => {
       const vm: PropertyViewModel = {
+        callSignature: property.type?.callSignature,
         defaultValue: this.formatService.escapeSpecialCharacters(property.defaultValue),
         deprecationWarning: property.deprecationWarning,
         description: property.description,
         formattedName: this.formatService.getFormattedPropertyName(property),
-        isOptional: property.isOptional,
-        callSignature: property.type?.callSignature
+        isOptional: property.isOptional
       };
 
       return vm;

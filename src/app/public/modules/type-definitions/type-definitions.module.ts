@@ -59,9 +59,9 @@ import {
   SkyDocsInterfaceDefinitionComponent
 } from './interface-definition.component';
 
-// import {
-//   SkyDocsJSDocsService
-// } from './jsdoc.service';
+import {
+  SkyDocsMethodDefinitionsComponent
+} from './method-definitions.component';
 
 import {
   SkyDocsPipeDefinitionComponent
@@ -98,7 +98,6 @@ import {
 import {
   SkyDocsTypeDocAdapterService
 } from './typedoc-adapter.service';
-import { SkyDocsMethodDefinitionsComponent } from './method-definitions.component';
 
 @NgModule({
   imports: [

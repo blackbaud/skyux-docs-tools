@@ -52,11 +52,6 @@ export class SkyDocsCallSignatureDefinitionComponent {
   ) { }
 
   private updateView(): void {
-
-    // Reset view properties when the config changes.
-    delete this.parameters;
-    delete this.returnTypeFormatted;
-
     this.parameters = this.config?.parameters?.map(p => {
       const vm: ParameterViewModel = {
         defaultValue: p.defaultValue,
