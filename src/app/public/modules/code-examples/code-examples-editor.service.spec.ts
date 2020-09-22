@@ -42,7 +42,7 @@ describe('Code examples editor service', () => {
     expect(spyArgs[0].files['src/app/app.module.ts']).toContain('SkyThemeService');
   });
 
-  it('should SkyTheme to default when theme property is set to Default', () => {
+  it('should set SkyTheme to default when theme property is set to Default', () => {
     const service = new SkyDocsCodeExamplesEditorService();
     const stackblitzSpy = spyOn(StackBlitzSDK, 'openProject').and.callFake(() => {});
     const codeExample: SkyDocsCodeExample = {
