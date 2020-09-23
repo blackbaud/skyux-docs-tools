@@ -1,7 +1,6 @@
 import {
   Component,
-  QueryList,
-  ViewChildren
+  ViewChild
 } from '@angular/core';
 
 import {
@@ -22,7 +21,7 @@ export class CodeExampleFixtureComponent {
 
   public theme: string;
 
-  @ViewChildren(SkyDocsCodeExampleComponent)
-  public codeExampleComponents: QueryList<SkyDocsCodeExampleComponent>;
+  @ViewChild(SkyDocsCodeExampleComponent)
+  public codeExampleComponents: SkyDocsCodeExampleComponent;
 
 }

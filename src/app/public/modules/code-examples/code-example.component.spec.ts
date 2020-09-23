@@ -49,7 +49,7 @@ describe('Code example component', () => {
     fixture = TestBed.createComponent(CodeExampleFixtureComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-    codeExampleComponent = component.codeExampleComponents.first;
+    codeExampleComponent = component.codeExampleComponents;
   });
 
   it('should default theme property to default', () => {
