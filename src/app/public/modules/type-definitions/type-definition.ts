@@ -11,10 +11,6 @@ import {
  */
 export interface SkyDocsTypeDefinition {
 
-  type: 'array' | 'intrinsic' | 'reference' | 'reflection' | 'stringLiteral' | 'typeParameter' | 'union' | 'unknown';
-
-  name: string;
-
   /**
    * Used by method, function, and arrow function types.
    */
@@ -28,14 +24,18 @@ export interface SkyDocsTypeDefinition {
     type: SkyDocsTypeDefinition;
   };
 
-  /**
-   * The types that compose a union type.
-   */
-  unionTypes?: SkyDocsTypeDefinition[];
+  name?: string;
+
+  type?: 'array' | 'intrinsic' | 'reference' | 'reflection' | 'stringLiteral' | 'typeParameter' | 'union' | 'unknown';
 
   /**
    * Describes any type arguments, e.g. `<T, F>`.
    */
   typeArguments?: SkyDocsTypeArgumentDefinition[];
+
+  /**
+   * The types that compose a union type.
+   */
+  unionTypes?: SkyDocsTypeDefinition[];
 
 }

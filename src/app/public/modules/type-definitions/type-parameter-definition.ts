@@ -6,6 +6,6 @@ export interface SkyDocsTypeParameterDefinition {
 
   name: string;
 
-  type: SkyDocsTypeDefinition;
+  type?: SkyDocsTypeDefinition;
 
 }

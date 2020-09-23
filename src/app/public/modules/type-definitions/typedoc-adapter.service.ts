@@ -67,11 +67,11 @@ import {
 } from './type-parameter-definition';
 
 import {
-  TypeDocCallSignature,
   TypeDocComment,
   TypeDocEntry,
   TypeDocEntryChild,
   TypeDocParameter,
+  TypeDocSignature,
   TypeDocType,
   TypeDocTypeParameter
 } from './typedoc-types';
@@ -114,16 +114,15 @@ export class SkyDocsTypeDocAdapterService {
     this.applyCommentTagValues(definition, tags);
 
     const properties = this.getClassProperties(entry);
-    if (properties.length) {
-      const eventProperties = properties?.filter(p => p.decorator.name === 'Output');
-      if (eventProperties) {
-        definition.eventProperties = eventProperties;
-      }
 
-      const inputProperties = properties?.filter(p => p.decorator.name === 'Input');
-      if (inputProperties) {
-        definition.inputProperties = inputProperties;
-      }
+    const eventProperties = properties.filter(p => p.decorator?.name === 'Output');
+    if (eventProperties.length) {
+      definition.eventProperties = eventProperties;
+    }
+
+    const inputProperties = properties.filter(p => p.decorator?.name === 'Input');
+    if (inputProperties.length) {
+      definition.inputProperties = inputProperties;
     }
 
     return definition;
@@ -199,10 +198,6 @@ export class SkyDocsTypeDocAdapterService {
   }
 
   private getSelector(entry: TypeDocEntry): string {
-    if (!entry) {
-      return '';
-    }
-
     const decoratorSource = entry.decorators[0].arguments.obj;
     return (decoratorSource.indexOf('selector: `') > -1)
       ? decoratorSource.split('selector: `')[1].split('`')[0].replace(/\s\s+/g, ' ')
@@ -345,7 +340,7 @@ export class SkyDocsTypeDocAdapterService {
   }
 
   private getTypeDefinition(child: TypeDocEntryChild): SkyDocsTypeDefinition {
-    let callSignature: any;
+    let definition: SkyDocsTypeDefinition;
 
     const kindString = child.kindString;
     switch (kindString) {
@@ -356,15 +351,15 @@ export class SkyDocsTypeDocAdapterService {
         return this.getTypeDefinition(child.getSignature[0]);
 
       case 'Method':
-        callSignature = {
-          parameters: this.getParameterDefinitions(child.signatures[0], this.getCommentTags(child.comment)),
-          returnType: this.getTypeDefinition(child.signatures[0])
+        definition = {
+          callSignature: this.getCallSignatureDefinition(child.signatures[0], this.getCommentTags(child.comment))
         };
 
-        return {
-          callSignature,
-          name: child.signatures[0].name
-        } as SkyDocsTypeDefinition;
+        if (child.signatures[0].name) {
+          definition.name = child.signatures[0].name;
+        }
+
+        return definition;
 
       default:
         let name: string;
@@ -376,10 +371,13 @@ export class SkyDocsTypeDocAdapterService {
           name = `'${child.type.value}'`;
         }
 
-        const definition: SkyDocsTypeDefinition = {
-          name,
+        definition = {
           type: child.type.type
         };
+
+        if (name) {
+          definition.name = name;
+        }
 
         // Union?
         if (child.type.types) {
@@ -389,7 +387,10 @@ export class SkyDocsTypeDocAdapterService {
         // Parse call signature types.
         if (child.type.type === 'reflection') {
           if (child.type.declaration?.signatures) {
-            definition.callSignature = this.getCallSignatureDefinition(child);
+            definition.callSignature = this.getCallSignatureDefinition(
+              child.type.declaration?.signatures[0],
+              this.getCommentTags(child.comment)
+            );
           } else {
             const indexSignature = child.type.declaration.indexSignature[0];
             definition.indexSignature = {
@@ -408,7 +409,7 @@ export class SkyDocsTypeDocAdapterService {
   }
 
   private getParameterDefinitions(
-    callSignature: TypeDocCallSignature,
+    callSignature: TypeDocSignature,
     parentTags: SkyDocsCommentTags
   ): SkyDocsParameterDefinition[] {
     if (!callSignature.parameters) {
@@ -457,11 +458,16 @@ export class SkyDocsTypeDocAdapterService {
     });
   }
 
-  private getCallSignatureDefinition(child: TypeDocEntryChild): SkyDocsCallSignatureDefinition {
+  private getCallSignatureDefinition(callSignature: TypeDocSignature, tags: SkyDocsCommentTags): SkyDocsCallSignatureDefinition {
     const definition: SkyDocsCallSignatureDefinition = {
-      parameters: this.getParameterDefinitions(child.type.declaration.signatures[0], this.getCommentTags(child.comment)),
-      returnType: this.getTypeDefinition(child.type.declaration.signatures[0])
+      returnType: this.getTypeDefinition(callSignature)
     };
+
+    const parameters = this.getParameterDefinitions(callSignature, tags);
+    if (parameters.length) {
+      definition.parameters = parameters;
+    }
+
     return definition;
   }
 
@@ -472,13 +478,15 @@ export class SkyDocsTypeDocAdapterService {
 
     return typeParameters.map(typeParam => {
       const definition: SkyDocsTypeParameterDefinition = {
-        name: typeParam.name,
-        type: (typeParam.type)
-          ? this.getTypeDefinition({
-            type: typeParam.type
-          })
-          : undefined
+        name: typeParam.name
       };
+
+      if (typeParam.type) {
+        definition.type = this.getTypeDefinition({
+          type: typeParam.type
+        });
+      }
+
       return definition;
     });
   }
@@ -626,9 +634,10 @@ export class SkyDocsTypeDocAdapterService {
   }
 
   private getDecorator(child: TypeDocEntryChild): { name: string; } {
-    return {
-      name: child.decorators && child.decorators[0] && child.decorators[0].name
-    };
+    const name = child.decorators && child.decorators[0] && child.decorators[0].name;
+    if (name) {
+      return { name };
+    }
   }
 
   private getPropertyName(property: TypeDocEntryChild): string {
