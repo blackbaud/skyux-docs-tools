@@ -178,22 +178,21 @@ import {
 export class AppComponent {
 
   constructor(
-    renderer?: Renderer2,
-    private themeSvc?: SkyThemeService
+    themeSvc: SkyThemeService,
+    renderer?: Renderer2
   ) {
-    if (themeSvc) {
       const themeSettings = new SkyThemeSettings(
-      SkyTheme.presets['${theme === SkyDocsCodeExampleTheme.Modern ? 'modern' : 'default'}'],
-      SkyThemeMode.presets.light
-    );
+        SkyTheme.presets['${theme === SkyDocsCodeExampleTheme.Modern ? 'modern' : 'default'}'],
+        SkyThemeMode.presets.light
+      );
 
-      this.themeSvc.init(
+      themeSvc.init(
         document.body,
         renderer,
         themeSettings
       );
-    }
   }
+
 }`;
 
     files[`${appPath}app.module.ts`] = `${moduleImportStatements.join('\n\n')}
