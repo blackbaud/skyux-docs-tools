@@ -11,9 +11,9 @@ import {
  */
 export interface SkyDocsDirectiveDefinition extends SkyDocsEntryDefinition {
 
-  eventProperties: SkyDocsClassPropertyDefinition[];
+  eventProperties?: SkyDocsClassPropertyDefinition[];
 
-  inputProperties: SkyDocsClassPropertyDefinition[];
+  inputProperties?: SkyDocsClassPropertyDefinition[];
 
   selector: string;
 

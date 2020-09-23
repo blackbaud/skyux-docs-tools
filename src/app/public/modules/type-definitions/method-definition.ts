@@ -11,6 +11,6 @@ import {
  */
 export interface SkyDocsClassMethodDefinition extends SkyDocsEntryChildDefinition {
 
-  typeParameters: SkyDocsTypeParameterDefinition[];
+  typeParameters?: SkyDocsTypeParameterDefinition[];
 
 }

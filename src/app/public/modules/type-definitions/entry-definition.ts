@@ -6,13 +6,13 @@ export interface SkyDocsEntryDefinition {
 
   anchorId: string;
 
-  codeExample: string;
+  codeExample?: string;
 
-  codeExampleLanguage: string;
+  codeExampleLanguage?: string;
 
-  deprecationWarning: string;
+  deprecationWarning?: string;
 
-  description: string;
+  description?: string;
 
   name: string;
 

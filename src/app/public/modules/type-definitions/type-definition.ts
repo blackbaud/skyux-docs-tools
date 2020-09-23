@@ -11,7 +11,7 @@ import {
  */
 export interface SkyDocsTypeDefinition {
 
-  type?: 'array' | 'intrinsic' | 'reference' | 'reflection' | 'stringLiteral' | 'typeParameter' | 'union' | 'unknown';
+  type: 'array' | 'intrinsic' | 'reference' | 'reflection' | 'stringLiteral' | 'typeParameter' | 'union' | 'unknown';
 
   name: string;
 
@@ -21,7 +21,7 @@ export interface SkyDocsTypeDefinition {
   callSignature?: SkyDocsCallSignatureDefinition;
 
   /**
-   * Used for index signatures, e.g. key-value pairings.
+   * Used for index signatures, e.g. `[_: string]: any`
    */
   indexSignature?: {
     keyName: string;

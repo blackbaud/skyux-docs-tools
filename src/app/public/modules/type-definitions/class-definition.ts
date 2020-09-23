@@ -15,12 +15,8 @@ import {
  */
 export interface SkyDocsClassDefinition extends SkyDocsEntryDefinition {
 
-  description: string;
+  methods?: SkyDocsClassMethodDefinition[];
 
-  methods: SkyDocsClassMethodDefinition[];
-
-  name: string;
-
-  properties: SkyDocsClassPropertyDefinition[];
+  properties?: SkyDocsClassPropertyDefinition[];
 
 }

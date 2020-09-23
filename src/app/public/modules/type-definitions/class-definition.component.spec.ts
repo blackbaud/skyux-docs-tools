@@ -62,10 +62,9 @@ describe('Class definition component', function () {
 
   it('should add links to types within description', fakeAsync(() => {
     fixture.componentInstance.config = {
-      name: 'FooService',
-      comment: {
-        shortText: 'This description has a FooUser.'
-      }
+      anchorId: 'service-fooservice',
+      description: 'This description has a FooUser.',
+      name: 'FooService'
     };
 
     fixture.detectChanges();
@@ -79,53 +78,5 @@ describe('Class definition component', function () {
       '<a class="sky-docs-anchor-link" href="#foo-user">FooUser</a>'
     );
   }));
-
-  it('should separate properties from methods', () => {
-    fixture.componentInstance.config = {
-      name: 'FooClass',
-      children: [
-        {
-          name: 'foo',
-          kindString: 'Property',
-          type: {
-            type: 'intrinsic',
-            name: 'string'
-          }
-        },
-        {
-          name: 'getFoo',
-          kindString: 'Method',
-          signatures: [{
-            name: 'getFoo',
-            kindString: 'Call signature',
-            type: {
-              type: 'intrinsic',
-              name: 'string'
-            }
-          }]
-        },
-        {
-          name: 'ngOnDestroy',
-          kindString: 'Method',
-          signatures: [{
-            name: 'ngOnDestroy',
-            kindString: 'Call signature',
-            type: {
-              type: 'intrinsic',
-              name: 'void'
-            }
-          }]
-        }
-      ]
-    };
-
-    fixture.detectChanges();
-
-    const classDefinitionComponent = fixture.componentInstance.classDefinitionRef;
-    expect(classDefinitionComponent.properties.length).toEqual(1);
-    expect(classDefinitionComponent.properties[0].name).toEqual('foo');
-    expect(classDefinitionComponent.methods.length).toEqual(1, 'Angular ngOnDestroy methods should be removed!');
-    expect(classDefinitionComponent.methods[0].name).toEqual('getFoo');
-  });
 
 });

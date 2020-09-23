@@ -45,17 +45,26 @@ export class SkyDocsTypeDefinitionsFormatService {
    * Returns an HTML-formatted representation of the provided interface config.
    */
   public getInterfaceSourceCode(definition: SkyDocsInterfaceDefinition): string {
-    const typeParameters = this.getFormattedTypeArguments(definition);
+    const typeParameters = this.getFormattedTypeParameters(definition.typeParameters);
+    const config = {
+      escapeSpecialCharacters: false
+    };
 
     let signature: string = `interface ${definition.name}${typeParameters} {`;
 
     definition.properties.forEach(property => {
-      const optionalIndicator = (property.isOptional) ? '?' : '';
-      const propertyType = this.getFormattedType(property.type, {
-        escapeSpecialCharacters: false
-      });
+      const indexSignature = property.type.indexSignature;
+      const optionalIndicator = (property.isOptional && !indexSignature) ? '?' : '';
+      const propertyType = this.getFormattedType(property.type, config);
 
-      signature += `\n  ${property.name}${optionalIndicator}: ${propertyType};`;
+      let name: string;
+      if (indexSignature) {
+        name = `[${indexSignature.keyName}: string]`;
+      } else {
+        name = property.name;
+      }
+
+      signature += `\n  ${name}${optionalIndicator}: ${propertyType};`;
     });
 
     signature += '\n}';
@@ -137,13 +146,21 @@ export class SkyDocsTypeDefinitionsFormatService {
       signature += `@${property.decorator.name}()<br>`;
     }
 
-    if (property.deprecationWarning !== undefined) {
-      signature += `<strike>${property.name}</strike>`;
+    const indexSignature = property.type?.indexSignature;
+    let name: string;
+    if (indexSignature) {
+      name = `[${indexSignature.keyName}: string]`;
     } else {
-      signature += property.name;
+      name = property.name;
     }
 
-    if (property.isOptional) {
+    if (property.deprecationWarning !== undefined) {
+      signature += `<strike>${name}</strike>`;
+    } else {
+      signature += name;
+    }
+
+    if (property.isOptional && !indexSignature) {
       signature += '?';
     }
 

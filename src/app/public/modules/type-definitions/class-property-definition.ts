@@ -7,11 +7,11 @@ import {
  */
 export interface SkyDocsClassPropertyDefinition extends SkyDocsEntryChildDefinition {
 
-  decorator: {
+  decorator?: {
     name: string;
   };
 
-  defaultValue: string;
+  defaultValue?: string;
 
   isOptional: boolean;
 

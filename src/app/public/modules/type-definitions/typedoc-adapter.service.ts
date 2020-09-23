@@ -82,73 +82,82 @@ import orderBy from 'lodash.orderby';
 export class SkyDocsTypeDocAdapterService {
 
   public toClassDefinition(entry: TypeDocEntry): SkyDocsClassDefinition {
-    const tags = this.getCommentTags(entry.comment);
-    const properties = this.getClassProperties(entry);
-    const methods = this.getClassMethods(entry);
-
     const definition: SkyDocsClassDefinition = {
       anchorId: entry.anchorId,
-      codeExample: tags.codeExample,
-      codeExampleLanguage: tags.codeExampleLanguage,
-      deprecationWarning: tags.deprecationWarning,
-      description: tags.description,
-      methods,
-      name: entry.name,
-      properties
+      name: entry.name
     };
+
+    const tags = this.getCommentTags(entry.comment);
+    this.applyCommentTagValues(definition, tags);
+
+    const methods = this.getClassMethods(entry);
+    if (methods.length) {
+      definition.methods = methods;
+    }
+
+    const properties = this.getClassProperties(entry);
+    if (properties.length) {
+      definition.properties = properties;
+    }
 
     return definition;
   }
 
   public toDirectiveDefinition(entry: TypeDocEntry): SkyDocsDirectiveDefinition {
-    const tags = this.getCommentTags(entry.comment);
-    const properties = this.getClassProperties(entry);
-
     const definition: SkyDocsDirectiveDefinition = {
       anchorId: entry.anchorId,
-      codeExample: tags.codeExample,
-      codeExampleLanguage: tags.codeExampleLanguage,
-      deprecationWarning: tags.deprecationWarning,
-      description: tags.description,
-      eventProperties: properties?.filter(p => p.decorator.name === 'Output'),
-      inputProperties: properties?.filter(p => p.decorator.name === 'Input'),
       name: entry.name,
       selector: this.getSelector(entry)
     };
+
+    const tags = this.getCommentTags(entry.comment);
+    this.applyCommentTagValues(definition, tags);
+
+    const properties = this.getClassProperties(entry);
+    if (properties.length) {
+      const eventProperties = properties?.filter(p => p.decorator.name === 'Output');
+      if (eventProperties) {
+        definition.eventProperties = eventProperties;
+      }
+
+      const inputProperties = properties?.filter(p => p.decorator.name === 'Input');
+      if (inputProperties) {
+        definition.inputProperties = inputProperties;
+      }
+    }
 
     return definition;
   }
 
   public toEnumerationDefinition(entry: TypeDocEntry): SkyDocsEnumerationDefinition {
-    const tags = this.getCommentTags(entry.comment);
     const members = this.getEnumerationMembers(entry);
-
     const definition: SkyDocsEnumerationDefinition = {
       anchorId: entry.anchorId,
-      codeExample: tags.codeExample,
-      codeExampleLanguage: tags.codeExampleLanguage,
-      deprecationWarning: tags.deprecationWarning,
-      description: tags.description,
       members,
       name: entry.name
     };
+
+    const tags = this.getCommentTags(entry.comment);
+    this.applyCommentTagValues(definition, tags);
 
     return definition;
   }
 
   public toInterfaceDefinition(entry: TypeDocEntry): SkyDocsInterfaceDefinition {
-    const tags = this.getCommentTags(entry.comment);
     const properties = this.getInterfaceProperties(entry);
-
     const definition: SkyDocsInterfaceDefinition = {
       anchorId: entry.anchorId,
-      codeExample: tags.codeExample,
-      codeExampleLanguage: tags.codeExampleLanguage,
-      deprecationWarning: tags.deprecationWarning,
-      description: tags.description,
       name: entry.name,
       properties
     };
+
+    const tags = this.getCommentTags(entry.comment);
+    this.applyCommentTagValues(definition, tags);
+
+    const typeParameters = this.getTypeParameterDefinitions(entry.typeParameter);
+    if (typeParameters.length) {
+      definition.typeParameters = typeParameters;
+    }
 
     return definition;
   }
@@ -156,36 +165,35 @@ export class SkyDocsTypeDocAdapterService {
   public toPipeDefinition(entry: TypeDocEntry): SkyDocsPipeDefinition {
     const methods = this.getClassMethods(entry);
     const transformMethod = methods.find(m => m.name === 'transform');
-    const tags = this.getCommentTags(entry.comment);
-
     const definition: SkyDocsPipeDefinition = {
       anchorId: entry.anchorId,
-      codeExample: tags.codeExample,
-      codeExampleLanguage: tags.codeExampleLanguage,
-      deprecationWarning: tags.deprecationWarning,
-      description: tags.description,
       name: entry.name,
       transformMethod
     };
+
+    const tags = this.getCommentTags(entry.comment);
+    this.applyCommentTagValues(definition, tags);
 
     return definition;
   }
 
   public toTypeAliasDefinition(entry: TypeDocEntry): SkyDocsTypeAliasDefinition {
-    const tags = this.getCommentTags(entry.comment);
     const definition: SkyDocsTypeAliasDefinition = {
       anchorId: entry.anchorId,
-      codeExample: tags.codeExample,
-      codeExampleLanguage: tags.codeExampleLanguage,
-      deprecationWarning: tags.deprecationWarning,
-      description: tags.description,
       name: entry.name,
       type: this.getTypeDefinition({
         comment: entry.comment,
         type: entry.type
-      }),
-      typeParameters: this.getTypeParameterDefinitions(entry.typeParameter)
+      })
     };
+
+    const tags = this.getCommentTags(entry.comment);
+    this.applyCommentTagValues(definition, tags);
+
+    const typeParameters = this.getTypeParameterDefinitions(entry.typeParameter);
+    if (typeParameters.length) {
+      definition.typeParameters = typeParameters;
+    }
 
     return definition;
   }
@@ -210,20 +218,23 @@ export class SkyDocsTypeDocAdapterService {
       .filter(child => child.kindString === 'Property' || child.kindString === 'Accessor')
       .map(child => {
         const tags = this.getCommentTags(child.comment);
-
         const definition: SkyDocsClassPropertyDefinition = {
-          codeExample: tags.codeExample,
-          codeExampleLanguage: tags.codeExampleLanguage,
-          decorator: {
-            name: this.getDecoratorName(child)
-          },
-          defaultValue: this.getDefaultValue(child, tags),
-          deprecationWarning: tags.deprecationWarning,
-          description: tags.description,
           isOptional: this.isTypeOptional(child, tags),
           name: this.getPropertyName(child),
           type: this.getTypeDefinition(child)
         };
+
+        this.applyCommentTagValues(definition, tags);
+
+        const decorator = this.getDecorator(child);
+        if (decorator) {
+          definition.decorator = decorator;
+        }
+
+        const defaultValue = this.getDefaultValue(child, tags);
+        if (defaultValue) {
+          definition.defaultValue = defaultValue;
+        }
 
         return definition;
       });
@@ -243,21 +254,22 @@ export class SkyDocsTypeDocAdapterService {
     const methods = entry.children
       .filter(child => child.kindString === 'Method' && /^ng/.test(child.name) === false)
       .map(child => {
+        const definition: SkyDocsClassMethodDefinition = {
+          name: this.getPropertyName(child),
+          type: this.getTypeDefinition(child)
+        };
+
         // Comments for methods are stored in a different location.
         const comment = child.signatures[0].comment;
         const tags = this.getCommentTags(comment);
+        this.applyCommentTagValues(definition, tags);
 
-        const method: SkyDocsClassMethodDefinition = {
-          codeExample: tags.codeExample,
-          codeExampleLanguage: tags.codeExampleLanguage,
-          deprecationWarning: tags.deprecationWarning,
-          description: tags.description,
-          name: this.getPropertyName(child),
-          type: this.getTypeDefinition(child),
-          typeParameters: this.getTypeParameterDefinitions(child.signatures[0].typeParameter)
-        };
+        const typeParameters = this.getTypeParameterDefinitions(child.signatures[0].typeParameter);
+        if (typeParameters.length) {
+          definition.typeParameters = typeParameters;
+        }
 
-        return method;
+        return definition;
       });
 
     return orderBy(
@@ -268,86 +280,68 @@ export class SkyDocsTypeDocAdapterService {
   }
 
   private getInterfaceProperties(entry: TypeDocEntry): SkyDocsInterfacePropertyDefinition[] {
-    if (!entry.children) {
+    if (!entry.children && !entry.indexSignature) {
       return [];
     }
 
-    const definitions = entry.children.map(child => {
+    const definitions = entry.children?.map(child => {
       const tags = this.getCommentTags(child.comment);
       const definition: SkyDocsInterfacePropertyDefinition = {
-        codeExample: tags.codeExample,
-        codeExampleLanguage: tags.codeExampleLanguage,
-        deprecationWarning: tags.deprecationWarning,
-        description: tags.description,
         isOptional: this.isTypeOptional(child, tags),
         name: this.getPropertyName(child),
         type: this.getTypeDefinition(child)
       };
 
-      return definition;
-    });
+      this.applyCommentTagValues(definition, tags);
 
-    return orderBy(
+      return definition;
+    }) || [];
+
+    const sorted = orderBy(
       definitions,
       ['isOptional', 'name'],
       ['asc', 'asc']
     );
+
+    // Add any index signatures, e.g. `[_: string]: any`
+    if (entry.indexSignature) {
+      const indexSignature = entry.indexSignature[0];
+      const definition: SkyDocsInterfacePropertyDefinition = {
+        isOptional: true,
+        name: 'any',
+        type: {
+          type: 'intrinsic',
+          name: 'any',
+          indexSignature: {
+            keyName: indexSignature.parameters[0].name,
+            type: this.getTypeDefinition(indexSignature)
+          }
+        }
+      };
+
+      const tags = this.getCommentTags(indexSignature.comment);
+      this.applyCommentTagValues(definition, tags);
+      sorted.push(definition);
+    }
+
+    return sorted;
   }
 
   private getEnumerationMembers(entry: TypeDocEntry): SkyDocsEnumerationMemberDefinition[] {
-    const definitions: SkyDocsEnumerationMemberDefinition[] = entry.children?.map(child => {
-      const tags = this.getCommentTags(child.comment);
+    if (!entry.children) {
+      return [];
+    }
+
+    return entry.children.map(child => {
       const definition: SkyDocsEnumerationMemberDefinition = {
-        codeExample: tags.codeExample,
-        codeExampleLanguage: tags.codeExampleLanguage,
-        deprecationWarning: tags.deprecationWarning,
-        description: tags.description,
         name: child.name
       };
+
+      const tags = this.getCommentTags(child.comment);
+      this.applyCommentTagValues(definition, tags);
+
       return definition;
     });
-    return definitions;
-  }
-
-  private isTypeOptional(child: TypeDocEntryChild, tags: SkyDocsCommentTags): boolean {
-
-    // If `@required` is in the comment, mark it as required.
-    if (tags.extras.required) {
-      return false;
-    }
-
-    // Class methods can't be optional.
-    if (child.kindString === 'Method') {
-      return false;
-    }
-
-    // Enumeration members can't be optional.
-    if (child.kindString === 'Enumeration member') {
-      return false;
-    }
-
-    if (child.kindString === 'Parameter') {
-      return !!(child.flags && child.flags.isOptional);
-    }
-
-    return true;
-  }
-
-  private getDecoratorName(child: TypeDocEntryChild): string {
-    return child.decorators && child.decorators[0] && child.decorators[0].name;
-  }
-
-  private getPropertyName(property: TypeDocEntryChild): string {
-    const decorators = property.decorators && property.decorators[0];
-    // Use the Input's bound property name, if found.
-    // e.g. @Input('foobar')
-    return (decorators?.arguments?.bindingPropertyName)
-      ? decorators?.arguments?.bindingPropertyName.replace(/(\'|\")/g, '')
-      : property.name;
-  }
-
-  private getDefaultValue(child: TypeDocEntryChild, tags: SkyDocsCommentTags): string {
-    return tags.defaultValue || child.defaultValue || '';
   }
 
   private getTypeDefinition(child: TypeDocEntryChild): SkyDocsTypeDefinition {
@@ -358,9 +352,8 @@ export class SkyDocsTypeDocAdapterService {
       case 'Accessor':
         if (child.setSignature) {
           return this.getTypeDefinition(child.setSignature[0].parameters[0]);
-        } else {
-          return this.getTypeDefinition(child.getSignature[0]);
         }
+        return this.getTypeDefinition(child.getSignature[0]);
 
       case 'Method':
         callSignature = {
@@ -418,7 +411,11 @@ export class SkyDocsTypeDocAdapterService {
     callSignature: TypeDocCallSignature,
     parentTags: SkyDocsCommentTags
   ): SkyDocsParameterDefinition[] {
-    const parameters: SkyDocsParameterDefinition[] = callSignature.parameters?.map(p => {
+    if (!callSignature.parameters) {
+      return [];
+    }
+
+    const parameters: SkyDocsParameterDefinition[] = callSignature.parameters.map(p => {
       const tags = this.getParameterCommentTags(p, parentTags);
       const defaultValue = this.getDefaultValue(p, tags);
       const typeArguments = this.getTypeArgumentDefinitions(p.type);
@@ -437,7 +434,7 @@ export class SkyDocsTypeDocAdapterService {
         parameter.description = tags.description;
       }
 
-      if (typeArguments?.length) {
+      if (typeArguments.length) {
         parameter.typeArguments = typeArguments;
       }
 
@@ -448,7 +445,7 @@ export class SkyDocsTypeDocAdapterService {
 
   private getTypeArgumentDefinitions(typeConfig: TypeDocType): SkyDocsTypeArgumentDefinition[] {
     if (!typeConfig || !typeConfig.typeArguments) {
-      return;
+      return [];
     }
 
     return typeConfig.typeArguments.map((typeArgument) => {
@@ -470,7 +467,7 @@ export class SkyDocsTypeDocAdapterService {
 
   private getTypeParameterDefinitions(typeParameters: TypeDocTypeParameter[]): SkyDocsTypeParameterDefinition[] {
     if (!typeParameters) {
-      return;
+      return [];
     }
 
     return typeParameters.map(typeParam => {
@@ -576,6 +573,75 @@ export class SkyDocsTypeDocAdapterService {
         description: tagParam.description
       }
     };
+  }
+
+  /**
+   * Applies comment tag (e.g. `@param`) values to the provided definition, if the value is defined.
+   */
+  private applyCommentTagValues(
+    definition: {
+      codeExample?: string;
+      codeExampleLanguage?: string;
+      deprecationWarning?: string;
+      description?: string;
+    },
+    tags: SkyDocsCommentTags
+  ): void {
+    if (tags.codeExample) {
+      definition.codeExample = tags.codeExample;
+      definition.codeExampleLanguage = tags.codeExampleLanguage;
+    }
+
+    if (tags.deprecationWarning !== undefined) {
+      definition.deprecationWarning = tags.deprecationWarning;
+    }
+
+    if (tags.description) {
+      definition.description = tags.description;
+    }
+  }
+
+  private isTypeOptional(child: TypeDocEntryChild, tags: SkyDocsCommentTags): boolean {
+
+    // If `@required` is in the comment, mark it as required.
+    if (tags.extras.required) {
+      return false;
+    }
+
+    // Class methods can't be optional.
+    if (child.kindString === 'Method') {
+      return false;
+    }
+
+    // Enumeration members can't be optional.
+    if (child.kindString === 'Enumeration member') {
+      return false;
+    }
+
+    if (child.kindString === 'Parameter') {
+      return !!(child.flags && child.flags.isOptional);
+    }
+
+    return true;
+  }
+
+  private getDecorator(child: TypeDocEntryChild): { name: string; } {
+    return {
+      name: child.decorators && child.decorators[0] && child.decorators[0].name
+    };
+  }
+
+  private getPropertyName(property: TypeDocEntryChild): string {
+    const decorators = property.decorators && property.decorators[0];
+    // Use the Input's bound property name, if found.
+    // e.g. @Input('foobar')
+    return (decorators?.arguments?.bindingPropertyName)
+      ? decorators?.arguments?.bindingPropertyName.replace(/(\'|\")/g, '')
+      : property.name;
+  }
+
+  private getDefaultValue(child: TypeDocEntryChild, tags: SkyDocsCommentTags): string | undefined {
+    return tags.defaultValue || child.defaultValue || undefined;
   }
 
 }
