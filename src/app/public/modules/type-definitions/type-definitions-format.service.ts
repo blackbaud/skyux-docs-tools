@@ -198,6 +198,10 @@ export class SkyDocsTypeDefinitionsFormatService {
       return this.getFormattedCallSignature(type.callSignature, config);
     }
 
+    if (type.unionTypes) {
+      return this.getFormattedUnion(type);
+    }
+
     if (type.name) {
       formatted = type.name;
     }
