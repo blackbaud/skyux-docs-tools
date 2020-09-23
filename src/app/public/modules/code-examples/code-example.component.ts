@@ -67,7 +67,7 @@ export class SkyDocsCodeExampleComponent implements OnDestroy {
     return this._theme || SkyDocsCodeExampleTheme.Default;
   }
 
-  private ngUnsubscribe = new Subject<boolean>();
+  private ngUnsubscribe = new Subject<void>();
 
   private _theme: SkyDocsCodeExampleTheme;
 
