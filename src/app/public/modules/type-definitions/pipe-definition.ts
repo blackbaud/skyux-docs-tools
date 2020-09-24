@@ -7,7 +7,7 @@ import {
 } from './method-definition';
 
 /**
- * Used to describe pipes.
+ * Describes pipes.
  */
 export interface SkyDocsPipeDefinition extends SkyDocsEntryDefinition {
 

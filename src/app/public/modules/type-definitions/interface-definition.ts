@@ -11,7 +11,7 @@ import {
 } from './type-parameter-definition';
 
 /**
- * Used to describe interfaces.
+ * Describes interfaces.
  */
 export interface SkyDocsInterfaceDefinition extends SkyDocsEntryDefinition {
 

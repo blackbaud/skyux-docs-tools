@@ -1,12 +1,30 @@
 import {
   expect
 } from '@skyux-sdk/testing';
-import { SkyDocsClassPropertyDefinition } from './class-property-definition';
-import { SkyDocsInterfaceDefinition } from './interface-definition';
-import { SkyDocsClassMethodDefinition } from './method-definition';
-import { SkyDocsParameterDefinition } from './parameter-definition';
-import { SkyDocsTypeAliasDefinition } from './type-alias-definition';
-import { SkyDocsTypeDefinition } from './type-definition';
+
+import {
+  SkyDocsClassPropertyDefinition
+} from './class-property-definition';
+
+import {
+  SkyDocsInterfaceDefinition
+} from './interface-definition';
+
+import {
+  SkyDocsClassMethodDefinition
+} from './method-definition';
+
+import {
+  SkyDocsParameterDefinition
+} from './parameter-definition';
+
+import {
+  SkyDocsTypeAliasDefinition
+} from './type-alias-definition';
+
+import {
+  SkyDocsTypeDefinition
+} from './type-definition';
 
 import {
   SkyDocsTypeDefinitionsFormatService

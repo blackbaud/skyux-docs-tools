@@ -7,7 +7,7 @@ import {
 } from './index-signature-definition';
 
 /**
- * Used to describe TypeScript types.
+ * Describes TypeScript types.
  */
 export interface SkyDocsTypeDefinition {
 

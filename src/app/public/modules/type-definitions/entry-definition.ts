@@ -1,5 +1,5 @@
 /**
- * Used to describe all entry-level types such as classes, directives, enumerations, etc.
+ * Describes all entry-level types such as classes, directives, enumerations, etc.
  * @internal
  */
 export interface SkyDocsEntryDefinition {

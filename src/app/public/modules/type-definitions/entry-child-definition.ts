@@ -3,7 +3,7 @@ import {
 } from './type-definition';
 
 /**
- * Used to describe all entry-level children types, such as methods, properties, and accessors.
+ * Describes all entry-level children types, such as methods, properties, and accessors.
  * @internal
  */
 export interface SkyDocsEntryChildDefinition {

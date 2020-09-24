@@ -7,7 +7,7 @@ import {
 } from './entry-definition';
 
 /**
- * Used to describe components and directives.
+ * Describes components and directives.
  */
 export interface SkyDocsDirectiveDefinition extends SkyDocsEntryDefinition {
 

@@ -3,7 +3,7 @@ import {
 } from './entry-child-definition';
 
 /**
- * Used to describe interface properties.
+ * Describes interface properties.
  */
 export interface SkyDocsInterfacePropertyDefinition extends SkyDocsEntryChildDefinition {
 

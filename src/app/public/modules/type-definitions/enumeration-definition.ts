@@ -7,7 +7,7 @@ import {
 } from './enumeration-member-definition';
 
 /**
- * Used to describe enumerations.
+ * Describes enumerations.
  */
 export interface SkyDocsEnumerationDefinition extends SkyDocsEntryDefinition {
 

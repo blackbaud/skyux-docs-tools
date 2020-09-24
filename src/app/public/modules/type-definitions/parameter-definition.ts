@@ -2,6 +2,9 @@ import {
   SkyDocsTypeDefinition
 } from './type-definition';
 
+/**
+ * Describes function and method parameters.
+ */
 export interface SkyDocsParameterDefinition {
 
   defaultValue?: string;

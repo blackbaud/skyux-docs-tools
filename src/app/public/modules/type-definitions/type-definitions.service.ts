@@ -14,6 +14,9 @@ import {
   SkyDocsTypeDocAdapterService
 } from './typedoc-adapter.service';
 
+/**
+ * Handles all type definitions that have been converted from the TypeDoc program.
+ */
 @Injectable()
 export class SkyDocsTypeDefinitionsService {
 

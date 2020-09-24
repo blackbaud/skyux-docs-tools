@@ -72,6 +72,9 @@ export class SkyDocsTypeDefinitionsFormatService {
     return signature;
   }
 
+  /**
+   * Returns an HTML-formatted representation of the provided method config.
+   */
   public getMethodSourceCode(definition: SkyDocsClassMethodDefinition): string {
     const config = {
       escapeSpecialCharacters: false
@@ -180,6 +183,9 @@ export class SkyDocsTypeDefinitionsFormatService {
     return signature;
   }
 
+  /**
+   * Returns an HTML-formatted method name to be used on the properties table.
+   */
   public getFormattedMethodName(definition: SkyDocsClassMethodDefinition): string {
     let formatted = '';
 

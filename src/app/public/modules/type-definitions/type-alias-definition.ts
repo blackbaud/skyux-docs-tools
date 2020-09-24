@@ -11,7 +11,7 @@ import {
 } from './type-parameter-definition';
 
 /**
- * Used to describe type aliases.
+ * Describes type aliases.
  */
 export interface SkyDocsTypeAliasDefinition extends SkyDocsEntryDefinition {
 

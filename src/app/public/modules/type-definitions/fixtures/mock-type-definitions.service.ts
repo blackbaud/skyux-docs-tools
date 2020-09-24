@@ -1,10 +1,30 @@
-import { SkyDocsClassDefinition } from '../class-definition';
-import { SkyDocsDirectiveDefinition } from '../directive-definition';
-import { SkyDocsEnumerationDefinition } from '../enumeration-definition';
-import { SkyDocsInterfaceDefinition } from '../interface-definition';
-import { SkyDocsPipeDefinition } from '../pipe-definition';
-import { SkyDocsTypeAliasDefinition } from '../type-alias-definition';
-import { TypeDocEntry } from '../typedoc-types';
+import {
+  SkyDocsClassDefinition
+} from '../class-definition';
+
+import {
+  SkyDocsDirectiveDefinition
+} from '../directive-definition';
+
+import {
+  SkyDocsEnumerationDefinition
+} from '../enumeration-definition';
+
+import {
+  SkyDocsInterfaceDefinition
+} from '../interface-definition';
+
+import {
+  SkyDocsPipeDefinition
+} from '../pipe-definition';
+
+import {
+  SkyDocsTypeAliasDefinition
+} from '../type-alias-definition';
+
+import {
+  TypeDocEntry
+} from '../typedoc-types';
 
 export class MockTypeDocAdapterService {
   public toClassDefinition(entry: TypeDocEntry): SkyDocsClassDefinition {

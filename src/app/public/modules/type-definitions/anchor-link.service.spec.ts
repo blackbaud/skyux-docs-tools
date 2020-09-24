@@ -105,9 +105,11 @@ describe('Anchor link service', function () {
       anchorIds: undefined,
       typeDefinitions: mockTypeDefinitionsProvider.typeDefinitions
     };
+
     const service = new SkyDocsAnchorLinkService(mockTypeDefinitionsProvider);
     const content = 'FooUser';
     const result = service.applyTypeAnchorLinks(content);
+
     expect(result).toEqual(
       content,
       'Anchor tags should not be applied if anchorIds is undefined.'
@@ -118,6 +120,7 @@ describe('Anchor link service', function () {
     const service = new SkyDocsAnchorLinkService(mockTypeDefinitionsProvider);
     const content = '';
     const result = service.applyTypeAnchorLinks(content);
+
     expect(result).toEqual(
       content,
       'Anchor tags should not be applied to empty content.'

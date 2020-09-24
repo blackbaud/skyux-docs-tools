@@ -7,7 +7,7 @@ import {
 } from './type-parameter-definition';
 
 /**
- * Used to describe class methods.
+ * Describes class methods.
  */
 export interface SkyDocsClassMethodDefinition extends SkyDocsEntryChildDefinition {
 

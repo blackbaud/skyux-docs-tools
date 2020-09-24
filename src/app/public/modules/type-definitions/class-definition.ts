@@ -11,7 +11,7 @@ import {
 } from './method-definition';
 
 /**
- * Used to describe classes and services.
+ * Describes classes and services.
  */
 export interface SkyDocsClassDefinition extends SkyDocsEntryDefinition {
 
