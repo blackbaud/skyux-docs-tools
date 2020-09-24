@@ -7,6 +7,10 @@ import {
 } from '@angular/core';
 
 import {
+  RouterTestingModule
+} from '@angular/router/testing';
+
+import {
   SkyDocsTypeDefinitionsModule
 } from '../type-definitions.module';
 
@@ -45,6 +49,7 @@ import {
 @NgModule({
   imports: [
     CommonModule,
+    RouterTestingModule,
     SkyDocsTypeDefinitionsModule
   ],
   exports: [
