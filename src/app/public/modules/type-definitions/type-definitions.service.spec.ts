@@ -96,8 +96,8 @@ describe('Type definitions service', function () {
     const result = service.getTypeDefinitions('/src/app/public/modules/_documentation-test/');
 
     for (const key in result) {
-      const lookup = key as keyof SkyDocsTypeDefinitions;
       if (result.hasOwnProperty(key)) {
+        const lookup = key as keyof SkyDocsTypeDefinitions;
         expect(result[lookup].length).toEqual(1, 'The result is expected to have one item in each category.');
       }
     }

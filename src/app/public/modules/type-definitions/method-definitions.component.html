@@ -85,12 +85,12 @@
 <ng-template let-method #descriptionTemplate>
 
   <sky-docs-safe-html *ngIf="method.deprecationWarning !== undefined"
-    class="sky-docs-method-definitions-deprecation-warning"
+    class="sky-docs-method-definition-deprecation-warning"
     [innerHtml]="deprecationWarningPrefix + method.deprecationWarning | skyDocsTypeAnchorLinks | skyDocsMarkdown"
   ></sky-docs-safe-html>
 
   <sky-docs-safe-html *ngIf="method.description"
-    class="sky-docs-method-definitions-description"
+    class="sky-docs-method-definition-description"
     [innerHtml]="method.description | skyDocsTypeAnchorLinks | skyDocsMarkdown"
   ></sky-docs-safe-html>
 
@@ -106,7 +106,7 @@
   ></sky-docs-call-signature-definition>
 
   <ng-container *ngIf="method.codeExample">
-    <h4 class="sky-docs-method-definitions-heading">
+    <h4 class="sky-docs-method-definition-heading">
       Example
     </h4>
     <sky-code-block *ngIf="method.codeExample"

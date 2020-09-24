@@ -39,7 +39,7 @@ export class SkyDocsTypeAliasDefinitionComponent {
   ) { }
 
   private updateView(): void {
-    this.sourceCode = this.formatService.getTypeAliasSourceCode(this.config);
+    this.sourceCode = (this.config) ? this.formatService.getTypeAliasSourceCode(this.config) : undefined;
   }
 
 }

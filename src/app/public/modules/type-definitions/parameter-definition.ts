@@ -1,8 +1,4 @@
 import {
-  SkyDocsTypeArgumentDefinition
-} from './type-argument-definition';
-
-import {
   SkyDocsTypeDefinition
 } from './type-definition';
 
@@ -18,6 +14,6 @@ export interface SkyDocsParameterDefinition {
 
   type: SkyDocsTypeDefinition;
 
-  typeArguments?: SkyDocsTypeArgumentDefinition[];
+  typeArguments?: SkyDocsTypeDefinition[];
 
 }

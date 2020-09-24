@@ -35,6 +35,10 @@ import {
 } from './interface-definition.component.fixture';
 
 import {
+  MethodDefinitionsFixtureComponent
+} from './method-definitions.component.fixture';
+
+import {
   PropertyDefinitionsFixtureComponent
 } from './property-definitions.component.fixture';
 
@@ -58,6 +62,7 @@ import {
     DirectiveDefinitionFixtureComponent,
     EnumerationDefinitionFixtureComponent,
     InterfaceDefinitionFixtureComponent,
+    MethodDefinitionsFixtureComponent,
     PropertyDefinitionsFixtureComponent,
     TypeAliasDefinitionFixtureComponent,
     TypeAnchorLinksPipeFixtureComponent
@@ -68,6 +73,7 @@ import {
     DirectiveDefinitionFixtureComponent,
     EnumerationDefinitionFixtureComponent,
     InterfaceDefinitionFixtureComponent,
+    MethodDefinitionsFixtureComponent,
     PropertyDefinitionsFixtureComponent,
     TypeAliasDefinitionFixtureComponent,
     TypeAnchorLinksPipeFixtureComponent
