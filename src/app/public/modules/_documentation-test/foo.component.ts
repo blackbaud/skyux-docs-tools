@@ -65,7 +65,7 @@ export class FooComponent<U extends FooUser> implements OnInit {
 
   /**
    * This is the description for bar input. You must provide `FooEnum` values. If you provide FooEnum.Baz amazing things will happen.
-   * @defaultvalue FooEnum.Foo
+   * @defaultValue FooEnum.Foo
    */
   @Input()
   public set bar(value: string) {
@@ -85,6 +85,7 @@ export class FooComponent<U extends FooUser> implements OnInit {
 
   /**
    * @param searchTerm The keywords used to search.
+   * @param debounceTime The number of milliseconds to wait between each keypress.
    * @required
    */
   @Input()

@@ -3,6 +3,10 @@ import {
 } from '@angular/core';
 
 import {
+  Foo
+} from './foo';
+
+import {
   FooUser
 } from './foo-user';
 
@@ -16,7 +20,6 @@ export interface FooInitArgs {
    */
   bar: string;
 }
-
 
 /**
  * This is the description for FooClass.
@@ -44,6 +47,8 @@ export class FooClass {
 
   public unionTypeEventEmitter: EventEmitter<FooUser | string>;
 
+  public stringLiteral = 'foobar';
+
   private _foo: number;
 
   /**
@@ -63,5 +68,11 @@ export class FooClass {
    * - `args.foo` This defaults to 'bar'.
    */
   public init(args: FooInitArgs): void { }
+
+  public getUser<T>(): T {
+    return {} as T;
+  }
+
+  public setUser<T, U extends FooUser>(user: Foo<T, U>): void {}
 
 }

@@ -44,4 +44,5 @@ export interface Foo<T, U extends FooUser> {
    * Allow any other properties.
    */
   [_: string]: any;
+
 }

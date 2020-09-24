@@ -76,6 +76,136 @@ describe('TypeDoc adapter', () => {
       ]);
     });
 
+    it('should handle property accessors', () => {
+      entry.children = [
+        {
+          name: 'foo',
+          kindString: 'Accessor',
+          comment: {
+            shortText: 'The foo of the FooClass.',
+            tags: [
+              {
+                'tag': 'default',
+                'text': '10\n'
+              }
+            ]
+          },
+          getSignature: [
+            {
+              name: '__get',
+              comment: {
+                shortText: 'The foo of the FooClass.',
+                tags: [
+                  {
+                    'tag': 'default',
+                    'text': '10\n'
+                  }
+                ]
+              },
+              type: {
+                type: 'intrinsic',
+                name: 'number'
+              }
+            }
+          ],
+          setSignature: [
+            {
+              name: '__set',
+              comment: {
+                shortText: 'The foo of the FooClass.',
+                tags: [
+                  {
+                    'tag': 'default',
+                    'text': '10\n'
+                  }
+                ]
+              },
+              parameters: [
+                {
+                  name: 'value',
+                  kindString: 'Parameter',
+                  type: {
+                    type: 'intrinsic',
+                    name: 'number'
+                  }
+                }
+              ],
+              type: {
+                type: 'intrinsic',
+                name: 'void'
+              }
+            }
+          ]
+        }
+      ];
+
+      const def = adapter.toClassDefinition(entry);
+
+      expect(def.properties).toEqual([
+        {
+          isOptional: true,
+          name: 'foo',
+          type: {
+            type: 'intrinsic',
+            name: 'number'
+          },
+          description: 'The foo of the FooClass.',
+          defaultValue: '10'
+        }
+      ]);
+    });
+
+    it('should handle properties with only `get` accessors', () => {
+      entry.children = [
+        {
+          name: 'foo',
+          kindString: 'Accessor',
+          comment: {
+            shortText: 'The foo of the FooClass.',
+            tags: [
+              {
+                tag: 'default',
+                text: '10\n'
+              }
+            ]
+          },
+          getSignature: [
+            {
+              name: '__get',
+              comment: {
+                shortText: 'The foo of the FooClass.',
+                tags: [
+                  {
+                    tag: 'default',
+                    text: '10\n'
+                  }
+                ]
+              },
+              type: {
+                type: 'intrinsic',
+                name: 'number'
+              }
+            }
+          ]
+        }
+      ];
+
+      const def = adapter.toClassDefinition(entry);
+
+      expect(def.properties).toEqual([
+        {
+          isOptional: true,
+          name: 'foo',
+          type: {
+            type: 'intrinsic',
+            name: 'number'
+          },
+          description: 'The foo of the FooClass.',
+          defaultValue: '10'
+        }
+      ]);
+    });
+
     it('should handle union-type properties', () => {
       entry.children = [
         {
@@ -91,6 +221,10 @@ describe('TypeDoc adapter', () => {
               {
                 type: 'intrinsic',
                 name: 'string'
+              },
+              {
+                type: 'stringLiteral',
+                value: '\'above\''
               }
             ]
           }
@@ -113,8 +247,196 @@ describe('TypeDoc adapter', () => {
               {
                 name: 'string',
                 type: 'intrinsic'
+              },
+              {
+                type: 'stringLiteral',
+                name: '\'above\''
               }
             ]
+          }
+        }
+      ]);
+    });
+
+    it('should convert call signature properties and their metadata', () => {
+      entry.children = [{
+        name: 'searchFunction',
+        kindString: 'Property',
+        comment: {
+          tags: [
+            {
+              tag: 'param',
+              text: 'The keywords used to search.',
+              param: 'searchTerm'
+            },
+            {
+              tag: 'param',
+              text: 'The number of milliseconds to wait between each keypress.',
+              param: 'debounceTime'
+            },
+            {
+              tag: 'required',
+              text: '\n'
+            },
+            {
+              tag: 'deprecated',
+              text: 'Search functions should not be used.\n'
+            },
+            {
+              tag: 'example',
+              text: '\n```markup\n[searchFunction]="mySearchFunction"\n```\n'
+            }
+          ]
+        },
+        decorators: [
+          {
+            name: 'Input',
+            type: {
+              type: 'reference',
+              name: 'Input'
+            },
+            arguments: {}
+          }
+        ],
+        type: {
+          type: 'reflection',
+          declaration: {
+            signatures: [
+              {
+                name: '__call',
+                kindString: 'Call signature',
+                parameters: [
+                  {
+                    name: 'searchTerm',
+                    kindString: 'Parameter',
+                    type: {
+                      type: 'intrinsic',
+                      name: 'string'
+                    }
+                  },
+                  {
+                    name: 'debounceTime',
+                    kindString: 'Parameter',
+                    flags: {
+                      isOptional: true
+                    },
+                    type: {
+                      type: 'intrinsic',
+                      name: 'number'
+                    }
+                  }
+                ],
+                type: {
+                  type: 'array',
+                  elementType: {
+                    type: 'intrinsic',
+                    name: 'any'
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }];
+
+      const def = adapter.toClassDefinition(entry);
+
+      expect(def.properties).toEqual([
+        {
+          isOptional: false,
+          codeExample: '[searchFunction]="mySearchFunction"',
+          codeExampleLanguage: 'markup',
+          decorator: {
+            name: 'Input'
+          },
+          deprecationWarning: 'Search functions should not be used.',
+          name: 'searchFunction',
+          type: {
+            type: 'reflection',
+            callSignature: {
+              returnType: {
+                type: 'array',
+                name: 'any'
+              },
+              parameters: [
+                {
+                  isOptional: false,
+                  name: 'searchTerm',
+                  type: Object({
+                    type: 'intrinsic',
+                    name: 'string'
+                  }),
+                  description: 'The keywords used to search.'
+                },
+                {
+                  isOptional: true,
+                  name: 'debounceTime',
+                  type: Object({
+                    type: 'intrinsic',
+                    name: 'number'
+                  }),
+                  description: 'The number of milliseconds to wait between each keypress.'
+                }
+              ]
+            }
+          }
+        }
+      ]);
+
+    });
+
+    it('should convert index signature properties', () => {
+      entry.children = [{
+        name: 'anchorIds',
+        kindString: 'Property',
+        type: {
+          type: 'reflection',
+          declaration: {
+            indexSignature: [
+              {
+                name: '__index',
+                kindString: 'Index signature',
+                parameters: [
+                  {
+                    name: '_',
+                    kindString: 'Parameter',
+                    type: {
+                      type: 'intrinsic',
+                      name: 'string'
+                    }
+                  }
+                ],
+                type: {
+                  type: 'intrinsic',
+                  name: 'string'
+                }
+              }
+            ]
+          }
+        }
+      }];
+
+      const def = adapter.toClassDefinition(entry);
+
+      expect(def.properties).toEqual([
+        {
+          isOptional: true,
+          name: 'anchorIds',
+          type: {
+            type: 'reflection',
+            indexSignature: {
+              key: {
+                name: '_',
+                type: {
+                  type: 'intrinsic',
+                  name: 'string'
+                }
+              },
+              type: {
+                type: 'intrinsic',
+                name: 'string'
+              }
+            }
           }
         }
       ]);
@@ -177,6 +499,281 @@ describe('TypeDoc adapter', () => {
         }
       ]);
 
+    });
+
+    it('should handle type parameters on methods', () => {
+      entry.children = [
+        {
+          name: 'getUser',
+          kindString: 'Method',
+          signatures: [
+            {
+              name: 'getUser',
+              kindString: 'Call signature',
+              typeParameter: [
+                {
+                  name: 'T',
+                  kindString: 'Type parameter'
+                }
+              ],
+              type: {
+                type: 'typeParameter',
+                name: 'T'
+              }
+            }
+          ]
+        }
+      ];
+
+      const def = adapter.toClassDefinition(entry);
+
+      expect(def.methods).toEqual([
+        {
+          name: 'getUser',
+          type: {
+            callSignature: {
+              returnType: {
+                name: 'T',
+                type: 'typeParameter'
+              }
+            },
+            name: 'getUser'
+          },
+          typeParameters: [
+            {
+              name: 'T'
+            }
+          ]
+        }
+      ]);
+
+    });
+
+    it('should convert parameters on methods', () => {
+      entry.children = [{
+        name: 'getUserById',
+        kindString: 'Method',
+        signatures: [
+          {
+            name: 'getUserById',
+            kindString: 'Call signature',
+            comment: {
+              shortText: 'Gets a user from the database.'
+            },
+            parameters: [
+              {
+                name: 'id',
+                kindString: 'Parameter',
+                comment: {
+                  text: 'The unique identifier.'
+                },
+                type: {
+                  type: 'reference',
+                  name: 'FooUser'
+                }
+              },
+              {
+                name: 'user',
+                kindString: 'Parameter',
+                type: {
+                  type: 'reference',
+                  typeArguments: [
+                    {
+                      type: 'typeParameter',
+                      name: 'T'
+                    },
+                    {
+                      type: 'typeParameter',
+                      name: 'U',
+                      constraint: {
+                        name: 'FooUser'
+                      }
+                    }
+                  ],
+                  name: 'Foo'
+                }
+              },
+              {
+                name: 'locale',
+                kindString: 'Parameter',
+                comment: {
+                  text: 'The locale of the user.\n'
+                },
+                type: {
+                  type: 'intrinsic',
+                  name: 'string'
+                },
+                defaultValue: '"en-US"'
+              }
+            ],
+            type: {
+              type: 'reference',
+              name: 'FooUser'
+            }
+          }
+        ]
+      }];
+
+      const def = adapter.toClassDefinition(entry);
+
+      expect(def.methods).toEqual([
+        {
+          name: 'getUserById',
+          description: 'Gets a user from the database.',
+          type: {
+            callSignature: {
+              returnType: {
+                name: 'FooUser',
+                type: 'reference'
+              },
+              parameters: [
+                {
+                  isOptional: false,
+                  name: 'id',
+                  type: {
+                    type: 'reference',
+                    name: 'FooUser'
+                  },
+                  description: 'The unique identifier.'
+                },
+                {
+                  isOptional: false,
+                  name: 'user',
+                  type: Object({
+                    type: 'reference',
+                    name: 'Foo',
+                    typeArguments: [
+                      Object({
+                        name: 'T',
+                        type: Object({
+                          type: 'typeParameter',
+                          name: 'T'
+                        })
+                      }),
+                      Object({
+                        name: 'U',
+                        type: Object({
+                          type: 'typeParameter',
+                          name: 'U'
+                        })
+                      })
+                    ]
+                  }),
+                  typeArguments: [
+                    Object({
+                      name: 'T',
+                      type: Object({
+                        type: 'typeParameter',
+                        name: 'T'
+                      })
+                    }),
+                    Object({
+                      name: 'U',
+                      type: Object({
+                        type: 'typeParameter',
+                        name: 'U'
+                      })
+                    })
+                  ]
+                },
+                {
+                  isOptional: true,
+                  name: 'locale',
+                  type: {
+                    type: 'intrinsic',
+                    name: 'string'
+                  },
+                  defaultValue: '"en-US"',
+                  description: 'The locale of the user.'
+                }
+              ]
+            },
+            name: 'getUserById'
+          }
+        }
+      ]);
+    });
+
+    it('should convert code examples for properties', () => {
+      entry.children = [
+        {
+          name: 'markupProperty',
+          kindString: 'Property',
+          type: {
+            type: 'intrinsic',
+            name: 'void'
+          },
+          comment: {
+            tags: [{
+              tag: 'example',
+              text: '\n```markup\n[searchFunction]="mySearchFunction"\n```\n'
+            }]
+          }
+        },
+        {
+          name: 'typescriptProperty',
+          kindString: 'Property',
+          type: {
+            type: 'intrinsic',
+            name: 'void'
+          },
+          comment: {
+            tags: [{
+              tag: 'example',
+              text: '\n```typescript\n[searchFunction]="mySearchFunction"\n```\n'
+            }]
+          }
+        },
+        {
+          name: 'defaultProperty',
+          kindString: 'Property',
+          type: {
+            type: 'intrinsic',
+            name: 'void'
+          },
+          comment: {
+            tags: [{
+              tag: 'example',
+              text: '\n```\n[searchFunction]="mySearchFunction"\n```\n'
+            }]
+          }
+        }
+      ];
+
+      const def = adapter.toClassDefinition(entry);
+
+      expect(def.properties).toEqual([
+        {
+          codeExample: '[searchFunction]="mySearchFunction"',
+          codeExampleLanguage: 'markup',
+          name: 'defaultProperty',
+          isOptional: true,
+          type: {
+            name: 'void',
+            type: 'intrinsic'
+          }
+        },
+        {
+          codeExample: '[searchFunction]="mySearchFunction"',
+          codeExampleLanguage: 'markup',
+          name: 'markupProperty',
+          isOptional: true,
+          type: {
+            name: 'void',
+            type: 'intrinsic'
+          }
+        },
+        {
+          codeExample: '[searchFunction]="mySearchFunction"',
+          codeExampleLanguage: 'typescript',
+          name: 'typescriptProperty',
+          isOptional: true,
+          type: {
+            name: 'void',
+            type: 'intrinsic'
+          }
+        }
+      ]);
     });
 
   });
@@ -277,13 +874,16 @@ describe('TypeDoc adapter', () => {
             type: 'reference',
             typeArguments: [
               {
-                type: 'reference',
-                name: 'FooUser'
+                type: 'array',
+                elementType: {
+                  type: 'reference',
+                  name: 'FooUser'
+                }
               }
             ],
             name: 'EventEmitter'
           },
-          defaultValue: 'new EventEmitter<FooUser>()',
+          defaultValue: 'new EventEmitter<FooUser[]>()',
           decorators: [
             {
               name: 'Output',
@@ -334,7 +934,7 @@ describe('TypeDoc adapter', () => {
               {
                 name: 'FooUser',
                 type: {
-                  type: 'reference',
+                  type: 'array',
                   name: 'FooUser'
                 }
               }
@@ -343,7 +943,48 @@ describe('TypeDoc adapter', () => {
           decorator: {
             name: 'Output'
           },
-          defaultValue: 'new EventEmitter<FooUser>()'
+          defaultValue: 'new EventEmitter<FooUser[]>()'
+        }
+      ]);
+    });
+
+    it('should use an Input\'s binding property name', () => {
+      entry.children = [
+        {
+          name: 'originalPropertyName',
+          kindString: 'Property',
+          type: {
+            type: 'intrinsic',
+            name: 'string'
+          },
+          decorators: [
+            {
+              name: 'Input',
+              type: {
+                type: 'reference',
+                name: 'Input'
+              },
+              arguments: {
+                bindingPropertyName: 'boundName'
+              }
+            }
+          ]
+        }
+      ];
+
+      const def = adapter.toDirectiveDefinition(entry);
+
+      expect(def.inputProperties).toEqual([
+        {
+          name: 'boundName',
+          isOptional: true,
+          type: {
+            name: 'string',
+            type: 'intrinsic'
+          },
+          decorator: {
+            name: 'Input'
+          }
         }
       ]);
     });
@@ -522,6 +1163,54 @@ describe('TypeDoc adapter', () => {
           }
         }
       ]);
+    });
+
+    it('should support index signature properties', () => {
+      entry.indexSignature = [
+        {
+          name: '__index',
+          kindString: 'Index signature',
+          parameters: [
+            {
+              name: '_',
+              kindString: 'Parameter',
+              type: {
+                type: 'intrinsic',
+                name: 'string'
+              }
+            }
+          ],
+          type: {
+            type: 'intrinsic',
+            name: 'any'
+          }
+        }
+      ];
+
+      const def = adapter.toInterfaceDefinition(entry);
+
+      expect(def.properties).toEqual([
+        {
+          isOptional: true,
+          name: '__index',
+          type: {
+            indexSignature: {
+              key: {
+                name: '_',
+                type: {
+                  type: 'intrinsic',
+                  name: 'string'
+                }
+              },
+              type: {
+                type: 'intrinsic',
+                name: 'any'
+              }
+            }
+          }
+        }
+      ]);
+
     });
 
   });
@@ -756,7 +1445,13 @@ describe('TypeDoc adapter', () => {
         type: {
           type: 'reflection',
           indexSignature: {
-            keyName: '_',
+            key: {
+              name: '_',
+              type: {
+                type: 'intrinsic',
+                name: 'string'
+              }
+            },
             type: {
               type: 'reference',
               name: 'FooUser'

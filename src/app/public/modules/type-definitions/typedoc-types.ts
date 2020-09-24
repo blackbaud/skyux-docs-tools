@@ -4,7 +4,7 @@ export interface TypeDocComment {
 
   tags?: {
     param?: string;
-    tag: 'default' | 'defaultvalue' | 'defaultValue' | 'deprecated' | 'example' | 'param';
+    tag: 'default' | 'defaultValue' | 'deprecated' | 'example' | 'param' | 'required';
     text: string;
   }[];
 
@@ -89,7 +89,7 @@ export interface TypeDocEntryChild {
 
   decorators?: {
     arguments?: {
-      bindingPropertyName: string;
+      bindingPropertyName?: string;
     };
     name: 'Input' | 'Output';
     type: TypeDocType;
@@ -113,6 +113,7 @@ export interface TypeDocEntryChild {
 
   setSignature?: {
     comment: TypeDocComment;
+    name: string;
     parameters?: TypeDocParameter[];
     type: TypeDocType;
   }[];
@@ -134,7 +135,7 @@ export interface TypeDocEntry {
 
   decorators?: {
     arguments?: {
-      obj: string;
+      obj?: string;
     };
     name: 'Component' | 'Directive' | 'Injectable' | 'NgModule' | 'Pipe';
     type: TypeDocType;

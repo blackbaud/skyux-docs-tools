@@ -3,6 +3,10 @@ import {
 } from './call-signature-definition';
 
 import {
+  SkyDocsIndexSignatureDefinition
+} from './index-signature-definition';
+
+import {
   SkyDocsTypeArgumentDefinition
 } from './type-argument-definition';
 
@@ -19,10 +23,7 @@ export interface SkyDocsTypeDefinition {
   /**
    * Used for index signatures, e.g. `[_: string]: any`
    */
-  indexSignature?: {
-    keyName: string;
-    type: SkyDocsTypeDefinition;
-  };
+  indexSignature?: SkyDocsIndexSignatureDefinition;
 
   name?: string;
 

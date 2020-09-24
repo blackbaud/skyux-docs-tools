@@ -31,6 +31,10 @@ import {
 } from './enumeration-member-definition';
 
 import {
+  SkyDocsIndexSignatureDefinition
+} from './index-signature-definition';
+
+import {
   SkyDocsInterfaceDefinition
 } from './interface-definition';
 
@@ -303,14 +307,9 @@ export class SkyDocsTypeDocAdapterService {
       const indexSignature = entry.indexSignature[0];
       const definition: SkyDocsInterfacePropertyDefinition = {
         isOptional: true,
-        name: 'any',
+        name: indexSignature.name,
         type: {
-          type: 'intrinsic',
-          name: 'any',
-          indexSignature: {
-            keyName: indexSignature.parameters[0].name,
-            type: this.getTypeDefinition(indexSignature)
-          }
+          indexSignature: this.getIndexSignatureDefinition(indexSignature)
         }
       };
 
@@ -352,24 +351,14 @@ export class SkyDocsTypeDocAdapterService {
 
       case 'Method':
         definition = {
-          callSignature: this.getCallSignatureDefinition(child.signatures[0], this.getCommentTags(child.comment))
+          callSignature: this.getCallSignatureDefinition(child.signatures[0], this.getCommentTags(child.comment)),
+          name: child.signatures[0].name
         };
-
-        if (child.signatures[0].name) {
-          definition.name = child.signatures[0].name;
-        }
 
         return definition;
 
       default:
-        let name: string;
-        if (child.type.name) {
-          name = child.type.name;
-        } else if (child.type.elementType) {
-          name = child.type.elementType.name;
-        } else if (child.type.type === 'stringLiteral') {
-          name = `'${child.type.value}'`;
-        }
+        let name: string = child.type.name || child.type.elementType?.name || child.type.value;
 
         definition = {
           type: child.type.type
@@ -384,19 +373,16 @@ export class SkyDocsTypeDocAdapterService {
           definition.unionTypes = child.type.types.map(t => this.getTypeDefinition({ type: t }));
         }
 
-        // Parse call signature types.
+        // Convert call signature types.
         if (child.type.type === 'reflection') {
-          if (child.type.declaration?.signatures) {
+          if (child.type.declaration.signatures) {
             definition.callSignature = this.getCallSignatureDefinition(
-              child.type.declaration?.signatures[0],
+              child.type.declaration.signatures[0],
               this.getCommentTags(child.comment)
             );
           } else {
             const indexSignature = child.type.declaration.indexSignature[0];
-            definition.indexSignature = {
-              keyName: indexSignature.parameters[0].name,
-              type: this.getTypeDefinition(indexSignature)
-            };
+            definition.indexSignature = this.getIndexSignatureDefinition(indexSignature);
           }
         }
 
@@ -471,6 +457,16 @@ export class SkyDocsTypeDocAdapterService {
     return definition;
   }
 
+  private getIndexSignatureDefinition(signature: TypeDocSignature): SkyDocsIndexSignatureDefinition {
+    return {
+      key: {
+        name: signature.parameters[0].name,
+        type: this.getTypeDefinition(signature.parameters[0])
+      },
+      type: this.getTypeDefinition(signature)
+    };
+  }
+
   private getTypeParameterDefinitions(typeParameters: TypeDocTypeParameter[]): SkyDocsTypeParameterDefinition[] {
     if (!typeParameters) {
       return [];
@@ -516,7 +512,6 @@ export class SkyDocsTypeDocAdapterService {
               break;
 
             case 'default':
-            case 'defaultvalue':
             case 'defaultValue':
               defaultValue = tag.text.trim();
               break;
@@ -545,11 +540,7 @@ export class SkyDocsTypeDocAdapterService {
         });
       }
 
-      if (comment.shortText) {
-        description = comment.shortText;
-      } else if (comment.text) {
-        description = comment.text;
-      }
+      description = (comment.shortText || comment.text || '').trim();
     }
 
     return {
@@ -616,16 +607,6 @@ export class SkyDocsTypeDocAdapterService {
       return false;
     }
 
-    // Class methods can't be optional.
-    if (child.kindString === 'Method') {
-      return false;
-    }
-
-    // Enumeration members can't be optional.
-    if (child.kindString === 'Enumeration member') {
-      return false;
-    }
-
     if (child.kindString === 'Parameter') {
       return !!(child.flags && child.flags.isOptional);
     }
@@ -645,7 +626,7 @@ export class SkyDocsTypeDocAdapterService {
     // Use the Input's bound property name, if found.
     // e.g. @Input('foobar')
     return (decorators?.arguments?.bindingPropertyName)
-      ? decorators?.arguments?.bindingPropertyName.replace(/(\'|\")/g, '')
+      ? decorators.arguments.bindingPropertyName.replace(/(\'|\")/g, '')
       : property.name;
   }
 
