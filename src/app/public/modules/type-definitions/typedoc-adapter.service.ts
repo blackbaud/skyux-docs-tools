@@ -59,10 +59,6 @@ import {
 } from './type-alias-definition';
 
 import {
-  SkyDocsTypeArgumentDefinition
-} from './type-argument-definition';
-
-import {
   SkyDocsTypeDefinition
 } from './type-definition';
 
@@ -430,17 +426,13 @@ export class SkyDocsTypeDocAdapterService {
     return parameters;
   }
 
-  private getTypeArgumentDefinitions(typeConfig: TypeDocType): SkyDocsTypeArgumentDefinition[] {
+  private getTypeArgumentDefinitions(typeConfig: TypeDocType): SkyDocsTypeDefinition[] {
     if (!typeConfig || !typeConfig.typeArguments) {
       return [];
     }
 
     return typeConfig.typeArguments.map((typeArgument) => {
-      const definition: SkyDocsTypeArgumentDefinition = {
-        name: typeArgument.elementType?.name || typeArgument.name,
-        type: this.getTypeDefinition({ type: typeArgument })
-      };
-      return definition;
+      return this.getTypeDefinition({ type: typeArgument });
     });
   }
 

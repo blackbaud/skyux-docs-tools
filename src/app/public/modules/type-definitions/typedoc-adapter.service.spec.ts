@@ -362,19 +362,19 @@ describe('TypeDoc adapter', () => {
                 {
                   isOptional: false,
                   name: 'searchTerm',
-                  type: Object({
+                  type: {
                     type: 'intrinsic',
                     name: 'string'
-                  }),
+                  },
                   description: 'The keywords used to search.'
                 },
                 {
                   isOptional: true,
                   name: 'debounceTime',
-                  type: Object({
+                  type: {
                     type: 'intrinsic',
                     name: 'number'
-                  }),
+                  },
                   description: 'The number of milliseconds to wait between each keypress.'
                 }
               ]
@@ -639,41 +639,29 @@ describe('TypeDoc adapter', () => {
                 {
                   isOptional: false,
                   name: 'user',
-                  type: Object({
+                  type: {
                     type: 'reference',
                     name: 'Foo',
                     typeArguments: [
-                      Object({
-                        name: 'T',
-                        type: Object({
-                          type: 'typeParameter',
-                          name: 'T'
-                        })
-                      }),
-                      Object({
-                        name: 'U',
-                        type: Object({
-                          type: 'typeParameter',
-                          name: 'U'
-                        })
-                      })
-                    ]
-                  }),
-                  typeArguments: [
-                    Object({
-                      name: 'T',
-                      type: Object({
+                      {
                         type: 'typeParameter',
                         name: 'T'
-                      })
-                    }),
-                    Object({
-                      name: 'U',
-                      type: Object({
+                      },
+                      {
                         type: 'typeParameter',
                         name: 'U'
-                      })
-                    })
+                      }
+                    ]
+                  },
+                  typeArguments: [
+                    {
+                      type: 'typeParameter',
+                      name: 'T'
+                    },
+                    {
+                      type: 'typeParameter',
+                      name: 'U'
+                    }
                   ]
                 },
                 {
@@ -893,6 +881,52 @@ describe('TypeDoc adapter', () => {
               }
             }
           ]
+        },
+        {
+          name: 'stream',
+          kindString: 'Property',
+          decorators: [
+            {
+              name: 'Output',
+              type: {
+                type: 'reference',
+                name: 'Output'
+              },
+              arguments: {}
+            }
+          ],
+          type: {
+            type: 'reference',
+            typeArguments: [
+              {
+                type: 'union',
+                types: [
+                  {
+                    type: 'array',
+                    elementType: {
+                      type: 'intrinsic',
+                      name: 'string'
+                    }
+                  },
+                  {
+                    type: 'reference',
+                    typeArguments: [
+                      {
+                        type: 'array',
+                        elementType: {
+                          type: 'intrinsic',
+                          name: 'string'
+                        }
+                      }
+                    ],
+                    name: 'Observable'
+                  }
+                ]
+              }
+            ],
+            name: 'EventEmitter'
+          },
+          defaultValue: 'new EventEmitter<Array<string> | Observable<Array<string>>>()'
         }
       ];
 
@@ -932,11 +966,8 @@ describe('TypeDoc adapter', () => {
             name: 'EventEmitter',
             typeArguments: [
               {
-                name: 'FooUser',
-                type: {
-                  type: 'array',
-                  name: 'FooUser'
-                }
+                type: 'array',
+                name: 'FooUser'
               }
             ]
           },
@@ -944,6 +975,39 @@ describe('TypeDoc adapter', () => {
             name: 'Output'
           },
           defaultValue: 'new EventEmitter<FooUser[]>()'
+        },
+        {
+          isOptional: true,
+          name: 'stream',
+          type: {
+            type: 'reference',
+            name: 'EventEmitter',
+            typeArguments: [
+              {
+                type: 'union',
+                unionTypes: [
+                  {
+                    type: 'array',
+                    name: 'string'
+                  },
+                  {
+                    type: 'reference',
+                    name: 'Observable',
+                    typeArguments: [
+                      {
+                        type: 'array',
+                        name: 'string'
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          decorator: {
+            name: 'Output'
+          },
+          defaultValue: 'new EventEmitter<Array<string> | Observable<Array<string>>>()'
         }
       ]);
     });
@@ -1524,9 +1588,30 @@ describe('TypeDoc adapter', () => {
               name: 'void'
             },
             parameters: [
-              Object({ isOptional: false, name: 'args', type: Object({ type: 'reference', name: 'FooUser' }) }),
-              Object({ isOptional: false, name: 'addl', type: Object({ type: 'typeParameter', name: 'T' }) }),
-              Object({ isOptional: false, name: 'data', type: Object({ type: 'array', name: 'any' }) })
+              {
+                isOptional: false,
+                name: 'args',
+                type: {
+                  type: 'reference',
+                  name: 'FooUser'
+                }
+              },
+              {
+                isOptional: false,
+                name: 'addl',
+                type: {
+                  type: 'typeParameter',
+                  name: 'T'
+                }
+              },
+              {
+                isOptional: false,
+                name: 'data',
+                type: {
+                  type: 'array',
+                  name: 'any'
+                }
+              }
             ]
           }
         }
@@ -1572,7 +1657,9 @@ describe('TypeDoc adapter', () => {
           ]
         },
         typeParameters: [
-          { name: 'T' }
+          {
+            name: 'T'
+          }
         ]
       });
     });

@@ -1,253 +1,583 @@
-// import {
-//   expect
-// } from '@skyux-sdk/testing';
+import {
+  expect
+} from '@skyux-sdk/testing';
+import { SkyDocsClassPropertyDefinition } from './class-property-definition';
+import { SkyDocsInterfaceDefinition } from './interface-definition';
+import { SkyDocsClassMethodDefinition } from './method-definition';
+import { SkyDocsParameterDefinition } from './parameter-definition';
+import { SkyDocsTypeAliasDefinition } from './type-alias-definition';
+import { SkyDocsTypeDefinition } from './type-definition';
 
-// import {
-//   SkyDocsTypeDefinitionsFormatService
-// } from './type-definitions-format.service';
+import {
+  SkyDocsTypeDefinitionsFormatService
+} from './type-definitions-format.service';
 
-// describe('Type definitions format service', () => {
+describe('Type definitions format service', () => {
 
-//   it('should generate a method signature', () => {
-//     const service = new SkyDocsTypeDefinitionsFormatService();
-//     const methodDef: SkyDocsMethodDefinition = {
-//       name: 'fooBar'
-//     };
+  let service: SkyDocsTypeDefinitionsFormatService;
 
-//     const signature = service.getMethodSignature(methodDef);
-//     expect(signature).toEqual(
-//       'public fooBar(): void'
-//     );
-//   });
+  beforeEach(() => {
+    service = new SkyDocsTypeDefinitionsFormatService();
+  });
 
-//   it('should generate a method signature with optional params', () => {
-//     const service = new SkyDocsTypeDefinitionsFormatService();
-//     const methodDef: SkyDocsMethodDefinition = {
-//       name: 'fooBar',
-//       parameters: [
-//         {
-//           name: 'component',
-//           type: 'string',
-//           isOptional: true,
-//           defaultValue: '\'foobar\''
-//         },
-//         {
-//           name: 'user',
-//           type: 'User',
-//           isOptional: true
-//         }
-//       ]
-//     };
+  it('should generate method source code', () => {
+    const def: SkyDocsClassMethodDefinition = {
+      name: 'fooBar',
+      type: {
+        callSignature: {
+          returnType: {
+            type: 'intrinsic',
+            name: 'void'
+          }
+        }
+      }
+    };
 
-//     const signature = service.getMethodSignature(methodDef);
-//     expect(signature).toEqual(
-//       'public fooBar(component: string = \'foobar\', user?: User): void'
-//     );
-//   });
+    const sourceCode = service.getMethodSourceCode(def);
+    expect(sourceCode).toEqual(
+      'public fooBar(): void'
+    );
+  });
 
-//   it('should generate a method signature with type params', () => {
-//     const service = new SkyDocsTypeDefinitionsFormatService();
-//     const methodDef: SkyDocsMethodDefinition = {
-//       name: 'fooBar',
-//       parameters: [
-//         {
-//           name: 'component',
-//           type: 'Type<T>',
-//           isOptional: false
-//         },
-//         {
-//           name: 'user',
-//           type: 'U',
-//           isOptional: false
-//         }
-//       ],
-//       returnType: 'string',
-//       typeParameters: ['T', 'U extends FooUser']
-//     };
+  it('should generate method source code with parameters', () => {
+    const def: SkyDocsClassMethodDefinition = {
+      name: 'fooBar',
+      type: {
+        callSignature: {
+          parameters: [
+            {
+              name: 'foo',
+              isOptional: false,
+              type: {
+                type: 'intrinsic',
+                name: 'string'
+              }
+            },
+            {
+              name: 'args',
+              isOptional: true,
+              type: {
+                type: 'reference',
+                name: 'Options'
+              }
+            }
+          ],
+          returnType: {
+            type: 'intrinsic',
+            name: 'FooUser'
+          }
+        }
+      }
+    };
 
-//     const signature = service.getMethodSignature(methodDef);
-//     expect(signature).toEqual(
-//       'public fooBar<T, U extends FooUser>(component: Type<T>, user: U): string'
-//     );
-//   });
+    const sourceCode = service.getMethodSourceCode(def);
+    expect(sourceCode).toEqual(
+      'public fooBar(foo: string, args?: Options): FooUser'
+    );
+  });
 
-//   it('should NOT wrap anchor tags around a method\'s known types', () => {
-//     const service = new SkyDocsTypeDefinitionsFormatService();
-//     const methodDef: SkyDocsMethodDefinition = {
-//       name: 'fooBar',
-//       returnType: 'FooUser',
-//       parameters: [{
-//         name: 'user',
-//         type: 'FooUser',
-//         isOptional: false
-//       }]
-//     };
+  it('should generate method source code with type parameters', () => {
+    const def: SkyDocsClassMethodDefinition = {
+      name: 'getUserById',
+      description: 'Gets a user from the database.',
+      type: {
+        callSignature: {
+          returnType: {
+            name: 'FooUser',
+            type: 'reference'
+          },
+          parameters: [
+            {
+              isOptional: false,
+              name: 'id',
+              type: {
+                type: 'reference',
+                name: 'FooUser'
+              },
+              description: 'The unique identifier.'
+            },
+            {
+              isOptional: false,
+              name: 'user',
+              type: {
+                type: 'reference',
+                name: 'Foo',
+                typeArguments: [
+                  {
+                    type: 'typeParameter',
+                    name: 'T'
+                  },
+                  {
+                    type: 'typeParameter',
+                    name: 'U'
+                  }
+                ]
+              },
+              typeArguments: [
+                {
+                  type: 'typeParameter',
+                  name: 'T'
+                },
+                {
+                  type: 'typeParameter',
+                  name: 'U'
+                }
+              ]
+            },
+            {
+              isOptional: true,
+              name: 'locale',
+              type: {
+                type: 'intrinsic',
+                name: 'string'
+              },
+              defaultValue: '"en-US"',
+              description: 'The locale of the user.'
+            }
+          ]
+        },
+        name: 'getUserById'
+      }
+    };
 
-//     const signature = service.getMethodSignature(methodDef);
-//     expect(signature).toEqual(
-//       'public fooBar(user: FooUser): FooUser'
-//     );
-//   });
+    const sourceCode = service.getMethodSourceCode(def);
+    expect(sourceCode).toEqual(
+      'public getUserById(id: FooUser, user: Foo<T, U>, locale?: string): FooUser'
+    );
+  });
 
-//   it('should generate a parameter signature', () => {
-//     const service = new SkyDocsTypeDefinitionsFormatService();
-//     const paramDef: SkyDocsParameterDefinition = {
-//       name: 'foobar',
-//       isOptional: false,
-//       type: 'string'
-//     };
+  it('should generate interface source code', () => {
+    const def: SkyDocsInterfaceDefinition = {
+      anchorId: 'foo-anchor-id',
+      name: 'Foo',
+      properties: [
+        {
+          isOptional: true,
+          name: 'foo',
+          type: {
+            type: 'typeParameter',
+            name: 'T'
+          }
+        },
+        {
+          isOptional: true,
+          name: 'user',
+          type: {
+            type: 'typeParameter',
+            name: 'U'
+          }
+        },
+        {
+          isOptional: true,
+          name: '__index',
+          type: {
+            indexSignature: {
+              key: {
+                name: '_',
+                type: {
+                  type: 'intrinsic',
+                  name: 'string'
+                }
+              },
+              type: {
+                type: 'intrinsic',
+                name: 'any'
+              }
+            }
+          }
+        }
+      ],
+      typeParameters: [
+        {
+          name: 'T'
+        },
+        {
+          name: 'U',
+          type: {
+            type: 'reference',
+            name: 'FooUser'
+          }
+        }
+      ]
+    };
 
-//     const signature = service.getParameterSignature(paramDef);
-//     expect(signature).toEqual('foobar: string');
-//   });
+    const sourceCode = service.getInterfaceSourceCode(def);
+    expect(sourceCode).toEqual(`interface Foo<T, U extends FooUser> {
+  foo?: T;
+  user?: U;
+  [_: string]: any;
+}`
+    );
+  });
 
-//   it('should generate an interface signature', () => {
-//     const service = new SkyDocsTypeDefinitionsFormatService();
-//     const interfaceDef: SkyDocsInterfaceDefinition = {
-//       name: 'Foobar',
-//       properties: [
-//         {
-//           isOptional: false,
-//           name: 'foo',
-//           type: 'Type<T>'
-//         },
-//         {
-//           isOptional: true,
-//           name: 'bar',
-//           type: 'string'
-//         }
-//       ]
-//     };
+  it('should generate union type alias source code', () => {
+    const def: SkyDocsTypeAliasDefinition = {
+      anchorId: 'foo-anchor-id',
+      name: 'FooTypeAlias',
+      type: {
+        type: 'union',
+        unionTypes: [
+          {
+            type: 'intrinsic',
+            name: 'string'
+          },
+          {
+            type: 'reference',
+            name: 'FooDate'
+          },
+          {
+            type: 'intrinsic',
+            name: 'number'
+          },
+          {
+            type: 'intrinsic',
+            name: 'false'
+          },
+          {
+            type: 'unknown',
+            name: '1'
+          },
+          {
+            type: 'stringLiteral',
+            name: '\'left\''
+          },
+          {
+            type: 'typeParameter',
+            name: 'T'
+          },
+          {
+            type: 'reflection',
+            callSignature: {
+              returnType: {
+                type: 'intrinsic',
+                name: 'void'
+              }
+            }
+          }
+        ]
+      }
+    };
 
-//     const signature = service.getInterfaceSignature(interfaceDef);
-//     expect(signature).toEqual('interface Foobar {\n  foo: Type<T>;\n  bar?: string;\n}');
-//   });
+    const sourceCode = service.getTypeAliasSourceCode(def);
+    expect(sourceCode).toEqual(
+      'type FooTypeAlias = string | FooDate | number | false | 1 | \'left\' | T | () => void'
+    );
+  });
 
-//   it('should generate an interface signature with type params', () => {
-//     const service = new SkyDocsTypeDefinitionsFormatService();
-//     const interfaceDef: SkyDocsInterfaceDefinition = {
-//       name: 'Foobar',
-//       properties: [
-//         {
-//           isOptional: false,
-//           name: 'foo',
-//           type: 'Type<T>'
-//         }
-//       ],
-//       typeParameters: [
-//         'T',
-//         'U extends User'
-//       ]
-//     };
+  it('should generate index signature type alias source code', () => {
+    const def: SkyDocsTypeAliasDefinition = {
+      anchorId: 'foo-anchor-id',
+      name: 'FooTypeAlias',
+      type: {
+        type: 'reflection',
+        indexSignature: {
+          key: {
+            name: '_',
+            type: {
+              type: 'intrinsic',
+              name: 'string'
+            }
+          },
+          type: {
+            type: 'reference',
+            name: 'FooUser'
+          }
+        }
+      }
+    };
 
-//     const signature = service.getInterfaceSignature(interfaceDef);
-//     expect(signature).toEqual('interface Foobar<T, U extends User> {\n  foo: Type<T>;\n}');
-//   });
+    const sourceCode = service.getTypeAliasSourceCode(def);
+    expect(sourceCode).toEqual(`type FooTypeAlias = {
+  [_: string]: FooUser;
+}`);
+  });
 
-//   it('should generate a property signature', () => {
-//     const service = new SkyDocsTypeDefinitionsFormatService();
-//     const propertyDef: SkyDocsPropertyDefinition = {
-//       name: 'foobar',
-//       isOptional: false,
-//       type: 'string'
-//     };
+  it('should generate call signature type alias source code', () => {
+    const def: SkyDocsTypeAliasDefinition = {
+      anchorId: 'foo-anchor-id',
+      name: 'FooTypeAlias',
+      type: {
+        type: 'reflection',
+        callSignature: {
+          returnType: {
+            type: 'intrinsic',
+            name: 'void'
+          },
+          parameters: [
+            {
+              isOptional: false,
+              name: 'args',
+              type: {
+                type: 'reference',
+                name: 'FooUser'
+              }
+            },
+            {
+              isOptional: false,
+              name: 'addl',
+              type: {
+                type: 'typeParameter',
+                name: 'T'
+              }
+            },
+            {
+              isOptional: true,
+              name: 'data',
+              type: {
+                type: 'array',
+                name: 'any'
+              },
+              defaultValue: '[]'
+            }
+          ]
+        }
+      }
+    };
 
-//     const signature = service.getPropertySignature(propertyDef);
-//     expect(signature).toEqual('foobar: string');
-//   });
+    const sourceCode = service.getTypeAliasSourceCode(def);
+    expect(sourceCode).toEqual('type FooTypeAlias = (args: FooUser, addl: T, data?: any[]) => void');
+  });
 
-//   it('should generate a property signature without a type', () => {
-//     const service = new SkyDocsTypeDefinitionsFormatService();
-//     const propertyDef: SkyDocsPropertyDefinition = {
-//       name: 'foobar',
-//       isOptional: false,
-//       type: undefined
-//     };
+  it('should generate HTML formatted property names', () => {
+    const def: SkyDocsClassPropertyDefinition = {
+      name: 'foo',
+      isOptional: true,
+      type: {
+        type: 'reference',
+        name: 'FooUser'
+      },
+      deprecationWarning: 'This is a deprecation warning.'
+    };
 
-//     const signature = service.getPropertySignature(propertyDef);
-//     expect(signature).toEqual('foobar');
-//   });
+    const formattedName = service.getFormattedPropertyName(def);
+    expect(formattedName).toEqual(
+      '<strike>foo</strike>?: FooUser'
+    );
+  });
 
-//   it('should generate an optional property signature', () => {
-//     const service = new SkyDocsTypeDefinitionsFormatService();
-//     const propertyDef: SkyDocsPropertyDefinition = {
-//       name: 'foobar',
-//       isOptional: true,
-//       type: 'string'
-//     };
+  it('should generate HTML formatted property names w/ union type parameters', () => {
+    const def: SkyDocsClassPropertyDefinition = {
+      isOptional: true,
+      name: 'stream',
+      type: {
+        type: 'reference',
+        name: 'EventEmitter',
+        typeArguments: [
+          {
+            type: 'union',
+            unionTypes: [
+              {
+                type: 'array',
+                name: 'string'
+              },
+              {
+                type: 'reference',
+                name: 'Observable',
+                typeArguments: [
+                  {
+                    type: 'array',
+                    name: 'string'
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      decorator: {
+        name: 'Output'
+      },
+      defaultValue: 'new EventEmitter<Array<string> | Observable<Array<string>>>()'
+    };
 
-//     const signature = service.getPropertySignature(propertyDef);
-//     expect(signature).toEqual('foobar?: string');
-//   });
+    const formattedName = service.getFormattedPropertyName(def);
+    expect(formattedName).toEqual(
+      '@Output()<br>stream?: EventEmitter&lt;string[] | Observable&lt;string[]&gt;&gt;'
+    );
+  });
 
-//   it('should generate a property signature with a decorator', () => {
-//     const service = new SkyDocsTypeDefinitionsFormatService();
-//     const propertyDef: SkyDocsPropertyDefinition = {
-//       name: 'foobar',
-//       isOptional: false,
-//       decorator: 'Input',
-//       type: 'string'
-//     };
+  it('should generate HTML formatted index signature property names', () => {
+    const def: SkyDocsClassPropertyDefinition = {
+      isOptional: true,
+      name: '__index',
+      type: {
+        indexSignature: {
+          key: {
+            name: '_',
+            type: {
+              type: 'intrinsic',
+              name: 'string'
+            }
+          },
+          type: {
+            type: 'reference',
+            name: 'FooUser'
+          }
+        }
+      }
+    };
 
-//     const signature = service.getPropertySignature(propertyDef);
-//     expect(signature).toEqual('@Input()<br />foobar: string');
-//   });
+    const formattedName = service.getFormattedPropertyName(def);
+    expect(formattedName).toEqual(
+      '[_: string]: FooUser'
+    );
+  });
 
-//   it('should generate a deprecated property signature', () => {
-//     const service = new SkyDocsTypeDefinitionsFormatService();
-//     const propertyDef: SkyDocsPropertyDefinition = {
-//       name: 'click',
-//       isOptional: true,
-//       decorator: 'Output',
-//       type: 'EventEmitter<FooUser>',
-//       deprecationWarning: 'Do not use this feature.'
-//     };
+  it('should generate HTML formatted @Input names', () => {
+    const def: SkyDocsClassPropertyDefinition = {
+      name: 'options',
+      isOptional: false,
+      type: {
+        type: 'reference',
+        name: 'Options'
+      },
+      decorator: {
+        name: 'Input'
+      }
+    };
 
-//     const signature = service.getPropertySignature(propertyDef);
-//     expect(signature).toEqual(
-//       '@Output()<br /><strike>click</strike>: EventEmitter<FooUser>'
-//     );
-//   });
+    const formattedName = service.getFormattedPropertyName(def);
+    expect(formattedName).toEqual(
+      '@Input()<br>options: Options'
+    );
+  });
 
-//   it('should generate a type alias index signature', () => {
-//     const service = new SkyDocsTypeDefinitionsFormatService();
-//     const definition: SkyDocsTypeAliasIndexSignatureDefinition = {
-//       name: 'foo',
-//       keyName: '_',
-//       valueType: 'FooUser'
-//     };
+  it('should generate HTML formatted @Output names', () => {
+    const def: SkyDocsClassPropertyDefinition = {
+      name: 'click',
+      isOptional: true,
+      type: {
+        type: 'reference',
+        name: 'EventEmitter',
+        typeArguments: [
+          {
+            type: 'array',
+            name: 'FooUser'
+          }
+        ]
+      },
+      decorator: {
+        name: 'Output'
+      },
+      defaultValue: 'new EventEmitter<FooUser[]>()'
+    };
 
-//     const signature = service.getTypeAliasSignature(definition);
-//     expect(signature).toEqual('type foo = { [_: string]: FooUser }');
-//   });
+    const formattedName = service.getFormattedPropertyName(def);
+    expect(formattedName).toEqual(
+      '@Output()<br>click?: EventEmitter&lt;FooUser[]&gt;'
+    );
+  });
 
-//   it('should generate a type alias union signature', () => {
-//     const service = new SkyDocsTypeDefinitionsFormatService();
-//     const definition: SkyDocsTypeAliasUnionDefinition = {
-//       name: 'foo',
-//       types: ['string', 'boolean', '\'above\'', 'FooUser']
-//     };
+  it('should generate HTML formatted method names', () => {
+    const def: SkyDocsClassMethodDefinition = {
+      name: 'getUserById',
+      description: 'Gets a user from the database.',
+      type: {
+        callSignature: {
+          returnType: {
+            name: 'FooUser',
+            type: 'reference'
+          },
+          parameters: [
+            {
+              isOptional: false,
+              name: 'id',
+              type: {
+                type: 'reference',
+                name: 'FooUser'
+              }
+            }
+          ]
+        },
+        name: 'getUserById'
+      }
+    };
 
-//     const signature = service.getTypeAliasSignature(definition);
-//     expect(signature).toEqual('type foo = string | boolean | \'above\' | FooUser');
-//   });
+    const formattedName = service.getFormattedMethodName(def);
+    expect(formattedName).toEqual(
+      'getUserById()'
+    );
+  });
 
-//   it('should generate a type alias function signature', () => {
-//     const service = new SkyDocsTypeDefinitionsFormatService();
-//     const definition: SkyDocsTypeAliasFunctionDefinition = {
-//       name: 'foo',
-//       parameters: [
-//         {
-//           name: 'id',
-//           type: 'number',
-//           isOptional: false
-//         }
-//       ],
-//       returnType: 'FooUser'
-//     };
+  it('should generate HTML formatted method names', () => {
+    const def: SkyDocsClassMethodDefinition = {
+      name: 'getUserById',
+      deprecationWarning: '',
+      type: {
+        callSignature: {
+          returnType: {
+            name: 'FooUser',
+            type: 'reference'
+          }
+        },
+        name: 'getUserById'
+      }
+    };
 
-//     const signature = service.getTypeAliasSignature(definition);
-//     expect(signature).toEqual('type foo = (id: number) => FooUser');
-//   });
+    const formattedName = service.getFormattedMethodName(def);
+    expect(formattedName).toEqual(
+      '<strike>getUserById</strike>()'
+    );
+  });
 
-// });
+  it('should generate HTML formatted parameter names', () => {
+    const def: SkyDocsParameterDefinition = {
+      name: 'args',
+      isOptional: true,
+      type: {
+        unionTypes: [
+          {
+            type: 'stringLiteral',
+            name: '\'left\''
+          },
+          {
+            type: 'stringLiteral',
+            name: '\'right\''
+          }
+        ]
+      }
+    };
+
+    const formattedName = service.getFormattedParameterName(def);
+    expect(formattedName).toEqual(
+      'args?: \'left\' | \'right\''
+    );
+  });
+
+  it('should allow unescaped HTML formatted types', () => {
+    const def: SkyDocsTypeDefinition = {
+      type: 'reference',
+      name: 'EventEmitter',
+      typeArguments: [
+        {
+          type: 'union',
+          unionTypes: [
+            {
+              type: 'array',
+              name: 'string'
+            },
+            {
+              type: 'reference',
+              name: 'Observable',
+              typeArguments: [
+                {
+                  type: 'array',
+                  name: 'string'
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    };
+
+    const formatted = service.getFormattedType(def, {
+      escapeSpecialCharacters: false
+    });
+
+    expect(formatted).toEqual(
+      'EventEmitter<string[] | Observable<string[]>>'
+    );
+  });
+
+});

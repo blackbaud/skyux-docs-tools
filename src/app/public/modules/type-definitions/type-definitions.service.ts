@@ -81,6 +81,7 @@ export class SkyDocsTypeDefinitionsService {
           types.pipes.push(this.adapter.toPipeDefinition(item));
           break;
         default:
+          /*tslint:disable-next-line:switch-default*/
           switch (kindString) {
             case 'Class':
               types.classes.push(this.adapter.toClassDefinition(item));
@@ -93,8 +94,6 @@ export class SkyDocsTypeDefinitionsService {
               break;
             case 'Type alias':
               types.typeAliases.push(this.adapter.toTypeAliasDefinition(item));
-              break;
-            default:
               break;
           }
       }

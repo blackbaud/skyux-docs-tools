@@ -38,7 +38,7 @@ export class SkyDocsInterfaceDefinitionComponent {
   ) { }
 
   private updateView(): void {
-    this.sourceCode = this.formatService.getInterfaceSourceCode(this.config);
+    this.sourceCode = (this.config) ? this.formatService.getInterfaceSourceCode(this.config) : undefined;
   }
 
 }

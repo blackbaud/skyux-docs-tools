@@ -6,10 +6,6 @@ import {
   SkyDocsIndexSignatureDefinition
 } from './index-signature-definition';
 
-import {
-  SkyDocsTypeArgumentDefinition
-} from './type-argument-definition';
-
 /**
  * Used to describe TypeScript types.
  */
@@ -32,7 +28,7 @@ export interface SkyDocsTypeDefinition {
   /**
    * Describes any type arguments, e.g. `<T, F>`.
    */
-  typeArguments?: SkyDocsTypeArgumentDefinition[];
+  typeArguments?: SkyDocsTypeDefinition[];
 
   /**
    * The types that compose a union type.

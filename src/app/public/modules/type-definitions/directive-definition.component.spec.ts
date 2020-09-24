@@ -60,14 +60,9 @@ describe('Directive definition component', function () {
 
   it('should display the selector', () => {
     fixture.componentInstance.config = {
+      anchorId: 'foo-anchor-id',
       name: 'FooComponent',
-      decorators: [{
-        name: 'Component',
-        type: {},
-        arguments: {
-          obj: 'selector: \'app-foo\''
-        }
-      }]
+      selector: 'app-foo'
     };
 
     fixture.detectChanges();
@@ -75,76 +70,40 @@ describe('Directive definition component', function () {
     let selectorElement = fixture.nativeElement.querySelector('.sky-docs-directive-selector');
 
     expect(selectorElement.innerText).toEqual('app-foo');
-
-    // Use backticks for the selector name.
-    fixture.componentInstance.config = {
-      name: 'FooComponent',
-      decorators: [{
-        name: 'Component',
-        type: {},
-        arguments: {
-          obj: 'selector: `app-foo-backticks`'
-        }
-      }]
-    };
-
-    fixture.detectChanges();
-
-    selectorElement = fixture.nativeElement.querySelector('.sky-docs-directive-selector');
-
-    expect(selectorElement.innerText).toEqual('app-foo-backticks');
   });
 
   it('should order Input properties first and then Output properties', () => {
     fixture.componentInstance.config = {
+      anchorId: 'foo-anchor-id',
       name: 'FooComponent',
-      decorators: [{
-        name: 'Component',
-        type: {},
-        arguments: {
-          obj: 'selector: \'app-foo\''
-        }
-      }],
-      children: [
+      selector: 'app-foo',
+      inputProperties: [
         {
-          name: 'click',
-          kindString: 'Property',
-          decorators: [{
-            name: 'Output',
-            type: {
-              type: 'reference',
-              name: 'Output'
-            }
-          }],
+          name: 'config',
+          decorator: {
+            name: 'Input'
+          },
+          isOptional: true,
           type: {
             type: 'reference',
+            name: 'Config'
+          }
+        }
+      ],
+      eventProperties: [
+        {
+          name: 'click',
+          decorator: {
+            name: 'Output'
+          },
+          isOptional: true,
+          type: {
+            type: 'reference',
+            name: 'EventEmitter',
             typeArguments: [{
               type: 'intrinsic',
               name: 'string'
-            }],
-            name: 'EventEmitter'
-          }
-        },
-        {
-          name: 'complexConfig',
-          kindString: 'Property',
-          decorators: [{
-            arguments: {
-              bindingPropertyName: '\'config\''
-            },
-            name: 'Input',
-            type: {
-              type: 'reference',
-              name: 'Input'
-            }
-          }],
-          type: {
-            type: 'reference',
-            typeArguments: [{
-              type: 'unknown',
-              name: 'U'
-            }],
-            name: 'Config'
+            }]
           }
         }
       ]
@@ -154,39 +113,23 @@ describe('Directive definition component', function () {
 
     const rowElements = fixture.nativeElement.querySelectorAll('.sky-docs-property-definitions-table-cell-name');
 
-    expect(rowElements.item(0).innerText).toEqual('@Input()\nconfig?: Config<U>');
+    expect(rowElements.item(0).innerText).toEqual('@Input()\nconfig?: Config');
     expect(rowElements.item(1).innerText).toEqual('@Output()\nclick?: EventEmitter<string>');
   });
 
   it('should display Output properties if Inputs do not exist', () => {
     fixture.componentInstance.config = {
+      anchorId: 'foo-anchor-id',
       name: 'FooComponent',
-      decorators: [{
-        name: 'Component',
-        type: {},
-        arguments: {
-          obj: 'selector: \'app-foo\''
-        }
-      }],
-      children: [
+      selector: 'app-foo',
+      eventProperties: [
         {
           name: 'click',
-          kindString: 'Property',
-          decorators: [{
-            name: 'Output',
-            type: {
-              type: 'reference',
-              name: 'Output'
-            }
-          }],
-          type: {
-            type: 'reference',
-            typeArguments: [{
-              type: 'intrinsic',
-              name: 'string'
-            }],
-            name: 'EventEmitter'
-          }
+          decorator: {
+            name: 'Output'
+          },
+          isOptional: false,
+          type: {}
         }
       ]
     };
@@ -200,17 +143,10 @@ describe('Directive definition component', function () {
 
   it('should add links to types within description', () => {
     fixture.componentInstance.config = {
+      anchorId: 'component-foocomponent',
       name: 'FooComponent',
-      comment: {
-        shortText: 'This description has a [[FooUser]].'
-      },
-      decorators: [{
-        name: 'Component',
-        type: {},
-        arguments: {
-          obj: 'selector: \'app-foo\''
-        }
-      }]
+      description: 'This description has a [[FooUser]].',
+      selector: 'app-foo'
     };
 
     fixture.detectChanges();

@@ -83,7 +83,7 @@ export class SkyDocsPropertyDefinitionsComponent implements OnInit {
     this.properties = this.config?.properties?.map(property => {
       const vm: PropertyViewModel = {
         callSignature: property.type?.callSignature,
-        defaultValue: this.formatService.escapeSpecialCharacters(property.defaultValue),
+        defaultValue: this.formatService.escapeSpecialCharacters(property.defaultValue || ''),
         deprecationWarning: property.deprecationWarning,
         description: property.description,
         formattedName: this.formatService.getFormattedPropertyName(property),
