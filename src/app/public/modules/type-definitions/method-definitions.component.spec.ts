@@ -79,11 +79,11 @@ describe('Method definitions component', function () {
     fixture.detectChanges();
     tick();
 
-    const descriptionElement = fixture.nativeElement.querySelector(
+    const element = fixture.nativeElement.querySelector(
       '.sky-docs-method-definition-description'
     );
 
-    expect(descriptionElement.innerHTML).toContain(
+    expect(element.innerHTML).toContain(
       '<a class="sky-docs-anchor-link" href="#foo-user">FooUser</a>'
     );
   }));
@@ -107,11 +107,11 @@ describe('Method definitions component', function () {
     fixture.detectChanges();
     tick();
 
-    const descriptionElement = fixture.nativeElement.querySelector(
+    const element = fixture.nativeElement.querySelector(
       '.sky-docs-method-definition-deprecation-warning'
     );
 
-    expect(descriptionElement.innerHTML).toContain(
+    expect(element.innerHTML).toContain(
       '<a class="sky-docs-anchor-link" href="#foo-user">FooUser</a>'
     );
   }));

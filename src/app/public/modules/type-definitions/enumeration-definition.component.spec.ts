@@ -75,11 +75,11 @@ describe('Enumeration definition component', function () {
     fixture.detectChanges();
     tick();
 
-    const descriptionElement = fixture.nativeElement.querySelector(
+    const element = fixture.nativeElement.querySelector(
       '.sky-docs-enumeration-definition-description'
     );
 
-    expect(descriptionElement.innerHTML).toContain(
+    expect(element.innerHTML).toContain(
       '<a class="sky-docs-anchor-link" href="#foo-user">FooUser</a>'
     );
   }));
@@ -99,11 +99,11 @@ describe('Enumeration definition component', function () {
     fixture.detectChanges();
     tick();
 
-    const descriptionElement = fixture.nativeElement.querySelector(
+    const element = fixture.nativeElement.querySelector(
       '.sky-docs-enumeration-definition-description'
     );
 
-    expect(descriptionElement.innerHTML).toContain(
+    expect(element.innerHTML).toContain(
       '<code>Date</code>'
     );
   }));
@@ -124,11 +124,11 @@ describe('Enumeration definition component', function () {
     fixture.detectChanges();
     tick();
 
-    const descriptionElement = fixture.nativeElement.querySelector(
+    const element = fixture.nativeElement.querySelector(
       '.sky-docs-property-definitions-table-cell-description'
     );
 
-    expect(descriptionElement.innerHTML).toContain(
+    expect(element.innerHTML).toContain(
       '<a class="sky-docs-anchor-link" href="#foo-user">FooUser</a>'
     );
   }));
