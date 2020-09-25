@@ -38,6 +38,9 @@ interface GetFormattedTypeConfig {
   escapeSpecialCharacters: boolean;
 }
 
+/**
+ * Formats type definitions into HTML-compatible strings.
+ */
 @Injectable()
 export class SkyDocsTypeDefinitionsFormatService {
 

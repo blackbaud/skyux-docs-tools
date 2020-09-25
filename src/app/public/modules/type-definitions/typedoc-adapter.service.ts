@@ -82,6 +82,9 @@ import {
 
 import orderBy from 'lodash.orderby';
 
+/**
+ * Converts TypeDoc types into SKY UX docs-tools types, to be supplied to the various definitions components.
+ */
 @Injectable()
 export class SkyDocsTypeDocAdapterService {
 
