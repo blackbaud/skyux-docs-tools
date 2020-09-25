@@ -17,7 +17,7 @@ import {
 
 import {
   SkyDocsClassPropertyDefinition
-} from './class-property-definition';
+} from './property-definition';
 
 import {
   SkyDocsTypeDefinitionsFormatService
