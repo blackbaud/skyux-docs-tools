@@ -17,7 +17,7 @@ import {
 })
 export class PropertyDefinitionsFixtureComponent {
 
-  public config: SkyDocsClassPropertyDefinition;
+  public config: { properties: SkyDocsClassPropertyDefinition[] };
 
   @ViewChild(SkyDocsPropertyDefinitionsComponent)
   public propertyDefinitionsRef: SkyDocsPropertyDefinitionsComponent;
