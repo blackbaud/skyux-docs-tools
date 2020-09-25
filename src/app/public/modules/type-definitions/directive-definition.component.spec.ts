@@ -113,10 +113,8 @@ describe('Directive definition component', function () {
 
     const rowElements = fixture.nativeElement.querySelectorAll('.sky-docs-property-definitions-table-cell-name');
 
-    expect(rowElements.item(0).innerText).toEqual(`@Input()
-config?: Config`);
-    expect(rowElements.item(1).innerText).toEqual(`@Output()
-click?: EventEmitter<string>`);
+    expect(rowElements.item(0).innerText.replace(/\r?\n|\r/g, '')).toEqual('@Input()config?: Config');
+    expect(rowElements.item(1).innerText.replace(/\r?\n|\r/g, '')).toEqual('@Output()click?: EventEmitter<string>');
   });
 
   it('should display Output properties if Inputs do not exist', () => {
