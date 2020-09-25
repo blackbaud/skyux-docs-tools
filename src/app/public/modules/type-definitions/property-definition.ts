@@ -2,14 +2,16 @@ import {
   SkyDocsEntryChildDefinition
 } from './entry-child-definition';
 
+import {
+  SkyDocsPropertyDecoratorDefinition
+} from './property-decorator';
+
 /**
  * Describes class properties.
  */
 export interface SkyDocsClassPropertyDefinition extends SkyDocsEntryChildDefinition {
 
-  decorator?: {
-    name: string;
-  };
+  decorator?: SkyDocsPropertyDecoratorDefinition;
 
   defaultValue?: string;
 

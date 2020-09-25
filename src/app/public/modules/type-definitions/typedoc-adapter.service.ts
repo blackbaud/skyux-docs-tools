@@ -55,6 +55,10 @@ import {
 } from './pipe-definition';
 
 import {
+  SkyDocsPropertyDecoratorDefinition
+} from './property-decorator';
+
+import {
   SkyDocsTypeAliasDefinition
 } from './type-alias-definition';
 
@@ -592,7 +596,7 @@ export class SkyDocsTypeDocAdapterService {
     }
   }
 
-  private getDecorator(child: TypeDocEntryChild): { name: string; } {
+  private getDecorator(child: TypeDocEntryChild): SkyDocsPropertyDecoratorDefinition {
     const name = child.decorators && child.decorators[0] && child.decorators[0].name;
     if (name) {
       return { name };

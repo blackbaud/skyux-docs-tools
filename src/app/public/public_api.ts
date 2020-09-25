@@ -35,6 +35,7 @@ export * from './modules/type-definitions/interface-property-definition';
 export * from './modules/type-definitions/method-definition';
 export * from './modules/type-definitions/parameter-definition';
 export * from './modules/type-definitions/pipe-definition';
+export * from './modules/type-definitions/property-decorator';
 export * from './modules/type-definitions/property-definition';
 export * from './modules/type-definitions/type-alias-definition';
 export * from './modules/type-definitions/type-definitions-provider';

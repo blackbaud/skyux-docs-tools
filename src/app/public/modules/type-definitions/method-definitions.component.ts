@@ -24,13 +24,13 @@ import {
 } from './type-definitions-format.service';
 
 interface MethodViewModel {
+  callSignature: SkyDocsCallSignatureDefinition;
+  codeExample: string;
+  codeExampleLanguage: string;
   deprecationWarning: string;
   description: string;
   formattedName: string;
   sourceCode: string;
-  callSignature: SkyDocsCallSignatureDefinition;
-  codeExample: string;
-  codeExampleLanguage: string;
 }
 
 @Component({
@@ -78,12 +78,12 @@ export class SkyDocsMethodDefinitionsComponent implements OnInit {
     this.methods = this.config?.methods?.map(method => {
       const vm: MethodViewModel = {
         callSignature: method.type.callSignature,
+        codeExample: method.codeExample,
+        codeExampleLanguage: method.codeExampleLanguage,
         deprecationWarning: method.deprecationWarning,
         description: method.description,
         formattedName: this.formatService.getFormattedMethodName(method),
-        sourceCode: this.formatService.getMethodSourceCode(method),
-        codeExample: method.codeExample,
-        codeExampleLanguage: method.codeExampleLanguage
+        sourceCode: this.formatService.getMethodSourceCode(method)
       };
 
       return vm;
