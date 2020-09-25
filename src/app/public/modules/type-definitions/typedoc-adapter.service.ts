@@ -214,7 +214,7 @@ export class SkyDocsTypeDocAdapterService {
       .map(child => {
         const tags = this.getCommentTags(child.comment);
         const definition: SkyDocsClassPropertyDefinition = {
-          isOptional: this.isTypeOptional(child, tags),
+          isOptional: !tags.extras.required,
           name: this.getPropertyName(child),
           type: this.getTypeDefinition(child)
         };
@@ -282,7 +282,7 @@ export class SkyDocsTypeDocAdapterService {
     const definitions = entry.children?.map(child => {
       const tags = this.getCommentTags(child.comment);
       const definition: SkyDocsInterfacePropertyDefinition = {
-        isOptional: this.isTypeOptional(child, tags),
+        isOptional: (tags.extras.required) ? false : !!(child.flags?.isOptional),
         name: this.getPropertyName(child),
         type: this.getTypeDefinition(child)
       };
@@ -404,7 +404,7 @@ export class SkyDocsTypeDocAdapterService {
       const typeArguments = this.getTypeArgumentDefinitions(p.type);
 
       const parameter: SkyDocsParameterDefinition = {
-        isOptional: !!(defaultValue || this.isTypeOptional(p, tags)),
+        isOptional: !!(defaultValue || !!p.flags?.isOptional),
         name: p.name,
         type: this.getTypeDefinition(p)
       };
@@ -590,20 +590,6 @@ export class SkyDocsTypeDocAdapterService {
     if (tags.description) {
       definition.description = tags.description;
     }
-  }
-
-  private isTypeOptional(child: TypeDocEntryChild, tags: SkyDocsCommentTags): boolean {
-
-    // If `@required` is in the comment, mark it as required.
-    if (tags.extras.required) {
-      return false;
-    }
-
-    if (child.kindString === 'Parameter') {
-      return !!(child.flags && child.flags.isOptional);
-    }
-
-    return true;
   }
 
   private getDecorator(child: TypeDocEntryChild): { name: string; } {

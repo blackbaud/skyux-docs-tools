@@ -76,6 +76,54 @@ describe('TypeDoc adapter', () => {
       ]);
     });
 
+    it('should list required properties first', () => {
+      entry.children = [
+        {
+          name: 'fooA',
+          kindString: 'Property',
+          type: {
+            type: 'intrinsic',
+            name: 'number'
+          }
+        },
+        {
+          name: 'fooZ',
+          kindString: 'Property',
+          type: {
+            type: 'intrinsic',
+            name: 'string'
+          },
+          comment: {
+            tags: [{
+              tag: 'required',
+              text: '\n'
+            }]
+          }
+        }
+      ];
+
+      const def = adapter.toClassDefinition(entry);
+
+      expect(def.properties).toEqual([
+        {
+          name: 'fooZ',
+          isOptional: false,
+          type: {
+            name: 'string',
+            type: 'intrinsic'
+          }
+        },
+        {
+          name: 'fooA',
+          isOptional: true,
+          type: {
+            name: 'number',
+            type: 'intrinsic'
+          }
+        }
+      ]);
+    });
+
     it('should handle property accessors', () => {
       entry.children = [
         {
@@ -1133,11 +1181,33 @@ describe('TypeDoc adapter', () => {
     it('should convert properties', () => {
       entry.children = [
         {
-          name: 'user',
+          name: 'fooB',
           kindString: 'Property',
+          flags: {
+            isOptional: true
+          },
           type: {
             type: 'reference',
             name: 'FooUser'
+          }
+        },
+        {
+          name: 'fooA',
+          kindString: 'Property',
+          flags: {
+            isOptional: true
+          },
+          type: {
+            type: 'intrinsic',
+            name: 'string'
+          }
+        },
+        {
+          name: 'fooZ',
+          kindString: 'Property',
+          type: {
+            type: 'intrinsic',
+            name: 'string'
           }
         }
       ];
@@ -1146,8 +1216,24 @@ describe('TypeDoc adapter', () => {
 
       expect(def.properties).toEqual([
         {
+          isOptional: false,
+          name: 'fooZ',
+          type: {
+            type: 'intrinsic',
+            name: 'string'
+          }
+        },
+        {
           isOptional: true,
-          name: 'user',
+          name: 'fooA',
+          type: {
+            type: 'intrinsic',
+            name: 'string'
+          }
+        },
+        {
+          isOptional: true,
+          name: 'fooB',
           type: {
             type: 'reference',
             name: 'FooUser'
@@ -1211,7 +1297,7 @@ describe('TypeDoc adapter', () => {
 
       expect(def.properties).toEqual([
         {
-          isOptional: true,
+          isOptional: false,
           name: 'foo',
           type: {
             type: 'typeParameter',
@@ -1219,7 +1305,7 @@ describe('TypeDoc adapter', () => {
           }
         },
         {
-          isOptional: true,
+          isOptional: false,
           name: 'user',
           type: {
             type: 'typeParameter',

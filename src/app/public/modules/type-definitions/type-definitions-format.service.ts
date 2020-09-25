@@ -176,7 +176,7 @@ export class SkyDocsTypeDefinitionsFormatService {
 
     if (indexSignature) {
       signature += `: ${this.getFormattedType(indexSignature.type)}`;
-    } else {
+    } else if (property.type) {
       signature += `: ${this.getFormattedType(property.type)}`;
     }
 

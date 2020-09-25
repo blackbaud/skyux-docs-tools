@@ -3,8 +3,8 @@ import {
 } from '@skyux-sdk/testing';
 
 import {
-  SkyDocsClassPropertyDefinition
-} from './property-definition';
+  SkyDocsEnumerationMemberDefinition
+} from './enumeration-member-definition';
 
 import {
   SkyDocsInterfaceDefinition
@@ -17,6 +17,10 @@ import {
 import {
   SkyDocsParameterDefinition
 } from './parameter-definition';
+
+import {
+  SkyDocsClassPropertyDefinition
+} from './property-definition';
 
 import {
   SkyDocsTypeAliasDefinition
@@ -373,6 +377,17 @@ describe('Type definitions format service', () => {
     );
   });
 
+  it('should generate HTML formatted property names without types', () => {
+    const def: SkyDocsEnumerationMemberDefinition = {
+      name: 'Foo'
+    };
+
+    const formattedName = service.getFormattedPropertyName(def as SkyDocsClassPropertyDefinition);
+    expect(formattedName).toEqual(
+      'Foo'
+    );
+  });
+
   it('should generate HTML formatted property names w/ union type parameters', () => {
     const def: SkyDocsClassPropertyDefinition = {
       isOptional: true,
@@ -517,7 +532,7 @@ describe('Type definitions format service', () => {
     );
   });
 
-  it('should generate HTML formatted method names', () => {
+  it('should generate HTML formatted deprecated method names', () => {
     const def: SkyDocsClassMethodDefinition = {
       name: 'getUserById',
       deprecationWarning: '',
