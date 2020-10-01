@@ -38,9 +38,9 @@
     "@skyux/tabs": "^4.0.0"
   },
   "dependencies": {
-    "@stackblitz/sdk": "1.5.0",
+    "@stackblitz/sdk": "1.5.1",
     "lodash.orderby": "4.6.0",
-    "marked": "1.1.1"
+    "marked": "1.2.0"
   },
   "devDependencies": {
     "@angular/animations": "9.1.12",
@@ -52,7 +52,7 @@
     "@angular/platform-browser": "9.1.12",
     "@angular/platform-browser-dynamic": "9.1.12",
     "@angular/router": "9.1.12",
-    "@blackbaud/auth-client": "2.34.0",
+    "@blackbaud/auth-client": "2.35.0",
     "@blackbaud/skyux-builder-plugin-code-block": "1.1.0",
     "@blackbaud/skyux-lib-clipboard": "4.0.0",
     "@blackbaud/skyux-lib-code-block": "4.0.1",
@@ -65,12 +65,12 @@
     "@skyux-sdk/testing": "4.1.0",
     "@skyux/animations": "4.0.1",
     "@skyux/assets": "4.0.1",
-    "@skyux/avatar": "4.1.0",
-    "@skyux/config": "4.0.3",
+    "@skyux/avatar": "4.1.1",
+    "@skyux/config": "4.0.4",
     "@skyux/core": "4.3.0",
-    "@skyux/docs-tools": "4.7.0",
+    "@skyux/docs-tools": "4.7.1",
     "@skyux/errors": "4.0.1",
-    "@skyux/forms": "4.12.0",
+    "@skyux/forms": "4.13.1",
     "@skyux/http": "4.0.1",
     "@skyux/i18n": "4.0.2",
     "@skyux/indicators": "4.5.0",
@@ -78,7 +78,7 @@
     "@skyux/layout": "4.3.0",
     "@skyux/lists": "4.3.0",
     "@skyux/lookup": "4.5.0",
-    "@skyux/modals": "4.5.0",
+    "@skyux/modals": "4.5.1",
     "@skyux/omnibar-interop": "4.0.1",
     "@skyux/popovers": "4.2.1",
     "@skyux/router": "4.0.1",
