@@ -315,6 +315,7 @@ export class SkyDocsTypeDefinitionsFormatService {
     config?: GetFormattedTypeConfig
   ): string {
     let signature: string = '';
+
     definition.properties.forEach(property => {
       const indexSignature = property.type.indexSignature;
       const optionalIndicator = (property.isOptional && !indexSignature) ? '?' : '';
@@ -329,6 +330,7 @@ export class SkyDocsTypeDefinitionsFormatService {
 
       signature += `\n  ${name}${optionalIndicator}: ${propertyType};`;
     });
+
     return signature;
   }
 

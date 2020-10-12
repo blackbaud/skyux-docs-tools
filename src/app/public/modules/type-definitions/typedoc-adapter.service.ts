@@ -376,19 +376,27 @@ export class SkyDocsTypeDocAdapterService {
           definition.unionTypes = child.type.types.map(t => this.getTypeDefinition({ type: t }));
         }
 
-        // Convert call signature types.
+        // Convert reflection types.
         if (child.type.type === 'reflection') {
           const declaration = child.type.declaration;
-          if (declaration?.signatures) {
-            definition.callSignature = this.getCallSignatureDefinition(
-              declaration.signatures[0],
-              this.getCommentTags(child.comment)
-            );
-          } else if (declaration?.indexSignature) {
-            const indexSignature = declaration.indexSignature[0];
-            definition.indexSignature = this.getIndexSignatureDefinition(indexSignature);
-          } else if (declaration?.children) {
-            definition.typeLiteral = this.getTypeLiteralDefinition(declaration.children);
+          /*istanbul ignore else */
+          if (declaration) {
+            if (declaration.signatures) {
+              definition.callSignature = this.getCallSignatureDefinition(
+                declaration.signatures[0],
+                this.getCommentTags(child.comment)
+              );
+            } else if (declaration.indexSignature) {
+              const indexSignature = declaration.indexSignature[0];
+              definition.indexSignature = this.getIndexSignatureDefinition(indexSignature);
+            } else if (declaration.children) {
+              definition.typeLiteral = {
+                properties: this.getInterfaceProperties({
+                  children: declaration.children
+                })
+              };
+            }
+
           }
         }
 
@@ -398,18 +406,6 @@ export class SkyDocsTypeDocAdapterService {
 
         return definition;
     }
-  }
-
-  private getTypeLiteralDefinition(entries: TypeDocEntryChild[]): { properties?: SkyDocsInterfacePropertyDefinition[] } {
-    const typeLiteral: {
-      properties?: SkyDocsInterfacePropertyDefinition[]
-    } = { };
-
-    typeLiteral.properties = this.getInterfaceProperties({
-      children: entries
-    });
-
-    return typeLiteral;
   }
 
   private getParameterDefinitions(
