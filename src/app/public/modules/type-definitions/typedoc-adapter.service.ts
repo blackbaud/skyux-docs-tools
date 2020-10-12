@@ -378,14 +378,19 @@ export class SkyDocsTypeDocAdapterService {
 
         // Convert call signature types.
         if (child.type.type === 'reflection') {
-          if (child.type.declaration.signatures) {
-            definition.callSignature = this.getCallSignatureDefinition(
-              child.type.declaration.signatures[0],
-              this.getCommentTags(child.comment)
-            );
-          } else {
-            const indexSignature = child.type.declaration.indexSignature[0];
-            definition.indexSignature = this.getIndexSignatureDefinition(indexSignature);
+          const declaration = child.type.declaration;
+          if (declaration) {
+            if (declaration.signatures) {
+              definition.callSignature = this.getCallSignatureDefinition(
+                declaration.signatures[0],
+                this.getCommentTags(child.comment)
+              );
+            } else if (declaration.indexSignature) {
+              const indexSignature = declaration.indexSignature[0];
+              definition.indexSignature = this.getIndexSignatureDefinition(indexSignature);
+            } else if (declaration.children) {
+              definition.typeLiteral = this.getTypeLiteralDefinition(declaration.children);
+            }
           }
         }
 
@@ -395,6 +400,20 @@ export class SkyDocsTypeDocAdapterService {
 
         return definition;
     }
+  }
+
+  private getTypeLiteralDefinition(entries: TypeDocEntry[]): { properties?: SkyDocsInterfacePropertyDefinition[] } {
+    const typeLiteral: { properties?: SkyDocsInterfacePropertyDefinition[] } = {};
+
+    entries.forEach(e => {
+      const def: SkyDocsInterfacePropertyDefinition = {
+        isOptional: true,
+        name: e.name,
+        type: e.type
+      };
+      typeLiteral.properties.push(def);
+    });
+    return typeLiteral;
   }
 
   private getParameterDefinitions(

@@ -59,6 +59,7 @@ export class SkyDocsTypeDefinitionsFormatService {
       const indexSignature = property.type.indexSignature;
       const optionalIndicator = (property.isOptional && !indexSignature) ? '?' : '';
       const propertyType = this.getFormattedType(property.type, config);
+      // const typeLiteral = property.type.typeLiteral;
 
       let name: string;
       if (indexSignature) {
@@ -234,6 +235,10 @@ export class SkyDocsTypeDefinitionsFormatService {
 
     if (type.type === 'array') {
       formatted += '[]';
+    }
+
+    if (type.typeLiteral) {
+      formatted = `${type.typeLiteral.properties[0].type}`;
     }
 
     if (config.escapeSpecialCharacters) {
