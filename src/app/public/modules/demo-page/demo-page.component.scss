@@ -7,7 +7,7 @@
       margin: $sky-margin-plus-half 0;
     }
 
-    table {
+    table:not(.sky-grid-table) {
       margin-top: $sky-margin-plus-half;
       margin-bottom: $sky-margin-plus-half;
     }
