@@ -47,9 +47,9 @@ export interface TypeDocType {
   };
 
   declaration?: {
-    signatures?: TypeDocSignature[];
+    children?: TypeDocEntryChild[];
     indexSignature?: TypeDocSignature[];
-    children?: TypeDocEntry[];
+    signatures?: TypeDocSignature[];
   };
 
   elementType?: TypeDocType;

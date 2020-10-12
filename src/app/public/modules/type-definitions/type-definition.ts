@@ -37,7 +37,9 @@ export interface SkyDocsTypeDefinition {
   /**
    * Used for type literals or inline interfaces, e.g. `route: { commands: any[] }`
    */
-  typeLiteral?: { properties?: SkyDocsInterfacePropertyDefinition[]; };
+  typeLiteral?: {
+    properties?: SkyDocsInterfacePropertyDefinition[];
+  };
 
   /**
    * The types that compose a union type.
