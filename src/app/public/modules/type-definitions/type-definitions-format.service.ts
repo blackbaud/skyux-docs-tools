@@ -33,7 +33,10 @@ import {
 import {
   SkyDocsTypeParameterDefinition
 } from './type-parameter-definition';
-import { SkyDocsInterfacePropertyDefinition } from './interface-property-definition';
+
+import {
+  SkyDocsInterfacePropertyDefinition
+} from './interface-property-definition';
 
 interface GetFormattedTypeConfig {
   escapeSpecialCharacters: boolean;
@@ -223,7 +226,10 @@ export class SkyDocsTypeDefinitionsFormatService {
     }
 
     if (type.typeLiteral) {
-      formatted = `{\n  ${this.getFormattedInterfaceProperties(type.typeLiteral)}\n}`;
+      const formattedTypeLiteral = this.getFormattedInterfaceProperties(type.typeLiteral, config)
+        .replace(/\n/g, ' ')
+        .replace(/\s\s+/g, ' ');
+      formatted = `{${formattedTypeLiteral} }`;
     }
 
     if (config.escapeSpecialCharacters) {
