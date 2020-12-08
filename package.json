@@ -1,6 +1,6 @@
 {
   "name": "@skyux/docs-tools",
-  "version": "4.7.4",
+  "version": "4.8.0",
   "description": "Library for skyux-lib-docs",
   "scripts": {
     "build": "skyux build-public-library && node ./scripts/prepare-package.js",
@@ -38,7 +38,7 @@
     "@skyux/tabs": "^4.0.0"
   },
   "dependencies": {
-    "@stackblitz/sdk": "1.5.1",
+    "@stackblitz/sdk": "1.5.2",
     "lodash.orderby": "4.6.0",
     "marked": "1.2.5"
   },
