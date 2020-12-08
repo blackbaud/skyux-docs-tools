@@ -1,6 +1,6 @@
-# 4.7.0 (2020-12-08)
+# 4.8.0 (2020-12-08)
 
-- Added the `disable` property to the `SkyDocsDemoControlPanelRadioGroupComponent` and `SkyDocsDemoControlPanelCheckboxComponent` to disable the form controls. [#154](https://github.com/blackbaud/skyux-docs-tools/pull/154)
+- Added the `disable` property to the `SkyDocsDemoControlPanelRadioGroupComponent` and `SkyDocsDemoControlPanelCheckboxComponent` to disable the demo form controls. [#154](https://github.com/blackbaud/skyux-docs-tools/pull/154)
 
 # 4.7.4 (2020-11-09)
 
