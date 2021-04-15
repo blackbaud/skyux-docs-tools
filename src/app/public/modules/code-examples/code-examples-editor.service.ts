@@ -39,7 +39,7 @@ export class SkyDocsCodeExamplesEditorService {
   }
 
   private getPayload(codeExample: SkyDocsCodeExample): StackBlitzProject {
-    const angularVersion = '^7.0.0';
+    const angularVersion = '^9.0.0';
     const skyuxVersion = '*';
 
     const defaultDependencies: SkyDocsCodeExampleModuleDependencies = {
@@ -48,7 +48,6 @@ export class SkyDocsCodeExamplesEditorService {
       '@angular/compiler': angularVersion,
       '@angular/core': angularVersion,
       '@angular/forms': angularVersion,
-      '@angular/http': angularVersion,
       '@angular/platform-browser': angularVersion,
       '@angular/platform-browser-dynamic': angularVersion,
       '@angular/router': angularVersion,
@@ -66,11 +65,11 @@ export class SkyDocsCodeExamplesEditorService {
       '@skyux/popovers': skyuxVersion,
       '@skyux/router': skyuxVersion,
       '@skyux/theme': skyuxVersion,
-      'core-js': '^2.6.5',
+      'core-js': '2',
       'rxjs': '^6.0.0',
       'rxjs-compat': '^6.0.0',
-      'tslib': '1.9.3',
-      'zone.js': '~0.8.29'
+      'tslib': '~1.14.1',
+      'zone.js': '~0.11.4'
     };
 
     const mergedDependencies = Object.assign(
