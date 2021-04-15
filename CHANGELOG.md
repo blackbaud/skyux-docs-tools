@@ -1,7 +1,7 @@
 # 4.9.0 (2021-04-15)
 
 - Updated the stackblitz demos to use Angular 9. [#160](https://github.com/blackbaud/skyux-docs-tools/pull/160)
-- Fixed the stackblitz demos to properly show font awesome and skyux icons. [#160](https://github.com/blackbaud/skyux-docs-tools/pull/160)
+- Fixed the stackblitz demos to properly show font awesome and SKY UX icons. [#160](https://github.com/blackbaud/skyux-docs-tools/pull/160)
 
 # 4.8.1 (2021-01-20)
 
