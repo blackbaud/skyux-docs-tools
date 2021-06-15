@@ -1,4 +1,4 @@
-# 4.9.1 (2021-06-14)
+# 4.9.1 (2021-06-15)
 
 - Added support for `marked@2.0.7`. [#163](https://github.com/blackbaud/skyux-docs-tools/pull/163)
 
