@@ -1816,7 +1816,7 @@ describe('TypeDoc adapter', () => {
 
   });
 
-  it('should use anchorIds if anchorId not set on entry', () => {
+  it('should use SkyDocsTypeDefinitionsProvider.anchorIds if anchorId not set on entry', () => {
     adapter = new SkyDocsTypeDocAdapterService({
       anchorIds: {
         'SkyFoobar': 'class-skyfoobar'
