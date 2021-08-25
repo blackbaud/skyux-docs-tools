@@ -50,16 +50,14 @@ import {
 import {
   SkyDocsDemoControlPanelSectionComponent
 } from './demo-control-panel-section.component';
-
-import {
-  SkyDocsDemoControlPanelThemeComponent
-} from './demo-control-panel-theme.component';
+import { SkyDocsThemeSwitcherModule } from '../theme-switcher/theme-switcher.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     SkyCheckboxModule,
+    SkyDocsThemeSwitcherModule,
     SkyDocsToolsResourcesModule,
     SkyIconModule,
     SkyRadioModule,
@@ -71,16 +69,14 @@ import {
     SkyDocsDemoControlPanelCheckboxComponent,
     SkyDocsDemoControlPanelComponent,
     SkyDocsDemoControlPanelRadioGroupComponent,
-    SkyDocsDemoControlPanelSectionComponent,
-    SkyDocsDemoControlPanelThemeComponent
+    SkyDocsDemoControlPanelSectionComponent
   ],
   exports: [
     SkyDocsDemoComponent,
     SkyDocsDemoControlPanelCheckboxComponent,
     SkyDocsDemoControlPanelComponent,
     SkyDocsDemoControlPanelRadioGroupComponent,
-    SkyDocsDemoControlPanelSectionComponent,
-    SkyDocsDemoControlPanelThemeComponent
+    SkyDocsDemoControlPanelSectionComponent
   ]
 })
 export class SkyDocsDemoModule { }

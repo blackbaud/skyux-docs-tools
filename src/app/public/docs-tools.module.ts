@@ -30,6 +30,10 @@ import {
   SkyDocsSupportalService
 } from './modules/shared/docs-tools-supportal.service';
 
+import {
+  SkyDocsDemoControlPanelThemeModule
+} from './modules/demo-control-panel-theme/demo-control-panel-theme.module';
+
 /**
  * This module conveniently exports the most commonly used modules.
  */
@@ -40,7 +44,8 @@ import {
     SkyDocsCodeExamplesModule,
     SkyDocsDemoModule,
     SkyDocsDemoPageModule,
-    SkyDocsDesignGuidelinesModule
+    SkyDocsDesignGuidelinesModule,
+    SkyDocsDemoControlPanelThemeModule
   ],
   providers: [
     SkyDocsSupportalService

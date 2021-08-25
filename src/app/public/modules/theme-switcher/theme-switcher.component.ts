@@ -30,7 +30,7 @@ import {
   styleUrls: ['./demo-control-panel-theme.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SkyDocsDemoControlPanelThemeComponent implements OnDestroy, OnInit {
+export class SkyDocsThemeSwitcherComponent implements OnDestroy, OnInit {
 
   @Output()
   public themeSettingsChange = new EventEmitter<SkyThemeSettings>();

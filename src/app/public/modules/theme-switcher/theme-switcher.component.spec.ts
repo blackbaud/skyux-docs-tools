@@ -31,16 +31,16 @@ import {
 
 import {
   SkyDocsDemoModule
-} from './demo.module';
+} from '../demo/demo.module';
 
 import {
-  SkyDocsDemoControlPanelThemeComponent
-} from './demo-control-panel-theme.component';
+  SkyDocsThemeSwitcherComponent
+} from './theme-switcher.component';
 
 describe('Demo control panel theme', () => {
 
   function getRadioEls(
-    fixture: ComponentFixture<SkyDocsDemoControlPanelThemeComponent>,
+    fixture: ComponentFixture<SkyDocsThemeSwitcherComponent>,
     name: string
   ): DebugElement[] {
     return fixture.debugElement.queryAll(By.css(`sky-radio-group[name="${name}"] sky-radio`));
@@ -97,7 +97,7 @@ describe('Demo control panel theme', () => {
   });
 
   it('should render the expected radio buttons', () => {
-    const fixture = TestBed.createComponent(SkyDocsDemoControlPanelThemeComponent);
+    const fixture = TestBed.createComponent(SkyDocsThemeSwitcherComponent);
 
     fixture.detectChanges();
 
@@ -127,7 +127,7 @@ describe('Demo control panel theme', () => {
   });
 
   it('should update the mode options based on the selected theme\'s supported modes', () => {
-    const fixture = TestBed.createComponent(SkyDocsDemoControlPanelThemeComponent);
+    const fixture = TestBed.createComponent(SkyDocsThemeSwitcherComponent);
 
     fixture.detectChanges();
 
@@ -155,7 +155,7 @@ describe('Demo control panel theme', () => {
   });
 
   it('should fire the settings change event when a theme or mode is selected', () => {
-    const fixture = TestBed.createComponent(SkyDocsDemoControlPanelThemeComponent);
+    const fixture = TestBed.createComponent(SkyDocsThemeSwitcherComponent);
 
     const themeSettingsChangeEmitSpy = spyOn(fixture.componentInstance.themeSettingsChange, 'emit').and.callThrough();
 
@@ -187,7 +187,7 @@ describe('Demo control panel theme', () => {
   });
 
   it('should update the selected radio items based on an external theme change', fakeAsync(() => {
-    const fixture = TestBed.createComponent(SkyDocsDemoControlPanelThemeComponent);
+    const fixture = TestBed.createComponent(SkyDocsThemeSwitcherComponent);
 
     fixture.detectChanges();
     tick();

@@ -8,6 +8,8 @@ export * from './modules/demo/demo-control-panel-change';
 export * from './modules/demo/demo-control-panel-radio-choice';
 export * from './modules/demo/demo.module';
 
+export * from './modules/demo-control-panel-theme/demo-control-panel-theme.module';
+
 export * from './modules/demo-page/demo-page.module';
 
 export * from './modules/design-guidelines/design-guidelines.module';
