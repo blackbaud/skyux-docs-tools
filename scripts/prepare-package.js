@@ -16,10 +16,16 @@ function copyScss() {
     fs.ensureFileSync(target);
 
     fs.writeFileSync(target, result.css);
+    console.log('Done.');
   } catch (err) {
     console.error('Compiling docs-tools.css failed!', err);
     process.exit(1);
   }
 }
 
-copyScss();
+try {
+  copyScss();
+} catch (err) {
+  console.log('ERROR:', err);
+  process.exit(1);
+}
