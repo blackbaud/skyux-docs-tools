@@ -25,7 +25,7 @@ import {
 } from 'rxjs/operators';
 
 @Component({
-  selector: 'sky-docs-demo-control-panel-theme',
+  selector: 'sky-docs-demo-control-panel-theme, sky-docs-theme-switcher',
   templateUrl: './demo-control-panel-theme.component.html',
   styleUrls: ['./demo-control-panel-theme.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
