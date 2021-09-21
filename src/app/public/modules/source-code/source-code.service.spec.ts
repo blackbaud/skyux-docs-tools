@@ -1,5 +1,10 @@
-import { SkyDocsSourceCodeProvider } from './source-code-provider';
-import { SkyDocsSourceCodeService } from './source-code.service';
+import {
+  SkyDocsSourceCodeProvider
+} from './source-code-provider';
+
+import {
+  SkyDocsSourceCodeService
+} from './source-code.service';
 
 describe('Source code service', () => {
   let service: SkyDocsSourceCodeService;
