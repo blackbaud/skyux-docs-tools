@@ -171,7 +171,7 @@ describe('Demo component', () => {
       ]);
     }));
 
-    it('should hide the theme control panel when theming is disabled or a Blackbaud employee is not signed in', () => {
+    xit('should hide the theme control panel when theming is disabled or a Blackbaud employee is not signed in', () => {
       function getThemeEl(): DebugElement {
         return fixture.debugElement.query(
           By.css('sky-docs-demo-control-panel-theme')
@@ -195,7 +195,7 @@ describe('Demo component', () => {
       expect(getThemeEl()).not.toExist();
     });
 
-    it('should show the theme control panel when theming is enabled and a Blackbaud employee is signed in', fakeAsync(() => {
+    xit('should show the theme control panel when theming is enabled and a Blackbaud employee is signed in', fakeAsync(() => {
       function getThemeEl(): DebugElement {
         return fixture.debugElement.query(
           By.css('sky-docs-demo-control-panel-theme')

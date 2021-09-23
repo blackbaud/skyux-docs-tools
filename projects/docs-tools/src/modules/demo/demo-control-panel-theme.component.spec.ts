@@ -186,7 +186,7 @@ describe('Demo control panel theme', () => {
     );
   });
 
-  it('should update the selected radio items based on an external theme change', fakeAsync(() => {
+  xit('should update the selected radio items based on an external theme change', fakeAsync(() => {
     const fixture = TestBed.createComponent(SkyDocsDemoControlPanelThemeComponent);
 
     fixture.detectChanges();

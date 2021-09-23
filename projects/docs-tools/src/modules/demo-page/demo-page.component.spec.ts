@@ -26,6 +26,7 @@ import {
 import {
   DemoPageFixturesModule
 } from './fixtures/demo-page-fixtures.module';
+import { HttpClientModule } from '@angular/common/http';
 
 //#region helpers
 function getSidebarLinks(fixture: ComponentFixture<any>): NodeListOf<HTMLAnchorElement> {
@@ -42,7 +43,8 @@ describe('Demo page component', () => {
     mockMediaQueryService = new MockSkyMediaQueryService();
     TestBed.configureTestingModule({
       imports: [
-        DemoPageFixturesModule
+        DemoPageFixturesModule,
+        HttpClientModule
       ],
       providers: [
         {

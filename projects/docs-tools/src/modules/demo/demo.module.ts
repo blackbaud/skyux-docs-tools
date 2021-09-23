@@ -29,7 +29,7 @@ import {
 
 import {
   SkyDocsToolsResourcesModule
-} from '../shared/docs-tools-resources.module';
+} from '../shared/sky-docs-tools-resources.module';
 
 import {
   SkyDocsDemoComponent

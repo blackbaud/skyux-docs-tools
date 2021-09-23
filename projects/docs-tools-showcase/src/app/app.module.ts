@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import {
   SkyThemeService
 } from '@skyux/theme';
+import { VisualModule } from './visual/visual.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import {
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    VisualModule
   ],
   providers: [
     SkyThemeService

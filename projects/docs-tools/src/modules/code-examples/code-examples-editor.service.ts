@@ -39,8 +39,8 @@ export class SkyDocsCodeExamplesEditorService {
   }
 
   private getPayload(codeExample: SkyDocsCodeExample): StackBlitzProject {
-    const angularVersion = '^9.0.0';
-    const skyuxVersion = '*';
+    const angularVersion = '^12.2.0';
+    const skyuxVersion = '@next';
 
     const defaultDependencies: SkyDocsCodeExampleModuleDependencies = {
       '@angular/animations': angularVersion,
