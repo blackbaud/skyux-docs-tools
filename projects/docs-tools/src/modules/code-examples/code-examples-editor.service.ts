@@ -40,7 +40,7 @@ export class SkyDocsCodeExamplesEditorService {
 
   private getPayload(codeExample: SkyDocsCodeExample): StackBlitzProject {
     const angularVersion = '^12.2.0';
-    const skyuxVersion = '@next';
+    const skyuxVersion = '^5.0.0-beta.0';
 
     const defaultDependencies: SkyDocsCodeExampleModuleDependencies = {
       '@angular/animations': angularVersion,
@@ -51,6 +51,7 @@ export class SkyDocsCodeExamplesEditorService {
       '@angular/platform-browser': angularVersion,
       '@angular/platform-browser-dynamic': angularVersion,
       '@angular/router': angularVersion,
+      '@blackbaud/auth-client': '^2.0.0',
       '@skyux/animations': skyuxVersion,
       '@skyux/assets': skyuxVersion,
       '@skyux/config': skyuxVersion,
@@ -62,13 +63,12 @@ export class SkyDocsCodeExamplesEditorService {
       '@skyux/indicators': skyuxVersion,
       '@skyux/layout': skyuxVersion,
       '@skyux/modals': skyuxVersion,
+      '@skyux/packages': skyuxVersion,
       '@skyux/popovers': skyuxVersion,
       '@skyux/router': skyuxVersion,
       '@skyux/theme': skyuxVersion,
-      'core-js': '2',
-      'rxjs': '^6.0.0',
-      'rxjs-compat': '^6.0.0',
-      'tslib': '~1.14.1',
+      'rxjs': '^6.6.0',
+      'tslib': '~2.2.0',
       'zone.js': '~0.11.4'
     };
 
@@ -257,8 +257,6 @@ platformBrowserDynamic().bootstrapModule(AppModule).then(ref => {
 `;
 
     files[`${srcPath}polyfills.ts`] = `${banner}
-import 'core-js/es6/reflect';
-import 'core-js/es7/reflect';
 import 'zone.js/dist/zone';
 `;
 
