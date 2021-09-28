@@ -1,6 +1,6 @@
 # 5.0.0-beta.0 (2021-09-28)
 
-- Initial `5.0.0-beta` release. []()
+- Initial `5.0.0-beta` release. [#175](https://github.com/blackbaud/skyux-docs-tools/pull/175)
 
 # 4.9.6 (2021-09-21)
 
