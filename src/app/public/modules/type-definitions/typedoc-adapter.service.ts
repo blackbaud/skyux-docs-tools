@@ -396,7 +396,7 @@ export class SkyDocsTypeDocAdapterService {
                 this.getCommentTags(child.comment)
               );
             } else if (declaration.indexSignature) {
-              const indexSignature = declaration.indexSignature[0];
+              const indexSignature = declaration.indexSignature;
               definition.indexSignature = this.getIndexSignatureDefinition(indexSignature);
             } else if (declaration.children) {
               definition.typeLiteral = {
