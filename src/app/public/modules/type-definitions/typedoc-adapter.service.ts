@@ -316,7 +316,7 @@ export class SkyDocsTypeDocAdapterService {
 
     // Add any index signatures, e.g. `[_: string]: any`
     if (entry.indexSignature) {
-      const indexSignature = entry.indexSignature[0];
+      const indexSignature = entry.indexSignature;
       const definition: SkyDocsInterfacePropertyDefinition = {
         isOptional: true,
         name: indexSignature.name,

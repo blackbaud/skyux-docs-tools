@@ -150,7 +150,7 @@ export interface TypeDocEntry {
 
   kindString?: 'Class' | 'Enumeration' | 'Interface' | 'Type alias';
 
-  indexSignature?: TypeDocSignature[];
+  indexSignature?: TypeDocSignature;
 
   name?: string;
 
