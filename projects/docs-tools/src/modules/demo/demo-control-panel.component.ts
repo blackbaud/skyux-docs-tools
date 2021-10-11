@@ -35,10 +35,6 @@ import {
   SkyDocsDemoControlPanelChange
 } from './demo-control-panel-change';
 
-import {
-  SkyDocsDemoThemeService
-} from './demo-theme.service';
-
 /**
  * Handles the appearance and configuration of the behavior demo control panel.
  * @example
@@ -78,8 +74,6 @@ export class SkyDocsDemoControlPanelComponent implements OnDestroy, AfterContent
 
   private eventListeners: Subscription;
   private ngUnsubscribe = new Subject<boolean>();
-
-  constructor(public demoThemeSvc: SkyDocsDemoThemeService) { }
 
   public ngAfterContentInit(): void {
     this.addEventListeners();
