@@ -12,7 +12,7 @@ import {
 } from '../interface-definition.component';
 
 @Component({
-  selector: 'interface-definition-test',
+  selector: 'sky-interface-definition-test',
   templateUrl: './interface-definition.component.fixture.html'
 })
 export class InterfaceDefinitionFixtureComponent {

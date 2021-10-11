@@ -12,7 +12,7 @@ import {
 } from '../directive-definition.component';
 
 @Component({
-  selector: 'directive-definition-test',
+  selector: 'sky-directive-definition-test',
   templateUrl: './directive-definition.component.fixture.html'
 })
 export class DirectiveDefinitionFixtureComponent {

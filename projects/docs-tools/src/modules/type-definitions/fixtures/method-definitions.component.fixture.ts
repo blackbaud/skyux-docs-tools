@@ -12,7 +12,7 @@ import {
 } from '../method-definitions.component';
 
 @Component({
-  selector: 'method-definitions-test',
+  selector: 'sky-method-definitions-test',
   templateUrl: './method-definitions.component.fixture.html'
 })
 export class MethodDefinitionsFixtureComponent {

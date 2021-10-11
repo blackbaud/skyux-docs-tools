@@ -12,7 +12,7 @@ import {
 } from '../call-signature-definition.component';
 
 @Component({
-  selector: 'call-signature-definition-test',
+  selector: 'sky-call-signature-definition-test',
   templateUrl: './call-signature-definition.component.fixture.html'
 })
 export class CallSignatureDefinitionFixtureComponent {

@@ -17,7 +17,7 @@ import {
 
 //#region Helpers
 @Component({
-  selector: 'radio-group-test',
+  selector: 'sky-radio-group-test',
   template: `
     <sky-docs-demo-control-panel-radio-group
       heading="Disabled radio group"

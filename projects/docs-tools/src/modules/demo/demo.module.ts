@@ -24,10 +24,6 @@ import {
 } from '@skyux/theme';
 
 import {
-  SkyRestrictedViewModule
-} from '@blackbaud/skyux-lib-restricted-view';
-
-import {
   SkyDocsToolsResourcesModule
 } from '../shared/sky-docs-tools-resources.module';
 
@@ -51,10 +47,6 @@ import {
   SkyDocsDemoControlPanelSectionComponent
 } from './demo-control-panel-section.component';
 
-import {
-  SkyDocsDemoControlPanelThemeComponent
-} from './demo-control-panel-theme.component';
-
 @NgModule({
   imports: [
     CommonModule,
@@ -63,7 +55,6 @@ import {
     SkyDocsToolsResourcesModule,
     SkyIconModule,
     SkyRadioModule,
-    SkyRestrictedViewModule,
     SkyThemeModule
   ],
   declarations: [
@@ -72,7 +63,6 @@ import {
     SkyDocsDemoControlPanelComponent,
     SkyDocsDemoControlPanelRadioGroupComponent,
     SkyDocsDemoControlPanelSectionComponent,
-    SkyDocsDemoControlPanelThemeComponent
   ],
   exports: [
     SkyDocsDemoComponent,
@@ -80,7 +70,6 @@ import {
     SkyDocsDemoControlPanelComponent,
     SkyDocsDemoControlPanelRadioGroupComponent,
     SkyDocsDemoControlPanelSectionComponent,
-    SkyDocsDemoControlPanelThemeComponent
   ]
 })
 export class SkyDocsDemoModule { }

@@ -21,7 +21,7 @@
           "error",
           {
             "type": "attribute",
-            "prefix": "lib",
+            "prefix": "sky",
             "style": "camelCase"
           }
         ],
@@ -29,7 +29,7 @@
           "error",
           {
             "type": "element",
-            "prefix": "lib",
+            "prefix": "sky",
             "style": "kebab-case"
           }
         ]

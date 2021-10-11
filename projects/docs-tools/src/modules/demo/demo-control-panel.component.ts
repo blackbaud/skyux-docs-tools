@@ -20,10 +20,6 @@ import {
 } from 'rxjs/operators';
 
 import {
-  SkyThemeSettings
-} from '@skyux/theme';
-
-import {
   SkyDocsDemoControlPanelCheckboxComponent
 } from './demo-control-panel-checkbox.component';
 
@@ -58,6 +54,7 @@ export class SkyDocsDemoControlPanelComponent implements OnDestroy, AfterContent
    * Fires when the user clicks the reset button.
    */
   @Output()
+  /*eslint-disable-next-line @angular-eslint/no-output-native */
   public reset = new EventEmitter<void>();
 
   /**
@@ -107,10 +104,6 @@ export class SkyDocsDemoControlPanelComponent implements OnDestroy, AfterContent
     });
 
     this.reset.emit();
-  }
-
-  public onThemeSettingsChange(themeSettings: SkyThemeSettings): void {
-    this.demoThemeSvc.themeSettings.next(themeSettings);
   }
 
   private addEventListeners(): void {

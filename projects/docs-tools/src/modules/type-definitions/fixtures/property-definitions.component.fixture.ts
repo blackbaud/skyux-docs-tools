@@ -12,7 +12,7 @@ import {
 } from '../property-definitions.component';
 
 @Component({
-  selector: 'property-definition-test',
+  selector: 'sky-property-definition-test',
   templateUrl: './property-definitions.component.fixture.html'
 })
 export class PropertyDefinitionsFixtureComponent {

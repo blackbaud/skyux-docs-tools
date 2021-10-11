@@ -41,6 +41,7 @@ import {
 import {
   SkyDocsDemoPageTitleService
 } from '../demo-page-title.service';
+import { HttpClientModule } from '@angular/common/http';
 
 class MockActivatedRoute {
   public fragment = of({});
@@ -80,6 +81,7 @@ class MockSkyAppConfig {
 @NgModule({
   imports: [
     CommonModule,
+    HttpClientModule,
     RouterTestingModule,
     SkyDocsDemoPageModule
   ],

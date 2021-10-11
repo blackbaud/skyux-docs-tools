@@ -3,7 +3,7 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'demo-page-fixture',
+  selector: 'sky-demo-page-fixture',
   templateUrl: './demo-page.component.fixture.html'
 })
 export class DemoPageFixtureComponent {

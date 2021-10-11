@@ -24,7 +24,7 @@ import {
 } from '../demo.component';
 
 @Component({
-  selector: 'demo-fixture',
+  selector: 'sky-demo-fixture',
   templateUrl: './demo.component.fixture.html'
 })
 export class DemoFixtureComponent {

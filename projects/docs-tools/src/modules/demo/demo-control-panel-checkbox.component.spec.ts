@@ -13,7 +13,7 @@ import {
 
 //#region Helpers
 @Component({
-  selector: 'checkbox-test',
+  selector: 'sky-checkbox-test',
   template: `
     <sky-docs-demo-control-panel-checkbox
       label="Disabled checkbox"

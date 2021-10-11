@@ -8,7 +8,7 @@ import {
 } from '../../code-examples/code-example.component';
 
 @Component({
-  selector: 'code-example-fixture',
+  selector: 'sky-code-example-fixture',
   template: `
     <sky-docs-code-example
       heading="My code example"

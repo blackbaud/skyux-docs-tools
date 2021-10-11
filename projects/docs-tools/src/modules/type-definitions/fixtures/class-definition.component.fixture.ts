@@ -12,7 +12,7 @@ import {
 } from '../class-definition.component';
 
 @Component({
-  selector: 'class-definition-test',
+  selector: 'sky-class-definition-test',
   templateUrl: './class-definition.component.fixture.html'
 })
 export class ClassDefinitionFixtureComponent {

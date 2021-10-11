@@ -12,7 +12,7 @@ import {
 } from '../enumeration-definition.component';
 
 @Component({
-  selector: 'enumeration-definition-test',
+  selector: 'sky-enumeration-definition-test',
   templateUrl: './enumeration-definition.component.fixture.html'
 })
 export class EnumerationDefinitionFixtureComponent {
