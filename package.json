@@ -4,13 +4,13 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build docs-tools",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "skyux:generate-lib-resources-module": "ng generate @skyux/i18n:lib-resources-module",
     "lint": "ng lint",
     "skyux:generate-documentation": "ng generate @skyux-sdk/documentation-schematics:documentation",
-    "postbuild": "npm run skyux:generate-documentation"
+    "postbuild": "npm run skyux:generate-documentation && node ./scripts/prepare-package.js"
   },
   "private": true,
   "dependencies": {
