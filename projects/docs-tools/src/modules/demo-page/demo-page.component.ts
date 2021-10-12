@@ -194,6 +194,7 @@ export class SkyDocsDemoPageComponent implements OnInit, AfterContentInit, After
   }
 
   private updateTitle(): void {
+    /*istanbul ignore else*/
     if (this.pageTitle) {
       this.titleService.setTitle(this.pageTitle, 'Components');
     }
