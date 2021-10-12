@@ -45,7 +45,9 @@ interface GetFormattedTypeConfig {
 /**
  * Formats type definitions into HTML-compatible strings.
  */
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class SkyDocsTypeDefinitionsFormatService {
 
   /**

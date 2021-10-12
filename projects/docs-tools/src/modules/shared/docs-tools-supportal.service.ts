@@ -19,7 +19,9 @@ import {
   SkyDocsComponentInfo
 } from './docs-tools-component-info';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class SkyDocsSupportalService {
   constructor(
     private http: HttpClient

@@ -53,10 +53,6 @@ import {
 } from './demo-page-summary.component';
 
 import {
-  SkyDocsDemoPageTitleService
-} from './demo-page-title.service';
-
-import {
   SkyDocsDemoPageComponent
 } from './demo-page.component';
 
@@ -96,9 +92,6 @@ import {
     SkyDocsDemoPageSectionComponent,
     SkyDocsDemoPageSummaryComponent,
     SkyDocsDemoPageTypeDefinitionsComponent
-  ],
-  providers: [
-    SkyDocsDemoPageTitleService
   ]
 })
 export class SkyDocsDemoPageModule { }

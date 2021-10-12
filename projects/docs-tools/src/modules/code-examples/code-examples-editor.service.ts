@@ -28,7 +28,9 @@ import {
 /**
  * @internal
  */
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class SkyDocsCodeExamplesEditorService {
 
   public launchEditor(codeExample: SkyDocsCodeExample): void {

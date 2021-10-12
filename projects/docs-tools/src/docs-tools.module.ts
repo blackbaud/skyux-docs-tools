@@ -26,10 +26,6 @@ import {
   SkyDocsDesignGuidelinesModule
 } from './modules/design-guidelines/design-guidelines.module';
 
-import {
-  SkyDocsSupportalService
-} from './modules/shared/docs-tools-supportal.service';
-
 /**
  * This module conveniently exports the most commonly used modules.
  */
@@ -41,9 +37,6 @@ import {
     SkyDocsDemoModule,
     SkyDocsDemoPageModule,
     SkyDocsDesignGuidelinesModule
-  ],
-  providers: [
-    SkyDocsSupportalService
   ]
 })
 export class SkyDocsToolsModule { }

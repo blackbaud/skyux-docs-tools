@@ -20,6 +20,10 @@ import {
 } from '../shared/docs-tools-supportal.service';
 
 import {
+  SkyDocsTypeDefinitionsProvider
+} from '../type-definitions/type-definitions-provider';
+
+import {
   DemoPageFixtureComponent
 } from './fixtures/demo-page.component.fixture';
 
@@ -48,7 +52,8 @@ describe('Demo page component', () => {
         {
           provide: SkyMediaQueryService,
           useValue: mockMediaQueryService
-        }
+        },
+        SkyDocsTypeDefinitionsProvider
       ]
     });
 

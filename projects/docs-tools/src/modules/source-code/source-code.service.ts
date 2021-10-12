@@ -10,7 +10,9 @@ import {
   SkyDocsSourceCodeProvider
 } from './source-code-provider';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class SkyDocsSourceCodeService {
 
   constructor(

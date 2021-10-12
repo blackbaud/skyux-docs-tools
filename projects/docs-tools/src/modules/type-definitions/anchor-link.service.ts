@@ -23,7 +23,9 @@ function createRegex(keyword: string): RegExp {
   return new RegExp(`(^|[^a-zA-Z0-9>.[/])(${keyword})(\\.\\w+)?(?=[^a-zA-Z0-9<]+|$)`, 'g');
 }
 
-@Injectable()
+@Injectable({
+  providedIn: 'any'
+})
 export class SkyDocsAnchorLinkService {
 
   private anchorIds: {[_: string]: string};

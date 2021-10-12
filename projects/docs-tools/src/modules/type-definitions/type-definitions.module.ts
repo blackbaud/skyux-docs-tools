@@ -16,10 +16,6 @@ import {
 } from '@blackbaud/skyux-lib-code-block';
 
 import {
-  SkyMediaQueryModule
-} from '@skyux/core';
-
-import {
   SkyIconModule
 } from '@skyux/indicators';
 
@@ -38,10 +34,6 @@ import {
 import {
   SkyDocsSafeHtmlModule
 } from '../safe-html/safe-html.module';
-
-import {
-  SkyDocsAnchorLinkService
-} from './anchor-link.service';
 
 import {
   SkyDocsCallSignatureDefinitionComponent
@@ -80,24 +72,8 @@ import {
 } from './type-alias-definition.component';
 
 import {
-  SkyDocsTypeDefinitionsFormatService
-} from './type-definitions-format.service';
-
-import {
-  SkyDocsTypeDefinitionsService
-} from './type-definitions.service';
-
-import {
-  SkyDocsTypeDefinitionsProvider
-} from './type-definitions-provider';
-
-import {
   SkyDocsTypeAnchorLinksPipe
 } from './type-anchor-links.pipe';
-
-import {
-  SkyDocsTypeDocAdapterService
-} from './typedoc-adapter.service';
 
 @NgModule({
   imports: [
@@ -109,8 +85,7 @@ import {
     SkyDocsHeadingAnchorModule,
     SkyDocsMarkdownModule,
     SkyDocsSafeHtmlModule,
-    SkyIconModule,
-    SkyMediaQueryModule
+    SkyIconModule
   ],
   declarations: [
     SkyDocsCallSignatureDefinitionComponent,
@@ -135,14 +110,6 @@ import {
     SkyDocsPropertyDefinitionsComponent,
     SkyDocsTypeAliasDefinitionComponent,
     SkyDocsTypeAnchorLinksPipe
-  ],
-  providers: [
-    SkyDocsAnchorLinkService,
-    SkyDocsTypeAnchorLinksPipe,
-    SkyDocsTypeDefinitionsFormatService,
-    SkyDocsTypeDefinitionsProvider,
-    SkyDocsTypeDefinitionsService,
-    SkyDocsTypeDocAdapterService
   ]
 })
 export class SkyDocsTypeDefinitionsModule { }

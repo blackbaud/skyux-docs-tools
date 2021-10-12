@@ -17,7 +17,9 @@ import {
 /**
  * Handles all type definitions that have been converted from the third-party documentation generator.
  */
-@Injectable()
+@Injectable({
+  providedIn: 'any'
+})
 export class SkyDocsTypeDefinitionsService {
 
   constructor(
