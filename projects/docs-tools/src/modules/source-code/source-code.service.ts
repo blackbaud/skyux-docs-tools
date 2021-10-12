@@ -11,7 +11,7 @@ import {
 } from './source-code-provider';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'any'
 })
 export class SkyDocsSourceCodeService {
 

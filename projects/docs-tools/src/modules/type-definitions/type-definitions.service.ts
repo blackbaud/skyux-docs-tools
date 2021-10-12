@@ -60,7 +60,7 @@ export class SkyDocsTypeDefinitionsService {
     }
 
     // Only process types that match the requested source code location.
-    const typeDefinitions = allDefinitions.filter((i) => i.sources[0].fileName.match(requestedDir));
+    const typeDefinitions = allDefinitions.filter((i) => i.sources && i.sources[0].fileName.match(requestedDir));
     if (typeDefinitions.length === 0) {
       console.warn(`Type definitions were not found for location: ${requestedDir}`);
     }
