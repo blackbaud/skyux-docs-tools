@@ -7,6 +7,7 @@
   "allowedNonPeerDependencies": [
     "@stackblitz/sdk",
     "lodash.orderby",
-    "marked"
+    "marked",
+    "codesandbox"
   ]
 }
