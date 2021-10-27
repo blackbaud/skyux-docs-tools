@@ -57,6 +57,7 @@ export class SkyDocsCodeExamplesEditorService {
         '@skyux/forms': skyuxVersion,
         '@skyux/i18n': skyuxVersion,
         '@skyux/indicators': skyuxVersion,
+        '@skyux/router': skyuxVersion,
         '@skyux/theme': skyuxVersion,
         'core-js': '~3.8.3',
         rxjs: '~6.6.7',
@@ -306,7 +307,7 @@ body, html {
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "importHelpers": true,
-    "target": "es2015",
+    "target": "es2017",
     "module": "es2020",
     "lib": [
       "es2018",
