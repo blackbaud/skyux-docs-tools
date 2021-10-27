@@ -6,7 +6,6 @@ import {
   Input,
   QueryList
 } from '@angular/core';
-import { getParameters } from 'codesandbox/lib/api/define';
 
 import {
   SkyDocsSourceCodeService
@@ -102,18 +101,7 @@ export class SkyDocsCodeExamplesComponent implements AfterContentInit {
   }
 
   public launchEditor(codeExample: SkyDocsCodeExample): void {
-    // this.editorService.launchEditor(codeExample)
-
-    const parameters = getParameters({
-      template: 'angular-cli',
-      files: {
-
-      },
-    });
-
-    const url = `https://codesandbox.io/api/v1/sandboxes/define?parameters=${parameters}`;
-    console.log('URL:', url);
-    location.href = url;
+    this.editorService.launchEditor(codeExample)
   }
 
   /**
