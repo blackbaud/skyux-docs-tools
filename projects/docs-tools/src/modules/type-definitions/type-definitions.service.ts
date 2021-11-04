@@ -34,8 +34,8 @@ export class SkyDocsTypeDefinitionsService {
    */
   public getTypeDefinitions(sourceCodePath: string): SkyDocsTypeDefinitions {
 
-    if (sourceCodePath.charAt(sourceCodePath.length - 1) !== '/') {
-      throw new Error('The source code path must end with a forward slash (`/`).');
+    if (!sourceCodePath.endsWith('/') && !sourceCodePath.endsWith('.ts')) {
+      throw new Error('The source code path must end with a forward slash (`/`) or `.ts`.');
     }
 
     const allDefinitions = this.typeDefinitionsProvider.typeDefinitions;

@@ -24,6 +24,9 @@ import {
 export class SkyDocsDemoPageTypeDefinitionsComponent implements OnInit {
 
   @Input()
+  public additionalSourceCodePaths: string[];
+
+  @Input()
   public moduleSourceCodePath: string;
 
   public types: SkyDocsTypeDefinitions;
@@ -37,6 +40,20 @@ export class SkyDocsDemoPageTypeDefinitionsComponent implements OnInit {
       this.types = this.typeDefinitionService.getTypeDefinitions(
         this.moduleSourceCodePath
       );
+      if (this.additionalSourceCodePaths && this.additionalSourceCodePaths.length > 0) {
+        for (let path of this.additionalSourceCodePaths) {
+          const additionalTypes = this.typeDefinitionService.getTypeDefinitions(
+            path
+          );
+
+          for (let key of Object.keys(this.types)) {
+            /* Sanity check */
+            if (this.types[key] instanceof Array) {
+              this.types[key] = this.types[key].concat(additionalTypes[key]);
+            }
+          }
+        }
+      }
     }
   }
 }
