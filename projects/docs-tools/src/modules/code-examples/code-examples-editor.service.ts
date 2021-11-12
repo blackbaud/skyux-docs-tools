@@ -290,14 +290,23 @@ body {
     files['tsconfig.json'] = `{
   "compilerOptions": {
     "target": "es2017",
+    "module": "es2020",
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "importHelpers": true,
+    "typeRoots": ["node_modules/@types"],
     "lib": [
       "es2018",
       "dom"
     ]
+  },
+  "angularCompilerOptions": {
+    "fullTemplateTypeCheck": true,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true,
+    "enableIvy": false
   }
 }`;
 
