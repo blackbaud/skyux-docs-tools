@@ -1,3 +1,7 @@
+# 5.0.0-beta.3 (2021-11-15)
+
+- Fixed the StackBlitz code examples to work with Angular 12. []()
+
 # 5.0.0-beta.2 (2021-10-12)
 
 - Migrated to Angular CLI. [#177](https://github.com/blackbaud/skyux-docs-tools/pull/177)
