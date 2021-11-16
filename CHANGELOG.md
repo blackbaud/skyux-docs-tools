@@ -1,4 +1,4 @@
-# 5.0.0-beta.3 (2021-11-15)
+# 5.0.0-beta.3 (2021-11-16)
 
 - Fixed the StackBlitz code examples to work with Angular 12. []()
 
