@@ -378,6 +378,115 @@ describe('TypeDoc adapter', () => {
       ]);
     });
 
+    it('should handle properties with no comment short text and only a `get` accessor', () => {
+      entry.children = [
+        {
+          name: 'foo',
+          kindString: 'Accessor',
+          comment: {
+            tags: [
+              {
+                tag: 'default',
+                text: '10\n'
+              }
+            ]
+          },
+          getSignature: [
+            {
+              name: '__get',
+              comment: {
+                shortText: 'The foo of the FooClass.',
+                tags: [
+                  {
+                    tag: 'default',
+                    text: '10\n'
+                  }
+                ]
+              },
+              type: {
+                type: 'intrinsic',
+                name: 'number'
+              }
+            }
+          ]
+        }
+      ];
+
+      const def = adapter.toClassDefinition(entry);
+
+      expect(def.properties).toEqual([
+        {
+          isOptional: true,
+          name: 'foo',
+          type: {
+            type: 'intrinsic',
+            name: 'number'
+          },
+          description: 'The foo of the FooClass.',
+          defaultValue: '10'
+        }
+      ]);
+    });
+
+    it('should handle properties with no comment short text and only a `set` accessor', () => {
+      entry.children = [
+        {
+          name: 'foo',
+          kindString: 'Accessor',
+          comment: {
+            tags: [
+              {
+                tag: 'default',
+                text: '10\n'
+              }
+            ]
+          },
+          setSignature: [
+            {
+              name: '__set',
+              comment: {
+                shortText: 'The foo of the FooClass.',
+                tags: [
+                  {
+                    tag: 'default',
+                    text: '10\n'
+                  }
+                ]
+              },
+              type: {
+                type: 'intrinsic',
+                name: 'number'
+              },
+              parameters: [
+                {
+                  name: 'value',
+                  kindString: 'Parameter',
+                  type: {
+                    type: 'intrinsic',
+                    name: 'number'
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ];
+
+      const def = adapter.toClassDefinition(entry);
+
+      expect(def.properties).toEqual([
+        {
+          isOptional: true,
+          name: 'foo',
+          type: {
+            type: 'intrinsic',
+            name: 'number'
+          },
+          defaultValue: '10'
+        }
+      ]);
+    });
+
     it('should handle union-type properties', () => {
       entry.children = [
         {

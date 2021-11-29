@@ -97,7 +97,7 @@ export class SkyDocsTypeDocAdapterService {
 
   constructor(
     @Optional() private typeDefinitionsProvider?: SkyDocsTypeDefinitionsProvider
-  ) {}
+  ) { }
 
   public toClassDefinition(entry: TypeDocEntry): SkyDocsClassDefinition {
     const definition: SkyDocsClassDefinition = {
@@ -238,16 +238,25 @@ export class SkyDocsTypeDocAdapterService {
         let defaultValue: string;
 
         /* Ensure we are properly capturing definitions which use a getter/setter. Final check is a sanity check */
-        if (child.kindString === 'Accessor' && !child.comment?.shortText && child.getSignature?.length > 0 && child.setSignature?.length > 0) {
+        if (child.kindString === 'Accessor' && !child.comment?.shortText && child.getSignature?.length > 0) {
+          const mainTags = this.getCommentTags(child.comment);
           const getTags = this.getCommentTags(child.getSignature[0].comment);
-          const setTags = this.getCommentTags(child.setSignature[0].comment);
 
-          definition.isOptional = !setTags.extras.required;
-
+          this.applyCommentTagValues(definition, mainTags);
           this.applyCommentTagValues(definition, getTags);
-          this.applyCommentTagValues(definition, setTags);
 
-          defaultValue = this.getDefaultValue(child, setTags);
+          if (child.setSignature?.length > 0) {
+            const setTags = this.getCommentTags(child.setSignature[0].comment);
+
+            this.applyCommentTagValues(definition, setTags);
+
+            definition.isOptional = !setTags.extras.required;
+            defaultValue = this.getDefaultValue(child, setTags);
+          } else {
+            definition.isOptional = !mainTags.extras.required;
+            defaultValue = this.getDefaultValue(child, mainTags);
+          }
+
         } else {
           const tags = this.getCommentTags(child.comment);
 
