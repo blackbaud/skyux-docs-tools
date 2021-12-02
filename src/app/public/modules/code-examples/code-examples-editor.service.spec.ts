@@ -192,7 +192,7 @@ describe('Code examples editor service', () => {
     }
   });
 
-  it('should convert \'*\' versions of SKY UX packages to \'^4\'', () => {
+  it('should convert "*" versions of SKY UX packages to "^4"', () => {
     codeExample.packageDependencies = {
       '@skyux/foobar': '*'
     };
