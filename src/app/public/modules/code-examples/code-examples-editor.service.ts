@@ -40,7 +40,7 @@ export class SkyDocsCodeExamplesEditorService {
 
   private getPayload(codeExample: SkyDocsCodeExample): StackBlitzProject {
     const angularVersion = '^9.0.0';
-    const skyuxVersion = '*';
+    const skyuxVersion = '^4';
 
     const defaultDependencies: SkyDocsCodeExampleModuleDependencies = {
       '@angular/animations': angularVersion,
@@ -77,6 +77,17 @@ export class SkyDocsCodeExamplesEditorService {
       defaultDependencies,
       codeExample.packageDependencies
     );
+
+    // Ensure any @skyux dependencies list the correct version of SKY UX.
+    // e.g. `"@skyux/core": "*"` --> `"@skyux/core": "4.0.0"`
+    for (const packageName in mergedDependencies) {
+      if (mergedDependencies.hasOwnProperty(packageName)) {
+        const version = mergedDependencies[packageName];
+        if (version === '*' && /^(@blackbaud\/skyux-lib-|@skyux)/.test(packageName)) {
+          mergedDependencies[packageName] = skyuxVersion;
+        }
+      }
+    }
 
     const files = this.parseStackBlitzFiles(
       codeExample.sourceCode,
