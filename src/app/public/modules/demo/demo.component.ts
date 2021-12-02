@@ -62,10 +62,7 @@ export class SkyDocsDemoComponent {
 
   @Input()
   public set supportsTheming(value: boolean) {
-    // Wait for current theme to render before changing it.
-    setTimeout(() => {
-      this.demoThemeSvc.supportsTheming.next(value);
-    });
+    this.demoThemeSvc.supportsTheming.next(value);
   }
 
   public themeSettings: SkyThemeSettings;
