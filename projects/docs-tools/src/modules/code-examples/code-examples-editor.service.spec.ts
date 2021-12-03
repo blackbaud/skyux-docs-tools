@@ -237,4 +237,41 @@ describe('Code examples editor service', () => {
     expect(() => service.launchEditor(example)).not.toThrow();
   });
 
+  it('should convert "*" versions of SKY UX packages to "^5"', () => {
+    codeExample.packageDependencies = {
+      '@skyux/foobar': '*'
+    };
+
+    service.launchEditor(codeExample);
+
+    expect(stackblitzSpy.calls.mostRecent().args[0].dependencies).toEqual({
+      '@angular/animations': '^12.2.0',
+      '@angular/common': '^12.2.0',
+      '@angular/compiler': '^12.2.0',
+      '@angular/core': '^12.2.0',
+      '@angular/forms': '^12.2.0',
+      '@angular/platform-browser': '^12.2.0',
+      '@angular/platform-browser-dynamic': '^12.2.0',
+      '@angular/router': '^12.2.0',
+      '@skyux/animations': '^5',
+      '@skyux/assets': '^5',
+      '@skyux/config': '^5',
+      '@skyux/core': '^5',
+      '@skyux/errors': '^5',
+      '@skyux/forms': '^5',
+      '@skyux/http': '^5',
+      '@skyux/i18n': '^5',
+      '@skyux/indicators': '^5',
+      '@skyux/layout': '^5',
+      '@skyux/modals': '^5',
+      '@skyux/popovers': '^5',
+      '@skyux/router': '^5',
+      '@skyux/theme': '^5',
+      'rxjs': '^6.6.0',
+      'tslib': '^2.3.0',
+      'zone.js': '~0.11.4',
+      '@skyux/foobar': '^5' // <-- Important
+    });
+  });
+
 });
