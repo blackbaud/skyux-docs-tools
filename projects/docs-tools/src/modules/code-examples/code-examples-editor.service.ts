@@ -81,6 +81,7 @@ export class SkyDocsCodeExamplesEditorService {
     // Ensure any @skyux dependencies list the correct version of SKY UX.
     // e.g. `"@skyux/core": "*"` --> `"@skyux/core": "4.0.0"`
     for (const packageName in mergedDependencies) {
+      /*istanbul ignore else*/
       if (mergedDependencies.hasOwnProperty(packageName)) {
         const version = mergedDependencies[packageName];
         if (version === '*' && /^(@blackbaud\/skyux-lib-|@skyux)/.test(packageName)) {
