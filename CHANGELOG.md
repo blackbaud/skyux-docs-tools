@@ -1,3 +1,7 @@
+# 4.9.7 (2021-12-03)
+
+- Fixed the `SkyDocsCodeExamplesEditorService` to set wildcard (e.g. '*') versions of SKY UX packages to `^4`. [#188](https://github.com/blackbaud/skyux-docs-tools/pull/188)
+
 # 4.9.6 (2021-09-21)
 
 - Fixed the `SkyDocsSourceCodeService` to handle both encoded and decoded URI strings for the source code. [#173](https://github.com/blackbaud/skyux-docs-tools/pull/173)
