@@ -36,11 +36,7 @@ export class SkyDocsDemoPageTypeDefinitionsComponent implements OnInit {
   ) { }
 
   public ngOnInit(): void {
-    if (this.additionalSourceCodePaths && !this.moduleSourceCodePath) {
-
-    }
-
-    if (this.moduleSourceCodePath && this.additionalSourceCodePaths) {
+    if (this.moduleSourceCodePath) {
       this.types = this.typeDefinitionService.getTypeDefinitions(
         this.moduleSourceCodePath, this.additionalSourceCodePaths
       );
