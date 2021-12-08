@@ -41,8 +41,8 @@ export class SkyDocsCodeExamplesEditorService {
   }
 
   private getPayload(codeExample: SkyDocsCodeExample): StackBlitzProject {
-    const angularVersion = '^9.0.0';
-    const skyuxVersion = '*';
+    const angularVersion = '^12.2.0';
+    const skyuxVersion = '^5.0.0-0';
 
     const defaultDependencies: SkyDocsCodeExampleModuleDependencies = {
       '@angular/animations': angularVersion,
@@ -67,10 +67,8 @@ export class SkyDocsCodeExamplesEditorService {
       '@skyux/popovers': skyuxVersion,
       '@skyux/router': skyuxVersion,
       '@skyux/theme': skyuxVersion,
-      'core-js': '2',
-      'rxjs': '^6.0.0',
-      'rxjs-compat': '^6.0.0',
-      'tslib': '~1.14.1',
+      'rxjs': '^6.6.0',
+      'tslib': '^2.3.0',
       'zone.js': '~0.11.4'
     };
 
@@ -79,6 +77,18 @@ export class SkyDocsCodeExamplesEditorService {
       defaultDependencies,
       codeExample.packageDependencies
     );
+
+    // Ensure any @skyux dependencies list the correct version of SKY UX.
+    // e.g. `"@skyux/core": "*"` --> `"@skyux/core": "5.0.0"`
+    for (const packageName in mergedDependencies) {
+      /*istanbul ignore else*/
+      if (mergedDependencies.hasOwnProperty(packageName)) {
+        const version = mergedDependencies[packageName];
+        if (version === '*' && /^(@blackbaud\/skyux-lib-|@skyux)/.test(packageName)) {
+          mergedDependencies[packageName] = skyuxVersion;
+        }
+      }
+    }
 
     const files = this.parseStackBlitzFiles(
       codeExample.sourceCode,
@@ -113,8 +123,7 @@ export class SkyDocsCodeExamplesEditorService {
 
     const banner = `/**
  * This file is needed for the StackBlitz demo only.
- * It is automatically built when using SKY UX CLI.
- * Visit https://developer.blackbaud/skyux for more information
+ * It is automatically provided when using the Angular CLI.
  **/
  `;
 
@@ -228,7 +237,7 @@ export class AppModule { }
   This is a workaround for a known bug that prevents external imports in CSS.
   https://github.com/stackblitz/core/issues/133
 -->
-<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />${theme === SkyDocsCodeExampleTheme.Modern ? `<link rel="stylesheet" type="text/css" href="https://sky.blackbaudcdn.net/static/skyux-icons/4.0.0-beta.2/assets/css/skyux-icons.min.css" />` : ``}
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />${theme === SkyDocsCodeExampleTheme.Modern ? `<link rel="stylesheet" type="text/css" href="https://sky.blackbaudcdn.net/static/skyux-icons/5.0.0/assets/css/skyux-icons.min.css" />` : ``}
 
 <sky-demo-app>
   Loading...
@@ -259,9 +268,7 @@ platformBrowserDynamic().bootstrapModule(AppModule).then(ref => {
 `;
 
     files[`${srcPath}polyfills.ts`] = `${banner}
-import 'core-js/es6/reflect';
-import 'core-js/es7/reflect';
-import 'zone.js/dist/zone';
+import 'zone.js';
 `;
 
     files[`${srcPath}styles.scss`] = `@import '~@skyux/theme/css/sky';
@@ -294,15 +301,24 @@ body {
 
     files['tsconfig.json'] = `{
   "compilerOptions": {
-    "target": "es5",
+    "target": "es2017",
+    "module": "es2020",
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "importHelpers": true,
+    "typeRoots": ["node_modules/@types"],
     "lib": [
-      "dom",
-      "es6"
+      "es2018",
+      "dom"
     ]
+  },
+  "angularCompilerOptions": {
+    "fullTemplateTypeCheck": true,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true,
+    "enableIvy": false
   }
 }`;
 
@@ -328,7 +344,7 @@ body {
 
     fragment = fragment.split(']')[0];
 
-    const components = fragment.split(',');
+    const components = fragment.split(',').filter(x => x);
 
     if (components.length > 1) {
       throw 'You may only export a single component from the code example module' +

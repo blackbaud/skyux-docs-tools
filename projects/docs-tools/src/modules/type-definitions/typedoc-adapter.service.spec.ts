@@ -203,6 +203,130 @@ describe('TypeDoc adapter', () => {
       ]);
     });
 
+    it('should handle property accessors which only have comment info in their `getSignature` and `setSignature`', () => {
+      entry.children = [
+        {
+          name: 'foo',
+          kindString: 'Accessor',
+          getSignature: [
+            {
+              name: '__get',
+              comment: {
+                shortText: 'The foo of the FooClass.'
+              },
+              type: {
+                type: 'intrinsic',
+                name: 'number'
+              }
+            }
+          ],
+          setSignature: [
+            {
+              name: '__set',
+              comment: {
+                shortText: 'The foo of the FooClass.',
+                tags: [
+                  {
+                    'tag': 'default',
+                    'text': '10\n'
+                  },
+                  {
+                    'tag': 'required',
+                    'text': '\n'
+                  },
+                  {
+                    tag: 'deprecated',
+                    text: 'This property is deprecated.\n'
+                  }
+                ]
+              },
+              parameters: [
+                {
+                  name: 'value',
+                  kindString: 'Parameter',
+                  type: {
+                    type: 'intrinsic',
+                    name: 'number'
+                  }
+                }
+              ],
+              type: {
+                type: 'intrinsic',
+                name: 'void'
+              }
+            }
+          ]
+        }
+      ];
+
+      const def = adapter.toClassDefinition(entry);
+
+      expect(def.properties).toEqual([
+        {
+          isOptional: false,
+          name: 'foo',
+          type: {
+            type: 'intrinsic',
+            name: 'number'
+          },
+          description: 'The foo of the FooClass.',
+          defaultValue: '10',
+          deprecationWarning: 'This property is deprecated.'
+        }
+      ]);
+    });
+
+    it('should handle property accessors which have no comment data - sanity check', () => {
+      entry.children = [
+        {
+          name: 'foo',
+          kindString: 'Accessor',
+          comment: {},
+          setSignature: [
+            {
+              name: '__set',
+              comment: {
+                shortText: 'The foo of the FooClass.',
+                tags: [
+                  {
+                    'tag': 'default',
+                    'text': '10\n'
+                  }
+                ]
+              },
+              parameters: [
+                {
+                  name: 'value',
+                  kindString: 'Parameter',
+                  type: {
+                    type: 'intrinsic',
+                    name: 'number'
+                  }
+                }
+              ],
+              type: {
+                type: 'intrinsic',
+                name: 'void'
+              }
+            }
+          ]
+        }
+      ];
+
+      const def = adapter.toClassDefinition(entry);
+
+      expect(def.properties).toEqual([
+        {
+          isOptional: true,
+          name: 'foo',
+          type: {
+            type: 'intrinsic',
+            name: 'number'
+          }
+        }
+      ]);
+    });
+
     it('should handle properties with only `get` accessors', () => {
       entry.children = [
         {
@@ -249,6 +373,115 @@ describe('TypeDoc adapter', () => {
             name: 'number'
           },
           description: 'The foo of the FooClass.',
+          defaultValue: '10'
+        }
+      ]);
+    });
+
+    it('should handle properties with no comment short text and only a `get` accessor', () => {
+      entry.children = [
+        {
+          name: 'foo',
+          kindString: 'Accessor',
+          comment: {
+            tags: [
+              {
+                tag: 'default',
+                text: '10\n'
+              }
+            ]
+          },
+          getSignature: [
+            {
+              name: '__get',
+              comment: {
+                shortText: 'The foo of the FooClass.',
+                tags: [
+                  {
+                    tag: 'default',
+                    text: '10\n'
+                  }
+                ]
+              },
+              type: {
+                type: 'intrinsic',
+                name: 'number'
+              }
+            }
+          ]
+        }
+      ];
+
+      const def = adapter.toClassDefinition(entry);
+
+      expect(def.properties).toEqual([
+        {
+          isOptional: true,
+          name: 'foo',
+          type: {
+            type: 'intrinsic',
+            name: 'number'
+          },
+          description: 'The foo of the FooClass.',
+          defaultValue: '10'
+        }
+      ]);
+    });
+
+    it('should handle properties with no comment short text and only a `set` accessor', () => {
+      entry.children = [
+        {
+          name: 'foo',
+          kindString: 'Accessor',
+          comment: {
+            tags: [
+              {
+                tag: 'default',
+                text: '10\n'
+              }
+            ]
+          },
+          setSignature: [
+            {
+              name: '__set',
+              comment: {
+                shortText: 'The foo of the FooClass.',
+                tags: [
+                  {
+                    tag: 'default',
+                    text: '10\n'
+                  }
+                ]
+              },
+              type: {
+                type: 'intrinsic',
+                name: 'number'
+              },
+              parameters: [
+                {
+                  name: 'value',
+                  kindString: 'Parameter',
+                  type: {
+                    type: 'intrinsic',
+                    name: 'number'
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ];
+
+      const def = adapter.toClassDefinition(entry);
+
+      expect(def.properties).toEqual([
+        {
+          isOptional: true,
+          name: 'foo',
+          type: {
+            type: 'intrinsic',
+            name: 'number'
+          },
           defaultValue: '10'
         }
       ]);
@@ -1266,12 +1499,34 @@ describe('TypeDoc adapter', () => {
             type: 'intrinsic',
             name: 'string'
           }
+        },
+        {
+          name: 'fooC',
+          kindString: 'Property',
+          type: {
+            type: 'intrinsic',
+            name: 'string'
+          },
+          comment: {
+            tags: [{
+              tag: 'required',
+              text: '\n'
+            }]
+          }
         }
       ];
 
       const def = adapter.toInterfaceDefinition(entry);
 
       expect(def.properties).toEqual([
+        {
+          isOptional: false,
+          name: 'fooC',
+          type: {
+            type: 'intrinsic',
+            name: 'string'
+          }
+        },
         {
           isOptional: false,
           name: 'fooZ',
@@ -1884,6 +2139,35 @@ describe('TypeDoc adapter', () => {
 
     expect(def).toEqual({
       anchorId: 'class-skyfoobar',
+      name: 'SkyFoobar'
+    });
+  });
+
+  it('should fall back to an empty anchorId if not set on entry or provider - sanity check', () => {
+    adapter = new SkyDocsTypeDocAdapterService({
+      anchorIds: {},
+      typeDefinitions: []
+    });
+
+    const def = adapter.toClassDefinition({
+      name: 'SkyFoobar'
+    });
+
+    expect(def).toEqual({
+      anchorId: '',
+      name: 'SkyFoobar'
+    });
+  });
+
+  it('should fall back to an empty anchorId if not set on entry or an no provider is present - sanity check', () => {
+    adapter = new SkyDocsTypeDocAdapterService();
+
+    const def = adapter.toClassDefinition({
+      name: 'SkyFoobar'
+    });
+
+    expect(def).toEqual({
+      anchorId: '',
       name: 'SkyFoobar'
     });
   });
