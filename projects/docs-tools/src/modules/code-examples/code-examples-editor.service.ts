@@ -115,7 +115,7 @@ export class SkyDocsCodeExamplesEditorService {
     sourceCode: SkyDocsSourceCodeFile[],
     dependencies: SkyDocsCodeExampleModuleDependencies,
     theme: SkyDocsCodeExampleTheme,
-    stylesheets: string[]
+    stylesheets: string[] = []
   ): {
     [path: string]: string;
   } {
