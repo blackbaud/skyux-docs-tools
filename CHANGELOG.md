@@ -1,4 +1,4 @@
-# 5.0.0-beta.9 (2022-02-04)
+# 5.0.0-beta.10 (2022-02-04)
 
 - Removed an outdated reference to entry components. [#193](https://github.com/blackbaud/skyux-docs-tools/pull/193)
 
