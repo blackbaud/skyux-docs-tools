@@ -31,9 +31,7 @@
             "tsConfig": "projects/docs-tools/tsconfig.spec.json",
             "karmaConfig": "projects/docs-tools/karma.conf.js",
             "codeCoverage": true,
-            "codeCoverageExclude": [
-              "**/fixtures/**"
-            ],
+            "codeCoverageExclude": ["**/fixtures/**"],
             "styles": [
               "@skyux/theme/css/sky.css",
               "@skyux/theme/css/themes/modern/styles.css"
@@ -167,9 +165,7 @@
               "projects/docs-tools-showcase/src/favicon.ico",
               "projects/docs-tools-showcase/src/assets"
             ],
-            "styles": [
-              "projects/docs-tools-showcase/src/styles.scss"
-            ],
+            "styles": ["projects/docs-tools-showcase/src/styles.scss"],
             "scripts": []
           }
         },
