@@ -179,7 +179,7 @@ export class SkyDocsTypeDocAdapterService {
     };
 
     const tags = this.getCommentTags(
-      entry.type?.declaration?.signatures
+      entry.type.declaration?.signatures
         ? entry.type.declaration.signatures[0]?.comment
         : entry.comment
     );
@@ -229,7 +229,7 @@ export class SkyDocsTypeDocAdapterService {
         if (
           child.kindString === 'Accessor' &&
           !child.comment?.shortText &&
-          (child.getSignature?.length > 0 || child.setSignature?.length > 0)
+          (child.setSignature?.length > 0 || child.getSignature.length > 0)
         ) {
           const mainTags = this.getCommentTags(child.comment);
 
@@ -238,7 +238,7 @@ export class SkyDocsTypeDocAdapterService {
           if (child.getSignature?.length > 0) {
             const getTags = this.getCommentTags(child.getSignature[0].comment);
 
-            definition.isOptional = !getTags.extras?.required;
+            definition.isOptional = !getTags.extras.required;
 
             this.applyCommentTagValues(definition, getTags);
             defaultValue = this.getDefaultValue(child, getTags);
@@ -250,7 +250,7 @@ export class SkyDocsTypeDocAdapterService {
             this.applyCommentTagValues(definition, setTags);
 
             definition.isOptional =
-              definition.isOptional && !setTags.extras?.required;
+              definition.isOptional && !setTags.extras.required;
             defaultValue = defaultValue || this.getDefaultValue(child, setTags);
           } else {
             definition.isOptional = !mainTags.extras.required;
@@ -261,16 +261,21 @@ export class SkyDocsTypeDocAdapterService {
           if (
             child.kindString === 'Property' &&
             !child.comment?.shortText &&
-            child.type?.declaration?.signatures?.length > 0 &&
-            child.type?.declaration?.signatures[0].comment
+            child.type.declaration?.signatures?.length > 0 &&
+            child.type.declaration.signatures[0].comment
           ) {
             tags = this.getCommentTags(
               child.type.declaration.signatures[0].comment
             );
-          } else {
-            tags = this.getCommentTags(child.comment);
+
+            definition.isOptional = !tags.extras.required;
+            this.applyCommentTagValues(definition, tags);
           }
-          definition.isOptional = !tags.extras.required;
+
+          tags = this.getCommentTags(child.comment);
+
+          definition.isOptional =
+            definition.isOptional && !tags.extras.required;
 
           this.applyCommentTagValues(definition, tags);
 
