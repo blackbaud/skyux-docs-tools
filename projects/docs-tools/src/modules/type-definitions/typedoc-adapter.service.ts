@@ -180,7 +180,7 @@ export class SkyDocsTypeDocAdapterService {
 
     const tags = this.getCommentTags(
       entry.type.declaration?.signatures
-        ? entry.type.declaration.signatures[0]?.comment
+        ? entry.type.declaration.signatures[0].comment
         : entry.comment
     );
     this.applyCommentTagValues(definition, tags);
@@ -341,7 +341,7 @@ export class SkyDocsTypeDocAdapterService {
     const definitions =
       entry.children?.map((child) => {
         let tags: SkyDocsCommentTags | undefined;
-        if (child.kindString === 'Method' && child.signatures?.length > 0) {
+        if (child.kindString === 'Method' && child.signatures.length > 0) {
           tags = this.getCommentTags(child.signatures[0].comment);
         } else {
           tags = this.getCommentTags(child.comment);
