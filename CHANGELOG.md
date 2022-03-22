@@ -1,6 +1,6 @@
 # 4.10.0 (2022-03-22)
 
-- Added an alert to redirect consumers to the main documentation site. []()
+- Added an alert to redirect consumers to the main documentation site. [#202](https://github.com/blackbaud/skyux-docs-tools/pull/202)
 
 # 4.9.7 (2021-12-03)
 
