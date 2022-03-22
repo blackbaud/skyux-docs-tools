@@ -67,11 +67,13 @@ import {
 import {
   SkyDocsDemoPageTypeDefinitionsComponent
 } from './demo-page-type-definitions.component';
+import { SkyAlertModule } from '@skyux/indicators';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule,
+    SkyAlertModule,
     SkyCodeBlockModule,
     SkyCodeModule,
     SkyDocsDemoModule,

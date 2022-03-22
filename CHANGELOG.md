@@ -1,3 +1,7 @@
+# 4.10.0 (2022-03-22)
+
+- Added an alert to redirect consumers to the main documentation site. []()
+
 # 4.9.7 (2021-12-03)
 
 - Fixed the `SkyDocsCodeExamplesEditorService` to set wildcard versions (e.g. '*') of SKY UX packages to `^4`. [#188](https://github.com/blackbaud/skyux-docs-tools/pull/188)
