@@ -5,6 +5,61 @@
 # 4.9.7 (2021-12-03)
 
 - Fixed the `SkyDocsCodeExamplesEditorService` to set wildcard versions (e.g. '*') of SKY UX packages to `^4`. [#188](https://github.com/blackbaud/skyux-docs-tools/pull/188)
+# 5.0.0-beta.13 (2022-02-23)
+
+- Fixed the `SkyDocsTypeDocAdapterService` to properly handle constructors that don't have parameters. [#200](https://github.com/blackbaud/skyux-docs-tools/pull/200)
+
+# 5.0.0-beta.12 (2022-02-18)
+
+- Fixed the `SkyDocsTypeDocAdapterService` to properly handle properties which are created as class constructor parameters. [#199](https://github.com/blackbaud/skyux-docs-tools/pull/199)
+
+# 5.0.0.beta.11 (2022-02-14)
+
+- Fixed the `SkyDocsTypeDocAdapterService` to properly handle interface methods, class method inputs, type aliases, and single accessor properties. [#197](https://github.com/blackbaud/skyux-docs-tools/pull/197)
+
+# 5.0.0-beta.10 (2022-02-04)
+
+- Removed an outdated reference to entry components. [#193](https://github.com/blackbaud/skyux-docs-tools/pull/193)
+
+# 5.0.0-beta.9 (2022-01-06)
+
+- Added the `stylesheets` input to the `SkyDocsCodeExamplesComponent` to provide additional global stylesheets to StackBlitz. [#191](https://github.com/blackbaud/skyux-docs-tools/pull/191)
+
+# 5.0.0-beta.8 (2021-12-09)
+
+- Added the ability to document classes outside of a component's main module path. [#179](https://github.com/blackbaud/skyux-docs-tools/pull/179)
+
+# 5.0.0-beta.7 (2021-12-06)
+
+- Fixed the `SkyDocsCodeExamplesEditorService` to set wildcard versions (e.g. '\*') of SKY UX packages to `^5`. [#189](https://github.com/blackbaud/skyux-docs-tools/pull/189)
+
+# 5.0.0-beta.6 (2021-12-01)
+
+- Fixed the code example editor to handle trailing commas in the demo module's `exports` section. [#186](https://github.com/blackbaud/skyux-docs-tools/pull/186)
+
+# 5.0.0-beta.5 (2021-11-30)
+
+- Fixed the `SkyDocsTypeDocAdapterService` to properly handle deprecated, required, and optional accessor properties. [#185](https://github.com/blackbaud/skyux-docs-tools/pull/185)
+
+# 5.0.0-beta.4 (2021-11-17)
+
+- Fixed the `SkyDocsTypeDocAdapterService` to properly handle accessor property descriptions. [#183](https://github.com/blackbaud/skyux-docs-tools/pull/183)
+
+# 5.0.0-beta.3 (2021-11-16)
+
+- Fixed the StackBlitz code examples to work with Angular 12. [#182](https://github.com/blackbaud/skyux-docs-tools/pull/182)
+
+# 5.0.0-beta.2 (2021-10-12)
+
+- Migrated to Angular CLI. [#177](https://github.com/blackbaud/skyux-docs-tools/pull/177)
+
+# 5.0.0-beta.1 (2021-09-28)
+
+- Fixed the `SkyDocsTypeDocAdapterService` to properly handle index signatures when using `typedoc@~0.20.0` and above. [#176](https://github.com/blackbaud/skyux-docs-tools/pull/176)
+
+# 5.0.0-beta.0 (2021-09-28)
+
+- Initial `5.0.0-beta` release. [#175](https://github.com/blackbaud/skyux-docs-tools/pull/175)
 
 # 4.9.6 (2021-09-21)
 
