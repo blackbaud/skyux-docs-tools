@@ -4,7 +4,8 @@
 
 # 4.9.7 (2021-12-03)
 
-- Fixed the `SkyDocsCodeExamplesEditorService` to set wildcard versions (e.g. '*') of SKY UX packages to `^4`. [#188](https://github.com/blackbaud/skyux-docs-tools/pull/188)
+- Fixed the `SkyDocsCodeExamplesEditorService` to set wildcard versions (e.g. '\*') of SKY UX packages to `^4`. [#188](https://github.com/blackbaud/skyux-docs-tools/pull/188)
+
 # 5.0.0-beta.13 (2022-02-23)
 
 - Fixed the `SkyDocsTypeDocAdapterService` to properly handle constructors that don't have parameters. [#200](https://github.com/blackbaud/skyux-docs-tools/pull/200)

@@ -10,7 +10,7 @@
       "prefix": "lib",
       "architect": {
         "build": {
-          "builder": "@skyux-sdk/angular-builders:ng-packagr",
+          "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
             "project": "projects/docs-tools/ng-package.json"
           },
@@ -33,8 +33,8 @@
             "codeCoverage": true,
             "codeCoverageExclude": ["**/fixtures/**"],
             "styles": [
-              "@skyux/theme/css/sky.css",
-              "@skyux/theme/css/themes/modern/styles.css"
+              "node_modules/@skyux/theme/css/sky.css",
+              "node_modules/@skyux/theme/css/themes/modern/styles.css"
             ]
           }
         },
