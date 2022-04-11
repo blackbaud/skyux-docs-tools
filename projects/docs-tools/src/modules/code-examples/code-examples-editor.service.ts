@@ -30,8 +30,8 @@ export class SkyDocsCodeExamplesEditorService {
   }
 
   private getPayload(codeExample: SkyDocsCodeExample): StackBlitzProject {
-    const angularVersion = '^12.2.0';
-    const skyuxVersion = '^5.0.0-0';
+    const angularVersion = '^13.0.0';
+    const skyuxVersion = '^6.0.0-0';
 
     const defaultDependencies: SkyDocsCodeExampleModuleDependencies = {
       '@angular/animations': angularVersion,
@@ -56,7 +56,7 @@ export class SkyDocsCodeExamplesEditorService {
       '@skyux/popovers': skyuxVersion,
       '@skyux/router': skyuxVersion,
       '@skyux/theme': skyuxVersion,
-      rxjs: '^6.6.0',
+      rxjs: '^7',
       tslib: '^2.3.0',
       'zone.js': '~0.11.4',
     };
