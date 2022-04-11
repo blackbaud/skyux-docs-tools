@@ -1,0 +1,189 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "docs-tools": {
+      "projectType": "library",
+      "root": "projects/docs-tools",
+      "sourceRoot": "projects/docs-tools/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@skyux-sdk/angular-builders:ng-packagr",
+          "options": {
+            "project": "projects/docs-tools/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/docs-tools/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/docs-tools/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/docs-tools/src/test.ts",
+            "tsConfig": "projects/docs-tools/tsconfig.spec.json",
+            "karmaConfig": "projects/docs-tools/karma.conf.js",
+            "codeCoverage": true,
+            "codeCoverageExclude": ["**/fixtures/**"],
+            "styles": [
+              "@skyux/theme/css/sky.css",
+              "@skyux/theme/css/themes/modern/styles.css"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/docs-tools/**/*.ts",
+              "projects/docs-tools/**/*.html"
+            ]
+          }
+        }
+      }
+    },
+    "docs-tools-showcase": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss",
+          "skipTests": true
+        },
+        "@schematics/angular:class": {
+          "skipTests": true
+        },
+        "@schematics/angular:directive": {
+          "skipTests": true
+        },
+        "@schematics/angular:guard": {
+          "skipTests": true
+        },
+        "@schematics/angular:interceptor": {
+          "skipTests": true
+        },
+        "@schematics/angular:pipe": {
+          "skipTests": true
+        },
+        "@schematics/angular:service": {
+          "skipTests": true
+        },
+        "@schematics/angular:application": {
+          "strict": true
+        }
+      },
+      "root": "projects/docs-tools-showcase",
+      "sourceRoot": "projects/docs-tools-showcase/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/docs-tools-showcase",
+            "index": "projects/docs-tools-showcase/src/index.html",
+            "main": "projects/docs-tools-showcase/src/main.ts",
+            "polyfills": "projects/docs-tools-showcase/src/polyfills.ts",
+            "tsConfig": "projects/docs-tools-showcase/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/docs-tools-showcase/src/favicon.ico",
+              "projects/docs-tools-showcase/src/assets"
+            ],
+            "styles": [
+              "node_modules/@skyux/theme/css/sky.css",
+              "node_modules/@skyux/theme/css/themes/modern/styles.css",
+              "projects/docs-tools/src/styles/docs-tools.scss",
+              "projects/docs-tools-showcase/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/docs-tools-showcase/src/environments/environment.ts",
+                  "with": "projects/docs-tools-showcase/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "docs-tools-showcase:build:production"
+            },
+            "development": {
+              "browserTarget": "docs-tools-showcase:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "docs-tools-showcase:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/docs-tools-showcase/src/test.ts",
+            "polyfills": "projects/docs-tools-showcase/src/polyfills.ts",
+            "tsConfig": "projects/docs-tools-showcase/tsconfig.spec.json",
+            "karmaConfig": "projects/docs-tools-showcase/karma.conf.js",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/docs-tools-showcase/src/favicon.ico",
+              "projects/docs-tools-showcase/src/assets"
+            ],
+            "styles": ["projects/docs-tools-showcase/src/styles.scss"],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/docs-tools-showcase/**/*.ts",
+              "projects/docs-tools-showcase/**/*.html"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "docs-tools",
+  "cli": {
+    "defaultCollection": "@angular-eslint/schematics"
+  }
+}
