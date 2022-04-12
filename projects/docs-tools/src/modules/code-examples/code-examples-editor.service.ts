@@ -325,7 +325,7 @@ body {
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
     "strictTemplates": true,
-    "enableIvy": false
+    "enableIvy": true
   }
 }`;
 
