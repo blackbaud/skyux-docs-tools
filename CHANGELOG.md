@@ -2,11 +2,11 @@
 
 ### Breaking changes
 
-- Dropped support for Angular 12. [#204](https://github.com/blackbaud/skyux-docs-tools/pull/204)
+- Dropped support for Angular 12. [#206](https://github.com/blackbaud/skyux-docs-tools/pull/206)
 
 ### New features
 
-- Added support for Angular 13. [#204](https://github.com/blackbaud/skyux-docs-tools/pull/204)
+- Added support for Angular 13. [#206](https://github.com/blackbaud/skyux-docs-tools/pull/206)
 
 # 4.10.0 (2022-03-22)
 
