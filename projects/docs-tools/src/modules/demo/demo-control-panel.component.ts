@@ -63,7 +63,7 @@ export class SkyDocsDemoControlPanelComponent
   private checkboxes: QueryList<SkyDocsDemoControlPanelCheckboxComponent>;
 
   private eventListeners: Subscription;
-  private ngUnsubscribe = new Subject<boolean>();
+  private ngUnsubscribe = new Subject<void>();
 
   public ngAfterContentInit(): void {
     this.addEventListeners();

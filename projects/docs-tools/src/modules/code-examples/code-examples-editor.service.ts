@@ -30,8 +30,8 @@ export class SkyDocsCodeExamplesEditorService {
   }
 
   private getPayload(codeExample: SkyDocsCodeExample): StackBlitzProject {
-    const angularVersion = '^12.2.0';
-    const skyuxVersion = '^5.0.0-0';
+    const angularVersion = '^13.0.0';
+    const skyuxVersion = '^6.0.0-0';
 
     const defaultDependencies: SkyDocsCodeExampleModuleDependencies = {
       '@angular/animations': angularVersion,
@@ -56,7 +56,7 @@ export class SkyDocsCodeExamplesEditorService {
       '@skyux/popovers': skyuxVersion,
       '@skyux/router': skyuxVersion,
       '@skyux/theme': skyuxVersion,
-      rxjs: '^6.6.0',
+      rxjs: '^7',
       tslib: '^2.3.0',
       'zone.js': '~0.11.4',
     };
@@ -236,11 +236,8 @@ export class AppModule { }
   This is a workaround for a known bug that prevents external imports in CSS.
   https://github.com/stackblitz/core/issues/133
 -->
-<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />${
-      theme === SkyDocsCodeExampleTheme.Modern
-        ? `<link rel="stylesheet" type="text/css" href="https://sky.blackbaudcdn.net/static/skyux-icons/5.0.0/assets/css/skyux-icons.min.css" />`
-        : ``
-    }
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+<link rel="stylesheet" type="text/css" href="https://sky.blackbaudcdn.net/static/skyux-icons/5.0.0/assets/css/skyux-icons.min.css" />
 
 <sky-demo-app>
   Loading...
@@ -271,11 +268,8 @@ import 'zone.js';
 `;
 
     files[`${srcPath}styles.scss`] = `@import '~@skyux/theme/css/sky';
-${
-  theme === SkyDocsCodeExampleTheme.Modern
-    ? `@import '~@skyux/theme/css/themes/modern/styles';`
-    : ``
-}
+@import '~@skyux/theme/css/themes/modern/styles';
+
 body {
   background-color: #fff;
   margin: 15px;
@@ -316,7 +310,7 @@ body {
     "importHelpers": true,
     "typeRoots": ["node_modules/@types"],
     "lib": [
-      "es2018",
+      "es2020",
       "dom"
     ]
   },
@@ -325,7 +319,7 @@ body {
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
     "strictTemplates": true,
-    "enableIvy": false
+    "enableIvy": true
   }
 }`;
 
