@@ -1,3 +1,13 @@
+# 6.0.0-beta.0 (2022-04-13)
+
+### Breaking changes
+
+- Dropped support for Angular 12. #204
+
+### New features
+
+- Added support for Angular 13. #204
+
 # 4.10.0 (2022-03-22)
 
 - Added an alert to redirect consumers to the main documentation site. [#202](https://github.com/blackbaud/skyux-docs-tools/pull/202)
