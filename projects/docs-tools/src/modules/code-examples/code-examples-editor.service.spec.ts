@@ -273,6 +273,7 @@ describe('Code examples editor service', () => {
       '@skyux/popovers': '^6.0.0-0',
       '@skyux/router': '^6.0.0-0',
       '@skyux/theme': '^6.0.0-0',
+      'ng2-dragula': '2.1.1',
       rxjs: '^7',
       tslib: '^2.3.0',
       'zone.js': '~0.11.4',

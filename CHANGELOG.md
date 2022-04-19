@@ -1,6 +1,6 @@
 # 6.0.0-beta.1 (2022-04-19)
 
-- Fixed the `SkyDocsCodeExamplesEditorService` to install `ng2-dragula@2.1.1`.
+- Fixed the `SkyDocsCodeExamplesEditorService` to install `ng2-dragula@2.1.1`. #207
 
 # 6.0.0-beta.0 (2022-04-13)
 
