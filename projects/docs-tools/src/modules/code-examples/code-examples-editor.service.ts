@@ -56,6 +56,8 @@ export class SkyDocsCodeExamplesEditorService {
       '@skyux/popovers': skyuxVersion,
       '@skyux/router': skyuxVersion,
       '@skyux/theme': skyuxVersion,
+      // We must define Dragula deliberately so that StackBlitz runs NGCC against it.
+      'ng2-dragula': '2.1.1',
       rxjs: '^7',
       tslib: '^2.3.0',
       'zone.js': '~0.11.4',
