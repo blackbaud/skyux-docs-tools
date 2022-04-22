@@ -3,13 +3,25 @@
   class="sky-docs-directive-definition sky-docs-type-definition-wrapper"
 >
   <sky-docs-heading-anchor headingLevel="3" [anchorId]="config.anchorId">
-    {{ config.name }}
+    <span [ngClass]="{ 'sky-docs-strikethrough': config.deprecationWarning }">{{
+      config.name
+    }}</span>
   </sky-docs-heading-anchor>
 
   <sky-docs-safe-html
     *ngIf="config.description"
     class="sky-docs-directive-definition-description"
     [innerHtml]="config.description | skyDocsTypeAnchorLinks | skyDocsMarkdown"
+  ></sky-docs-safe-html>
+
+  <sky-docs-safe-html
+    *ngIf="config.deprecationWarning !== undefined"
+    class="sky-docs-directive-definition-deprecation-warning"
+    [innerHtml]="
+      deprecationWarningPrefix + config.deprecationWarning
+        | skyDocsTypeAnchorLinks
+        | skyDocsMarkdown
+    "
   ></sky-docs-safe-html>
 
   <h4 class="sky-docs-directive-definition-h4">Selector</h4>

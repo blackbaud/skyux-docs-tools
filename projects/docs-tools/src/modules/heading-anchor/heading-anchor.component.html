@@ -10,9 +10,10 @@
     *ngIf="anchorId"
     aria-hidden="true"
     class="sky-docs-heading-anchor"
-    queryParamsHandling="merge"
     [fragment]="anchorId"
     [routerLink]="[]"
+    [preserveQueryParams]="true"
+    [queryParamsHandling]="'merge'"
   >
     <sky-icon class="sky-docs-heading-anchor-icon" icon="link"></sky-icon>
   </a>

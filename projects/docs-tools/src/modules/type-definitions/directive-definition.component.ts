@@ -11,4 +11,6 @@ import { SkyDocsDirectiveDefinition } from './directive-definition';
 export class SkyDocsDirectiveDefinitionComponent {
   @Input()
   public config: SkyDocsDirectiveDefinition;
+
+  public deprecationWarningPrefix = `<span class="sky-text-warning"></span>**Deprecated.** `;
 }
