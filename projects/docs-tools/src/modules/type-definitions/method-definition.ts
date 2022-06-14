@@ -7,5 +7,6 @@ import { SkyDocsTypeParameterDefinition } from './type-parameter-definition';
  */
 export interface SkyDocsClassMethodDefinition
   extends SkyDocsEntryChildDefinition {
+  isStatic?: boolean;
   typeParameters?: SkyDocsTypeParameterDefinition[];
 }

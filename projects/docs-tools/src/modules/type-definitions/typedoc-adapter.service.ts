@@ -335,6 +335,7 @@ export class SkyDocsTypeDocAdapterService {
         const definition: SkyDocsClassMethodDefinition = {
           name: this.getPropertyName(child),
           type: this.getTypeDefinition(child),
+          isStatic: !!child.flags?.isStatic,
         };
 
         // Comments for methods are stored in a different location.

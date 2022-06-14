@@ -10,7 +10,8 @@
     "SkyColorpickerMessage": "interface-skycolorpickermessage",
     "SkyColorpickerOutput": "interface-skycolorpickeroutput",
     "SkyColorpickerResult": "interface-skycolorpickerresult",
-    "SkyColorpickerRgba": "interface-skycolorpickerrgba"
+    "SkyColorpickerRgba": "interface-skycolorpickerrgba",
+    "SkyColorpickerUtils": "class-skycolorpickerutils"
   },
   "typedoc": {
     "id": 0,
@@ -115,6 +116,132 @@
             "fileName": "projects/colorpicker/src/modules/colorpicker/types/colorpicker-message-type.ts",
             "line": 4,
             "character": 12
+          }
+        ]
+      },
+      {
+        "id": 619,
+        "name": "SkyColorpickerUtils",
+        "kind": 128,
+        "kindString": "Class",
+        "flags": {},
+        "children": [
+          {
+            "id": 620,
+            "name": "getColorExample",
+            "kind": 2048,
+            "kindString": "Method",
+            "flags": {
+              "isPublic": true,
+              "isStatic": true
+            },
+            "sources": [
+              {
+                "fileName": "projects/colorpicker/src/modules/colorpicker/types/colorpicker-utils.ts",
+                "line": 10,
+                "character": 16
+              }
+            ],
+            "signatures": [
+              {
+                "id": 621,
+                "name": "getColorExample",
+                "kind": 4096,
+                "kindString": "Call signature",
+                "flags": {},
+                "comment": {
+                  "shortText": "Gets an example color."
+                },
+                "parameters": [
+                  {
+                    "id": 622,
+                    "name": "params",
+                    "kind": 32768,
+                    "kindString": "Parameter",
+                    "flags": {},
+                    "comment": {
+                      "shortText": "The method parameter.\n"
+                    },
+                    "type": {
+                      "type": "intrinsic",
+                      "name": "boolean"
+                    }
+                  }
+                ],
+                "type": {
+                  "type": "intrinsic",
+                  "name": "boolean"
+                }
+              }
+            ]
+          },
+          {
+            "id": 623,
+            "name": "getRainbow",
+            "kind": 2048,
+            "kindString": "Method",
+            "flags": {
+              "isPublic": true,
+              "isStatic": false
+            },
+            "sources": [
+              {
+                "fileName": "projects/colorpicker/src/modules/colorpicker/types/colorpicker-utils.ts",
+                "line": 10,
+                "character": 16
+              }
+            ],
+            "signatures": [
+              {
+                "id": 624,
+                "name": "getRainbow",
+                "kind": 4096,
+                "kindString": "Call signature",
+                "flags": {},
+                "comment": {
+                  "shortText": "Gets a rainbow."
+                },
+                "parameters": [
+                  {
+                    "id": 625,
+                    "name": "params",
+                    "kind": 32768,
+                    "kindString": "Parameter",
+                    "flags": {},
+                    "comment": {
+                      "shortText": "The method parameter.\n"
+                    },
+                    "type": {
+                      "type": "intrinsic",
+                      "name": "boolean"
+                    }
+                  }
+                ],
+                "type": {
+                  "type": "intrinsic",
+                  "name": "boolean"
+                }
+              }
+            ]
+          }
+        ],
+        "groups": [
+          {
+            "title": "Constructors",
+            "kind": 512,
+            "children": [623]
+          },
+          {
+            "title": "Methods",
+            "kind": 2048,
+            "children": [620]
+          }
+        ],
+        "sources": [
+          {
+            "fileName": "projects/colorpicker/src/modules/colorpicker/types/colorpicker-utils.ts",
+            "line": 5,
+            "character": 13
           }
         ]
       },

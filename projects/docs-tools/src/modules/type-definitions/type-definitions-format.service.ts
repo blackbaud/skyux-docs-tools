@@ -71,7 +71,9 @@ export class SkyDocsTypeDefinitionsFormatService {
         .join(', ');
     }
 
-    return `public ${definition.name}${typeArguments}(${params}): ${returnType}`;
+    return `public ${definition.isStatic ? 'static ' : ''}${
+      definition.name
+    }${typeArguments}(${params}): ${returnType}`;
   }
 
   /**

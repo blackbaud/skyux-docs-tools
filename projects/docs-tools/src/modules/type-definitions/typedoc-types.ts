@@ -114,6 +114,7 @@ export interface TypeDocEntryChild {
 
   flags?: {
     isOptional?: boolean;
+    isStatic?: boolean;
   };
 
   kindString?:

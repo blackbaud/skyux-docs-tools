@@ -1011,10 +1011,30 @@ describe('TypeDoc adapter', () => {
         {
           name: 'getA',
           kindString: 'Method',
+          flags: {
+            isStatic: true,
+          },
           signatures: [
             {
               kindString: 'Call signature',
               name: 'getA',
+              type: {
+                type: 'intrinsic',
+                name: 'void',
+              },
+            },
+          ],
+        },
+        {
+          name: 'getC',
+          kindString: 'Method',
+          flags: {
+            isStatic: false,
+          },
+          signatures: [
+            {
+              kindString: 'Call signature',
+              name: 'getC',
               type: {
                 type: 'intrinsic',
                 name: 'void',
@@ -1029,6 +1049,7 @@ describe('TypeDoc adapter', () => {
       expect(def.methods).toEqual([
         {
           name: 'getA',
+          isStatic: true,
           type: {
             callSignature: {
               returnType: {
@@ -1041,6 +1062,7 @@ describe('TypeDoc adapter', () => {
         },
         {
           name: 'getB',
+          isStatic: false,
           type: {
             callSignature: {
               returnType: {
@@ -1049,6 +1071,19 @@ describe('TypeDoc adapter', () => {
               },
             },
             name: 'getB',
+          },
+        },
+        {
+          name: 'getC',
+          isStatic: false,
+          type: {
+            callSignature: {
+              returnType: {
+                name: 'void',
+                type: 'intrinsic',
+              },
+            },
+            name: 'getC',
           },
         },
       ]);
@@ -1083,6 +1118,7 @@ describe('TypeDoc adapter', () => {
       expect(def.methods).toEqual([
         {
           name: 'getUser',
+          isStatic: false,
           type: {
             callSignature: {
               returnType: {
@@ -1174,6 +1210,7 @@ describe('TypeDoc adapter', () => {
         {
           name: 'getUserById',
           description: 'Gets a user from the database.',
+          isStatic: false,
           type: {
             callSignature: {
               returnType: {
@@ -2035,6 +2072,7 @@ describe('TypeDoc adapter', () => {
         name: 'FooPipe',
         transformMethod: {
           name: 'transform',
+          isStatic: false,
           type: {
             name: 'transform',
             callSignature: {

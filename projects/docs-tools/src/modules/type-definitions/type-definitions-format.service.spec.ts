@@ -40,6 +40,24 @@ describe('Type definitions format service', () => {
     expect(sourceCode).toEqual('public fooBar(): void');
   });
 
+  it('should generate method source code for a static method', () => {
+    const def: SkyDocsClassMethodDefinition = {
+      name: 'fooBar',
+      isStatic: true,
+      type: {
+        callSignature: {
+          returnType: {
+            type: 'intrinsic',
+            name: 'void',
+          },
+        },
+      },
+    };
+
+    const sourceCode = service.getMethodSourceCode(def);
+    expect(sourceCode).toEqual('public static fooBar(): void');
+  });
+
   it('should generate method source code with parameters', () => {
     const def: SkyDocsClassMethodDefinition = {
       name: 'fooBar',
