@@ -71,11 +71,9 @@ describe('Method definitions component', function () {
     fixture.detectChanges();
     tick();
 
-    const element = fixture.nativeElement.querySelector(
-      '.sky-docs-method-definitions-dd-description'
-    );
+    const element = fixture.nativeElement.querySelector('.sky-docs-code-block');
 
-    expect(element.innerHTML).toContain('public static ');
+    expect(element.innerText).toContain('public static ');
   }));
 
   it('should add links to types within description', fakeAsync(() => {
