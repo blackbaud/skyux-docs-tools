@@ -166,7 +166,11 @@
               "projects/docs-tools-showcase/src/favicon.ico",
               "projects/docs-tools-showcase/src/assets"
             ],
-            "styles": ["projects/docs-tools-showcase/src/styles.scss"],
+            "styles": [
+              "node_modules/@skyux/theme/css/sky.css",
+              "node_modules/@skyux/theme/css/themes/modern/styles.css",
+              "projects/docs-tools-showcase/src/styles.scss"
+            ],
             "scripts": []
           }
         },

@@ -49,6 +49,33 @@ describe('Method definitions component', function () {
     expect(methodDefinitionsRef.config).toEqual({});
   });
 
+  it('should denote static methods', fakeAsync(() => {
+    fixture.componentInstance.config = {
+      methods: [
+        {
+          name: 'FooMethod',
+          description: 'This description has a FooUser.',
+          isStatic: true,
+          type: {
+            callSignature: {
+              returnType: {
+                type: 'reference',
+                name: 'FooUser',
+              },
+            },
+          },
+        },
+      ],
+    };
+
+    fixture.detectChanges();
+    tick();
+
+    const element = fixture.nativeElement.querySelector('.sky-docs-code-block');
+
+    expect(element.innerText).toContain('public static ');
+  }));
+
   it('should add links to types within description', fakeAsync(() => {
     fixture.componentInstance.config = {
       methods: [
