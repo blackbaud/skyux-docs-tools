@@ -1,6 +1,11 @@
+# 6.0.0-beta.2 (2022-06-28)
+
+- Add Angular CDK to list of packages installed for StackBlitz examples. [#211](https://github.com/blackbaud/skyux-docs-tools/pull/211)
+- Fixed method definitions to indicate when the method is a static method. [#209](https://github.com/blackbaud/skyux-docs-tools/pull/209)
+
 # 6.0.0-beta.1 (2022-04-19)
 
-- Fixed the `SkyDocsCodeExamplesEditorService` to install `ng2-dragula@2.1.1`. #207
+- Fixed the `SkyDocsCodeExamplesEditorService` to install `ng2-dragula@2.1.1`. [#207](https://github.com/blackbaud/skyux-docs-tools/pull/207)
 
 # 6.0.0-beta.0 (2022-04-13)
 
