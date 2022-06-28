@@ -35,6 +35,7 @@ export class SkyDocsCodeExamplesEditorService {
 
     const defaultDependencies: SkyDocsCodeExampleModuleDependencies = {
       '@angular/animations': angularVersion,
+      '@angular/cdk': angularVersion,
       '@angular/common': angularVersion,
       '@angular/compiler': angularVersion,
       '@angular/core': angularVersion,
