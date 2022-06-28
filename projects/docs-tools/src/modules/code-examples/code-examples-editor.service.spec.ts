@@ -252,6 +252,7 @@ describe('Code examples editor service', () => {
 
     expect(stackblitzSpy.calls.mostRecent().args[0].dependencies).toEqual({
       '@angular/animations': '^13.0.0',
+      '@angular/cdk': '^13.0.0',
       '@angular/common': '^13.0.0',
       '@angular/compiler': '^13.0.0',
       '@angular/core': '^13.0.0',
