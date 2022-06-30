@@ -1,3 +1,7 @@
+# 6.0.0-beta.3 (2022-06-30)
+
+- Added support for `marked@4.0.17`. [#212](https://github.com/blackbaud/skyux-docs-tools/pull/212)
+
 # 6.0.0-beta.2 (2022-06-28)
 
 - Add Angular CDK to list of packages installed for StackBlitz examples. [#211](https://github.com/blackbaud/skyux-docs-tools/pull/211)
