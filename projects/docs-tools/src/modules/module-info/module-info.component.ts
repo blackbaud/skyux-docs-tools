@@ -7,6 +7,8 @@ import {
 
 import { SkyDocsToolsOptions } from '../shared/docs-tools-options';
 
+type ExternalLink = { label: string; url: string };
+
 @Component({
   selector: 'sky-docs-module-info',
   templateUrl: './module-info.component.html',
@@ -16,11 +18,12 @@ import { SkyDocsToolsOptions } from '../shared/docs-tools-options';
 export class SkyDocsModuleInfoComponent {
   @Input()
   public set gitRepoUrl(value: string) {
-    this._gitRepoUrl = value;
+    this.#_gitRepoUrl = value || this.#options?.gitRepoUrl;
+    this.#updateExternalLinks();
   }
 
   public get gitRepoUrl() {
-    return this._gitRepoUrl || (this.options && this.options.gitRepoUrl);
+    return this.#_gitRepoUrl;
   }
 
   @Input()
@@ -28,36 +31,45 @@ export class SkyDocsModuleInfoComponent {
 
   @Input()
   public set packageName(value: string) {
-    this._packageName = value;
+    this.#_packageName = value || this.#options?.packageName;
+    this.#updateInstallationCommand();
+    this.#updateExternalLinks();
   }
 
   public get packageName() {
-    return this._packageName || (this.options && this.options.packageName);
+    return this.#_packageName;
   }
 
   @Input()
   public set packageUrl(value: string) {
-    this._packageUrl = value;
+    this.#_packageUrl = value;
+    this.#updateExternalLinks();
   }
 
   public get packageUrl() {
-    if (this._packageUrl) {
-      return this._packageUrl;
-    }
-
-    if (this.packageName) {
-      return `https://npmjs.org/package/${this.packageName}`;
-    }
-
-    return '';
+    return this.#_packageUrl;
   }
 
-  public get externalLinks(): { label: string; url: string }[] {
-    const externalLinks: { label: string; url: string }[] = [];
+  public externalLinks: ExternalLink[];
+
+  public installationCommand: string;
+
+  #options: SkyDocsToolsOptions | undefined;
+
+  #_gitRepoUrl: string;
+  #_packageName: string;
+  #_packageUrl: string;
+
+  constructor(@Optional() options?: SkyDocsToolsOptions) {
+    this.#options = options;
+  }
+
+  #updateExternalLinks(): void {
+    const externalLinks: ExternalLink[] = [];
 
     if (this.packageName) {
       externalLinks.push({
-        url: this.packageUrl,
+        url: this.packageUrl || `https://npmjs.org/package/${this.packageName}`,
         label: 'View in NPM',
       });
     }
@@ -69,22 +81,12 @@ export class SkyDocsModuleInfoComponent {
       });
     }
 
-    return externalLinks;
+    this.externalLinks = externalLinks;
   }
 
-  public get installationCommand(): string {
-    if (!this.packageName) {
-      return '';
-    }
-
-    return `npm install --save-exact ${this.packageName}`;
+  #updateInstallationCommand(): void {
+    this.installationCommand = this.packageName
+      ? `npm install --save-exact ${this.packageName}`
+      : '';
   }
-
-  private _gitRepoUrl: string;
-
-  private _packageName: string;
-
-  private _packageUrl: string;
-
-  constructor(@Optional() private options?: SkyDocsToolsOptions) {}
 }

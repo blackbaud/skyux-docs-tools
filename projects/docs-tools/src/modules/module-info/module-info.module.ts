@@ -8,7 +8,10 @@ import { SkyCodeModule } from '@blackbaud/skyux-lib-code-block';
 
 import { SkyHelpInlineModule } from '@skyux/indicators';
 
-import { SkyDefinitionListModule } from '@skyux/layout';
+import {
+  SkyDefinitionListModule,
+  SkyDescriptionListModule,
+} from '@skyux/layout';
 
 import { SkyPopoverModule } from '@skyux/popovers';
 
@@ -20,6 +23,7 @@ import { SkyDocsModuleInfoComponent } from './module-info.component';
     SkyCodeModule,
     SkyClipboardModule,
     SkyDefinitionListModule,
+    SkyDescriptionListModule,
     SkyHelpInlineModule,
     SkyPopoverModule,
   ],
