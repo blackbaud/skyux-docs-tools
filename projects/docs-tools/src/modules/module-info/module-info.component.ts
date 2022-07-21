@@ -61,7 +61,11 @@ export class SkyDocsModuleInfoComponent {
   #_packageUrl: string;
 
   constructor(@Optional() options?: SkyDocsToolsOptions) {
-    this.#options = options;
+    if (options) {
+      this.#options = options;
+      this.gitRepoUrl = options.gitRepoUrl;
+      this.packageName = options.packageName;
+    }
   }
 
   #updateExternalLinks(): void {
