@@ -17,48 +17,38 @@ type ExternalLink = { label: string; url: string };
 })
 export class SkyDocsModuleInfoComponent {
   @Input()
-  public set gitRepoUrl(value: string) {
-    this.#_gitRepoUrl = value || this.#options?.gitRepoUrl;
+  public set gitRepoUrl(value: string | undefined) {
+    this.gitRepoUrlOrDefault = value || this.#options?.gitRepoUrl;
     this.#updateExternalLinks();
   }
 
-  public get gitRepoUrl() {
-    return this.#_gitRepoUrl;
-  }
+  @Input()
+  public moduleName: string | undefined;
 
   @Input()
-  public moduleName: string;
-
-  @Input()
-  public set packageName(value: string) {
-    this.#_packageName = value || this.#options?.packageName;
+  public set packageName(value: string | undefined) {
+    this.packageNameOrDefault = value || this.#options?.packageName;
     this.#updateInstallationCommand();
     this.#updateExternalLinks();
   }
 
-  public get packageName() {
-    return this.#_packageName;
-  }
-
   @Input()
-  public set packageUrl(value: string) {
-    this.#_packageUrl = value;
+  public set packageUrl(value: string | undefined) {
+    this.#packageUrl = value;
     this.#updateExternalLinks();
   }
 
-  public get packageUrl() {
-    return this.#_packageUrl;
-  }
+  public gitRepoUrlOrDefault: string | undefined;
 
-  public externalLinks: ExternalLink[];
+  public packageNameOrDefault: string | undefined;
 
-  public installationCommand: string;
+  public externalLinks: ExternalLink[] | undefined;
+
+  public installationCommand: string | undefined;
 
   #options: SkyDocsToolsOptions | undefined;
 
-  #_gitRepoUrl: string;
-  #_packageName: string;
-  #_packageUrl: string;
+  #packageUrl: string | undefined;
 
   constructor(@Optional() options?: SkyDocsToolsOptions) {
     if (options) {
@@ -71,16 +61,18 @@ export class SkyDocsModuleInfoComponent {
   #updateExternalLinks(): void {
     const externalLinks: ExternalLink[] = [];
 
-    if (this.packageName) {
+    if (this.packageNameOrDefault) {
       externalLinks.push({
-        url: this.packageUrl || `https://npmjs.org/package/${this.packageName}`,
+        url:
+          this.#packageUrl ||
+          `https://npmjs.org/package/${this.packageNameOrDefault}`,
         label: 'View in NPM',
       });
     }
 
-    if (this.gitRepoUrl) {
+    if (this.gitRepoUrlOrDefault) {
       externalLinks.push({
-        url: this.gitRepoUrl,
+        url: this.gitRepoUrlOrDefault,
         label: 'View in GitHub',
       });
     }
@@ -89,8 +81,8 @@ export class SkyDocsModuleInfoComponent {
   }
 
   #updateInstallationCommand(): void {
-    this.installationCommand = this.packageName
-      ? `npm install --save-exact ${this.packageName}`
+    this.installationCommand = this.packageNameOrDefault
+      ? `npm install --save-exact ${this.packageNameOrDefault}`
       : '';
   }
 }

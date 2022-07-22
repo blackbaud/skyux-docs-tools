@@ -9,11 +9,11 @@
       </sky-description-list-description>
     </sky-description-list-content>
 
-    <sky-description-list-content *ngIf="packageName">
+    <sky-description-list-content *ngIf="packageNameOrDefault">
       <sky-description-list-term>NPM package</sky-description-list-term>
       <sky-description-list-description>
         <span class="sky-docs-module-info-package-name"
-          ><sky-code>{{ packageName }}</sky-code></span
+          ><sky-code>{{ packageNameOrDefault }}</sky-code></span
         >
         <ng-container *ngFor="let externalLink of externalLinks; let i = index">
           <a
