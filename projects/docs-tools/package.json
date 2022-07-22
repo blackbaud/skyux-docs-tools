@@ -1,6 +1,6 @@
 {
   "name": "@skyux/docs-tools",
-  "version": "6.0.0-beta.3",
+  "version": "6.0.0-beta.4",
   "peerDependencies": {
     "@angular/common": "^13.3.11",
     "@angular/core": "^13.3.11",
@@ -10,16 +10,16 @@
     "@blackbaud/skyux-lib-clipboard": "^6.0.0-beta.0",
     "@blackbaud/skyux-lib-media": "^6.0.0-beta.0",
     "@blackbaud/skyux-lib-stache": "^6.0.0-beta.1",
-    "@skyux/core": "^6.3.1",
-    "@skyux/forms": "^6.3.1",
-    "@skyux/http": "^6.3.1",
-    "@skyux/i18n": "^6.3.1",
-    "@skyux/indicators": "^6.3.1",
-    "@skyux/layout": "^6.3.1",
-    "@skyux/lists": "^6.3.1",
-    "@skyux/popovers": "^6.3.1",
-    "@skyux/tabs": "^6.3.1",
-    "@skyux/theme": "^6.3.1"
+    "@skyux/core": "^6.7.0",
+    "@skyux/forms": "^6.7.0",
+    "@skyux/http": "^6.7.0",
+    "@skyux/i18n": "^6.7.0",
+    "@skyux/indicators": "^6.7.0",
+    "@skyux/layout": "^6.7.0",
+    "@skyux/lists": "^6.7.0",
+    "@skyux/popovers": "^6.7.0",
+    "@skyux/tabs": "^6.7.0",
+    "@skyux/theme": "^6.7.0"
   },
   "dependencies": {
     "@stackblitz/sdk": "1.5.6",

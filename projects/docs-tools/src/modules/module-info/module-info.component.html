@@ -1,36 +1,44 @@
 <div class="sky-docs-module-info">
-  <sky-definition-list defaultValue="" labelWidth="120px">
-    <sky-definition-list-content *ngIf="moduleName">
-      <sky-definition-list-label> Defined in </sky-definition-list-label>
-      <sky-definition-list-value>
-        <sky-code>{{ moduleName }}</sky-code>
-      </sky-definition-list-value>
-    </sky-definition-list-content>
-    <sky-definition-list-content *ngIf="packageName">
-      <sky-definition-list-label> NPM package </sky-definition-list-label>
-      <sky-definition-list-value>
+  <sky-description-list mode="vertical">
+    <sky-description-list-content>
+      <sky-description-list-term> Defined in </sky-description-list-term>
+      <sky-description-list-description>
+        <sky-code class="sky-docs-module-info-module-name">{{
+          moduleName
+        }}</sky-code>
+      </sky-description-list-description>
+    </sky-description-list-content>
+
+    <sky-description-list-content *ngIf="packageNameOrDefault">
+      <sky-description-list-term>NPM package</sky-description-list-term>
+      <sky-description-list-description>
         <span class="sky-docs-module-info-package-name"
-          ><sky-code>{{ packageName }}</sky-code></span
+          ><sky-code>{{ packageNameOrDefault }}</sky-code></span
         >
         <ng-container *ngFor="let externalLink of externalLinks; let i = index">
-          <a [attr.href]="externalLink.url">{{ externalLink.label }}</a>
+          <a
+            class="sky-docs-module-info-external-link"
+            [href]="externalLink.url"
+            >{{ externalLink.label }}</a
+          >
           <ng-container *ngIf="i < externalLinks.length - 1"
             >&nbsp;|
           </ng-container>
         </ng-container>
-      </sky-definition-list-value>
-    </sky-definition-list-content>
+      </sky-description-list-description>
+    </sky-description-list-content>
 
-    <sky-definition-list-content *ngIf="installationCommand">
-      <sky-definition-list-label>
+    <sky-description-list-content *ngIf="installationCommand">
+      <sky-description-list-term>
         Installation
         <sky-help-inline
+          class="sky-control-help"
           [skyPopover]="installationCommandPopover"
           skyPopoverPlacement="right"
         >
         </sky-help-inline>
-      </sky-definition-list-label>
-      <sky-definition-list-value>
+      </sky-description-list-term>
+      <sky-description-list-description>
         <sky-popover #installationCommandPopover>
           To use this module, you must install peer dependencies along with its
           package. Also, after you install the package, you must add the module
@@ -49,9 +57,9 @@
             [copyTarget]="copyTarget"
           ></sky-copy-to-clipboard>
         </div>
-      </sky-definition-list-value>
-    </sky-definition-list-content>
-  </sky-definition-list>
+      </sky-description-list-description>
+    </sky-description-list-content>
+  </sky-description-list>
 
   <div class="sky-docs-module-info-additional-content">
     <ng-content></ng-content>

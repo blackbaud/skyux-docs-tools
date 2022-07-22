@@ -1,3 +1,7 @@
+# 6.0.0-beta.4 (2022-07-22)
+
+- Use description list for module info and move getter logic to setters. [#214](https://github.com/blackbaud/skyux-docs-tools/pull/214)
+
 # 6.0.0-beta.3 (2022-06-30)
 
 - Added support for `marked@4.0.17`. [#212](https://github.com/blackbaud/skyux-docs-tools/pull/212)
