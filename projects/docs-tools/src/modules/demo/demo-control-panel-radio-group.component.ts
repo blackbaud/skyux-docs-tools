@@ -7,7 +7,7 @@ import {
   OnDestroy,
 } from '@angular/core';
 
-import { Subject } from 'rxjs';
+import { ReplaySubject } from 'rxjs';
 
 import { SkyDocsDemoControlPanelChange } from './demo-control-panel-change';
 
@@ -74,7 +74,7 @@ export class SkyDocsDemoControlPanelRadioGroupComponent
   /**
    * @internal
    */
-  public selectionChange = new Subject<SkyDocsDemoControlPanelChange>();
+  public selectionChange = new ReplaySubject<SkyDocsDemoControlPanelChange>();
 
   /**
    * @internal
@@ -85,6 +85,7 @@ export class SkyDocsDemoControlPanelRadioGroupComponent
 
   public ngOnInit(): void {
     this.value = this.cloneValue(this.initialValue);
+    this.#notifyChange();
   }
 
   public ngOnDestroy(): void {
@@ -93,13 +94,12 @@ export class SkyDocsDemoControlPanelRadioGroupComponent
 
   public onModelChange(value: any): void {
     this.value = value;
-    this.selectionChange.next({
-      [this.propertyName]: this.value,
-    });
+    this.#notifyChange();
   }
 
   public resetValue(): void {
     this.value = this.cloneValue(this.initialValue);
+    this.#notifyChange();
     this.changeDetector.markForCheck();
   }
 
@@ -109,5 +109,11 @@ export class SkyDocsDemoControlPanelRadioGroupComponent
     }
 
     return value;
+  }
+
+  #notifyChange(): void {
+    this.selectionChange.next({
+      [this.propertyName]: this.value,
+    });
   }
 }

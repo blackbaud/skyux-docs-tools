@@ -7,7 +7,7 @@ import {
   OnInit,
 } from '@angular/core';
 
-import { Subject } from 'rxjs';
+import { ReplaySubject } from 'rxjs';
 
 import { SkyDocsDemoControlPanelChange } from './demo-control-panel-change';
 
@@ -68,7 +68,7 @@ export class SkyDocsDemoControlPanelCheckboxComponent
   @Input()
   public propertyName: string;
 
-  public selectionChange = new Subject<SkyDocsDemoControlPanelChange>();
+  public selectionChange = new ReplaySubject<SkyDocsDemoControlPanelChange>();
 
   private initialState: {
     checked?: boolean;
