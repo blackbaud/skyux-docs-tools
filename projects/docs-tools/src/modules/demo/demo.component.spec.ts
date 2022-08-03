@@ -169,9 +169,9 @@ describe('Demo component', () => {
 
       // Resetting the controls should emit their original values.
       expect(selectionSpy.calls.allArgs()).toEqual([
-        [{ showIcon: true }],
         [{ backgroundColor: '#f00' }],
         [{ user: { name: 'John' } }],
+        [{ showIcon: true }],
       ]);
     }));
   });

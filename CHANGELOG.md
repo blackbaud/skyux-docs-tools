@@ -1,3 +1,7 @@
+# 6.0.0-beta.5 (2022-08-02)
+
+- Update demo control panel child components to emit initial values and replay those values if subscribed to after initialization of the control finishes. [#215](https://github.com/blackbaud/skyux-docs-tools/pull/215)
+
 # 6.0.0-beta.4 (2022-07-22)
 
 - Use description list for module info and move getter logic to setters. [#214](https://github.com/blackbaud/skyux-docs-tools/pull/214)
