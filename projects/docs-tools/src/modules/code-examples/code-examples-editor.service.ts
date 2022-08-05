@@ -24,7 +24,10 @@ import { SkyDocsCodeExample } from './code-example';
 export class SkyDocsCodeExamplesEditorService {
   public launchEditor(codeExample: SkyDocsCodeExample): void {
     const project = this.getPayload(codeExample);
-    const options: StackBlitzOpenOptions = {};
+    const files = Object.keys(project.files);
+    const options: StackBlitzOpenOptions = {
+      openFile: files.shift(),
+    };
 
     StackBlitzSDK.openProject(project, options);
   }
@@ -34,10 +37,13 @@ export class SkyDocsCodeExamplesEditorService {
     const skyuxVersion = '^6.0.0-0';
 
     const defaultDependencies: SkyDocsCodeExampleModuleDependencies = {
+      '@angular-devkit/build-angular': angularVersion,
       '@angular/animations': angularVersion,
       '@angular/cdk': angularVersion,
+      '@angular/cli': angularVersion,
       '@angular/common': angularVersion,
       '@angular/compiler': angularVersion,
+      '@angular/compiler-cli': angularVersion,
       '@angular/core': angularVersion,
       '@angular/forms': angularVersion,
       '@angular/platform-browser': angularVersion,
@@ -61,6 +67,7 @@ export class SkyDocsCodeExamplesEditorService {
       'ng2-dragula': '2.1.1',
       rxjs: '^7',
       tslib: '^2.3.0',
+      typescript: '~4.6.3',
       'zone.js': '~0.11.4',
     };
 
@@ -96,7 +103,7 @@ export class SkyDocsCodeExamplesEditorService {
       files,
       title: 'SKY UX Demo',
       description: 'SKY UX Demo',
-      template: 'angular-cli',
+      template: 'node',
       dependencies: mergedDependencies,
       settings: {
         compile: {
@@ -124,6 +131,7 @@ export class SkyDocsCodeExamplesEditorService {
  `;
 
     const moduleImportStatements: string[] = [
+      `import {\n  APP_BASE_HREF\n} from '@angular/common';`,
       `import {\n  NgModule\n} from '@angular/core';`,
       `import {\n  FormsModule,\n  ReactiveFormsModule\n} from '@angular/forms';`,
       `import {\n  BrowserAnimationsModule\n} from '@angular/platform-browser/animations';`,
@@ -189,7 +197,7 @@ export class AppComponent {
 
   constructor(
     themeSvc: SkyThemeService,
-    renderer?: Renderer2
+    renderer: Renderer2
   ) {
     const themeSettings = new SkyThemeSettings(
       SkyTheme.presets['${
@@ -228,6 +236,10 @@ export class AppComponent {
           locale: 'en-US'
         })
       }
+    },
+    {
+      provide: APP_BASE_HREF,
+      useValue: '/',
     }
   ]
 })
@@ -268,63 +280,167 @@ platformBrowserDynamic().bootstrapModule(AppModule).then(ref => {
 
     files[`${srcPath}polyfills.ts`] = `${banner}
 import 'zone.js';
+
+// Fix for crossvent \`global is not defined\` error. The crossvent library is used by Dragula,
+// which in turn is used by multiple SKY UX components.
+// https://github.com/bevacqua/dragula/issues/602
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+(window as any).global = window;
 `;
 
-    files[`${srcPath}styles.scss`] = `@import '~@skyux/theme/css/sky';
-@import '~@skyux/theme/css/themes/modern/styles';
-
-body {
+    files[`${srcPath}styles.css`] = `body {
   background-color: #fff;
   margin: 15px;
 }`;
 
-    stylesheets.push('src/styles.scss');
-
-    files['angular.json'] = `{
-  "projects": {
-    "demo": {
-      "architect": {
-        "build": {
-          "options": {
-            "index": "src/index.html",
-            "styles": ${JSON.stringify(stylesheets)}
-          }
-        }
-      }
-    }
-  }
-}`;
+    files['angular.json'] = JSON.stringify(
+      {
+        $schema: './node_modules/@angular/cli/lib/config/schema.json',
+        version: 1,
+        projects: {
+          demo: {
+            root: '',
+            sourceRoot: 'src',
+            projectType: 'application',
+            architect: {
+              build: {
+                builder: '@angular-devkit/build-angular:browser',
+                options: {
+                  allowedCommonJsDependencies: ['dragula', 'ng2-dragula'],
+                  outputPath: 'dist/demo',
+                  index: `${srcPath}index.html`,
+                  main: `${srcPath}main.ts`,
+                  polyfills: `${srcPath}polyfills.ts`,
+                  stylePreprocessorOptions: {
+                    includePaths: ['node_modules/'],
+                  },
+                  styles: [
+                    'node_modules/@skyux/theme/css/sky.css',
+                    'node_modules/@skyux/theme/css/themes/modern/styles.css',
+                    `${srcPath}styles.css`,
+                    ...stylesheets,
+                  ],
+                  tsConfig: 'tsconfig.app.json',
+                },
+                configurations: {
+                  production: {
+                    budgets: [
+                      {
+                        type: 'initial',
+                        maximumWarning: '500kb',
+                        maximumError: '10mb',
+                      },
+                      {
+                        type: 'anyComponentStyle',
+                        maximumWarning: '2kb',
+                        maximumError: '400kb',
+                      },
+                    ],
+                    outputHashing: 'all',
+                  },
+                  development: {
+                    buildOptimizer: false,
+                    optimization: false,
+                    vendorChunk: true,
+                    extractLicenses: false,
+                    sourceMap: true,
+                    namedChunks: true,
+                  },
+                },
+                defaultConfiguration: 'production',
+              },
+              serve: {
+                builder: '@angular-devkit/build-angular:dev-server',
+                configurations: {
+                  production: {
+                    browserTarget: 'demo:build:production',
+                  },
+                  development: {
+                    browserTarget: 'demo:build:development',
+                  },
+                },
+                defaultConfiguration: 'development',
+              },
+            },
+          },
+        },
+      },
+      undefined,
+      2
+    );
 
     files['package.json'] = JSON.stringify(
       {
+        name: 'angular',
+        version: '0.0.0',
+        private: true,
+        scripts: {
+          ng: 'ng',
+          start: 'ng serve',
+          build: 'ng build',
+          watch: 'ng build --watch --configuration development',
+        },
         dependencies,
       },
       undefined,
       2
     );
 
-    files['tsconfig.json'] = `{
-  "compilerOptions": {
-    "target": "es2017",
-    "module": "es2020",
-    "moduleResolution": "node",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "importHelpers": true,
-    "typeRoots": ["node_modules/@types"],
-    "lib": [
-      "es2020",
-      "dom"
-    ]
-  },
-  "angularCompilerOptions": {
-    "fullTemplateTypeCheck": true,
-    "strictInjectionParameters": true,
-    "strictInputAccessModifiers": true,
-    "strictTemplates": true,
-    "enableIvy": true
-  }
-}`;
+    files['tsconfig.json'] = JSON.stringify(
+      {
+        compileOnSave: false,
+        compilerOptions: {
+          baseUrl: './',
+          outDir: './dist/out-tsc',
+          sourceMap: true,
+          declaration: false,
+          downlevelIteration: true,
+          target: 'es2020',
+          module: 'es2020',
+          moduleResolution: 'node',
+          emitDecoratorMetadata: true,
+          experimentalDecorators: true,
+          importHelpers: true,
+          typeRoots: ['node_modules/@types'],
+          lib: ['es2020', 'dom'],
+          esModuleInterop: true,
+        },
+        angularCompilerOptions: {
+          fullTemplateTypeCheck: true,
+          strictInjectionParameters: true,
+          strictInputAccessModifiers: true,
+          strictTemplates: true,
+        },
+      },
+      undefined,
+      2
+    );
+
+    files['tsconfig.app.json'] = JSON.stringify(
+      {
+        extends: './tsconfig.json',
+        compilerOptions: {
+          outDir: './out-tsc/app',
+          types: [],
+        },
+        files: ['src/main.ts', 'src/polyfills.ts'],
+        include: ['src/**/*.d.ts'],
+      },
+      undefined,
+      2
+    );
+
+    files['.stackblitzrc'] = JSON.stringify(
+      {
+        installDependencies: true,
+        startCommand: 'turbo start',
+        env: {
+          ENABLE_CJS_IMPORTS: true,
+        },
+      },
+      undefined,
+      2
+    );
 
     return files;
   }
