@@ -251,10 +251,13 @@ describe('Code examples editor service', () => {
     service.launchEditor(codeExample);
 
     expect(stackblitzSpy.calls.mostRecent().args[0].dependencies).toEqual({
+      '@angular-devkit/build-angular': '^13.0.0',
       '@angular/animations': '^13.0.0',
       '@angular/cdk': '^13.0.0',
+      '@angular/cli': '^13.0.0',
       '@angular/common': '^13.0.0',
       '@angular/compiler': '^13.0.0',
+      '@angular/compiler-cli': '^13.0.0',
       '@angular/core': '^13.0.0',
       '@angular/forms': '^13.0.0',
       '@angular/platform-browser': '^13.0.0',
@@ -277,6 +280,7 @@ describe('Code examples editor service', () => {
       'ng2-dragula': '2.1.1',
       rxjs: '^7',
       tslib: '^2.3.0',
+      typescript: '~4.6.3',
       'zone.js': '~0.11.4',
       '@skyux/foobar': '^6.0.0-0', // <-- Important
     });
@@ -285,9 +289,10 @@ describe('Code examples editor service', () => {
   it('should accept additional global stylesheets', () => {
     codeExample.stylesheets = ['@global/foo/css/styles.css'];
     service.launchEditor(codeExample);
-    expect(
-      JSON.parse(stackblitzSpy.calls.mostRecent().args[0].files['angular.json'])
-        .projects.demo.architect.build.options.styles
-    ).toEqual(['@global/foo/css/styles.css', 'src/styles.scss']);
+    const styles = JSON.parse(
+      stackblitzSpy.calls.mostRecent().args[0].files['angular.json']
+    ).projects.demo.architect.build.options.styles;
+    expect(styles.includes('@global/foo/css/styles.css')).toBeTrue();
+    expect(styles.includes('src/styles.css')).toBeTrue();
   });
 });
