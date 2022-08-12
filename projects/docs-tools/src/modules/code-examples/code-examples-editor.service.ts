@@ -27,6 +27,7 @@ export class SkyDocsCodeExamplesEditorService {
     const files = Object.keys(project.files);
     const options: StackBlitzOpenOptions = {
       openFile: files.shift(),
+      newWindow: !codeExample.sameWindow,
     };
 
     StackBlitzSDK.openProject(project, options);
@@ -103,7 +104,7 @@ export class SkyDocsCodeExamplesEditorService {
       files,
       title: 'SKY UX Demo',
       description: 'SKY UX Demo',
-      template: 'node',
+      template: 'angular-cli', // WebContainers: switch to 'node' template
       dependencies: mergedDependencies,
       settings: {
         compile: {
@@ -376,11 +377,17 @@ import 'zone.js';
         private: true,
         scripts: {
           ng: 'ng',
+          dev: 'ng serve',
           start: 'ng serve',
           build: 'ng build',
           watch: 'ng build --watch --configuration development',
         },
         dependencies,
+        browserslist: [
+          'last 1 Chrome version',
+          'last 1 Firefox version',
+          'last 1 Edge major versions',
+        ],
       },
       undefined,
       2
@@ -392,16 +399,16 @@ import 'zone.js';
         compilerOptions: {
           baseUrl: './',
           outDir: './dist/out-tsc',
+          forceConsistentCasingInFileNames: true,
           sourceMap: true,
           declaration: false,
           downlevelIteration: true,
           target: 'es2020',
           module: 'es2020',
           moduleResolution: 'node',
-          emitDecoratorMetadata: true,
           experimentalDecorators: true,
           importHelpers: true,
-          typeRoots: ['node_modules/@types'],
+          typeRoots: ['./node_modules/@types'],
           lib: ['es2020', 'dom'],
           esModuleInterop: true,
         },
@@ -433,7 +440,6 @@ import 'zone.js';
     files['.stackblitzrc'] = JSON.stringify(
       {
         installDependencies: true,
-        startCommand: 'turbo start',
         env: {
           ENABLE_CJS_IMPORTS: true,
         },

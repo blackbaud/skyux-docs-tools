@@ -94,8 +94,14 @@ export class SkyDocsCodeExamplesComponent implements AfterContentInit {
     });
   }
 
-  public launchEditor(codeExample: SkyDocsCodeExample): void {
-    this.editorService.launchEditor(codeExample);
+  public launchEditor(
+    codeExample: SkyDocsCodeExample,
+    sameWindow?: boolean
+  ): void {
+    this.editorService.launchEditor({
+      ...codeExample,
+      sameWindow: sameWindow,
+    });
   }
 
   /**

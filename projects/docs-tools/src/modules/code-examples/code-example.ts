@@ -17,4 +17,6 @@ export interface SkyDocsCodeExample {
   theme: SkyDocsCodeExampleTheme;
 
   stylesheets?: string[];
+
+  sameWindow?: boolean;
 }
