@@ -151,7 +151,8 @@ export class SkyDocsDemoPageComponent
 
   public ngAfterContentInit(): void {
     this.enableCodeExamples = this.codeExampleComponents.length > 0;
-    this.enableTabLayout = !!this.designGuidelinesComponent;
+    this.enableTabLayout =
+      !!this.designGuidelinesComponent || this.enableCodeExamples;
   }
 
   public ngAfterViewInit(): void {
