@@ -1,3 +1,7 @@
+# 6.0.0-beta.6 (2022-08-24)
+
+- Moved code examples to their own tab. [#217](https://github.com/blackbaud/skyux-docs-tools/pull/217)
+
 # 6.0.0-beta.5 (2022-08-02)
 
 - Update demo control panel child components to emit initial values and replay those values if subscribed to after initialization of the control finishes. [#215](https://github.com/blackbaud/skyux-docs-tools/pull/215)
