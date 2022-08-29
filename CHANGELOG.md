@@ -1,3 +1,7 @@
+# 6.0.0-beta.7 (2022-08-29)
+
+- Update type defintion service to handle documentation which includes a testing library. [#218](https://github.com/blackbaud/skyux-docs-tools/pull/218)
+
 # 6.0.0-beta.6 (2022-08-24)
 
 - Moved code examples to their own tab. [#217](https://github.com/blackbaud/skyux-docs-tools/pull/217)
