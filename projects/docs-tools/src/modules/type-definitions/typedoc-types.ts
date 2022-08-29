@@ -150,6 +150,20 @@ export interface TypeDocEntryChild {
   type?: TypeDocType;
 }
 
+export interface TypeDocModule {
+  anchorId?: string;
+
+  children?: TypeDocEntry[];
+
+  comment?: TypeDocComment;
+
+  kindString?: 'Module';
+
+  name?: string;
+
+  sources?: TypeDocSource[];
+}
+
 export interface TypeDocEntry {
   anchorId?: string;
 

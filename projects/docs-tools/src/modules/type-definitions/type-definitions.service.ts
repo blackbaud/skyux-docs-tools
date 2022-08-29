@@ -74,10 +74,11 @@ export class SkyDocsTypeDefinitionsService {
         .replace(/src\/app\/public\//, '')
         .replace(/^\//, ''); // remove first slash.
 
+      // We can cast here as we have filtered out all TypeDocModule items above.
       // Only process types that match the requested source code location.
       const typeDefinitions = allDefinitions.filter(
         (i) => i.sources && i.sources[0].fileName.match(requestedDir)
-      );
+      ) as TypeDocEntry[];
       if (typeDefinitions.length === 0) {
         console.warn(
           `Type definitions were not found for location: ${requestedDir}`

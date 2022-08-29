@@ -9,6 +9,207 @@ import { SkyDocsTypeDefinitionsProvider } from './type-definitions-provider';
 import { SkyDocsTypeDefinitionsService } from './type-definitions.service';
 
 import { SkyDocsTypeDocAdapterService } from './typedoc-adapter.service';
+import { TypeDocEntry } from './typedoc-types';
+
+const STANDARD_DEFINITIONS = {
+  anchorIds: {},
+  typeDefinitions: [
+    {
+      anchorId: '',
+      decorators: [{ name: 'Component', type: {} }],
+      name: 'FooComponent',
+      sources: [
+        {
+          fileName:
+            'src/app/public/modules/_documentation-test/foo.component.ts',
+        },
+      ],
+    },
+    {
+      anchorId: '',
+      decorators: [{ name: 'Directive', type: {} }],
+      name: 'FooDirective',
+      sources: [
+        {
+          fileName:
+            'src/app/public/modules/_documentation-test/foo.directive.ts',
+        },
+      ],
+    },
+    {
+      anchorId: '',
+      decorators: [{ name: 'Injectable', type: {} }],
+      name: 'FooService',
+      sources: [
+        {
+          fileName: 'src/app/public/modules/_documentation-test/foo.service.ts',
+        },
+      ],
+    },
+    {
+      anchorId: '',
+      decorators: [{ name: 'NgModule', type: {} }],
+      name: 'FooModule',
+      sources: [
+        {
+          fileName: 'src/app/public/modules/_documentation-test/foo.module.ts',
+        },
+      ],
+    },
+    {
+      anchorId: '',
+      decorators: [{ name: 'Pipe', type: {} }],
+      name: 'FooPipe',
+      sources: [
+        {
+          fileName: 'src/app/public/modules/_documentation-test/foo.pipe.ts',
+        },
+      ],
+    },
+    {
+      anchorId: '',
+      name: 'FooClass',
+      kindString: 'Class',
+      sources: [
+        {
+          fileName: 'src/app/public/modules/_documentation-test/foo-class.ts',
+        },
+      ],
+    },
+    {
+      anchorId: '',
+      name: 'Foo',
+      kindString: 'Interface',
+      sources: [
+        { fileName: 'src/app/public/modules/_documentation-test/foo.ts' },
+      ],
+    },
+    {
+      anchorId: '',
+      name: 'FooEnum',
+      kindString: 'Enumeration',
+      sources: [
+        {
+          fileName: 'src/app/public/modules/_documentation-test/foo-enum.ts',
+        },
+      ],
+    },
+    {
+      anchorId: '',
+      name: 'TypeAlias',
+      kindString: 'Type alias',
+      sources: [
+        {
+          fileName: 'src/app/public/modules/_documentation-test/foo-alias.ts',
+        },
+      ],
+    },
+    {
+      anchorId: '',
+      decorators: [{ name: 'Component', type: {} }],
+      name: 'BarComponent',
+      sources: [
+        {
+          fileName:
+            'src/app/public/modules/_documentation-test-2/bar.component.ts',
+        },
+      ],
+    },
+    {
+      anchorId: '',
+      decorators: [{ name: 'Directive', type: {} }],
+      name: 'BarDirective',
+      sources: [
+        {
+          fileName:
+            'src/app/public/modules/_documentation-test-2/bar.directive.ts',
+        },
+      ],
+    },
+    {
+      anchorId: '',
+      decorators: [{ name: 'Injectable', type: {} }],
+      name: 'BarService',
+      sources: [
+        {
+          fileName:
+            'src/app/public/modules/_documentation-test-2/bar.service.ts',
+        },
+      ],
+    },
+    {
+      anchorId: '',
+      decorators: [{ name: 'NgModule', type: {} }],
+      name: 'BarModule',
+      sources: [
+        {
+          fileName:
+            'src/app/public/modules/_documentation-test-2/bar.module.ts',
+        },
+      ],
+    },
+    {
+      anchorId: '',
+      decorators: [{ name: 'Pipe', type: {} }],
+      name: 'BarPipe',
+      sources: [
+        {
+          fileName: 'src/app/public/modules/_documentation-test-2/bar.pipe.ts',
+        },
+      ],
+    },
+    {
+      anchorId: '',
+      name: 'BarClass',
+      kindString: 'Class',
+      sources: [
+        {
+          fileName: 'src/app/public/modules/_documentation-test-2/bar-class.ts',
+        },
+      ],
+    },
+    {
+      anchorId: '',
+      name: 'Bar',
+      kindString: 'Interface',
+      sources: [
+        { fileName: 'src/app/public/modules/_documentation-test-2/bar.ts' },
+      ],
+    },
+    {
+      anchorId: '',
+      name: 'BarEnum',
+      kindString: 'Enumeration',
+      sources: [
+        {
+          fileName: 'src/app/public/modules/_documentation-test-2/bar-enum.ts',
+        },
+      ],
+    },
+    {
+      anchorId: '',
+      name: 'BarTypeAlias',
+      kindString: 'Type alias',
+      sources: [
+        {
+          fileName: 'src/app/public/modules/_documentation-test-2/bar-alias.ts',
+        },
+      ],
+    },
+  ],
+};
+
+const MODULE_DEFINITIONS: SkyDocsTypeDefinitionsProvider = {
+  anchorIds: {},
+  typeDefinitions: [
+    {
+      anchorId: '',
+      name: 'Module',
+      kindString: 'Module',
+      children: STANDARD_DEFINITIONS.typeDefinitions as TypeDocEntry[],
+    },
+  ],
+};
 
 describe('Type definitions service', function () {
   //#region helpers
@@ -209,7 +410,7 @@ describe('Type definitions service', function () {
             },
           ],
         },
-      ],
+      ] as TypeDocEntry[],
     }
   ): SkyDocsTypeDefinitionsService {
     const adapter = new MockTypeDocAdapterService();
@@ -223,6 +424,24 @@ describe('Type definitions service', function () {
 
   it('should return type definitions from a specific source code path', () => {
     const service = getService();
+    const result = service.getTypeDefinitions(
+      '/src/app/public/modules/_documentation-test/'
+    );
+
+    for (const key in result) {
+      if (result.hasOwnProperty(key)) {
+        const lookup = key as keyof SkyDocsTypeDefinitions;
+        expect(result[lookup].length)
+          .withContext(
+            'The result is expected to have one item in each category.'
+          )
+          .toEqual(1);
+      }
+    }
+  });
+
+  it('should return type definitions from a specific source code path when a module wraps the definitions', () => {
+    const service = getService(MODULE_DEFINITIONS);
     const result = service.getTypeDefinitions(
       '/src/app/public/modules/_documentation-test/'
     );
