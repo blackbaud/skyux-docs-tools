@@ -5,6 +5,7 @@ import { SkyDocsTypeDefinitions } from './type-definitions';
 import { SkyDocsTypeDefinitionsProvider } from './type-definitions-provider';
 
 import { SkyDocsTypeDocAdapterService } from './typedoc-adapter.service';
+import { TypeDocEntry } from './typedoc-types';
 
 /**
  * Handles all type definitions that have been converted from the third-party documentation generator.
@@ -44,7 +45,7 @@ export class SkyDocsTypeDefinitionsService {
       }
     });
 
-    const allDefinitions = this.typeDefinitionsProvider.typeDefinitions;
+    let allDefinitions = this.typeDefinitionsProvider.typeDefinitions;
     const types: SkyDocsTypeDefinitions = {
       classes: [],
       components: [],
@@ -60,6 +61,13 @@ export class SkyDocsTypeDefinitionsService {
       console.warn(`No types were found for this project!`);
       return types;
     }
+
+    this.typeDefinitionsProvider.typeDefinitions.forEach((type) => {
+      if (type.kindString?.toLocaleUpperCase() === 'MODULE') {
+        allDefinitions = allDefinitions.concat(<any>type.children);
+        allDefinitions.splice(allDefinitions.indexOf(type), 1);
+      }
+    });
 
     sourceCodePaths.forEach((path) => {
       const requestedDir = path
