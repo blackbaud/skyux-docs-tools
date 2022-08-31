@@ -1,42 +1,109 @@
 <div *ngIf="methods" class="sky-docs-method-definitions">
-  <table *ngIf="!isMobile; else mobileTemplate" class="sky-docs-table">
-    <tr class="sky-docs-table-row">
-      <th
-        class="sky-docs-table-column-header sky-docs-table-column-header-name"
-      >
-        Methods
-      </th>
-      <th
-        class="
-          sky-docs-table-column-header sky-docs-table-column-header-description
-        "
-      >
-        Description
-      </th>
-    </tr>
-    <tr *ngFor="let method of methods" class="sky-docs-table-row">
-      <td
-        class="sky-docs-table-cell sky-docs-method-definitions-table-cell-name"
-      >
-        <ng-template
-          [ngTemplateOutlet]="nameTemplate"
-          [ngTemplateOutletContext]="{ $implicit: method }"
-        ></ng-template>
-      </td>
-      <td
-        class="
-          sky-docs-table-cell sky-docs-method-definitions-table-cell-description
-        "
-      >
-        <ng-template
-          [ngTemplateOutlet]="descriptionTemplate"
-          [ngTemplateOutletContext]="{ $implicit: method }"
-        ></ng-template>
-      </td>
-    </tr>
-  </table>
+  <ng-container *ngIf="!isMobile; else mobileTemplate">
+    <table class="sky-docs-table">
+      <tr class="sky-docs-table-row">
+        <th
+          class="sky-docs-table-column-header sky-docs-table-column-header-name"
+        >
+          Static methods
+        </th>
+        <th
+          class="
+            sky-docs-table-column-header
+            sky-docs-table-column-header-description
+          "
+        >
+          Description
+        </th>
+      </tr>
+      <tr *ngFor="let method of staticMethods" class="sky-docs-table-row">
+        <td
+          class="
+            sky-docs-table-cell sky-docs-method-definitions-table-cell-name
+          "
+        >
+          <ng-template
+            [ngTemplateOutlet]="nameTemplate"
+            [ngTemplateOutletContext]="{ $implicit: method }"
+          ></ng-template>
+        </td>
+        <td
+          class="
+            sky-docs-table-cell
+            sky-docs-method-definitions-table-cell-description
+          "
+        >
+          <ng-template
+            [ngTemplateOutlet]="descriptionTemplate"
+            [ngTemplateOutletContext]="{ $implicit: method }"
+          ></ng-template>
+        </td>
+      </tr>
+    </table>
+    <table class="sky-docs-table">
+      <tr class="sky-docs-table-row">
+        <th
+          class="sky-docs-table-column-header sky-docs-table-column-header-name"
+        >
+          Methods
+        </th>
+        <th
+          class="
+            sky-docs-table-column-header
+            sky-docs-table-column-header-description
+          "
+        >
+          Description
+        </th>
+      </tr>
+      <tr *ngFor="let method of methods" class="sky-docs-table-row">
+        <td
+          class="
+            sky-docs-table-cell sky-docs-method-definitions-table-cell-name
+          "
+        >
+          <ng-template
+            [ngTemplateOutlet]="nameTemplate"
+            [ngTemplateOutletContext]="{ $implicit: method }"
+          ></ng-template>
+        </td>
+        <td
+          class="
+            sky-docs-table-cell
+            sky-docs-method-definitions-table-cell-description
+          "
+        >
+          <ng-template
+            [ngTemplateOutlet]="descriptionTemplate"
+            [ngTemplateOutletContext]="{ $implicit: method }"
+          ></ng-template>
+        </td>
+      </tr>
+    </table>
+  </ng-container>
 
   <ng-template #mobileTemplate>
+    <dl class="sky-docs-method-definition-list">
+      <div
+        *ngFor="let method of staticMethods"
+        class="sky-docs-method-definition-list-item"
+      >
+        <dt class="sky-field-label">Static methods</dt>
+        <dd class="sky-docs-method-definitions-dd-name">
+          <ng-template
+            [ngTemplateOutlet]="nameTemplate"
+            [ngTemplateOutletContext]="{ $implicit: method }"
+          ></ng-template>
+        </dd>
+        <dt class="sky-field-label">Description</dt>
+        <dd class="sky-docs-method-definitions-dd-description">
+          <ng-template
+            [ngTemplateOutlet]="descriptionTemplate"
+            [ngTemplateOutletContext]="{ $implicit: method }"
+          ></ng-template>
+        </dd>
+      </div>
+    </dl>
     <dl class="sky-docs-method-definition-list">
       <div
         *ngFor="let method of methods"

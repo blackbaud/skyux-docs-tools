@@ -22,6 +22,7 @@ interface MethodViewModel {
   description: string;
   formattedName: string;
   sourceCode: string;
+  isStatic: boolean;
 }
 
 @Component({
@@ -47,6 +48,8 @@ export class SkyDocsMethodDefinitionsComponent implements OnInit {
 
   public methods: MethodViewModel[];
 
+  public staticMethods: MethodViewModel[];
+
   private _config: {
     methods?: SkyDocsClassMethodDefinition[];
   };
@@ -65,7 +68,9 @@ export class SkyDocsMethodDefinitionsComponent implements OnInit {
   }
 
   private updateView(): void {
-    this.methods = this.config?.methods?.map((method) => {
+    this.methods = [];
+    this.staticMethods = [];
+    for (let method of this.config?.methods) {
       const vm: MethodViewModel = {
         callSignature: method.type.callSignature,
         codeExample: method.codeExample,
@@ -74,9 +79,14 @@ export class SkyDocsMethodDefinitionsComponent implements OnInit {
         description: method.description,
         formattedName: this.formatService.getFormattedMethodName(method),
         sourceCode: this.formatService.getMethodSourceCode(method),
+        isStatic: method.isStatic,
       };
 
-      return vm;
-    });
+      if (vm.isStatic) {
+        this.staticMethods.push(vm);
+      } else {
+        this.methods.push(vm);
+      }
+    }
   }
 }

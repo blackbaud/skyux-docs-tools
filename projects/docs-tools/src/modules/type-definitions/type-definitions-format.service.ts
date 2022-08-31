@@ -184,8 +184,12 @@ export class SkyDocsTypeDefinitionsFormatService {
   ): string {
     let formatted = '';
 
+    if (definition.isStatic) {
+      formatted += `${definition.parentName}.`;
+    }
+
     if (definition.deprecationWarning !== undefined) {
-      formatted += `<strike>${definition.name}</strike>`;
+      formatted = `<strike>${formatted}${definition.name}</strike>`;
     } else {
       formatted += definition.name;
     }
