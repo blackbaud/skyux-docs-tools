@@ -213,7 +213,15 @@ export class SkyDocsTypeDefinitionsFormatService {
     }
 
     if (type.callSignature) {
-      return this.getFormattedCallSignature(type.callSignature, config);
+      let formattedSignature = this.getFormattedCallSignature(
+        type.callSignature,
+        config
+      );
+
+      if (type.type === 'array') {
+        formattedSignature = `Array<${formattedSignature}>`;
+      }
+      return formattedSignature;
     }
 
     if (type.unionTypes) {
