@@ -68,24 +68,26 @@ export class SkyDocsMethodDefinitionsComponent implements OnInit {
   }
 
   private updateView(): void {
-    this.methods = [];
-    this.staticMethods = [];
-    for (let method of this.config?.methods) {
-      const vm: MethodViewModel = {
-        callSignature: method.type.callSignature,
-        codeExample: method.codeExample,
-        codeExampleLanguage: method.codeExampleLanguage,
-        deprecationWarning: method.deprecationWarning,
-        description: method.description,
-        formattedName: this.formatService.getFormattedMethodName(method),
-        sourceCode: this.formatService.getMethodSourceCode(method),
-        isStatic: method.isStatic,
-      };
+    if (this.config?.methods?.length > 0) {
+      this.methods = [];
+      this.staticMethods = [];
+      for (let method of this.config.methods) {
+        const vm: MethodViewModel = {
+          callSignature: method.type.callSignature,
+          codeExample: method.codeExample,
+          codeExampleLanguage: method.codeExampleLanguage,
+          deprecationWarning: method.deprecationWarning,
+          description: method.description,
+          formattedName: this.formatService.getFormattedMethodName(method),
+          sourceCode: this.formatService.getMethodSourceCode(method),
+          isStatic: method.isStatic,
+        };
 
-      if (vm.isStatic) {
-        this.staticMethods.push(vm);
-      } else {
-        this.methods.push(vm);
+        if (vm.isStatic) {
+          this.staticMethods.push(vm);
+        } else {
+          this.methods.push(vm);
+        }
       }
     }
   }
