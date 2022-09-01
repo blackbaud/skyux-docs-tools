@@ -1,4 +1,8 @@
-# 6.0.0-beta.7 (2022-08-31)
+# 6.0.0-beta.8 (2022-09-01)
+
+- Fix class properties of an array of function to display properly. [#220](https://github.com/blackbaud/skyux-docs-tools/pull/220)
+
+# 6.0.0-beta.7 (2022-09-01)
 
 - Show static methods in a separate table with their fully qualified signature. [#219](https://github.com/blackbaud/skyux-docs-tools/pull/219)
 
