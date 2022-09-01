@@ -49,7 +49,7 @@ jobs:
           key: cache-node-modules-${{ hashFiles('package-lock.json') }}
       - name: Run code coverage
         run: |
-          npm run test
+          npm run test:ci
   lint:
     name: Lint
     needs: install-deps
