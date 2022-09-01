@@ -22,6 +22,7 @@ interface MethodViewModel {
   description: string;
   formattedName: string;
   sourceCode: string;
+  isStatic: boolean;
 }
 
 @Component({
@@ -33,12 +34,12 @@ interface MethodViewModel {
 export class SkyDocsMethodDefinitionsComponent implements OnInit {
   @Input()
   public set config(value: { methods?: SkyDocsClassMethodDefinition[] }) {
-    this._config = value;
+    this.#_config = value;
     this.updateView();
   }
 
   public get config(): { methods?: SkyDocsClassMethodDefinition[] } {
-    return this._config || {};
+    return this.#_config || {};
   }
 
   public deprecationWarningPrefix = `<span class="sky-text-warning"></span>**Deprecated.** `;
@@ -47,36 +48,55 @@ export class SkyDocsMethodDefinitionsComponent implements OnInit {
 
   public methods: MethodViewModel[];
 
-  private _config: {
+  public staticMethods: MethodViewModel[];
+
+  #_config: {
     methods?: SkyDocsClassMethodDefinition[];
   };
 
+  #changeDetector: ChangeDetectorRef;
+  #formatService: SkyDocsTypeDefinitionsFormatService;
+  #mediaQueryService: SkyMediaQueryService;
+
   constructor(
-    private changeDetector: ChangeDetectorRef,
-    private formatService: SkyDocsTypeDefinitionsFormatService,
-    private mediaQueryService: SkyMediaQueryService
-  ) {}
+    changeDetector: ChangeDetectorRef,
+    formatService: SkyDocsTypeDefinitionsFormatService,
+    mediaQueryService: SkyMediaQueryService
+  ) {
+    this.#changeDetector = changeDetector;
+    this.#formatService = formatService;
+    this.#mediaQueryService = mediaQueryService;
+  }
 
   public ngOnInit(): void {
-    this.mediaQueryService.subscribe((breakpoints: SkyMediaBreakpoints) => {
+    this.#mediaQueryService.subscribe((breakpoints: SkyMediaBreakpoints) => {
       this.isMobile = breakpoints <= SkyMediaBreakpoints.sm;
-      this.changeDetector.markForCheck();
+      this.#changeDetector.markForCheck();
     });
   }
 
   private updateView(): void {
-    this.methods = this.config?.methods?.map((method) => {
-      const vm: MethodViewModel = {
-        callSignature: method.type.callSignature,
-        codeExample: method.codeExample,
-        codeExampleLanguage: method.codeExampleLanguage,
-        deprecationWarning: method.deprecationWarning,
-        description: method.description,
-        formattedName: this.formatService.getFormattedMethodName(method),
-        sourceCode: this.formatService.getMethodSourceCode(method),
-      };
+    if (this.config.methods?.length > 0) {
+      this.methods = [];
+      this.staticMethods = [];
+      for (let method of this.config.methods) {
+        const vm: MethodViewModel = {
+          callSignature: method.type.callSignature,
+          codeExample: method.codeExample,
+          codeExampleLanguage: method.codeExampleLanguage,
+          deprecationWarning: method.deprecationWarning,
+          description: method.description,
+          formattedName: this.#formatService.getFormattedMethodName(method),
+          sourceCode: this.#formatService.getMethodSourceCode(method),
+          isStatic: method.isStatic,
+        };
 
-      return vm;
-    });
+        if (vm.isStatic) {
+          this.staticMethods.push(vm);
+        } else {
+          this.methods.push(vm);
+        }
+      }
+    }
   }
 }

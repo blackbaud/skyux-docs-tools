@@ -336,6 +336,7 @@ export class SkyDocsTypeDocAdapterService {
           name: this.getPropertyName(child),
           type: this.getTypeDefinition(child),
           isStatic: !!child.flags?.isStatic,
+          parentName: entry.name,
         };
 
         // Comments for methods are stored in a different location.

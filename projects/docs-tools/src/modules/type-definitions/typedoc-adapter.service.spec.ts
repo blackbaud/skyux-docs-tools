@@ -1059,6 +1059,7 @@ describe('TypeDoc adapter', () => {
             },
             name: 'getA',
           },
+          parentName: 'FooClass',
         },
         {
           name: 'getB',
@@ -1072,6 +1073,7 @@ describe('TypeDoc adapter', () => {
             },
             name: 'getB',
           },
+          parentName: 'FooClass',
         },
         {
           name: 'getC',
@@ -1085,6 +1087,7 @@ describe('TypeDoc adapter', () => {
             },
             name: 'getC',
           },
+          parentName: 'FooClass',
         },
       ]);
     });
@@ -1133,6 +1136,7 @@ describe('TypeDoc adapter', () => {
               name: 'T',
             },
           ],
+          parentName: 'FooClass',
         },
       ]);
     });
@@ -1269,6 +1273,7 @@ describe('TypeDoc adapter', () => {
             },
             name: 'getUserById',
           },
+          parentName: 'FooClass',
         },
       ]);
     });
@@ -2092,6 +2097,7 @@ describe('TypeDoc adapter', () => {
               },
             },
           },
+          parentName: 'FooPipe',
         },
       });
     });

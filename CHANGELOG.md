@@ -1,3 +1,7 @@
+# 6.0.0-beta.7 (2022-08-31)
+
+- Show static methods in a separate table with their fully qualified signature. [#219](https://github.com/blackbaud/skyux-docs-tools/pull/219)
+
 # 6.0.0-beta.6 (2022-08-24)
 
 - Moved code examples to their own tab. [#217](https://github.com/blackbaud/skyux-docs-tools/pull/217)

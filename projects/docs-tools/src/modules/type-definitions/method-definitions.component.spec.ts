@@ -71,9 +71,19 @@ describe('Method definitions component', function () {
     fixture.detectChanges();
     tick();
 
-    const element = fixture.nativeElement.querySelector('.sky-docs-code-block');
+    const staticTable = fixture.nativeElement.querySelector(
+      '.sky-docs-static-method-definitions'
+    );
+    const standardTable = fixture.nativeElement.querySelector(
+      '.sky-docs-standard-method-definitions'
+    );
 
-    expect(element.innerText).toContain('public static ');
+    expect(staticTable).not.toBeNull();
+    expect(standardTable).toBeNull();
+
+    const methodElement = staticTable.querySelector('.sky-docs-code-block');
+
+    expect(methodElement.innerText).toContain('public static ');
   }));
 
   it('should add links to types within description', fakeAsync(() => {
@@ -134,5 +144,16 @@ describe('Method definitions component', function () {
     expect(element.innerHTML).toContain(
       '<a class="sky-docs-anchor-link" href="#foo-user">FooUser</a>'
     );
+  }));
+
+  it('should handle no methods being given', fakeAsync(() => {
+    fixture.componentInstance.config = {};
+
+    fixture.detectChanges();
+    tick();
+
+    expect(
+      fixture.nativeElement.querySelector('.sky-docs-method-definitions')
+    ).toBeNull();
   }));
 });

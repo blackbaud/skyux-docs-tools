@@ -21,7 +21,7 @@
   ></sky-code-block>
 
   <sky-docs-property-definitions
-    *ngIf="config.properties"
+    *ngIf="config.properties?.length"
     [config]="{ properties: config.properties }"
     [showOptionalStatus]="false"
   ></sky-docs-property-definitions>

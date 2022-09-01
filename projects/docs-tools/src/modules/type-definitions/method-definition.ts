@@ -9,4 +9,5 @@ export interface SkyDocsClassMethodDefinition
   extends SkyDocsEntryChildDefinition {
   isStatic?: boolean;
   typeParameters?: SkyDocsTypeParameterDefinition[];
+  parentName?: string;
 }
