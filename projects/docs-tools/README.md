@@ -1,6 +1,6 @@
 # @skyux/docs-tools
 
-[![npm](https://img.shields.io/npm/v/@skyux/docs-tools.svg)](https://www.npmjs.com/package/@skyux/docs-tool:next)
+[![npm](https://img.shields.io/npm/v/@skyux/docs-tools/next.svg)](https://www.npmjs.com/package/@skyux/docs-tools)
 ![SKY UX CI](https://github.com/blackbaud/skyux-docs-tools/workflows/SKY%20UX%20CI/badge.svg)
 
 ## Getting Started
