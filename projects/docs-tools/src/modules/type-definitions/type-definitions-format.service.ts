@@ -219,7 +219,7 @@ export class SkyDocsTypeDefinitionsFormatService {
       );
 
       if (type.type === 'array') {
-        formattedSignature = `Array<${formattedSignature}>`;
+        formattedSignature = `(${formattedSignature})[]`;
       }
       return formattedSignature;
     }
