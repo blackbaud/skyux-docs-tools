@@ -74,7 +74,7 @@ jobs:
       - name: Run lint
         run: |
           npm run lint
-  build:
+  ci:
     name: Build
     needs: install-deps
     runs-on: ubuntu-latest
