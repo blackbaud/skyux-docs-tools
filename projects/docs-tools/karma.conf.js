@@ -25,6 +25,14 @@ module.exports = function (config) {
       dir: require('path').join(__dirname, '../../coverage/docs-tools'),
       subdir: '.',
       reporters: [{ type: 'html' }, { type: 'text-summary' }],
+      check: {
+        global: {
+          statements: 97,
+          branches: 98,
+          functions: 98,
+          lines: 97,
+        },
+      },
     },
     reporters: ['progress'],
     port: 9876,

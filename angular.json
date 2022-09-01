@@ -154,26 +154,6 @@
             "browserTarget": "docs-tools-showcase:build"
           }
         },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "projects/docs-tools-showcase/src/test.ts",
-            "polyfills": "projects/docs-tools-showcase/src/polyfills.ts",
-            "tsConfig": "projects/docs-tools-showcase/tsconfig.spec.json",
-            "karmaConfig": "projects/docs-tools-showcase/karma.conf.js",
-            "inlineStyleLanguage": "scss",
-            "assets": [
-              "projects/docs-tools-showcase/src/favicon.ico",
-              "projects/docs-tools-showcase/src/assets"
-            ],
-            "styles": [
-              "node_modules/@skyux/theme/css/sky.css",
-              "node_modules/@skyux/theme/css/themes/modern/styles.css",
-              "projects/docs-tools-showcase/src/styles.scss"
-            ],
-            "scripts": []
-          }
-        },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
