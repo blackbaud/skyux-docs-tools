@@ -2372,6 +2372,106 @@ describe('TypeDoc adapter', () => {
       });
     });
 
+    it('should convert call signature types', () => {
+      const entry: TypeDocEntry = {
+        anchorId: 'foo-anchor-id',
+        name: 'FooTypeAlias',
+        comment: {
+          shortText: 'test description',
+        },
+        type: {
+          type: 'array',
+          elementType: {
+            type: 'reflection',
+            declaration: {
+              signatures: [
+                {
+                  name: '__call',
+                  kindString: 'Call signature',
+                  parameters: [
+                    {
+                      name: 'args',
+                      kindString: 'Parameter',
+                      type: {
+                        type: 'reference',
+                        name: 'FooUser',
+                      },
+                    },
+                    {
+                      name: 'addl',
+                      kindString: 'Parameter',
+                      type: {
+                        type: 'typeParameter',
+                        name: 'T',
+                      },
+                    },
+                    {
+                      name: 'data',
+                      kindString: 'Parameter',
+                      type: {
+                        type: 'array',
+                        elementType: {
+                          type: 'intrinsic',
+                          name: 'any',
+                        },
+                      },
+                    },
+                  ],
+                  type: {
+                    type: 'intrinsic',
+                    name: 'void',
+                  },
+                },
+              ],
+            },
+          },
+        },
+      };
+
+      const def = adapter.toTypeAliasDefinition(entry);
+
+      expect(def).toEqual({
+        anchorId: 'foo-anchor-id',
+        name: 'FooTypeAlias',
+        description: 'test description',
+        type: {
+          type: 'array',
+          callSignature: {
+            returnType: {
+              type: 'intrinsic',
+              name: 'void',
+            },
+            parameters: [
+              {
+                isOptional: false,
+                name: 'args',
+                type: {
+                  type: 'reference',
+                  name: 'FooUser',
+                },
+              },
+              {
+                isOptional: false,
+                name: 'addl',
+                type: {
+                  type: 'typeParameter',
+                  name: 'T',
+                },
+              },
+              {
+                isOptional: false,
+                name: 'data',
+                type: {
+                  type: 'array',
+                  name: 'any',
+                },
+              },
+            ],
+          },
+        },
+      });
+    });
+
     it('should support type parameters', () => {
       const entry: TypeDocEntry = {
         anchorId: 'foo-anchor-id',

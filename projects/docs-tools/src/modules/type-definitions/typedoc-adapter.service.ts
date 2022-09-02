@@ -465,8 +465,14 @@ export class SkyDocsTypeDocAdapterService {
         }
 
         // Convert reflection types.
-        if (child.type.type === 'reflection') {
-          const declaration = child.type.declaration;
+        if (
+          child.type.type === 'reflection' ||
+          child.type.elementType?.type === 'reflection'
+        ) {
+          const declaration =
+            child.type.elementType?.type === 'reflection'
+              ? child.type.elementType.declaration
+              : child.type.declaration;
           /*istanbul ignore else */
           if (declaration) {
             if (declaration.signatures) {

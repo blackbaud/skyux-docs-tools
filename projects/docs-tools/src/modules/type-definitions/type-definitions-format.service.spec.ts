@@ -404,6 +404,64 @@ describe('Type definitions format service', () => {
     expect(formattedName).toEqual('Foo');
   });
 
+  it('should generate HTML formatted property names w/ call signature', () => {
+    const def: SkyDocsClassPropertyDefinition = {
+      isOptional: false,
+      name: 'functions',
+      type: {
+        type: 'intrinsic',
+        callSignature: {
+          returnType: {
+            type: 'intrinsic',
+            name: 'boolean',
+          },
+          parameters: [
+            {
+              name: 'data',
+              type: {
+                type: 'intrinsic',
+                name: 'string',
+              },
+              isOptional: false,
+            },
+          ],
+        },
+      },
+    };
+
+    const formattedName = service.getFormattedPropertyName(def);
+    expect(formattedName).toEqual('functions: (data: string) => boolean');
+  });
+
+  it('should generate HTML formatted property names w/ call signature', () => {
+    const def: SkyDocsClassPropertyDefinition = {
+      isOptional: false,
+      name: 'functions',
+      type: {
+        type: 'array',
+        callSignature: {
+          returnType: {
+            type: 'intrinsic',
+            name: 'boolean',
+          },
+          parameters: [
+            {
+              name: 'data',
+              type: {
+                type: 'intrinsic',
+                name: 'string',
+              },
+              isOptional: false,
+            },
+          ],
+        },
+      },
+    };
+
+    const formattedName = service.getFormattedPropertyName(def);
+    expect(formattedName).toEqual('functions: ((data: string) => boolean)[]');
+  });
+
   it('should generate HTML formatted property names w/ union type parameters', () => {
     const def: SkyDocsClassPropertyDefinition = {
       isOptional: true,
