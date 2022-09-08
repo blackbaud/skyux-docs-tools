@@ -1,3 +1,7 @@
+# 6.0.0-beta.9 (2022-09-08)
+
+- Update code example service to handle `spec` files being included. [#222](https://github.com/blackbaud/skyux-docs-tools/pull/222)
+
 # 6.0.0-beta.8 (2022-09-01)
 
 - Fix class properties of an array of function to display properly. [#220](https://github.com/blackbaud/skyux-docs-tools/pull/220)

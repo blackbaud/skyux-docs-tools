@@ -56,6 +56,26 @@ import {
 })
 export class SampleDemoComponent {}`;
 
+const sampleComponentSpecContents: string = `
+  import { TestBed } from '@angular/core/testing';
+  import { SampleDemoComponent } from './foo.component';
+  import { SampleDemoModule } from './foo.module';
+
+  describe('sample demo component', () => {
+
+    beforeEach(() => {
+      TestBed.configureTestingModule({
+        imports: [SampleDemoModule]
+      });
+      TestBed.createComponent(SampleDemoComponent);
+    })
+
+    it('should test something', () => {
+      expect(2).toBe(2);
+    });
+  });
+`;
+
 const sampleModuleContentsMultipleExports: string = `
 import {
   NgModule
@@ -86,6 +106,29 @@ const codeExample: SkyDocsCodeExample = {
   heading: 'Basic example',
   packageDependencies: {},
   sourceCode: [
+    {
+      fileName: 'foo.component.ts',
+      filePath: './',
+      rawContents: sampleComponentContents,
+    },
+    {
+      fileName: 'foo.module.ts',
+      filePath: './',
+      rawContents: sampleModuleContents,
+    },
+  ],
+  theme: SkyDocsCodeExampleTheme.Default,
+};
+
+const codeExampleWithSpec: SkyDocsCodeExample = {
+  heading: 'Basic example',
+  packageDependencies: {},
+  sourceCode: [
+    {
+      fileName: 'foo.component.spec.ts',
+      filePath: './',
+      rawContents: sampleComponentSpecContents,
+    },
     {
       fileName: 'foo.component.ts',
       filePath: './',
@@ -164,6 +207,15 @@ describe('Code examples editor service', () => {
     expect(spyArgs[0].files['src/app/app.module.ts']).toContain(
       'SkyThemeService'
     );
+  });
+
+  it('should handle a spec file in the code example contents', () => {
+    service.launchEditor(codeExampleWithSpec);
+
+    expect(stackblitzSpy).toHaveBeenCalled();
+    const spyArgs = stackblitzSpy.calls.mostRecent().args;
+
+    expect(spyArgs[0].files['src/app/foo.component.spec.ts']).toBeDefined();
   });
 
   it('should add modules from code example to app.module.ts', () => {
@@ -274,6 +326,7 @@ describe('Code examples editor service', () => {
       '@skyux/popovers': '^6.0.0-0',
       '@skyux/router': '^6.0.0-0',
       '@skyux/theme': '^6.0.0-0',
+      '@types/jasmine': '~3.10.0',
       'ng2-dragula': '2.1.1',
       rxjs: '^7',
       tslib: '^2.3.0',
