@@ -56,6 +56,14 @@ import {
 })
 export class SampleDemoComponent {}`;
 
+const sampleComponentSpecContents: string = `
+  describe('sample demo component', () => {
+    it('should test something', () => {
+      expect(2).toBe(2);
+    });
+  });
+`;
+
 const sampleModuleContentsMultipleExports: string = `
 import {
   NgModule
@@ -90,6 +98,29 @@ const codeExample: SkyDocsCodeExample = {
       fileName: 'foo.component.ts',
       filePath: './',
       rawContents: sampleComponentContents,
+    },
+    {
+      fileName: 'foo.module.ts',
+      filePath: './',
+      rawContents: sampleModuleContents,
+    },
+  ],
+  theme: SkyDocsCodeExampleTheme.Default,
+};
+
+const codeExampleWithSpec: SkyDocsCodeExample = {
+  heading: 'Basic example',
+  packageDependencies: {},
+  sourceCode: [
+    {
+      fileName: 'foo.component.ts',
+      filePath: './',
+      rawContents: sampleComponentContents,
+    },
+    {
+      fileName: 'foo.component.spec.ts',
+      filePath: './',
+      rawContents: sampleComponentSpecContents,
     },
     {
       fileName: 'foo.module.ts',
@@ -164,6 +195,15 @@ describe('Code examples editor service', () => {
     expect(spyArgs[0].files['src/app/app.module.ts']).toContain(
       'SkyThemeService'
     );
+  });
+
+  it('should handle a spec file in the code example contents', () => {
+    service.launchEditor(codeExampleWithSpec);
+
+    expect(stackblitzSpy).toHaveBeenCalled();
+    const spyArgs = stackblitzSpy.calls.mostRecent().args;
+
+    expect(spyArgs[0].files['src/app/foo.component.spec.ts']).toBeDefined();
   });
 
   it('should add modules from code example to app.module.ts', () => {
