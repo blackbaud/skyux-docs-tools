@@ -57,7 +57,19 @@ import {
 export class SampleDemoComponent {}`;
 
 const sampleComponentSpecContents: string = `
+  import { TestBed } from '@angular/core/testing';
+  import { SampleDemoComponent } from './foo.component';
+  import { SampleDemoModule } from './foo.module';
+
   describe('sample demo component', () => {
+
+    beforeEach(() => {
+      TestBed.configureTestingModule({
+        imports: [SampleDemoModule]
+      });
+      TestBed.createComponent(SampleDemoComponent);
+    })
+
     it('should test something', () => {
       expect(2).toBe(2);
     });
@@ -113,14 +125,14 @@ const codeExampleWithSpec: SkyDocsCodeExample = {
   packageDependencies: {},
   sourceCode: [
     {
-      fileName: 'foo.component.ts',
-      filePath: './',
-      rawContents: sampleComponentContents,
-    },
-    {
       fileName: 'foo.component.spec.ts',
       filePath: './',
       rawContents: sampleComponentSpecContents,
+    },
+    {
+      fileName: 'foo.component.ts',
+      filePath: './',
+      rawContents: sampleComponentContents,
     },
     {
       fileName: 'foo.module.ts',
