@@ -20,6 +20,11 @@
           <ng-container [ngTemplateOutlet]="content"></ng-container>
         </sky-tab>
 
+        <sky-tab tabHeading="Testing" *ngIf="enableTestingTab">
+          <sky-docs-demo-page-type-definitions [types]="testTypeDefinitions">
+          </sky-docs-demo-page-type-definitions>
+        </sky-tab>
+
         <sky-tab tabHeading="Code examples" *ngIf="enableCodeExamples">
           <ng-content select="sky-docs-code-examples"></ng-content>
         </sky-tab>
@@ -42,9 +47,6 @@
 
   <ng-content></ng-content>
 
-  <sky-docs-demo-page-type-definitions
-    [additionalSourceCodePaths]="additionalSourceCodePaths"
-    [moduleSourceCodePath]="moduleSourceCodePath"
-  >
+  <sky-docs-demo-page-type-definitions [types]="moduleTypeDefinitions">
   </sky-docs-demo-page-type-definitions>
 </ng-template>
