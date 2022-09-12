@@ -58,7 +58,7 @@ export class SkyDocsDemoPageComponent
   @Input()
   public set additionalSourceCodePaths(paths: string[] | undefined) {
     this.#_additionalSourceCodePaths = paths;
-    this.#updateTypes(true);
+    this.#updateTypes();
   }
 
   public get additionalSouceCodePaths(): string[] | undefined {
@@ -71,7 +71,7 @@ export class SkyDocsDemoPageComponent
   @Input()
   public set additionalTestingSourceCodePaths(paths: string[] | undefined) {
     this.#_additionalTestingSourceCodePaths = paths;
-    this.#updateTypes();
+    this.#updateTestingTypes();
   }
 
   public get additionalTestingSourceCodePaths(): string[] | undefined {
@@ -98,8 +98,12 @@ export class SkyDocsDemoPageComponent
   @Input()
   public set moduleSourceCodePath(path: string | undefined) {
     this.#_moduleSourceCodePath = path;
-    this.testingSourceCodePath = path.replace('modules', 'testing');
+    this.testingSourceCodePath = path.replace(
+      /(?<=\/|\\)modules(?=\/|\\)/,
+      'testing'
+    );
     this.#updateTypes();
+    this.#updateTestingTypes();
   }
 
   public get moduleSourceCodePath(): string | undefined {
@@ -119,7 +123,7 @@ export class SkyDocsDemoPageComponent
   /**
    * Specifies the type definitions for the testing tab.
    */
-  public testTypeDefinitions: SkyDocsTypeDefinitions | undefined;
+  public testingTypeDefinitions: SkyDocsTypeDefinitions | undefined;
 
   /**
    * Specifies the qualified name of the NPM package. For example, `@blackbaud/sample`.
@@ -254,20 +258,20 @@ export class SkyDocsDemoPageComponent
     }
   }
 
-  #updateTypes(ignoreTesting = false): void {
+  #updateTypes(): void {
     this.moduleTypeDefinitions = this.typeDefinitionService.getTypeDefinitions(
       this.moduleSourceCodePath,
       this.additionalSourceCodePaths
     );
+  }
 
-    if (!ignoreTesting) {
-      this.testTypeDefinitions = this.typeDefinitionService.getTypeDefinitions(
-        this.testingSourceCodePath,
-        this.additionalTestingSourceCodePaths
-      );
-      this.enableTestingTab = Object.values(this.testTypeDefinitions).some(
-        (value) => value && value.length > 0
-      );
-    }
+  #updateTestingTypes(): void {
+    this.testingTypeDefinitions = this.typeDefinitionService.getTypeDefinitions(
+      this.testingSourceCodePath,
+      this.additionalTestingSourceCodePaths
+    );
+    this.enableTestingTab = Object.values(this.testingTypeDefinitions).some(
+      (value) => value && value.length > 0
+    );
   }
 }
