@@ -1,11 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  Input,
-  OnInit,
-} from '@angular/core';
-
-import { SkyDocsTypeDefinitionsService } from '../type-definitions/type-definitions.service';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 import { SkyDocsTypeDefinitions } from '../type-definitions/type-definitions';
 
@@ -17,23 +10,7 @@ import { SkyDocsTypeDefinitions } from '../type-definitions/type-definitions';
   templateUrl: './demo-page-type-definitions.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SkyDocsDemoPageTypeDefinitionsComponent implements OnInit {
+export class SkyDocsDemoPageTypeDefinitionsComponent {
   @Input()
-  public additionalSourceCodePaths: string[];
-
-  @Input()
-  public moduleSourceCodePath: string;
-
   public types: SkyDocsTypeDefinitions;
-
-  constructor(private typeDefinitionService: SkyDocsTypeDefinitionsService) {}
-
-  public ngOnInit(): void {
-    if (this.moduleSourceCodePath) {
-      this.types = this.typeDefinitionService.getTypeDefinitions(
-        this.moduleSourceCodePath,
-        this.additionalSourceCodePaths
-      );
-    }
-  }
 }

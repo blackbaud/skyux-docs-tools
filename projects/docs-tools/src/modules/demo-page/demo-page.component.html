@@ -20,6 +20,20 @@
           <ng-container [ngTemplateOutlet]="content"></ng-container>
         </sky-tab>
 
+        <sky-tab tabHeading="Testing" *ngIf="enableTestingTab">
+          <sky-docs-demo-page-section heading="Test harnesses">
+            <p>
+              SKY UX test harnesses are built upon Angular CDK component
+              harnesses. For more information see the
+              <a href="https://material.angular.io/cdk/test-harnesses/overview"
+                >Angular CDK component harness documentation</a
+              >.
+            </p>
+          </sky-docs-demo-page-section>
+          <sky-docs-demo-page-type-definitions [types]="testingTypeDefinitions">
+          </sky-docs-demo-page-type-definitions>
+        </sky-tab>
+
         <sky-tab tabHeading="Code examples" *ngIf="enableCodeExamples">
           <ng-content select="sky-docs-code-examples"></ng-content>
         </sky-tab>
@@ -42,9 +56,6 @@
 
   <ng-content></ng-content>
 
-  <sky-docs-demo-page-type-definitions
-    [additionalSourceCodePaths]="additionalSourceCodePaths"
-    [moduleSourceCodePath]="moduleSourceCodePath"
-  >
+  <sky-docs-demo-page-type-definitions [types]="moduleTypeDefinitions">
   </sky-docs-demo-page-type-definitions>
 </ng-template>

@@ -28,6 +28,8 @@ import { SkyDocsComponentInfo } from '../shared/docs-tools-component-info';
 import { SkyDocsDemoPageDomAdapterService } from './demo-page-dom-adapter.service';
 
 import { SkyDocsDemoPageTitleService } from './demo-page-title.service';
+import { SkyDocsTypeDefinitionsService } from '../type-definitions/type-definitions.service';
+import { SkyDocsTypeDefinitions } from '../type-definitions/type-definitions';
 
 /**
  * The demo page component wraps all documentation components and handles the configuration and layout of the page.
@@ -54,7 +56,27 @@ export class SkyDocsDemoPageComponent
    * Specifies the local path to any other relevant source code. The values are relative to the root directory.
    */
   @Input()
-  public additionalSourceCodePaths: string[];
+  public set additionalSourceCodePaths(paths: string[] | undefined) {
+    this.#_additionalSourceCodePaths = paths;
+    this.#updateTypes();
+  }
+
+  public get additionalSouceCodePaths(): string[] | undefined {
+    return this.#_additionalSourceCodePaths;
+  }
+
+  /**
+   * Specifies the local path to any other relevant testing source code. The values are relative to the root directory.
+   */
+  @Input()
+  public set additionalTestingSourceCodePaths(paths: string[] | undefined) {
+    this.#_additionalTestingSourceCodePaths = paths;
+    this.#updateTestingTypes();
+  }
+
+  public get additionalTestingSourceCodePaths(): string[] | undefined {
+    return this.#_additionalTestingSourceCodePaths;
+  }
 
   /**
    * Specifies the URL to the repo that stores the module's source code.
@@ -74,7 +96,31 @@ export class SkyDocsDemoPageComponent
    * Specifies the local path to the module's source code. The value is relative to the root directory.
    */
   @Input()
-  public moduleSourceCodePath: string;
+  public set moduleSourceCodePath(path: string | undefined) {
+    this.#_moduleSourceCodePath = path;
+    this.testingSourceCodePath = path.replace('/modules/', '/testing/');
+    this.#updateTypes();
+    this.#updateTestingTypes();
+  }
+
+  public get moduleSourceCodePath(): string | undefined {
+    return this.#_moduleSourceCodePath;
+  }
+
+  /**
+   * Specifies the type definitions for the development tab.
+   */
+  public moduleTypeDefinitions: SkyDocsTypeDefinitions | undefined;
+
+  /**
+   * Specifies the local path to the testing source code. The value is relative to the root directory.
+   */
+  public testingSourceCodePath: string;
+
+  /**
+   * Specifies the type definitions for the testing tab.
+   */
+  public testingTypeDefinitions: SkyDocsTypeDefinitions | undefined;
 
   /**
    * Specifies the qualified name of the NPM package. For example, `@blackbaud/sample`.
@@ -104,6 +150,11 @@ export class SkyDocsDemoPageComponent
   /**
    * @internal
    */
+  public enableTestingTab = false;
+
+  /**
+   * @internal
+   */
   public enableTabLayout = false;
 
   /**
@@ -117,6 +168,10 @@ export class SkyDocsDemoPageComponent
   @ContentChildren(SkyDocsCodeExamplesComponent)
   private codeExampleComponents: QueryList<SkyDocsCodeExamplesComponent>;
 
+  #_additionalSourceCodePaths: string[] | undefined;
+  #_additionalTestingSourceCodePaths: string[] | undefined;
+  #_moduleSourceCodePath: string | undefined;
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private changeDetector: ChangeDetectorRef,
@@ -124,7 +179,8 @@ export class SkyDocsDemoPageComponent
     private skyAppConfig: SkyAppConfig,
     private domAdapter: SkyDocsDemoPageDomAdapterService,
     private supportalService: SkyDocsSupportalService,
-    private titleService: SkyDocsDemoPageTitleService
+    private titleService: SkyDocsDemoPageTitleService,
+    private typeDefinitionService: SkyDocsTypeDefinitionsService
   ) {}
 
   public ngOnInit(): void {
@@ -197,5 +253,22 @@ export class SkyDocsDemoPageComponent
     } else {
       return url;
     }
+  }
+
+  #updateTypes(): void {
+    this.moduleTypeDefinitions = this.typeDefinitionService.getTypeDefinitions(
+      this.moduleSourceCodePath,
+      this.additionalSourceCodePaths
+    );
+  }
+
+  #updateTestingTypes(): void {
+    this.testingTypeDefinitions = this.typeDefinitionService.getTypeDefinitions(
+      this.testingSourceCodePath,
+      this.additionalTestingSourceCodePaths
+    );
+    this.enableTestingTab = Object.values(this.testingTypeDefinitions).some(
+      (value) => value && value.length > 0
+    );
   }
 }
