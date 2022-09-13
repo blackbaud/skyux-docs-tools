@@ -1,4 +1,4 @@
-# 6.0.0-beta.10 (2022-09-12)
+# 6.0.0-beta.10 (2022-09-13)
 
 - Enable testing tab for component documentation. [#223](https://github.com/blackbaud/skyux-docs-tools/pull/223)
 
