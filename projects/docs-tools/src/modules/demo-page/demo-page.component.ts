@@ -98,10 +98,7 @@ export class SkyDocsDemoPageComponent
   @Input()
   public set moduleSourceCodePath(path: string | undefined) {
     this.#_moduleSourceCodePath = path;
-    this.testingSourceCodePath = path.replace(
-      /(?<=\/|\\)modules(?=\/|\\)/,
-      'testing'
-    );
+    this.testingSourceCodePath = path.replace('/modules/', '/testing/');
     this.#updateTypes();
     this.#updateTestingTypes();
   }
