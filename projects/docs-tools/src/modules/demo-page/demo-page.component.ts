@@ -61,7 +61,7 @@ export class SkyDocsDemoPageComponent
     this.#updateTypes();
   }
 
-  public get additionalSouceCodePaths(): string[] | undefined {
+  public get additionalSourceCodePaths(): string[] | undefined {
     return this.#_additionalSourceCodePaths;
   }
 
