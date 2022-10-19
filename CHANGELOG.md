@@ -1,3 +1,7 @@
+# 6.0.0-beta.11 (2022-10-19)
+
+- Fix additional source code paths not appears in component documentation. [#225](https://github.com/blackbaud/skyux-docs-tools/pull/225) [#226](https://github.com/blackbaud/skyux-docs-tools/pull/226)
+
 # 6.0.0-beta.10 (2022-09-13)
 
 - Enable testing tab for component documentation. [#223](https://github.com/blackbaud/skyux-docs-tools/pull/223)
