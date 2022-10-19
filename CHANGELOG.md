@@ -1,3 +1,11 @@
+# 7.0.0-beta.1 (2022-10-19)
+
+- Fix additional source code paths not appears in component documentation. [#225](https://github.com/blackbaud/skyux-docs-tools/pull/225)
+
+# 6.0.0-beta.11 (2022-10-19)
+
+- Fix additional source code paths not appears in component documentation. [#225](https://github.com/blackbaud/skyux-docs-tools/pull/225) [#226](https://github.com/blackbaud/skyux-docs-tools/pull/226)
+
 # 7.0.0-beta.0 (2022-09-27)
 
 ### ⚠ BREAKING CHANGES
