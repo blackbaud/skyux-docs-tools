@@ -22,6 +22,7 @@
   </ng-container>
 
   <sky-docs-method-definitions
+    *ngIf="config.transformMethod"
     [config]="{
       methods: [config.transformMethod]
     }"
