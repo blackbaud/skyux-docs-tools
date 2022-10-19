@@ -20,14 +20,14 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '14.x'
-      - uses: blackbaud/skyux-sdk-actions@master
+      - uses: blackbaud/skyux-sdk-actions@ng-14
         with:
-          browser-stack-access-key: ${{ secrets.BROWSER_STACK_ACCESS_KEY }}
-          browser-stack-username: ${{ secrets.BROWSER_STACK_USERNAME }}
           github-token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
           npm-token: ${{ secrets.NPM_TOKEN }}
+          project: 'docs-tools'
           slack-webhook: ${{ secrets.SLACK_WEBHOOK }}
           hook-after-build-public-library-success: ./scripts/after-build-public-library-success.js
+          code-coverage-browser-set: speedy
           code-coverage-threshold-branches: 90
           code-coverage-threshold-functions: 92
           code-coverage-threshold-lines: 92
