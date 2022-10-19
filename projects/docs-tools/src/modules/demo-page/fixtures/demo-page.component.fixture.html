@@ -1,6 +1,7 @@
 <sky-docs-demo-page
   moduleName="SkyDocsDemoPageModule"
   moduleSourceCodePath="src/app/public/modules/_documentation-test/"
+  [additionalSourceCodePaths]="additionalPaths ? ['src/app/public/modules/_documentation-test-additional/additional.component.ts'] : []"
   [pageTitle]="pageTitle"
 >
   <sky-docs-demo-page-summary> Sample description. </sky-docs-demo-page-summary>
