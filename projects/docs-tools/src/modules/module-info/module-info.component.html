@@ -21,9 +21,7 @@
             [href]="externalLink.url"
             >{{ externalLink.label }}</a
           >
-          <ng-container *ngIf="i < externalLinks.length - 1"
-            >&nbsp;|
-          </ng-container>
+          <span *ngIf="i < externalLinks.length - 1"> | </span>
         </ng-container>
       </sky-description-list-description>
     </sky-description-list-content>
