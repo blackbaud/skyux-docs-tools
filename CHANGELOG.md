@@ -1,3 +1,7 @@
+# 7.0.0-beta.2 (2022-10-25)
+
+- Fix spacing between related links. [#229](https://github.com/blackbaud/skyux-docs-tools/pull/229)
+
 # 7.0.0-beta.1 (2022-10-19)
 
 - Fix additional source code paths not appears in component documentation. [#225](https://github.com/blackbaud/skyux-docs-tools/pull/225)
