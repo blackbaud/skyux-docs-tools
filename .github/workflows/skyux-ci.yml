@@ -3,12 +3,12 @@ name: SKY UX CI
 on:
   pull_request:
     branches:
-      - master
+      - 6.x.x
   push:
     branches:
-      - master
+      - 6.x.x
     tags:
-      - '*.*.*'
+      - '6.*.*'
 
 jobs:
   ci:
