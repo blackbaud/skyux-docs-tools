@@ -28,6 +28,7 @@ jobs:
           npm-token: ${{ secrets.NPM_TOKEN }}
           slack-webhook: ${{ secrets.SLACK_WEBHOOK }}
           hook-after-build-public-library-success: ./scripts/after-build-public-library-success.js
+          code-coverage-browser-set: speedy
           code-coverage-threshold-branches: 90
           code-coverage-threshold-functions: 92
           code-coverage-threshold-lines: 92
