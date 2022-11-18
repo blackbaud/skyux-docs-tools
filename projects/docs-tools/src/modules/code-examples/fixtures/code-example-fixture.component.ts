@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 
-import { SkyDocsCodeExampleComponent } from '../../code-examples/code-example.component';
+import { SkyDocsCodeExampleComponent } from '../code-example.component';
 
 @Component({
   selector: 'sky-code-example-fixture',

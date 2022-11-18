@@ -1,3 +1,7 @@
+# 7.0.0-beta.3 (2022-11-18)
+
+- Updated code examples to use Angular 14. [#233](https://github.com/blackbaud/skyux-docs-tools/pull/233)
+
 # 7.0.0-beta.2 (2022-10-25)
 
 - Fix spacing between related links. [#229](https://github.com/blackbaud/skyux-docs-tools/pull/229)
