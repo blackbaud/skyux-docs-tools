@@ -7,18 +7,14 @@
         {{ propertyType }}
       </th>
       <th
-        class="
-          sky-docs-table-column-header sky-docs-table-column-header-description
-        "
+        class="sky-docs-table-column-header sky-docs-table-column-header-description"
       >
         Description
       </th>
     </tr>
     <tr *ngFor="let property of properties" class="sky-docs-table-row">
       <td
-        class="
-          sky-docs-table-cell sky-docs-property-definitions-table-cell-name
-        "
+        class="sky-docs-table-cell sky-docs-property-definitions-table-cell-name"
       >
         <ng-template
           [ngTemplateOutlet]="nameTemplate"
@@ -26,10 +22,7 @@
         ></ng-template>
       </td>
       <td
-        class="
-          sky-docs-table-cell
-          sky-docs-property-definitions-table-cell-description
-        "
+        class="sky-docs-table-cell sky-docs-property-definitions-table-cell-description"
       >
         <ng-template
           [ngTemplateOutlet]="descriptionTemplate"
@@ -102,10 +95,7 @@
 
   <div
     *ngIf="property.isOptional && showOptionalStatus"
-    class="
-      sky-docs-property-definition-label
-      sky-docs-property-definition-label-optional
-    "
+    class="sky-docs-property-definition-label sky-docs-property-definition-label-optional"
   >
     Optional.
     <ng-container *ngIf="property.defaultValue"
