@@ -295,7 +295,7 @@ describe('Code examples editor service', () => {
     expect(() => service.launchEditor(example)).not.toThrow();
   });
 
-  it('should convert "*" versions of SKY UX packages to "^7.0.0-0"', () => {
+  it('should convert "*" versions of SKY UX packages to "^7.0.0"', () => {
     codeExample.packageDependencies = {
       '@skyux/foobar': '*',
     };
@@ -312,26 +312,26 @@ describe('Code examples editor service', () => {
       '@angular/platform-browser': '^14.0.0',
       '@angular/platform-browser-dynamic': '^14.0.0',
       '@angular/router': '^14.0.0',
-      '@skyux/animations': '^7.0.0-0',
-      '@skyux/assets': '^7.0.0-0',
-      '@skyux/config': '^7.0.0-0',
-      '@skyux/core': '^7.0.0-0',
-      '@skyux/errors': '^7.0.0-0',
-      '@skyux/forms': '^7.0.0-0',
-      '@skyux/http': '^7.0.0-0',
-      '@skyux/i18n': '^7.0.0-0',
-      '@skyux/indicators': '^7.0.0-0',
-      '@skyux/layout': '^7.0.0-0',
-      '@skyux/modals': '^7.0.0-0',
-      '@skyux/popovers': '^7.0.0-0',
-      '@skyux/router': '^7.0.0-0',
-      '@skyux/theme': '^7.0.0-0',
+      '@skyux/animations': '^7.0.0',
+      '@skyux/assets': '^7.0.0',
+      '@skyux/config': '^7.0.0',
+      '@skyux/core': '^7.0.0',
+      '@skyux/errors': '^7.0.0',
+      '@skyux/forms': '^7.0.0',
+      '@skyux/http': '^7.0.0',
+      '@skyux/i18n': '^7.0.0',
+      '@skyux/indicators': '^7.0.0',
+      '@skyux/layout': '^7.0.0',
+      '@skyux/modals': '^7.0.0',
+      '@skyux/popovers': '^7.0.0',
+      '@skyux/router': '^7.0.0',
+      '@skyux/theme': '^7.0.0',
       '@types/jasmine': '~4.0.3',
       'ng2-dragula': '2.1.1',
       rxjs: '^7',
       tslib: '^2.3.0',
       'zone.js': '~0.11.4',
-      '@skyux/foobar': '^7.0.0-0', // <-- Important
+      '@skyux/foobar': '^7.0.0', // <-- Important
     });
   });
 

@@ -1,3 +1,18 @@
+# 7.0.0 (2022-12-06)
+
+### ⚠ BREAKING CHANGES
+
+- Dropped support for Angular 13. [#224](https://github.com/blackbaud/skyux-docs-tools/pull/224)
+
+### Features
+
+- Added support for Angular 14. [#224](https://github.com/blackbaud/skyux-docs-tools/pull/224)
+- Updated code examples to use Angular 14. [#233](https://github.com/blackbaud/skyux-docs-tools/pull/233)
+
+### Bug fixes
+
+- Fix spacing between related links. [#229](https://github.com/blackbaud/skyux-docs-tools/pull/229)
+
 # 7.0.0-beta.3 (2022-11-18)
 
 - Updated code examples to use Angular 14. [#233](https://github.com/blackbaud/skyux-docs-tools/pull/233)
