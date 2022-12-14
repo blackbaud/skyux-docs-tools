@@ -306,6 +306,10 @@ body {
 
     files['tsconfig.json'] = `{
   "compilerOptions": {
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
     "target": "es2017",
     "module": "es2020",
     "moduleResolution": "node",
