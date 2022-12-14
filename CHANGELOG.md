@@ -1,3 +1,7 @@
+# 7.1.0 (2022-12-14)
+
+- Enabled TypeScript strict mode for StackBlitz code examples. [#235](https://github.com/blackbaud/skyux-docs-tools/pull/235)
+
 # 7.0.0 (2022-12-06)
 
 ### ⚠ BREAKING CHANGES
