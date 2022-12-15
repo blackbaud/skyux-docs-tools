@@ -1,3 +1,7 @@
+# 7.1.1 (2022-12-15)
+
+- Updated code examples app component and main.ts to be strict mode compliant. [#237](https://github.com/blackbaud/skyux-docs-tools/pull/237)
+
 # 7.1.0 (2022-12-14)
 
 - Enabled TypeScript strict mode for StackBlitz code examples. [#235](https://github.com/blackbaud/skyux-docs-tools/pull/235)
