@@ -190,7 +190,7 @@ export class AppComponent {
 
   constructor(
     themeSvc: SkyThemeService,
-    renderer?: Renderer2
+    renderer: Renderer2
   ) {
     const themeSettings = new SkyThemeSettings(
       SkyTheme.presets['${
@@ -258,13 +258,10 @@ import {
   AppModule
 } from './app/app.module';
 
-platformBrowserDynamic().bootstrapModule(AppModule).then(ref => {
-  if (window['ngRef']) {
-    window['ngRef'].destroy();
-  }
+platformBrowserDynamic()
+  .bootstrapModule(AppModule)
+  .catch((err) => console.error(err));
 
-  window['ngRef'] = ref;
-}).catch(err => console.error(err));
 `;
 
     files[`${srcPath}polyfills.ts`] = `${banner}
