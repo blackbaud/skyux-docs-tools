@@ -241,7 +241,7 @@ export class AppModule { }
   https://github.com/stackblitz/core/issues/133
 -->
 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-<link rel="stylesheet" type="text/css" href="https://sky.blackbaudcdn.net/static/skyux-icons/5.0.0/assets/css/skyux-icons.min.css" />
+<link rel="stylesheet" type="text/css" href="https://sky.blackbaudcdn.net/static/skyux-icons/5/assets/css/skyux-icons.min.css" />
 
 <sky-demo-app>
   Loading...
