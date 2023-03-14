@@ -1,3 +1,7 @@
+# 7.1.2 (2023-03-14)
+
+- Changed URL to SKY UX icons to always point to the latest 5.x version. [#239](https://github.com/blackbaud/skyux-docs-tools/pull/239)
+
 # 7.1.1 (2022-12-15)
 
 - Updated code examples app component and main.ts to be strict mode compliant. [#237](https://github.com/blackbaud/skyux-docs-tools/pull/237)
