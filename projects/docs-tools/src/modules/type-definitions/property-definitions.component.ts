@@ -20,6 +20,7 @@ interface PropertyViewModel {
   deprecationWarning: string;
   description: string;
   formattedName: string;
+  isOutput: boolean;
   isOptional: boolean;
 }
 
@@ -79,6 +80,7 @@ export class SkyDocsPropertyDefinitionsComponent implements OnInit {
         deprecationWarning: property.deprecationWarning,
         description: property.description,
         formattedName: this.formatService.getFormattedPropertyName(property),
+        isOutput: property.decorator?.name === 'Output',
         isOptional: property.isOptional,
       };
 
