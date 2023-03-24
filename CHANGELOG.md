@@ -1,3 +1,8 @@
+# 7.1.3 (2023-03-24)
+
+- Fixed component events to not be listed as optional. [#241](https://github.com/blackbaud/skyux-docs-tools/pull/241)
+- Fixed union types to include quotes around string values. [#242](https://github.com/blackbaud/skyux-docs-tools/pull/242)
+
 # 7.1.2 (2023-03-14)
 
 - Changed URL to SKY UX icons to always point to the latest 5.x version. [#239](https://github.com/blackbaud/skyux-docs-tools/pull/239)
