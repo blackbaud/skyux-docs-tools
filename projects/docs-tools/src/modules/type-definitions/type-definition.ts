@@ -18,14 +18,14 @@ export interface SkyDocsTypeDefinition {
    */
   indexSignature?: SkyDocsIndexSignatureDefinition;
 
-  name?: string;
+  name?: string | number | boolean;
 
   type?:
     | 'array'
     | 'intrinsic'
+    | 'literal'
     | 'reference'
     | 'reflection'
-    | 'stringLiteral'
     | 'typeParameter'
     | 'typeOperator'
     | 'union'

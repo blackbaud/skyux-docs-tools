@@ -232,8 +232,8 @@ export class SkyDocsTypeDefinitionsFormatService {
       return this.getFormattedUnion(type, config);
     }
 
-    if (type.name) {
-      formatted = type.name;
+    if (type.name !== null && type.name !== undefined) {
+      formatted = `${type.name}`;
     }
 
     if (type.typeArguments) {
@@ -242,6 +242,10 @@ export class SkyDocsTypeDefinitionsFormatService {
 
     if (type.type === 'array') {
       formatted += '[]';
+    }
+
+    if (type.type === 'literal' && typeof type.name === 'string') {
+      formatted = `'${formatted}'`;
     }
 
     if (type.typeLiteral) {
