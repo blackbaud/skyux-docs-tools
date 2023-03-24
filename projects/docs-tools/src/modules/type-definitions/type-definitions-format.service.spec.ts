@@ -276,8 +276,8 @@ describe('Type definitions format service', () => {
             name: '1',
           },
           {
-            type: 'stringLiteral',
-            name: "'left'",
+            type: 'literal',
+            name: 'left',
           },
           {
             type: 'typeParameter',
@@ -627,19 +627,23 @@ describe('Type definitions format service', () => {
       type: {
         unionTypes: [
           {
-            type: 'stringLiteral',
-            name: "'left'",
+            type: 'literal',
+            name: 'left',
           },
           {
-            type: 'stringLiteral',
-            name: "'right'",
+            type: 'literal',
+            name: 'right',
+          },
+          {
+            type: 'literal',
+            name: 0,
           },
         ],
       },
     };
 
     const formattedName = service.getFormattedParameterName(def);
-    expect(formattedName).toEqual("args?: 'left' | 'right'");
+    expect(formattedName).toEqual("args?: 'left' | 'right' | 0");
   });
 
   it('should allow unescaped HTML formatted types', () => {

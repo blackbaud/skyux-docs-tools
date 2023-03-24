@@ -705,8 +705,8 @@ describe('TypeDoc adapter', () => {
                 name: 'string',
               },
               {
-                type: 'stringLiteral',
-                value: "'above'",
+                type: 'literal',
+                value: 'above',
               },
             ],
           },
@@ -731,8 +731,8 @@ describe('TypeDoc adapter', () => {
                 type: 'intrinsic',
               },
               {
-                type: 'stringLiteral',
-                name: "'above'",
+                type: 'literal',
+                name: 'above',
               },
             ],
           },
@@ -2132,8 +2132,8 @@ describe('TypeDoc adapter', () => {
               name: '1',
             },
             {
-              type: 'stringLiteral',
-              name: "'left'",
+              type: 'literal',
+              name: 'left',
             },
             {
               type: 'typeParameter',
@@ -2197,8 +2197,8 @@ describe('TypeDoc adapter', () => {
               name: '1',
             },
             {
-              type: 'stringLiteral',
-              name: "'left'",
+              type: 'literal',
+              name: 'left',
             },
             {
               type: 'typeParameter',

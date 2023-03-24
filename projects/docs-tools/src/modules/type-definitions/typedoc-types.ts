@@ -68,9 +68,9 @@ export interface TypeDocType {
   type?:
     | 'array'
     | 'intrinsic'
+    | 'literal'
     | 'reference'
     | 'reflection'
-    | 'stringLiteral'
     | 'typeParameter'
     | 'typeOperator'
     | 'union'
