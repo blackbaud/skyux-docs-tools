@@ -163,7 +163,11 @@ export class SkyDocsTypeDefinitionsFormatService {
       signature += name;
     }
 
-    if (property.isOptional && !indexSignature) {
+    if (
+      property.decorator?.name !== 'Output' &&
+      property.isOptional &&
+      !indexSignature
+    ) {
       signature += '?';
     }
 

@@ -69,7 +69,7 @@
 
 <ng-template let-property #descriptionTemplate>
   <div
-    *ngIf="!property.isOptional && showOptionalStatus"
+    *ngIf="!property.isOutput && !property.isOptional && showOptionalStatus"
     class="sky-docs-property-definition-label sky-text-danger"
   >
     Required.
@@ -94,7 +94,7 @@
   ></sky-docs-safe-html>
 
   <div
-    *ngIf="property.isOptional && showOptionalStatus"
+    *ngIf="!property.isOutput && property.isOptional && showOptionalStatus"
     class="sky-docs-property-definition-label sky-docs-property-definition-label-optional"
   >
     Optional.
