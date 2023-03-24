@@ -121,7 +121,7 @@ describe('Directive definition component', function () {
       '@Input()config?: Config'
     );
     expect(rowElements.item(1).innerText.replace(/\r?\n|\r/g, '')).toEqual(
-      '@Output()click?: EventEmitter<string>'
+      '@Output()click: EventEmitter<string>'
     );
   });
 

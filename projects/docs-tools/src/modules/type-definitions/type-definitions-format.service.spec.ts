@@ -500,7 +500,7 @@ describe('Type definitions format service', () => {
 
     const formattedName = service.getFormattedPropertyName(def);
     expect(formattedName).toEqual(
-      '@Output()<br>stream?: EventEmitter&lt;string[] | Observable&lt;string[]&gt;&gt;'
+      '@Output()<br>stream: EventEmitter&lt;string[] | Observable&lt;string[]&gt;&gt;'
     );
   });
 
@@ -568,7 +568,7 @@ describe('Type definitions format service', () => {
 
     const formattedName = service.getFormattedPropertyName(def);
     expect(formattedName).toEqual(
-      '@Output()<br>click?: EventEmitter&lt;FooUser[]&gt;'
+      '@Output()<br>click: EventEmitter&lt;FooUser[]&gt;'
     );
   });
 
