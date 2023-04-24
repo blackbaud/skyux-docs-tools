@@ -1,3 +1,7 @@
+# 7.2.0 (2023-04-24)
+
+- Added the ability to specify a anatomy thumbnail outside of the anatomy item so that it goes full wdith. [#244](https://github.com/blackbaud/skyux-docs-tools/pull/244)
+
 # 7.1.3 (2023-03-24)
 
 - Fixed component events to not be listed as optional. [#241](https://github.com/blackbaud/skyux-docs-tools/pull/241)
