@@ -3,6 +3,6 @@
 @import 'node_modules/@skyux/theme/scss/_compat/mixins';
 @import 'node_modules/@skyux/theme/scss/_compat/variables';
 
-.sky-docs-anatomy-items {
-  padding-bottom: $sky-padding-double;
+.sky-docs-anatomy-thumbnail {
+  margin-bottom: $sky-margin * 5;
 }

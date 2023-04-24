@@ -76,3 +76,4 @@ export { SkyDocsPipeDefinitionComponent as λ27 } from './modules/type-definitio
 export { SkyDocsPropertyDefinitionsComponent as λ28 } from './modules/type-definitions/property-definitions.component';
 export { SkyDocsTypeAliasDefinitionComponent as λ29 } from './modules/type-definitions/type-alias-definition.component';
 export { SkyDocsTypeAnchorLinksPipe as λ30 } from './modules/type-definitions/type-anchor-links.pipe';
+export { SkyDocsAnatomyThumbnailComponent as λ31 } from './modules/anatomy/anatomy-thumbnail.component';
