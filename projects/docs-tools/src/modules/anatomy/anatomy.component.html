@@ -1,10 +1,22 @@
 <div class="sky-docs-anatomy">
   <sky-row>
-    <sky-column screenSmall="6" screenMedium="5" screenLarge="4">
+    <sky-column
+      class="sky-docs-anatomy-items"
+      screenSmall="6"
+      screenMedium="5"
+      screenLarge="4"
+    >
       <ng-content select="sky-docs-anatomy-item"></ng-content>
     </sky-column>
     <sky-column screenSmall="6" screenMedium="7" screenLarge="8">
-      <sky-image [imageSource]="imagePath"></sky-image>
+      <sky-image
+        *ngIf="imagePath; else thumbnails"
+        [imageSource]="imagePath"
+      ></sky-image>
     </sky-column>
   </sky-row>
 </div>
+
+<ng-template #thumbnails>
+  <ng-content select="sky-docs-anatomy-thumbnail"></ng-content>
+</ng-template>
