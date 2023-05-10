@@ -1,3 +1,13 @@
+# 8.0.0-beta.0 (2023-05-10)
+
+### ⚠ BREAKING CHANGES
+
+- drop support for Angular 14
+
+### Features
+
+- add support for Angular 15
+
 # 7.2.0 (2023-04-24)
 
 - Added the ability to specify a anatomy thumbnail outside of the anatomy item so that it goes full wdith. [#244](https://github.com/blackbaud/skyux-docs-tools/pull/244)

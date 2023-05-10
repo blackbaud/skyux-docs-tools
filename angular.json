@@ -35,7 +35,8 @@
             "styles": [
               "node_modules/@skyux/theme/css/sky.css",
               "node_modules/@skyux/theme/css/themes/modern/styles.css"
-            ]
+            ],
+            "polyfills": ["@skyux/packages/polyfills"]
           }
         },
         "lint": {
@@ -88,7 +89,10 @@
             "outputPath": "dist/docs-tools-showcase",
             "index": "projects/docs-tools-showcase/src/index.html",
             "main": "projects/docs-tools-showcase/src/main.ts",
-            "polyfills": "projects/docs-tools-showcase/src/polyfills.ts",
+            "polyfills": [
+              "projects/docs-tools-showcase/src/polyfills.ts",
+              "@skyux/packages/polyfills"
+            ],
             "tsConfig": "projects/docs-tools-showcase/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
@@ -100,7 +104,8 @@
               "node_modules/@skyux/theme/css/themes/modern/styles.css",
               "projects/docs-tools/src/styles/docs-tools.scss",
               "projects/docs-tools-showcase/src/styles.scss",
-              "projects/docs-tools-showcase/src/app/skyux7-compat.css"
+              "projects/docs-tools-showcase/src/app/skyux7-compat.css",
+              "projects/docs-tools-showcase/src/app/skyux8-compat.css"
             ],
             "scripts": []
           },
@@ -159,7 +164,10 @@
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "main": "projects/docs-tools-showcase/src/test.ts",
-            "polyfills": "projects/docs-tools-showcase/src/polyfills.ts",
+            "polyfills": [
+              "projects/docs-tools-showcase/src/polyfills.ts",
+              "@skyux/packages/polyfills"
+            ],
             "tsConfig": "projects/docs-tools-showcase/tsconfig.spec.json",
             "karmaConfig": "projects/docs-tools-showcase/karma.conf.js",
             "inlineStyleLanguage": "scss",
@@ -171,7 +179,8 @@
               "node_modules/@skyux/theme/css/sky.css",
               "node_modules/@skyux/theme/css/themes/modern/styles.css",
               "projects/docs-tools-showcase/src/styles.scss",
-              "projects/docs-tools-showcase/src/app/skyux7-compat.css"
+              "projects/docs-tools-showcase/src/app/skyux7-compat.css",
+              "projects/docs-tools-showcase/src/app/skyux8-compat.css"
             ],
             "scripts": []
           }
@@ -190,5 +199,13 @@
   },
   "cli": {
     "schematicCollections": ["@angular-eslint/schematics"]
+  },
+  "schematics": {
+    "@angular-eslint/schematics:application": {
+      "setParserOptionsProject": true
+    },
+    "@angular-eslint/schematics:library": {
+      "setParserOptionsProject": true
+    }
   }
 }
