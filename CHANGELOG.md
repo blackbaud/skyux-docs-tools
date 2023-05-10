@@ -2,11 +2,11 @@
 
 ### ⚠ BREAKING CHANGES
 
-- drop support for Angular 14
+- Dropped support for Angular 14. [#246](https://github.com/blackbaud/skyux-docs-tools/pull/246)
 
 ### Features
 
-- add support for Angular 15
+- Added support for Angular 15. [#246](https://github.com/blackbaud/skyux-docs-tools/pull/246)
 
 # 7.2.0 (2023-04-24)
 
