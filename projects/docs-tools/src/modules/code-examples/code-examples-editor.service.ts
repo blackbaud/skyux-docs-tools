@@ -30,14 +30,17 @@ export class SkyDocsCodeExamplesEditorService {
   }
 
   private getPayload(codeExample: SkyDocsCodeExample): StackBlitzProject {
-    const angularVersion = '^14.0.0';
-    const skyuxVersion = '^7.0.0';
+    const angularVersion = '^15.0.0';
+    const skyuxVersion = '^8.0.0';
 
     const defaultDependencies: SkyDocsCodeExampleModuleDependencies = {
+      '@angular-devkit/build-angular': angularVersion,
       '@angular/animations': angularVersion,
       '@angular/cdk': angularVersion,
+      '@angular/cli': angularVersion,
       '@angular/common': angularVersion,
       '@angular/compiler': angularVersion,
+      '@angular/compiler-cli': angularVersion,
       '@angular/core': angularVersion,
       '@angular/forms': angularVersion,
       '@angular/platform-browser': angularVersion,
@@ -54,6 +57,7 @@ export class SkyDocsCodeExamplesEditorService {
       '@skyux/indicators': skyuxVersion,
       '@skyux/layout': skyuxVersion,
       '@skyux/modals': skyuxVersion,
+      '@skyux/packages': skyuxVersion,
       '@skyux/popovers': skyuxVersion,
       '@skyux/router': skyuxVersion,
       '@skyux/theme': skyuxVersion,
@@ -62,7 +66,8 @@ export class SkyDocsCodeExamplesEditorService {
       'ng2-dragula': '2.1.1',
       rxjs: '^7',
       tslib: '^2.3.0',
-      'zone.js': '~0.11.4',
+      typescript: '~4.9.4',
+      'zone.js': '~0.12.0',
     };
 
     const mergedDependencies = Object.assign(
@@ -97,7 +102,7 @@ export class SkyDocsCodeExamplesEditorService {
       files,
       title: 'SKY UX Demo',
       description: 'SKY UX Demo',
-      template: 'angular-cli',
+      template: 'node',
       dependencies: mergedDependencies,
       settings: {
         compile: {
@@ -235,41 +240,40 @@ export class AppComponent {
 export class AppModule { }
 `;
 
-    files[`${srcPath}index.html`] = `<!--
-  The CSS links are needed for the StackBlitz demo only.
-  This is a workaround for a known bug that prevents external imports in CSS.
-  https://github.com/stackblitz/core/issues/133
--->
-<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-<link rel="stylesheet" type="text/css" href="https://sky.blackbaudcdn.net/static/skyux-icons/5/assets/css/skyux-icons.min.css" />
-
-<sky-demo-app>
-  Loading...
-</sky-demo-app>`;
+    files[`${srcPath}index.html`] = `<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Sky UX Demo</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--
+    The CSS links are needed for the StackBlitz demo only.
+    This is a workaround for a known bug that prevents external imports in CSS.
+    https://github.com/stackblitz/core/issues/133
+  -->
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" type="text/css" href="https://sky.blackbaudcdn.net/static/skyux-icons/6.0.0/assets/css/skyux-icons.min.css" />
+</head>
+<body>
+  <sky-demo-app>
+    Loading...
+  </sky-demo-app>
+</body>
+</html>
+`;
 
     files[`${srcPath}main.ts`] = `${banner}
-import './polyfills';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
-import {
-  platformBrowserDynamic
-} from '@angular/platform-browser-dynamic';
+import { AppModule } from './app/app.module';
 
-import {
-  AppModule
-} from './app/app.module';
-
-platformBrowserDynamic()
-  .bootstrapModule(AppModule)
-  .catch((err) => console.error(err));
-
+platformBrowserDynamic().bootstrapModule(AppModule)
+  .catch(err => console.error(err));
 `;
 
-    files[`${srcPath}polyfills.ts`] = `${banner}
-import 'zone.js';
-`;
-
-    files[`${srcPath}styles.scss`] = `@import '~@skyux/theme/css/sky';
-@import '~@skyux/theme/css/themes/modern/styles';
+    files[`${srcPath}styles.scss`] = `@import '@skyux/theme/css/sky';
+@import '@skyux/theme/css/themes/modern/styles';
 
 body {
   background-color: #fff;
@@ -278,55 +282,126 @@ body {
 
     stylesheets.push('src/styles.scss');
 
-    files['angular.json'] = `{
-  "projects": {
-    "demo": {
-      "architect": {
-        "build": {
-          "options": {
-            "index": "src/index.html",
-            "styles": ${JSON.stringify(stylesheets)}
-          }
-        }
-      }
-    }
-  }
-}`;
-
-    files['package.json'] = JSON.stringify(
+    files['angular.json'] = JSON.stringify(
       {
-        dependencies,
+        $schema: './node_modules/@angular/cli/lib/config/schema.json',
+        version: 1,
+        projects: {
+          demo: {
+            projectType: 'application',
+            root: '',
+            sourceRoot: 'src',
+            prefix: 'app',
+            architect: {
+              build: {
+                builder: '@angular-devkit/build-angular:browser',
+                options: {
+                  outputPath: 'dist/demo',
+                  index: 'src/index.html',
+                  main: 'src/main.ts',
+                  polyfills: ['zone.js', '@skyux/packages/polyfills'],
+                  tsConfig: 'tsconfig.app.json',
+                  inlineStyleLanguage: 'scss',
+                  assets: [],
+                  styles: stylesheets,
+                  scripts: [],
+                },
+                configurations: {
+                  development: {
+                    buildOptimizer: false,
+                    optimization: false,
+                    vendorChunk: true,
+                    extractLicenses: false,
+                    sourceMap: true,
+                    namedChunks: true,
+                  },
+                },
+                defaultConfiguration: 'development',
+              },
+              serve: {
+                builder: '@angular-devkit/build-angular:dev-server',
+                configurations: {
+                  development: {
+                    browserTarget: 'demo:build:development',
+                  },
+                },
+                defaultConfiguration: 'development',
+              },
+              'extract-i18n': {
+                builder: '@angular-devkit/build-angular:extract-i18n',
+                options: {
+                  browserTarget: 'demo:build',
+                },
+              },
+            },
+          },
+        },
       },
       undefined,
       2
     );
 
-    files['tsconfig.json'] = `{
-  "compilerOptions": {
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
-    "target": "es2017",
-    "module": "es2020",
-    "moduleResolution": "node",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "importHelpers": true,
-    "typeRoots": ["node_modules/@types"],
-    "lib": [
-      "es2020",
-      "dom"
-    ]
-  },
-  "angularCompilerOptions": {
-    "fullTemplateTypeCheck": true,
-    "strictInjectionParameters": true,
-    "strictInputAccessModifiers": true,
-    "strictTemplates": true,
-    "enableIvy": true
-  }
-}`;
+    files['package.json'] = JSON.stringify(
+      {
+        name: 'skyux-spa-demo',
+        dependencies,
+        scripts: {
+          start: 'ng serve',
+          build: 'ng build',
+        },
+      },
+      undefined,
+      2
+    );
+
+    files['tsconfig.app.json'] = JSON.stringify(
+      {
+        extends: './tsconfig.json',
+        compilerOptions: {
+          outDir: './out-tsc/app',
+          types: [],
+        },
+        files: ['src/main.ts'],
+        include: ['src/**/*.d.ts'],
+      },
+      undefined,
+      2
+    );
+    files['tsconfig.json'] = JSON.stringify(
+      {
+        compileOnSave: false,
+        compilerOptions: {
+          baseUrl: './',
+          outDir: './dist/out-tsc',
+          forceConsistentCasingInFileNames: true,
+          strict: true,
+          noImplicitOverride: true,
+          noPropertyAccessFromIndexSignature: true,
+          noImplicitReturns: true,
+          noFallthroughCasesInSwitch: true,
+          sourceMap: true,
+          declaration: false,
+          downlevelIteration: true,
+          experimentalDecorators: true,
+          moduleResolution: 'node',
+          importHelpers: true,
+          typeRoots: ['node_modules/@types'],
+          target: 'ES2022',
+          module: 'ES2022',
+          useDefineForClassFields: false,
+          lib: ['ES2022', 'dom'],
+        },
+        angularCompilerOptions: {
+          fullTemplateTypeCheck: true,
+          enableI18nLegacyMessageIdFormat: false,
+          strictInjectionParameters: true,
+          strictInputAccessModifiers: true,
+          strictTemplates: true,
+        },
+      },
+      undefined,
+      2
+    );
 
     return files;
   }
