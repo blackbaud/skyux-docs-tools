@@ -1,3 +1,7 @@
+# 8.0.1 (2023-05-11)
+
+- Updated code examples to use Angular 15. [#247](https://github.com/blackbaud/skyux-docs-tools/pull/247)
+
 # 8.0.0 (2023-05-10)
 
 ### ⚠ BREAKING CHANGES
