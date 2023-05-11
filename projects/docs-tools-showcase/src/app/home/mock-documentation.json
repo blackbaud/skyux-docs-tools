@@ -10,29 +10,27 @@
     "SkyColorpickerMessage": "interface-skycolorpickermessage",
     "SkyColorpickerOutput": "interface-skycolorpickeroutput",
     "SkyColorpickerResult": "interface-skycolorpickerresult",
-    "SkyColorpickerRgba": "interface-skycolorpickerrgba",
-    "SkyColorpickerUtils": "class-skycolorpickerutils"
+    "SkyColorpickerRgba": "interface-skycolorpickerrgba"
   },
   "typedoc": {
     "id": 0,
     "name": "@skyux/colorpicker",
     "kind": 1,
-    "kindString": "Project",
     "flags": {},
     "originalName": "",
     "children": [
       {
-        "id": 264,
+        "id": 252,
         "name": "SkyColorpickerMessageType",
         "kind": 8,
         "kindString": "Enumeration",
         "flags": {},
         "comment": {
-          "shortText": "Specifies the commands to provide the colorpicker."
+          "shortText": "The commands to provide the colorpicker."
         },
         "children": [
           {
-            "id": 268,
+            "id": 256,
             "name": "Close",
             "kind": 16,
             "kindString": "Enumeration member",
@@ -50,7 +48,7 @@
             "defaultValue": "3"
           },
           {
-            "id": 265,
+            "id": 253,
             "name": "Open",
             "kind": 16,
             "kindString": "Enumeration member",
@@ -68,7 +66,7 @@
             "defaultValue": "0"
           },
           {
-            "id": 266,
+            "id": 254,
             "name": "Reset",
             "kind": 16,
             "kindString": "Enumeration member",
@@ -86,7 +84,7 @@
             "defaultValue": "1"
           },
           {
-            "id": 267,
+            "id": 255,
             "name": "ToggleResetButton",
             "kind": 16,
             "kindString": "Enumeration member",
@@ -108,7 +106,12 @@
           {
             "title": "Enumeration members",
             "kind": 16,
-            "children": [268, 265, 266, 267]
+            "children": [
+              256,
+              253,
+              254,
+              255
+            ]
           }
         ],
         "sources": [
@@ -120,133 +123,7 @@
         ]
       },
       {
-        "id": 619,
-        "name": "SkyColorpickerUtils",
-        "kind": 128,
-        "kindString": "Class",
-        "flags": {},
-        "children": [
-          {
-            "id": 620,
-            "name": "getColorExample",
-            "kind": 2048,
-            "kindString": "Method",
-            "flags": {
-              "isPublic": true,
-              "isStatic": true
-            },
-            "sources": [
-              {
-                "fileName": "projects/colorpicker/src/modules/colorpicker/types/colorpicker-utils.ts",
-                "line": 10,
-                "character": 16
-              }
-            ],
-            "signatures": [
-              {
-                "id": 621,
-                "name": "getColorExample",
-                "kind": 4096,
-                "kindString": "Call signature",
-                "flags": {},
-                "comment": {
-                  "shortText": "Gets an example color."
-                },
-                "parameters": [
-                  {
-                    "id": 622,
-                    "name": "params",
-                    "kind": 32768,
-                    "kindString": "Parameter",
-                    "flags": {},
-                    "comment": {
-                      "shortText": "The method parameter.\n"
-                    },
-                    "type": {
-                      "type": "intrinsic",
-                      "name": "boolean"
-                    }
-                  }
-                ],
-                "type": {
-                  "type": "intrinsic",
-                  "name": "boolean"
-                }
-              }
-            ]
-          },
-          {
-            "id": 623,
-            "name": "getRainbow",
-            "kind": 2048,
-            "kindString": "Method",
-            "flags": {
-              "isPublic": true,
-              "isStatic": false
-            },
-            "sources": [
-              {
-                "fileName": "projects/colorpicker/src/modules/colorpicker/types/colorpicker-utils.ts",
-                "line": 10,
-                "character": 16
-              }
-            ],
-            "signatures": [
-              {
-                "id": 624,
-                "name": "getRainbow",
-                "kind": 4096,
-                "kindString": "Call signature",
-                "flags": {},
-                "comment": {
-                  "shortText": "Gets a rainbow."
-                },
-                "parameters": [
-                  {
-                    "id": 625,
-                    "name": "params",
-                    "kind": 32768,
-                    "kindString": "Parameter",
-                    "flags": {},
-                    "comment": {
-                      "shortText": "The method parameter.\n"
-                    },
-                    "type": {
-                      "type": "intrinsic",
-                      "name": "boolean"
-                    }
-                  }
-                ],
-                "type": {
-                  "type": "intrinsic",
-                  "name": "boolean"
-                }
-              }
-            ]
-          }
-        ],
-        "groups": [
-          {
-            "title": "Constructors",
-            "kind": 512,
-            "children": [623]
-          },
-          {
-            "title": "Methods",
-            "kind": 2048,
-            "children": [620]
-          }
-        ],
-        "sources": [
-          {
-            "fileName": "projects/colorpicker/src/modules/colorpicker/types/colorpicker-utils.ts",
-            "line": 5,
-            "character": 13
-          }
-        ]
-      },
-      {
-        "id": 234,
+        "id": 222,
         "name": "SkyColorpickerModule",
         "kind": 128,
         "kindString": "Class",
@@ -261,7 +138,7 @@
               "name": "NgModule"
             },
             "arguments": {
-              "obj": "{\n  declarations: [\n    SkyColorpickerComponent,\n    SkyColorpickerInputDirective,\n    SkyColorpickerTextDirective,\n    SkyColorpickerSliderDirective,\n  ],\n  imports: [\n    CommonModule,\n    SkyAffixModule,\n    SkyColorpickerResourcesModule,\n    SkyI18nModule,\n    SkyIconModule,\n    SkyInputBoxModule,\n    SkyOverlayModule,\n    SkyThemeModule,\n  ],\n  exports: [SkyColorpickerComponent, SkyColorpickerInputDirective],\n  entryComponents: [SkyColorpickerComponent],\n}"
+              "obj": "{\n  declarations: [\n    SkyColorpickerComponent,\n    SkyColorpickerInputDirective,\n    SkyColorpickerTextDirective,\n    SkyColorpickerSliderDirective,\n  ],\n  imports: [\n    CommonModule,\n    SkyAffixModule,\n    SkyColorpickerResourcesModule,\n    SkyI18nModule,\n    SkyIconModule,\n    SkyInputBoxModule,\n    SkyOverlayModule,\n    SkyThemeModule,\n  ],\n  exports: [SkyColorpickerComponent, SkyColorpickerInputDirective],\n}"
             }
           }
         ],
@@ -270,25 +147,27 @@
           {
             "title": "Constructors",
             "kind": 512,
-            "children": [235]
+            "children": [
+              223
+            ]
           }
         ],
         "sources": [
           {
             "fileName": "projects/colorpicker/src/modules/colorpicker/colorpicker.module.ts",
-            "line": 36,
+            "line": 35,
             "character": 13
           }
         ]
       },
       {
-        "id": 1,
+        "id": 3,
         "name": "SkyColorpickerComponent",
         "kind": 128,
         "kindString": "Class",
         "flags": {},
         "comment": {
-          "shortText": "Provides a SKY UX-themed replacement for the HTML `input` element with `type=\"color\"`.\nThe value that users select is driven through the `ngModel` attribute specified on\nthe `input` element."
+          "shortText": "The SKY UX-themed replacement for the HTML `input` element with `type=\"color\"`.\nThe value that users select is driven through the `ngModel` attribute specified on\nthe `input` element."
         },
         "decorators": [
           {
@@ -306,7 +185,7 @@
         ],
         "children": [
           {
-            "id": 2,
+            "id": 4,
             "name": "constructor",
             "kind": 512,
             "kindString": "Constructor",
@@ -314,21 +193,21 @@
             "sources": [
               {
                 "fileName": "projects/colorpicker/src/modules/colorpicker/colorpicker.component.ts",
-                "line": 223,
+                "line": 305,
                 "character": 2
               }
             ],
             "signatures": [
               {
-                "id": 3,
+                "id": 5,
                 "name": "SkyColorpickerComponent",
                 "kind": 16384,
                 "kindString": "Constructor signature",
                 "flags": {},
                 "parameters": [
                   {
-                    "id": 4,
-                    "name": "affixService",
+                    "id": 6,
+                    "name": "affixSvc",
                     "kind": 32768,
                     "kindString": "Parameter",
                     "flags": {},
@@ -338,7 +217,7 @@
                     }
                   },
                   {
-                    "id": 5,
+                    "id": 7,
                     "name": "changeDetector",
                     "kind": 32768,
                     "kindString": "Parameter",
@@ -351,7 +230,7 @@
                     }
                   },
                   {
-                    "id": 6,
+                    "id": 8,
                     "name": "coreAdapter",
                     "kind": 32768,
                     "kindString": "Parameter",
@@ -362,8 +241,8 @@
                     }
                   },
                   {
-                    "id": 7,
-                    "name": "overlayService",
+                    "id": 9,
+                    "name": "overlaySvc",
                     "kind": 32768,
                     "kindString": "Parameter",
                     "flags": {},
@@ -373,8 +252,8 @@
                     }
                   },
                   {
-                    "id": 8,
-                    "name": "service",
+                    "id": 10,
+                    "name": "svc",
                     "kind": 32768,
                     "kindString": "Parameter",
                     "flags": {},
@@ -384,7 +263,7 @@
                     }
                   },
                   {
-                    "id": 9,
+                    "id": 11,
                     "name": "themeSvc",
                     "kind": 32768,
                     "kindString": "Parameter",
@@ -411,235 +290,14 @@
                 ],
                 "type": {
                   "type": "reference",
-                  "id": 1,
+                  "id": 3,
                   "name": "SkyColorpickerComponent"
                 }
               }
             ]
           },
           {
-            "id": 29,
-            "name": "allowTransparency",
-            "kind": 1024,
-            "kindString": "Property",
-            "flags": {
-              "isPublic": true
-            },
-            "sources": [
-              {
-                "fileName": "projects/colorpicker/src/modules/colorpicker/colorpicker.component.ts",
-                "line": 128,
-                "character": 9
-              }
-            ],
-            "type": {
-              "type": "intrinsic",
-              "name": "boolean"
-            }
-          },
-          {
-            "id": 28,
-            "name": "alphaChannel",
-            "kind": 1024,
-            "kindString": "Property",
-            "flags": {
-              "isPublic": true
-            },
-            "sources": [
-              {
-                "fileName": "projects/colorpicker/src/modules/colorpicker/colorpicker.component.ts",
-                "line": 127,
-                "character": 9
-              }
-            ],
-            "type": {
-              "type": "intrinsic",
-              "name": "string"
-            }
-          },
-          {
-            "id": 30,
-            "name": "alphaSliderColor",
-            "kind": 1024,
-            "kindString": "Property",
-            "flags": {
-              "isPublic": true
-            },
-            "sources": [
-              {
-                "fileName": "projects/colorpicker/src/modules/colorpicker/colorpicker.component.ts",
-                "line": 129,
-                "character": 9
-              }
-            ],
-            "type": {
-              "type": "intrinsic",
-              "name": "string"
-            }
-          },
-          {
-            "id": 31,
-            "name": "arrowTop",
-            "kind": 1024,
-            "kindString": "Property",
-            "flags": {
-              "isPublic": true
-            },
-            "sources": [
-              {
-                "fileName": "projects/colorpicker/src/modules/colorpicker/colorpicker.component.ts",
-                "line": 130,
-                "character": 9
-              }
-            ],
-            "type": {
-              "type": "intrinsic",
-              "name": "number"
-            }
-          },
-          {
-            "id": 50,
-            "name": "colorpickerId",
-            "kind": 1024,
-            "kindString": "Property",
-            "flags": {
-              "isPublic": true
-            },
-            "sources": [
-              {
-                "fileName": "projects/colorpicker/src/modules/colorpicker/colorpicker.component.ts",
-                "line": 158,
-                "character": 9
-              }
-            ],
-            "type": {
-              "type": "intrinsic",
-              "name": "string"
-            }
-          },
-          {
-            "id": 32,
-            "name": "format",
-            "kind": 1024,
-            "kindString": "Property",
-            "flags": {
-              "isPublic": true
-            },
-            "sources": [
-              {
-                "fileName": "projects/colorpicker/src/modules/colorpicker/colorpicker.component.ts",
-                "line": 131,
-                "character": 9
-              }
-            ],
-            "type": {
-              "type": "intrinsic",
-              "name": "number"
-            }
-          },
-          {
-            "id": 33,
-            "name": "hexText",
-            "kind": 1024,
-            "kindString": "Property",
-            "flags": {
-              "isPublic": true
-            },
-            "sources": [
-              {
-                "fileName": "projects/colorpicker/src/modules/colorpicker/colorpicker.component.ts",
-                "line": 132,
-                "character": 9
-              }
-            ],
-            "type": {
-              "type": "intrinsic",
-              "name": "string"
-            }
-          },
-          {
-            "id": 34,
-            "name": "hslaText",
-            "kind": 1024,
-            "kindString": "Property",
-            "flags": {
-              "isPublic": true
-            },
-            "sources": [
-              {
-                "fileName": "projects/colorpicker/src/modules/colorpicker/colorpicker.component.ts",
-                "line": 133,
-                "character": 9
-              }
-            ],
-            "type": {
-              "type": "reference",
-              "id": 252,
-              "name": "SkyColorpickerHsla"
-            }
-          },
-          {
-            "id": 35,
-            "name": "hueSliderColor",
-            "kind": 1024,
-            "kindString": "Property",
-            "flags": {
-              "isPublic": true
-            },
-            "sources": [
-              {
-                "fileName": "projects/colorpicker/src/modules/colorpicker/colorpicker.component.ts",
-                "line": 134,
-                "character": 9
-              }
-            ],
-            "type": {
-              "type": "intrinsic",
-              "name": "string"
-            }
-          },
-          {
-            "id": 42,
-            "name": "iconColor",
-            "kind": 1024,
-            "kindString": "Property",
-            "flags": {
-              "isPublic": true
-            },
-            "sources": [
-              {
-                "fileName": "projects/colorpicker/src/modules/colorpicker/colorpicker.component.ts",
-                "line": 141,
-                "character": 9
-              }
-            ],
-            "type": {
-              "type": "intrinsic",
-              "name": "string"
-            }
-          },
-          {
-            "id": 22,
-            "name": "idIndex",
-            "kind": 1024,
-            "kindString": "Property",
-            "flags": {
-              "isPublic": true
-            },
-            "sources": [
-              {
-                "fileName": "projects/colorpicker/src/modules/colorpicker/colorpicker.component.ts",
-                "line": 121,
-                "character": 9
-              }
-            ],
-            "type": {
-              "type": "intrinsic",
-              "name": "number"
-            }
-          },
-          {
-            "id": 43,
+            "id": 54,
             "name": "initialColor",
             "kind": 1024,
             "kindString": "Property",
@@ -649,7 +307,7 @@
             "sources": [
               {
                 "fileName": "projects/colorpicker/src/modules/colorpicker/colorpicker.component.ts",
-                "line": 142,
+                "line": 220,
                 "character": 9
               }
             ],
@@ -659,48 +317,7 @@
             }
           },
           {
-            "id": 51,
-            "name": "isOpen",
-            "kind": 1024,
-            "kindString": "Property",
-            "flags": {
-              "isPublic": true
-            },
-            "sources": [
-              {
-                "fileName": "projects/colorpicker/src/modules/colorpicker/colorpicker.component.ts",
-                "line": 160,
-                "character": 9
-              }
-            ],
-            "type": {
-              "type": "intrinsic",
-              "name": "boolean"
-            },
-            "defaultValue": "false"
-          },
-          {
-            "id": 45,
-            "name": "isPickerVisible",
-            "kind": 1024,
-            "kindString": "Property",
-            "flags": {
-              "isPublic": true
-            },
-            "sources": [
-              {
-                "fileName": "projects/colorpicker/src/modules/colorpicker/colorpicker.component.ts",
-                "line": 144,
-                "character": 9
-              }
-            ],
-            "type": {
-              "type": "intrinsic",
-              "name": "boolean"
-            }
-          },
-          {
-            "id": 52,
+            "id": 56,
             "name": "isVisible",
             "kind": 1024,
             "kindString": "Property",
@@ -710,7 +327,7 @@
             "sources": [
               {
                 "fileName": "projects/colorpicker/src/modules/colorpicker/colorpicker.component.ts",
-                "line": 162,
+                "line": 222,
                 "character": 9
               }
             ],
@@ -721,7 +338,7 @@
             "defaultValue": "true"
           },
           {
-            "id": 12,
+            "id": 14,
             "name": "label",
             "kind": 1024,
             "kindString": "Property",
@@ -729,7 +346,7 @@
               "isPublic": true
             },
             "comment": {
-              "shortText": "Specifies an ARIA label for the colorpicker. This sets the colorpicker's `aria-label` attribute\n[to support accessibility](https://developer.blackbaud.com/skyux/components/checkbox#accessibility)\nwhen the colorpicker does not include a visible label. If the colorpicker includes a visible label, use `labelledBy` instead.",
+              "shortText": "The ARIA label for the colorpicker. This sets the colorpicker's `aria-label` attribute\n[to support accessibility](https://developer.blackbaud.com/skyux/components/checkbox#accessibility)\nwhen the colorpicker does not include a visible label. If the colorpicker includes a visible label, use `labelledBy` instead.",
               "tags": [
                 {
                   "tag": "default",
@@ -762,7 +379,7 @@
             }
           },
           {
-            "id": 13,
+            "id": 15,
             "name": "labelledBy",
             "kind": 1024,
             "kindString": "Property",
@@ -770,7 +387,7 @@
               "isPublic": true
             },
             "comment": {
-              "shortText": "Specifies the HTML element ID (without the leading `#`) of the element that labels the\ncolorpicker. This sets the colorpicker's `aria-labelledby` attribute\n[to support accessibility](https://developer.blackbaud.com/skyux/components/checkbox#accessibility).\nIf the colorpicker does not include a visible label, use `label` instead."
+              "shortText": "The HTML element ID of the element that labels the\ncolorpicker. This sets the colorpicker's `aria-labelledby` attribute\n[to support accessibility](https://developer.blackbaud.com/skyux/components/checkbox#accessibility).\nIf the colorpicker does not include a visible label, use `label` instead."
             },
             "decorators": [
               {
@@ -797,7 +414,7 @@
             }
           },
           {
-            "id": 44,
+            "id": 55,
             "name": "lastAppliedColor",
             "kind": 1024,
             "kindString": "Property",
@@ -807,7 +424,7 @@
             "sources": [
               {
                 "fileName": "projects/colorpicker/src/modules/colorpicker/colorpicker.component.ts",
-                "line": 143,
+                "line": 221,
                 "character": 9
               }
             ],
@@ -817,7 +434,7 @@
             }
           },
           {
-            "id": 16,
+            "id": 18,
             "name": "messageStream",
             "kind": 1024,
             "kindString": "Property",
@@ -825,7 +442,7 @@
               "isPublic": true
             },
             "comment": {
-              "shortText": "Provides an observable to send commands to the colorpicker. The commands should\nrespect the `SkyColorPickerMessage` type."
+              "shortText": "The observable to send commands to the colorpicker. The commands should\nrespect the `SkyColorPickerMessage` type."
             },
             "decorators": [
               {
@@ -851,7 +468,7 @@
               "typeArguments": [
                 {
                   "type": "reference",
-                  "id": 262,
+                  "id": 250,
                   "name": "SkyColorpickerMessage"
                 }
               ],
@@ -862,50 +479,7 @@
             "defaultValue": "..."
           },
           {
-            "id": 36,
-            "name": "outputFormat",
-            "kind": 1024,
-            "kindString": "Property",
-            "flags": {
-              "isPublic": true
-            },
-            "sources": [
-              {
-                "fileName": "projects/colorpicker/src/modules/colorpicker/colorpicker.component.ts",
-                "line": 135,
-                "character": 9
-              }
-            ],
-            "type": {
-              "type": "intrinsic",
-              "name": "string"
-            }
-          },
-          {
-            "id": 37,
-            "name": "presetColors",
-            "kind": 1024,
-            "kindString": "Property",
-            "flags": {
-              "isPublic": true
-            },
-            "sources": [
-              {
-                "fileName": "projects/colorpicker/src/modules/colorpicker/colorpicker.component.ts",
-                "line": 136,
-                "character": 9
-              }
-            ],
-            "type": {
-              "type": "array",
-              "elementType": {
-                "type": "intrinsic",
-                "name": "string"
-              }
-            }
-          },
-          {
-            "id": 38,
+            "id": 53,
             "name": "returnFormat",
             "kind": 1024,
             "kindString": "Property",
@@ -915,7 +489,7 @@
             "sources": [
               {
                 "fileName": "projects/colorpicker/src/modules/colorpicker/colorpicker.component.ts",
-                "line": 137,
+                "line": 219,
                 "character": 9
               }
             ],
@@ -925,49 +499,7 @@
             }
           },
           {
-            "id": 39,
-            "name": "rgbaText",
-            "kind": 1024,
-            "kindString": "Property",
-            "flags": {
-              "isPublic": true
-            },
-            "sources": [
-              {
-                "fileName": "projects/colorpicker/src/modules/colorpicker/colorpicker.component.ts",
-                "line": 138,
-                "character": 9
-              }
-            ],
-            "type": {
-              "type": "reference",
-              "id": 280,
-              "name": "SkyColorpickerRgba"
-            }
-          },
-          {
-            "id": 40,
-            "name": "selectedColor",
-            "kind": 1024,
-            "kindString": "Property",
-            "flags": {
-              "isPublic": true
-            },
-            "sources": [
-              {
-                "fileName": "projects/colorpicker/src/modules/colorpicker/colorpicker.component.ts",
-                "line": 139,
-                "character": 9
-              }
-            ],
-            "type": {
-              "type": "reference",
-              "id": 269,
-              "name": "SkyColorpickerOutput"
-            }
-          },
-          {
-            "id": 15,
+            "id": 17,
             "name": "selectedColorApplied",
             "kind": 1024,
             "kindString": "Property",
@@ -1001,7 +533,7 @@
               "typeArguments": [
                 {
                   "type": "reference",
-                  "id": 278,
+                  "id": 266,
                   "name": "SkyColorpickerResult"
                 }
               ],
@@ -1012,7 +544,7 @@
             "defaultValue": "..."
           },
           {
-            "id": 14,
+            "id": 16,
             "name": "selectedColorChanged",
             "kind": 1024,
             "kindString": "Property",
@@ -1046,7 +578,7 @@
               "typeArguments": [
                 {
                   "type": "reference",
-                  "id": 269,
+                  "id": 257,
                   "name": "SkyColorpickerOutput"
                 }
               ],
@@ -1057,7 +589,7 @@
             "defaultValue": "..."
           },
           {
-            "id": 17,
+            "id": 19,
             "name": "showResetButton",
             "kind": 1024,
             "kindString": "Property",
@@ -1065,7 +597,7 @@
               "isPublic": true
             },
             "comment": {
-              "shortText": "Indicates whether to display a reset button to let users return to the default color."
+              "shortText": "Whether to display a reset button to let users return to the default color."
             },
             "decorators": [
               {
@@ -1093,7 +625,7 @@
             "defaultValue": "true"
           },
           {
-            "id": 27,
+            "id": 52,
             "name": "skyColorpickerAlphaId",
             "kind": 1024,
             "kindString": "Property",
@@ -1103,7 +635,7 @@
             "sources": [
               {
                 "fileName": "projects/colorpicker/src/modules/colorpicker/colorpicker.component.ts",
-                "line": 126,
+                "line": 218,
                 "character": 9
               }
             ],
@@ -1113,127 +645,7 @@
             }
           },
           {
-            "id": 26,
-            "name": "skyColorpickerBlueId",
-            "kind": 1024,
-            "kindString": "Property",
-            "flags": {
-              "isPublic": true
-            },
-            "sources": [
-              {
-                "fileName": "projects/colorpicker/src/modules/colorpicker/colorpicker.component.ts",
-                "line": 125,
-                "character": 9
-              }
-            ],
-            "type": {
-              "type": "intrinsic",
-              "name": "string"
-            }
-          },
-          {
-            "id": 25,
-            "name": "skyColorpickerGreenId",
-            "kind": 1024,
-            "kindString": "Property",
-            "flags": {
-              "isPublic": true
-            },
-            "sources": [
-              {
-                "fileName": "projects/colorpicker/src/modules/colorpicker/colorpicker.component.ts",
-                "line": 124,
-                "character": 9
-              }
-            ],
-            "type": {
-              "type": "intrinsic",
-              "name": "string"
-            }
-          },
-          {
-            "id": 23,
-            "name": "skyColorpickerHexId",
-            "kind": 1024,
-            "kindString": "Property",
-            "flags": {
-              "isPublic": true
-            },
-            "sources": [
-              {
-                "fileName": "projects/colorpicker/src/modules/colorpicker/colorpicker.component.ts",
-                "line": 122,
-                "character": 9
-              }
-            ],
-            "type": {
-              "type": "intrinsic",
-              "name": "string"
-            }
-          },
-          {
-            "id": 24,
-            "name": "skyColorpickerRedId",
-            "kind": 1024,
-            "kindString": "Property",
-            "flags": {
-              "isPublic": true
-            },
-            "sources": [
-              {
-                "fileName": "projects/colorpicker/src/modules/colorpicker/colorpicker.component.ts",
-                "line": 123,
-                "character": 9
-              }
-            ],
-            "type": {
-              "type": "intrinsic",
-              "name": "string"
-            }
-          },
-          {
-            "id": 41,
-            "name": "slider",
-            "kind": 1024,
-            "kindString": "Property",
-            "flags": {
-              "isPublic": true
-            },
-            "sources": [
-              {
-                "fileName": "projects/colorpicker/src/modules/colorpicker/colorpicker.component.ts",
-                "line": 140,
-                "character": 9
-              }
-            ],
-            "type": {
-              "type": "reference",
-              "name": "SliderPosition"
-            }
-          },
-          {
-            "id": 53,
-            "name": "triggerButtonId",
-            "kind": 1024,
-            "kindString": "Property",
-            "flags": {
-              "isPublic": true
-            },
-            "sources": [
-              {
-                "fileName": "projects/colorpicker/src/modules/colorpicker/colorpicker.component.ts",
-                "line": 164,
-                "character": 9
-              }
-            ],
-            "type": {
-              "type": "intrinsic",
-              "name": "string"
-            }
-          },
-          {
-            "id": 110,
+            "id": 40,
             "name": "alphaAxis",
             "kind": 262144,
             "kindString": "Accessor",
@@ -1243,20 +655,20 @@
             "sources": [
               {
                 "fileName": "projects/colorpicker/src/modules/colorpicker/colorpicker.component.ts",
-                "line": 376,
+                "line": 180,
                 "character": 13
               }
             ],
             "setSignature": [
               {
-                "id": 111,
+                "id": 41,
                 "name": "alphaAxis",
                 "kind": 1048576,
                 "kindString": "Set signature",
                 "flags": {},
                 "parameters": [
                   {
-                    "id": 112,
+                    "id": 42,
                     "name": "change",
                     "kind": 32768,
                     "kindString": "Parameter",
@@ -1275,7 +687,7 @@
             ]
           },
           {
-            "id": 113,
+            "id": 43,
             "name": "alphaColor",
             "kind": 262144,
             "kindString": "Accessor",
@@ -1285,20 +697,214 @@
             "sources": [
               {
                 "fileName": "projects/colorpicker/src/modules/colorpicker/colorpicker.component.ts",
-                "line": 381,
+                "line": 191,
                 "character": 13
               }
             ],
             "setSignature": [
               {
-                "id": 114,
+                "id": 44,
                 "name": "alphaColor",
                 "kind": 1048576,
                 "kindString": "Set signature",
                 "flags": {},
                 "parameters": [
                   {
-                    "id": 115,
+                    "id": 45,
+                    "name": "change",
+                    "kind": 32768,
+                    "kindString": "Parameter",
+                    "flags": {},
+                    "type": {
+                      "type": "reference",
+                      "name": "SkyColorpickerChangeColor"
+                    }
+                  }
+                ],
+                "type": {
+                  "type": "intrinsic",
+                  "name": "void"
+                }
+              }
+            ]
+          },
+          {
+            "id": 24,
+            "name": "backgroundColorForDisplay",
+            "kind": 262144,
+            "kindString": "Accessor",
+            "flags": {
+              "isPublic": true
+            },
+            "sources": [
+              {
+                "fileName": "projects/colorpicker/src/modules/colorpicker/colorpicker.component.ts",
+                "line": 121,
+                "character": 13
+              }
+            ],
+            "getSignature": [
+              {
+                "id": 25,
+                "name": "backgroundColorForDisplay",
+                "kind": 524288,
+                "kindString": "Get signature",
+                "flags": {},
+                "type": {
+                  "type": "intrinsic",
+                  "name": "string"
+                }
+              }
+            ],
+            "setSignature": [
+              {
+                "id": 26,
+                "name": "backgroundColorForDisplay",
+                "kind": 1048576,
+                "kindString": "Set signature",
+                "flags": {},
+                "parameters": [
+                  {
+                    "id": 27,
+                    "name": "value",
+                    "kind": 32768,
+                    "kindString": "Parameter",
+                    "flags": {},
+                    "type": {
+                      "type": "intrinsic",
+                      "name": "string"
+                    }
+                  }
+                ],
+                "type": {
+                  "type": "intrinsic",
+                  "name": "void"
+                }
+              }
+            ]
+          },
+          {
+            "id": 37,
+            "name": "blue",
+            "kind": 262144,
+            "kindString": "Accessor",
+            "flags": {
+              "isPublic": true
+            },
+            "sources": [
+              {
+                "fileName": "projects/colorpicker/src/modules/colorpicker/colorpicker.component.ts",
+                "line": 168,
+                "character": 13
+              }
+            ],
+            "setSignature": [
+              {
+                "id": 38,
+                "name": "blue",
+                "kind": 1048576,
+                "kindString": "Set signature",
+                "flags": {},
+                "parameters": [
+                  {
+                    "id": 39,
+                    "name": "change",
+                    "kind": 32768,
+                    "kindString": "Parameter",
+                    "flags": {},
+                    "type": {
+                      "type": "reference",
+                      "name": "SkyColorpickerChangeColor"
+                    }
+                  }
+                ],
+                "type": {
+                  "type": "intrinsic",
+                  "name": "void"
+                }
+              }
+            ]
+          },
+          {
+            "id": 20,
+            "name": "disabled",
+            "kind": 262144,
+            "kindString": "Accessor",
+            "flags": {
+              "isPublic": true
+            },
+            "sources": [
+              {
+                "fileName": "projects/colorpicker/src/modules/colorpicker/colorpicker.component.ts",
+                "line": 112,
+                "character": 13
+              }
+            ],
+            "getSignature": [
+              {
+                "id": 21,
+                "name": "disabled",
+                "kind": 524288,
+                "kindString": "Get signature",
+                "flags": {},
+                "type": {
+                  "type": "intrinsic",
+                  "name": "boolean"
+                }
+              }
+            ],
+            "setSignature": [
+              {
+                "id": 22,
+                "name": "disabled",
+                "kind": 1048576,
+                "kindString": "Set signature",
+                "flags": {},
+                "parameters": [
+                  {
+                    "id": 23,
+                    "name": "value",
+                    "kind": 32768,
+                    "kindString": "Parameter",
+                    "flags": {},
+                    "type": {
+                      "type": "intrinsic",
+                      "name": "boolean"
+                    }
+                  }
+                ],
+                "type": {
+                  "type": "intrinsic",
+                  "name": "void"
+                }
+              }
+            ]
+          },
+          {
+            "id": 34,
+            "name": "green",
+            "kind": 262144,
+            "kindString": "Accessor",
+            "flags": {
+              "isPublic": true
+            },
+            "sources": [
+              {
+                "fileName": "projects/colorpicker/src/modules/colorpicker/colorpicker.component.ts",
+                "line": 156,
+                "character": 13
+              }
+            ],
+            "setSignature": [
+              {
+                "id": 35,
+                "name": "green",
+                "kind": 1048576,
+                "kindString": "Set signature",
+                "flags": {},
+                "parameters": [
+                  {
+                    "id": 36,
                     "name": "change",
                     "kind": 32768,
                     "kindString": "Parameter",
@@ -1318,200 +924,6 @@
           },
           {
             "id": 46,
-            "name": "backgroundColorForDisplay",
-            "kind": 262144,
-            "kindString": "Accessor",
-            "flags": {
-              "isPublic": true
-            },
-            "sources": [
-              {
-                "fileName": "projects/colorpicker/src/modules/colorpicker/colorpicker.component.ts",
-                "line": 146,
-                "character": 13
-              }
-            ],
-            "getSignature": [
-              {
-                "id": 47,
-                "name": "backgroundColorForDisplay",
-                "kind": 524288,
-                "kindString": "Get signature",
-                "flags": {},
-                "type": {
-                  "type": "intrinsic",
-                  "name": "string"
-                }
-              }
-            ],
-            "setSignature": [
-              {
-                "id": 48,
-                "name": "backgroundColorForDisplay",
-                "kind": 1048576,
-                "kindString": "Set signature",
-                "flags": {},
-                "parameters": [
-                  {
-                    "id": 49,
-                    "name": "value",
-                    "kind": 32768,
-                    "kindString": "Parameter",
-                    "flags": {},
-                    "type": {
-                      "type": "intrinsic",
-                      "name": "string"
-                    }
-                  }
-                ],
-                "type": {
-                  "type": "intrinsic",
-                  "name": "void"
-                }
-              }
-            ]
-          },
-          {
-            "id": 107,
-            "name": "blue",
-            "kind": 262144,
-            "kindString": "Accessor",
-            "flags": {
-              "isPublic": true
-            },
-            "sources": [
-              {
-                "fileName": "projects/colorpicker/src/modules/colorpicker/colorpicker.component.ts",
-                "line": 369,
-                "character": 13
-              }
-            ],
-            "setSignature": [
-              {
-                "id": 108,
-                "name": "blue",
-                "kind": 1048576,
-                "kindString": "Set signature",
-                "flags": {},
-                "parameters": [
-                  {
-                    "id": 109,
-                    "name": "change",
-                    "kind": 32768,
-                    "kindString": "Parameter",
-                    "flags": {},
-                    "type": {
-                      "type": "reference",
-                      "name": "SkyColorpickerChangeColor"
-                    }
-                  }
-                ],
-                "type": {
-                  "type": "intrinsic",
-                  "name": "void"
-                }
-              }
-            ]
-          },
-          {
-            "id": 18,
-            "name": "disabled",
-            "kind": 262144,
-            "kindString": "Accessor",
-            "flags": {
-              "isPublic": true
-            },
-            "sources": [
-              {
-                "fileName": "projects/colorpicker/src/modules/colorpicker/colorpicker.component.ts",
-                "line": 112,
-                "character": 13
-              }
-            ],
-            "getSignature": [
-              {
-                "id": 19,
-                "name": "disabled",
-                "kind": 524288,
-                "kindString": "Get signature",
-                "flags": {},
-                "type": {
-                  "type": "intrinsic",
-                  "name": "boolean"
-                }
-              }
-            ],
-            "setSignature": [
-              {
-                "id": 20,
-                "name": "disabled",
-                "kind": 1048576,
-                "kindString": "Set signature",
-                "flags": {},
-                "parameters": [
-                  {
-                    "id": 21,
-                    "name": "value",
-                    "kind": 32768,
-                    "kindString": "Parameter",
-                    "flags": {},
-                    "type": {
-                      "type": "intrinsic",
-                      "name": "boolean"
-                    }
-                  }
-                ],
-                "type": {
-                  "type": "intrinsic",
-                  "name": "void"
-                }
-              }
-            ]
-          },
-          {
-            "id": 104,
-            "name": "green",
-            "kind": 262144,
-            "kindString": "Accessor",
-            "flags": {
-              "isPublic": true
-            },
-            "sources": [
-              {
-                "fileName": "projects/colorpicker/src/modules/colorpicker/colorpicker.component.ts",
-                "line": 362,
-                "character": 13
-              }
-            ],
-            "setSignature": [
-              {
-                "id": 105,
-                "name": "green",
-                "kind": 1048576,
-                "kindString": "Set signature",
-                "flags": {},
-                "parameters": [
-                  {
-                    "id": 106,
-                    "name": "change",
-                    "kind": 32768,
-                    "kindString": "Parameter",
-                    "flags": {},
-                    "type": {
-                      "type": "reference",
-                      "name": "SkyColorpickerChangeColor"
-                    }
-                  }
-                ],
-                "type": {
-                  "type": "intrinsic",
-                  "name": "void"
-                }
-              }
-            ]
-          },
-          {
-            "id": 116,
             "name": "hex",
             "kind": 262144,
             "kindString": "Accessor",
@@ -1521,20 +933,20 @@
             "sources": [
               {
                 "fileName": "projects/colorpicker/src/modules/colorpicker/colorpicker.component.ts",
-                "line": 386,
+                "line": 200,
                 "character": 13
               }
             ],
             "setSignature": [
               {
-                "id": 117,
+                "id": 47,
                 "name": "hex",
                 "kind": 1048576,
                 "kindString": "Set signature",
                 "flags": {},
                 "parameters": [
                   {
-                    "id": 118,
+                    "id": 48,
                     "name": "change",
                     "kind": 32768,
                     "kindString": "Parameter",
@@ -1553,7 +965,7 @@
             ]
           },
           {
-            "id": 98,
+            "id": 28,
             "name": "hue",
             "kind": 262144,
             "kindString": "Accessor",
@@ -1563,20 +975,20 @@
             "sources": [
               {
                 "fileName": "projects/colorpicker/src/modules/colorpicker/colorpicker.component.ts",
-                "line": 350,
+                "line": 133,
                 "character": 13
               }
             ],
             "setSignature": [
               {
-                "id": 99,
+                "id": 29,
                 "name": "hue",
                 "kind": 1048576,
                 "kindString": "Set signature",
                 "flags": {},
                 "parameters": [
                   {
-                    "id": 100,
+                    "id": 30,
                     "name": "change",
                     "kind": 32768,
                     "kindString": "Parameter",
@@ -1595,7 +1007,7 @@
             ]
           },
           {
-            "id": 101,
+            "id": 31,
             "name": "red",
             "kind": 262144,
             "kindString": "Accessor",
@@ -1605,20 +1017,20 @@
             "sources": [
               {
                 "fileName": "projects/colorpicker/src/modules/colorpicker/colorpicker.component.ts",
-                "line": 355,
+                "line": 144,
                 "character": 13
               }
             ],
             "setSignature": [
               {
-                "id": 102,
+                "id": 32,
                 "name": "red",
                 "kind": 1048576,
                 "kindString": "Set signature",
                 "flags": {},
                 "parameters": [
                   {
-                    "id": 103,
+                    "id": 33,
                     "name": "change",
                     "kind": 32768,
                     "kindString": "Parameter",
@@ -1637,7 +1049,7 @@
             ]
           },
           {
-            "id": 119,
+            "id": 49,
             "name": "saturationAndLightness",
             "kind": 262144,
             "kindString": "Accessor",
@@ -1647,20 +1059,20 @@
             "sources": [
               {
                 "fileName": "projects/colorpicker/src/modules/colorpicker/colorpicker.component.ts",
-                "line": 390,
+                "line": 204,
                 "character": 13
               }
             ],
             "setSignature": [
               {
-                "id": 120,
+                "id": 50,
                 "name": "saturationAndLightness",
                 "kind": 1048576,
                 "kindString": "Set signature",
                 "flags": {},
                 "parameters": [
                   {
-                    "id": 121,
+                    "id": 51,
                     "name": "value",
                     "kind": 32768,
                     "kindString": "Parameter",
@@ -1679,7 +1091,7 @@
             ]
           },
           {
-            "id": 84,
+            "id": 112,
             "name": "closePicker",
             "kind": 2048,
             "kindString": "Method",
@@ -1689,13 +1101,13 @@
             "sources": [
               {
                 "fileName": "projects/colorpicker/src/modules/colorpicker/colorpicker.component.ts",
-                "line": 311,
+                "line": 399,
                 "character": 9
               }
             ],
             "signatures": [
               {
-                "id": 85,
+                "id": 113,
                 "name": "closePicker",
                 "kind": 4096,
                 "kindString": "Call signature",
@@ -1708,7 +1120,7 @@
             ]
           },
           {
-            "id": 80,
+            "id": 108,
             "name": "ngOnDestroy",
             "kind": 2048,
             "kindString": "Method",
@@ -1718,13 +1130,13 @@
             "sources": [
               {
                 "fileName": "projects/colorpicker/src/modules/colorpicker/colorpicker.component.ts",
-                "line": 299,
+                "line": 387,
                 "character": 9
               }
             ],
             "signatures": [
               {
-                "id": 81,
+                "id": 109,
                 "name": "ngOnDestroy",
                 "kind": 4096,
                 "kindString": "Call signature",
@@ -1745,7 +1157,7 @@
             }
           },
           {
-            "id": 78,
+            "id": 106,
             "name": "ngOnInit",
             "kind": 2048,
             "kindString": "Method",
@@ -1755,13 +1167,13 @@
             "sources": [
               {
                 "fileName": "projects/colorpicker/src/modules/colorpicker/colorpicker.component.ts",
-                "line": 268,
+                "line": 358,
                 "character": 9
               }
             ],
             "signatures": [
               {
-                "id": 79,
+                "id": 107,
                 "name": "ngOnInit",
                 "kind": 4096,
                 "kindString": "Call signature",
@@ -1782,7 +1194,7 @@
             }
           },
           {
-            "id": 86,
+            "id": 114,
             "name": "onApplyColorClick",
             "kind": 2048,
             "kindString": "Method",
@@ -1792,13 +1204,13 @@
             "sources": [
               {
                 "fileName": "projects/colorpicker/src/modules/colorpicker/colorpicker.component.ts",
-                "line": 319,
+                "line": 407,
                 "character": 9
               }
             ],
             "signatures": [
               {
-                "id": 87,
+                "id": 115,
                 "name": "onApplyColorClick",
                 "kind": 4096,
                 "kindString": "Call signature",
@@ -1811,7 +1223,7 @@
             ]
           },
           {
-            "id": 88,
+            "id": 116,
             "name": "onCancelClick",
             "kind": 2048,
             "kindString": "Method",
@@ -1821,13 +1233,13 @@
             "sources": [
               {
                 "fileName": "projects/colorpicker/src/modules/colorpicker/colorpicker.component.ts",
-                "line": 328,
+                "line": 419,
                 "character": 9
               }
             ],
             "signatures": [
               {
-                "id": 89,
+                "id": 117,
                 "name": "onCancelClick",
                 "kind": 4096,
                 "kindString": "Call signature",
@@ -1840,7 +1252,7 @@
             ]
           },
           {
-            "id": 90,
+            "id": 118,
             "name": "onPresetClick",
             "kind": 2048,
             "kindString": "Method",
@@ -1850,20 +1262,20 @@
             "sources": [
               {
                 "fileName": "projects/colorpicker/src/modules/colorpicker/colorpicker.component.ts",
-                "line": 334,
+                "line": 425,
                 "character": 9
               }
             ],
             "signatures": [
               {
-                "id": 91,
+                "id": 119,
                 "name": "onPresetClick",
                 "kind": 4096,
                 "kindString": "Call signature",
                 "flags": {},
                 "parameters": [
                   {
-                    "id": 92,
+                    "id": 120,
                     "name": "value",
                     "kind": 32768,
                     "kindString": "Parameter",
@@ -1882,7 +1294,7 @@
             ]
           },
           {
-            "id": 93,
+            "id": 121,
             "name": "onResetClick",
             "kind": 2048,
             "kindString": "Method",
@@ -1892,13 +1304,13 @@
             "sources": [
               {
                 "fileName": "projects/colorpicker/src/modules/colorpicker/colorpicker.component.ts",
-                "line": 338,
+                "line": 429,
                 "character": 9
               }
             ],
             "signatures": [
               {
-                "id": 94,
+                "id": 122,
                 "name": "onResetClick",
                 "kind": 4096,
                 "kindString": "Call signature",
@@ -1911,7 +1323,7 @@
             ]
           },
           {
-            "id": 82,
+            "id": 110,
             "name": "onTriggerButtonClick",
             "kind": 2048,
             "kindString": "Method",
@@ -1921,13 +1333,13 @@
             "sources": [
               {
                 "fileName": "projects/colorpicker/src/modules/colorpicker/colorpicker.component.ts",
-                "line": 307,
+                "line": 395,
                 "character": 9
               }
             ],
             "signatures": [
               {
-                "id": 83,
+                "id": 111,
                 "name": "onTriggerButtonClick",
                 "kind": 4096,
                 "kindString": "Call signature",
@@ -1940,7 +1352,7 @@
             ]
           },
           {
-            "id": 69,
+            "id": 99,
             "name": "setDialog",
             "kind": 2048,
             "kindString": "Method",
@@ -1950,61 +1362,31 @@
             "sources": [
               {
                 "fileName": "projects/colorpicker/src/modules/colorpicker/colorpicker.component.ts",
-                "line": 244,
+                "line": 336,
                 "character": 9
               }
             ],
             "signatures": [
               {
-                "id": 70,
+                "id": 100,
                 "name": "setDialog",
                 "kind": 4096,
                 "kindString": "Call signature",
                 "flags": {},
                 "parameters": [
                   {
-                    "id": 71,
-                    "name": "instance",
-                    "kind": 32768,
-                    "kindString": "Parameter",
-                    "flags": {},
-                    "type": {
-                      "type": "intrinsic",
-                      "name": "any"
-                    }
-                  },
-                  {
-                    "id": 72,
-                    "name": "elementRef",
-                    "kind": 32768,
-                    "kindString": "Parameter",
-                    "flags": {},
-                    "type": {
-                      "type": "reference",
-                      "typeArguments": [
-                        {
-                          "type": "intrinsic",
-                          "name": "any"
-                        }
-                      ],
-                      "qualifiedName": "ElementRef",
-                      "package": "@angular/core",
-                      "name": "ElementRef"
-                    }
-                  },
-                  {
-                    "id": 73,
+                    "id": 101,
                     "name": "color",
                     "kind": 32768,
                     "kindString": "Parameter",
                     "flags": {},
                     "type": {
                       "type": "intrinsic",
-                      "name": "any"
+                      "name": "string"
                     }
                   },
                   {
-                    "id": 74,
+                    "id": 102,
                     "name": "outputFormat",
                     "kind": 32768,
                     "kindString": "Parameter",
@@ -2015,7 +1397,7 @@
                     }
                   },
                   {
-                    "id": 75,
+                    "id": 103,
                     "name": "presetColors",
                     "kind": 32768,
                     "kindString": "Parameter",
@@ -2029,7 +1411,7 @@
                     }
                   },
                   {
-                    "id": 76,
+                    "id": 104,
                     "name": "alphaChannel",
                     "kind": 32768,
                     "kindString": "Parameter",
@@ -2040,7 +1422,7 @@
                     }
                   },
                   {
-                    "id": 77,
+                    "id": 105,
                     "name": "allowTransparency",
                     "kind": 32768,
                     "kindString": "Parameter",
@@ -2059,36 +1441,7 @@
             ]
           },
           {
-            "id": 122,
-            "name": "update",
-            "kind": 2048,
-            "kindString": "Method",
-            "flags": {
-              "isPublic": true
-            },
-            "sources": [
-              {
-                "fileName": "projects/colorpicker/src/modules/colorpicker/colorpicker.component.ts",
-                "line": 396,
-                "character": 9
-              }
-            ],
-            "signatures": [
-              {
-                "id": 123,
-                "name": "update",
-                "kind": 4096,
-                "kindString": "Call signature",
-                "flags": {},
-                "type": {
-                  "type": "intrinsic",
-                  "name": "void"
-                }
-              }
-            ]
-          },
-          {
-            "id": 95,
+            "id": 123,
             "name": "updatePickerValues",
             "kind": 2048,
             "kindString": "Method",
@@ -2098,20 +1451,20 @@
             "sources": [
               {
                 "fileName": "projects/colorpicker/src/modules/colorpicker/colorpicker.component.ts",
-                "line": 342,
+                "line": 433,
                 "character": 9
               }
             ],
             "signatures": [
               {
-                "id": 96,
+                "id": 124,
                 "name": "updatePickerValues",
                 "kind": 4096,
                 "kindString": "Call signature",
                 "flags": {},
                 "parameters": [
                   {
-                    "id": 97,
+                    "id": 125,
                     "name": "value",
                     "kind": 32768,
                     "kindString": "Parameter",
@@ -2134,26 +1487,58 @@
           {
             "title": "Constructors",
             "kind": 512,
-            "children": [2]
+            "children": [
+              4
+            ]
           },
           {
             "title": "Properties",
             "kind": 1024,
             "children": [
-              29, 28, 30, 31, 50, 32, 33, 34, 35, 42, 22, 43, 51, 45, 52, 12,
-              13, 44, 16, 36, 37, 38, 39, 40, 15, 14, 17, 27, 26, 25, 23, 24,
-              41, 53
+              54,
+              56,
+              14,
+              15,
+              55,
+              18,
+              53,
+              17,
+              16,
+              19,
+              52
             ]
           },
           {
             "title": "Accessors",
             "kind": 262144,
-            "children": [110, 113, 46, 107, 18, 104, 116, 98, 101, 119]
+            "children": [
+              40,
+              43,
+              24,
+              37,
+              20,
+              34,
+              46,
+              28,
+              31,
+              49
+            ]
           },
           {
             "title": "Methods",
             "kind": 2048,
-            "children": [84, 80, 78, 86, 88, 90, 93, 82, 69, 122, 95]
+            "children": [
+              112,
+              108,
+              106,
+              114,
+              116,
+              118,
+              121,
+              110,
+              99,
+              123
+            ]
           }
         ],
         "sources": [
@@ -2179,7 +1564,7 @@
         ]
       },
       {
-        "id": 152,
+        "id": 156,
         "name": "SkyColorpickerInputDirective",
         "kind": 128,
         "kindString": "Class",
@@ -2203,7 +1588,7 @@
         ],
         "children": [
           {
-            "id": 153,
+            "id": 157,
             "name": "constructor",
             "kind": 512,
             "kindString": "Constructor",
@@ -2211,20 +1596,20 @@
             "sources": [
               {
                 "fileName": "projects/colorpicker/src/modules/colorpicker/colorpicker-input.directive.ts",
-                "line": 131,
+                "line": 146,
                 "character": 2
               }
             ],
             "signatures": [
               {
-                "id": 154,
+                "id": 158,
                 "name": "SkyColorpickerInputDirective",
                 "kind": 16384,
                 "kindString": "Constructor signature",
                 "flags": {},
                 "parameters": [
                   {
-                    "id": 155,
+                    "id": 159,
                     "name": "elementRef",
                     "kind": 32768,
                     "kindString": "Parameter",
@@ -2243,7 +1628,7 @@
                     }
                   },
                   {
-                    "id": 156,
+                    "id": 160,
                     "name": "renderer",
                     "kind": 32768,
                     "kindString": "Parameter",
@@ -2256,8 +1641,8 @@
                     }
                   },
                   {
-                    "id": 157,
-                    "name": "service",
+                    "id": 161,
+                    "name": "svc",
                     "kind": 32768,
                     "kindString": "Parameter",
                     "flags": {},
@@ -2267,8 +1652,8 @@
                     }
                   },
                   {
-                    "id": 158,
-                    "name": "resourcesService",
+                    "id": 162,
+                    "name": "resourcesSvc",
                     "kind": 32768,
                     "kindString": "Parameter",
                     "flags": {},
@@ -2278,7 +1663,7 @@
                     }
                   },
                   {
-                    "id": 159,
+                    "id": 163,
                     "name": "injector",
                     "kind": 32768,
                     "kindString": "Parameter",
@@ -2293,14 +1678,14 @@
                 ],
                 "type": {
                   "type": "reference",
-                  "id": 152,
+                  "id": 156,
                   "name": "SkyColorpickerInputDirective"
                 }
               }
             ]
           },
           {
-            "id": 170,
+            "id": 173,
             "name": "allowTransparency",
             "kind": 1024,
             "kindString": "Property",
@@ -2308,7 +1693,7 @@
               "isPublic": true
             },
             "comment": {
-              "shortText": "Indicates whether to display a transparency slider for users to select transparency\nlevels."
+              "shortText": "Whether to display a transparency slider for users to select transparency\nlevels."
             },
             "decorators": [
               {
@@ -2325,7 +1710,7 @@
             "sources": [
               {
                 "fileName": "projects/colorpicker/src/modules/colorpicker/colorpicker-input.directive.ts",
-                "line": 125,
+                "line": 123,
                 "character": 9
               }
             ],
@@ -2336,7 +1721,7 @@
             "defaultValue": "true"
           },
           {
-            "id": 169,
+            "id": 172,
             "name": "alphaChannel",
             "kind": 1024,
             "kindString": "Property",
@@ -2344,7 +1729,7 @@
               "isPublic": true
             },
             "comment": {
-              "shortText": "Specifies the type of transparency to use in the transparency slider.",
+              "shortText": "The type of transparency in the transparency slider.",
               "tags": [
                 {
                   "tag": "default",
@@ -2367,7 +1752,7 @@
             "sources": [
               {
                 "fileName": "projects/colorpicker/src/modules/colorpicker/colorpicker-input.directive.ts",
-                "line": 118,
+                "line": 116,
                 "character": 9
               }
             ],
@@ -2378,7 +1763,7 @@
             "defaultValue": "'hex6'"
           },
           {
-            "id": 167,
+            "id": 170,
             "name": "outputFormat",
             "kind": 1024,
             "kindString": "Property",
@@ -2386,7 +1771,7 @@
               "isPublic": true
             },
             "comment": {
-              "shortText": "Specifies the format to use for the color when the colorpicker uses a native input\nelement such as a standard text input or a button. This property accepts `rgba`, `hex`,\nor `hsla`, but we do not recommend using it because users never see or use its value.\nInstead, if you need to access this format value, see the demo for an example.",
+              "shortText": "The format for the color when the colorpicker uses a native input\nelement such as a standard text input or a button. This property accepts `rgba`, `hex`,\nor `hsla`, but we do not recommend using it because users never see or use its value.\nInstead, if you need to access this format value, see the demo for an example.",
               "tags": [
                 {
                   "tag": "default",
@@ -2409,7 +1794,7 @@
             "sources": [
               {
                 "fileName": "projects/colorpicker/src/modules/colorpicker/colorpicker-input.directive.ts",
-                "line": 104,
+                "line": 102,
                 "character": 9
               }
             ],
@@ -2420,29 +1805,7 @@
             "defaultValue": "'rgba'"
           },
           {
-            "id": 160,
-            "name": "pickerChangedSubscription",
-            "kind": 1024,
-            "kindString": "Property",
-            "flags": {
-              "isPublic": true
-            },
-            "sources": [
-              {
-                "fileName": "projects/colorpicker/src/modules/colorpicker/colorpicker-input.directive.ts",
-                "line": 56,
-                "character": 9
-              }
-            ],
-            "type": {
-              "type": "reference",
-              "qualifiedName": "Subscription",
-              "package": "rxjs",
-              "name": "Subscription"
-            }
-          },
-          {
-            "id": 168,
+            "id": 171,
             "name": "presetColors",
             "kind": 1024,
             "kindString": "Property",
@@ -2450,7 +1813,7 @@
               "isPublic": true
             },
             "comment": {
-              "shortText": "Specifies an array of colors to load as preset choices. The colorpicker displays the\ncolors in a series of 12 boxes for users to select."
+              "shortText": "The array of colors to load as preset choices. The colorpicker displays the\ncolors in a series of 12 boxes for users to select."
             },
             "decorators": [
               {
@@ -2467,7 +1830,7 @@
             "sources": [
               {
                 "fileName": "projects/colorpicker/src/modules/colorpicker/colorpicker-input.directive.ts",
-                "line": 111,
+                "line": 109,
                 "character": 9
               }
             ],
@@ -2481,7 +1844,7 @@
             "defaultValue": "..."
           },
           {
-            "id": 166,
+            "id": 169,
             "name": "returnFormat",
             "kind": 1024,
             "kindString": "Property",
@@ -2516,7 +1879,7 @@
             "sources": [
               {
                 "fileName": "projects/colorpicker/src/modules/colorpicker/colorpicker-input.directive.ts",
-                "line": 94,
+                "line": 92,
                 "character": 9
               }
             ],
@@ -2527,7 +1890,7 @@
             "defaultValue": "'rgba'"
           },
           {
-            "id": 161,
+            "id": 164,
             "name": "skyColorpickerInput",
             "kind": 1024,
             "kindString": "Property",
@@ -2558,18 +1921,18 @@
             "sources": [
               {
                 "fileName": "projects/colorpicker/src/modules/colorpicker/colorpicker-input.directive.ts",
-                "line": 65,
+                "line": 62,
                 "character": 9
               }
             ],
             "type": {
               "type": "reference",
-              "id": 1,
+              "id": 3,
               "name": "SkyColorpickerComponent"
             }
           },
           {
-            "id": 162,
+            "id": 165,
             "name": "initialColor",
             "kind": 262144,
             "kindString": "Accessor",
@@ -2591,19 +1954,19 @@
             "sources": [
               {
                 "fileName": "projects/colorpicker/src/modules/colorpicker/colorpicker-input.directive.ts",
-                "line": 75,
+                "line": 72,
                 "character": 13
               }
             ],
             "getSignature": [
               {
-                "id": 163,
+                "id": 166,
                 "name": "initialColor",
                 "kind": 524288,
                 "kindString": "Get signature",
                 "flags": {},
                 "comment": {
-                  "shortText": "Specifies an initial color to load in the colorpicker. Use a reactive or\ntemplate-driven form to set this value. This property is deprecated. As an alternative,\nwe recommend the `formControlName` property on reactive forms or `ngModel` on\ntemplate-driven forms. See the demo for examples.",
+                  "shortText": "The initial color to load in the colorpicker. Use a reactive or\ntemplate-driven form to set this value. This property is deprecated. As an alternative,\nwe recommend the `formControlName` property on reactive forms or `ngModel` on\ntemplate-driven forms. See the demo for examples.",
                   "tags": [
                     {
                       "tag": "deprecated",
@@ -2619,13 +1982,13 @@
             ],
             "setSignature": [
               {
-                "id": 164,
+                "id": 167,
                 "name": "initialColor",
                 "kind": 1048576,
                 "kindString": "Set signature",
                 "flags": {},
                 "comment": {
-                  "shortText": "Specifies an initial color to load in the colorpicker. Use a reactive or\ntemplate-driven form to set this value. This property is deprecated. As an alternative,\nwe recommend the `formControlName` property on reactive forms or `ngModel` on\ntemplate-driven forms. See the demo for examples.",
+                  "shortText": "The initial color to load in the colorpicker. Use a reactive or\ntemplate-driven form to set this value. This property is deprecated. As an alternative,\nwe recommend the `formControlName` property on reactive forms or `ngModel` on\ntemplate-driven forms. See the demo for examples.",
                   "tags": [
                     {
                       "tag": "deprecated",
@@ -2635,7 +1998,7 @@
                 },
                 "parameters": [
                   {
-                    "id": 165,
+                    "id": 168,
                     "name": "value",
                     "kind": 32768,
                     "kindString": "Parameter",
@@ -2654,7 +2017,7 @@
             ]
           },
           {
-            "id": 174,
+            "id": 187,
             "name": "changeInput",
             "kind": 2048,
             "kindString": "Method",
@@ -2671,38 +2034,24 @@
                   "name": "HostListener"
                 },
                 "arguments": {
-                  "eventName": "'input'",
-                  "args": "['$event']"
+                  "eventName": "'input'"
                 }
               }
             ],
             "sources": [
               {
                 "fileName": "projects/colorpicker/src/modules/colorpicker/colorpicker-input.directive.ts",
-                "line": 140,
+                "line": 161,
                 "character": 9
               }
             ],
             "signatures": [
               {
-                "id": 175,
+                "id": 188,
                 "name": "changeInput",
                 "kind": 4096,
                 "kindString": "Call signature",
                 "flags": {},
-                "parameters": [
-                  {
-                    "id": 176,
-                    "name": "event",
-                    "kind": 32768,
-                    "kindString": "Parameter",
-                    "flags": {},
-                    "type": {
-                      "type": "intrinsic",
-                      "name": "any"
-                    }
-                  }
-                ],
                 "type": {
                   "type": "intrinsic",
                   "name": "void"
@@ -2711,7 +2060,7 @@
             ]
           },
           {
-            "id": 188,
+            "id": 197,
             "name": "ngOnChanges",
             "kind": 2048,
             "kindString": "Method",
@@ -2721,13 +2070,13 @@
             "sources": [
               {
                 "fileName": "projects/colorpicker/src/modules/colorpicker/colorpicker-input.directive.ts",
-                "line": 225,
+                "line": 236,
                 "character": 9
               }
             ],
             "signatures": [
               {
-                "id": 189,
+                "id": 198,
                 "name": "ngOnChanges",
                 "kind": 4096,
                 "kindString": "Call signature",
@@ -2748,7 +2097,7 @@
             }
           },
           {
-            "id": 184,
+            "id": 193,
             "name": "ngOnDestroy",
             "kind": 2048,
             "kindString": "Method",
@@ -2758,13 +2107,13 @@
             "sources": [
               {
                 "fileName": "projects/colorpicker/src/modules/colorpicker/colorpicker-input.directive.ts",
-                "line": 209,
+                "line": 220,
                 "character": 9
               }
             ],
             "signatures": [
               {
-                "id": 185,
+                "id": 194,
                 "name": "ngOnDestroy",
                 "kind": 4096,
                 "kindString": "Call signature",
@@ -2785,7 +2134,7 @@
             }
           },
           {
-            "id": 182,
+            "id": 191,
             "name": "ngOnInit",
             "kind": 2048,
             "kindString": "Method",
@@ -2795,13 +2144,13 @@
             "sources": [
               {
                 "fileName": "projects/colorpicker/src/modules/colorpicker/colorpicker-input.directive.ts",
-                "line": 162,
+                "line": 175,
                 "character": 9
               }
             ],
             "signatures": [
               {
-                "id": 183,
+                "id": 192,
                 "name": "ngOnInit",
                 "kind": 4096,
                 "kindString": "Call signature",
@@ -2822,50 +2171,7 @@
             }
           },
           {
-            "id": 180,
-            "name": "onBlur",
-            "kind": 2048,
-            "kindString": "Method",
-            "flags": {
-              "isPublic": true
-            },
-            "decorators": [
-              {
-                "name": "HostListener",
-                "type": {
-                  "type": "reference",
-                  "qualifiedName": "HostListenerDecorator",
-                  "package": "@angular/core",
-                  "name": "HostListener"
-                },
-                "arguments": {
-                  "eventName": "'blur'"
-                }
-              }
-            ],
-            "sources": [
-              {
-                "fileName": "projects/colorpicker/src/modules/colorpicker/colorpicker-input.directive.ts",
-                "line": 157,
-                "character": 9
-              }
-            ],
-            "signatures": [
-              {
-                "id": 181,
-                "name": "onBlur",
-                "kind": 4096,
-                "kindString": "Call signature",
-                "flags": {},
-                "type": {
-                  "type": "intrinsic",
-                  "name": "void"
-                }
-              }
-            ]
-          },
-          {
-            "id": 177,
+            "id": 189,
             "name": "onChange",
             "kind": 2048,
             "kindString": "Method",
@@ -2882,38 +2188,24 @@
                   "name": "HostListener"
                 },
                 "arguments": {
-                  "eventName": "'change'",
-                  "args": "['$event']"
+                  "eventName": "'change'"
                 }
               }
             ],
             "sources": [
               {
                 "fileName": "projects/colorpicker/src/modules/colorpicker/colorpicker-input.directive.ts",
-                "line": 147,
+                "line": 168,
                 "character": 9
               }
             ],
             "signatures": [
               {
-                "id": 178,
+                "id": 190,
                 "name": "onChange",
                 "kind": 4096,
                 "kindString": "Call signature",
                 "flags": {},
-                "parameters": [
-                  {
-                    "id": 179,
-                    "name": "event",
-                    "kind": 32768,
-                    "kindString": "Parameter",
-                    "flags": {},
-                    "type": {
-                      "type": "intrinsic",
-                      "name": "any"
-                    }
-                  }
-                ],
                 "type": {
                   "type": "intrinsic",
                   "name": "void"
@@ -2922,7 +2214,7 @@
             ]
           },
           {
-            "id": 190,
+            "id": 199,
             "name": "registerOnChange",
             "kind": 2048,
             "kindString": "Method",
@@ -2932,62 +2224,17 @@
             "sources": [
               {
                 "fileName": "projects/colorpicker/src/modules/colorpicker/colorpicker-input.directive.ts",
-                "line": 231,
+                "line": 242,
                 "character": 9
               }
             ],
             "signatures": [
               {
-                "id": 191,
+                "id": 200,
                 "name": "registerOnChange",
                 "kind": 4096,
                 "kindString": "Call signature",
                 "flags": {},
-                "parameters": [
-                  {
-                    "id": 192,
-                    "name": "fn",
-                    "kind": 32768,
-                    "kindString": "Parameter",
-                    "flags": {},
-                    "type": {
-                      "type": "reflection",
-                      "declaration": {
-                        "id": 193,
-                        "name": "__type",
-                        "kind": 65536,
-                        "kindString": "Type literal",
-                        "flags": {},
-                        "signatures": [
-                          {
-                            "id": 194,
-                            "name": "__type",
-                            "kind": 4096,
-                            "kindString": "Call signature",
-                            "flags": {},
-                            "parameters": [
-                              {
-                                "id": 195,
-                                "name": "value",
-                                "kind": 32768,
-                                "kindString": "Parameter",
-                                "flags": {},
-                                "type": {
-                                  "type": "intrinsic",
-                                  "name": "any"
-                                }
-                              }
-                            ],
-                            "type": {
-                              "type": "intrinsic",
-                              "name": "any"
-                            }
-                          }
-                        ]
-                      }
-                    }
-                  }
-                ],
                 "type": {
                   "type": "intrinsic",
                   "name": "void"
@@ -3004,7 +2251,7 @@
             }
           },
           {
-            "id": 196,
+            "id": 201,
             "name": "registerOnTouched",
             "kind": 2048,
             "kindString": "Method",
@@ -3014,49 +2261,17 @@
             "sources": [
               {
                 "fileName": "projects/colorpicker/src/modules/colorpicker/colorpicker-input.directive.ts",
-                "line": 234,
+                "line": 245,
                 "character": 9
               }
             ],
             "signatures": [
               {
-                "id": 197,
+                "id": 202,
                 "name": "registerOnTouched",
                 "kind": 4096,
                 "kindString": "Call signature",
                 "flags": {},
-                "parameters": [
-                  {
-                    "id": 198,
-                    "name": "fn",
-                    "kind": 32768,
-                    "kindString": "Parameter",
-                    "flags": {},
-                    "type": {
-                      "type": "reflection",
-                      "declaration": {
-                        "id": 199,
-                        "name": "__type",
-                        "kind": 65536,
-                        "kindString": "Type literal",
-                        "flags": {},
-                        "signatures": [
-                          {
-                            "id": 200,
-                            "name": "__type",
-                            "kind": 4096,
-                            "kindString": "Call signature",
-                            "flags": {},
-                            "type": {
-                              "type": "intrinsic",
-                              "name": "any"
-                            }
-                          }
-                        ]
-                      }
-                    }
-                  }
-                ],
                 "type": {
                   "type": "intrinsic",
                   "name": "void"
@@ -3073,7 +2288,7 @@
             }
           },
           {
-            "id": 201,
+            "id": 203,
             "name": "registerOnValidatorChange",
             "kind": 2048,
             "kindString": "Method",
@@ -3083,49 +2298,17 @@
             "sources": [
               {
                 "fileName": "projects/colorpicker/src/modules/colorpicker/colorpicker-input.directive.ts",
-                "line": 237,
+                "line": 248,
                 "character": 9
               }
             ],
             "signatures": [
               {
-                "id": 202,
+                "id": 204,
                 "name": "registerOnValidatorChange",
                 "kind": 4096,
                 "kindString": "Call signature",
                 "flags": {},
-                "parameters": [
-                  {
-                    "id": 203,
-                    "name": "fn",
-                    "kind": 32768,
-                    "kindString": "Parameter",
-                    "flags": {},
-                    "type": {
-                      "type": "reflection",
-                      "declaration": {
-                        "id": 204,
-                        "name": "__type",
-                        "kind": 65536,
-                        "kindString": "Type literal",
-                        "flags": {},
-                        "signatures": [
-                          {
-                            "id": 205,
-                            "name": "__type",
-                            "kind": 4096,
-                            "kindString": "Call signature",
-                            "flags": {},
-                            "type": {
-                              "type": "intrinsic",
-                              "name": "void"
-                            }
-                          }
-                        ]
-                      }
-                    }
-                  }
-                ],
                 "type": {
                   "type": "intrinsic",
                   "name": "void"
@@ -3142,7 +2325,7 @@
             }
           },
           {
-            "id": 186,
+            "id": 195,
             "name": "setColorPickerDefaults",
             "kind": 2048,
             "kindString": "Method",
@@ -3152,13 +2335,13 @@
             "sources": [
               {
                 "fileName": "projects/colorpicker/src/modules/colorpicker/colorpicker-input.directive.ts",
-                "line": 213,
+                "line": 226,
                 "character": 9
               }
             ],
             "signatures": [
               {
-                "id": 187,
+                "id": 196,
                 "name": "setColorPickerDefaults",
                 "kind": 4096,
                 "kindString": "Call signature",
@@ -3171,7 +2354,7 @@
             ]
           },
           {
-            "id": 215,
+            "id": 210,
             "name": "setDisabledState",
             "kind": 2048,
             "kindString": "Method",
@@ -3181,13 +2364,13 @@
             "sources": [
               {
                 "fileName": "projects/colorpicker/src/modules/colorpicker/colorpicker-input.directive.ts",
-                "line": 274,
+                "line": 283,
                 "character": 9
               }
             ],
             "signatures": [
               {
-                "id": 216,
+                "id": 211,
                 "name": "setDisabledState",
                 "kind": 4096,
                 "kindString": "Call signature",
@@ -3197,7 +2380,7 @@
                 },
                 "parameters": [
                   {
-                    "id": 217,
+                    "id": 212,
                     "name": "isDisabled",
                     "kind": 32768,
                     "kindString": "Parameter",
@@ -3224,7 +2407,7 @@
             }
           },
           {
-            "id": 209,
+            "id": 208,
             "name": "validate",
             "kind": 2048,
             "kindString": "Method",
@@ -3234,64 +2417,22 @@
             "sources": [
               {
                 "fileName": "projects/colorpicker/src/modules/colorpicker/colorpicker-input.directive.ts",
-                "line": 263,
+                "line": 276,
                 "character": 9
               }
             ],
             "signatures": [
               {
-                "id": 210,
+                "id": 209,
                 "name": "validate",
                 "kind": 4096,
                 "kindString": "Call signature",
                 "flags": {},
-                "parameters": [
-                  {
-                    "id": 211,
-                    "name": "control",
-                    "kind": 32768,
-                    "kindString": "Parameter",
-                    "flags": {},
-                    "type": {
-                      "type": "reference",
-                      "qualifiedName": "AbstractControl",
-                      "package": "@angular/forms",
-                      "name": "AbstractControl"
-                    }
-                  }
-                ],
                 "type": {
-                  "type": "reflection",
-                  "declaration": {
-                    "id": 212,
-                    "name": "__type",
-                    "kind": 65536,
-                    "kindString": "Type literal",
-                    "flags": {},
-                    "indexSignature": {
-                      "id": 213,
-                      "name": "__index",
-                      "kind": 8192,
-                      "kindString": "Index signature",
-                      "flags": {},
-                      "parameters": [
-                        {
-                          "id": 214,
-                          "name": "key",
-                          "kind": 32768,
-                          "flags": {},
-                          "type": {
-                            "type": "intrinsic",
-                            "name": "string"
-                          }
-                        }
-                      ],
-                      "type": {
-                        "type": "intrinsic",
-                        "name": "any"
-                      }
-                    }
-                  }
+                  "type": "reference",
+                  "qualifiedName": "ValidationErrors",
+                  "package": "@angular/forms",
+                  "name": "ValidationErrors"
                 },
                 "implementationOf": {
                   "type": "reference",
@@ -3305,7 +2446,7 @@
             }
           },
           {
-            "id": 206,
+            "id": 205,
             "name": "writeValue",
             "kind": 2048,
             "kindString": "Method",
@@ -3315,20 +2456,20 @@
             "sources": [
               {
                 "fileName": "projects/colorpicker/src/modules/colorpicker/colorpicker-input.directive.ts",
-                "line": 241,
+                "line": 251,
                 "character": 9
               }
             ],
             "signatures": [
               {
-                "id": 207,
+                "id": 206,
                 "name": "writeValue",
                 "kind": 4096,
                 "kindString": "Call signature",
                 "flags": {},
                 "parameters": [
                   {
-                    "id": 208,
+                    "id": 207,
                     "name": "value",
                     "kind": 32768,
                     "kindString": "Parameter",
@@ -3359,30 +2500,52 @@
           {
             "title": "Constructors",
             "kind": 512,
-            "children": [153]
+            "children": [
+              157
+            ]
           },
           {
             "title": "Properties",
             "kind": 1024,
-            "children": [170, 169, 167, 160, 168, 166, 161]
+            "children": [
+              173,
+              172,
+              170,
+              171,
+              169,
+              164
+            ]
           },
           {
             "title": "Accessors",
             "kind": 262144,
-            "children": [162]
+            "children": [
+              165
+            ]
           },
           {
             "title": "Methods",
             "kind": 2048,
             "children": [
-              174, 188, 184, 182, 180, 177, 190, 196, 201, 186, 215, 209, 206
+              187,
+              197,
+              193,
+              191,
+              189,
+              199,
+              201,
+              203,
+              195,
+              210,
+              208,
+              205
             ]
           }
         ],
         "sources": [
           {
             "fileName": "projects/colorpicker/src/modules/colorpicker/colorpicker-input.directive.ts",
-            "line": 53,
+            "line": 52,
             "character": 13
           }
         ],
@@ -3420,28 +2583,28 @@
         ]
       },
       {
-        "id": 243,
+        "id": 231,
         "name": "SkyColorpickerCmyk",
         "kind": 256,
         "kindString": "Interface",
         "flags": {},
         "comment": {
-          "shortText": "Specifies colors as a combination of cyan, magenta, yellow, and black."
+          "shortText": "Colors specified as a combination of cyan, magenta, yellow, and black."
         },
         "children": [
           {
-            "id": 244,
+            "id": 232,
             "name": "cyan",
             "kind": 1024,
             "kindString": "Property",
             "flags": {},
             "comment": {
-              "shortText": "Specifies the percentage of cyan to use."
+              "shortText": "The percentage of cyan."
             },
             "sources": [
               {
                 "fileName": "projects/colorpicker/src/modules/colorpicker/types/colorpicker-cmyk.ts",
-                "line": 9,
+                "line": 8,
                 "character": 2
               }
             ],
@@ -3451,18 +2614,18 @@
             }
           },
           {
-            "id": 247,
+            "id": 235,
             "name": "key",
             "kind": 1024,
             "kindString": "Property",
             "flags": {},
             "comment": {
-              "shortText": "Specifies the percentage of black to use."
+              "shortText": "The percentage of black."
             },
             "sources": [
               {
                 "fileName": "projects/colorpicker/src/modules/colorpicker/types/colorpicker-cmyk.ts",
-                "line": 21,
+                "line": 20,
                 "character": 2
               }
             ],
@@ -3472,18 +2635,18 @@
             }
           },
           {
-            "id": 245,
+            "id": 233,
             "name": "magenta",
             "kind": 1024,
             "kindString": "Property",
             "flags": {},
             "comment": {
-              "shortText": "Specifies the percentage of magenta to use."
+              "shortText": "The percentage of magenta."
             },
             "sources": [
               {
                 "fileName": "projects/colorpicker/src/modules/colorpicker/types/colorpicker-cmyk.ts",
-                "line": 13,
+                "line": 12,
                 "character": 2
               }
             ],
@@ -3493,18 +2656,18 @@
             }
           },
           {
-            "id": 246,
+            "id": 234,
             "name": "yellow",
             "kind": 1024,
             "kindString": "Property",
             "flags": {},
             "comment": {
-              "shortText": "Specifies the percentage of yellow to use."
+              "shortText": "The percentage of yellow."
             },
             "sources": [
               {
                 "fileName": "projects/colorpicker/src/modules/colorpicker/types/colorpicker-cmyk.ts",
-                "line": 17,
+                "line": 16,
                 "character": 2
               }
             ],
@@ -3518,39 +2681,159 @@
           {
             "title": "Properties",
             "kind": 1024,
-            "children": [244, 247, 245, 246]
+            "children": [
+              232,
+              235,
+              233,
+              234
+            ]
           }
         ],
         "sources": [
           {
             "fileName": "projects/colorpicker/src/modules/colorpicker/types/colorpicker-cmyk.ts",
+            "line": 4,
+            "character": 17
+          }
+        ]
+      },
+      {
+        "id": 240,
+        "name": "SkyColorpickerHsla",
+        "kind": 256,
+        "kindString": "Interface",
+        "flags": {},
+        "comment": {
+          "shortText": "Colors specified as a combination of hue, saturation, and lightness with an alpha\nchannel to set the opacity."
+        },
+        "children": [
+          {
+            "id": 244,
+            "name": "alpha",
+            "kind": 1024,
+            "kindString": "Property",
+            "flags": {},
+            "comment": {
+              "shortText": "The alpha channel to set the opacity."
+            },
+            "sources": [
+              {
+                "fileName": "projects/colorpicker/src/modules/colorpicker/types/colorpicker-hsla.ts",
+                "line": 24,
+                "character": 2
+              }
+            ],
+            "type": {
+              "type": "intrinsic",
+              "name": "number"
+            }
+          },
+          {
+            "id": 241,
+            "name": "hue",
+            "kind": 1024,
+            "kindString": "Property",
+            "flags": {},
+            "comment": {
+              "shortText": "The hue, which is a degree on the color wheel from 0 to 360.\n0 is red, 120 is green, and 240 is blue."
+            },
+            "sources": [
+              {
+                "fileName": "projects/colorpicker/src/modules/colorpicker/types/colorpicker-hsla.ts",
+                "line": 10,
+                "character": 2
+              }
+            ],
+            "type": {
+              "type": "intrinsic",
+              "name": "number"
+            }
+          },
+          {
+            "id": 243,
+            "name": "lightness",
+            "kind": 1024,
+            "kindString": "Property",
+            "flags": {},
+            "comment": {
+              "shortText": "The lightness, which is a percentage value where 0 percent is\nblack and 100 percent is white."
+            },
+            "sources": [
+              {
+                "fileName": "projects/colorpicker/src/modules/colorpicker/types/colorpicker-hsla.ts",
+                "line": 20,
+                "character": 2
+              }
+            ],
+            "type": {
+              "type": "intrinsic",
+              "name": "number"
+            }
+          },
+          {
+            "id": 242,
+            "name": "saturation",
+            "kind": 1024,
+            "kindString": "Property",
+            "flags": {},
+            "comment": {
+              "shortText": "The saturation, which is a percentage value where 0 percent is a\nshade of gray and 100 percent is the full color."
+            },
+            "sources": [
+              {
+                "fileName": "projects/colorpicker/src/modules/colorpicker/types/colorpicker-hsla.ts",
+                "line": 15,
+                "character": 2
+              }
+            ],
+            "type": {
+              "type": "intrinsic",
+              "name": "number"
+            }
+          }
+        ],
+        "groups": [
+          {
+            "title": "Properties",
+            "kind": 1024,
+            "children": [
+              244,
+              241,
+              243,
+              242
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "fileName": "projects/colorpicker/src/modules/colorpicker/types/colorpicker-hsla.ts",
             "line": 5,
             "character": 17
           }
         ]
       },
       {
-        "id": 252,
-        "name": "SkyColorpickerHsla",
+        "id": 245,
+        "name": "SkyColorpickerHsva",
         "kind": 256,
         "kindString": "Interface",
         "flags": {},
         "comment": {
-          "shortText": "Specifies colors as a combination of hue, saturation, and lightness with an alpha\nchannel that specifies the opacity of the color."
+          "shortText": "Colors specified as a combination of hue, saturation, and value with an alpha\nchannel to set the opacity."
         },
         "children": [
           {
-            "id": 256,
+            "id": 249,
             "name": "alpha",
             "kind": 1024,
             "kindString": "Property",
             "flags": {},
             "comment": {
-              "shortText": "Specifies the alpha channel to set the opacity."
+              "shortText": "The alpha channel to set the opacity."
             },
             "sources": [
               {
-                "fileName": "projects/colorpicker/src/modules/colorpicker/types/colorpicker-hsla.ts",
+                "fileName": "projects/colorpicker/src/modules/colorpicker/types/colorpicker-hsva.ts",
                 "line": 25,
                 "character": 2
               }
@@ -3561,18 +2844,18 @@
             }
           },
           {
-            "id": 253,
+            "id": 246,
             "name": "hue",
             "kind": 1024,
             "kindString": "Property",
             "flags": {},
             "comment": {
-              "shortText": "Specifies the hue, which is a degree on the color wheel from 0 to 360.\n0 is red, 120 is green, and 240 is blue."
+              "shortText": "The hue, which is a degree on the color wheel from 0 to 360.\n0 is red, 120 is green, and 240 is blue."
             },
             "sources": [
               {
-                "fileName": "projects/colorpicker/src/modules/colorpicker/types/colorpicker-hsla.ts",
-                "line": 11,
+                "fileName": "projects/colorpicker/src/modules/colorpicker/types/colorpicker-hsva.ts",
+                "line": 10,
                 "character": 2
               }
             ],
@@ -3582,17 +2865,38 @@
             }
           },
           {
-            "id": 255,
-            "name": "lightness",
+            "id": 247,
+            "name": "saturation",
             "kind": 1024,
             "kindString": "Property",
             "flags": {},
             "comment": {
-              "shortText": "Specifies the lightness, which is a percentage value where 0 percent is\nblack and 100 percent is white."
+              "shortText": "The saturation, which is a percentage value where 0 percent is a\nshade of gray and 100 percent is the full color."
             },
             "sources": [
               {
-                "fileName": "projects/colorpicker/src/modules/colorpicker/types/colorpicker-hsla.ts",
+                "fileName": "projects/colorpicker/src/modules/colorpicker/types/colorpicker-hsva.ts",
+                "line": 15,
+                "character": 2
+              }
+            ],
+            "type": {
+              "type": "intrinsic",
+              "name": "number"
+            }
+          },
+          {
+            "id": 248,
+            "name": "value",
+            "kind": 1024,
+            "kindString": "Property",
+            "flags": {},
+            "comment": {
+              "shortText": "The brightness or intensity, which is a percentage value of the\ncolor where 0 is completely black and 100 is the brightest and\nreveals the most color."
+            },
+            "sources": [
+              {
+                "fileName": "projects/colorpicker/src/modules/colorpicker/types/colorpicker-hsva.ts",
                 "line": 21,
                 "character": 2
               }
@@ -3601,156 +2905,30 @@
               "type": "intrinsic",
               "name": "number"
             }
-          },
-          {
-            "id": 254,
-            "name": "saturation",
-            "kind": 1024,
-            "kindString": "Property",
-            "flags": {},
-            "comment": {
-              "shortText": "Specifies the saturation, which is a percentage value where 0 percent is a\nshade of gray and 100 percent is the full color."
-            },
-            "sources": [
-              {
-                "fileName": "projects/colorpicker/src/modules/colorpicker/types/colorpicker-hsla.ts",
-                "line": 16,
-                "character": 2
-              }
-            ],
-            "type": {
-              "type": "intrinsic",
-              "name": "number"
-            }
           }
         ],
         "groups": [
           {
             "title": "Properties",
             "kind": 1024,
-            "children": [256, 253, 255, 254]
-          }
-        ],
-        "sources": [
-          {
-            "fileName": "projects/colorpicker/src/modules/colorpicker/types/colorpicker-hsla.ts",
-            "line": 6,
-            "character": 17
-          }
-        ]
-      },
-      {
-        "id": 257,
-        "name": "SkyColorpickerHsva",
-        "kind": 256,
-        "kindString": "Interface",
-        "flags": {},
-        "comment": {
-          "shortText": "Specifies colors as a combination of hue, saturation, and value with an alpha\nchannel that specifies the opacity of the color."
-        },
-        "children": [
-          {
-            "id": 261,
-            "name": "alpha",
-            "kind": 1024,
-            "kindString": "Property",
-            "flags": {},
-            "comment": {
-              "shortText": "Specifies the alpha channel to set the opacity."
-            },
-            "sources": [
-              {
-                "fileName": "projects/colorpicker/src/modules/colorpicker/types/colorpicker-hsva.ts",
-                "line": 26,
-                "character": 2
-              }
-            ],
-            "type": {
-              "type": "intrinsic",
-              "name": "number"
-            }
-          },
-          {
-            "id": 258,
-            "name": "hue",
-            "kind": 1024,
-            "kindString": "Property",
-            "flags": {},
-            "comment": {
-              "shortText": "Specifies the hue, which is a degree on the color wheel from 0 to 360.\n0 is red, 120 is green, and 240 is blue."
-            },
-            "sources": [
-              {
-                "fileName": "projects/colorpicker/src/modules/colorpicker/types/colorpicker-hsva.ts",
-                "line": 11,
-                "character": 2
-              }
-            ],
-            "type": {
-              "type": "intrinsic",
-              "name": "number"
-            }
-          },
-          {
-            "id": 259,
-            "name": "saturation",
-            "kind": 1024,
-            "kindString": "Property",
-            "flags": {},
-            "comment": {
-              "shortText": "Specifies the saturation, which is a percentage value where 0 percent is a\nshade of gray and 100 percent is the full color."
-            },
-            "sources": [
-              {
-                "fileName": "projects/colorpicker/src/modules/colorpicker/types/colorpicker-hsva.ts",
-                "line": 16,
-                "character": 2
-              }
-            ],
-            "type": {
-              "type": "intrinsic",
-              "name": "number"
-            }
-          },
-          {
-            "id": 260,
-            "name": "value",
-            "kind": 1024,
-            "kindString": "Property",
-            "flags": {},
-            "comment": {
-              "shortText": "Specifies the value, which is a percentage value that describes the brightness\nor intensity of the color where 0 is completely black and 100 is the brightest\nand reveals the most color."
-            },
-            "sources": [
-              {
-                "fileName": "projects/colorpicker/src/modules/colorpicker/types/colorpicker-hsva.ts",
-                "line": 22,
-                "character": 2
-              }
-            ],
-            "type": {
-              "type": "intrinsic",
-              "name": "number"
-            }
-          }
-        ],
-        "groups": [
-          {
-            "title": "Properties",
-            "kind": 1024,
-            "children": [261, 258, 259, 260]
+            "children": [
+              249,
+              246,
+              247,
+              248
+            ]
           }
         ],
         "sources": [
           {
             "fileName": "projects/colorpicker/src/modules/colorpicker/types/colorpicker-hsva.ts",
-            "line": 6,
+            "line": 5,
             "character": 17
           }
         ]
       },
       {
-        "id": 262,
+        "id": 250,
         "name": "SkyColorpickerMessage",
         "kind": 256,
         "kindString": "Interface",
@@ -3760,7 +2938,7 @@
         },
         "children": [
           {
-            "id": 263,
+            "id": 251,
             "name": "type",
             "kind": 1024,
             "kindString": "Property",
@@ -3768,7 +2946,7 @@
               "isOptional": true
             },
             "comment": {
-              "shortText": "Specifies the message type."
+              "shortText": "The message type."
             },
             "sources": [
               {
@@ -3779,7 +2957,7 @@
             ],
             "type": {
               "type": "reference",
-              "id": 264,
+              "id": 252,
               "name": "SkyColorpickerMessageType"
             }
           }
@@ -3788,7 +2966,9 @@
           {
             "title": "Properties",
             "kind": 1024,
-            "children": [263]
+            "children": [
+              251
+            ]
           }
         ],
         "sources": [
@@ -3800,7 +2980,7 @@
         ]
       },
       {
-        "id": 269,
+        "id": 257,
         "name": "SkyColorpickerOutput",
         "kind": 256,
         "kindString": "Interface",
@@ -3810,40 +2990,40 @@
         },
         "children": [
           {
-            "id": 276,
+            "id": 264,
             "name": "cmyk",
             "kind": 1024,
             "kindString": "Property",
             "flags": {},
             "comment": {
-              "shortText": "Specifies the CMYK values for the selected color."
+              "shortText": "The CMYK values for the selected color."
             },
             "sources": [
               {
                 "fileName": "projects/colorpicker/src/modules/colorpicker/types/colorpicker-output.ts",
-                "line": 38,
+                "line": 37,
                 "character": 2
               }
             ],
             "type": {
               "type": "reference",
-              "id": 243,
+              "id": 231,
               "name": "SkyColorpickerCmyk"
             }
           },
           {
-            "id": 272,
+            "id": 260,
             "name": "cmykText",
             "kind": 1024,
             "kindString": "Property",
             "flags": {},
             "comment": {
-              "shortText": "Specifies a CMYK text value for the selected color."
+              "shortText": "The CMYK text value for the selected color."
             },
             "sources": [
               {
                 "fileName": "projects/colorpicker/src/modules/colorpicker/types/colorpicker-output.ts",
-                "line": 22,
+                "line": 21,
                 "character": 2
               }
             ],
@@ -3853,18 +3033,18 @@
             }
           },
           {
-            "id": 277,
+            "id": 265,
             "name": "hex",
             "kind": 1024,
             "kindString": "Property",
             "flags": {},
             "comment": {
-              "shortText": "Specifies the hex value for the selected color."
+              "shortText": "The hex value for the selected color."
             },
             "sources": [
               {
                 "fileName": "projects/colorpicker/src/modules/colorpicker/types/colorpicker-output.ts",
-                "line": 42,
+                "line": 41,
                 "character": 2
               }
             ],
@@ -3874,40 +3054,40 @@
             }
           },
           {
-            "id": 275,
+            "id": 263,
             "name": "hsla",
             "kind": 1024,
             "kindString": "Property",
             "flags": {},
             "comment": {
-              "shortText": "Specifies the HSLA values for the selected color."
+              "shortText": "The HSLA values for the selected color."
             },
             "sources": [
               {
                 "fileName": "projects/colorpicker/src/modules/colorpicker/types/colorpicker-output.ts",
-                "line": 34,
+                "line": 33,
                 "character": 2
               }
             ],
             "type": {
               "type": "reference",
-              "id": 252,
+              "id": 240,
               "name": "SkyColorpickerHsla"
             }
           },
           {
-            "id": 270,
+            "id": 258,
             "name": "hslaText",
             "kind": 1024,
             "kindString": "Property",
             "flags": {},
             "comment": {
-              "shortText": "Specifies an HSLA text value for the selected color."
+              "shortText": "The HSLA text value for the selected color."
             },
             "sources": [
               {
                 "fileName": "projects/colorpicker/src/modules/colorpicker/types/colorpicker-output.ts",
-                "line": 14,
+                "line": 13,
                 "character": 2
               }
             ],
@@ -3917,62 +3097,62 @@
             }
           },
           {
-            "id": 273,
+            "id": 261,
             "name": "hsva",
             "kind": 1024,
             "kindString": "Property",
             "flags": {},
             "comment": {
-              "shortText": "Specifies the HSVA values for the selected color."
+              "shortText": "The HSVA values for the selected color."
             },
             "sources": [
               {
                 "fileName": "projects/colorpicker/src/modules/colorpicker/types/colorpicker-output.ts",
-                "line": 26,
+                "line": 25,
                 "character": 2
               }
             ],
             "type": {
               "type": "reference",
-              "id": 257,
+              "id": 245,
               "name": "SkyColorpickerHsva"
             }
           },
           {
-            "id": 274,
+            "id": 262,
             "name": "rgba",
             "kind": 1024,
             "kindString": "Property",
             "flags": {},
             "comment": {
-              "shortText": "Specifies the RGBA values for the selected color."
+              "shortText": "The RGBA values for the selected color."
             },
             "sources": [
               {
                 "fileName": "projects/colorpicker/src/modules/colorpicker/types/colorpicker-output.ts",
-                "line": 30,
+                "line": 29,
                 "character": 2
               }
             ],
             "type": {
               "type": "reference",
-              "id": 280,
+              "id": 268,
               "name": "SkyColorpickerRgba"
             }
           },
           {
-            "id": 271,
+            "id": 259,
             "name": "rgbaText",
             "kind": 1024,
             "kindString": "Property",
             "flags": {},
             "comment": {
-              "shortText": "Specifies an RGBA text value for the selected color."
+              "shortText": "The RGBA text value for the selected color."
             },
             "sources": [
               {
                 "fileName": "projects/colorpicker/src/modules/colorpicker/types/colorpicker-output.ts",
-                "line": 18,
+                "line": 17,
                 "character": 2
               }
             ],
@@ -3986,19 +3166,28 @@
           {
             "title": "Properties",
             "kind": 1024,
-            "children": [276, 272, 277, 275, 270, 273, 274, 271]
+            "children": [
+              264,
+              260,
+              265,
+              263,
+              258,
+              261,
+              262,
+              259
+            ]
           }
         ],
         "sources": [
           {
             "fileName": "projects/colorpicker/src/modules/colorpicker/types/colorpicker-output.ts",
-            "line": 10,
+            "line": 9,
             "character": 17
           }
         ]
       },
       {
-        "id": 278,
+        "id": 266,
         "name": "SkyColorpickerResult",
         "kind": 256,
         "kindString": "Interface",
@@ -4008,7 +3197,7 @@
         },
         "children": [
           {
-            "id": 279,
+            "id": 267,
             "name": "color",
             "kind": 1024,
             "kindString": "Property",
@@ -4025,7 +3214,7 @@
             ],
             "type": {
               "type": "reference",
-              "id": 269,
+              "id": 257,
               "name": "SkyColorpickerOutput"
             }
           }
@@ -4034,7 +3223,9 @@
           {
             "title": "Properties",
             "kind": 1024,
-            "children": [279]
+            "children": [
+              267
+            ]
           }
         ],
         "sources": [
@@ -4046,28 +3237,28 @@
         ]
       },
       {
-        "id": 280,
+        "id": 268,
         "name": "SkyColorpickerRgba",
         "kind": 256,
         "kindString": "Interface",
         "flags": {},
         "comment": {
-          "shortText": "Specifies colors as a combination of red, green, and blue with an alpha\nchannel that specifies the opacity of the color."
+          "shortText": "Colors specified as a combination of red, green, and blue with an alpha\nchannel to set the opacity."
         },
         "children": [
           {
-            "id": 284,
+            "id": 272,
             "name": "alpha",
             "kind": 1024,
             "kindString": "Property",
             "flags": {},
             "comment": {
-              "shortText": "Specifies the alpha channel to set the opacity."
+              "shortText": "The alpha channel to set the opacity."
             },
             "sources": [
               {
                 "fileName": "projects/colorpicker/src/modules/colorpicker/types/colorpicker-rgba.ts",
-                "line": 22,
+                "line": 21,
                 "character": 2
               }
             ],
@@ -4077,18 +3268,18 @@
             }
           },
           {
-            "id": 283,
+            "id": 271,
             "name": "blue",
             "kind": 1024,
             "kindString": "Property",
             "flags": {},
             "comment": {
-              "shortText": "Specifies the percentage of blue to use."
+              "shortText": "The percentage of blue."
             },
             "sources": [
               {
                 "fileName": "projects/colorpicker/src/modules/colorpicker/types/colorpicker-rgba.ts",
-                "line": 18,
+                "line": 17,
                 "character": 2
               }
             ],
@@ -4098,18 +3289,18 @@
             }
           },
           {
-            "id": 282,
+            "id": 270,
             "name": "green",
             "kind": 1024,
             "kindString": "Property",
             "flags": {},
             "comment": {
-              "shortText": "Specifies the percentage of green to use."
+              "shortText": "The percentage of green."
             },
             "sources": [
               {
                 "fileName": "projects/colorpicker/src/modules/colorpicker/types/colorpicker-rgba.ts",
-                "line": 14,
+                "line": 13,
                 "character": 2
               }
             ],
@@ -4119,18 +3310,18 @@
             }
           },
           {
-            "id": 281,
+            "id": 269,
             "name": "red",
             "kind": 1024,
             "kindString": "Property",
             "flags": {},
             "comment": {
-              "shortText": "Specifies the percentage of red to use."
+              "shortText": "The percentage of red."
             },
             "sources": [
               {
                 "fileName": "projects/colorpicker/src/modules/colorpicker/types/colorpicker-rgba.ts",
-                "line": 10,
+                "line": 9,
                 "character": 2
               }
             ],
@@ -4144,13 +3335,18 @@
           {
             "title": "Properties",
             "kind": 1024,
-            "children": [284, 283, 282, 281]
+            "children": [
+              272,
+              271,
+              270,
+              269
+            ]
           }
         ],
         "sources": [
           {
             "fileName": "projects/colorpicker/src/modules/colorpicker/types/colorpicker-rgba.ts",
-            "line": 6,
+            "line": 5,
             "character": 17
           }
         ]
@@ -4158,26 +3354,12 @@
     ],
     "groups": [
       {
-        "title": "Enumerations",
-        "kind": 8,
-        "children": [264]
-      },
-      {
-        "title": "Classes",
-        "kind": 128,
-        "children": [234, 1, 152]
-      },
-      {
-        "title": "Interfaces",
-        "kind": 256,
-        "children": [243, 252, 257, 262, 269, 278, 280]
-      }
-    ],
-    "sources": [
-      {
-        "fileName": "index.ts",
-        "line": 1,
-        "character": 0
+        "title": "Modules",
+        "kind": 2,
+        "children": [
+          1,
+          2
+        ]
       }
     ]
   },
@@ -4190,7 +3372,7 @@
     {
       "fileName": "colorpicker-demo.component.ts",
       "filePath": "/projects/colorpicker/documentation/code-examples/colorpicker/basic/colorpicker-demo.component.ts",
-      "rawContents": "import { Component, OnInit } from '@angular/core';\nimport { FormBuilder, FormControl, FormGroup } from '@angular/forms';\nimport { SkyColorpickerOutput } from '@skyux/colorpicker';\n\n@Component({\n  selector: 'app-colorpicker-demo',\n  templateUrl: './colorpicker-demo.component.html',\n})\nexport class ColorpickerDemoComponent implements OnInit {\n  public reactiveForm: FormGroup;\n\n  public swatches: string[] = [\n    '#BD4040',\n    '#617FC2',\n    '#60AC68',\n    '#3486BA',\n    '#E87134',\n    '#DA9C9C',\n  ];\n\n  constructor(private formBuilder: FormBuilder) {}\n\n  public ngOnInit(): void {\n    this.createForm();\n  }\n\n  public onSelectedColorChanged(args: SkyColorpickerOutput): void {\n    console.log('Reactive form color changed:', args);\n  }\n\n  public submit(): void {\n    const controlValue = this.reactiveForm.get('favoriteColor').value;\n    const favoriteColor: string = controlValue.hex || controlValue;\n    alert('Your favorite color is: \\n' + favoriteColor);\n  }\n\n  private createForm(): void {\n    this.reactiveForm = this.formBuilder.group({\n      favoriteColor: new FormControl('#f00'),\n    });\n  }\n}\n"
+      "rawContents": "import { Component } from '@angular/core';\nimport {\n  UntypedFormBuilder,\n  UntypedFormControl,\n  UntypedFormGroup,\n} from '@angular/forms';\nimport { SkyColorpickerOutput } from '@skyux/colorpicker';\n\n@Component({\n  selector: 'app-colorpicker-demo',\n  templateUrl: './colorpicker-demo.component.html',\n})\nexport class ColorpickerDemoComponent {\n  public reactiveForm: UntypedFormGroup;\n\n  public swatches: string[] = [\n    '#BD4040',\n    '#617FC2',\n    '#60AC68',\n    '#3486BA',\n    '#E87134',\n    '#DA9C9C',\n  ];\n\n  constructor(formBuilder: UntypedFormBuilder) {\n    this.reactiveForm = formBuilder.group({\n      favoriteColor: new UntypedFormControl('#f00'),\n    });\n  }\n\n  public onSelectedColorChanged(args: SkyColorpickerOutput): void {\n    console.log('Reactive form color changed:', args);\n  }\n\n  public submit(): void {\n    const controlValue = this.reactiveForm.get('favoriteColor')?.value;\n    const favoriteColor: string = controlValue.hex || controlValue;\n    alert('Your favorite color is: \\n' + favoriteColor);\n  }\n}\n"
     },
     {
       "fileName": "colorpicker-demo.module.ts",
@@ -4200,12 +3382,12 @@
     {
       "fileName": "colorpicker-demo.component.html",
       "filePath": "/projects/colorpicker/documentation/code-examples/colorpicker/programmatic/colorpicker-demo.component.html",
-      "rawContents": "<sky-colorpicker\n  [messageStream]=\"colorpickerController\"\n  [showResetButton]=\"showResetButton\"\n  #colorPicker\n>\n  <input [skyColorpickerInput]=\"colorPicker\" [(ngModel)]=\"model\" />\n</sky-colorpicker>\n\n<p>\n  <button\n    type=\"button\"\n    class=\"sky-btn sky-btn-primary sky-margin-inline-default\"\n    (click)=\"openColorpicker()\"\n  >\n    Open colorpicker\n  </button>\n\n  <button\n    type=\"button\"\n    class=\"sky-btn sky-btn-default sky-margin-inline-default\"\n    (click)=\"resetColorpicker()\"\n  >\n    Reset colorpicker\n  </button>\n\n  <button\n    type=\"button\"\n    class=\"sky-btn sky-btn-default sky-margin-inline-default\"\n    (click)=\"toggleResetButton()\"\n  >\n    Toggle reset button\n  </button>\n</p>\n"
+      "rawContents": "<sky-colorpicker\n  [messageStream]=\"colorpickerController\"\n  [showResetButton]=\"showResetButton\"\n  #colorPicker\n>\n  <input [skyColorpickerInput]=\"colorPicker\" />\n</sky-colorpicker>\n\n<p>\n  <button\n    type=\"button\"\n    class=\"sky-btn sky-btn-primary sky-margin-inline-sm\"\n    (click)=\"openColorpicker()\"\n  >\n    Open colorpicker\n  </button>\n\n  <button\n    type=\"button\"\n    class=\"sky-btn sky-btn-default sky-margin-inline-sm\"\n    (click)=\"resetColorpicker()\"\n  >\n    Reset colorpicker\n  </button>\n\n  <button\n    type=\"button\"\n    class=\"sky-btn sky-btn-default sky-margin-inline-sm\"\n    (click)=\"toggleResetButton()\"\n  >\n    Toggle reset button\n  </button>\n</p>\n"
     },
     {
       "fileName": "colorpicker-demo.component.ts",
       "filePath": "/projects/colorpicker/documentation/code-examples/colorpicker/programmatic/colorpicker-demo.component.ts",
-      "rawContents": "import { Component } from '@angular/core';\nimport {\n  SkyColorpickerMessage,\n  SkyColorpickerMessageType,\n} from '@skyux/colorpicker';\n\nimport { Subject } from 'rxjs';\n\n@Component({\n  selector: 'app-colorpicker-demo',\n  templateUrl: './colorpicker-demo.component.html',\n})\nexport class ColorpickerDemoComponent {\n  public colorpickerController: Subject<SkyColorpickerMessage> =\n    new Subject<SkyColorpickerMessage>();\n\n  public model: any;\n\n  public showResetButton = false;\n\n  public openColorpicker(): void {\n    this.sendMessage(SkyColorpickerMessageType.Open);\n  }\n\n  public resetColorpicker(): void {\n    this.sendMessage(SkyColorpickerMessageType.Reset);\n  }\n\n  public toggleResetButton(): void {\n    this.sendMessage(SkyColorpickerMessageType.ToggleResetButton);\n  }\n\n  private sendMessage(type: SkyColorpickerMessageType): void {\n    const message: SkyColorpickerMessage = { type };\n    this.colorpickerController.next(message);\n  }\n}\n"
+      "rawContents": "import { Component } from '@angular/core';\nimport {\n  SkyColorpickerMessage,\n  SkyColorpickerMessageType,\n} from '@skyux/colorpicker';\n\nimport { Subject } from 'rxjs';\n\n@Component({\n  selector: 'app-colorpicker-demo',\n  templateUrl: './colorpicker-demo.component.html',\n})\nexport class ColorpickerDemoComponent {\n  public colorpickerController: Subject<SkyColorpickerMessage> =\n    new Subject<SkyColorpickerMessage>();\n\n  public showResetButton = false;\n\n  public openColorpicker(): void {\n    this.sendMessage(SkyColorpickerMessageType.Open);\n  }\n\n  public resetColorpicker(): void {\n    this.sendMessage(SkyColorpickerMessageType.Reset);\n  }\n\n  public toggleResetButton(): void {\n    this.sendMessage(SkyColorpickerMessageType.ToggleResetButton);\n  }\n\n  private sendMessage(type: SkyColorpickerMessageType): void {\n    const message: SkyColorpickerMessage = { type };\n    this.colorpickerController.next(message);\n  }\n}\n"
     },
     {
       "fileName": "colorpicker-demo.module.ts",
