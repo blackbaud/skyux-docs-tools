@@ -382,6 +382,7 @@ body {
           sourceMap: true,
           declaration: false,
           downlevelIteration: true,
+          esModuleInterop: true,
           experimentalDecorators: true,
           moduleResolution: 'node',
           importHelpers: true,
