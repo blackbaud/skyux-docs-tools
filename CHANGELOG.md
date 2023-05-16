@@ -1,3 +1,7 @@
+# 8.0.3 (2023-05-16)
+
+- Switched code examples from web containers to `angular-cli` template. [#250](https://github.com/blackbaud/skyux-docs-tools/pull/250)
+
 # 8.0.2 (2023-05-12)
 
 - Enabled `esModuleInterop` for code example projects. [#249](https://github.com/blackbaud/skyux-docs-tools/pull/249)
