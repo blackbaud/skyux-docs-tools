@@ -34,13 +34,10 @@ export class SkyDocsCodeExamplesEditorService {
     const skyuxVersion = '^8.0.0';
 
     const defaultDependencies: SkyDocsCodeExampleModuleDependencies = {
-      '@angular-devkit/build-angular': angularVersion,
       '@angular/animations': angularVersion,
       '@angular/cdk': angularVersion,
-      '@angular/cli': angularVersion,
       '@angular/common': angularVersion,
       '@angular/compiler': angularVersion,
-      '@angular/compiler-cli': angularVersion,
       '@angular/core': angularVersion,
       '@angular/forms': angularVersion,
       '@angular/platform-browser': angularVersion,
@@ -66,7 +63,6 @@ export class SkyDocsCodeExamplesEditorService {
       'ng2-dragula': '2.1.1',
       rxjs: '^7',
       tslib: '^2.3.0',
-      typescript: '~4.9.4',
       'zone.js': '~0.12.0',
     };
 
@@ -102,7 +98,7 @@ export class SkyDocsCodeExamplesEditorService {
       files,
       title: 'SKY UX Demo',
       description: 'SKY UX Demo',
-      template: 'node',
+      template: 'angular-cli',
       dependencies: mergedDependencies,
       settings: {
         compile: {
@@ -264,12 +260,21 @@ export class AppModule { }
 `;
 
     files[`${srcPath}main.ts`] = `${banner}
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import 'zone.js';
+import '@skyux/packages/polyfills';
 
-import { AppModule } from './app/app.module';
+import {
+  platformBrowserDynamic
+} from '@angular/platform-browser-dynamic';
 
-platformBrowserDynamic().bootstrapModule(AppModule)
-  .catch(err => console.error(err));
+import {
+  AppModule
+} from './app/app.module';
+
+platformBrowserDynamic()
+  .bootstrapModule(AppModule)
+  .catch((err) => console.error(err));
+
 `;
 
     files[`${srcPath}styles.scss`] = `@import '@skyux/theme/css/sky';
@@ -284,53 +289,15 @@ body {
 
     files['angular.json'] = JSON.stringify(
       {
-        $schema: './node_modules/@angular/cli/lib/config/schema.json',
-        version: 1,
         projects: {
           demo: {
-            projectType: 'application',
-            root: '',
-            sourceRoot: 'src',
-            prefix: 'app',
             architect: {
               build: {
-                builder: '@angular-devkit/build-angular:browser',
                 options: {
-                  outputPath: 'dist/demo',
                   index: 'src/index.html',
                   main: 'src/main.ts',
-                  polyfills: ['zone.js', '@skyux/packages/polyfills'],
-                  tsConfig: 'tsconfig.app.json',
                   inlineStyleLanguage: 'scss',
-                  assets: [],
                   styles: stylesheets,
-                  scripts: [],
-                },
-                configurations: {
-                  development: {
-                    buildOptimizer: false,
-                    optimization: false,
-                    vendorChunk: true,
-                    extractLicenses: false,
-                    sourceMap: true,
-                    namedChunks: true,
-                  },
-                },
-                defaultConfiguration: 'development',
-              },
-              serve: {
-                builder: '@angular-devkit/build-angular:dev-server',
-                configurations: {
-                  development: {
-                    browserTarget: 'demo:build:development',
-                  },
-                },
-                defaultConfiguration: 'development',
-              },
-              'extract-i18n': {
-                builder: '@angular-devkit/build-angular:extract-i18n',
-                options: {
-                  browserTarget: 'demo:build',
                 },
               },
             },
@@ -343,38 +310,17 @@ body {
 
     files['package.json'] = JSON.stringify(
       {
-        name: 'skyux-spa-demo',
         dependencies,
-        scripts: {
-          start: 'ng serve',
-          build: 'ng build',
-        },
       },
       undefined,
       2
     );
 
-    files['tsconfig.app.json'] = JSON.stringify(
-      {
-        extends: './tsconfig.json',
-        compilerOptions: {
-          outDir: './out-tsc/app',
-          types: [],
-        },
-        files: ['src/main.ts'],
-        include: ['src/**/*.d.ts'],
-      },
-      undefined,
-      2
-    );
     files['tsconfig.json'] = JSON.stringify(
       {
-        compileOnSave: false,
         compilerOptions: {
-          baseUrl: './',
-          outDir: './dist/out-tsc',
-          forceConsistentCasingInFileNames: true,
           strict: true,
+          forceConsistentCasingInFileNames: true,
           noImplicitOverride: true,
           noPropertyAccessFromIndexSignature: true,
           noImplicitReturns: true,

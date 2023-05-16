@@ -303,13 +303,10 @@ describe('Code examples editor service', () => {
     service.launchEditor(codeExample);
 
     expect(stackblitzSpy.calls.mostRecent().args[0].dependencies).toEqual({
-      '@angular-devkit/build-angular': '^15.0.0',
       '@angular/animations': '^15.0.0',
       '@angular/cdk': '^15.0.0',
-      '@angular/cli': '^15.0.0',
       '@angular/common': '^15.0.0',
       '@angular/compiler': '^15.0.0',
-      '@angular/compiler-cli': '^15.0.0',
       '@angular/core': '^15.0.0',
       '@angular/forms': '^15.0.0',
       '@angular/platform-browser': '^15.0.0',
@@ -334,7 +331,6 @@ describe('Code examples editor service', () => {
       'ng2-dragula': '2.1.1',
       rxjs: '^7',
       tslib: '^2.3.0',
-      typescript: '~4.9.4',
       'zone.js': '~0.12.0',
       '@skyux/foobar': '^8.0.0', // <-- Important
     });
