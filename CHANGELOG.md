@@ -1,3 +1,7 @@
+# 8.0.4 (2023-05-17)
+
+- Removed the `noPropertyAccessFromIndexSignature` tsconfig setting. [#252](https://github.com/blackbaud/skyux-docs-tools/pull/252)
+
 # 8.0.3 (2023-05-16)
 
 - Switched code examples from web containers to `angular-cli` template. [#250](https://github.com/blackbaud/skyux-docs-tools/pull/250)
