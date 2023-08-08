@@ -106,12 +106,7 @@
           {
             "title": "Enumeration members",
             "kind": 16,
-            "children": [
-              256,
-              253,
-              254,
-              255
-            ]
+            "children": [256, 253, 254, 255]
           }
         ],
         "sources": [
@@ -147,9 +142,7 @@
           {
             "title": "Constructors",
             "kind": 512,
-            "children": [
-              223
-            ]
+            "children": [223]
           }
         ],
         "sources": [
@@ -1487,58 +1480,22 @@
           {
             "title": "Constructors",
             "kind": 512,
-            "children": [
-              4
-            ]
+            "children": [4]
           },
           {
             "title": "Properties",
             "kind": 1024,
-            "children": [
-              54,
-              56,
-              14,
-              15,
-              55,
-              18,
-              53,
-              17,
-              16,
-              19,
-              52
-            ]
+            "children": [54, 56, 14, 15, 55, 18, 53, 17, 16, 19, 52]
           },
           {
             "title": "Accessors",
             "kind": 262144,
-            "children": [
-              40,
-              43,
-              24,
-              37,
-              20,
-              34,
-              46,
-              28,
-              31,
-              49
-            ]
+            "children": [40, 43, 24, 37, 20, 34, 46, 28, 31, 49]
           },
           {
             "title": "Methods",
             "kind": 2048,
-            "children": [
-              112,
-              108,
-              106,
-              114,
-              116,
-              118,
-              121,
-              110,
-              99,
-              123
-            ]
+            "children": [112, 108, 106, 114, 116, 118, 121, 110, 99, 123]
           }
         ],
         "sources": [
@@ -2500,45 +2457,23 @@
           {
             "title": "Constructors",
             "kind": 512,
-            "children": [
-              157
-            ]
+            "children": [157]
           },
           {
             "title": "Properties",
             "kind": 1024,
-            "children": [
-              173,
-              172,
-              170,
-              171,
-              169,
-              164
-            ]
+            "children": [173, 172, 170, 171, 169, 164]
           },
           {
             "title": "Accessors",
             "kind": 262144,
-            "children": [
-              165
-            ]
+            "children": [165]
           },
           {
             "title": "Methods",
             "kind": 2048,
             "children": [
-              187,
-              197,
-              193,
-              191,
-              189,
-              199,
-              201,
-              203,
-              195,
-              210,
-              208,
-              205
+              187, 197, 193, 191, 189, 199, 201, 203, 195, 210, 208, 205
             ]
           }
         ],
@@ -2681,12 +2616,7 @@
           {
             "title": "Properties",
             "kind": 1024,
-            "children": [
-              232,
-              235,
-              233,
-              234
-            ]
+            "children": [232, 235, 233, 234]
           }
         ],
         "sources": [
@@ -2796,12 +2726,7 @@
           {
             "title": "Properties",
             "kind": 1024,
-            "children": [
-              244,
-              241,
-              243,
-              242
-            ]
+            "children": [244, 241, 243, 242]
           }
         ],
         "sources": [
@@ -2911,12 +2836,7 @@
           {
             "title": "Properties",
             "kind": 1024,
-            "children": [
-              249,
-              246,
-              247,
-              248
-            ]
+            "children": [249, 246, 247, 248]
           }
         ],
         "sources": [
@@ -2966,9 +2886,7 @@
           {
             "title": "Properties",
             "kind": 1024,
-            "children": [
-              251
-            ]
+            "children": [251]
           }
         ],
         "sources": [
@@ -3166,16 +3084,7 @@
           {
             "title": "Properties",
             "kind": 1024,
-            "children": [
-              264,
-              260,
-              265,
-              263,
-              258,
-              261,
-              262,
-              259
-            ]
+            "children": [264, 260, 265, 263, 258, 261, 262, 259]
           }
         ],
         "sources": [
@@ -3223,9 +3132,7 @@
           {
             "title": "Properties",
             "kind": 1024,
-            "children": [
-              267
-            ]
+            "children": [267]
           }
         ],
         "sources": [
@@ -3335,12 +3242,7 @@
           {
             "title": "Properties",
             "kind": 1024,
-            "children": [
-              272,
-              271,
-              270,
-              269
-            ]
+            "children": [272, 271, 270, 269]
           }
         ],
         "sources": [
@@ -3356,10 +3258,7 @@
       {
         "title": "Modules",
         "kind": 2,
-        "children": [
-          1,
-          2
-        ]
+        "children": [1, 2]
       }
     ]
   },
