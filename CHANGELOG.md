@@ -1,3 +1,13 @@
+# 9.0.0-alpha.0 (2023-08-08)
+
+### ⚠ BREAKING CHANGES
+
+- Dropped support for Angular 15. [#253](https://github.com/blackbaud/skyux-docs-tools/pull/253)
+
+### Features
+
+- Added support for Angular 16. [#253](https://github.com/blackbaud/skyux-docs-tools/pull/253)
+
 # 8.0.3 (2023-05-16)
 
 - Switched code examples from web containers to `angular-cli` template. [#250](https://github.com/blackbaud/skyux-docs-tools/pull/250)
