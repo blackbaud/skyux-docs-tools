@@ -1,30 +1,30 @@
 {
   "name": "@skyux/docs-tools",
-  "version": "8.0.3",
+  "version": "9.0.0-alpha.0",
   "peerDependencies": {
-    "@angular/common": "^15.2.9",
-    "@angular/core": "^15.2.9",
-    "@angular/forms": "^15.2.9",
-    "@angular/platform-browser": "^15.2.9",
-    "@blackbaud/skyux-lib-code-block": "^8.0.0",
-    "@blackbaud/skyux-lib-clipboard": "^8.0.0",
-    "@blackbaud/skyux-lib-media": "^8.0.0",
-    "@blackbaud/skyux-lib-stache": "^8.0.0",
-    "@skyux/core": "^8.0.0",
-    "@skyux/forms": "^8.0.0",
-    "@skyux/http": "^8.0.0",
-    "@skyux/i18n": "^8.0.0",
-    "@skyux/indicators": "^8.0.0",
-    "@skyux/layout": "^8.0.0",
-    "@skyux/lists": "^8.0.0",
-    "@skyux/popovers": "^8.0.0",
-    "@skyux/tabs": "^8.0.0",
-    "@skyux/theme": "^8.0.0"
+    "@angular/common": "^16.1.8",
+    "@angular/core": "^16.1.8",
+    "@angular/forms": "^16.1.8",
+    "@angular/platform-browser": "^16.1.8",
+    "@blackbaud/skyux-lib-code-block": "^9.0.0-alpha.0",
+    "@blackbaud/skyux-lib-clipboard": "^9.0.0-alpha.0",
+    "@blackbaud/skyux-lib-media": "^9.0.0-alpha.0",
+    "@blackbaud/skyux-lib-stache": "^9.0.0-alpha.0",
+    "@skyux/core": "^9.0.0-alpha.0",
+    "@skyux/forms": "^9.0.0-alpha.0",
+    "@skyux/http": "^9.0.0-alpha.0",
+    "@skyux/i18n": "^9.0.0-alpha.0",
+    "@skyux/indicators": "^9.0.0-alpha.0",
+    "@skyux/layout": "^9.0.0-alpha.0",
+    "@skyux/lists": "^9.0.0-alpha.0",
+    "@skyux/popovers": "^9.0.0-alpha.0",
+    "@skyux/tabs": "^9.0.0-alpha.0",
+    "@skyux/theme": "^9.0.0-alpha.0"
   },
   "dependencies": {
     "@stackblitz/sdk": "1.8.0",
     "lodash.orderby": "4.6.0",
     "marked": "4.1.0",
-    "tslib": "^2.5.0"
+    "tslib": "^2.6.1"
   }
 }
