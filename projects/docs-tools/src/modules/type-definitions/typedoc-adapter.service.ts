@@ -237,7 +237,7 @@ export class SkyDocsTypeDocAdapterService {
         if (
           child.kindString === 'Accessor' &&
           !child.comment?.summary
-            .map((item) => item.text)
+            ?.map((item) => item.text)
             .join('')
             .trim() &&
           (child.setSignature || child.getSignature)
@@ -272,7 +272,7 @@ export class SkyDocsTypeDocAdapterService {
           if (
             child.kindString === 'Property' &&
             !child.comment?.summary
-              .map((item) => item.text)
+              ?.map((item) => item.text)
               .join('')
               .trim() &&
             child.type.declaration?.signatures?.length > 0 &&
@@ -690,6 +690,7 @@ export class SkyDocsTypeDocAdapterService {
             case '@required':
               extras['required'] = true;
               break;
+            /* istanbul ignore next */
             default:
               break;
           }
@@ -697,7 +698,7 @@ export class SkyDocsTypeDocAdapterService {
       }
 
       description = comment.summary
-        .map((item) => item.text)
+        ?.map((item) => item.text)
         .join('')
         .trim();
     }

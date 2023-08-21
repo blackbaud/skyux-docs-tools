@@ -2,7 +2,7 @@ export interface TypeDocComment {
   summary?: { kind: string; text: string }[];
 
   blockTags?: {
-    param: string;
+    param?: string;
     content?: { kind: string; text: string }[];
     tag:
       | '@default'

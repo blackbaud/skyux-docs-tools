@@ -88,10 +88,10 @@ describe('TypeDoc adapter', () => {
             name: 'string',
           },
           comment: {
-            tags: [
+            blockTags: [
               {
-                tag: 'required',
-                text: '\n',
+                tag: '@required',
+                content: [],
               },
             ],
           },
@@ -126,60 +126,56 @@ describe('TypeDoc adapter', () => {
           name: 'foo',
           kindString: 'Accessor',
           comment: {
-            shortText: 'The foo of the FooClass.',
-            tags: [
+            summary: [{ kind: 'text', text: 'The foo of the FooClass.' }],
+            blockTags: [
               {
-                tag: 'default',
-                text: '10\n',
+                tag: '@default',
+                content: [{ kind: 'text', text: '10\n' }],
               },
             ],
           },
-          getSignature: [
-            {
-              name: '__get',
-              comment: {
-                shortText: 'The foo of the FooClass.',
-                tags: [
-                  {
-                    tag: 'default',
-                    text: '10\n',
-                  },
-                ],
-              },
-              type: {
-                type: 'intrinsic',
-                name: 'number',
-              },
-            },
-          ],
-          setSignature: [
-            {
-              name: '__set',
-              comment: {
-                shortText: 'The foo of the FooClass.',
-                tags: [
-                  {
-                    tag: 'default',
-                    text: '10\n',
-                  },
-                ],
-              },
-              parameters: [
+          getSignature: {
+            name: '__get',
+            comment: {
+              summary: [{ kind: 'text', text: 'The foo of the FooClass.' }],
+              blockTags: [
                 {
-                  name: 'value',
-                  kindString: 'Parameter',
-                  type: {
-                    type: 'intrinsic',
-                    name: 'number',
-                  },
+                  tag: '@default',
+                  content: [{ kind: 'text', text: '10\n' }],
                 },
               ],
-              type: {
-                type: 'intrinsic',
-                name: 'void',
-              },
             },
-          ],
+            type: {
+              type: 'intrinsic',
+              name: 'number',
+            },
+          },
+          setSignature: {
+            name: '__set',
+            comment: {
+              summary: [{ kind: 'text', text: 'The foo of the FooClass.' }],
+              blockTags: [
+                {
+                  tag: '@default',
+                  content: [{ kind: 'text', text: '10\n' }],
+                },
+              ],
+            },
+            parameters: [
+              {
+                name: 'value',
+                kindString: 'Parameter',
+                type: {
+                  type: 'intrinsic',
+                  name: 'number',
+                },
+              },
+            ],
+            type: {
+              type: 'intrinsic',
+              name: 'void',
+            },
+          },
         },
       ];
 
@@ -204,54 +200,52 @@ describe('TypeDoc adapter', () => {
         {
           name: 'foo',
           kindString: 'Accessor',
-          getSignature: [
-            {
-              name: '__get',
-              comment: {
-                shortText: 'The foo of the FooClass.',
-              },
-              type: {
-                type: 'intrinsic',
-                name: 'number',
-              },
+          getSignature: {
+            name: '__get',
+            comment: {
+              summary: [{ kind: 'text', text: 'The foo of the FooClass.' }],
             },
-          ],
-          setSignature: [
-            {
-              name: '__set',
-              comment: {
-                shortText: 'The foo of the FooClass.',
-                tags: [
-                  {
-                    tag: 'default',
-                    text: '10\n',
-                  },
-                  {
-                    tag: 'required',
-                    text: '\n',
-                  },
-                  {
-                    tag: 'deprecated',
-                    text: 'This property is deprecated.\n',
-                  },
-                ],
-              },
-              parameters: [
+            type: {
+              type: 'intrinsic',
+              name: 'number',
+            },
+          },
+          setSignature: {
+            name: '__set',
+            comment: {
+              summary: [{ kind: 'text', text: 'The foo of the FooClass.' }],
+              blockTags: [
                 {
-                  name: 'value',
-                  kindString: 'Parameter',
-                  type: {
-                    type: 'intrinsic',
-                    name: 'number',
-                  },
+                  tag: '@default',
+                  content: [{ kind: 'text', text: '10\n' }],
+                },
+                {
+                  tag: '@required',
+                  content: [],
+                },
+                {
+                  tag: '@deprecated',
+                  content: [
+                    { kind: 'text', text: 'This property is deprecated.\n' },
+                  ],
                 },
               ],
-              type: {
-                type: 'intrinsic',
-                name: 'void',
-              },
             },
-          ],
+            parameters: [
+              {
+                name: 'value',
+                kindString: 'Parameter',
+                type: {
+                  type: 'intrinsic',
+                  name: 'number',
+                },
+              },
+            ],
+            type: {
+              type: 'intrinsic',
+              name: 'void',
+            },
+          },
         },
       ];
 
@@ -278,16 +272,14 @@ describe('TypeDoc adapter', () => {
           name: 'foo',
           kindString: 'Accessor',
           comment: {},
-          getSignature: [
-            {
-              name: '__get',
-              comment: {},
-              type: {
-                type: 'intrinsic',
-                name: 'number',
-              },
+          getSignature: {
+            name: '__get',
+            comment: {},
+            type: {
+              type: 'intrinsic',
+              name: 'number',
             },
-          ],
+          },
         },
       ];
 
@@ -311,26 +303,24 @@ describe('TypeDoc adapter', () => {
           name: 'foo',
           kindString: 'Accessor',
           comment: {},
-          setSignature: [
-            {
-              name: '__set',
-              comment: {},
-              parameters: [
-                {
-                  name: 'value',
-                  kindString: 'Parameter',
-                  type: {
-                    type: 'intrinsic',
-                    name: 'number',
-                  },
+          setSignature: {
+            name: '__set',
+            comment: {},
+            parameters: [
+              {
+                name: 'value',
+                kindString: 'Parameter',
+                type: {
+                  type: 'intrinsic',
+                  name: 'number',
                 },
-              ],
-              type: {
-                type: 'intrinsic',
-                name: 'void',
               },
+            ],
+            type: {
+              type: 'intrinsic',
+              name: 'void',
             },
-          ],
+          },
         },
       ];
 
@@ -354,32 +344,30 @@ describe('TypeDoc adapter', () => {
           name: 'foo',
           kindString: 'Accessor',
           comment: {
-            shortText: 'The foo of the FooClass.',
-            tags: [
+            summary: [{ kind: 'text', text: 'The foo of the FooClass.' }],
+            blockTags: [
               {
-                tag: 'default',
-                text: '10\n',
+                tag: '@default',
+                content: [{ kind: 'text', text: '10\n' }],
               },
             ],
           },
-          getSignature: [
-            {
-              name: '__get',
-              comment: {
-                shortText: 'The foo of the FooClass.',
-                tags: [
-                  {
-                    tag: 'default',
-                    text: '10\n',
-                  },
-                ],
-              },
-              type: {
-                type: 'intrinsic',
-                name: 'number',
-              },
+          getSignature: {
+            name: '__get',
+            comment: {
+              summary: [{ kind: 'text', text: 'The foo of the FooClass.' }],
+              blockTags: [
+                {
+                  tag: '@default',
+                  content: [{ kind: 'text', text: '10\n' }],
+                },
+              ],
             },
-          ],
+            type: {
+              type: 'intrinsic',
+              name: 'number',
+            },
+          },
         },
       ];
 
@@ -405,31 +393,29 @@ describe('TypeDoc adapter', () => {
           name: 'foo',
           kindString: 'Accessor',
           comment: {
-            tags: [
+            blockTags: [
               {
-                tag: 'default',
-                text: '10\n',
+                tag: '@default',
+                content: [{ kind: 'text', text: '10\n' }],
               },
             ],
           },
-          getSignature: [
-            {
-              name: '__get',
-              comment: {
-                shortText: 'The foo of the FooClass.',
-                tags: [
-                  {
-                    tag: 'default',
-                    text: '10\n',
-                  },
-                ],
-              },
-              type: {
-                type: 'intrinsic',
-                name: 'number',
-              },
+          getSignature: {
+            name: '__get',
+            comment: {
+              summary: [{ kind: 'text', text: 'The foo of the FooClass.' }],
+              blockTags: [
+                {
+                  tag: '@default',
+                  content: [{ kind: 'text', text: '10\n' }],
+                },
+              ],
             },
-          ],
+            type: {
+              type: 'intrinsic',
+              name: 'number',
+            },
+          },
         },
       ];
 
@@ -455,42 +441,45 @@ describe('TypeDoc adapter', () => {
           name: 'foo',
           kindString: 'Accessor',
           comment: {
-            shortText: 'The foo of the FooClass.',
-            tags: [
+            summary: [{ kind: 'text', text: 'The foo of the FooClass.' }],
+            blockTags: [
               {
-                tag: 'default',
-                text: '10\n',
+                tag: '@default',
+                content: [{ kind: 'text', text: '10\n' }],
               },
             ],
           },
-          setSignature: [
-            {
-              name: '__set',
-              comment: {
-                shortText: 'The foo of the FooClass.',
-                tags: [
-                  {
-                    tag: 'default',
-                    text: '10\n',
-                  },
-                ],
-              },
-              type: {
-                type: 'intrinsic',
-                name: 'number',
-              },
-              parameters: [
+          setSignature: {
+            name: '__set',
+            comment: {
+              summary: [
                 {
-                  name: 'value',
-                  kindString: 'Parameter',
-                  type: {
-                    type: 'intrinsic',
-                    name: 'number',
-                  },
+                  kind: 'text',
+                  text: 'The foo of the FooClass.',
+                },
+              ],
+              blockTags: [
+                {
+                  tag: '@default',
+                  content: [{ kind: 'text', text: '10\n' }],
                 },
               ],
             },
-          ],
+            type: {
+              type: 'intrinsic',
+              name: 'number',
+            },
+            parameters: [
+              {
+                name: 'value',
+                kindString: 'Parameter',
+                type: {
+                  type: 'intrinsic',
+                  name: 'number',
+                },
+              },
+            ],
+          },
         },
       ];
 
@@ -516,41 +505,54 @@ describe('TypeDoc adapter', () => {
           name: 'foo',
           kindString: 'Accessor',
           comment: {
-            tags: [
+            blockTags: [
               {
-                tag: 'default',
-                text: '10\n',
-              },
-            ],
-          },
-          setSignature: [
-            {
-              name: '__set',
-              comment: {
-                shortText: 'The foo of the FooClass.',
-                tags: [
+                tag: '@default',
+                content: [
                   {
-                    tag: 'default',
+                    kind: 'text',
                     text: '10\n',
                   },
                 ],
               },
-              type: {
-                type: 'intrinsic',
-                name: 'number',
-              },
-              parameters: [
+            ],
+          },
+          setSignature: {
+            name: '__set',
+            comment: {
+              summary: [
                 {
-                  name: 'value',
-                  kindString: 'Parameter',
-                  type: {
-                    type: 'intrinsic',
-                    name: 'number',
-                  },
+                  kind: 'text',
+                  text: 'The foo of the FooClass.',
+                },
+              ],
+              blockTags: [
+                {
+                  tag: '@default',
+                  content: [
+                    {
+                      kind: 'text',
+                      text: '10\n',
+                    },
+                  ],
                 },
               ],
             },
-          ],
+            type: {
+              type: 'intrinsic',
+              name: 'number',
+            },
+            parameters: [
+              {
+                name: 'value',
+                kindString: 'Parameter',
+                type: {
+                  type: 'intrinsic',
+                  name: 'number',
+                },
+              },
+            ],
+          },
         },
       ];
 
@@ -588,7 +590,12 @@ describe('TypeDoc adapter', () => {
                     name: 'string',
                   },
                   comment: {
-                    shortText: 'fooA description',
+                    summary: [
+                      {
+                        kind: 'text',
+                        text: 'fooA description',
+                      },
+                    ],
                   },
                 },
               ],
@@ -746,28 +753,45 @@ describe('TypeDoc adapter', () => {
           name: 'searchFunction',
           kindString: 'Property',
           comment: {
-            tags: [
+            blockTags: [
               {
-                tag: 'param',
-                text: 'The keywords used to search.',
+                tag: '@param',
+                content: [
+                  { kind: 'text', text: 'The keywords used to search.' },
+                ],
                 param: 'searchTerm',
               },
               {
-                tag: 'param',
-                text: 'The number of milliseconds to wait between each keypress.',
+                tag: '@param',
+                content: [
+                  {
+                    kind: 'text',
+                    text: 'The number of milliseconds to wait between each keypress.',
+                  },
+                ],
                 param: 'debounceTime',
               },
               {
-                tag: 'required',
-                text: '\n',
+                tag: '@required',
+                content: [],
               },
               {
-                tag: 'deprecated',
-                text: 'Search functions should not be used.\n',
+                tag: '@deprecated',
+                content: [
+                  {
+                    kind: 'text',
+                    text: 'Search functions should not be used.\n',
+                  },
+                ],
               },
               {
-                tag: 'example',
-                text: '\n```markup\n[searchFunction]="mySearchFunction"\n```\n',
+                tag: '@example',
+                content: [
+                  {
+                    kind: 'code',
+                    text: '\n```markup\n[searchFunction]="mySearchFunction"\n```\n',
+                  },
+                ],
               },
             ],
           },
@@ -789,7 +813,12 @@ describe('TypeDoc adapter', () => {
                   name: '__call',
                   kindString: 'Call signature',
                   comment: {
-                    shortText: 'description of method',
+                    summary: [
+                      {
+                        kind: 'text',
+                        text: 'description of method',
+                      },
+                    ],
                   },
                   parameters: [
                     {
@@ -880,7 +909,12 @@ describe('TypeDoc adapter', () => {
           kindString: 'Property',
           flags: {},
           comment: {
-            shortText: 'Comment here.',
+            summary: [
+              {
+                kind: 'text',
+                text: 'Comment here.',
+              },
+            ],
           },
           decorators: [
             {
@@ -1151,14 +1185,24 @@ describe('TypeDoc adapter', () => {
               name: 'getUserById',
               kindString: 'Call signature',
               comment: {
-                shortText: 'Gets a user from the database.',
+                summary: [
+                  {
+                    kind: 'text',
+                    text: 'Gets a user from the database.',
+                  },
+                ],
               },
               parameters: [
                 {
                   name: 'id',
                   kindString: 'Parameter',
                   comment: {
-                    text: 'The unique identifier.',
+                    summary: [
+                      {
+                        kind: 'text',
+                        text: 'The unique identifier.',
+                      },
+                    ],
                   },
                   type: {
                     type: 'reference',
@@ -1190,7 +1234,9 @@ describe('TypeDoc adapter', () => {
                   name: 'locale',
                   kindString: 'Parameter',
                   comment: {
-                    text: 'The locale of the user.\n',
+                    summary: [
+                      { kind: 'text', text: 'The locale of the user.\n' },
+                    ],
                   },
                   type: {
                     type: 'intrinsic',
@@ -1288,10 +1334,15 @@ describe('TypeDoc adapter', () => {
             name: 'void',
           },
           comment: {
-            tags: [
+            blockTags: [
               {
-                tag: 'example',
-                text: '\n```markup\n[searchFunction]="mySearchFunction"\n```\n',
+                tag: '@example',
+                content: [
+                  {
+                    kind: 'code',
+                    text: '\n```markup\n[searchFunction]="mySearchFunction"\n```\n',
+                  },
+                ],
               },
             ],
           },
@@ -1304,10 +1355,15 @@ describe('TypeDoc adapter', () => {
             name: 'void',
           },
           comment: {
-            tags: [
+            blockTags: [
               {
-                tag: 'example',
-                text: '\n```typescript\n[searchFunction]="mySearchFunction"\n```\n',
+                tag: '@example',
+                content: [
+                  {
+                    kind: 'code',
+                    text: '\n```typescript\n[searchFunction]="mySearchFunction"\n```\n',
+                  },
+                ],
               },
             ],
           },
@@ -1320,10 +1376,15 @@ describe('TypeDoc adapter', () => {
             name: 'void',
           },
           comment: {
-            tags: [
+            blockTags: [
               {
-                tag: 'example',
-                text: '\n```\n[searchFunction]="mySearchFunction"\n```\n',
+                tag: '@example',
+                content: [
+                  {
+                    kind: 'code',
+                    text: '\n```\n[searchFunction]="mySearchFunction"\n```\n',
+                  },
+                ],
               },
             ],
           },
@@ -1771,10 +1832,10 @@ describe('TypeDoc adapter', () => {
             name: 'string',
           },
           comment: {
-            tags: [
+            blockTags: [
               {
-                tag: 'required',
-                text: '\n',
+                tag: '@required',
+                content: [],
               },
             ],
           },
@@ -1786,7 +1847,16 @@ describe('TypeDoc adapter', () => {
             {
               name: 'bar',
               comment: {
-                shortText: 'method description',
+                summary: [
+                  {
+                    kind: 'text',
+                    text: 'method ',
+                  },
+                  {
+                    kind: 'text',
+                    text: 'description',
+                  },
+                ],
               },
               type: {
                 type: 'intrinsic',
@@ -1794,6 +1864,36 @@ describe('TypeDoc adapter', () => {
               },
             },
           ],
+        },
+        {
+          name: 'moo',
+          kindString: 'Property',
+          type: {
+            type: 'reflection',
+            declaration: {
+              signatures: [
+                {
+                  name: 'moo',
+                  comment: {
+                    summary: [
+                      {
+                        kind: 'text',
+                        text: 'method ',
+                      },
+                      {
+                        kind: 'text',
+                        text: 'description',
+                      },
+                    ],
+                  },
+                  type: {
+                    type: 'intrinsic',
+                    name: 'void',
+                  },
+                },
+              ],
+            },
+          },
         },
       ];
 
@@ -1828,6 +1928,20 @@ describe('TypeDoc adapter', () => {
           type: {
             type: 'intrinsic',
             name: 'string',
+          },
+        },
+        {
+          isOptional: false,
+          name: 'moo',
+          description: 'method description',
+          type: {
+            type: 'reflection',
+            callSignature: {
+              returnType: {
+                type: 'intrinsic',
+                name: 'void',
+              },
+            },
           },
         },
         {
@@ -2287,7 +2401,16 @@ describe('TypeDoc adapter', () => {
                 name: '__call',
                 kindString: 'Call signature',
                 comment: {
-                  shortText: 'test description',
+                  summary: [
+                    {
+                      kind: 'text',
+                      text: 'test ',
+                    },
+                    {
+                      kind: 'text',
+                      text: 'description',
+                    },
+                  ],
                 },
                 parameters: [
                   {
@@ -2377,7 +2500,16 @@ describe('TypeDoc adapter', () => {
         anchorId: 'foo-anchor-id',
         name: 'FooTypeAlias',
         comment: {
-          shortText: 'test description',
+          summary: [
+            {
+              kind: 'text',
+              text: 'test ',
+            },
+            {
+              kind: 'text',
+              text: 'description',
+            },
+          ],
         },
         type: {
           type: 'array',
