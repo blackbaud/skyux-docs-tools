@@ -1,35 +1,9 @@
 <sky-docs-demo-page
-  moduleName="SkyColorpickerModule"
-  moduleSourceCodePath="projects/colorpicker/src/modules/colorpicker/"
-  pageTitle="Colorpicker"
+  moduleName="SkyDatepickerModule"
+  moduleSourceCodePath="projects/datetime/src/modules/datepicker/"
+  pageTitle="datepicker"
 >
   <sky-docs-demo-page-summary>
     Colorpickers create SKY UX-themed inputs for users select colors.
   </sky-docs-demo-page-summary>
-
-  <sky-docs-demo>
-    <sky-colorpicker #colorPicker>
-      <input
-        name="favoriteColor"
-        type="text"
-        [skyColorpickerInput]="colorPicker"
-        [(ngModel)]="model.favoriteColor"
-      />
-    </sky-colorpicker>
-  </sky-docs-demo>
-
-  <sky-docs-code-examples
-    [packageDependencies]="{
-      '@skyux/colorpicker': '*'
-    }"
-  >
-    <sky-docs-code-example
-      heading="Basic colorpicker"
-      sourceCodePath="/projects/colorpicker/documentation/code-examples/colorpicker/basic"
-    ></sky-docs-code-example>
-    <sky-docs-code-example
-      heading="Interact with a colorpicker programmatically"
-      sourceCodePath="/projects/colorpicker/documentation/code-examples/colorpicker/programmatic"
-    ></sky-docs-code-example>
-  </sky-docs-code-examples>
 </sky-docs-demo-page>

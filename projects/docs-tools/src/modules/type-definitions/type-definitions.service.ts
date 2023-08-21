@@ -77,7 +77,7 @@ export class SkyDocsTypeDefinitionsService {
       }
 
       typeDefinitions.forEach((item) => {
-        const decorator = item.decorators && item.decorators[0].name;
+        const decorator = item.decorators && item.decorators[0]?.name;
         const kindString = item.kindString;
 
         switch (decorator) {
