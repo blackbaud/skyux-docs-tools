@@ -1,9 +1,103 @@
 <sky-docs-demo-page
   moduleName="SkyDatepickerModule"
   moduleSourceCodePath="projects/datetime/src/modules/datepicker/"
-  pageTitle="datepicker"
+  pageTitle="Datepicker"
 >
   <sky-docs-demo-page-summary>
-    Colorpickers create SKY UX-themed inputs for users select colors.
+    The datepicker module provides an input and calendar for users to select
+    dates or fuzzy dates.
   </sky-docs-demo-page-summary>
+
+  <sky-docs-demo [heading]="'Standard datepicker demo'">
+    <sky-docs-demo-control-panel
+      (selectionChange)="onDemoSelectionChange($event)"
+    >
+      <sky-docs-demo-control-panel-section>
+        <sky-docs-demo-control-panel-checkbox
+          label="Include date range validator (01/01/2020 - 01/31/2020)"
+          propertyName="standardValidation"
+          [checked]="false"
+        >
+        </sky-docs-demo-control-panel-checkbox>
+        <sky-docs-demo-control-panel-checkbox
+          label="Show custom dates"
+          propertyName="customDates"
+          [checked]="false"
+        >
+        </sky-docs-demo-control-panel-checkbox>
+      </sky-docs-demo-control-panel-section>
+    </sky-docs-demo-control-panel>
+
+    <div style="width: 400px">
+      <form novalidate [formGroup]="standardForm">
+        <sky-input-box>
+          <label class="sky-control-label" [for]="dateOfBirth.id">
+            Date of birth
+          </label>
+          <sky-datepicker
+            (calendarDateRangeChange)="onCalendarDateRangeChange($event)"
+          >
+            <input
+              formControlName="myDate"
+              skyDatepickerInput
+              skyId
+              type="text"
+              [maxDate]="standardMaxDate!"
+              [minDate]="standardMinDate!"
+              #dateOfBirth="skyId"
+            />
+          </sky-datepicker>
+        </sky-input-box>
+      </form>
+    </div>
+  </sky-docs-demo>
+  <sky-docs-demo [heading]="'Fuzzy datepicker demo'">
+    <sky-docs-demo-control-panel
+      (selectionChange)="onDemoSelectionChange($event)"
+    >
+      <sky-docs-demo-control-panel-section>
+        <sky-docs-demo-control-panel-checkbox
+          label="Include date range validator (01/01/2020 - 01/31/2020)"
+          propertyName="fuzzyValidation"
+          [checked]="false"
+        >
+        </sky-docs-demo-control-panel-checkbox>
+        <sky-docs-demo-control-panel-checkbox
+          label="Require year"
+          propertyName="fuzzyYearRequired"
+          [checked]="false"
+        >
+        </sky-docs-demo-control-panel-checkbox>
+        <sky-docs-demo-control-panel-checkbox
+          label="Allow future dates"
+          propertyName="fuzzyFutureDates"
+          [checked]="true"
+        >
+        </sky-docs-demo-control-panel-checkbox>
+      </sky-docs-demo-control-panel-section>
+    </sky-docs-demo-control-panel>
+
+    <div style="width: 400px">
+      <form novalidate [formGroup]="fuzzyForm">
+        <sky-input-box>
+          <label class="sky-control-label" [for]="dateOfBirthFuzzy.id">
+            Date of birth
+          </label>
+          <sky-datepicker>
+            <input
+              formControlName="myDate"
+              skyFuzzyDatepickerInput
+              skyId
+              type="text"
+              [futureDisabled]="fuzzyFutureDisabled"
+              [maxDate]="fuzzyMaxDate!"
+              [minDate]="fuzzyMinDate!"
+              [yearRequired]="fuzzyYearRequired"
+              #dateOfBirthFuzzy="skyId"
+            />
+          </sky-datepicker>
+        </sky-input-box>
+      </form>
+    </div>
+  </sky-docs-demo>
 </sky-docs-demo-page>
