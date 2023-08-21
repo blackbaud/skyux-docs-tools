@@ -271,9 +271,7 @@ export class SkyDocsTypeDefinitionsFormatService {
 
   private getFormattedCallSignature(
     callSignature: SkyDocsCallSignatureDefinition,
-    config: GetFormattedTypeConfig = {
-      escapeSpecialCharacters: true,
-    }
+    config: GetFormattedTypeConfig
   ): string {
     const returnType = this.getFormattedType(callSignature.returnType, config);
 

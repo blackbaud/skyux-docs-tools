@@ -215,7 +215,15 @@ export class SkyDocsTypeDocAdapterService {
     const definitions = entry.children
       .filter(
         (child) =>
+          // We only want properties (both with or without a getter/setter)
           child.kindString === 'Property' || child.kindString === 'Accessor'
+      )
+      .filter(
+        (child) =>
+          // We only want accessors that don't have a setter if they are not inputs
+          child.kindString !== 'Accessor' ||
+          child.setSignature ||
+          this.getDecorator(child)?.name !== 'Input'
       )
       .map((child) => {
         let definition: SkyDocsClassPropertyDefinition = {
@@ -228,15 +236,18 @@ export class SkyDocsTypeDocAdapterService {
         /* Ensure we are properly capturing definitions which use a getter/setter. Final check is a sanity check */
         if (
           child.kindString === 'Accessor' &&
-          !child.comment?.shortText &&
-          (child.setSignature?.length > 0 || child.getSignature.length > 0)
+          !child.comment?.summary
+            ?.map((item) => item.text)
+            .join('')
+            .trim() &&
+          (child.setSignature || child.getSignature)
         ) {
           const mainTags = this.getCommentTags(child.comment);
 
           this.applyCommentTagValues(definition, mainTags);
 
-          if (child.getSignature?.length > 0) {
-            const getTags = this.getCommentTags(child.getSignature[0].comment);
+          if (child.getSignature) {
+            const getTags = this.getCommentTags(child.getSignature.comment);
 
             definition.isOptional = !getTags.extras.required;
 
@@ -244,8 +255,8 @@ export class SkyDocsTypeDocAdapterService {
             defaultValue = this.getDefaultValue(child, getTags);
           }
 
-          if (child.setSignature?.length > 0) {
-            const setTags = this.getCommentTags(child.setSignature[0].comment);
+          if (child.setSignature) {
+            const setTags = this.getCommentTags(child.setSignature.comment);
 
             this.applyCommentTagValues(definition, setTags);
 
@@ -260,7 +271,10 @@ export class SkyDocsTypeDocAdapterService {
           let tags: SkyDocsCommentTags | undefined;
           if (
             child.kindString === 'Property' &&
-            !child.comment?.shortText &&
+            !child.comment?.summary
+              ?.map((item) => item.text)
+              .join('')
+              .trim() &&
             child.type.declaration?.signatures?.length > 0 &&
             child.type.declaration.signatures[0].comment
           ) {
@@ -369,6 +383,13 @@ export class SkyDocsTypeDocAdapterService {
         let tags: SkyDocsCommentTags | undefined;
         if (child.kindString === 'Method' && child.signatures.length > 0) {
           tags = this.getCommentTags(child.signatures[0].comment);
+        } else if (
+          child.type.type === 'reflection' &&
+          child.type?.declaration?.signatures?.length > 0
+        ) {
+          tags = this.getCommentTags(
+            child.type.declaration.signatures[0].comment
+          );
         } else {
           tags = this.getCommentTags(child.comment);
         }
@@ -430,9 +451,9 @@ export class SkyDocsTypeDocAdapterService {
     switch (kindString) {
       case 'Accessor':
         if (child.setSignature) {
-          return this.getTypeDefinition(child.setSignature[0].parameters[0]);
+          return this.getTypeDefinition(child.setSignature.parameters[0]);
         }
-        return this.getTypeDefinition(child.getSignature[0]);
+        return this.getTypeDefinition(child.getSignature);
 
       case 'Method':
         definition = {
@@ -624,20 +645,31 @@ export class SkyDocsTypeDocAdapterService {
     } = {};
 
     if (comment) {
-      if (comment.tags) {
-        comment.tags.forEach((tag) => {
+      if (comment.blockTags) {
+        comment.blockTags.forEach((tag) => {
           switch (tag.tag) {
-            case 'deprecated':
-              deprecationWarning = tag.text.trim();
+            case '@deprecated':
+              deprecationWarning = tag.content
+                .map((item) => item.text)
+                .join('')
+                .trim();
               break;
 
-            case 'default':
-            case 'defaultValue':
-              defaultValue = tag.text.trim();
+            case '@default':
+            case '@defaultValue':
+              defaultValue = tag.content
+                .map((item) => item.text)
+                .join('')
+                .trim();
               break;
 
-            case 'example':
-              codeExample = tag.text.trim().split('```')[1].trim();
+            case '@example':
+              codeExample = tag.content
+                .map((item) => item.text)
+                .join('')
+                .trim()
+                .split('```')[1]
+                .trim();
               const language = codeExample.split('\n')[0];
               if (language === 'markup' || language === 'typescript') {
                 codeExample = codeExample.slice(language.length).trim();
@@ -645,22 +677,30 @@ export class SkyDocsTypeDocAdapterService {
               }
               break;
 
-            case 'param':
+            case '@param':
               parameters = parameters || [];
               parameters.push({
                 name: tag.param,
-                description: tag.text.trim(),
+                description: tag.content
+                  .map((item) => item.text)
+                  .join('')
+                  .trim(),
               });
               break;
-
+            case '@required':
+              extras['required'] = true;
+              break;
+            /* istanbul ignore next */
             default:
-              extras[tag.tag] = tag.text;
               break;
           }
         });
       }
 
-      description = (comment.shortText || comment.text || '').trim();
+      description = comment.summary
+        ?.map((item) => item.text)
+        .join('')
+        .trim();
     }
 
     return {

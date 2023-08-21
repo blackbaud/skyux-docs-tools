@@ -1,19 +1,17 @@
 export interface TypeDocComment {
-  shortText?: string;
+  summary?: { kind: string; text: string }[];
 
-  tags?: {
+  blockTags?: {
     param?: string;
+    content?: { kind: string; text: string }[];
     tag:
-      | 'default'
-      | 'defaultValue'
-      | 'deprecated'
-      | 'example'
-      | 'param'
-      | 'required';
-    text: string;
+      | '@default'
+      | '@defaultValue'
+      | '@deprecated'
+      | '@example'
+      | '@param'
+      | '@required';
   }[];
-
-  text?: string;
 }
 
 export interface TypeDocSource {
@@ -132,7 +130,7 @@ export interface TypeDocEntryChild {
     comment: TypeDocComment;
     name: string;
     type: TypeDocType;
-  }[];
+  };
 
   name?: string;
 
@@ -141,7 +139,7 @@ export interface TypeDocEntryChild {
     name: string;
     parameters?: TypeDocParameter[];
     type: TypeDocType;
-  }[];
+  };
 
   signatures?: TypeDocSignature[];
 
