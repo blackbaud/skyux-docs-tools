@@ -663,6 +663,21 @@ export class SkyDocsTypeDocAdapterService {
                 .map((item) => item.text)
                 .join('')
                 .trim();
+
+              if (tag.content[0].kind === 'code') {
+                defaultValue = defaultValue.split('```')[1].trim();
+
+                const defaultLanguage = defaultValue.split('\n')[0];
+                if (
+                  defaultLanguage === 'markup' ||
+                  defaultLanguage === 'typescript' ||
+                  defaultLanguage === 'ts'
+                ) {
+                  defaultValue = defaultValue
+                    .slice(defaultLanguage.length)
+                    .trim();
+                }
+              }
               break;
 
             case '@example':
@@ -672,10 +687,14 @@ export class SkyDocsTypeDocAdapterService {
                 .trim()
                 .split('```')[1]
                 .trim();
-              const language = codeExample.split('\n')[0];
-              if (language === 'markup' || language === 'typescript') {
-                codeExample = codeExample.slice(language.length).trim();
-                codeExampleLanguage = language;
+              const exampleLanguage = codeExample.split('\n')[0];
+              if (
+                exampleLanguage === 'markup' ||
+                exampleLanguage === 'typescript' ||
+                exampleLanguage === 'ts'
+              ) {
+                codeExample = codeExample.slice(exampleLanguage.length).trim();
+                codeExampleLanguage = exampleLanguage;
               }
               break;
 

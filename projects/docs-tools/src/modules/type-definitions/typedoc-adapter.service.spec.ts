@@ -130,7 +130,7 @@ describe('TypeDoc adapter', () => {
             blockTags: [
               {
                 tag: '@default',
-                content: [{ kind: 'text', text: '10\n' }],
+                content: [{ kind: 'code', text: '```ts\n10\n```' }],
               },
             ],
           },
@@ -141,7 +141,7 @@ describe('TypeDoc adapter', () => {
               blockTags: [
                 {
                   tag: '@default',
-                  content: [{ kind: 'text', text: '10\n' }],
+                  content: [{ kind: 'code', text: '```ts\n10\n```' }],
                 },
               ],
             },
@@ -157,7 +157,7 @@ describe('TypeDoc adapter', () => {
               blockTags: [
                 {
                   tag: '@default',
-                  content: [{ kind: 'text', text: '10\n' }],
+                  content: [{ kind: 'code', text: '```ts\n10\n```' }],
                 },
               ],
             },
@@ -217,7 +217,7 @@ describe('TypeDoc adapter', () => {
               blockTags: [
                 {
                   tag: '@default',
-                  content: [{ kind: 'text', text: '10\n' }],
+                  content: [{ kind: 'code', text: '```ts\n10\n```' }],
                 },
                 {
                   tag: '@required',
@@ -348,7 +348,7 @@ describe('TypeDoc adapter', () => {
             blockTags: [
               {
                 tag: '@default',
-                content: [{ kind: 'text', text: '10\n' }],
+                content: [{ kind: 'code', text: '```ts\n10\n```' }],
               },
             ],
           },
@@ -359,7 +359,7 @@ describe('TypeDoc adapter', () => {
               blockTags: [
                 {
                   tag: '@default',
-                  content: [{ kind: 'text', text: '10\n' }],
+                  content: [{ kind: 'code', text: '```ts\n10\n```' }],
                 },
               ],
             },
@@ -396,7 +396,7 @@ describe('TypeDoc adapter', () => {
             blockTags: [
               {
                 tag: '@default',
-                content: [{ kind: 'text', text: '10\n' }],
+                content: [{ kind: 'code', text: '```ts\n10\n```' }],
               },
             ],
           },
@@ -407,7 +407,7 @@ describe('TypeDoc adapter', () => {
               blockTags: [
                 {
                   tag: '@default',
-                  content: [{ kind: 'text', text: '10\n' }],
+                  content: [{ kind: 'code', text: '```ts\n10\n```' }],
                 },
               ],
             },
@@ -445,7 +445,7 @@ describe('TypeDoc adapter', () => {
             blockTags: [
               {
                 tag: '@default',
-                content: [{ kind: 'text', text: '10\n' }],
+                content: [{ kind: 'code', text: '```ts\n10\n```' }],
               },
             ],
           },
@@ -461,7 +461,7 @@ describe('TypeDoc adapter', () => {
               blockTags: [
                 {
                   tag: '@default',
-                  content: [{ kind: 'text', text: '10\n' }],
+                  content: [{ kind: 'code', text: '```ts\n10\n```' }],
                 },
               ],
             },
@@ -531,8 +531,8 @@ describe('TypeDoc adapter', () => {
                   tag: '@default',
                   content: [
                     {
-                      kind: 'text',
-                      text: '10\n',
+                      kind: 'code',
+                      text: '```ts\n10\n```',
                     },
                   ],
                 },
