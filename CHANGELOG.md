@@ -1,3 +1,7 @@
+# 9.0.0-alpha.3 (2023-08-22)
+
+- Handle the fact that default values are now treated as code. [#257](https://github.com/blackbaud/skyux-docs-tools/pull/257)
+
 # 9.0.0-alpha.2 (2023-08-22)
 
 - Handle cases where `kindString` is not available. [#256](https://github.com/blackbaud/skyux-docs-tools/pull/256)
