@@ -40,6 +40,7 @@ import {
   TypeDocComment,
   TypeDocEntry,
   TypeDocEntryChild,
+  TypeDocKind,
   TypeDocParameter,
   TypeDocSignature,
   TypeDocType,
@@ -216,12 +217,13 @@ export class SkyDocsTypeDocAdapterService {
       .filter(
         (child) =>
           // We only want properties (both with or without a getter/setter)
-          child.kindString === 'Property' || child.kindString === 'Accessor'
+          child.kind === TypeDocKind.Property ||
+          child.kind === TypeDocKind.Accessor
       )
       .filter(
         (child) =>
           // We only want accessors that don't have a setter if they are not inputs
-          child.kindString !== 'Accessor' ||
+          child.kind !== TypeDocKind.Accessor ||
           child.setSignature ||
           this.getDecorator(child)?.name !== 'Input'
       )
@@ -235,7 +237,7 @@ export class SkyDocsTypeDocAdapterService {
 
         /* Ensure we are properly capturing definitions which use a getter/setter. Final check is a sanity check */
         if (
-          child.kindString === 'Accessor' &&
+          child.kind === TypeDocKind.Accessor &&
           !child.comment?.summary
             ?.map((item) => item.text)
             .join('')
@@ -270,7 +272,7 @@ export class SkyDocsTypeDocAdapterService {
         } else {
           let tags: SkyDocsCommentTags | undefined;
           if (
-            child.kindString === 'Property' &&
+            child.kind === TypeDocKind.Property &&
             !child.comment?.summary
               ?.map((item) => item.text)
               .join('')
@@ -307,11 +309,11 @@ export class SkyDocsTypeDocAdapterService {
 
         if (!definition.description) {
           const constructor = entry.children.find(
-            (child) => child.kindString === 'Constructor'
+            (child) => child.kind === TypeDocKind.Constructor
           );
           if (constructor) {
             const signature = constructor.signatures.find(
-              (signature) => signature.kindString === 'Constructor signature'
+              (signature) => signature.kind === TypeDocKind.ConstructorSignature
             );
             /* Sanity check */
             /* istanbul ignore else */
@@ -343,7 +345,7 @@ export class SkyDocsTypeDocAdapterService {
     const methods = entry.children
       .filter(
         (child) =>
-          child.kindString === 'Method' && /^ng/.test(child.name) === false
+          child.kind === TypeDocKind.Method && /^ng/.test(child.name) === false
       )
       .map((child) => {
         const definition: SkyDocsClassMethodDefinition = {
@@ -381,7 +383,7 @@ export class SkyDocsTypeDocAdapterService {
     const definitions =
       entry.children?.map((child) => {
         let tags: SkyDocsCommentTags | undefined;
-        if (child.kindString === 'Method' && child.signatures.length > 0) {
+        if (child.kind === TypeDocKind.Method && child.signatures.length > 0) {
           tags = this.getCommentTags(child.signatures[0].comment);
         } else if (
           child.type.type === 'reflection' &&
@@ -447,15 +449,15 @@ export class SkyDocsTypeDocAdapterService {
   private getTypeDefinition(child: TypeDocEntryChild): SkyDocsTypeDefinition {
     let definition: SkyDocsTypeDefinition;
 
-    const kindString = child.kindString;
-    switch (kindString) {
-      case 'Accessor':
+    const kind = child.kind;
+    switch (kind) {
+      case TypeDocKind.Accessor:
         if (child.setSignature) {
           return this.getTypeDefinition(child.setSignature.parameters[0]);
         }
         return this.getTypeDefinition(child.getSignature);
 
-      case 'Method':
+      case TypeDocKind.Method:
         definition = {
           callSignature: this.getCallSignatureDefinition(
             child.signatures[0],

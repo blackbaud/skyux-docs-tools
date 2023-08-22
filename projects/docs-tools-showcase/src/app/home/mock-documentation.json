@@ -39,7 +39,6 @@
         "id": 69,
         "name": "SkyDateRangeCalculatorId",
         "kind": 8,
-        "kindString": "Enumeration",
         "flags": {},
         "comment": {
           "summary": [
@@ -114,7 +113,6 @@
             "id": 72,
             "name": "After",
             "kind": 16,
-            "kindString": "Enumeration Member",
             "flags": {},
             "comment": {
               "summary": [
@@ -141,7 +139,6 @@
             "id": 70,
             "name": "AnyTime",
             "kind": 16,
-            "kindString": "Enumeration Member",
             "flags": {},
             "comment": {
               "summary": [
@@ -168,7 +165,6 @@
             "id": 71,
             "name": "Before",
             "kind": 16,
-            "kindString": "Enumeration Member",
             "flags": {},
             "comment": {
               "summary": [
@@ -195,7 +191,6 @@
             "id": 86,
             "name": "LastCalendarYear",
             "kind": 16,
-            "kindString": "Enumeration Member",
             "flags": {},
             "comment": {
               "summary": [
@@ -222,7 +217,6 @@
             "id": 89,
             "name": "LastFiscalYear",
             "kind": 16,
-            "kindString": "Enumeration Member",
             "flags": {},
             "comment": {
               "summary": [
@@ -249,7 +243,6 @@
             "id": 80,
             "name": "LastMonth",
             "kind": 16,
-            "kindString": "Enumeration Member",
             "flags": {},
             "comment": {
               "summary": [
@@ -276,7 +269,6 @@
             "id": 83,
             "name": "LastQuarter",
             "kind": 16,
-            "kindString": "Enumeration Member",
             "flags": {},
             "comment": {
               "summary": [
@@ -303,7 +295,6 @@
             "id": 77,
             "name": "LastWeek",
             "kind": 16,
-            "kindString": "Enumeration Member",
             "flags": {},
             "comment": {
               "summary": [
@@ -330,7 +321,6 @@
             "id": 88,
             "name": "NextCalendarYear",
             "kind": 16,
-            "kindString": "Enumeration Member",
             "flags": {},
             "comment": {
               "summary": [
@@ -357,7 +347,6 @@
             "id": 91,
             "name": "NextFiscalYear",
             "kind": 16,
-            "kindString": "Enumeration Member",
             "flags": {},
             "comment": {
               "summary": [
@@ -384,7 +373,6 @@
             "id": 82,
             "name": "NextMonth",
             "kind": 16,
-            "kindString": "Enumeration Member",
             "flags": {},
             "comment": {
               "summary": [
@@ -411,7 +399,6 @@
             "id": 85,
             "name": "NextQuarter",
             "kind": 16,
-            "kindString": "Enumeration Member",
             "flags": {},
             "comment": {
               "summary": [
@@ -438,7 +425,6 @@
             "id": 79,
             "name": "NextWeek",
             "kind": 16,
-            "kindString": "Enumeration Member",
             "flags": {},
             "comment": {
               "summary": [
@@ -465,7 +451,6 @@
             "id": 73,
             "name": "SpecificRange",
             "kind": 16,
-            "kindString": "Enumeration Member",
             "flags": {},
             "comment": {
               "summary": [
@@ -492,7 +477,6 @@
             "id": 87,
             "name": "ThisCalendarYear",
             "kind": 16,
-            "kindString": "Enumeration Member",
             "flags": {},
             "comment": {
               "summary": [
@@ -519,7 +503,6 @@
             "id": 90,
             "name": "ThisFiscalYear",
             "kind": 16,
-            "kindString": "Enumeration Member",
             "flags": {},
             "comment": {
               "summary": [
@@ -546,7 +529,6 @@
             "id": 81,
             "name": "ThisMonth",
             "kind": 16,
-            "kindString": "Enumeration Member",
             "flags": {},
             "comment": {
               "summary": [
@@ -573,7 +555,6 @@
             "id": 84,
             "name": "ThisQuarter",
             "kind": 16,
-            "kindString": "Enumeration Member",
             "flags": {},
             "comment": {
               "summary": [
@@ -600,7 +581,6 @@
             "id": 78,
             "name": "ThisWeek",
             "kind": 16,
-            "kindString": "Enumeration Member",
             "flags": {},
             "comment": {
               "summary": [
@@ -627,7 +607,6 @@
             "id": 75,
             "name": "Today",
             "kind": 16,
-            "kindString": "Enumeration Member",
             "flags": {},
             "comment": {
               "summary": [
@@ -654,7 +633,6 @@
             "id": 76,
             "name": "Tomorrow",
             "kind": 16,
-            "kindString": "Enumeration Member",
             "flags": {},
             "comment": {
               "summary": [
@@ -681,7 +659,6 @@
             "id": 74,
             "name": "Yesterday",
             "kind": 16,
-            "kindString": "Enumeration Member",
             "flags": {},
             "comment": {
               "summary": [
@@ -727,7 +704,6 @@
         "id": 92,
         "name": "SkyDateRangeCalculatorType",
         "kind": 8,
-        "kindString": "Enumeration",
         "flags": {},
         "comment": {
           "summary": [
@@ -742,7 +718,6 @@
             "id": 93,
             "name": "After",
             "kind": 16,
-            "kindString": "Enumeration Member",
             "flags": {},
             "comment": {
               "summary": [
@@ -769,7 +744,6 @@
             "id": 94,
             "name": "Before",
             "kind": 16,
-            "kindString": "Enumeration Member",
             "flags": {},
             "comment": {
               "summary": [
@@ -796,7 +770,6 @@
             "id": 95,
             "name": "Range",
             "kind": 16,
-            "kindString": "Enumeration Member",
             "flags": {},
             "comment": {
               "summary": [
@@ -823,7 +796,6 @@
             "id": 96,
             "name": "Relative",
             "kind": 16,
-            "kindString": "Enumeration Member",
             "flags": {},
             "comment": {
               "summary": [
@@ -866,7 +838,6 @@
         "id": 3,
         "name": "SkyDatePipe",
         "kind": 128,
-        "kindString": "Class",
         "flags": {},
         "comment": {
           "summary": [
@@ -892,7 +863,6 @@
             "id": 4,
             "name": "constructor",
             "kind": 512,
-            "kindString": "Constructor",
             "flags": {},
             "sources": [
               {
@@ -907,14 +877,12 @@
                 "id": 5,
                 "name": "new SkyDatePipe",
                 "kind": 16384,
-                "kindString": "Constructor signature",
                 "flags": {},
                 "parameters": [
                   {
                     "id": 6,
                     "name": "localeProvider",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {},
                     "type": {
                       "type": "reference",
@@ -934,7 +902,6 @@
             "id": 14,
             "name": "ngOnDestroy",
             "kind": 2048,
-            "kindString": "Method",
             "flags": {
               "isPublic": true
             },
@@ -951,7 +918,6 @@
                 "id": 15,
                 "name": "ngOnDestroy",
                 "kind": 4096,
-                "kindString": "Call signature",
                 "flags": {},
                 "type": {
                   "type": "intrinsic",
@@ -973,7 +939,6 @@
             "id": 16,
             "name": "transform",
             "kind": 2048,
-            "kindString": "Method",
             "flags": {
               "isPublic": true
             },
@@ -990,7 +955,6 @@
                 "id": 17,
                 "name": "transform",
                 "kind": 4096,
-                "kindString": "Call signature",
                 "flags": {},
                 "comment": {
                   "summary": [
@@ -1005,7 +969,6 @@
                     "id": 18,
                     "name": "value",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {},
                     "comment": {
                       "summary": [
@@ -1024,7 +987,6 @@
                     "id": 19,
                     "name": "format",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {
                       "isOptional": true
                     },
@@ -1053,7 +1015,6 @@
                     "id": 20,
                     "name": "locale",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {
                       "isOptional": true
                     },
@@ -1133,7 +1094,6 @@
         "id": 23,
         "name": "SkyDatePipeModule",
         "kind": 128,
-        "kindString": "Class",
         "flags": {},
         "children": [],
         "groups": [
@@ -1163,7 +1123,6 @@
         "id": 40,
         "name": "SkyDateRangeCalculator",
         "kind": 128,
-        "kindString": "Class",
         "flags": {},
         "comment": {
           "summary": [
@@ -1178,7 +1137,6 @@
             "id": 41,
             "name": "constructor",
             "kind": 512,
-            "kindString": "Constructor",
             "flags": {},
             "sources": [
               {
@@ -1193,14 +1151,12 @@
                 "id": 42,
                 "name": "new SkyDateRangeCalculator",
                 "kind": 16384,
-                "kindString": "Constructor signature",
                 "flags": {},
                 "parameters": [
                   {
                     "id": 43,
                     "name": "calculatorId",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {},
                     "comment": {
                       "summary": [
@@ -1220,7 +1176,6 @@
                     "id": 44,
                     "name": "config",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {},
                     "type": {
                       "type": "reference",
@@ -1241,7 +1196,6 @@
             "id": 48,
             "name": "calculatorId",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {
               "isPublic": true,
               "isReadonly": true
@@ -1272,7 +1226,6 @@
             "id": 45,
             "name": "shortDescription",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {
               "isPublic": true,
               "isReadonly": true
@@ -1303,7 +1256,6 @@
             "id": 46,
             "name": "type",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {
               "isPublic": true,
               "isReadonly": true
@@ -1335,7 +1287,6 @@
             "id": 49,
             "name": "getValue",
             "kind": 2048,
-            "kindString": "Method",
             "flags": {
               "isPublic": true
             },
@@ -1352,7 +1303,6 @@
                 "id": 50,
                 "name": "getValue",
                 "kind": 4096,
-                "kindString": "Call signature",
                 "flags": {},
                 "comment": {
                   "summary": [
@@ -1367,7 +1317,6 @@
                     "id": 51,
                     "name": "startDateInput",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {
                       "isOptional": true
                     },
@@ -1390,7 +1339,6 @@
                     "id": 52,
                     "name": "endDateInput",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {
                       "isOptional": true
                     },
@@ -1423,7 +1371,6 @@
             "id": 53,
             "name": "validate",
             "kind": 2048,
-            "kindString": "Method",
             "flags": {
               "isPublic": true
             },
@@ -1440,7 +1387,6 @@
                 "id": 54,
                 "name": "validate",
                 "kind": 4096,
-                "kindString": "Call signature",
                 "flags": {},
                 "comment": {
                   "summary": [
@@ -1455,7 +1401,6 @@
                     "id": 55,
                     "name": "value",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {
                       "isOptional": true
                     },
@@ -1505,7 +1450,6 @@
         "id": 104,
         "name": "SkyDateRangePickerModule",
         "kind": 128,
-        "kindString": "Class",
         "flags": {},
         "children": [],
         "groups": [
@@ -1535,7 +1479,6 @@
         "id": 107,
         "name": "SkyDateRangeService",
         "kind": 128,
-        "kindString": "Class",
         "flags": {},
         "comment": {
           "summary": [
@@ -1558,7 +1501,6 @@
             "id": 109,
             "name": "constructor",
             "kind": 512,
-            "kindString": "Constructor",
             "flags": {},
             "sources": [
               {
@@ -1573,14 +1515,12 @@
                 "id": 110,
                 "name": "new SkyDateRangeService",
                 "kind": 16384,
-                "kindString": "Constructor signature",
                 "flags": {},
                 "parameters": [
                   {
                     "id": 111,
                     "name": "resourcesService",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {},
                     "type": {
                       "type": "reference",
@@ -1600,7 +1540,6 @@
             "id": 119,
             "name": "createCalculator",
             "kind": 2048,
-            "kindString": "Method",
             "flags": {
               "isPublic": true
             },
@@ -1617,7 +1556,6 @@
                 "id": 120,
                 "name": "createCalculator",
                 "kind": 4096,
-                "kindString": "Call signature",
                 "flags": {},
                 "comment": {
                   "summary": [
@@ -1632,7 +1570,6 @@
                     "id": 121,
                     "name": "config",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {},
                     "comment": {
                       "summary": [
@@ -1662,7 +1599,6 @@
             "id": 125,
             "name": "getCalculatorById",
             "kind": 2048,
-            "kindString": "Method",
             "flags": {
               "isPublic": true
             },
@@ -1679,7 +1615,6 @@
                 "id": 126,
                 "name": "getCalculatorById",
                 "kind": 4096,
-                "kindString": "Call signature",
                 "flags": {},
                 "comment": {
                   "summary": [
@@ -1694,7 +1629,6 @@
                     "id": 127,
                     "name": "id",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {},
                     "comment": {
                       "summary": [
@@ -1732,7 +1666,6 @@
             "id": 122,
             "name": "getCalculators",
             "kind": 2048,
-            "kindString": "Method",
             "flags": {
               "isPublic": true
             },
@@ -1749,7 +1682,6 @@
                 "id": 123,
                 "name": "getCalculators",
                 "kind": 4096,
-                "kindString": "Call signature",
                 "flags": {},
                 "comment": {
                   "summary": [
@@ -1764,7 +1696,6 @@
                     "id": 124,
                     "name": "ids",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {},
                     "comment": {
                       "summary": [
@@ -1836,14 +1767,12 @@
         "id": 130,
         "name": "SkyDatepickerConfigService",
         "kind": 128,
-        "kindString": "Class",
         "flags": {},
         "children": [
           {
             "id": 133,
             "name": "dateFormat",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {
               "isPublic": true
             },
@@ -1884,7 +1813,6 @@
             "id": 134,
             "name": "maxDate",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {
               "isPublic": true
             },
@@ -1916,7 +1844,6 @@
             "id": 135,
             "name": "minDate",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {
               "isPublic": true
             },
@@ -1948,7 +1875,6 @@
             "id": 136,
             "name": "startingDay",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {
               "isPublic": true
             },
@@ -2026,7 +1952,6 @@
         "id": 137,
         "name": "SkyDatepickerModule",
         "kind": 128,
-        "kindString": "Class",
         "flags": {},
         "children": [],
         "groups": [
@@ -2056,7 +1981,6 @@
         "id": 26,
         "name": "SkyFuzzyDatePipe",
         "kind": 128,
-        "kindString": "Class",
         "flags": {},
         "comment": {
           "summary": [
@@ -2082,7 +2006,6 @@
             "id": 27,
             "name": "constructor",
             "kind": 512,
-            "kindString": "Constructor",
             "flags": {},
             "sources": [
               {
@@ -2097,14 +2020,12 @@
                 "id": 28,
                 "name": "new SkyFuzzyDatePipe",
                 "kind": 16384,
-                "kindString": "Constructor signature",
                 "flags": {},
                 "parameters": [
                   {
                     "id": 29,
                     "name": "fuzzyDateService",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {},
                     "type": {
                       "type": "reference",
@@ -2124,7 +2045,6 @@
             "id": 31,
             "name": "transform",
             "kind": 2048,
-            "kindString": "Method",
             "flags": {
               "isPublic": true
             },
@@ -2141,7 +2061,6 @@
                 "id": 32,
                 "name": "transform",
                 "kind": 4096,
-                "kindString": "Call signature",
                 "flags": {},
                 "comment": {
                   "summary": [
@@ -2156,7 +2075,6 @@
                     "id": 33,
                     "name": "value",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {},
                     "comment": {
                       "summary": [
@@ -2176,7 +2094,6 @@
                     "id": 34,
                     "name": "format",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {
                       "isOptional": true
                     },
@@ -2205,7 +2122,6 @@
                     "id": 35,
                     "name": "locale",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {
                       "isOptional": true
                     },
@@ -2279,7 +2195,6 @@
         "id": 231,
         "name": "SkyTimepickerModule",
         "kind": 128,
-        "kindString": "Class",
         "flags": {},
         "children": [],
         "groups": [
@@ -2309,7 +2224,6 @@
         "id": 269,
         "name": "SkyDatepickerComponent",
         "kind": 128,
-        "kindString": "Class",
         "flags": {},
         "comment": {
           "summary": [
@@ -2332,7 +2246,6 @@
             "id": 270,
             "name": "constructor",
             "kind": 512,
-            "kindString": "Constructor",
             "flags": {},
             "sources": [
               {
@@ -2347,14 +2260,12 @@
                 "id": 271,
                 "name": "SkyDatepickerComponent",
                 "kind": 16384,
-                "kindString": "Constructor signature",
                 "flags": {},
                 "parameters": [
                   {
                     "id": 272,
                     "name": "affixService",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {},
                     "type": {
                       "type": "reference",
@@ -2365,7 +2276,6 @@
                     "id": 273,
                     "name": "changeDetector",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {},
                     "type": {
                       "type": "reference",
@@ -2378,7 +2288,6 @@
                     "id": 274,
                     "name": "coreAdapter",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {},
                     "type": {
                       "type": "reference",
@@ -2389,7 +2298,6 @@
                     "id": 275,
                     "name": "overlayService",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {},
                     "type": {
                       "type": "reference",
@@ -2400,7 +2308,6 @@
                     "id": 276,
                     "name": "inputBoxHostService",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {
                       "isOptional": true
                     },
@@ -2413,7 +2320,6 @@
                     "id": 277,
                     "name": "themeSvc",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {
                       "isOptional": true
                     },
@@ -2426,7 +2332,6 @@
                     "id": 278,
                     "name": "stackingContext",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {
                       "isOptional": true
                     },
@@ -2448,7 +2353,6 @@
             "id": 299,
             "name": "calendar",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {
               "isPublic": true
             },
@@ -2470,7 +2374,6 @@
             "id": 288,
             "name": "calendarDateRangeChange",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {
               "isPublic": true
             },
@@ -2522,7 +2425,6 @@
             "id": 289,
             "name": "calendarId",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {
               "isPublic": true
             },
@@ -2544,7 +2446,6 @@
             "id": 304,
             "name": "calendarTemplateRef",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {
               "isPublic": true
             },
@@ -2574,7 +2475,6 @@
             "id": 290,
             "name": "customDates",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {
               "isPublic": true
             },
@@ -2600,7 +2500,6 @@
             "id": 291,
             "name": "dateChange",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {
               "isPublic": true
             },
@@ -2633,7 +2532,6 @@
             "id": 322,
             "name": "inputBoxHostService",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {
               "isPublic": true,
               "isOptional": true
@@ -2655,7 +2553,6 @@
             "id": 306,
             "name": "inputTemplateRef",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {
               "isPublic": true
             },
@@ -2685,7 +2582,6 @@
             "id": 292,
             "name": "isDaypickerWaiting",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {
               "isPublic": true
             },
@@ -2708,7 +2604,6 @@
             "id": 293,
             "name": "isOpen",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {
               "isPublic": true
             },
@@ -2731,7 +2626,6 @@
             "id": 294,
             "name": "isVisible",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {
               "isPublic": true
             },
@@ -2754,7 +2648,6 @@
             "id": 295,
             "name": "maxDate",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {
               "isPublic": true
             },
@@ -2778,7 +2671,6 @@
             "id": 296,
             "name": "minDate",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {
               "isPublic": true
             },
@@ -2802,7 +2694,6 @@
             "id": 279,
             "name": "pickerClass",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {
               "isPublic": true
             },
@@ -2848,7 +2739,6 @@
             "id": 297,
             "name": "startingDay",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {
               "isPublic": true
             },
@@ -2870,7 +2760,6 @@
             "id": 298,
             "name": "triggerButtonId",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {
               "isPublic": true
             },
@@ -2892,7 +2781,6 @@
             "id": 305,
             "name": "triggerButtonRef",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {
               "isPublic": true
             },
@@ -2922,7 +2810,6 @@
             "id": 307,
             "name": "triggerButtonTemplateRef",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {
               "isPublic": true
             },
@@ -2952,7 +2839,6 @@
             "id": 300,
             "name": "calendarRef",
             "kind": 262144,
-            "kindString": "Accessor",
             "flags": {
               "isPublic": true
             },
@@ -2974,7 +2860,6 @@
               "id": 301,
               "name": "calendarRef",
               "kind": 524288,
-              "kindString": "Get signature",
               "flags": {},
               "type": {
                 "type": "reference",
@@ -2993,14 +2878,12 @@
               "id": 302,
               "name": "calendarRef",
               "kind": 1048576,
-              "kindString": "Set signature",
               "flags": {},
               "parameters": [
                 {
                   "id": 303,
                   "name": "value",
                   "kind": 32768,
-                  "kindString": "Parameter",
                   "flags": {},
                   "type": {
                     "type": "reference",
@@ -3027,7 +2910,6 @@
             "id": 280,
             "name": "disabled",
             "kind": 262144,
-            "kindString": "Accessor",
             "flags": {
               "isPublic": true
             },
@@ -3049,7 +2931,6 @@
               "id": 281,
               "name": "disabled",
               "kind": 524288,
-              "kindString": "Get signature",
               "flags": {},
               "type": {
                 "type": "intrinsic",
@@ -3060,14 +2941,12 @@
               "id": 282,
               "name": "disabled",
               "kind": 1048576,
-              "kindString": "Set signature",
               "flags": {},
               "parameters": [
                 {
                   "id": 283,
                   "name": "value",
                   "kind": 32768,
-                  "kindString": "Parameter",
                   "flags": {},
                   "type": {
                     "type": "intrinsic",
@@ -3086,7 +2965,6 @@
             "id": 284,
             "name": "selectedDate",
             "kind": 262144,
-            "kindString": "Accessor",
             "flags": {
               "isPublic": true
             },
@@ -3108,7 +2986,6 @@
               "id": 285,
               "name": "selectedDate",
               "kind": 524288,
-              "kindString": "Get signature",
               "flags": {},
               "type": {
                 "type": "reference",
@@ -3121,14 +2998,12 @@
               "id": 286,
               "name": "selectedDate",
               "kind": 1048576,
-              "kindString": "Set signature",
               "flags": {},
               "parameters": [
                 {
                   "id": 287,
                   "name": "value",
                   "kind": 32768,
-                  "kindString": "Parameter",
                   "flags": {},
                   "type": {
                     "type": "reference",
@@ -3149,7 +3024,6 @@
             "id": 325,
             "name": "ngOnDestroy",
             "kind": 2048,
-            "kindString": "Method",
             "flags": {
               "isPublic": true
             },
@@ -3166,7 +3040,6 @@
                 "id": 326,
                 "name": "ngOnDestroy",
                 "kind": 4096,
-                "kindString": "Call signature",
                 "flags": {},
                 "type": {
                   "type": "intrinsic",
@@ -3188,7 +3061,6 @@
             "id": 323,
             "name": "ngOnInit",
             "kind": 2048,
-            "kindString": "Method",
             "flags": {
               "isPublic": true
             },
@@ -3205,7 +3077,6 @@
                 "id": 324,
                 "name": "ngOnInit",
                 "kind": 4096,
-                "kindString": "Call signature",
                 "flags": {},
                 "type": {
                   "type": "intrinsic",
@@ -3227,7 +3098,6 @@
             "id": 334,
             "name": "onCalendarDateRangeChange",
             "kind": 2048,
-            "kindString": "Method",
             "flags": {
               "isPublic": true
             },
@@ -3244,14 +3114,12 @@
                 "id": 335,
                 "name": "onCalendarDateRangeChange",
                 "kind": 4096,
-                "kindString": "Call signature",
                 "flags": {},
                 "parameters": [
                   {
                     "id": 336,
                     "name": "event",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {
                       "isOptional": true
                     },
@@ -3274,7 +3142,6 @@
             "id": 327,
             "name": "onCalendarModeChange",
             "kind": 2048,
-            "kindString": "Method",
             "flags": {
               "isPublic": true
             },
@@ -3291,7 +3158,6 @@
                 "id": 328,
                 "name": "onCalendarModeChange",
                 "kind": 4096,
-                "kindString": "Call signature",
                 "flags": {},
                 "type": {
                   "type": "intrinsic",
@@ -3305,7 +3171,6 @@
             "id": 329,
             "name": "onSelectedDateChange",
             "kind": 2048,
-            "kindString": "Method",
             "flags": {
               "isPublic": true
             },
@@ -3322,14 +3187,12 @@
                 "id": 330,
                 "name": "onSelectedDateChange",
                 "kind": 4096,
-                "kindString": "Call signature",
                 "flags": {},
                 "parameters": [
                   {
                     "id": 331,
                     "name": "value",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {},
                     "type": {
                       "type": "reference",
@@ -3351,7 +3214,6 @@
             "id": 332,
             "name": "onTriggerButtonClick",
             "kind": 2048,
-            "kindString": "Method",
             "flags": {
               "isPublic": true
             },
@@ -3368,7 +3230,6 @@
                 "id": 333,
                 "name": "onTriggerButtonClick",
                 "kind": 4096,
-                "kindString": "Call signature",
                 "flags": {},
                 "type": {
                   "type": "intrinsic",
@@ -3435,14 +3296,12 @@
         "id": 355,
         "name": "SkyDatepickerInputDirective",
         "kind": 128,
-        "kindString": "Class",
         "flags": {},
         "children": [
           {
             "id": 356,
             "name": "constructor",
             "kind": 512,
-            "kindString": "Constructor",
             "flags": {},
             "sources": [
               {
@@ -3457,14 +3316,12 @@
                 "id": 357,
                 "name": "SkyDatepickerInputDirective",
                 "kind": 16384,
-                "kindString": "Constructor signature",
                 "flags": {},
                 "parameters": [
                   {
                     "id": 358,
                     "name": "adapter",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {},
                     "type": {
                       "type": "reference",
@@ -3475,7 +3332,6 @@
                     "id": 359,
                     "name": "changeDetector",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {},
                     "type": {
                       "type": "reference",
@@ -3488,7 +3344,6 @@
                     "id": 360,
                     "name": "configService",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {},
                     "type": {
                       "type": "reference",
@@ -3500,7 +3355,6 @@
                     "id": 361,
                     "name": "elementRef",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {},
                     "type": {
                       "type": "reference",
@@ -3519,7 +3373,6 @@
                     "id": 362,
                     "name": "localeProvider",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {},
                     "type": {
                       "type": "reference",
@@ -3530,7 +3383,6 @@
                     "id": 363,
                     "name": "renderer",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {},
                     "type": {
                       "type": "reference",
@@ -3543,7 +3395,6 @@
                     "id": 364,
                     "name": "resourcesService",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {},
                     "type": {
                       "type": "reference",
@@ -3554,7 +3405,6 @@
                     "id": 365,
                     "name": "datepickerComponent",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {
                       "isOptional": true
                     },
@@ -3577,7 +3427,6 @@
             "id": 385,
             "name": "skyDatepickerNoValidate",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {
               "isPublic": true
             },
@@ -3623,7 +3472,6 @@
             "id": 366,
             "name": "dateFormat",
             "kind": 262144,
-            "kindString": "Accessor",
             "flags": {
               "isPublic": true
             },
@@ -3645,7 +3493,6 @@
               "id": 367,
               "name": "dateFormat",
               "kind": 524288,
-              "kindString": "Get signature",
               "flags": {},
               "type": {
                 "type": "intrinsic",
@@ -3656,7 +3503,6 @@
               "id": 368,
               "name": "dateFormat",
               "kind": 1048576,
-              "kindString": "Set signature",
               "flags": {},
               "comment": {
                 "summary": [
@@ -3698,7 +3544,6 @@
                   "id": 369,
                   "name": "value",
                   "kind": 32768,
-                  "kindString": "Parameter",
                   "flags": {},
                   "type": {
                     "type": "intrinsic",
@@ -3721,7 +3566,6 @@
             "id": 370,
             "name": "disabled",
             "kind": 262144,
-            "kindString": "Accessor",
             "flags": {
               "isPublic": true
             },
@@ -3743,7 +3587,6 @@
               "id": 371,
               "name": "disabled",
               "kind": 524288,
-              "kindString": "Get signature",
               "flags": {},
               "type": {
                 "type": "intrinsic",
@@ -3754,7 +3597,6 @@
               "id": 372,
               "name": "disabled",
               "kind": 1048576,
-              "kindString": "Set signature",
               "flags": {},
               "comment": {
                 "summary": [
@@ -3788,7 +3630,6 @@
                   "id": 373,
                   "name": "value",
                   "kind": 32768,
-                  "kindString": "Parameter",
                   "flags": {},
                   "type": {
                     "type": "intrinsic",
@@ -3811,7 +3652,6 @@
             "id": 374,
             "name": "maxDate",
             "kind": 262144,
-            "kindString": "Accessor",
             "flags": {
               "isPublic": true
             },
@@ -3833,7 +3673,6 @@
               "id": 375,
               "name": "maxDate",
               "kind": 524288,
-              "kindString": "Get signature",
               "flags": {},
               "type": {
                 "type": "reference",
@@ -3846,7 +3685,6 @@
               "id": 376,
               "name": "maxDate",
               "kind": 1048576,
-              "kindString": "Set signature",
               "flags": {},
               "comment": {
                 "summary": [
@@ -3877,7 +3715,6 @@
                   "id": 377,
                   "name": "value",
                   "kind": 32768,
-                  "kindString": "Parameter",
                   "flags": {},
                   "type": {
                     "type": "reference",
@@ -3902,7 +3739,6 @@
             "id": 378,
             "name": "minDate",
             "kind": 262144,
-            "kindString": "Accessor",
             "flags": {
               "isPublic": true
             },
@@ -3924,7 +3760,6 @@
               "id": 379,
               "name": "minDate",
               "kind": 524288,
-              "kindString": "Get signature",
               "flags": {},
               "type": {
                 "type": "reference",
@@ -3937,7 +3772,6 @@
               "id": 380,
               "name": "minDate",
               "kind": 1048576,
-              "kindString": "Set signature",
               "flags": {},
               "comment": {
                 "summary": [
@@ -3976,7 +3810,6 @@
                   "id": 381,
                   "name": "value",
                   "kind": 32768,
-                  "kindString": "Parameter",
                   "flags": {},
                   "type": {
                     "type": "reference",
@@ -4001,7 +3834,6 @@
             "id": 382,
             "name": "skyDatepickerInput",
             "kind": 262144,
-            "kindString": "Accessor",
             "flags": {
               "isPublic": true
             },
@@ -4017,7 +3849,6 @@
               "id": 383,
               "name": "skyDatepickerInput",
               "kind": 1048576,
-              "kindString": "Set signature",
               "flags": {},
               "comment": {
                 "summary": [
@@ -4070,7 +3901,6 @@
                   "id": 384,
                   "name": "value",
                   "kind": 32768,
-                  "kindString": "Parameter",
                   "flags": {},
                   "type": {
                     "type": "union",
@@ -4103,7 +3933,6 @@
             "id": 386,
             "name": "startingDay",
             "kind": 262144,
-            "kindString": "Accessor",
             "flags": {
               "isPublic": true
             },
@@ -4125,7 +3954,6 @@
               "id": 387,
               "name": "startingDay",
               "kind": 524288,
-              "kindString": "Get signature",
               "flags": {},
               "type": {
                 "type": "intrinsic",
@@ -4136,7 +3964,6 @@
               "id": 388,
               "name": "startingDay",
               "kind": 1048576,
-              "kindString": "Set signature",
               "flags": {},
               "comment": {
                 "summary": [
@@ -4186,7 +4013,6 @@
                   "id": 389,
                   "name": "value",
                   "kind": 32768,
-                  "kindString": "Parameter",
                   "flags": {},
                   "type": {
                     "type": "intrinsic",
@@ -4209,7 +4035,6 @@
             "id": 390,
             "name": "strict",
             "kind": 262144,
-            "kindString": "Accessor",
             "flags": {
               "isPublic": true
             },
@@ -4231,7 +4056,6 @@
               "id": 391,
               "name": "strict",
               "kind": 524288,
-              "kindString": "Get signature",
               "flags": {},
               "type": {
                 "type": "intrinsic",
@@ -4242,7 +4066,6 @@
               "id": 392,
               "name": "strict",
               "kind": 1048576,
-              "kindString": "Set signature",
               "flags": {},
               "comment": {
                 "summary": [
@@ -4292,7 +4115,6 @@
                   "id": 393,
                   "name": "value",
                   "kind": 32768,
-                  "kindString": "Parameter",
                   "flags": {},
                   "type": {
                     "type": "intrinsic",
@@ -4315,7 +4137,6 @@
             "id": 458,
             "name": "detectInputValueChange",
             "kind": 2048,
-            "kindString": "Method",
             "flags": {
               "isPublic": true
             },
@@ -4332,7 +4153,6 @@
                 "id": 459,
                 "name": "detectInputValueChange",
                 "kind": 4096,
-                "kindString": "Call signature",
                 "flags": {},
                 "comment": {
                   "summary": [
@@ -4354,7 +4174,6 @@
             "id": 420,
             "name": "ngAfterContentInit",
             "kind": 2048,
-            "kindString": "Method",
             "flags": {
               "isPublic": true
             },
@@ -4371,7 +4190,6 @@
                 "id": 421,
                 "name": "ngAfterContentInit",
                 "kind": 4096,
-                "kindString": "Call signature",
                 "flags": {},
                 "type": {
                   "type": "intrinsic",
@@ -4393,7 +4211,6 @@
             "id": 422,
             "name": "ngAfterViewInit",
             "kind": 2048,
-            "kindString": "Method",
             "flags": {
               "isPublic": true
             },
@@ -4410,7 +4227,6 @@
                 "id": 423,
                 "name": "ngAfterViewInit",
                 "kind": 4096,
-                "kindString": "Call signature",
                 "flags": {},
                 "type": {
                   "type": "intrinsic",
@@ -4432,7 +4248,6 @@
             "id": 424,
             "name": "ngOnDestroy",
             "kind": 2048,
-            "kindString": "Method",
             "flags": {
               "isPublic": true
             },
@@ -4449,7 +4264,6 @@
                 "id": 425,
                 "name": "ngOnDestroy",
                 "kind": 4096,
-                "kindString": "Call signature",
                 "flags": {},
                 "type": {
                   "type": "intrinsic",
@@ -4471,7 +4285,6 @@
             "id": 418,
             "name": "ngOnInit",
             "kind": 2048,
-            "kindString": "Method",
             "flags": {
               "isPublic": true
             },
@@ -4488,7 +4301,6 @@
                 "id": 419,
                 "name": "ngOnInit",
                 "kind": 4096,
-                "kindString": "Call signature",
                 "flags": {},
                 "type": {
                   "type": "intrinsic",
@@ -4510,7 +4322,6 @@
             "id": 431,
             "name": "onInput",
             "kind": 2048,
-            "kindString": "Method",
             "flags": {
               "isPublic": true
             },
@@ -4527,7 +4338,6 @@
                 "id": 432,
                 "name": "onInput",
                 "kind": 4096,
-                "kindString": "Call signature",
                 "flags": {},
                 "type": {
                   "type": "intrinsic",
@@ -4541,7 +4351,6 @@
             "id": 429,
             "name": "onInputBlur",
             "kind": 2048,
-            "kindString": "Method",
             "flags": {
               "isPublic": true
             },
@@ -4558,7 +4367,6 @@
                 "id": 430,
                 "name": "onInputBlur",
                 "kind": 4096,
-                "kindString": "Call signature",
                 "flags": {},
                 "type": {
                   "type": "intrinsic",
@@ -4572,7 +4380,6 @@
             "id": 426,
             "name": "onInputChange",
             "kind": 2048,
-            "kindString": "Method",
             "flags": {
               "isPublic": true
             },
@@ -4589,14 +4396,12 @@
                 "id": 427,
                 "name": "onInputChange",
                 "kind": 4096,
-                "kindString": "Call signature",
                 "flags": {},
                 "parameters": [
                   {
                     "id": 428,
                     "name": "event",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {},
                     "type": {
                       "type": "intrinsic",
@@ -4616,7 +4421,6 @@
             "id": 439,
             "name": "registerOnChange",
             "kind": 2048,
-            "kindString": "Method",
             "flags": {
               "isPublic": true
             },
@@ -4633,14 +4437,12 @@
                 "id": 440,
                 "name": "registerOnChange",
                 "kind": 4096,
-                "kindString": "Call signature",
                 "flags": {},
                 "parameters": [
                   {
                     "id": 441,
                     "name": "fn",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {},
                     "type": {
                       "type": "reflection",
@@ -4648,7 +4450,6 @@
                         "id": 442,
                         "name": "__type",
                         "kind": 65536,
-                        "kindString": "Type literal",
                         "flags": {},
                         "sources": [
                           {
@@ -4663,14 +4464,12 @@
                             "id": 443,
                             "name": "__type",
                             "kind": 4096,
-                            "kindString": "Call signature",
                             "flags": {},
                             "parameters": [
                               {
                                 "id": 444,
                                 "name": "value",
                                 "kind": 32768,
-                                "kindString": "Parameter",
                                 "flags": {},
                                 "type": {
                                   "type": "intrinsic",
@@ -4708,7 +4507,6 @@
             "id": 445,
             "name": "registerOnTouched",
             "kind": 2048,
-            "kindString": "Method",
             "flags": {
               "isPublic": true
             },
@@ -4725,14 +4523,12 @@
                 "id": 446,
                 "name": "registerOnTouched",
                 "kind": 4096,
-                "kindString": "Call signature",
                 "flags": {},
                 "parameters": [
                   {
                     "id": 447,
                     "name": "fn",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {},
                     "type": {
                       "type": "reflection",
@@ -4740,7 +4536,6 @@
                         "id": 448,
                         "name": "__type",
                         "kind": 65536,
-                        "kindString": "Type literal",
                         "flags": {},
                         "sources": [
                           {
@@ -4755,7 +4550,6 @@
                             "id": 449,
                             "name": "__type",
                             "kind": 4096,
-                            "kindString": "Call signature",
                             "flags": {},
                             "type": {
                               "type": "intrinsic",
@@ -4787,7 +4581,6 @@
             "id": 450,
             "name": "registerOnValidatorChange",
             "kind": 2048,
-            "kindString": "Method",
             "flags": {
               "isPublic": true
             },
@@ -4804,14 +4597,12 @@
                 "id": 451,
                 "name": "registerOnValidatorChange",
                 "kind": 4096,
-                "kindString": "Call signature",
                 "flags": {},
                 "parameters": [
                   {
                     "id": 452,
                     "name": "fn",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {},
                     "type": {
                       "type": "reflection",
@@ -4819,7 +4610,6 @@
                         "id": 453,
                         "name": "__type",
                         "kind": 65536,
-                        "kindString": "Type literal",
                         "flags": {},
                         "sources": [
                           {
@@ -4834,7 +4624,6 @@
                             "id": 454,
                             "name": "__type",
                             "kind": 4096,
-                            "kindString": "Call signature",
                             "flags": {},
                             "type": {
                               "type": "intrinsic",
@@ -4866,7 +4655,6 @@
             "id": 455,
             "name": "setDisabledState",
             "kind": 2048,
-            "kindString": "Method",
             "flags": {
               "isPublic": true
             },
@@ -4883,14 +4671,12 @@
                 "id": 456,
                 "name": "setDisabledState",
                 "kind": 4096,
-                "kindString": "Call signature",
                 "flags": {},
                 "parameters": [
                   {
                     "id": 457,
                     "name": "disabled",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {},
                     "type": {
                       "type": "intrinsic",
@@ -4918,7 +4704,6 @@
             "id": 436,
             "name": "validate",
             "kind": 2048,
-            "kindString": "Method",
             "flags": {
               "isPublic": true
             },
@@ -4935,14 +4720,12 @@
                 "id": 437,
                 "name": "validate",
                 "kind": 4096,
-                "kindString": "Call signature",
                 "flags": {},
                 "parameters": [
                   {
                     "id": 438,
                     "name": "control",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {},
                     "type": {
                       "type": "reference",
@@ -4984,7 +4767,6 @@
             "id": 433,
             "name": "writeValue",
             "kind": 2048,
-            "kindString": "Method",
             "flags": {
               "isPublic": true
             },
@@ -5001,14 +4783,12 @@
                 "id": 434,
                 "name": "writeValue",
                 "kind": 4096,
-                "kindString": "Call signature",
                 "flags": {},
                 "parameters": [
                   {
                     "id": 435,
                     "name": "value",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {},
                     "type": {
                       "type": "intrinsic",
@@ -5113,14 +4893,12 @@
         "id": 490,
         "name": "SkyFuzzyDatepickerInputDirective",
         "kind": 128,
-        "kindString": "Class",
         "flags": {},
         "children": [
           {
             "id": 491,
             "name": "constructor",
             "kind": 512,
-            "kindString": "Constructor",
             "flags": {},
             "sources": [
               {
@@ -5135,14 +4913,12 @@
                 "id": 492,
                 "name": "SkyFuzzyDatepickerInputDirective",
                 "kind": 16384,
-                "kindString": "Constructor signature",
                 "flags": {},
                 "parameters": [
                   {
                     "id": 493,
                     "name": "changeDetector",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {},
                     "type": {
                       "type": "reference",
@@ -5155,7 +4931,6 @@
                     "id": 494,
                     "name": "configService",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {},
                     "type": {
                       "type": "reference",
@@ -5167,7 +4942,6 @@
                     "id": 495,
                     "name": "elementRef",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {},
                     "type": {
                       "type": "reference",
@@ -5186,7 +4960,6 @@
                     "id": 496,
                     "name": "fuzzyDateService",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {},
                     "type": {
                       "type": "reference",
@@ -5197,7 +4970,6 @@
                     "id": 497,
                     "name": "localeProvider",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {},
                     "type": {
                       "type": "reference",
@@ -5208,7 +4980,6 @@
                     "id": 498,
                     "name": "renderer",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {},
                     "type": {
                       "type": "reference",
@@ -5221,7 +4992,6 @@
                     "id": 499,
                     "name": "resourcesService",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {},
                     "type": {
                       "type": "reference",
@@ -5232,7 +5002,6 @@
                     "id": 500,
                     "name": "datepickerComponent",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {
                       "isOptional": true
                     },
@@ -5255,7 +5024,6 @@
             "id": 521,
             "name": "skyDatepickerNoValidate",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {
               "isPublic": true
             },
@@ -5301,7 +5069,6 @@
             "id": 501,
             "name": "dateFormat",
             "kind": 262144,
-            "kindString": "Accessor",
             "flags": {
               "isPublic": true
             },
@@ -5323,7 +5090,6 @@
               "id": 502,
               "name": "dateFormat",
               "kind": 524288,
-              "kindString": "Get signature",
               "flags": {},
               "type": {
                 "type": "intrinsic",
@@ -5334,7 +5100,6 @@
               "id": 503,
               "name": "dateFormat",
               "kind": 1048576,
-              "kindString": "Set signature",
               "flags": {},
               "comment": {
                 "summary": [
@@ -5376,7 +5141,6 @@
                   "id": 504,
                   "name": "value",
                   "kind": 32768,
-                  "kindString": "Parameter",
                   "flags": {},
                   "type": {
                     "type": "intrinsic",
@@ -5399,7 +5163,6 @@
             "id": 505,
             "name": "disabled",
             "kind": 262144,
-            "kindString": "Accessor",
             "flags": {
               "isPublic": true
             },
@@ -5421,7 +5184,6 @@
               "id": 506,
               "name": "disabled",
               "kind": 524288,
-              "kindString": "Get signature",
               "flags": {},
               "type": {
                 "type": "intrinsic",
@@ -5432,7 +5194,6 @@
               "id": 507,
               "name": "disabled",
               "kind": 1048576,
-              "kindString": "Set signature",
               "flags": {},
               "comment": {
                 "summary": [
@@ -5466,7 +5227,6 @@
                   "id": 508,
                   "name": "value",
                   "kind": 32768,
-                  "kindString": "Parameter",
                   "flags": {},
                   "type": {
                     "type": "intrinsic",
@@ -5489,7 +5249,6 @@
             "id": 509,
             "name": "futureDisabled",
             "kind": 262144,
-            "kindString": "Accessor",
             "flags": {
               "isPublic": true
             },
@@ -5511,7 +5270,6 @@
               "id": 510,
               "name": "futureDisabled",
               "kind": 524288,
-              "kindString": "Get signature",
               "flags": {},
               "type": {
                 "type": "intrinsic",
@@ -5522,7 +5280,6 @@
               "id": 511,
               "name": "futureDisabled",
               "kind": 1048576,
-              "kindString": "Set signature",
               "flags": {},
               "comment": {
                 "summary": [
@@ -5556,7 +5313,6 @@
                   "id": 512,
                   "name": "value",
                   "kind": 32768,
-                  "kindString": "Parameter",
                   "flags": {},
                   "type": {
                     "type": "intrinsic",
@@ -5579,7 +5335,6 @@
             "id": 513,
             "name": "maxDate",
             "kind": 262144,
-            "kindString": "Accessor",
             "flags": {
               "isPublic": true
             },
@@ -5601,7 +5356,6 @@
               "id": 514,
               "name": "maxDate",
               "kind": 524288,
-              "kindString": "Get signature",
               "flags": {},
               "type": {
                 "type": "reference",
@@ -5613,7 +5367,6 @@
               "id": 515,
               "name": "maxDate",
               "kind": 1048576,
-              "kindString": "Set signature",
               "flags": {},
               "comment": {
                 "summary": [
@@ -5652,7 +5405,6 @@
                   "id": 516,
                   "name": "value",
                   "kind": 32768,
-                  "kindString": "Parameter",
                   "flags": {},
                   "type": {
                     "type": "reference",
@@ -5676,7 +5428,6 @@
             "id": 517,
             "name": "minDate",
             "kind": 262144,
-            "kindString": "Accessor",
             "flags": {
               "isPublic": true
             },
@@ -5698,7 +5449,6 @@
               "id": 518,
               "name": "minDate",
               "kind": 524288,
-              "kindString": "Get signature",
               "flags": {},
               "type": {
                 "type": "reference",
@@ -5710,7 +5460,6 @@
               "id": 519,
               "name": "minDate",
               "kind": 1048576,
-              "kindString": "Set signature",
               "flags": {},
               "comment": {
                 "summary": [
@@ -5749,7 +5498,6 @@
                   "id": 520,
                   "name": "value",
                   "kind": 32768,
-                  "kindString": "Parameter",
                   "flags": {},
                   "type": {
                     "type": "reference",
@@ -5773,7 +5521,6 @@
             "id": 522,
             "name": "startingDay",
             "kind": 262144,
-            "kindString": "Accessor",
             "flags": {
               "isPublic": true
             },
@@ -5795,7 +5542,6 @@
               "id": 523,
               "name": "startingDay",
               "kind": 524288,
-              "kindString": "Get signature",
               "flags": {},
               "type": {
                 "type": "intrinsic",
@@ -5806,7 +5552,6 @@
               "id": 524,
               "name": "startingDay",
               "kind": 1048576,
-              "kindString": "Set signature",
               "flags": {},
               "comment": {
                 "summary": [
@@ -5856,7 +5601,6 @@
                   "id": 525,
                   "name": "value",
                   "kind": 32768,
-                  "kindString": "Parameter",
                   "flags": {},
                   "type": {
                     "type": "intrinsic",
@@ -5879,7 +5623,6 @@
             "id": 526,
             "name": "yearRequired",
             "kind": 262144,
-            "kindString": "Accessor",
             "flags": {
               "isPublic": true
             },
@@ -5901,7 +5644,6 @@
               "id": 527,
               "name": "yearRequired",
               "kind": 524288,
-              "kindString": "Get signature",
               "flags": {},
               "type": {
                 "type": "intrinsic",
@@ -5912,7 +5654,6 @@
               "id": 528,
               "name": "yearRequired",
               "kind": 1048576,
-              "kindString": "Set signature",
               "flags": {},
               "comment": {
                 "summary": [
@@ -5938,7 +5679,6 @@
                   "id": 529,
                   "name": "value",
                   "kind": 32768,
-                  "kindString": "Parameter",
                   "flags": {},
                   "type": {
                     "type": "intrinsic",
@@ -5961,7 +5701,6 @@
             "id": 594,
             "name": "detectInputValueChange",
             "kind": 2048,
-            "kindString": "Method",
             "flags": {
               "isPublic": true
             },
@@ -5978,7 +5717,6 @@
                 "id": 595,
                 "name": "detectInputValueChange",
                 "kind": 4096,
-                "kindString": "Call signature",
                 "flags": {},
                 "comment": {
                   "summary": [
@@ -6000,7 +5738,6 @@
             "id": 556,
             "name": "ngAfterContentInit",
             "kind": 2048,
-            "kindString": "Method",
             "flags": {
               "isPublic": true
             },
@@ -6017,7 +5754,6 @@
                 "id": 557,
                 "name": "ngAfterContentInit",
                 "kind": 4096,
-                "kindString": "Call signature",
                 "flags": {},
                 "type": {
                   "type": "intrinsic",
@@ -6039,7 +5775,6 @@
             "id": 558,
             "name": "ngAfterViewInit",
             "kind": 2048,
-            "kindString": "Method",
             "flags": {
               "isPublic": true
             },
@@ -6056,7 +5791,6 @@
                 "id": 559,
                 "name": "ngAfterViewInit",
                 "kind": 4096,
-                "kindString": "Call signature",
                 "flags": {},
                 "type": {
                   "type": "intrinsic",
@@ -6078,7 +5812,6 @@
             "id": 560,
             "name": "ngOnDestroy",
             "kind": 2048,
-            "kindString": "Method",
             "flags": {
               "isPublic": true
             },
@@ -6095,7 +5828,6 @@
                 "id": 561,
                 "name": "ngOnDestroy",
                 "kind": 4096,
-                "kindString": "Call signature",
                 "flags": {},
                 "type": {
                   "type": "intrinsic",
@@ -6117,7 +5849,6 @@
             "id": 554,
             "name": "ngOnInit",
             "kind": 2048,
-            "kindString": "Method",
             "flags": {
               "isPublic": true
             },
@@ -6134,7 +5865,6 @@
                 "id": 555,
                 "name": "ngOnInit",
                 "kind": 4096,
-                "kindString": "Call signature",
                 "flags": {},
                 "type": {
                   "type": "intrinsic",
@@ -6156,7 +5886,6 @@
             "id": 567,
             "name": "onInput",
             "kind": 2048,
-            "kindString": "Method",
             "flags": {
               "isPublic": true
             },
@@ -6173,7 +5902,6 @@
                 "id": 568,
                 "name": "onInput",
                 "kind": 4096,
-                "kindString": "Call signature",
                 "flags": {},
                 "type": {
                   "type": "intrinsic",
@@ -6187,7 +5915,6 @@
             "id": 565,
             "name": "onInputBlur",
             "kind": 2048,
-            "kindString": "Method",
             "flags": {
               "isPublic": true
             },
@@ -6204,7 +5931,6 @@
                 "id": 566,
                 "name": "onInputBlur",
                 "kind": 4096,
-                "kindString": "Call signature",
                 "flags": {},
                 "type": {
                   "type": "intrinsic",
@@ -6218,7 +5944,6 @@
             "id": 562,
             "name": "onInputChange",
             "kind": 2048,
-            "kindString": "Method",
             "flags": {
               "isPublic": true
             },
@@ -6235,14 +5960,12 @@
                 "id": 563,
                 "name": "onInputChange",
                 "kind": 4096,
-                "kindString": "Call signature",
                 "flags": {},
                 "parameters": [
                   {
                     "id": 564,
                     "name": "event",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {},
                     "type": {
                       "type": "intrinsic",
@@ -6262,7 +5985,6 @@
             "id": 575,
             "name": "registerOnChange",
             "kind": 2048,
-            "kindString": "Method",
             "flags": {
               "isPublic": true
             },
@@ -6279,14 +6001,12 @@
                 "id": 576,
                 "name": "registerOnChange",
                 "kind": 4096,
-                "kindString": "Call signature",
                 "flags": {},
                 "parameters": [
                   {
                     "id": 577,
                     "name": "fn",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {},
                     "type": {
                       "type": "reflection",
@@ -6294,7 +6014,6 @@
                         "id": 578,
                         "name": "__type",
                         "kind": 65536,
-                        "kindString": "Type literal",
                         "flags": {},
                         "sources": [
                           {
@@ -6309,14 +6028,12 @@
                             "id": 579,
                             "name": "__type",
                             "kind": 4096,
-                            "kindString": "Call signature",
                             "flags": {},
                             "parameters": [
                               {
                                 "id": 580,
                                 "name": "value",
                                 "kind": 32768,
-                                "kindString": "Parameter",
                                 "flags": {},
                                 "type": {
                                   "type": "intrinsic",
@@ -6354,7 +6071,6 @@
             "id": 581,
             "name": "registerOnTouched",
             "kind": 2048,
-            "kindString": "Method",
             "flags": {
               "isPublic": true
             },
@@ -6371,14 +6087,12 @@
                 "id": 582,
                 "name": "registerOnTouched",
                 "kind": 4096,
-                "kindString": "Call signature",
                 "flags": {},
                 "parameters": [
                   {
                     "id": 583,
                     "name": "fn",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {},
                     "type": {
                       "type": "reflection",
@@ -6386,7 +6100,6 @@
                         "id": 584,
                         "name": "__type",
                         "kind": 65536,
-                        "kindString": "Type literal",
                         "flags": {},
                         "sources": [
                           {
@@ -6401,7 +6114,6 @@
                             "id": 585,
                             "name": "__type",
                             "kind": 4096,
-                            "kindString": "Call signature",
                             "flags": {},
                             "type": {
                               "type": "intrinsic",
@@ -6433,7 +6145,6 @@
             "id": 586,
             "name": "registerOnValidatorChange",
             "kind": 2048,
-            "kindString": "Method",
             "flags": {
               "isPublic": true
             },
@@ -6450,14 +6161,12 @@
                 "id": 587,
                 "name": "registerOnValidatorChange",
                 "kind": 4096,
-                "kindString": "Call signature",
                 "flags": {},
                 "parameters": [
                   {
                     "id": 588,
                     "name": "fn",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {},
                     "type": {
                       "type": "reflection",
@@ -6465,7 +6174,6 @@
                         "id": 589,
                         "name": "__type",
                         "kind": 65536,
-                        "kindString": "Type literal",
                         "flags": {},
                         "sources": [
                           {
@@ -6480,7 +6188,6 @@
                             "id": 590,
                             "name": "__type",
                             "kind": 4096,
-                            "kindString": "Call signature",
                             "flags": {},
                             "type": {
                               "type": "intrinsic",
@@ -6512,7 +6219,6 @@
             "id": 591,
             "name": "setDisabledState",
             "kind": 2048,
-            "kindString": "Method",
             "flags": {
               "isPublic": true
             },
@@ -6529,14 +6235,12 @@
                 "id": 592,
                 "name": "setDisabledState",
                 "kind": 4096,
-                "kindString": "Call signature",
                 "flags": {},
                 "parameters": [
                   {
                     "id": 593,
                     "name": "disabled",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {},
                     "type": {
                       "type": "intrinsic",
@@ -6564,7 +6268,6 @@
             "id": 572,
             "name": "validate",
             "kind": 2048,
-            "kindString": "Method",
             "flags": {
               "isPublic": true
             },
@@ -6581,14 +6284,12 @@
                 "id": 573,
                 "name": "validate",
                 "kind": 4096,
-                "kindString": "Call signature",
                 "flags": {},
                 "parameters": [
                   {
                     "id": 574,
                     "name": "control",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {},
                     "type": {
                       "type": "reference",
@@ -6630,7 +6331,6 @@
             "id": 569,
             "name": "writeValue",
             "kind": 2048,
-            "kindString": "Method",
             "flags": {
               "isPublic": true
             },
@@ -6647,14 +6347,12 @@
                 "id": 570,
                 "name": "writeValue",
                 "kind": 4096,
-                "kindString": "Call signature",
                 "flags": {},
                 "parameters": [
                   {
                     "id": 571,
                     "name": "value",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {},
                     "type": {
                       "type": "intrinsic",
@@ -6759,7 +6457,6 @@
         "id": 621,
         "name": "SkyDateRangePickerComponent",
         "kind": 128,
-        "kindString": "Class",
         "flags": {},
         "comment": {
           "summary": [
@@ -6793,7 +6490,6 @@
             "id": 622,
             "name": "constructor",
             "kind": 512,
-            "kindString": "Constructor",
             "flags": {},
             "sources": [
               {
@@ -6808,14 +6504,12 @@
                 "id": 623,
                 "name": "SkyDateRangePickerComponent",
                 "kind": 16384,
-                "kindString": "Constructor signature",
                 "flags": {},
                 "parameters": [
                   {
                     "id": 624,
                     "name": "changeDetector",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {},
                     "type": {
                       "type": "reference",
@@ -6828,7 +6522,6 @@
                     "id": 625,
                     "name": "dateRangeService",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {},
                     "type": {
                       "type": "reference",
@@ -6840,7 +6533,6 @@
                     "id": 626,
                     "name": "formBuilder",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {},
                     "type": {
                       "type": "reference",
@@ -6853,7 +6545,6 @@
                     "id": 627,
                     "name": "localeProvider",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {},
                     "type": {
                       "type": "reference",
@@ -6864,7 +6555,6 @@
                     "id": 628,
                     "name": "ngZone",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {},
                     "type": {
                       "type": "reference",
@@ -6877,7 +6567,6 @@
                     "id": 629,
                     "name": "themeSvc",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {
                       "isOptional": true
                     },
@@ -6899,7 +6588,6 @@
             "id": 647,
             "name": "calculators",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {
               "isPublic": true
             },
@@ -6926,7 +6614,6 @@
             "id": 648,
             "name": "dateFormatOrDefault",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {
               "isPublic": true
             },
@@ -6948,7 +6635,6 @@
             "id": 646,
             "name": "dateRangePickerId",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {
               "isPublic": true,
               "isReadonly": true
@@ -6972,7 +6658,6 @@
             "id": 644,
             "name": "endDateRequired",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {
               "isPublic": true
             },
@@ -7018,7 +6703,6 @@
             "id": 649,
             "name": "formGroup",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {
               "isPublic": true
             },
@@ -7042,7 +6726,6 @@
             "id": 650,
             "name": "isReady",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {
               "isPublic": true
             },
@@ -7065,7 +6748,6 @@
             "id": 642,
             "name": "label",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {
               "isPublic": true
             },
@@ -7105,7 +6787,6 @@
             "id": 645,
             "name": "selectedCalculator",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {
               "isPublic": true
             },
@@ -7128,7 +6809,6 @@
             "id": 651,
             "name": "showEndDatePicker",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {
               "isPublic": true
             },
@@ -7151,7 +6831,6 @@
             "id": 652,
             "name": "showStartDatePicker",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {
               "isPublic": true
             },
@@ -7174,7 +6853,6 @@
             "id": 643,
             "name": "startDateRequired",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {
               "isPublic": true
             },
@@ -7220,7 +6898,6 @@
             "id": 630,
             "name": "calculatorIds",
             "kind": 262144,
-            "kindString": "Accessor",
             "flags": {
               "isPublic": true
             },
@@ -7242,7 +6919,6 @@
               "id": 631,
               "name": "calculatorIds",
               "kind": 524288,
-              "kindString": "Get signature",
               "flags": {},
               "type": {
                 "type": "array",
@@ -7257,7 +6933,6 @@
               "id": 632,
               "name": "calculatorIds",
               "kind": 1048576,
-              "kindString": "Set signature",
               "flags": {},
               "comment": {
                 "summary": [
@@ -7288,7 +6963,6 @@
                   "id": 633,
                   "name": "value",
                   "kind": 32768,
-                  "kindString": "Parameter",
                   "flags": {},
                   "type": {
                     "type": "array",
@@ -7315,7 +6989,6 @@
             "id": 634,
             "name": "dateFormat",
             "kind": 262144,
-            "kindString": "Accessor",
             "flags": {
               "isPublic": true
             },
@@ -7337,7 +7010,6 @@
               "id": 635,
               "name": "dateFormat",
               "kind": 524288,
-              "kindString": "Get signature",
               "flags": {},
               "type": {
                 "type": "intrinsic",
@@ -7348,7 +7020,6 @@
               "id": 636,
               "name": "dateFormat",
               "kind": 1048576,
-              "kindString": "Set signature",
               "flags": {},
               "comment": {
                 "summary": [
@@ -7390,7 +7061,6 @@
                   "id": 637,
                   "name": "value",
                   "kind": 32768,
-                  "kindString": "Parameter",
                   "flags": {},
                   "type": {
                     "type": "intrinsic",
@@ -7413,7 +7083,6 @@
             "id": 638,
             "name": "disabled",
             "kind": 262144,
-            "kindString": "Accessor",
             "flags": {
               "isPublic": true
             },
@@ -7435,7 +7104,6 @@
               "id": 639,
               "name": "disabled",
               "kind": 524288,
-              "kindString": "Get signature",
               "flags": {},
               "type": {
                 "type": "intrinsic",
@@ -7446,7 +7114,6 @@
               "id": 640,
               "name": "disabled",
               "kind": 1048576,
-              "kindString": "Set signature",
               "flags": {},
               "comment": {
                 "summary": [
@@ -7480,7 +7147,6 @@
                   "id": 641,
                   "name": "value",
                   "kind": 32768,
-                  "kindString": "Parameter",
                   "flags": {},
                   "type": {
                     "type": "intrinsic",
@@ -7503,7 +7169,6 @@
             "id": 682,
             "name": "ngOnChanges",
             "kind": 2048,
-            "kindString": "Method",
             "flags": {
               "isPublic": true
             },
@@ -7520,14 +7185,12 @@
                 "id": 683,
                 "name": "ngOnChanges",
                 "kind": 4096,
-                "kindString": "Call signature",
                 "flags": {},
                 "parameters": [
                   {
                     "id": 684,
                     "name": "changes",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {},
                     "type": {
                       "type": "reference",
@@ -7557,7 +7220,6 @@
             "id": 685,
             "name": "ngOnDestroy",
             "kind": 2048,
-            "kindString": "Method",
             "flags": {
               "isPublic": true
             },
@@ -7574,7 +7236,6 @@
                 "id": 686,
                 "name": "ngOnDestroy",
                 "kind": 4096,
-                "kindString": "Call signature",
                 "flags": {},
                 "type": {
                   "type": "intrinsic",
@@ -7596,7 +7257,6 @@
             "id": 680,
             "name": "ngOnInit",
             "kind": 2048,
-            "kindString": "Method",
             "flags": {
               "isPublic": true
             },
@@ -7613,7 +7273,6 @@
                 "id": 681,
                 "name": "ngOnInit",
                 "kind": 4096,
-                "kindString": "Call signature",
                 "flags": {},
                 "type": {
                   "type": "intrinsic",
@@ -7635,7 +7294,6 @@
             "id": 687,
             "name": "onFieldBlur",
             "kind": 2048,
-            "kindString": "Method",
             "flags": {
               "isPublic": true
             },
@@ -7652,7 +7310,6 @@
                 "id": 688,
                 "name": "onFieldBlur",
                 "kind": 4096,
-                "kindString": "Call signature",
                 "flags": {},
                 "type": {
                   "type": "intrinsic",
@@ -7666,7 +7323,6 @@
             "id": 695,
             "name": "registerOnChange",
             "kind": 2048,
-            "kindString": "Method",
             "flags": {
               "isPublic": true
             },
@@ -7683,14 +7339,12 @@
                 "id": 696,
                 "name": "registerOnChange",
                 "kind": 4096,
-                "kindString": "Call signature",
                 "flags": {},
                 "parameters": [
                   {
                     "id": 697,
                     "name": "fn",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {},
                     "type": {
                       "type": "reflection",
@@ -7698,7 +7352,6 @@
                         "id": 698,
                         "name": "__type",
                         "kind": 65536,
-                        "kindString": "Type literal",
                         "flags": {},
                         "sources": [
                           {
@@ -7713,14 +7366,12 @@
                             "id": 699,
                             "name": "__type",
                             "kind": 4096,
-                            "kindString": "Call signature",
                             "flags": {},
                             "parameters": [
                               {
                                 "id": 700,
                                 "name": "value",
                                 "kind": 32768,
-                                "kindString": "Parameter",
                                 "flags": {},
                                 "type": {
                                   "type": "reference",
@@ -7760,7 +7411,6 @@
             "id": 701,
             "name": "registerOnTouched",
             "kind": 2048,
-            "kindString": "Method",
             "flags": {
               "isPublic": true
             },
@@ -7777,14 +7427,12 @@
                 "id": 702,
                 "name": "registerOnTouched",
                 "kind": 4096,
-                "kindString": "Call signature",
                 "flags": {},
                 "parameters": [
                   {
                     "id": 703,
                     "name": "fn",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {},
                     "type": {
                       "type": "reflection",
@@ -7792,7 +7440,6 @@
                         "id": 704,
                         "name": "__type",
                         "kind": 65536,
-                        "kindString": "Type literal",
                         "flags": {},
                         "sources": [
                           {
@@ -7807,7 +7454,6 @@
                             "id": 705,
                             "name": "__type",
                             "kind": 4096,
-                            "kindString": "Call signature",
                             "flags": {},
                             "type": {
                               "type": "reference",
@@ -7840,7 +7486,6 @@
             "id": 706,
             "name": "setDisabledState",
             "kind": 2048,
-            "kindString": "Method",
             "flags": {
               "isPublic": true
             },
@@ -7857,14 +7502,12 @@
                 "id": 707,
                 "name": "setDisabledState",
                 "kind": 4096,
-                "kindString": "Call signature",
                 "flags": {},
                 "parameters": [
                   {
                     "id": 708,
                     "name": "disabled",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {},
                     "type": {
                       "type": "intrinsic",
@@ -7892,7 +7535,6 @@
             "id": 692,
             "name": "validate",
             "kind": 2048,
-            "kindString": "Method",
             "flags": {
               "isPublic": true
             },
@@ -7909,14 +7551,12 @@
                 "id": 693,
                 "name": "validate",
                 "kind": 4096,
-                "kindString": "Call signature",
                 "flags": {},
                 "parameters": [
                   {
                     "id": 694,
                     "name": "control",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {},
                     "type": {
                       "type": "reference",
@@ -7958,7 +7598,6 @@
             "id": 689,
             "name": "writeValue",
             "kind": 2048,
-            "kindString": "Method",
             "flags": {
               "isPublic": true
             },
@@ -7975,14 +7614,12 @@
                 "id": 690,
                 "name": "writeValue",
                 "kind": 4096,
-                "kindString": "Call signature",
                 "flags": {},
                 "parameters": [
                   {
                     "id": 691,
                     "name": "value",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {},
                     "type": {
                       "type": "reference",
@@ -8079,7 +7716,6 @@
         "id": 743,
         "name": "SkyTimepickerComponent",
         "kind": 128,
-        "kindString": "Class",
         "flags": {},
         "comment": {
           "summary": [
@@ -8142,7 +7778,6 @@
             "id": 744,
             "name": "constructor",
             "kind": 512,
-            "kindString": "Constructor",
             "flags": {},
             "sources": [
               {
@@ -8157,14 +7792,12 @@
                 "id": 745,
                 "name": "SkyTimepickerComponent",
                 "kind": 16384,
-                "kindString": "Constructor signature",
                 "flags": {},
                 "parameters": [
                   {
                     "id": 746,
                     "name": "affixService",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {},
                     "type": {
                       "type": "reference",
@@ -8175,7 +7808,6 @@
                     "id": 747,
                     "name": "changeDetector",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {},
                     "type": {
                       "type": "reference",
@@ -8188,7 +7820,6 @@
                     "id": 748,
                     "name": "coreAdapter",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {},
                     "type": {
                       "type": "reference",
@@ -8199,7 +7830,6 @@
                     "id": 749,
                     "name": "overlayService",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {},
                     "type": {
                       "type": "reference",
@@ -8210,7 +7840,6 @@
                     "id": 750,
                     "name": "inputBoxHostService",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {
                       "isOptional": true
                     },
@@ -8223,7 +7852,6 @@
                     "id": 751,
                     "name": "themeSvc",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {
                       "isOptional": true
                     },
@@ -8236,7 +7864,6 @@
                     "id": 752,
                     "name": "stackingContext",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {
                       "isOptional": true
                     },
@@ -8258,7 +7885,6 @@
             "id": 774,
             "name": "activeTime",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {
               "isPublic": true
             },
@@ -8283,7 +7909,6 @@
             "id": 775,
             "name": "hours",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {
               "isPublic": true
             },
@@ -8309,7 +7934,6 @@
             "id": 806,
             "name": "inputBoxHostService",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {
               "isPublic": true,
               "isOptional": true
@@ -8331,7 +7955,6 @@
             "id": 792,
             "name": "inputTemplateRef",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {
               "isPublic": true
             },
@@ -8361,7 +7984,6 @@
             "id": 776,
             "name": "is8601",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {
               "isPublic": true
             },
@@ -8384,7 +8006,6 @@
             "id": 777,
             "name": "isOpen",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {
               "isPublic": true
             },
@@ -8407,7 +8028,6 @@
             "id": 778,
             "name": "isVisible",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {
               "isPublic": true
             },
@@ -8430,7 +8050,6 @@
             "id": 779,
             "name": "localeFormat",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {
               "isPublic": true
             },
@@ -8453,7 +8072,6 @@
             "id": 781,
             "name": "minuteMultiplier",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {
               "isPublic": true
             },
@@ -8475,7 +8093,6 @@
             "id": 780,
             "name": "minutes",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {
               "isPublic": true
             },
@@ -8501,7 +8118,6 @@
             "id": 782,
             "name": "returnFormat",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {
               "isPublic": true
             },
@@ -8523,7 +8139,6 @@
             "id": 753,
             "name": "selectedTimeChanged",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {
               "isPublic": true
             },
@@ -8567,7 +8182,6 @@
             "id": 783,
             "name": "timeFormat",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {
               "isPublic": true
             },
@@ -8591,7 +8205,6 @@
             "id": 784,
             "name": "timepickerId",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {
               "isPublic": true
             },
@@ -8613,7 +8226,6 @@
             "id": 790,
             "name": "timepickerTemplateRef",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {
               "isPublic": true
             },
@@ -8643,7 +8255,6 @@
             "id": 785,
             "name": "triggerButtonId",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {
               "isPublic": true
             },
@@ -8665,7 +8276,6 @@
             "id": 791,
             "name": "triggerButtonRef",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {
               "isPublic": true
             },
@@ -8695,7 +8305,6 @@
             "id": 793,
             "name": "triggerButtonTemplateRef",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {
               "isPublic": true
             },
@@ -8725,7 +8334,6 @@
             "id": 754,
             "name": "disabled",
             "kind": 262144,
-            "kindString": "Accessor",
             "flags": {
               "isPublic": true
             },
@@ -8747,7 +8355,6 @@
               "id": 755,
               "name": "disabled",
               "kind": 524288,
-              "kindString": "Get signature",
               "flags": {},
               "type": {
                 "type": "intrinsic",
@@ -8758,14 +8365,12 @@
               "id": 756,
               "name": "disabled",
               "kind": 1048576,
-              "kindString": "Set signature",
               "flags": {},
               "parameters": [
                 {
                   "id": 757,
                   "name": "value",
                   "kind": 32768,
-                  "kindString": "Parameter",
                   "flags": {},
                   "type": {
                     "type": "intrinsic",
@@ -8784,7 +8389,6 @@
             "id": 758,
             "name": "selectedHour",
             "kind": 262144,
-            "kindString": "Accessor",
             "flags": {
               "isPublic": true
             },
@@ -8806,7 +8410,6 @@
               "id": 759,
               "name": "selectedHour",
               "kind": 524288,
-              "kindString": "Get signature",
               "flags": {},
               "type": {
                 "type": "intrinsic",
@@ -8817,14 +8420,12 @@
               "id": 760,
               "name": "selectedHour",
               "kind": 1048576,
-              "kindString": "Set signature",
               "flags": {},
               "parameters": [
                 {
                   "id": 761,
                   "name": "setHour",
                   "kind": 32768,
-                  "kindString": "Parameter",
                   "flags": {},
                   "type": {
                     "type": "intrinsic",
@@ -8843,7 +8444,6 @@
             "id": 762,
             "name": "selectedMeridies",
             "kind": 262144,
-            "kindString": "Accessor",
             "flags": {
               "isPublic": true
             },
@@ -8865,7 +8465,6 @@
               "id": 763,
               "name": "selectedMeridies",
               "kind": 524288,
-              "kindString": "Get signature",
               "flags": {},
               "type": {
                 "type": "intrinsic",
@@ -8876,14 +8475,12 @@
               "id": 764,
               "name": "selectedMeridies",
               "kind": 1048576,
-              "kindString": "Set signature",
               "flags": {},
               "parameters": [
                 {
                   "id": 765,
                   "name": "meridies",
                   "kind": 32768,
-                  "kindString": "Parameter",
                   "flags": {},
                   "type": {
                     "type": "intrinsic",
@@ -8902,7 +8499,6 @@
             "id": 766,
             "name": "selectedMinute",
             "kind": 262144,
-            "kindString": "Accessor",
             "flags": {
               "isPublic": true
             },
@@ -8924,7 +8520,6 @@
               "id": 767,
               "name": "selectedMinute",
               "kind": 524288,
-              "kindString": "Get signature",
               "flags": {},
               "type": {
                 "type": "intrinsic",
@@ -8935,14 +8530,12 @@
               "id": 768,
               "name": "selectedMinute",
               "kind": 1048576,
-              "kindString": "Set signature",
               "flags": {},
               "parameters": [
                 {
                   "id": 769,
                   "name": "minute",
                   "kind": 32768,
-                  "kindString": "Parameter",
                   "flags": {},
                   "type": {
                     "type": "intrinsic",
@@ -8961,7 +8554,6 @@
             "id": 770,
             "name": "selectedTime",
             "kind": 262144,
-            "kindString": "Accessor",
             "flags": {
               "isPublic": true
             },
@@ -8983,7 +8575,6 @@
               "id": 771,
               "name": "selectedTime",
               "kind": 524288,
-              "kindString": "Get signature",
               "flags": {},
               "type": {
                 "type": "reference",
@@ -8995,14 +8586,12 @@
               "id": 772,
               "name": "selectedTime",
               "kind": 1048576,
-              "kindString": "Set signature",
               "flags": {},
               "parameters": [
                 {
                   "id": 773,
                   "name": "newTime",
                   "kind": 32768,
-                  "kindString": "Parameter",
                   "flags": {},
                   "type": {
                     "type": "reference",
@@ -9022,7 +8611,6 @@
             "id": 786,
             "name": "timepickerRef",
             "kind": 262144,
-            "kindString": "Accessor",
             "flags": {
               "isPublic": true
             },
@@ -9044,7 +8632,6 @@
               "id": 787,
               "name": "timepickerRef",
               "kind": 524288,
-              "kindString": "Get signature",
               "flags": {},
               "type": {
                 "type": "reference",
@@ -9063,14 +8650,12 @@
               "id": 788,
               "name": "timepickerRef",
               "kind": 1048576,
-              "kindString": "Set signature",
               "flags": {},
               "parameters": [
                 {
                   "id": 789,
                   "name": "value",
                   "kind": 32768,
-                  "kindString": "Parameter",
                   "flags": {},
                   "type": {
                     "type": "reference",
@@ -9097,7 +8682,6 @@
             "id": 809,
             "name": "ngOnDestroy",
             "kind": 2048,
-            "kindString": "Method",
             "flags": {
               "isPublic": true
             },
@@ -9114,7 +8698,6 @@
                 "id": 810,
                 "name": "ngOnDestroy",
                 "kind": 4096,
-                "kindString": "Call signature",
                 "flags": {},
                 "type": {
                   "type": "intrinsic",
@@ -9136,7 +8719,6 @@
             "id": 807,
             "name": "ngOnInit",
             "kind": 2048,
-            "kindString": "Method",
             "flags": {
               "isPublic": true
             },
@@ -9153,7 +8735,6 @@
                 "id": 808,
                 "name": "ngOnInit",
                 "kind": 4096,
-                "kindString": "Call signature",
                 "flags": {},
                 "type": {
                   "type": "intrinsic",
@@ -9175,7 +8756,6 @@
             "id": 814,
             "name": "onCloseButtonClick",
             "kind": 2048,
-            "kindString": "Method",
             "flags": {
               "isPublic": true
             },
@@ -9192,7 +8772,6 @@
                 "id": 815,
                 "name": "onCloseButtonClick",
                 "kind": 4096,
-                "kindString": "Call signature",
                 "flags": {},
                 "type": {
                   "type": "intrinsic",
@@ -9206,7 +8785,6 @@
             "id": 819,
             "name": "onTriggerButtonClick",
             "kind": 2048,
-            "kindString": "Method",
             "flags": {
               "isPublic": true
             },
@@ -9223,7 +8801,6 @@
                 "id": 820,
                 "name": "onTriggerButtonClick",
                 "kind": 4096,
-                "kindString": "Call signature",
                 "flags": {},
                 "type": {
                   "type": "intrinsic",
@@ -9237,7 +8814,6 @@
             "id": 811,
             "name": "setFormat",
             "kind": 2048,
-            "kindString": "Method",
             "flags": {
               "isPublic": true
             },
@@ -9254,14 +8830,12 @@
                 "id": 812,
                 "name": "setFormat",
                 "kind": 4096,
-                "kindString": "Call signature",
                 "flags": {},
                 "parameters": [
                   {
                     "id": 813,
                     "name": "format",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {},
                     "type": {
                       "type": "reference",
@@ -9282,7 +8856,6 @@
             "id": 816,
             "name": "setTime",
             "kind": 2048,
-            "kindString": "Method",
             "flags": {
               "isPublic": true
             },
@@ -9299,14 +8872,12 @@
                 "id": 817,
                 "name": "setTime",
                 "kind": 4096,
-                "kindString": "Call signature",
                 "flags": {},
                 "parameters": [
                   {
                     "id": 818,
                     "name": "event",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {},
                     "type": {
                       "type": "intrinsic",
@@ -9379,14 +8950,12 @@
         "id": 837,
         "name": "SkyTimepickerInputDirective",
         "kind": 128,
-        "kindString": "Class",
         "flags": {},
         "children": [
           {
             "id": 838,
             "name": "constructor",
             "kind": 512,
-            "kindString": "Constructor",
             "flags": {},
             "sources": [
               {
@@ -9401,14 +8970,12 @@
                 "id": 839,
                 "name": "SkyTimepickerInputDirective",
                 "kind": 16384,
-                "kindString": "Constructor signature",
                 "flags": {},
                 "parameters": [
                   {
                     "id": 840,
                     "name": "renderer",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {},
                     "type": {
                       "type": "reference",
@@ -9421,7 +8988,6 @@
                     "id": 841,
                     "name": "elRef",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {},
                     "type": {
                       "type": "reference",
@@ -9440,7 +9006,6 @@
                     "id": 842,
                     "name": "resourcesService",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {},
                     "type": {
                       "type": "reference",
@@ -9451,7 +9016,6 @@
                     "id": 843,
                     "name": "changeDetector",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {},
                     "type": {
                       "type": "reference",
@@ -9473,7 +9037,6 @@
             "id": 844,
             "name": "pickerChangedSubscription",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {
               "isPublic": true
             },
@@ -9497,7 +9060,6 @@
             "id": 854,
             "name": "returnFormat",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {
               "isPublic": true
             },
@@ -9531,7 +9093,6 @@
             "id": 855,
             "name": "disabled",
             "kind": 262144,
-            "kindString": "Accessor",
             "flags": {
               "isPublic": true
             },
@@ -9553,7 +9114,6 @@
               "id": 856,
               "name": "disabled",
               "kind": 524288,
-              "kindString": "Get signature",
               "flags": {},
               "comment": {
                 "summary": [
@@ -9591,14 +9151,12 @@
               "id": 857,
               "name": "disabled",
               "kind": 1048576,
-              "kindString": "Set signature",
               "flags": {},
               "parameters": [
                 {
                   "id": 858,
                   "name": "value",
                   "kind": 32768,
-                  "kindString": "Parameter",
                   "flags": {},
                   "type": {
                     "type": "intrinsic",
@@ -9621,7 +9179,6 @@
             "id": 846,
             "name": "skyTimepickerInput",
             "kind": 262144,
-            "kindString": "Accessor",
             "flags": {
               "isPublic": true
             },
@@ -9643,7 +9200,6 @@
               "id": 847,
               "name": "skyTimepickerInput",
               "kind": 524288,
-              "kindString": "Get signature",
               "flags": {},
               "comment": {
                 "summary": [
@@ -9693,14 +9249,12 @@
               "id": 848,
               "name": "skyTimepickerInput",
               "kind": 1048576,
-              "kindString": "Set signature",
               "flags": {},
               "parameters": [
                 {
                   "id": 849,
                   "name": "value",
                   "kind": 32768,
-                  "kindString": "Parameter",
                   "flags": {},
                   "type": {
                     "type": "reference",
@@ -9724,7 +9278,6 @@
             "id": 850,
             "name": "timeFormat",
             "kind": 262144,
-            "kindString": "Accessor",
             "flags": {
               "isPublic": true
             },
@@ -9746,7 +9299,6 @@
               "id": 851,
               "name": "timeFormat",
               "kind": 524288,
-              "kindString": "Get signature",
               "flags": {},
               "type": {
                 "type": "reference",
@@ -9758,7 +9310,6 @@
               "id": 852,
               "name": "timeFormat",
               "kind": 1048576,
-              "kindString": "Set signature",
               "flags": {},
               "comment": {
                 "summary": [
@@ -9800,7 +9351,6 @@
                   "id": 853,
                   "name": "value",
                   "kind": 32768,
-                  "kindString": "Parameter",
                   "flags": {},
                   "type": {
                     "type": "reference",
@@ -9824,7 +9374,6 @@
             "id": 873,
             "name": "ngAfterContentInit",
             "kind": 2048,
-            "kindString": "Method",
             "flags": {
               "isPublic": true
             },
@@ -9841,7 +9390,6 @@
                 "id": 874,
                 "name": "ngAfterContentInit",
                 "kind": 4096,
-                "kindString": "Call signature",
                 "flags": {},
                 "type": {
                   "type": "intrinsic",
@@ -9863,7 +9411,6 @@
             "id": 877,
             "name": "ngOnChanges",
             "kind": 2048,
-            "kindString": "Method",
             "flags": {
               "isPublic": true
             },
@@ -9880,7 +9427,6 @@
                 "id": 878,
                 "name": "ngOnChanges",
                 "kind": 4096,
-                "kindString": "Call signature",
                 "flags": {},
                 "type": {
                   "type": "intrinsic",
@@ -9902,7 +9448,6 @@
             "id": 875,
             "name": "ngOnDestroy",
             "kind": 2048,
-            "kindString": "Method",
             "flags": {
               "isPublic": true
             },
@@ -9919,7 +9464,6 @@
                 "id": 876,
                 "name": "ngOnDestroy",
                 "kind": 4096,
-                "kindString": "Call signature",
                 "flags": {},
                 "type": {
                   "type": "intrinsic",
@@ -9941,7 +9485,6 @@
             "id": 871,
             "name": "ngOnInit",
             "kind": 2048,
-            "kindString": "Method",
             "flags": {
               "isPublic": true
             },
@@ -9958,7 +9501,6 @@
                 "id": 872,
                 "name": "ngOnInit",
                 "kind": 4096,
-                "kindString": "Call signature",
                 "flags": {},
                 "type": {
                   "type": "intrinsic",
@@ -9980,7 +9522,6 @@
             "id": 882,
             "name": "onBlur",
             "kind": 2048,
-            "kindString": "Method",
             "flags": {
               "isPublic": true
             },
@@ -9997,7 +9538,6 @@
                 "id": 883,
                 "name": "onBlur",
                 "kind": 4096,
-                "kindString": "Call signature",
                 "flags": {},
                 "type": {
                   "type": "intrinsic",
@@ -10011,7 +9551,6 @@
             "id": 879,
             "name": "onChange",
             "kind": 2048,
-            "kindString": "Method",
             "flags": {
               "isPublic": true
             },
@@ -10028,14 +9567,12 @@
                 "id": 880,
                 "name": "onChange",
                 "kind": 4096,
-                "kindString": "Call signature",
                 "flags": {},
                 "parameters": [
                   {
                     "id": 881,
                     "name": "event",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {},
                     "type": {
                       "type": "intrinsic",
@@ -10055,7 +9592,6 @@
             "id": 884,
             "name": "registerOnChange",
             "kind": 2048,
-            "kindString": "Method",
             "flags": {
               "isPublic": true
             },
@@ -10072,14 +9608,12 @@
                 "id": 885,
                 "name": "registerOnChange",
                 "kind": 4096,
-                "kindString": "Call signature",
                 "flags": {},
                 "parameters": [
                   {
                     "id": 886,
                     "name": "fn",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {},
                     "type": {
                       "type": "reflection",
@@ -10087,7 +9621,6 @@
                         "id": 887,
                         "name": "__type",
                         "kind": 65536,
-                        "kindString": "Type literal",
                         "flags": {},
                         "sources": [
                           {
@@ -10102,14 +9635,12 @@
                             "id": 888,
                             "name": "__type",
                             "kind": 4096,
-                            "kindString": "Call signature",
                             "flags": {},
                             "parameters": [
                               {
                                 "id": 889,
                                 "name": "value",
                                 "kind": 32768,
-                                "kindString": "Parameter",
                                 "flags": {},
                                 "type": {
                                   "type": "intrinsic",
@@ -10147,7 +9678,6 @@
             "id": 890,
             "name": "registerOnTouched",
             "kind": 2048,
-            "kindString": "Method",
             "flags": {
               "isPublic": true
             },
@@ -10164,14 +9694,12 @@
                 "id": 891,
                 "name": "registerOnTouched",
                 "kind": 4096,
-                "kindString": "Call signature",
                 "flags": {},
                 "parameters": [
                   {
                     "id": 892,
                     "name": "fn",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {},
                     "type": {
                       "type": "reflection",
@@ -10179,7 +9707,6 @@
                         "id": 893,
                         "name": "__type",
                         "kind": 65536,
-                        "kindString": "Type literal",
                         "flags": {},
                         "sources": [
                           {
@@ -10194,7 +9721,6 @@
                             "id": 894,
                             "name": "__type",
                             "kind": 4096,
-                            "kindString": "Call signature",
                             "flags": {},
                             "type": {
                               "type": "intrinsic",
@@ -10226,7 +9752,6 @@
             "id": 895,
             "name": "registerOnValidatorChange",
             "kind": 2048,
-            "kindString": "Method",
             "flags": {
               "isPublic": true
             },
@@ -10243,14 +9768,12 @@
                 "id": 896,
                 "name": "registerOnValidatorChange",
                 "kind": 4096,
-                "kindString": "Call signature",
                 "flags": {},
                 "parameters": [
                   {
                     "id": 897,
                     "name": "fn",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {},
                     "type": {
                       "type": "reflection",
@@ -10258,7 +9781,6 @@
                         "id": 898,
                         "name": "__type",
                         "kind": 65536,
-                        "kindString": "Type literal",
                         "flags": {},
                         "sources": [
                           {
@@ -10273,7 +9795,6 @@
                             "id": 899,
                             "name": "__type",
                             "kind": 4096,
-                            "kindString": "Call signature",
                             "flags": {},
                             "type": {
                               "type": "intrinsic",
@@ -10305,7 +9826,6 @@
             "id": 900,
             "name": "setDisabledState",
             "kind": 2048,
-            "kindString": "Method",
             "flags": {
               "isPublic": true
             },
@@ -10322,14 +9842,12 @@
                 "id": 901,
                 "name": "setDisabledState",
                 "kind": 4096,
-                "kindString": "Call signature",
                 "flags": {},
                 "parameters": [
                   {
                     "id": 902,
                     "name": "isDisabled",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {},
                     "type": {
                       "type": "intrinsic",
@@ -10357,7 +9875,6 @@
             "id": 906,
             "name": "validate",
             "kind": 2048,
-            "kindString": "Method",
             "flags": {
               "isPublic": true
             },
@@ -10374,14 +9891,12 @@
                 "id": 907,
                 "name": "validate",
                 "kind": 4096,
-                "kindString": "Call signature",
                 "flags": {},
                 "parameters": [
                   {
                     "id": 908,
                     "name": "control",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {},
                     "type": {
                       "type": "reference",
@@ -10423,7 +9938,6 @@
             "id": 903,
             "name": "writeValue",
             "kind": 2048,
-            "kindString": "Method",
             "flags": {
               "isPublic": true
             },
@@ -10440,14 +9954,12 @@
                 "id": 904,
                 "name": "writeValue",
                 "kind": 4096,
-                "kindString": "Call signature",
                 "flags": {},
                 "parameters": [
                   {
                     "id": 905,
                     "name": "value",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {},
                     "type": {
                       "type": "intrinsic",
@@ -10551,14 +10063,12 @@
         "id": 101,
         "name": "SkyDateRange",
         "kind": 256,
-        "kindString": "Interface",
         "flags": {},
         "children": [
           {
             "id": 102,
             "name": "endDate",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {
               "isOptional": true
             },
@@ -10589,7 +10099,6 @@
             "id": 103,
             "name": "startDate",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {
               "isOptional": true
             },
@@ -10643,7 +10152,6 @@
         "id": 36,
         "name": "SkyDateRangeCalculation",
         "kind": 256,
-        "kindString": "Interface",
         "flags": {},
         "comment": {
           "summary": [
@@ -10666,7 +10174,6 @@
             "id": 37,
             "name": "calculatorId",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {},
             "comment": {
               "summary": [
@@ -10694,7 +10201,6 @@
             "id": 38,
             "name": "endDate",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {
               "isOptional": true
             },
@@ -10730,7 +10236,6 @@
             "id": 39,
             "name": "startDate",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {
               "isOptional": true
             },
@@ -10789,7 +10294,6 @@
         "id": 59,
         "name": "SkyDateRangeCalculatorConfig",
         "kind": 256,
-        "kindString": "Interface",
         "flags": {},
         "comment": {
           "summary": [
@@ -10804,7 +10308,6 @@
             "id": 62,
             "name": "getValue",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {},
             "comment": {
               "summary": [
@@ -10840,7 +10343,6 @@
             "id": 60,
             "name": "shortDescription",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {},
             "comment": {
               "summary": [
@@ -10867,7 +10369,6 @@
             "id": 61,
             "name": "type",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {},
             "comment": {
               "summary": [
@@ -10895,7 +10396,6 @@
             "id": 63,
             "name": "validate",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {
               "isOptional": true
             },
@@ -10949,7 +10449,6 @@
         "id": 213,
         "name": "SkyDatepickerCalendarChange",
         "kind": 256,
-        "kindString": "Interface",
         "flags": {},
         "comment": {
           "summary": [
@@ -10964,7 +10463,6 @@
             "id": 216,
             "name": "customDates",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {
               "isOptional": true
             },
@@ -11013,7 +10511,6 @@
             "id": 214,
             "name": "endDate",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {},
             "comment": {
               "summary": [
@@ -11042,7 +10539,6 @@
             "id": 215,
             "name": "startDate",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {},
             "comment": {
               "summary": [
@@ -11087,7 +10583,6 @@
         "id": 217,
         "name": "SkyDatepickerCustomDate",
         "kind": 256,
-        "kindString": "Interface",
         "flags": {},
         "comment": {
           "summary": [
@@ -11102,7 +10597,6 @@
             "id": 218,
             "name": "date",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {},
             "comment": {
               "summary": [
@@ -11131,7 +10625,6 @@
             "id": 219,
             "name": "disabled",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {
               "isOptional": true
             },
@@ -11160,7 +10653,6 @@
             "id": 220,
             "name": "keyDate",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {
               "isOptional": true
             },
@@ -11189,7 +10681,6 @@
             "id": 221,
             "name": "keyDateText",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {
               "isOptional": true
             },
@@ -11237,14 +10728,12 @@
         "id": 140,
         "name": "SkyFuzzyDate",
         "kind": 256,
-        "kindString": "Interface",
         "flags": {},
         "children": [
           {
             "id": 141,
             "name": "day",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {
               "isOptional": true
             },
@@ -11281,7 +10770,6 @@
             "id": 142,
             "name": "month",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {
               "isOptional": true
             },
@@ -11318,7 +10806,6 @@
             "id": 143,
             "name": "year",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {
               "isOptional": true
             },
@@ -11363,14 +10850,12 @@
         "id": 223,
         "name": "SkyTimepickerTimeOutput",
         "kind": 256,
-        "kindString": "Interface",
         "flags": {},
         "children": [
           {
             "id": 230,
             "name": "customFormat",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {},
             "comment": {
               "summary": [
@@ -11397,7 +10882,6 @@
             "id": 224,
             "name": "hour",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {},
             "comment": {
               "summary": [
@@ -11424,7 +10908,6 @@
             "id": 228,
             "name": "iso8601",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {},
             "comment": {
               "summary": [
@@ -11453,7 +10936,6 @@
             "id": 229,
             "name": "local",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {},
             "comment": {
               "summary": [
@@ -11480,7 +10962,6 @@
             "id": 226,
             "name": "meridie",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {},
             "comment": {
               "summary": [
@@ -11523,7 +11004,6 @@
             "id": 225,
             "name": "minute",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {},
             "comment": {
               "summary": [
@@ -11550,7 +11030,6 @@
             "id": 227,
             "name": "timezone",
             "kind": 1024,
-            "kindString": "Property",
             "flags": {},
             "comment": {
               "summary": [
@@ -11593,7 +11072,6 @@
         "id": 64,
         "name": "SkyDateRangeCalculatorGetValueFunction",
         "kind": 4194304,
-        "kindString": "Type alias",
         "flags": {},
         "sources": [
           {
@@ -11609,7 +11087,6 @@
             "id": 65,
             "name": "__type",
             "kind": 65536,
-            "kindString": "Type literal",
             "flags": {},
             "sources": [
               {
@@ -11624,14 +11101,12 @@
                 "id": 66,
                 "name": "__type",
                 "kind": 4096,
-                "kindString": "Call signature",
                 "flags": {},
                 "parameters": [
                   {
                     "id": 67,
                     "name": "startDateInput",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {
                       "isOptional": true
                     },
@@ -11655,7 +11130,6 @@
                     "id": 68,
                     "name": "endDateInput",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {
                       "isOptional": true
                     },
@@ -11690,7 +11164,6 @@
         "id": 97,
         "name": "SkyDateRangeCalculatorValidateFunction",
         "kind": 4194304,
-        "kindString": "Type alias",
         "flags": {},
         "sources": [
           {
@@ -11706,7 +11179,6 @@
             "id": 98,
             "name": "__type",
             "kind": 65536,
-            "kindString": "Type literal",
             "flags": {},
             "sources": [
               {
@@ -11721,14 +11193,12 @@
                 "id": 99,
                 "name": "__type",
                 "kind": 4096,
-                "kindString": "Call signature",
                 "flags": {},
                 "parameters": [
                   {
                     "id": 100,
                     "name": "value",
                     "kind": 32768,
-                    "kindString": "Parameter",
                     "flags": {
                       "isOptional": true
                     },
@@ -11763,7 +11233,6 @@
         "id": 222,
         "name": "SkyTimepickerTimeFormatType",
         "kind": 4194304,
-        "kindString": "Type alias",
         "flags": {},
         "sources": [
           {

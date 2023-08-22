@@ -1,6 +1,6 @@
 import { SkyDocsTypeDocAdapterService } from './typedoc-adapter.service';
 
-import { TypeDocEntry } from './typedoc-types';
+import { TypeDocEntry, TypeDocKind } from './typedoc-types';
 
 describe('TypeDoc adapter', () => {
   let adapter: SkyDocsTypeDocAdapterService;
@@ -32,7 +32,7 @@ describe('TypeDoc adapter', () => {
       entry.children = [
         {
           name: 'fooB',
-          kindString: 'Property',
+          kind: TypeDocKind.Property,
           type: {
             type: 'intrinsic',
             name: 'number',
@@ -40,7 +40,7 @@ describe('TypeDoc adapter', () => {
         },
         {
           name: 'fooA',
-          kindString: 'Property',
+          kind: TypeDocKind.Property,
           type: {
             type: 'intrinsic',
             name: 'string',
@@ -74,7 +74,7 @@ describe('TypeDoc adapter', () => {
       entry.children = [
         {
           name: 'fooA',
-          kindString: 'Property',
+          kind: TypeDocKind.Property,
           type: {
             type: 'intrinsic',
             name: 'number',
@@ -82,7 +82,7 @@ describe('TypeDoc adapter', () => {
         },
         {
           name: 'fooZ',
-          kindString: 'Property',
+          kind: TypeDocKind.Property,
           type: {
             type: 'intrinsic',
             name: 'string',
@@ -124,7 +124,7 @@ describe('TypeDoc adapter', () => {
       entry.children = [
         {
           name: 'foo',
-          kindString: 'Accessor',
+          kind: TypeDocKind.Accessor,
           comment: {
             summary: [{ kind: 'text', text: 'The foo of the FooClass.' }],
             blockTags: [
@@ -164,7 +164,7 @@ describe('TypeDoc adapter', () => {
             parameters: [
               {
                 name: 'value',
-                kindString: 'Parameter',
+                kind: TypeDocKind.Parameter,
                 type: {
                   type: 'intrinsic',
                   name: 'number',
@@ -199,7 +199,7 @@ describe('TypeDoc adapter', () => {
       entry.children = [
         {
           name: 'foo',
-          kindString: 'Accessor',
+          kind: TypeDocKind.Accessor,
           getSignature: {
             name: '__get',
             comment: {
@@ -234,7 +234,7 @@ describe('TypeDoc adapter', () => {
             parameters: [
               {
                 name: 'value',
-                kindString: 'Parameter',
+                kind: TypeDocKind.Parameter,
                 type: {
                   type: 'intrinsic',
                   name: 'number',
@@ -270,7 +270,7 @@ describe('TypeDoc adapter', () => {
       entry.children = [
         {
           name: 'foo',
-          kindString: 'Accessor',
+          kind: TypeDocKind.Accessor,
           comment: {},
           getSignature: {
             name: '__get',
@@ -301,7 +301,7 @@ describe('TypeDoc adapter', () => {
       entry.children = [
         {
           name: 'foo',
-          kindString: 'Accessor',
+          kind: TypeDocKind.Accessor,
           comment: {},
           setSignature: {
             name: '__set',
@@ -309,7 +309,7 @@ describe('TypeDoc adapter', () => {
             parameters: [
               {
                 name: 'value',
-                kindString: 'Parameter',
+                kind: TypeDocKind.Parameter,
                 type: {
                   type: 'intrinsic',
                   name: 'number',
@@ -342,7 +342,7 @@ describe('TypeDoc adapter', () => {
       entry.children = [
         {
           name: 'foo',
-          kindString: 'Accessor',
+          kind: TypeDocKind.Accessor,
           comment: {
             summary: [{ kind: 'text', text: 'The foo of the FooClass.' }],
             blockTags: [
@@ -391,7 +391,7 @@ describe('TypeDoc adapter', () => {
       entry.children = [
         {
           name: 'foo',
-          kindString: 'Accessor',
+          kind: TypeDocKind.Accessor,
           comment: {
             blockTags: [
               {
@@ -439,7 +439,7 @@ describe('TypeDoc adapter', () => {
       entry.children = [
         {
           name: 'foo',
-          kindString: 'Accessor',
+          kind: TypeDocKind.Accessor,
           comment: {
             summary: [{ kind: 'text', text: 'The foo of the FooClass.' }],
             blockTags: [
@@ -472,7 +472,7 @@ describe('TypeDoc adapter', () => {
             parameters: [
               {
                 name: 'value',
-                kindString: 'Parameter',
+                kind: TypeDocKind.Parameter,
                 type: {
                   type: 'intrinsic',
                   name: 'number',
@@ -503,7 +503,7 @@ describe('TypeDoc adapter', () => {
       entry.children = [
         {
           name: 'foo',
-          kindString: 'Accessor',
+          kind: TypeDocKind.Accessor,
           comment: {
             blockTags: [
               {
@@ -545,7 +545,7 @@ describe('TypeDoc adapter', () => {
             parameters: [
               {
                 name: 'value',
-                kindString: 'Parameter',
+                kind: TypeDocKind.Parameter,
                 type: {
                   type: 'intrinsic',
                   name: 'number',
@@ -576,15 +576,15 @@ describe('TypeDoc adapter', () => {
       entry.children = [
         {
           name: 'constructor',
-          kindString: 'Constructor',
+          kind: TypeDocKind.Constructor,
           signatures: [
             {
               name: 'new Class',
-              kindString: 'Constructor signature',
+              kind: TypeDocKind.ConstructorSignature,
               parameters: [
                 {
                   name: 'fooA',
-                  kindString: 'Parameter',
+                  kind: TypeDocKind.Parameter,
                   type: {
                     type: 'intrinsic',
                     name: 'string',
@@ -604,7 +604,7 @@ describe('TypeDoc adapter', () => {
         },
         {
           name: 'fooB',
-          kindString: 'Property',
+          kind: TypeDocKind.Property,
           type: {
             type: 'intrinsic',
             name: 'number',
@@ -612,7 +612,7 @@ describe('TypeDoc adapter', () => {
         },
         {
           name: 'fooA',
-          kindString: 'Property',
+          kind: TypeDocKind.Property,
           type: {
             type: 'intrinsic',
             name: 'string',
@@ -647,17 +647,17 @@ describe('TypeDoc adapter', () => {
       entry.children = [
         {
           name: 'constructor',
-          kindString: 'Constructor',
+          kind: TypeDocKind.Constructor,
           signatures: [
             {
               name: 'new Class',
-              kindString: 'Constructor signature',
+              kind: TypeDocKind.ConstructorSignature,
             },
           ],
         },
         {
           name: 'fooB',
-          kindString: 'Property',
+          kind: TypeDocKind.Property,
           type: {
             type: 'intrinsic',
             name: 'number',
@@ -665,7 +665,7 @@ describe('TypeDoc adapter', () => {
         },
         {
           name: 'fooA',
-          kindString: 'Property',
+          kind: TypeDocKind.Property,
           type: {
             type: 'intrinsic',
             name: 'string',
@@ -699,7 +699,7 @@ describe('TypeDoc adapter', () => {
       entry.children = [
         {
           name: 'fooUnion',
-          kindString: 'Property',
+          kind: TypeDocKind.Property,
           type: {
             type: 'union',
             types: [
@@ -751,7 +751,7 @@ describe('TypeDoc adapter', () => {
       entry.children = [
         {
           name: 'searchFunction',
-          kindString: 'Property',
+          kind: TypeDocKind.Property,
           comment: {
             blockTags: [
               {
@@ -811,7 +811,7 @@ describe('TypeDoc adapter', () => {
               signatures: [
                 {
                   name: '__call',
-                  kindString: 'Call signature',
+                  kind: TypeDocKind.CallSignature,
                   comment: {
                     summary: [
                       {
@@ -823,7 +823,7 @@ describe('TypeDoc adapter', () => {
                   parameters: [
                     {
                       name: 'searchTerm',
-                      kindString: 'Parameter',
+                      kind: TypeDocKind.Parameter,
                       type: {
                         type: 'intrinsic',
                         name: 'string',
@@ -831,7 +831,7 @@ describe('TypeDoc adapter', () => {
                     },
                     {
                       name: 'debounceTime',
-                      kindString: 'Parameter',
+                      kind: TypeDocKind.Parameter,
                       flags: {
                         isOptional: true,
                       },
@@ -906,7 +906,7 @@ describe('TypeDoc adapter', () => {
       entry.children = [
         {
           name: 'messageStream',
-          kindString: 'Property',
+          kind: TypeDocKind.Property,
           flags: {},
           comment: {
             summary: [
@@ -973,17 +973,17 @@ describe('TypeDoc adapter', () => {
       entry.children = [
         {
           name: 'anchorIds',
-          kindString: 'Property',
+          kind: TypeDocKind.Property,
           type: {
             type: 'reflection',
             declaration: {
               indexSignature: {
                 name: '__index',
-                kindString: 'Index signature',
+                kind: TypeDocKind.IndexSignature,
                 parameters: [
                   {
                     name: '_',
-                    kindString: 'Parameter',
+                    kind: TypeDocKind.Parameter,
                     type: {
                       type: 'intrinsic',
                       name: 'string',
@@ -1030,10 +1030,10 @@ describe('TypeDoc adapter', () => {
       entry.children = [
         {
           name: 'getB',
-          kindString: 'Method',
+          kind: TypeDocKind.Method,
           signatures: [
             {
-              kindString: 'Call signature',
+              kind: TypeDocKind.CallSignature,
               name: 'getB',
               type: {
                 type: 'intrinsic',
@@ -1044,13 +1044,13 @@ describe('TypeDoc adapter', () => {
         },
         {
           name: 'getA',
-          kindString: 'Method',
+          kind: TypeDocKind.Method,
           flags: {
             isStatic: true,
           },
           signatures: [
             {
-              kindString: 'Call signature',
+              kind: TypeDocKind.CallSignature,
               name: 'getA',
               type: {
                 type: 'intrinsic',
@@ -1061,13 +1061,13 @@ describe('TypeDoc adapter', () => {
         },
         {
           name: 'getC',
-          kindString: 'Method',
+          kind: TypeDocKind.Method,
           flags: {
             isStatic: false,
           },
           signatures: [
             {
-              kindString: 'Call signature',
+              kind: TypeDocKind.CallSignature,
               name: 'getC',
               type: {
                 type: 'intrinsic',
@@ -1130,15 +1130,15 @@ describe('TypeDoc adapter', () => {
       entry.children = [
         {
           name: 'getUser',
-          kindString: 'Method',
+          kind: TypeDocKind.Method,
           signatures: [
             {
               name: 'getUser',
-              kindString: 'Call signature',
+              kind: TypeDocKind.CallSignature,
               typeParameter: [
                 {
                   name: 'T',
-                  kindString: 'Type parameter',
+                  kind: TypeDocKind.TypeParameter,
                 },
               ],
               type: {
@@ -1179,11 +1179,11 @@ describe('TypeDoc adapter', () => {
       entry.children = [
         {
           name: 'getUserById',
-          kindString: 'Method',
+          kind: TypeDocKind.Method,
           signatures: [
             {
               name: 'getUserById',
-              kindString: 'Call signature',
+              kind: TypeDocKind.CallSignature,
               comment: {
                 summary: [
                   {
@@ -1195,7 +1195,7 @@ describe('TypeDoc adapter', () => {
               parameters: [
                 {
                   name: 'id',
-                  kindString: 'Parameter',
+                  kind: TypeDocKind.Parameter,
                   comment: {
                     summary: [
                       {
@@ -1211,7 +1211,7 @@ describe('TypeDoc adapter', () => {
                 },
                 {
                   name: 'user',
-                  kindString: 'Parameter',
+                  kind: TypeDocKind.Parameter,
                   type: {
                     type: 'reference',
                     typeArguments: [
@@ -1232,7 +1232,7 @@ describe('TypeDoc adapter', () => {
                 },
                 {
                   name: 'locale',
-                  kindString: 'Parameter',
+                  kind: TypeDocKind.Parameter,
                   comment: {
                     summary: [
                       { kind: 'text', text: 'The locale of the user.\n' },
@@ -1328,7 +1328,7 @@ describe('TypeDoc adapter', () => {
       entry.children = [
         {
           name: 'markupProperty',
-          kindString: 'Property',
+          kind: TypeDocKind.Property,
           type: {
             type: 'intrinsic',
             name: 'void',
@@ -1349,7 +1349,7 @@ describe('TypeDoc adapter', () => {
         },
         {
           name: 'typescriptProperty',
-          kindString: 'Property',
+          kind: TypeDocKind.Property,
           type: {
             type: 'intrinsic',
             name: 'void',
@@ -1370,7 +1370,7 @@ describe('TypeDoc adapter', () => {
         },
         {
           name: 'defaultProperty',
-          kindString: 'Property',
+          kind: TypeDocKind.Property,
           type: {
             type: 'intrinsic',
             name: 'void',
@@ -1478,7 +1478,7 @@ describe('TypeDoc adapter', () => {
       entry.children = [
         {
           name: 'fooB',
-          kindString: 'Property',
+          kind: TypeDocKind.Property,
           type: {
             type: 'intrinsic',
             name: 'number',
@@ -1486,7 +1486,7 @@ describe('TypeDoc adapter', () => {
         },
         {
           name: 'fooC',
-          kindString: 'Property',
+          kind: TypeDocKind.Property,
           type: {
             type: 'intrinsic',
             name: 'string',
@@ -1503,7 +1503,7 @@ describe('TypeDoc adapter', () => {
         },
         {
           name: 'fooA',
-          kindString: 'Property',
+          kind: TypeDocKind.Property,
           type: {
             type: 'intrinsic',
             name: 'string',
@@ -1520,7 +1520,7 @@ describe('TypeDoc adapter', () => {
         },
         {
           name: 'fooD',
-          kindString: 'Property',
+          kind: TypeDocKind.Property,
           type: {
             type: 'reference',
             typeArguments: [
@@ -1547,7 +1547,7 @@ describe('TypeDoc adapter', () => {
         },
         {
           name: 'stream',
-          kindString: 'Property',
+          kind: TypeDocKind.Property,
           decorators: [
             {
               name: 'Output',
@@ -1681,7 +1681,7 @@ describe('TypeDoc adapter', () => {
       entry.children = [
         {
           name: 'originalPropertyName',
-          kindString: 'Property',
+          kind: TypeDocKind.Property,
           type: {
             type: 'intrinsic',
             name: 'string',
@@ -1796,7 +1796,7 @@ describe('TypeDoc adapter', () => {
       entry.children = [
         {
           name: 'fooB',
-          kindString: 'Property',
+          kind: TypeDocKind.Property,
           flags: {
             isOptional: true,
           },
@@ -1807,7 +1807,7 @@ describe('TypeDoc adapter', () => {
         },
         {
           name: 'fooA',
-          kindString: 'Property',
+          kind: TypeDocKind.Property,
           flags: {
             isOptional: true,
           },
@@ -1818,7 +1818,7 @@ describe('TypeDoc adapter', () => {
         },
         {
           name: 'fooZ',
-          kindString: 'Property',
+          kind: TypeDocKind.Property,
           type: {
             type: 'intrinsic',
             name: 'string',
@@ -1826,7 +1826,7 @@ describe('TypeDoc adapter', () => {
         },
         {
           name: 'fooC',
-          kindString: 'Property',
+          kind: TypeDocKind.Property,
           type: {
             type: 'intrinsic',
             name: 'string',
@@ -1842,7 +1842,7 @@ describe('TypeDoc adapter', () => {
         },
         {
           name: 'bar',
-          kindString: 'Method',
+          kind: TypeDocKind.Method,
           signatures: [
             {
               name: 'bar',
@@ -1867,7 +1867,7 @@ describe('TypeDoc adapter', () => {
         },
         {
           name: 'moo',
-          kindString: 'Property',
+          kind: TypeDocKind.Property,
           type: {
             type: 'reflection',
             declaration: {
@@ -1967,11 +1967,11 @@ describe('TypeDoc adapter', () => {
       entry.typeParameter = [
         {
           name: 'T',
-          kindString: 'Type parameter',
+          kind: TypeDocKind.TypeParameter,
         },
         {
           name: 'U',
-          kindString: 'Type parameter',
+          kind: TypeDocKind.TypeParameter,
           type: {
             type: 'reference',
             name: 'FooUser',
@@ -1982,7 +1982,7 @@ describe('TypeDoc adapter', () => {
       entry.children = [
         {
           name: 'foo',
-          kindString: 'Property',
+          kind: TypeDocKind.Property,
           type: {
             type: 'typeParameter',
             name: 'T',
@@ -1990,7 +1990,7 @@ describe('TypeDoc adapter', () => {
         },
         {
           name: 'user',
-          kindString: 'Property',
+          kind: TypeDocKind.Property,
           type: {
             type: 'typeParameter',
             name: 'U',
@@ -2039,11 +2039,11 @@ describe('TypeDoc adapter', () => {
     it('should support index signature properties', () => {
       entry.indexSignature = {
         name: '__index',
-        kindString: 'Index signature',
+        kind: TypeDocKind.IndexSignature,
         parameters: [
           {
             name: '_',
-            kindString: 'Parameter',
+            kind: TypeDocKind.Parameter,
             type: {
               type: 'intrinsic',
               name: 'string',
@@ -2085,7 +2085,7 @@ describe('TypeDoc adapter', () => {
       entry.children = [
         {
           name: 'route',
-          kindString: 'Property',
+          kind: TypeDocKind.Property,
           type: {
             type: 'reflection',
             declaration: {
@@ -2157,15 +2157,15 @@ describe('TypeDoc adapter', () => {
         children: [
           {
             name: 'transform',
-            kindString: 'Method',
+            kind: TypeDocKind.Method,
             signatures: [
               {
                 name: 'transform',
-                kindString: 'Call signature',
+                kind: TypeDocKind.CallSignature,
                 parameters: [
                   {
                     name: 'value',
-                    kindString: 'Parameter',
+                    kind: TypeDocKind.Parameter,
                     type: {
                       type: 'reference',
                       name: 'Date',
@@ -2262,7 +2262,7 @@ describe('TypeDoc adapter', () => {
                 signatures: [
                   {
                     name: '__call',
-                    kindString: 'Call signature',
+                    kind: TypeDocKind.CallSignature,
                     type: {
                       type: 'intrinsic',
                       name: 'void',
@@ -2345,11 +2345,11 @@ describe('TypeDoc adapter', () => {
           declaration: {
             indexSignature: {
               name: '__index',
-              kindString: 'Index signature',
+              kind: TypeDocKind.IndexSignature,
               parameters: [
                 {
                   name: '_',
-                  kindString: 'Parameter',
+                  kind: TypeDocKind.Parameter,
                   type: {
                     type: 'intrinsic',
                     name: 'string',
@@ -2399,7 +2399,7 @@ describe('TypeDoc adapter', () => {
             signatures: [
               {
                 name: '__call',
-                kindString: 'Call signature',
+                kind: TypeDocKind.CallSignature,
                 comment: {
                   summary: [
                     {
@@ -2415,7 +2415,7 @@ describe('TypeDoc adapter', () => {
                 parameters: [
                   {
                     name: 'args',
-                    kindString: 'Parameter',
+                    kind: TypeDocKind.Parameter,
                     type: {
                       type: 'reference',
                       name: 'FooUser',
@@ -2423,7 +2423,7 @@ describe('TypeDoc adapter', () => {
                   },
                   {
                     name: 'addl',
-                    kindString: 'Parameter',
+                    kind: TypeDocKind.Parameter,
                     type: {
                       type: 'typeParameter',
                       name: 'T',
@@ -2431,7 +2431,7 @@ describe('TypeDoc adapter', () => {
                   },
                   {
                     name: 'data',
-                    kindString: 'Parameter',
+                    kind: TypeDocKind.Parameter,
                     type: {
                       type: 'array',
                       elementType: {
@@ -2519,11 +2519,11 @@ describe('TypeDoc adapter', () => {
               signatures: [
                 {
                   name: '__call',
-                  kindString: 'Call signature',
+                  kind: TypeDocKind.CallSignature,
                   parameters: [
                     {
                       name: 'args',
-                      kindString: 'Parameter',
+                      kind: TypeDocKind.Parameter,
                       type: {
                         type: 'reference',
                         name: 'FooUser',
@@ -2531,7 +2531,7 @@ describe('TypeDoc adapter', () => {
                     },
                     {
                       name: 'addl',
-                      kindString: 'Parameter',
+                      kind: TypeDocKind.Parameter,
                       type: {
                         type: 'typeParameter',
                         name: 'T',
@@ -2539,7 +2539,7 @@ describe('TypeDoc adapter', () => {
                     },
                     {
                       name: 'data',
-                      kindString: 'Parameter',
+                      kind: TypeDocKind.Parameter,
                       type: {
                         type: 'array',
                         elementType: {
@@ -2611,7 +2611,7 @@ describe('TypeDoc adapter', () => {
         typeParameter: [
           {
             name: 'T',
-            kindString: 'Type parameter',
+            kind: TypeDocKind.TypeParameter,
           },
         ],
         type: {

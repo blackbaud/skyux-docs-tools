@@ -5,6 +5,7 @@ import { SkyDocsTypeDefinitions } from './type-definitions';
 import { SkyDocsTypeDefinitionsProvider } from './type-definitions-provider';
 
 import { SkyDocsTypeDocAdapterService } from './typedoc-adapter.service';
+import { TypeDocKind } from './typedoc-types';
 
 /**
  * Handles all type definitions that have been converted from the third-party documentation generator.
@@ -78,7 +79,7 @@ export class SkyDocsTypeDefinitionsService {
 
       typeDefinitions.forEach((item) => {
         const decorator = item.decorators && item.decorators[0]?.name;
-        const kindString = item.kindString;
+        const kind = item.kind;
 
         switch (decorator) {
           case 'Component':
@@ -98,19 +99,19 @@ export class SkyDocsTypeDefinitionsService {
             break;
           default:
             /*tslint:disable-next-line:switch-default*/
-            switch (kindString) {
-              case 'Class':
+            switch (kind) {
+              case TypeDocKind.Class:
                 types.classes.push(this.adapter.toClassDefinition(item));
                 break;
-              case 'Interface':
+              case TypeDocKind.Interface:
                 types.interfaces.push(this.adapter.toInterfaceDefinition(item));
                 break;
-              case 'Enumeration':
+              case TypeDocKind.Enum:
                 types.enumerations.push(
                   this.adapter.toEnumerationDefinition(item)
                 );
                 break;
-              case 'Type alias':
+              case TypeDocKind.TypeAlias:
                 types.typeAliases.push(
                   this.adapter.toTypeAliasDefinition(item)
                 );

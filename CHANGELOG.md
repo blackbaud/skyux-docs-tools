@@ -1,3 +1,7 @@
+# 9.0.0-alpha.2 (2023-08-22)
+
+- Handle cases where `kindString` is not available. [#256](https://github.com/blackbaud/skyux-docs-tools/pull/256)
+
 # 9.0.0-alpha.1 (2023-08-21)
 
 - Added support for `typedoc@~0.24.0`. [#254](https://github.com/blackbaud/skyux-docs-tools/pull/254)
