@@ -30,8 +30,8 @@ export class SkyDocsCodeExamplesEditorService {
   }
 
   private getPayload(codeExample: SkyDocsCodeExample): StackBlitzProject {
-    const angularVersion = '^15.0.0';
-    const skyuxVersion = '^8.0.0';
+    const angularVersion = '^16.0.0';
+    const skyuxVersion = '^9.0.0';
 
     const defaultDependencies: SkyDocsCodeExampleModuleDependencies = {
       '@angular/animations': angularVersion,
@@ -58,12 +58,12 @@ export class SkyDocsCodeExamplesEditorService {
       '@skyux/popovers': skyuxVersion,
       '@skyux/router': skyuxVersion,
       '@skyux/theme': skyuxVersion,
-      '@types/jasmine': '~4.0.3',
-      // We must define Dragula deliberately so that StackBlitz runs NGCC against it.
-      'ng2-dragula': '2.1.1',
+      '@types/jasmine': '~4.3.1',
+      'ng2-dragula': '5.0.1',
       rxjs: '^7',
-      tslib: '^2.3.0',
-      'zone.js': '~0.12.0',
+      tslib: '^2.5.0',
+      typescript: '~5.1.6',
+      'zone.js': '~0.13.1',
     };
 
     const mergedDependencies = Object.assign(
