@@ -5,7 +5,7 @@ import StackBlitzSDK from '@stackblitz/sdk';
 import {
   OpenOptions as StackBlitzOpenOptions,
   Project as StackBlitzProject,
-} from '@stackblitz/sdk/typings/interfaces';
+} from '@stackblitz/sdk';
 
 import { SkyDocsSourceCodeFile } from '../source-code/source-code-file';
 
@@ -31,13 +31,16 @@ export class SkyDocsCodeExamplesEditorService {
 
   private getPayload(codeExample: SkyDocsCodeExample): StackBlitzProject {
     const angularVersion = '^16.0.0';
-    const skyuxVersion = '^9.0.0';
+    const skyuxVersion = '^9.0.0-alpha.6';
 
     const defaultDependencies: SkyDocsCodeExampleModuleDependencies = {
+      '@angular-devkit/build-angular': angularVersion,
       '@angular/animations': angularVersion,
       '@angular/cdk': angularVersion,
+      '@angular/cli': angularVersion,
       '@angular/common': angularVersion,
       '@angular/compiler': angularVersion,
+      '@angular/compiler-cli': angularVersion,
       '@angular/core': angularVersion,
       '@angular/forms': angularVersion,
       '@angular/platform-browser': angularVersion,
@@ -143,7 +146,9 @@ export class SkyDocsCodeExamplesEditorService {
       'RouterModule.forRoot([])',
     ];
 
-    const files: { [_: string]: string } = {};
+    const files: { [_: string]: string } = {
+      '.stackblitzrc': '{}',
+    };
 
     let appComponentTemplate = '';
 
@@ -289,15 +294,53 @@ body {
 
     files['angular.json'] = JSON.stringify(
       {
+        $schema: './node_modules/@angular/cli/lib/config/schema.json',
+        version: 1,
         projects: {
           demo: {
+            projectType: 'application',
+            root: '',
+            sourceRoot: 'src',
+            prefix: 'app',
             architect: {
               build: {
+                builder: '@angular-devkit/build-angular:browser',
                 options: {
+                  outputPath: 'dist/demo',
                   index: 'src/index.html',
                   main: 'src/main.ts',
+                  polyfills: ['zone.js', '@skyux/packages/polyfills'],
+                  tsConfig: 'tsconfig.app.json',
                   inlineStyleLanguage: 'scss',
+                  assets: [],
                   styles: stylesheets,
+                  scripts: [],
+                },
+                configurations: {
+                  development: {
+                    buildOptimizer: false,
+                    optimization: false,
+                    vendorChunk: true,
+                    extractLicenses: false,
+                    sourceMap: true,
+                    namedChunks: true,
+                  },
+                },
+                defaultConfiguration: 'development',
+              },
+              serve: {
+                builder: '@angular-devkit/build-angular:dev-server',
+                configurations: {
+                  development: {
+                    browserTarget: 'demo:build:development',
+                  },
+                },
+                defaultConfiguration: 'development',
+              },
+              'extract-i18n': {
+                builder: '@angular-devkit/build-angular:extract-i18n',
+                options: {
+                  browserTarget: 'demo:build',
                 },
               },
             },
@@ -310,7 +353,26 @@ body {
 
     files['package.json'] = JSON.stringify(
       {
+        name: 'skyux-spa-demo',
         dependencies,
+        scripts: {
+          start: 'ng serve',
+          build: 'ng build',
+        },
+      },
+      undefined,
+      2
+    );
+
+    files['tsconfig.app.json'] = JSON.stringify(
+      {
+        extends: './tsconfig.json',
+        compilerOptions: {
+          outDir: './out-tsc/app',
+          types: [],
+        },
+        files: ['src/main.ts'],
+        include: ['src/**/*.d.ts'],
       },
       undefined,
       2
