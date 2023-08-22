@@ -18,6 +18,7 @@ import { DemoPageFixturesModule } from './fixtures/demo-page-fixtures.module';
 import { SkyDocsTypeDefinitionsService } from '../type-definitions/type-definitions.service';
 import { MockTypeDocAdapterService } from '../type-definitions/fixtures/mock-type-definitions.service';
 import { SkyDocsTypeDocAdapterService } from '../type-definitions/typedoc-adapter.service';
+import { TypeDocKind } from '../type-definitions/typedoc-types';
 function getService(
   provider: SkyDocsTypeDefinitionsProvider = {
     anchorIds: {},
@@ -76,15 +77,15 @@ function getService(
                 children: [
                   {
                     name: 'transform',
-                    kindString: 'Method',
+                    kind: TypeDocKind.Method,
                     signatures: [
                       {
                         name: 'transform',
-                        kindString: 'Call signature',
+                        kind: TypeDocKind.CallSignature,
                         parameters: [
                           {
                             name: 'value',
-                            kindString: 'Parameter',
+                            kind: TypeDocKind.Parameter,
                             type: {
                               type: 'reference',
                               name: 'Date',
@@ -113,7 +114,7 @@ function getService(
       {
         anchorId: '',
         name: 'FooClass',
-        kindString: 'Class',
+        kind: TypeDocKind.Class,
         sources: [
           {
             fileName: 'src/app/public/modules/_documentation-test/foo-class.ts',
@@ -123,7 +124,7 @@ function getService(
       {
         anchorId: '',
         name: 'Foo',
-        kindString: 'Interface',
+        kind: TypeDocKind.Interface,
         sources: [
           { fileName: 'src/app/public/modules/_documentation-test/foo.ts' },
         ],
@@ -131,7 +132,7 @@ function getService(
       {
         anchorId: '',
         name: 'FooEnum',
-        kindString: 'Enumeration',
+        kind: TypeDocKind.Enum,
         sources: [
           {
             fileName: 'src/app/public/modules/_documentation-test/foo-enum.ts',
@@ -141,7 +142,7 @@ function getService(
       {
         anchorId: '',
         name: 'TypeAlias',
-        kindString: 'Type alias',
+        kind: TypeDocKind.TypeAlias,
         sources: [
           {
             fileName: 'src/app/public/modules/_documentation-test/foo-alias.ts',

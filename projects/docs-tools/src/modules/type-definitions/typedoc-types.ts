@@ -21,7 +21,10 @@ export interface TypeDocSource {
 export interface TypeDocSignature {
   comment?: TypeDocComment;
 
-  kindString?: 'Call signature' | 'Constructor signature' | 'Index signature';
+  kind?:
+    | TypeDocKind.CallSignature
+    | TypeDocKind.ConstructorSignature
+    | TypeDocKind.IndexSignature;
 
   name: string;
 
@@ -36,7 +39,7 @@ export interface TypeDocSignature {
 
 export interface TypeDocTypeParameter {
   name: string;
-  kindString: 'Type parameter';
+  kind: TypeDocKind.TypeParameter;
   type?: TypeDocType;
 }
 
@@ -86,7 +89,7 @@ export interface TypeDocParameter {
 
   defaultValue?: string;
 
-  kindString: 'Parameter';
+  kind: TypeDocKind.Parameter;
 
   name: string;
 
@@ -115,16 +118,16 @@ export interface TypeDocEntryChild {
     isStatic?: boolean;
   };
 
-  kindString?:
-    | 'Accessor'
-    | 'Call signature'
-    | 'Constructor'
-    | 'Constructor signature'
-    | 'Index signature'
-    | 'Enumeration member'
-    | 'Parameter'
-    | 'Property'
-    | 'Method';
+  kind?:
+    | TypeDocKind.Accessor
+    | TypeDocKind.CallSignature
+    | TypeDocKind.Constructor
+    | TypeDocKind.ConstructorSignature
+    | TypeDocKind.IndexSignature
+    | TypeDocKind.EnumMember
+    | TypeDocKind.Parameter
+    | TypeDocKind.Property
+    | TypeDocKind.Method;
 
   getSignature?: {
     comment: TypeDocComment;
@@ -163,7 +166,11 @@ export interface TypeDocEntry {
     type: TypeDocType;
   }[];
 
-  kindString?: 'Class' | 'Enumeration' | 'Interface' | 'Type alias';
+  kind?:
+    | TypeDocKind.Class
+    | TypeDocKind.Enum
+    | TypeDocKind.Interface
+    | TypeDocKind.TypeAlias;
 
   indexSignature?: TypeDocSignature;
 
@@ -174,4 +181,37 @@ export interface TypeDocEntry {
   type?: TypeDocType;
 
   typeParameter?: TypeDocTypeParameter[];
+}
+
+/**
+ * This enum comes from:
+ * https://github.com/TypeStrong/typedoc/blob/v0.24.8/src/lib/models/reflections/kind.ts
+ * The enum is up to date as of version `0.24.8`.
+ */
+export enum TypeDocKind {
+  Project = 0x1,
+  Module = 0x2,
+  Namespace = 0x4,
+  Enum = 0x8,
+  EnumMember = 0x10,
+  Variable = 0x20,
+  Function = 0x40,
+  Class = 0x80,
+  Interface = 0x100,
+  Constructor = 0x200,
+  Property = 0x400,
+  Method = 0x800,
+  CallSignature = 0x1000,
+  IndexSignature = 0x2000,
+  ConstructorSignature = 0x4000,
+  Parameter = 0x8000,
+  TypeLiteral = 0x10000,
+  TypeParameter = 0x20000,
+  Accessor = 0x40000,
+  GetSignature = 0x80000,
+  SetSignature = 0x100000,
+  /** @deprecated will be removed in v0.25, not used */
+  ObjectLiteral = 0x200000,
+  TypeAlias = 0x400000,
+  Reference = 0x800000,
 }

@@ -9,6 +9,7 @@ import { SkyDocsTypeDefinitionsProvider } from './type-definitions-provider';
 import { SkyDocsTypeDefinitionsService } from './type-definitions.service';
 
 import { SkyDocsTypeDocAdapterService } from './typedoc-adapter.service';
+import { TypeDocKind } from './typedoc-types';
 
 describe('Type definitions service', function () {
   //#region helpers
@@ -75,7 +76,7 @@ describe('Type definitions service', function () {
         {
           anchorId: '',
           name: 'FooClass',
-          kindString: 'Class',
+          kind: TypeDocKind.Class,
           sources: [
             {
               fileName:
@@ -86,7 +87,7 @@ describe('Type definitions service', function () {
         {
           anchorId: '',
           name: 'Foo',
-          kindString: 'Interface',
+          kind: TypeDocKind.Interface,
           sources: [
             { fileName: 'src/app/public/modules/_documentation-test/foo.ts' },
           ],
@@ -94,7 +95,7 @@ describe('Type definitions service', function () {
         {
           anchorId: '',
           name: 'FooEnum',
-          kindString: 'Enumeration',
+          kind: TypeDocKind.Enum,
           sources: [
             {
               fileName:
@@ -105,7 +106,7 @@ describe('Type definitions service', function () {
         {
           anchorId: '',
           name: 'TypeAlias',
-          kindString: 'Type alias',
+          kind: TypeDocKind.TypeAlias,
           sources: [
             {
               fileName:
@@ -171,7 +172,7 @@ describe('Type definitions service', function () {
         {
           anchorId: '',
           name: 'BarClass',
-          kindString: 'Class',
+          kind: TypeDocKind.Class,
           sources: [
             {
               fileName:
@@ -182,7 +183,7 @@ describe('Type definitions service', function () {
         {
           anchorId: '',
           name: 'Bar',
-          kindString: 'Interface',
+          kind: TypeDocKind.Interface,
           sources: [
             { fileName: 'src/app/public/modules/_documentation-test-2/bar.ts' },
           ],
@@ -190,7 +191,7 @@ describe('Type definitions service', function () {
         {
           anchorId: '',
           name: 'BarEnum',
-          kindString: 'Enumeration',
+          kind: TypeDocKind.Enum,
           sources: [
             {
               fileName:
@@ -201,7 +202,7 @@ describe('Type definitions service', function () {
         {
           anchorId: '',
           name: 'BarTypeAlias',
-          kindString: 'Type alias',
+          kind: TypeDocKind.TypeAlias,
           sources: [
             {
               fileName:
