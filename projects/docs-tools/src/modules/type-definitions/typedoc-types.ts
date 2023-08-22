@@ -183,30 +183,35 @@ export interface TypeDocEntry {
   typeParameter?: TypeDocTypeParameter[];
 }
 
+/**
+ * This enum comes from:
+ * https://github.com/TypeStrong/typedoc/blob/v0.24.8/src/lib/models/reflections/kind.ts
+ * The enum is up to date as of version `0.24.8`.
+ */
 export enum TypeDocKind {
-  Project = 1,
-  Module = 2,
-  Namespace = 4,
-  Enum = 8,
-  EnumMember = 16,
-  Variable = 32,
-  Function = 64,
-  Class = 128,
-  Interface = 256,
-  Constructor = 512,
-  Property = 1024,
-  Method = 2048,
-  CallSignature = 4096,
-  IndexSignature = 8192,
-  ConstructorSignature = 16384,
-  Parameter = 32768,
-  TypeLiteral = 65536,
-  TypeParameter = 131072,
-  Accessor = 262144,
-  GetSignature = 524288,
-  SetSignature = 1048576,
+  Project = 0x1,
+  Module = 0x2,
+  Namespace = 0x4,
+  Enum = 0x8,
+  EnumMember = 0x10,
+  Variable = 0x20,
+  Function = 0x40,
+  Class = 0x80,
+  Interface = 0x100,
+  Constructor = 0x200,
+  Property = 0x400,
+  Method = 0x800,
+  CallSignature = 0x1000,
+  IndexSignature = 0x2000,
+  ConstructorSignature = 0x4000,
+  Parameter = 0x8000,
+  TypeLiteral = 0x10000,
+  TypeParameter = 0x20000,
+  Accessor = 0x40000,
+  GetSignature = 0x80000,
+  SetSignature = 0x100000,
   /** @deprecated will be removed in v0.25, not used */
-  ObjectLiteral = 2097152,
-  TypeAlias = 4194304,
-  Reference = 8388608,
+  ObjectLiteral = 0x200000,
+  TypeAlias = 0x400000,
+  Reference = 0x800000,
 }
