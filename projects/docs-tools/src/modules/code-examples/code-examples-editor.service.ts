@@ -31,7 +31,7 @@ export class SkyDocsCodeExamplesEditorService {
 
   private getPayload(codeExample: SkyDocsCodeExample): StackBlitzProject {
     const angularVersion = '^16.0.0';
-    const skyuxVersion = '^9.0.0-alpha.6';
+    const skyuxVersion = '^9.0.0-alpha.0';
 
     const defaultDependencies: SkyDocsCodeExampleModuleDependencies = {
       '@angular-devkit/build-angular': angularVersion,
@@ -62,7 +62,6 @@ export class SkyDocsCodeExamplesEditorService {
       '@skyux/router': skyuxVersion,
       '@skyux/theme': skyuxVersion,
       '@types/jasmine': '~4.3.1',
-      'ng2-dragula': '5.0.1',
       rxjs: '^7',
       tslib: '^2.5.0',
       typescript: '~5.1.6',
@@ -146,9 +145,7 @@ export class SkyDocsCodeExamplesEditorService {
       'RouterModule.forRoot([])',
     ];
 
-    const files: { [_: string]: string } = {
-      '.stackblitzrc': '{}',
-    };
+    const files: { [_: string]: string } = {};
 
     let appComponentTemplate = '';
 
@@ -306,15 +303,11 @@ body {
               build: {
                 builder: '@angular-devkit/build-angular:browser',
                 options: {
-                  outputPath: 'dist/demo',
                   index: 'src/index.html',
                   main: 'src/main.ts',
-                  polyfills: ['zone.js', '@skyux/packages/polyfills'],
                   tsConfig: 'tsconfig.app.json',
                   inlineStyleLanguage: 'scss',
-                  assets: [],
                   styles: stylesheets,
-                  scripts: [],
                 },
                 configurations: {
                   development: {
@@ -336,12 +329,6 @@ body {
                   },
                 },
                 defaultConfiguration: 'development',
-              },
-              'extract-i18n': {
-                builder: '@angular-devkit/build-angular:extract-i18n',
-                options: {
-                  browserTarget: 'demo:build',
-                },
               },
             },
           },
