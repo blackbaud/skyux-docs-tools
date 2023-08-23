@@ -1,3 +1,7 @@
+# 9.0.0-alpha.4 (2023-08-23)
+
+- Updated code examples to use Angular 16 and SKY UX 9. [#258](https://github.com/blackbaud/skyux-docs-tools/pull/258)
+
 # 9.0.0-alpha.3 (2023-08-22)
 
 - Handle the fact that default values are now treated as code. [#257](https://github.com/blackbaud/skyux-docs-tools/pull/257)
