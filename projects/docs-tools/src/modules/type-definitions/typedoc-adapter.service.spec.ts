@@ -2082,6 +2082,60 @@ describe('TypeDoc adapter', () => {
       ]);
     });
 
+    it('should support index signature properties', () => {
+      entry.indexSignature = {
+        name: '__index',
+        kind: TypeDocKind.IndexSignature,
+        comment: {
+          summary: [
+            {
+              kind: 'text',
+              text: 'Test description.',
+            },
+          ],
+        },
+        parameters: [
+          {
+            name: '_',
+            kind: TypeDocKind.Parameter,
+            type: {
+              type: 'intrinsic',
+              name: 'string',
+            },
+          },
+        ],
+        type: {
+          type: 'intrinsic',
+          name: 'any',
+        },
+      };
+
+      const def = adapter.toInterfaceDefinition(entry);
+
+      expect(def.properties).toEqual([
+        {
+          isOptional: true,
+          name: '__index',
+          description: 'Test description.',
+          type: {
+            indexSignature: {
+              key: {
+                name: '_',
+                type: {
+                  type: 'intrinsic',
+                  name: 'string',
+                },
+              },
+              type: {
+                type: 'intrinsic',
+                name: 'any',
+              },
+            },
+          },
+        },
+      ]);
+    });
+
     it('should support type literal properties', () => {
       entry.children = [
         {
