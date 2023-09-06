@@ -1135,7 +1135,7 @@ describe('TypeDoc adapter', () => {
             {
               name: 'getUser',
               kind: TypeDocKind.CallSignature,
-              typeParameter: [
+              typeParameters: [
                 {
                   name: 'T',
                   kind: TypeDocKind.TypeParameter,
@@ -1964,7 +1964,7 @@ describe('TypeDoc adapter', () => {
     });
 
     it('should support type parameters', () => {
-      entry.typeParameter = [
+      entry.typeParameters = [
         {
           name: 'T',
           kind: TypeDocKind.TypeParameter,
@@ -2062,6 +2062,7 @@ describe('TypeDoc adapter', () => {
         {
           isOptional: true,
           name: '__index',
+          description: 'All other properties for an item.',
           type: {
             indexSignature: {
               key: {
@@ -2608,7 +2609,7 @@ describe('TypeDoc adapter', () => {
       const entry: TypeDocEntry = {
         anchorId: 'foo-anchor-id',
         name: 'FooTypeAlias',
-        typeParameter: [
+        typeParameters: [
           {
             name: 'T',
             kind: TypeDocKind.TypeParameter,

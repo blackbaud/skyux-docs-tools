@@ -34,7 +34,7 @@ export interface TypeDocSignature {
 
   type?: TypeDocType;
 
-  typeParameter?: TypeDocTypeParameter[];
+  typeParameters?: TypeDocTypeParameter[];
 }
 
 export interface TypeDocTypeParameter {
@@ -180,7 +180,7 @@ export interface TypeDocEntry {
 
   type?: TypeDocType;
 
-  typeParameter?: TypeDocTypeParameter[];
+  typeParameters?: TypeDocTypeParameter[];
 }
 
 /**

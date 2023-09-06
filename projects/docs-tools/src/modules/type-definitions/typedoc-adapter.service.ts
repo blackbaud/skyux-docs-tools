@@ -143,7 +143,7 @@ export class SkyDocsTypeDocAdapterService {
     this.applyCommentTagValues(definition, tags);
 
     const typeParameters = this.getTypeParameterDefinitions(
-      entry.typeParameter
+      entry.typeParameters
     );
     if (typeParameters.length) {
       definition.typeParameters = typeParameters;
@@ -187,7 +187,7 @@ export class SkyDocsTypeDocAdapterService {
     this.applyCommentTagValues(definition, tags);
 
     const typeParameters = this.getTypeParameterDefinitions(
-      entry.typeParameter
+      entry.typeParameters
     );
     if (typeParameters.length) {
       definition.typeParameters = typeParameters;
@@ -361,7 +361,7 @@ export class SkyDocsTypeDocAdapterService {
         this.applyCommentTagValues(definition, tags);
 
         const typeParameters = this.getTypeParameterDefinitions(
-          child.signatures[0].typeParameter
+          child.signatures[0].typeParameters
         );
         if (typeParameters.length) {
           definition.typeParameters = typeParameters;
@@ -419,8 +419,13 @@ export class SkyDocsTypeDocAdapterService {
         },
       };
 
-      const tags = this.getCommentTags(indexSignature.comment);
-      this.applyCommentTagValues(definition, tags);
+      // New versions of typedoc do not seem to add the comment for index signatures - the else statement is a default based on the only index signature we had in September 2023 (SkySelectField).
+      if (indexSignature.comment) {
+        const tags = this.getCommentTags(indexSignature.comment);
+        this.applyCommentTagValues(definition, tags);
+      } else {
+        definition.description = 'All other properties for an item.';
+      }
       sorted.push(definition);
     }
 
