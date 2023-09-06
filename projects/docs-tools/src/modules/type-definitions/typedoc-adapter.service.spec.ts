@@ -1135,7 +1135,7 @@ describe('TypeDoc adapter', () => {
             {
               name: 'getUser',
               kind: TypeDocKind.CallSignature,
-              typeParameter: [
+              typeParameters: [
                 {
                   name: 'T',
                   kind: TypeDocKind.TypeParameter,
@@ -1964,7 +1964,7 @@ describe('TypeDoc adapter', () => {
     });
 
     it('should support type parameters', () => {
-      entry.typeParameter = [
+      entry.typeParameters = [
         {
           name: 'T',
           kind: TypeDocKind.TypeParameter,
@@ -2062,6 +2062,61 @@ describe('TypeDoc adapter', () => {
         {
           isOptional: true,
           name: '__index',
+          description: 'All other properties for an item.',
+          type: {
+            indexSignature: {
+              key: {
+                name: '_',
+                type: {
+                  type: 'intrinsic',
+                  name: 'string',
+                },
+              },
+              type: {
+                type: 'intrinsic',
+                name: 'any',
+              },
+            },
+          },
+        },
+      ]);
+    });
+
+    it('should support index signature properties', () => {
+      entry.indexSignature = {
+        name: '__index',
+        kind: TypeDocKind.IndexSignature,
+        comment: {
+          summary: [
+            {
+              kind: 'text',
+              text: 'Test description.',
+            },
+          ],
+        },
+        parameters: [
+          {
+            name: '_',
+            kind: TypeDocKind.Parameter,
+            type: {
+              type: 'intrinsic',
+              name: 'string',
+            },
+          },
+        ],
+        type: {
+          type: 'intrinsic',
+          name: 'any',
+        },
+      };
+
+      const def = adapter.toInterfaceDefinition(entry);
+
+      expect(def.properties).toEqual([
+        {
+          isOptional: true,
+          name: '__index',
+          description: 'Test description.',
           type: {
             indexSignature: {
               key: {
@@ -2608,7 +2663,7 @@ describe('TypeDoc adapter', () => {
       const entry: TypeDocEntry = {
         anchorId: 'foo-anchor-id',
         name: 'FooTypeAlias',
-        typeParameter: [
+        typeParameters: [
           {
             name: 'T',
             kind: TypeDocKind.TypeParameter,
