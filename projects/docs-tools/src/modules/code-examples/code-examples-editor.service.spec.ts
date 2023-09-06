@@ -295,7 +295,7 @@ describe('Code examples editor service', () => {
     expect(() => service.launchEditor(example)).not.toThrow();
   });
 
-  it('should convert "*" versions of SKY UX packages to "^8.0.0"', () => {
+  it('should convert "*" versions of SKY UX packages to "^9.0.0"', () => {
     codeExample.packageDependencies = {
       '@skyux/foobar': '*',
     };
@@ -303,36 +303,39 @@ describe('Code examples editor service', () => {
     service.launchEditor(codeExample);
 
     expect(stackblitzSpy.calls.mostRecent().args[0].dependencies).toEqual({
-      '@angular/animations': '^15.0.0',
-      '@angular/cdk': '^15.0.0',
-      '@angular/common': '^15.0.0',
-      '@angular/compiler': '^15.0.0',
-      '@angular/core': '^15.0.0',
-      '@angular/forms': '^15.0.0',
-      '@angular/platform-browser': '^15.0.0',
-      '@angular/platform-browser-dynamic': '^15.0.0',
-      '@angular/router': '^15.0.0',
-      '@skyux/animations': '^8.0.0',
-      '@skyux/assets': '^8.0.0',
-      '@skyux/config': '^8.0.0',
-      '@skyux/core': '^8.0.0',
-      '@skyux/errors': '^8.0.0',
-      '@skyux/forms': '^8.0.0',
-      '@skyux/http': '^8.0.0',
-      '@skyux/i18n': '^8.0.0',
-      '@skyux/indicators': '^8.0.0',
-      '@skyux/layout': '^8.0.0',
-      '@skyux/modals': '^8.0.0',
-      '@skyux/packages': '^8.0.0',
-      '@skyux/popovers': '^8.0.0',
-      '@skyux/router': '^8.0.0',
-      '@skyux/theme': '^8.0.0',
-      '@types/jasmine': '~4.0.3',
-      'ng2-dragula': '2.1.1',
+      '@angular-devkit/build-angular': '^16.0.0',
+      '@angular/animations': '^16.0.0',
+      '@angular/cdk': '^16.0.0',
+      '@angular/cli': '^16.0.0',
+      '@angular/common': '^16.0.0',
+      '@angular/compiler': '^16.0.0',
+      '@angular/compiler-cli': '^16.0.0',
+      '@angular/core': '^16.0.0',
+      '@angular/forms': '^16.0.0',
+      '@angular/platform-browser': '^16.0.0',
+      '@angular/platform-browser-dynamic': '^16.0.0',
+      '@angular/router': '^16.0.0',
+      '@skyux/animations': '^9.0.0-alpha.0',
+      '@skyux/assets': '^9.0.0-alpha.0',
+      '@skyux/config': '^9.0.0-alpha.0',
+      '@skyux/core': '^9.0.0-alpha.0',
+      '@skyux/errors': '^9.0.0-alpha.0',
+      '@skyux/forms': '^9.0.0-alpha.0',
+      '@skyux/http': '^9.0.0-alpha.0',
+      '@skyux/i18n': '^9.0.0-alpha.0',
+      '@skyux/indicators': '^9.0.0-alpha.0',
+      '@skyux/layout': '^9.0.0-alpha.0',
+      '@skyux/modals': '^9.0.0-alpha.0',
+      '@skyux/packages': '^9.0.0-alpha.0',
+      '@skyux/popovers': '^9.0.0-alpha.0',
+      '@skyux/router': '^9.0.0-alpha.0',
+      '@skyux/theme': '^9.0.0-alpha.0',
+      '@types/jasmine': '~4.3.1',
       rxjs: '^7',
-      tslib: '^2.3.0',
-      'zone.js': '~0.12.0',
-      '@skyux/foobar': '^8.0.0', // <-- Important
+      tslib: '^2.5.0',
+      typescript: '~5.1.6',
+      'zone.js': '~0.13.1',
+      '@skyux/foobar': '^9.0.0-alpha.0', // <-- Important
     });
   });
 

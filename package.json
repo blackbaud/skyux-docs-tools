@@ -50,7 +50,7 @@
     "@skyux/router": "9.0.0-alpha.9",
     "@skyux/tabs": "9.0.0-alpha.9",
     "@skyux/theme": "9.0.0-alpha.9",
-    "@stackblitz/sdk": "1.8.0",
+    "@stackblitz/sdk": "1.9.0",
     "lodash.orderby": "4.6.0",
     "marked": "4.1.0",
     "moment": "2.29.4",

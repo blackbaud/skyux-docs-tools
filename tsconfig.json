@@ -5,7 +5,7 @@
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "paths": {
-      "docs-tools": ["dist/docs-tools/docs-tools", "dist/docs-tools"]
+      "docs-tools": ["projects/docs-tools/src/public-api.ts"]
     },
     "sourceMap": true,
     "declaration": false,
