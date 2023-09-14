@@ -19,13 +19,24 @@ import {
 } from '@skyux/i18n';
 
 const RESOURCES: { [locale: string]: SkyLibResources } = {
-  'EN-US': {"sky-docs-demo-heading":{"message":"Demo"},"sky-docs-demo-toggle-button-on":{"message":"Show options"},"sky-docs-demo-toggle-button-off":{"message":"Hide options"},"sky-docs-code-example-launch-button-label":{"message":"Run in StackBlitz"},"sky-docs-demo-control-panel-reset-button-label":{"message":"Reset"}},
+  'EN-US': {
+    'sky-docs-demo-heading': { message: 'Demo' },
+    'sky-docs-demo-toggle-button-on': { message: 'Show options' },
+    'sky-docs-demo-toggle-button-off': { message: 'Hide options' },
+    'sky-docs-code-example-launch-button-label': {
+      message: 'Run in StackBlitz',
+    },
+    'sky-docs-demo-control-panel-reset-button-label': { message: 'Reset' },
+  },
 };
 
 SkyLibResourcesService.addResources(RESOURCES);
 
 export class SkyDocsToolsResourcesProvider implements SkyLibResourcesProvider {
-  public getString(localeInfo: SkyAppLocaleInfo, name: string): string | undefined {
+  public getString(
+    localeInfo: SkyAppLocaleInfo,
+    name: string
+  ): string | undefined {
     return getLibStringForLocale(RESOURCES, localeInfo.locale, name);
   }
 }
@@ -35,10 +46,12 @@ export class SkyDocsToolsResourcesProvider implements SkyLibResourcesProvider {
  */
 @NgModule({
   exports: [SkyI18nModule],
-  providers: [{
-    provide: SKY_LIB_RESOURCES_PROVIDERS,
-    useClass: SkyDocsToolsResourcesProvider,
-    multi: true
-  }]
+  providers: [
+    {
+      provide: SKY_LIB_RESOURCES_PROVIDERS,
+      useClass: SkyDocsToolsResourcesProvider,
+      multi: true,
+    },
+  ],
 })
-export class SkyDocsToolsResourcesModule { }
+export class SkyDocsToolsResourcesModule {}
