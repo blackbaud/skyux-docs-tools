@@ -1,3 +1,15 @@
+# 9.0.0 (2023-09-14)
+
+### ⚠ BREAKING CHANGES
+
+- Dropped support for Angular 15. [#253](https://github.com/blackbaud/skyux-docs-tools/pull/253)
+
+### Features
+
+- Added support for Angular 16. [#253](https://github.com/blackbaud/skyux-docs-tools/pull/253)
+- Updated code examples to use Angular 16 and SKY UX 9. [#258](https://github.com/blackbaud/skyux-docs-tools/pull/258)
+- Added support for `typedoc@~0.24.0`. [#254](https://github.com/blackbaud/skyux-docs-tools/pull/254)
+
 # 9.0.0-alpha.5 (2023-09-07)
 
 - Fix multiple issues regarding the updates for SKY UX 9. [#259](https://github.com/blackbaud/skyux-docs-tools/pull/259)
