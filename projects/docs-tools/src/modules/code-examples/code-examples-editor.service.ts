@@ -31,7 +31,7 @@ export class SkyDocsCodeExamplesEditorService {
 
   private getPayload(codeExample: SkyDocsCodeExample): StackBlitzProject {
     const angularVersion = '^16.0.0';
-    const skyuxVersion = '^9.0.0-alpha.0';
+    const skyuxVersion = '^9.0.0';
 
     const defaultDependencies: SkyDocsCodeExampleModuleDependencies = {
       '@angular-devkit/build-angular': angularVersion,
@@ -168,6 +168,20 @@ export class SkyDocsCodeExamplesEditorService {
         moduleImports.push(moduleName);
         moduleImportStatements.push(
           `import {\n  ${moduleName}\n} from '${importPath}';`
+        );
+      }
+
+      // Standalone entry components are named demo.component.ts.
+      if (file.fileName === 'demo.component.ts') {
+        const componentName = 'DemoComponent';
+        const componentSelector = 'app-demo';
+        const importPath = `./${this.getFilenameNoExtension(file.fileName)}`;
+
+        appComponentTemplate += `<${componentSelector} />`;
+
+        moduleImports.push(componentName);
+        moduleImportStatements.push(
+          `import {\n  ${componentName}\n} from '${importPath}';`
         );
       }
     });
