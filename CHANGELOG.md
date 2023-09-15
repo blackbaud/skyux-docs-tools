@@ -2,7 +2,7 @@
 
 ## 9.1.0 (2023-09-18)
 
-- Updated code example editor service to recognize standalone components.
+- Updated code example editor service to recognize standalone components. [#262](https://github.com/blackbaud/skyux-docs-tools/pull/262)
 
 ### ⚠ BREAKING CHANGES
 
