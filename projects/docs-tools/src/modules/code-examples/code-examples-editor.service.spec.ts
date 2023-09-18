@@ -9,13 +9,6 @@ import { SkyDocsCodeExamplesEditorService } from './code-examples-editor.service
 import { SkyDocsCodeExampleTheme } from './code-example-theme';
 
 //#region helpers
-const moduleImports: string[] = [
-  'BrowserAnimationsModule',
-  'FormsModule',
-  'ReactiveFormsModule',
-  'RouterModule.forRoot([])',
-];
-
 const sampleModuleContents: string = `
 import {
   NgModule
@@ -168,13 +161,34 @@ const codeExampleMultipleExports: SkyDocsCodeExample = {
   ],
   theme: SkyDocsCodeExampleTheme.Default,
 };
+
+const codeExampleWithStandaloneComponent: SkyDocsCodeExample = {
+  heading: 'Standalone example',
+  packageDependencies: {},
+  sourceCode: [
+    {
+      fileName: 'demo.component.ts',
+      filePath: './',
+      rawContents: sampleComponentContents,
+    },
+  ],
+  theme: SkyDocsCodeExampleTheme.Default,
+};
 //#endregion
 
 describe('Code examples editor service', () => {
+  let moduleImports: string[];
   let stackblitzSpy: jasmine.Spy;
   let service: SkyDocsCodeExamplesEditorService;
 
   beforeEach(() => {
+    moduleImports = [
+      'BrowserAnimationsModule',
+      'FormsModule',
+      'ReactiveFormsModule',
+      'RouterModule.forRoot([])',
+    ];
+
     stackblitzSpy = spyOn(StackBlitzSDK, 'openProject').and.callFake(() => {});
     service = new SkyDocsCodeExamplesEditorService();
   });
@@ -229,6 +243,22 @@ describe('Code examples editor service', () => {
       `import {\n  SampleDemoModule\n} from './foo.module';`
     );
     expect(spyArgs[0].files['src/app/app.module.ts']).toContain(
+      `imports: [\n    ${moduleImports.join(',\n    ')}`
+    );
+  });
+
+  it('should add standalone components from code example to app.module.ts', () => {
+    moduleImports.push('DemoComponent');
+    service.launchEditor(codeExampleWithStandaloneComponent);
+
+    const spyArgs = stackblitzSpy.calls.mostRecent().args;
+    const appModuleContents = spyArgs[0].files['src/app/app.module.ts'];
+
+    expect(appModuleContents).toContain(
+      `import {\n  DemoComponent\n} from './demo.component';`
+    );
+
+    expect(appModuleContents).toContain(
       `imports: [\n    ${moduleImports.join(',\n    ')}`
     );
   });
@@ -315,27 +345,27 @@ describe('Code examples editor service', () => {
       '@angular/platform-browser': '^16.0.0',
       '@angular/platform-browser-dynamic': '^16.0.0',
       '@angular/router': '^16.0.0',
-      '@skyux/animations': '^9.0.0-alpha.0',
-      '@skyux/assets': '^9.0.0-alpha.0',
-      '@skyux/config': '^9.0.0-alpha.0',
-      '@skyux/core': '^9.0.0-alpha.0',
-      '@skyux/errors': '^9.0.0-alpha.0',
-      '@skyux/forms': '^9.0.0-alpha.0',
-      '@skyux/http': '^9.0.0-alpha.0',
-      '@skyux/i18n': '^9.0.0-alpha.0',
-      '@skyux/indicators': '^9.0.0-alpha.0',
-      '@skyux/layout': '^9.0.0-alpha.0',
-      '@skyux/modals': '^9.0.0-alpha.0',
-      '@skyux/packages': '^9.0.0-alpha.0',
-      '@skyux/popovers': '^9.0.0-alpha.0',
-      '@skyux/router': '^9.0.0-alpha.0',
-      '@skyux/theme': '^9.0.0-alpha.0',
+      '@skyux/animations': '^9.0.0',
+      '@skyux/assets': '^9.0.0',
+      '@skyux/config': '^9.0.0',
+      '@skyux/core': '^9.0.0',
+      '@skyux/errors': '^9.0.0',
+      '@skyux/forms': '^9.0.0',
+      '@skyux/http': '^9.0.0',
+      '@skyux/i18n': '^9.0.0',
+      '@skyux/indicators': '^9.0.0',
+      '@skyux/layout': '^9.0.0',
+      '@skyux/modals': '^9.0.0',
+      '@skyux/packages': '^9.0.0',
+      '@skyux/popovers': '^9.0.0',
+      '@skyux/router': '^9.0.0',
+      '@skyux/theme': '^9.0.0',
       '@types/jasmine': '~4.3.1',
       rxjs: '^7',
       tslib: '^2.5.0',
       typescript: '~5.1.6',
       'zone.js': '~0.13.1',
-      '@skyux/foobar': '^9.0.0-alpha.0', // <-- Important
+      '@skyux/foobar': '^9.0.0', // <-- Important
     });
   });
 
