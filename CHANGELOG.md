@@ -4,6 +4,8 @@
 
 - Updated code example editor service to recognize standalone components. [#262](https://github.com/blackbaud/skyux-docs-tools/pull/262)
 
+# 9.0.0 (2023-09-14)
+
 ### ⚠ BREAKING CHANGES
 
 - Dropped support for Angular 15. [#253](https://github.com/blackbaud/skyux-docs-tools/pull/253)
