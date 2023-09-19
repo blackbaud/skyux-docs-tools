@@ -14,6 +14,7 @@
     "@skyux/forms": "^9.1.1",
     "@skyux/http": "^9.1.1",
     "@skyux/i18n": "^9.1.1",
+    "@skyux/icons": "^6.3.0",
     "@skyux/indicators": "^9.1.1",
     "@skyux/layout": "^9.1.1",
     "@skyux/lists": "^9.1.1",

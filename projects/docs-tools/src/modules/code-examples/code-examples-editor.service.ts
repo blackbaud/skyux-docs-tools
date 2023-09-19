@@ -1,6 +1,9 @@
-import { Injectable } from '@angular/core';
+import { Injectable, VERSION as ANGULAR_VERSION } from '@angular/core';
 
 import StackBlitzSDK from '@stackblitz/sdk';
+
+import { VERSION as SKY_UX_ICONS_VERSION } from '@skyux/icons';
+import { VERSION as SKY_UX_VERSION } from '@skyux/core';
 
 import {
   OpenOptions as StackBlitzOpenOptions,
@@ -23,15 +26,15 @@ import { SkyDocsCodeExample } from './code-example';
 })
 export class SkyDocsCodeExamplesEditorService {
   public launchEditor(codeExample: SkyDocsCodeExample): void {
-    const project = this.getPayload(codeExample);
+    const project = this.#getPayload(codeExample);
     const options: StackBlitzOpenOptions = {};
 
     StackBlitzSDK.openProject(project, options);
   }
 
-  private getPayload(codeExample: SkyDocsCodeExample): StackBlitzProject {
-    const angularVersion = '^16.0.0';
-    const skyuxVersion = '^9.0.0';
+  #getPayload(codeExample: SkyDocsCodeExample): StackBlitzProject {
+    const angularVersion = `^${ANGULAR_VERSION.full}`;
+    const skyuxVersion = `^${SKY_UX_VERSION.full}`;
 
     const defaultDependencies: SkyDocsCodeExampleModuleDependencies = {
       '@angular-devkit/build-angular': angularVersion,
@@ -265,7 +268,7 @@ export class AppModule { }
     https://github.com/stackblitz/core/issues/133
   -->
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-  <link rel="stylesheet" type="text/css" href="https://sky.blackbaudcdn.net/static/skyux-icons/6.0.0/assets/css/skyux-icons.min.css" />
+  <link rel="stylesheet" type="text/css" href="https://sky.blackbaudcdn.net/static/skyux-icons/${SKY_UX_ICONS_VERSION.full}/assets/css/skyux-icons.min.css" />
 </head>
 <body>
   <sky-demo-app>
