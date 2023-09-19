@@ -1,10 +1,7 @@
-import { Injectable, VERSION as ANGULAR_VERSION } from '@angular/core';
-
-import StackBlitzSDK from '@stackblitz/sdk';
-
-import { VERSION as SKY_UX_ICONS_VERSION } from '@skyux/icons';
+import { VERSION as ANGULAR_VERSION, Injectable } from '@angular/core';
 import { VERSION as SKY_UX_VERSION } from '@skyux/core';
-
+import { VERSION as SKY_UX_ICONS_VERSION } from '@skyux/icons';
+import StackBlitzSDK from '@stackblitz/sdk';
 import {
   OpenOptions as StackBlitzOpenOptions,
   Project as StackBlitzProject,
@@ -12,11 +9,9 @@ import {
 
 import { SkyDocsSourceCodeFile } from '../source-code/source-code-file';
 
-import { SkyDocsCodeExampleModuleDependencies } from './code-example-module-dependencies';
-
-import { SkyDocsCodeExampleTheme } from './code-example-theme';
-
 import { SkyDocsCodeExample } from './code-example';
+import { SkyDocsCodeExampleModuleDependencies } from './code-example-module-dependencies';
+import { SkyDocsCodeExampleTheme } from './code-example-theme';
 
 /**
  * @internal
