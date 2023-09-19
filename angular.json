@@ -103,9 +103,7 @@
               "node_modules/@skyux/theme/css/sky.css",
               "node_modules/@skyux/theme/css/themes/modern/styles.css",
               "projects/docs-tools/src/styles/docs-tools.scss",
-              "projects/docs-tools-showcase/src/styles.scss",
-              "projects/docs-tools-showcase/src/app/skyux7-compat.css",
-              "projects/docs-tools-showcase/src/app/skyux8-compat.css"
+              "projects/docs-tools-showcase/src/styles.scss"
             ],
             "scripts": []
           },
@@ -178,9 +176,7 @@
             "styles": [
               "node_modules/@skyux/theme/css/sky.css",
               "node_modules/@skyux/theme/css/themes/modern/styles.css",
-              "projects/docs-tools-showcase/src/styles.scss",
-              "projects/docs-tools-showcase/src/app/skyux7-compat.css",
-              "projects/docs-tools-showcase/src/app/skyux8-compat.css"
+              "projects/docs-tools-showcase/src/styles.scss"
             ],
             "scripts": []
           }

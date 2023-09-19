@@ -1,5 +1,9 @@
 # Changelog
 
+## 9.1.1 (2023-09-19)
+
+- Updated styles for removal of previous compat stylesheets. [#263](https://github.com/blackbaud/skyux-docs-tools/pull/263)
+
 ## 9.1.0 (2023-09-18)
 
 - Updated code example editor service to recognize standalone components. [#262](https://github.com/blackbaud/skyux-docs-tools/pull/262)
