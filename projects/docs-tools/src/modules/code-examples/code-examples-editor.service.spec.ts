@@ -1,12 +1,11 @@
+import { VERSION as ANGULAR_VERSION } from '@angular/core';
 import { expect } from '@skyux-sdk/testing';
-
+import { VERSION as SKY_UX_VERSION } from '@skyux/core';
 import StackBlitzSDK from '@stackblitz/sdk';
 
 import { SkyDocsCodeExample } from './code-example';
-
-import { SkyDocsCodeExamplesEditorService } from './code-examples-editor.service';
-
 import { SkyDocsCodeExampleTheme } from './code-example-theme';
+import { SkyDocsCodeExamplesEditorService } from './code-examples-editor.service';
 
 //#region helpers
 const sampleModuleContents: string = `
@@ -332,40 +331,43 @@ describe('Code examples editor service', () => {
 
     service.launchEditor(codeExample);
 
+    const angularVersion = `^${ANGULAR_VERSION.full}`;
+    const skyuxVersion = `^${SKY_UX_VERSION.full}`;
+
     expect(stackblitzSpy.calls.mostRecent().args[0].dependencies).toEqual({
-      '@angular-devkit/build-angular': '^16.0.0',
-      '@angular/animations': '^16.0.0',
-      '@angular/cdk': '^16.0.0',
-      '@angular/cli': '^16.0.0',
-      '@angular/common': '^16.0.0',
-      '@angular/compiler': '^16.0.0',
-      '@angular/compiler-cli': '^16.0.0',
-      '@angular/core': '^16.0.0',
-      '@angular/forms': '^16.0.0',
-      '@angular/platform-browser': '^16.0.0',
-      '@angular/platform-browser-dynamic': '^16.0.0',
-      '@angular/router': '^16.0.0',
-      '@skyux/animations': '^9.0.0',
-      '@skyux/assets': '^9.0.0',
-      '@skyux/config': '^9.0.0',
-      '@skyux/core': '^9.0.0',
-      '@skyux/errors': '^9.0.0',
-      '@skyux/forms': '^9.0.0',
-      '@skyux/http': '^9.0.0',
-      '@skyux/i18n': '^9.0.0',
-      '@skyux/indicators': '^9.0.0',
-      '@skyux/layout': '^9.0.0',
-      '@skyux/modals': '^9.0.0',
-      '@skyux/packages': '^9.0.0',
-      '@skyux/popovers': '^9.0.0',
-      '@skyux/router': '^9.0.0',
-      '@skyux/theme': '^9.0.0',
+      '@angular-devkit/build-angular': angularVersion,
+      '@angular/animations': angularVersion,
+      '@angular/cdk': angularVersion,
+      '@angular/cli': angularVersion,
+      '@angular/common': angularVersion,
+      '@angular/compiler': angularVersion,
+      '@angular/compiler-cli': angularVersion,
+      '@angular/core': angularVersion,
+      '@angular/forms': angularVersion,
+      '@angular/platform-browser': angularVersion,
+      '@angular/platform-browser-dynamic': angularVersion,
+      '@angular/router': angularVersion,
+      '@skyux/animations': skyuxVersion,
+      '@skyux/assets': skyuxVersion,
+      '@skyux/config': skyuxVersion,
+      '@skyux/core': skyuxVersion,
+      '@skyux/errors': skyuxVersion,
+      '@skyux/forms': skyuxVersion,
+      '@skyux/http': skyuxVersion,
+      '@skyux/i18n': skyuxVersion,
+      '@skyux/indicators': skyuxVersion,
+      '@skyux/layout': skyuxVersion,
+      '@skyux/modals': skyuxVersion,
+      '@skyux/packages': skyuxVersion,
+      '@skyux/popovers': skyuxVersion,
+      '@skyux/router': skyuxVersion,
+      '@skyux/theme': skyuxVersion,
       '@types/jasmine': '~4.3.1',
       rxjs: '^7',
       tslib: '^2.5.0',
       typescript: '~5.1.6',
       'zone.js': '~0.13.1',
-      '@skyux/foobar': '^9.0.0', // <-- Important
+      '@skyux/foobar': skyuxVersion, // <-- Important
     });
   });
 
