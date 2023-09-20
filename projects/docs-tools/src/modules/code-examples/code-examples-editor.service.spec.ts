@@ -1,6 +1,7 @@
 import { VERSION as ANGULAR_VERSION } from '@angular/core';
 import { expect } from '@skyux-sdk/testing';
 import { VERSION as SKY_UX_VERSION } from '@skyux/core';
+import { VERSION as SKY_UX_ICONS_VERSION } from '@skyux/icons';
 import StackBlitzSDK from '@stackblitz/sdk';
 
 import { SkyDocsCodeExample } from './code-example';
@@ -378,5 +379,15 @@ describe('Code examples editor service', () => {
       JSON.parse(stackblitzSpy.calls.mostRecent().args[0].files['angular.json'])
         .projects.demo.architect.build.options.styles
     ).toEqual(['@global/foo/css/styles.css', 'src/styles.scss']);
+  });
+
+  it('should add the icons stylesheet', () => {
+    service.launchEditor(codeExample);
+
+    expect(
+      stackblitzSpy.calls.mostRecent().args[0].files['src/index.html']
+    ).toContain(
+      `<link rel="stylesheet" type="text/css" href="https://sky.blackbaudcdn.net/static/skyux-icons/${SKY_UX_ICONS_VERSION.full}/assets/css/skyux-icons.min.css" />`
+    );
   });
 });
