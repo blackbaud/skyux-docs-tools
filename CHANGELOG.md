@@ -1,5 +1,9 @@
 # Changelog
 
+## 9.1.3 (2023-09-21)
+
+- Fixed the code example editor service to use the major version of Angular packages to determine SemVer range.
+
 ## 9.1.2 (2023-09-21)
 
 - Fixed the code example editor service to use the latest supported version of `@skyux/icons`, `@skyux/core`, and `@angular/core`. [#264](https://github.com/blackbaud/skyux-docs-tools/pull/264)

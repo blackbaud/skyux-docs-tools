@@ -332,7 +332,7 @@ describe('Code examples editor service', () => {
 
     service.launchEditor(codeExample);
 
-    const angularVersion = `^${ANGULAR_VERSION.full}`;
+    const angularVersion = `^${ANGULAR_VERSION.major}`;
     const skyuxVersion = `^${SKY_UX_VERSION.full}`;
 
     expect(stackblitzSpy.calls.mostRecent().args[0].dependencies).toEqual({
