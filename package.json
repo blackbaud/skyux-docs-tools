@@ -38,6 +38,7 @@
     "@skyux/errors": "9.2.1",
     "@skyux/forms": "9.2.1",
     "@skyux/http": "9.2.1",
+    "@skyux/icons": "6.3.0",
     "@skyux/i18n": "9.2.1",
     "@skyux/indicators": "9.2.1",
     "@skyux/inline-form": "9.2.1",
