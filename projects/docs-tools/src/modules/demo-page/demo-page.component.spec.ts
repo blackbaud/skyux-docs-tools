@@ -1,24 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { SkyMediaQueryService } from '@skyux/core';
-
-import { MockSkyMediaQueryService } from '@skyux/core/testing';
-
 import { expect } from '@skyux-sdk/testing';
+import { SkyMediaQueryService } from '@skyux/core';
+import { MockSkyMediaQueryService } from '@skyux/core/testing';
 
 import { of } from 'rxjs';
 
 import { SkyDocsSupportalService } from '../shared/docs-tools-supportal.service';
-
-import { SkyDocsTypeDefinitionsProvider } from '../type-definitions/type-definitions-provider';
-
-import { DemoPageFixtureComponent } from './fixtures/demo-page.component.fixture';
-
-import { DemoPageFixturesModule } from './fixtures/demo-page-fixtures.module';
-import { SkyDocsTypeDefinitionsService } from '../type-definitions/type-definitions.service';
 import { MockTypeDocAdapterService } from '../type-definitions/fixtures/mock-type-definitions.service';
+import { SkyDocsTypeDefinitionsProvider } from '../type-definitions/type-definitions-provider';
+import { SkyDocsTypeDefinitionsService } from '../type-definitions/type-definitions.service';
 import { SkyDocsTypeDocAdapterService } from '../type-definitions/typedoc-adapter.service';
 import { TypeDocKind } from '../type-definitions/typedoc-types';
+
+import { DemoPageFixturesModule } from './fixtures/demo-page-fixtures.module';
+import { DemoPageFixtureComponent } from './fixtures/demo-page.component.fixture';
+
 function getService(
   provider: SkyDocsTypeDefinitionsProvider = {
     anchorIds: {},

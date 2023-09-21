@@ -10,26 +10,19 @@ import {
   OnInit,
   QueryList,
 } from '@angular/core';
-
 import { ActivatedRoute, Router } from '@angular/router';
-
+import { StacheNavLink } from '@blackbaud/skyux-lib-stache';
 import { SkyAppConfig } from '@skyux/config';
 
-import { StacheNavLink } from '@blackbaud/skyux-lib-stache';
-
 import { SkyDocsCodeExamplesComponent } from '../code-examples/code-examples.component';
-
 import { SkyDocsDesignGuidelinesComponent } from '../design-guidelines/design-guidelines.component';
-
-import { SkyDocsSupportalService } from '../shared/docs-tools-supportal.service';
-
 import { SkyDocsComponentInfo } from '../shared/docs-tools-component-info';
+import { SkyDocsSupportalService } from '../shared/docs-tools-supportal.service';
+import { SkyDocsTypeDefinitions } from '../type-definitions/type-definitions';
+import { SkyDocsTypeDefinitionsService } from '../type-definitions/type-definitions.service';
 
 import { SkyDocsDemoPageDomAdapterService } from './demo-page-dom-adapter.service';
-
 import { SkyDocsDemoPageTitleService } from './demo-page-title.service';
-import { SkyDocsTypeDefinitionsService } from '../type-definitions/type-definitions.service';
-import { SkyDocsTypeDefinitions } from '../type-definitions/type-definitions';
 
 /**
  * The demo page component wraps all documentation components and handles the configuration and layout of the page.

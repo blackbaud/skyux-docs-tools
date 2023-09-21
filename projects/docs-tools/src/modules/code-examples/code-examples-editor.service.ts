@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
-
 import StackBlitzSDK from '@stackblitz/sdk';
-
 import {
   OpenOptions as StackBlitzOpenOptions,
   Project as StackBlitzProject,
@@ -9,11 +7,9 @@ import {
 
 import { SkyDocsSourceCodeFile } from '../source-code/source-code-file';
 
-import { SkyDocsCodeExampleModuleDependencies } from './code-example-module-dependencies';
-
-import { SkyDocsCodeExampleTheme } from './code-example-theme';
-
 import { SkyDocsCodeExample } from './code-example';
+import { SkyDocsCodeExampleModuleDependencies } from './code-example-module-dependencies';
+import { SkyDocsCodeExampleTheme } from './code-example-theme';
 
 /**
  * @internal

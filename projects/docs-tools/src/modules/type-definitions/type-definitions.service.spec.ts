@@ -1,13 +1,9 @@
 import { expect } from '@skyux-sdk/testing';
 
 import { MockTypeDocAdapterService } from './fixtures/mock-type-definitions.service';
-
 import { SkyDocsTypeDefinitions } from './type-definitions';
-
 import { SkyDocsTypeDefinitionsProvider } from './type-definitions-provider';
-
 import { SkyDocsTypeDefinitionsService } from './type-definitions.service';
-
 import { SkyDocsTypeDocAdapterService } from './typedoc-adapter.service';
 import { TypeDocKind } from './typedoc-types';
 

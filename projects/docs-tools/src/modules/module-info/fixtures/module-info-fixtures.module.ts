@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
+
 import { SkyDocsModuleInfoModule } from '../module-info.module';
+
 import { ModuleInfoFixtureComponent } from './module-info-fixture.component';
 
 @NgModule({

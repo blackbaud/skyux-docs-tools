@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 
-import { Observable, of } from 'rxjs';
-
 import { SkyDocsComponentInfo } from 'projects/docs-tools/src/public-api';
+import { Observable, of } from 'rxjs';
 
 const componentList = {
   components: [

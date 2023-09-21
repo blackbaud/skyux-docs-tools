@@ -13,8 +13,8 @@ import {
   SkyDatepickerCustomDate,
   SkyFuzzyDate,
 } from '@skyux/datetime';
-import { SkyDocsDemoControlPanelChange, SkyDocsToolsOptions } from 'docs-tools';
 
+import { SkyDocsDemoControlPanelChange, SkyDocsToolsOptions } from 'docs-tools';
 import { Observable, of } from 'rxjs';
 import { delay } from 'rxjs/operators';
 

@@ -1,41 +1,25 @@
 import { Injectable, Optional } from '@angular/core';
 
+import orderBy from 'lodash.orderby';
+
 import { SkyDocsCallSignatureDefinition } from './call-signature-definition';
-
 import { SkyDocsClassDefinition } from './class-definition';
-
-import { SkyDocsClassPropertyDefinition } from './property-definition';
-
 import { SkyDocsCommentTags } from './comment-tags';
-
 import { SkyDocsDirectiveDefinition } from './directive-definition';
-
 import { SkyDocsEnumerationDefinition } from './enumeration-definition';
-
 import { SkyDocsEnumerationMemberDefinition } from './enumeration-member-definition';
-
 import { SkyDocsIndexSignatureDefinition } from './index-signature-definition';
-
 import { SkyDocsInterfaceDefinition } from './interface-definition';
-
 import { SkyDocsInterfacePropertyDefinition } from './interface-property-definition';
-
 import { SkyDocsClassMethodDefinition } from './method-definition';
-
 import { SkyDocsParameterDefinition } from './parameter-definition';
-
 import { SkyDocsPipeDefinition } from './pipe-definition';
-
 import { SkyDocsPropertyDecoratorDefinition } from './property-decorator';
-
+import { SkyDocsClassPropertyDefinition } from './property-definition';
 import { SkyDocsTypeAliasDefinition } from './type-alias-definition';
-
 import { SkyDocsTypeDefinition } from './type-definition';
-
 import { SkyDocsTypeDefinitionsProvider } from './type-definitions-provider';
-
 import { SkyDocsTypeParameterDefinition } from './type-parameter-definition';
-
 import {
   TypeDocComment,
   TypeDocEntry,
@@ -46,8 +30,6 @@ import {
   TypeDocType,
   TypeDocTypeParameter,
 } from './typedoc-types';
-
-import orderBy from 'lodash.orderby';
 
 /**
  * Converts TypeDoc types into SKY UX docs-tools types, to be supplied to the various definitions components.

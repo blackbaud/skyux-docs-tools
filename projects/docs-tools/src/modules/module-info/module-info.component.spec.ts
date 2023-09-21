@@ -1,10 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { expect } from '@skyux-sdk/testing';
+
+import { SkyDocsToolsOptions } from '../shared/docs-tools-options';
+
 import { ModuleInfoFixtureComponent } from './fixtures/module-info-fixture.component';
 import { ModuleInfoFixturesModule } from './fixtures/module-info-fixtures.module';
-
-import { expect } from '@skyux-sdk/testing';
-import { By } from '@angular/platform-browser';
-import { SkyDocsToolsOptions } from '../shared/docs-tools-options';
 
 describe('Module info component', () => {
   function validateExternalLink(

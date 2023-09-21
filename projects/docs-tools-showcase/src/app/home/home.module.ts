@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { SkyIdModule } from '@skyux/core';
 import { SkyDatepickerModule } from '@skyux/datetime';
+import { SkyInputBoxModule } from '@skyux/forms';
 
 import {
   SkyDocsSourceCodeProvider,
@@ -15,8 +16,6 @@ import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import { LocalDocsService } from './local-docs.service';
 import documentationJson from './mock-documentation.json';
-import { SkyIdModule } from '@skyux/core';
-import { SkyInputBoxModule } from '@skyux/forms';
 
 @NgModule({
   declarations: [HomeComponent],
