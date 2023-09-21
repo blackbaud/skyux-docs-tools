@@ -28,7 +28,7 @@ export class SkyDocsCodeExamplesEditorService {
   }
 
   #getPayload(codeExample: SkyDocsCodeExample): StackBlitzProject {
-    const angularVersion = `^${ANGULAR_VERSION.full}`;
+    const angularVersion = `^${ANGULAR_VERSION.major}`;
     const skyuxVersion = `^${SKY_UX_VERSION.full}`;
 
     const defaultDependencies: SkyDocsCodeExampleModuleDependencies = {
