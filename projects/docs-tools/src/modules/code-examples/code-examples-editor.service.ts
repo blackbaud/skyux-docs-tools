@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
-
+import { VERSION as ANGULAR_VERSION, Injectable } from '@angular/core';
+import { VERSION as SKY_UX_VERSION } from '@skyux/core';
+import { VERSION as SKY_UX_ICONS_VERSION } from '@skyux/icons';
 import StackBlitzSDK from '@stackblitz/sdk';
-
 import {
   OpenOptions as StackBlitzOpenOptions,
   Project as StackBlitzProject,
@@ -9,11 +9,9 @@ import {
 
 import { SkyDocsSourceCodeFile } from '../source-code/source-code-file';
 
-import { SkyDocsCodeExampleModuleDependencies } from './code-example-module-dependencies';
-
-import { SkyDocsCodeExampleTheme } from './code-example-theme';
-
 import { SkyDocsCodeExample } from './code-example';
+import { SkyDocsCodeExampleModuleDependencies } from './code-example-module-dependencies';
+import { SkyDocsCodeExampleTheme } from './code-example-theme';
 
 /**
  * @internal
@@ -23,15 +21,15 @@ import { SkyDocsCodeExample } from './code-example';
 })
 export class SkyDocsCodeExamplesEditorService {
   public launchEditor(codeExample: SkyDocsCodeExample): void {
-    const project = this.getPayload(codeExample);
+    const project = this.#getPayload(codeExample);
     const options: StackBlitzOpenOptions = {};
 
     StackBlitzSDK.openProject(project, options);
   }
 
-  private getPayload(codeExample: SkyDocsCodeExample): StackBlitzProject {
-    const angularVersion = '^16.0.0';
-    const skyuxVersion = '^9.0.0';
+  #getPayload(codeExample: SkyDocsCodeExample): StackBlitzProject {
+    const angularVersion = `^${ANGULAR_VERSION.full}`;
+    const skyuxVersion = `^${SKY_UX_VERSION.full}`;
 
     const defaultDependencies: SkyDocsCodeExampleModuleDependencies = {
       '@angular-devkit/build-angular': angularVersion,
@@ -265,7 +263,7 @@ export class AppModule { }
     https://github.com/stackblitz/core/issues/133
   -->
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-  <link rel="stylesheet" type="text/css" href="https://sky.blackbaudcdn.net/static/skyux-icons/6.0.0/assets/css/skyux-icons.min.css" />
+  <link rel="stylesheet" type="text/css" href="https://sky.blackbaudcdn.net/static/skyux-icons/${SKY_UX_ICONS_VERSION.full}/assets/css/skyux-icons.min.css" />
 </head>
 <body>
   <sky-demo-app>
