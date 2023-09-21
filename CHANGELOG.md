@@ -2,7 +2,7 @@
 
 ## 9.1.3 (2023-09-21)
 
-- Fixed the code example editor service to use the major version of Angular packages to determine SemVer range.
+- Fixed the code example editor service to use the major version of Angular packages to determine SemVer range. [#266](https://github.com/blackbaud/skyux-docs-tools/pull/266)
 
 ## 9.1.2 (2023-09-21)
 
