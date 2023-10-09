@@ -43,7 +43,10 @@
 </div>
 
 <ng-template #content>
-  <sky-docs-demo-page-section *ngIf="moduleName" heading="Installation">
+  <sky-docs-demo-page-section
+    *ngIf="moduleName || packageName"
+    heading="Installation"
+  >
     <sky-docs-module-info
       [gitRepoUrl]="gitRepoUrl"
       [moduleName]="moduleName"
