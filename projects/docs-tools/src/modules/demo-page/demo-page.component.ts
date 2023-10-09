@@ -87,7 +87,6 @@ export class SkyDocsDemoPageComponent
 
   /**
    * Specifies the TypeScript class name of the module. For example, `SkySampleModule`.
-   * @required
    */
   @Input()
   public moduleName: string;

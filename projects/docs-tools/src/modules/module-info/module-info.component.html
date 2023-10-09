@@ -1,6 +1,6 @@
 <div class="sky-docs-module-info">
   <sky-description-list class="sky-margin-stacked-lg" mode="vertical">
-    <sky-description-list-content>
+    <sky-description-list-content *ngIf="moduleName">
       <sky-description-list-term> Defined in </sky-description-list-term>
       <sky-description-list-description>
         <sky-code class="sky-docs-module-info-module-name">{{
@@ -30,6 +30,7 @@
       <sky-description-list-term>
         Installation
         <sky-help-inline
+          *ngIf="moduleName"
           class="sky-control-help"
           [skyPopover]="installationCommandPopover"
           skyPopoverPlacement="right"

@@ -1,5 +1,9 @@
 # Changelog
 
+## 9.1.5 (2023-10-09)
+
+- Allow a demo page to be created without the `moduleName` input. [#268](https://github.com/blackbaud/skyux-docs-tools/pull/268)
+
 ## 9.1.4 (2023-09-27)
 
 - Fixed the code example editor service to load examples where dragula is required. [#267](https://github.com/blackbaud/skyux-docs-tools/pull/267)
