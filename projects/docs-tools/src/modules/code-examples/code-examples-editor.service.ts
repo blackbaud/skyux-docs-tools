@@ -22,13 +22,21 @@ import { SkyDocsCodeExampleTheme } from './code-example-theme';
 export class SkyDocsCodeExamplesEditorService {
   public launchEditor(codeExample: SkyDocsCodeExample): void {
     const project = this.#getPayload(codeExample);
-    const options: StackBlitzOpenOptions = {};
+    const openFile: string[] = [];
+    if (project.files['src/app/demo.component.html']) {
+      openFile.push('src/app/demo.component.html');
+    } else if (project.files['src/app/demo.component.ts']) {
+      openFile.push('src/app/demo.component.ts');
+    }
+    const options: StackBlitzOpenOptions = {
+      openFile,
+    };
 
     StackBlitzSDK.openProject(project, options);
   }
 
   #getPayload(codeExample: SkyDocsCodeExample): StackBlitzProject {
-    const angularVersion = `^${ANGULAR_VERSION.major}`;
+    const angularVersion = `^${ANGULAR_VERSION.major}.${ANGULAR_VERSION.minor}.0`;
     const skyuxVersion = `^${SKY_UX_VERSION.full}`;
 
     const defaultDependencies: SkyDocsCodeExampleModuleDependencies = {
@@ -60,18 +68,25 @@ export class SkyDocsCodeExamplesEditorService {
       '@skyux/router': skyuxVersion,
       '@skyux/theme': skyuxVersion,
       '@types/jasmine': '~4.3.1',
-      'ng2-dragula': '^5.0.1',
+      'axe-core': '~4.6.3',
+      'node-notifier': '^10.0.0',
       rxjs: '^7',
       tslib: '^2.5.0',
       typescript: '~5.1.6',
       'zone.js': '~0.13.1',
     };
 
-    const mergedDependencies = Object.assign(
+    let mergedDependencies = Object.assign(
       {},
-      defaultDependencies,
-      codeExample.packageDependencies
+      codeExample.packageDependencies,
+      defaultDependencies
     );
+    mergedDependencies = Object.keys(mergedDependencies)
+      .sort()
+      .reduce((sorted, key) => {
+        sorted[key] = mergedDependencies[key];
+        return sorted;
+      }, {});
 
     // Ensure any @skyux dependencies list the correct version of SKY UX.
     // e.g. `"@skyux/core": "*"` --> `"@skyux/core": "5.0.0"`
@@ -99,7 +114,8 @@ export class SkyDocsCodeExamplesEditorService {
       files,
       title: 'SKY UX Demo',
       description: 'SKY UX Demo',
-      template: 'angular-cli',
+      // template: 'angular-cli',
+      template: 'node', // web-container
       dependencies: mergedDependencies,
       settings: {
         compile: {
@@ -292,13 +308,13 @@ platformBrowserDynamic()
 
 `;
 
-    files[`${srcPath}styles.scss`] = `@import '@skyux/theme/css/sky';
-@import '@skyux/theme/css/themes/modern/styles';
+    files[`${srcPath}styles.scss`] = `@import '@skyux/theme/css/sky.css';
+@import '@skyux/theme/css/themes/modern/styles.css';
 
 body {
   background-color: #fff;
   margin: 15px;
-}`;
+}\n`;
 
     stylesheets.push('src/styles.scss');
 
@@ -318,6 +334,7 @@ body {
                 options: {
                   index: 'src/index.html',
                   main: 'src/main.ts',
+                  outputPath: 'dist/demo',
                   tsConfig: 'tsconfig.app.json',
                   inlineStyleLanguage: 'scss',
                   styles: stylesheets,

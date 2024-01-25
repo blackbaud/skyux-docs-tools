@@ -7,6 +7,7 @@ import { CodeExamplesFixtureComponent } from './fixtures/code-examples-fixture.c
 import { CodeExampleFixturesModule } from './fixtures/code-example-fixtures.module';
 import { SkyDocsCodeExamplesEditorService } from './code-examples-editor.service';
 import { SkyDocsCodeExampleTheme } from './code-example-theme';
+import { SkySourceCodeDependencies } from '../source-code/source-code-dependencies';
 
 const MOCK_SOURCE_CODE = [
   {
@@ -33,6 +34,12 @@ class MockSourceCodeService {
     }
 
     return [];
+  }
+
+  public getSourceCodeDependencies(
+    filePath: string
+  ): SkySourceCodeDependencies {
+    return { '@example/foo': '1.0.1' };
   }
 }
 
@@ -72,7 +79,7 @@ describe('Code example component', () => {
 
     expect(editorService.launchEditor).toHaveBeenCalledWith({
       heading: 'Basic',
-      packageDependencies: {},
+      packageDependencies: { '@example/foo': '1.0.1' },
       sourceCode: MOCK_SOURCE_CODE,
       theme: SkyDocsCodeExampleTheme.Default,
       stylesheets: undefined,
@@ -90,6 +97,7 @@ describe('Code example component', () => {
       heading: 'Basic',
       packageDependencies: {
         foobar: 'latest',
+        '@example/foo': '1.0.1',
       },
       sourceCode: MOCK_SOURCE_CODE,
       theme: SkyDocsCodeExampleTheme.Default,
@@ -106,7 +114,9 @@ describe('Code example component', () => {
 
     expect(editorService.launchEditor).toHaveBeenCalledWith({
       heading: 'Basic',
-      packageDependencies: {},
+      packageDependencies: {
+        '@example/foo': '1.0.1',
+      },
       sourceCode: MOCK_SOURCE_CODE,
       theme: SkyDocsCodeExampleTheme.Default,
       stylesheets: ['styles.css'],

@@ -364,7 +364,6 @@ describe('Code examples editor service', () => {
       '@skyux/router': skyuxVersion,
       '@skyux/theme': skyuxVersion,
       '@types/jasmine': '~4.3.1',
-      'ng2-dragula': '^5.0.1',
       rxjs: '^7',
       tslib: '^2.5.0',
       typescript: '~5.1.6',

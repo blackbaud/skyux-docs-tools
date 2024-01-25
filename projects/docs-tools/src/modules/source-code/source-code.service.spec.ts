@@ -15,6 +15,7 @@ describe('Source code service', () => {
           rawContents: '<baz></baz>',
         },
       ],
+      dependencies: {},
     };
     service = new SkyDocsSourceCodeService(mockSourceCodeProvider);
     expect(service.getSourceCode(path)[0].rawContents).toEqual('<baz></baz>');
@@ -29,6 +30,7 @@ describe('Source code service', () => {
           rawContents: '%3Cbaz%3E%3C/baz%3E',
         },
       ],
+      dependencies: {},
     };
     service = new SkyDocsSourceCodeService(mockSourceCodeProvider);
     expect(service.getSourceCode(path)[0].rawContents).toEqual('<baz></baz>');
@@ -43,6 +45,7 @@ describe('Source code service', () => {
           rawContents: '<baz style="width: 50%;"></baz>',
         },
       ],
+      dependencies: {},
     };
     service = new SkyDocsSourceCodeService(mockSourceCodeProvider);
     expect(service.getSourceCode(path)[0].rawContents).toEqual(
