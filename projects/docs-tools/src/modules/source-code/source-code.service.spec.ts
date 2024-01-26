@@ -52,4 +52,28 @@ describe('Source code service', () => {
       '<baz style="width: 50%;"></baz>'
     );
   });
+
+  it('getSourceCode should handle no match', () => {
+    const mockSourceCodeProvider: SkyDocsSourceCodeProvider = {
+      sourceCode: [],
+      dependencies: {},
+    };
+    service = new SkyDocsSourceCodeService(mockSourceCodeProvider);
+    expect(service.getSourceCode(path)).toEqual([]);
+  });
+
+  it('getSourceCodeDependencies should get dependencies', () => {
+    const mockSourceCodeProvider: SkyDocsSourceCodeProvider = {
+      sourceCode: [],
+      dependencies: {
+        'foo/bar': { pkg1: '1.0.0', pkg2: '2.0.0' },
+      },
+    };
+    service = new SkyDocsSourceCodeService(mockSourceCodeProvider);
+    expect(service.getSourceCodeDependencies(path)).toEqual({
+      pkg1: '1.0.0',
+      pkg2: '2.0.0',
+    });
+    expect(service.getSourceCodeDependencies('other')).toEqual({});
+  });
 });
