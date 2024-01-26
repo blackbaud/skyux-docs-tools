@@ -84,9 +84,20 @@ export class SkyDocsCodeExamplesComponent implements AfterContentInit {
         return;
       }
 
+      let packageDependencies = {
+        ...this.packageDependencies,
+        ...this.sourceCodeService.getSourceCodeDependencies(sourceCodePath),
+      };
+      packageDependencies = Object.keys(packageDependencies)
+        .sort()
+        .reduce((sorted, key) => {
+          sorted[key] = packageDependencies[key];
+          return sorted;
+        }, {});
+
       this.codeExamples.push({
         heading: component.heading,
-        packageDependencies: this.packageDependencies,
+        packageDependencies,
         sourceCode,
         stylesheets: this.stylesheets,
         theme: component.theme,

@@ -250,6 +250,12 @@ describe('Code examples editor service', () => {
   it('should add standalone components from code example to app.module.ts', () => {
     moduleImports.push('DemoComponent');
     service.launchEditor(codeExampleWithStandaloneComponent);
+    codeExampleWithStandaloneComponent.sourceCode.push({
+      fileName: 'demo.component.html',
+      filePath: './',
+      rawContents: '<p>hello world</p>',
+    });
+    service.launchEditor(codeExampleWithStandaloneComponent);
 
     const spyArgs = stackblitzSpy.calls.mostRecent().args;
     const appModuleContents = spyArgs[0].files['src/app/app.module.ts'];
@@ -332,7 +338,7 @@ describe('Code examples editor service', () => {
 
     service.launchEditor(codeExample);
 
-    const angularVersion = `^${ANGULAR_VERSION.major}`;
+    const angularVersion = `^${ANGULAR_VERSION.major}.${ANGULAR_VERSION.minor}.0`;
     const skyuxVersion = `^${SKY_UX_VERSION.full}`;
 
     expect(stackblitzSpy.calls.mostRecent().args[0].dependencies).toEqual({
@@ -364,7 +370,6 @@ describe('Code examples editor service', () => {
       '@skyux/router': skyuxVersion,
       '@skyux/theme': skyuxVersion,
       '@types/jasmine': '~4.3.1',
-      'ng2-dragula': '^5.0.1',
       rxjs: '^7',
       tslib: '^2.5.0',
       typescript: '~5.1.6',

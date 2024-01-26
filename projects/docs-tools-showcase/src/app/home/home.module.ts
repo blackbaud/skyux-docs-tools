@@ -41,6 +41,7 @@ import { SkyInputBoxModule } from '@skyux/forms';
       provide: SkyDocsSourceCodeProvider,
       useValue: {
         sourceCode: documentationJson.codeExamples,
+        dependencies: documentationJson.codeExampleDependencies,
       },
     },
     {
