@@ -1,6 +1,7 @@
 import { SkyDocsSourceCodeProvider } from './source-code-provider';
 
 import { SkyDocsSourceCodeService } from './source-code.service';
+import { TestBed } from '@angular/core/testing';
 
 describe('Source code service', () => {
   let service: SkyDocsSourceCodeService;
@@ -75,5 +76,11 @@ describe('Source code service', () => {
       pkg2: '2.0.0',
     });
     expect(service.getSourceCodeDependencies('other')).toEqual({});
+  });
+
+  it('should use provider', () => {
+    const sourceCodeProvider = TestBed.inject(SkyDocsSourceCodeProvider);
+    expect(sourceCodeProvider).toBeTruthy();
+    expect(sourceCodeProvider.dependencies).toEqual({});
   });
 });

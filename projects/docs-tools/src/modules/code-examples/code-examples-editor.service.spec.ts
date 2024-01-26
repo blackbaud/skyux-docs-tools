@@ -250,6 +250,12 @@ describe('Code examples editor service', () => {
   it('should add standalone components from code example to app.module.ts', () => {
     moduleImports.push('DemoComponent');
     service.launchEditor(codeExampleWithStandaloneComponent);
+    codeExampleWithStandaloneComponent.sourceCode.push({
+      fileName: 'demo.component.html',
+      filePath: './',
+      rawContents: '<p>hello world</p>',
+    });
+    service.launchEditor(codeExampleWithStandaloneComponent);
 
     const spyArgs = stackblitzSpy.calls.mostRecent().args;
     const appModuleContents = spyArgs[0].files['src/app/app.module.ts'];
