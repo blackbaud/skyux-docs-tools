@@ -68,8 +68,6 @@ export class SkyDocsCodeExamplesEditorService {
       '@skyux/router': skyuxVersion,
       '@skyux/theme': skyuxVersion,
       '@types/jasmine': '~4.3.1',
-      'axe-core': '~4.6.3',
-      'node-notifier': '^10.0.0',
       rxjs: '^7',
       tslib: '^2.5.0',
       typescript: '~5.1.6',
@@ -114,8 +112,8 @@ export class SkyDocsCodeExamplesEditorService {
       files,
       title: 'SKY UX Demo',
       description: 'SKY UX Demo',
-      // template: 'angular-cli',
-      template: 'node', // web-container
+      template: 'angular-cli',
+      // template: 'node', // web-container
       dependencies: mergedDependencies,
       settings: {
         compile: {
