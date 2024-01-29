@@ -144,10 +144,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "docs-tools-showcase:build:production"
+              "buildTarget": "docs-tools-showcase:build:production"
             },
             "development": {
-              "browserTarget": "docs-tools-showcase:build:development"
+              "buildTarget": "docs-tools-showcase:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -155,7 +155,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "docs-tools-showcase:build"
+            "buildTarget": "docs-tools-showcase:build"
           }
         },
         "test": {

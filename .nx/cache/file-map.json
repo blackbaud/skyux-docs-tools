@@ -1,0 +1,1107 @@
+{
+  "version": "6.0",
+  "nxVersion": "17.2.8",
+  "deps": {
+    "@angular/animations": "17.1.1",
+    "@angular/cdk": "17.1.1",
+    "@angular/common": "17.1.1",
+    "@angular/compiler": "17.1.1",
+    "@angular/core": "17.1.1",
+    "@angular/forms": "17.1.1",
+    "@angular/platform-browser": "17.1.1",
+    "@angular/platform-browser-dynamic": "17.1.1",
+    "@angular/router": "17.1.1",
+    "@blackbaud/auth-client": "2.71.0",
+    "@blackbaud/skyux-lib-clipboard": "10.0.0-alpha.0",
+    "@blackbaud/skyux-lib-code-block": "10.0.0-alpha.0",
+    "@blackbaud/skyux-lib-media": "10.0.0-alpha.0",
+    "@blackbaud/skyux-lib-stache": "10.0.0-alpha.0",
+    "@skyux/animations": "10.0.0-alpha.0",
+    "@skyux/assets": "10.0.0-alpha.0",
+    "@skyux/avatar": "10.0.0-alpha.0",
+    "@skyux/colorpicker": "10.0.0-alpha.0",
+    "@skyux/config": "10.0.0-alpha.0",
+    "@skyux/core": "10.0.0-alpha.0",
+    "@skyux/datetime": "10.0.0-alpha.0",
+    "@skyux/errors": "10.0.0-alpha.0",
+    "@skyux/forms": "10.0.0-alpha.0",
+    "@skyux/http": "10.0.0-alpha.0",
+    "@skyux/icons": "6.8.1",
+    "@skyux/i18n": "10.0.0-alpha.0",
+    "@skyux/indicators": "10.0.0-alpha.0",
+    "@skyux/inline-form": "10.0.0-alpha.0",
+    "@skyux/layout": "10.0.0-alpha.0",
+    "@skyux/lists": "10.0.0-alpha.0",
+    "@skyux/lookup": "10.0.0-alpha.0",
+    "@skyux/modals": "10.0.0-alpha.0",
+    "@skyux/packages": "10.0.0-alpha.0",
+    "@skyux/popovers": "10.0.0-alpha.0",
+    "@skyux/router": "10.0.0-alpha.0",
+    "@skyux/tabs": "10.0.0-alpha.0",
+    "@skyux/theme": "10.0.0-alpha.0",
+    "@stackblitz/sdk": "1.9.0",
+    "fs-extra": "11.1.1",
+    "lodash.orderby": "4.6.0",
+    "marked": "4.1.0",
+    "moment": "2.29.4",
+    "rxjs": "7.8.1",
+    "tslib": "2.6.2",
+    "zone.js": "0.14.3",
+    "@angular-devkit/build-angular": "17.1.1",
+    "@angular-eslint/builder": "17.2.1",
+    "@angular-eslint/eslint-plugin": "17.2.1",
+    "@angular-eslint/eslint-plugin-template": "17.2.1",
+    "@angular-eslint/schematics": "17.2.1",
+    "@angular-eslint/template-parser": "17.2.1",
+    "@angular/cli": "17.1.1",
+    "@angular/compiler-cli": "17.1.1",
+    "@skyux-sdk/prettier-schematics": "10.0.0-alpha.0",
+    "@skyux-sdk/testing": "10.0.0-alpha.0",
+    "@types/jasmine": "4.3.6",
+    "@types/lodash.orderby": "4.6.9",
+    "@types/marked": "4.0.3",
+    "@types/node": "16.18.51",
+    "@typescript-eslint/eslint-plugin": "^6.10.0",
+    "@typescript-eslint/parser": "^6.10.0",
+    "axe-core": "3.5.6",
+    "eslint": "^8.53.0",
+    "eslint-config-prettier": "8.10.0",
+    "jasmine-core": "4.6.0",
+    "karma": "6.4.2",
+    "karma-chrome-launcher": "3.2.0",
+    "karma-coverage": "2.2.1",
+    "karma-jasmine": "5.1.0",
+    "ng-packagr": "17.1.2",
+    "node-sass-tilde-importer": "1.0.2",
+    "prettier": "2.8.8",
+    "ts-node": "10.9.2",
+    "typescript": "5.3.3"
+  },
+  "pathMappings": {
+    "docs-tools": [
+      "projects/docs-tools/src/public-api.ts"
+    ]
+  },
+  "nxJsonPlugins": [],
+  "fileMap": {
+    "projectFileMap": {},
+    "nonProjectFiles": [
+      {
+        "file": ".editorconfig",
+        "hash": "6686520031028425313"
+      },
+      {
+        "file": ".eslintrc.json",
+        "hash": "12893140176982100312"
+      },
+      {
+        "file": ".github/workflows/skyux-azboards.yml",
+        "hash": "15336072586616550047"
+      },
+      {
+        "file": ".github/workflows/skyux-ci.yml",
+        "hash": "9531300270853807952"
+      },
+      {
+        "file": ".gitignore",
+        "hash": "1139085713980892267"
+      },
+      {
+        "file": ".npmrc",
+        "hash": "13596879129689507351"
+      },
+      {
+        "file": ".prettierignore",
+        "hash": "15820386447977021719"
+      },
+      {
+        "file": ".prettierrc.json",
+        "hash": "16267754514737964994"
+      },
+      {
+        "file": "CHANGELOG.md",
+        "hash": "5088745720643133693"
+      },
+      {
+        "file": "README.md",
+        "hash": "7145169467410393999"
+      },
+      {
+        "file": "angular.json",
+        "hash": "9487096764816235187"
+      },
+      {
+        "file": "package-lock.json",
+        "hash": "11060646101519173907"
+      },
+      {
+        "file": "package.json",
+        "hash": "8803585520520245474"
+      },
+      {
+        "file": "projects/docs-tools-showcase/.eslintrc.json",
+        "hash": "17049695551077523535"
+      },
+      {
+        "file": "projects/docs-tools-showcase/karma.conf.js",
+        "hash": "16344560026463049618"
+      },
+      {
+        "file": "projects/docs-tools-showcase/src/app/app-routing.module.ts",
+        "hash": "8841624567041548897"
+      },
+      {
+        "file": "projects/docs-tools-showcase/src/app/app.component.html",
+        "hash": "1068795437532353255"
+      },
+      {
+        "file": "projects/docs-tools-showcase/src/app/app.component.scss",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "projects/docs-tools-showcase/src/app/app.component.ts",
+        "hash": "15318886212757614305"
+      },
+      {
+        "file": "projects/docs-tools-showcase/src/app/app.module.ts",
+        "hash": "372078953960446990"
+      },
+      {
+        "file": "projects/docs-tools-showcase/src/app/home/home-routing.module.ts",
+        "hash": "13435864231106096039"
+      },
+      {
+        "file": "projects/docs-tools-showcase/src/app/home/home.component.html",
+        "hash": "4358756272947159730"
+      },
+      {
+        "file": "projects/docs-tools-showcase/src/app/home/home.component.scss",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "projects/docs-tools-showcase/src/app/home/home.component.ts",
+        "hash": "1237057960428838209"
+      },
+      {
+        "file": "projects/docs-tools-showcase/src/app/home/home.module.ts",
+        "hash": "6896479913835381225"
+      },
+      {
+        "file": "projects/docs-tools-showcase/src/app/home/local-docs.service.ts",
+        "hash": "8537550664112377912"
+      },
+      {
+        "file": "projects/docs-tools-showcase/src/app/home/mock-documentation.json",
+        "hash": "5928771152532366944"
+      },
+      {
+        "file": "projects/docs-tools-showcase/src/assets/.gitkeep",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "projects/docs-tools-showcase/src/environments/environment.prod.ts",
+        "hash": "10220522844224226756"
+      },
+      {
+        "file": "projects/docs-tools-showcase/src/environments/environment.ts",
+        "hash": "15801694716951284069"
+      },
+      {
+        "file": "projects/docs-tools-showcase/src/favicon.ico",
+        "hash": "3464744996580215640"
+      },
+      {
+        "file": "projects/docs-tools-showcase/src/index.html",
+        "hash": "10164123853528527569"
+      },
+      {
+        "file": "projects/docs-tools-showcase/src/main.ts",
+        "hash": "14896519517424602606"
+      },
+      {
+        "file": "projects/docs-tools-showcase/src/polyfills.ts",
+        "hash": "11983112270585388569"
+      },
+      {
+        "file": "projects/docs-tools-showcase/src/styles.scss",
+        "hash": "5195668842064076916"
+      },
+      {
+        "file": "projects/docs-tools-showcase/src/test.ts",
+        "hash": "2600248548746239949"
+      },
+      {
+        "file": "projects/docs-tools-showcase/tsconfig.app.json",
+        "hash": "3199213883572459273"
+      },
+      {
+        "file": "projects/docs-tools-showcase/tsconfig.spec.json",
+        "hash": "16309026780233615772"
+      },
+      {
+        "file": "projects/docs-tools/.eslintrc.json",
+        "hash": "9179871917068000313"
+      },
+      {
+        "file": "projects/docs-tools/LICENSE",
+        "hash": "18419016622041961839"
+      },
+      {
+        "file": "projects/docs-tools/README.md",
+        "hash": "15073055820387032240"
+      },
+      {
+        "file": "projects/docs-tools/karma.conf.js",
+        "hash": "670529385229879208"
+      },
+      {
+        "file": "projects/docs-tools/ng-package.json",
+        "hash": "593827305808054797"
+      },
+      {
+        "file": "projects/docs-tools/package.json",
+        "hash": "12710479858610829814"
+      },
+      {
+        "file": "projects/docs-tools/src/assets/locales/resources_en_US.json",
+        "hash": "17483113758117146432"
+      },
+      {
+        "file": "projects/docs-tools/src/docs-tools.module.ts",
+        "hash": "3963563146963962970"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/anatomy/anatomy-item.component.html",
+        "hash": "3905894986933531962"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/anatomy/anatomy-item.component.scss",
+        "hash": "3290089288971188690"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/anatomy/anatomy-item.component.ts",
+        "hash": "7272570110694683957"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/anatomy/anatomy-thumbnail.component.html",
+        "hash": "5447741048200987941"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/anatomy/anatomy-thumbnail.component.scss",
+        "hash": "12618954370618090522"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/anatomy/anatomy-thumbnail.component.ts",
+        "hash": "16259172426196162382"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/anatomy/anatomy.component.html",
+        "hash": "3391483942794466748"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/anatomy/anatomy.component.scss",
+        "hash": "10860126137890047691"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/anatomy/anatomy.component.ts",
+        "hash": "13921304118680972194"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/anatomy/anatomy.module.ts",
+        "hash": "4019220109569464438"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/code-examples/code-example-module-dependencies.ts",
+        "hash": "6094849380075938222"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/code-examples/code-example-theme.ts",
+        "hash": "14332838360772945822"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/code-examples/code-example.component.spec.ts",
+        "hash": "4707001036068995895"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/code-examples/code-example.component.ts",
+        "hash": "7551331060891790544"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/code-examples/code-example.ts",
+        "hash": "7346114686105520214"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/code-examples/code-examples-editor.service.spec.ts",
+        "hash": "12130465576784549680"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/code-examples/code-examples-editor.service.ts",
+        "hash": "3126853994967312346"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/code-examples/code-examples.component.html",
+        "hash": "16182872834824342989"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/code-examples/code-examples.component.scss",
+        "hash": "17912158400423911811"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/code-examples/code-examples.component.spec.ts",
+        "hash": "6602172326287470942"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/code-examples/code-examples.component.ts",
+        "hash": "342784063091556264"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/code-examples/code-examples.module.ts",
+        "hash": "4459888828366305977"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/code-examples/fixtures/code-example-fixture.component.ts",
+        "hash": "16449421125052048041"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/code-examples/fixtures/code-example-fixtures.module.ts",
+        "hash": "12190941164304333610"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/code-examples/fixtures/code-example-with-theme-service-fixture.component.ts",
+        "hash": "13838250469133863395"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/code-examples/fixtures/code-examples-fixture.component.ts",
+        "hash": "16625629407052328053"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/demo-page/demo-page-dom-adapter.service.ts",
+        "hash": "5369741497949114596"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/demo-page/demo-page-module-info.component.ts",
+        "hash": "7188939153080233636"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/demo-page/demo-page-section.component.html",
+        "hash": "12389982614298688011"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/demo-page/demo-page-section.component.scss",
+        "hash": "15229124343199594664"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/demo-page/demo-page-section.component.ts",
+        "hash": "7052696361906701798"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/demo-page/demo-page-summary.component.html",
+        "hash": "10542190423094859743"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/demo-page/demo-page-summary.component.scss",
+        "hash": "16415679800108931815"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/demo-page/demo-page-summary.component.ts",
+        "hash": "5001262796266201776"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/demo-page/demo-page-title.service.ts",
+        "hash": "11982562810100348952"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/demo-page/demo-page-type-definitions.component.html",
+        "hash": "1631340602031844091"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/demo-page/demo-page-type-definitions.component.ts",
+        "hash": "11415004464582177191"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/demo-page/demo-page.component.html",
+        "hash": "12194758580613372132"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/demo-page/demo-page.component.scss",
+        "hash": "4294822106043286331"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/demo-page/demo-page.component.spec.ts",
+        "hash": "10007505061423178622"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/demo-page/demo-page.component.ts",
+        "hash": "6021098143485043744"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/demo-page/demo-page.module.ts",
+        "hash": "16784953396813122043"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/demo-page/fixtures/demo-page-fixtures.module.ts",
+        "hash": "17453435098566381041"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/demo-page/fixtures/demo-page.component.fixture.html",
+        "hash": "13041802541034678496"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/demo-page/fixtures/demo-page.component.fixture.ts",
+        "hash": "5925662689299451766"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/demo/demo-content-alignment.ts",
+        "hash": "17053920438225024376"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/demo/demo-control-panel-change.ts",
+        "hash": "7124812157473644954"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/demo/demo-control-panel-checkbox.component.html",
+        "hash": "11549912997417010075"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/demo/demo-control-panel-checkbox.component.spec.ts",
+        "hash": "15843082656879770759"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/demo/demo-control-panel-checkbox.component.ts",
+        "hash": "16806355578779353923"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/demo/demo-control-panel-radio-choice.ts",
+        "hash": "76680167600921966"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/demo/demo-control-panel-radio-group.component.html",
+        "hash": "11208612523266610477"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/demo/demo-control-panel-radio-group.component.scss",
+        "hash": "8844740759904583405"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/demo/demo-control-panel-radio-group.component.spec.ts",
+        "hash": "5200404021228384963"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/demo/demo-control-panel-radio-group.component.ts",
+        "hash": "18320867649909367147"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/demo/demo-control-panel-section.component.html",
+        "hash": "2972986692487869428"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/demo/demo-control-panel-section.component.scss",
+        "hash": "9108339861961161294"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/demo/demo-control-panel-section.component.ts",
+        "hash": "13420909992028988261"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/demo/demo-control-panel.component.html",
+        "hash": "8956406407463540866"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/demo/demo-control-panel.component.scss",
+        "hash": "16786511268962385816"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/demo/demo-control-panel.component.ts",
+        "hash": "2625039790882673125"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/demo/demo.component.html",
+        "hash": "14881736222526614559"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/demo/demo.component.scss",
+        "hash": "15519797616863480473"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/demo/demo.component.spec.ts",
+        "hash": "5482656132712263257"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/demo/demo.component.ts",
+        "hash": "12496306055601888815"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/demo/demo.module.ts",
+        "hash": "10997641240448638623"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/demo/fixtures/demo-auth-token-mock-provider.ts",
+        "hash": "15162630341902819982"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/demo/fixtures/demo-fixtures.module.ts",
+        "hash": "2056169561807578043"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/demo/fixtures/demo.component.fixture.html",
+        "hash": "377273660288494574"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/demo/fixtures/demo.component.fixture.ts",
+        "hash": "10931190588189703040"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/design-guidelines/design-guideline-thumbnail.component.html",
+        "hash": "5999379349444651787"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/design-guidelines/design-guideline-thumbnail.component.scss",
+        "hash": "3964842644097253677"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/design-guidelines/design-guideline-thumbnail.component.ts",
+        "hash": "327462114978979158"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/design-guidelines/design-guideline.component.html",
+        "hash": "3267925869350973094"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/design-guidelines/design-guideline.component.scss",
+        "hash": "377268249296875902"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/design-guidelines/design-guideline.component.ts",
+        "hash": "10545682485576674867"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/design-guidelines/design-guidelines.component.html",
+        "hash": "9571859224405749290"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/design-guidelines/design-guidelines.component.ts",
+        "hash": "17260726580978076004"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/design-guidelines/design-guidelines.module.ts",
+        "hash": "12650026825078330072"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/heading-anchor/heading-anchor.component.html",
+        "hash": "4888770906816716095"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/heading-anchor/heading-anchor.component.scss",
+        "hash": "97717772123073937"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/heading-anchor/heading-anchor.component.ts",
+        "hash": "13725797003191093652"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/heading-anchor/heading-anchor.module.ts",
+        "hash": "368519527232906779"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/markdown/markdown.module.ts",
+        "hash": "14321371835057604167"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/markdown/markdown.pipe.ts",
+        "hash": "5880051039253746706"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/module-info/fixtures/module-info-fixture.component.html",
+        "hash": "2469561004849128123"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/module-info/fixtures/module-info-fixture.component.ts",
+        "hash": "9987685332181687491"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/module-info/fixtures/module-info-fixtures.module.ts",
+        "hash": "4858702388812789999"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/module-info/module-info.component.html",
+        "hash": "4493942593459167516"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/module-info/module-info.component.scss",
+        "hash": "5884890774766300708"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/module-info/module-info.component.spec.ts",
+        "hash": "9056838557730576313"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/module-info/module-info.component.ts",
+        "hash": "8361716219927464870"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/module-info/module-info.module.ts",
+        "hash": "6786367627803918438"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/safe-html/safe-html.component.html",
+        "hash": "4145485551451485413"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/safe-html/safe-html.component.ts",
+        "hash": "4562104227380407033"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/safe-html/safe-html.module.ts",
+        "hash": "9808057308491305296"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/shared/docs-tools-component-info.ts",
+        "hash": "12696161404225392309"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/shared/docs-tools-options.ts",
+        "hash": "306704667565386959"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/shared/docs-tools-supportal.service.ts",
+        "hash": "16663243516485592489"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/shared/sky-docs-tools-resources.module.ts",
+        "hash": "14698130746704685316"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/source-code/source-code-file.ts",
+        "hash": "75703619522296320"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/source-code/source-code-provider.ts",
+        "hash": "9885091642992704128"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/source-code/source-code.service.spec.ts",
+        "hash": "3720458439193604818"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/source-code/source-code.service.ts",
+        "hash": "4003130617332980422"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/thumbnail/thumbnail.component.html",
+        "hash": "4001588936423256900"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/thumbnail/thumbnail.component.scss",
+        "hash": "12725058607990240524"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/thumbnail/thumbnail.component.ts",
+        "hash": "2533954321944260033"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/thumbnail/thumbnail.module.ts",
+        "hash": "3427719595753156993"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/anchor-link-service-config.ts",
+        "hash": "3801034297447144547"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/anchor-link-service-format.ts",
+        "hash": "4849929072856284073"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/anchor-link.service.spec.ts",
+        "hash": "5081757926475001425"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/anchor-link.service.ts",
+        "hash": "9492330798108179510"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/anchor-link.ts",
+        "hash": "3647260936753484454"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/call-signature-definition.component.html",
+        "hash": "10081915176035298087"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/call-signature-definition.component.scss",
+        "hash": "18132578472316808993"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/call-signature-definition.component.spec.ts",
+        "hash": "14121295250901426586"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/call-signature-definition.component.ts",
+        "hash": "10705507219758496600"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/call-signature-definition.ts",
+        "hash": "13961624762673033450"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/class-definition.component.html",
+        "hash": "14295700417040506181"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/class-definition.component.scss",
+        "hash": "6384212895626792291"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/class-definition.component.spec.ts",
+        "hash": "11881747461807329259"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/class-definition.component.ts",
+        "hash": "5500779487017707175"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/class-definition.ts",
+        "hash": "8328502423212810970"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/comment-tags.ts",
+        "hash": "15847676838956081138"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/directive-definition.component.html",
+        "hash": "14587100150656288775"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/directive-definition.component.scss",
+        "hash": "11059060182672997896"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/directive-definition.component.spec.ts",
+        "hash": "18206504333804382666"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/directive-definition.component.ts",
+        "hash": "1504515907385558755"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/directive-definition.ts",
+        "hash": "7894971281386719061"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/entry-child-definition.ts",
+        "hash": "17087919086773756801"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/entry-definition.ts",
+        "hash": "9182306709956893418"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/enumeration-definition.component.html",
+        "hash": "15958765650623083023"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/enumeration-definition.component.spec.ts",
+        "hash": "16423052217679563173"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/enumeration-definition.component.ts",
+        "hash": "9887576592064638753"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/enumeration-definition.ts",
+        "hash": "17004938444769483415"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/enumeration-member-definition.ts",
+        "hash": "3195502105097295841"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/fixtures/call-signature-definition.component.fixture.html",
+        "hash": "15512617509892731004"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/fixtures/call-signature-definition.component.fixture.ts",
+        "hash": "245132746175984242"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/fixtures/class-definition.component.fixture.html",
+        "hash": "1876807213364301352"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/fixtures/class-definition.component.fixture.ts",
+        "hash": "16356395601130075150"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/fixtures/directive-definition.component.fixture.html",
+        "hash": "5146128560519843951"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/fixtures/directive-definition.component.fixture.ts",
+        "hash": "1708223680837592414"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/fixtures/enumeration-definition.component.fixture.html",
+        "hash": "13565866416795640520"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/fixtures/enumeration-definition.component.fixture.ts",
+        "hash": "13550971438777028693"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/fixtures/interface-definition.component.fixture.html",
+        "hash": "12286594498157491109"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/fixtures/interface-definition.component.fixture.ts",
+        "hash": "15291431817554644534"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/fixtures/method-definitions.component.fixture.html",
+        "hash": "5333998558008056301"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/fixtures/method-definitions.component.fixture.ts",
+        "hash": "321896847903314068"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/fixtures/mock-type-definitions.service.ts",
+        "hash": "6183474979292255128"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/fixtures/property-definitions.component.fixture.html",
+        "hash": "3909560038822709684"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/fixtures/property-definitions.component.fixture.ts",
+        "hash": "4481174916500566044"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/fixtures/type-alias-definition.component.fixture.html",
+        "hash": "16723940478850827141"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/fixtures/type-alias-definition.component.fixture.ts",
+        "hash": "4269184989357503710"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/fixtures/type-anchor-links.pipe.component.fixture.html",
+        "hash": "2831590117200879760"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/fixtures/type-anchor-links.pipe.component.fixture.ts",
+        "hash": "3979168679090632410"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/fixtures/type-definitions.module.fixture.ts",
+        "hash": "1652184229685682481"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/index-signature-definition.ts",
+        "hash": "3826972985724369615"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/interface-definition.component.html",
+        "hash": "5482092301349174710"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/interface-definition.component.spec.ts",
+        "hash": "3574646584902534918"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/interface-definition.component.ts",
+        "hash": "15293219929010976388"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/interface-definition.ts",
+        "hash": "236639316597217025"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/interface-property-definition.ts",
+        "hash": "10434645522752315390"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/method-definition.ts",
+        "hash": "7868814848562916405"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/method-definitions.component.html",
+        "hash": "8910709539159874387"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/method-definitions.component.scss",
+        "hash": "10410592776094335857"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/method-definitions.component.spec.ts",
+        "hash": "85573482171560277"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/method-definitions.component.ts",
+        "hash": "8971160375505689704"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/parameter-definition.ts",
+        "hash": "14245137342979688361"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/pipe-definition.component.html",
+        "hash": "9082502730078409848"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/pipe-definition.component.scss",
+        "hash": "10314214590109936146"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/pipe-definition.component.ts",
+        "hash": "9165896400502505930"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/pipe-definition.ts",
+        "hash": "7275943965026093582"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/property-decorator.ts",
+        "hash": "3360052128868450230"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/property-definition.ts",
+        "hash": "11263828519957878737"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/property-definitions.component.html",
+        "hash": "16920402143600012821"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/property-definitions.component.scss",
+        "hash": "14758274881017064368"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/property-definitions.component.spec.ts",
+        "hash": "96915807759944623"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/property-definitions.component.ts",
+        "hash": "7796899751407702405"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/type-alias-definition.component.html",
+        "hash": "2441263069340326381"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/type-alias-definition.component.scss",
+        "hash": "4674489730596741984"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/type-alias-definition.component.spec.ts",
+        "hash": "6263302844143998304"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/type-alias-definition.component.ts",
+        "hash": "2403789760060314738"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/type-alias-definition.ts",
+        "hash": "6664595582507568771"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/type-anchor-links.pipe.spec.ts",
+        "hash": "16755365664618201884"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/type-anchor-links.pipe.ts",
+        "hash": "6721946814620886626"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/type-definition.ts",
+        "hash": "9201239803463283588"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/type-definitions-format.service.spec.ts",
+        "hash": "6780756719283776793"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/type-definitions-format.service.ts",
+        "hash": "16501005152747211323"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/type-definitions-provider.ts",
+        "hash": "12058155305828291734"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/type-definitions.module.ts",
+        "hash": "15755828325670843693"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/type-definitions.service.spec.ts",
+        "hash": "14618145607833790923"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/type-definitions.service.ts",
+        "hash": "860206636671538772"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/type-definitions.ts",
+        "hash": "17065825274322629202"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/type-parameter-definition.ts",
+        "hash": "13610879171891950542"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/typedoc-adapter.service.spec.ts",
+        "hash": "11753804483012378434"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/typedoc-adapter.service.ts",
+        "hash": "2517412683516529312"
+      },
+      {
+        "file": "projects/docs-tools/src/modules/type-definitions/typedoc-types.ts",
+        "hash": "2154919794322064743"
+      },
+      {
+        "file": "projects/docs-tools/src/public-api.ts",
+        "hash": "1517192571017439946"
+      },
+      {
+        "file": "projects/docs-tools/src/styles/_mixins.scss",
+        "hash": "4111797416047165829"
+      },
+      {
+        "file": "projects/docs-tools/src/styles/docs-tools.scss",
+        "hash": "1029996079324335604"
+      },
+      {
+        "file": "projects/docs-tools/src/test.ts",
+        "hash": "8077195342690112924"
+      },
+      {
+        "file": "projects/docs-tools/tsconfig.lib.json",
+        "hash": "11501437155611048115"
+      },
+      {
+        "file": "projects/docs-tools/tsconfig.lib.prod.json",
+        "hash": "1939170332703490951"
+      },
+      {
+        "file": "projects/docs-tools/tsconfig.spec.json",
+        "hash": "9504807348533760050"
+      },
+      {
+        "file": "scripts/after-build-public-library-success.js",
+        "hash": "2477766825097602834"
+      },
+      {
+        "file": "scripts/dev-bundle.js",
+        "hash": "8446151039222954108"
+      },
+      {
+        "file": "scripts/prepare-package.js",
+        "hash": "9151848907080768048"
+      },
+      {
+        "file": "tsconfig.json",
+        "hash": "17520474600430550247"
+      }
+    ]
+  }
+}
