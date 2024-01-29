@@ -4,11 +4,11 @@
 
 ### ⚠ BREAKING CHANGES
 
-- Dropped support for Angular 16. [#000](https://github.com/blackbaud/skyux-docs-tools/pull/000)
+- Dropped support for Angular 16. [#271](https://github.com/blackbaud/skyux-docs-tools/pull/271)
 
 ### Features
 
-- Added support for Angular 17. [#000](https://github.com/blackbaud/skyux-docs-tools/pull/000)
+- Added support for Angular 17. [#271](https://github.com/blackbaud/skyux-docs-tools/pull/271)
 
 ## 9.1.5 (2023-10-09)
 
