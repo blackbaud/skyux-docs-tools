@@ -66,9 +66,11 @@ describe('Interface definition component', function () {
       anchorId: 'foo-anchor-id',
       name: 'Foo',
       description: 'This description has a FooUser.',
+      hasPreviewFeatures: false,
       properties: [
         {
           isOptional: true,
+          isPreview: false,
           name: 'foo',
           type: {
             type: 'intrinsic',
@@ -95,10 +97,12 @@ describe('Interface definition component', function () {
       anchorId: 'foo-anchor-id',
       name: 'Foo',
       description: '',
+      hasPreviewFeatures: false,
       properties: [
         {
           description: 'This description has a FooUser.',
           isOptional: true,
+          isPreview: false,
           name: 'foo',
           type: {
             type: 'intrinsic',
@@ -125,9 +129,11 @@ describe('Interface definition component', function () {
       anchorId: 'foo-anchor-id',
       name: 'Foo',
       description: 'This description has a FooUser.',
+      hasPreviewFeatures: false,
       properties: [
         {
           isOptional: true,
+          isPreview: false,
           name: 'foo',
           type: {
             callSignature: {

@@ -29,4 +29,6 @@ export interface SkyDocsTypeDefinitions {
   services: SkyDocsClassDefinition[];
 
   typeAliases: SkyDocsTypeAliasDefinition[];
+
+  hasPreviewFeatures: boolean;
 }

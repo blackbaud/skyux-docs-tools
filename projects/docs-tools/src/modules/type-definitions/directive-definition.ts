@@ -11,4 +11,6 @@ export interface SkyDocsDirectiveDefinition extends SkyDocsEntryDefinition {
   inputProperties?: SkyDocsClassPropertyDefinition[];
 
   selector: string;
+
+  hasPreviewFeatures: boolean;
 }

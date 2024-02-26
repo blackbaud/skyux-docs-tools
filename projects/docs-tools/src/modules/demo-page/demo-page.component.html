@@ -8,6 +8,22 @@
   >
     <ng-content select="sky-docs-demo-page-summary"></ng-content>
 
+    <sky-alert
+      *ngIf="
+        moduleTypeDefinitions?.hasPreviewFeatures ||
+        testingTypeDefinitions?.hasPreviewFeatures
+      "
+      class="sky-docs-demo-page-preview-alert sky-margin-stacked-lg"
+      >This component currently has preview inputs available that may not be
+      fully represented in the design documentation, the demo, or code examples.
+      <ng-container *ngIf="siteOptions?.previewFeaturesUrl"
+        >Learn more about this work
+        <a [skyAppLink]="siteOptions?.previewFeaturesUrl"
+          >here.</a
+        ></ng-container
+      ></sky-alert
+    >
+
     <ng-content select="sky-docs-demo"></ng-content>
 
     <div class="sky-docs-demo-page-main">

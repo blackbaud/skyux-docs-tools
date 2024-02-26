@@ -11,4 +11,6 @@ export interface SkyDocsTypeAliasDefinition extends SkyDocsEntryDefinition {
   type: SkyDocsTypeDefinition;
 
   typeParameters?: SkyDocsTypeParameterDefinition[];
+
+  isPreview: boolean;
 }

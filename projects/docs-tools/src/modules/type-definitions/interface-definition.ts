@@ -11,4 +11,6 @@ export interface SkyDocsInterfaceDefinition extends SkyDocsEntryDefinition {
   properties: SkyDocsInterfacePropertyDefinition[];
 
   typeParameters?: SkyDocsTypeParameterDefinition[];
+
+  hasPreviewFeatures: boolean;
 }

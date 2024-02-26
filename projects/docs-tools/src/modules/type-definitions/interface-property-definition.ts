@@ -6,4 +6,5 @@ import { SkyDocsEntryChildDefinition } from './entry-child-definition';
 export interface SkyDocsInterfacePropertyDefinition
   extends SkyDocsEntryChildDefinition {
   isOptional: boolean;
+  isPreview: boolean;
 }

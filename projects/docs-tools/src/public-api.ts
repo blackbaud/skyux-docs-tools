@@ -21,6 +21,7 @@ export * from './modules/module-info/module-info.module';
 
 export * from './modules/shared/docs-tools-component-info';
 export * from './modules/shared/docs-tools-options';
+export * from './modules/shared/docs-tools-site-options';
 export * from './modules/shared/docs-tools-supportal.service';
 
 export * from './modules/source-code/source-code-provider';

@@ -7,4 +7,5 @@ import { SkyDocsEnumerationMemberDefinition } from './enumeration-member-definit
  */
 export interface SkyDocsEnumerationDefinition extends SkyDocsEntryDefinition {
   members: SkyDocsEnumerationMemberDefinition[];
+  hasPreviewFeatures: boolean;
 }

@@ -55,6 +55,7 @@ export class SkyDocsTypeDefinitionsService {
       pipes: [],
       services: [],
       typeAliases: [],
+      hasPreviewFeatures: false,
     };
 
     if (!allDefinitions) {
@@ -83,38 +84,50 @@ export class SkyDocsTypeDefinitionsService {
 
         switch (decorator) {
           case 'Component':
-            types.components.push(this.adapter.toDirectiveDefinition(item));
+            const componentType = this.adapter.toDirectiveDefinition(item);
+            types.components.push(componentType);
+            types.hasPreviewFeatures ||= componentType.hasPreviewFeatures;
             break;
           case 'Directive':
-            types.directives.push(this.adapter.toDirectiveDefinition(item));
+            const directiveType = this.adapter.toDirectiveDefinition(item);
+            types.directives.push(directiveType);
+            types.hasPreviewFeatures ||= directiveType.hasPreviewFeatures;
             break;
           case 'Injectable':
-            types.services.push(this.adapter.toClassDefinition(item));
+            const serviceType = this.adapter.toClassDefinition(item);
+            types.services.push(serviceType);
+            types.hasPreviewFeatures ||= serviceType.hasPreviewFeatures;
             break;
           case 'NgModule':
             // Don't document modules.
             break;
           case 'Pipe':
-            types.pipes.push(this.adapter.toPipeDefinition(item));
+            const pipeType = this.adapter.toPipeDefinition(item);
+            types.pipes.push(pipeType);
+            types.hasPreviewFeatures ||= pipeType.transformMethod.isPreview;
             break;
           default:
             /*tslint:disable-next-line:switch-default*/
             switch (kind) {
               case TypeDocKind.Class:
-                types.classes.push(this.adapter.toClassDefinition(item));
+                const classType = this.adapter.toClassDefinition(item);
+                types.classes.push(classType);
+                types.hasPreviewFeatures ||= classType.hasPreviewFeatures;
                 break;
               case TypeDocKind.Interface:
-                types.interfaces.push(this.adapter.toInterfaceDefinition(item));
+                const interfaceType = this.adapter.toInterfaceDefinition(item);
+                types.interfaces.push(interfaceType);
+                types.hasPreviewFeatures ||= interfaceType.hasPreviewFeatures;
                 break;
               case TypeDocKind.Enum:
-                types.enumerations.push(
-                  this.adapter.toEnumerationDefinition(item)
-                );
+                const enumType = this.adapter.toEnumerationDefinition(item);
+                types.enumerations.push(enumType);
+                types.hasPreviewFeatures ||= enumType.hasPreviewFeatures;
                 break;
               case TypeDocKind.TypeAlias:
-                types.typeAliases.push(
-                  this.adapter.toTypeAliasDefinition(item)
-                );
+                const typeAliasType = this.adapter.toTypeAliasDefinition(item);
+                types.typeAliases.push(typeAliasType);
+                types.hasPreviewFeatures ||= !!typeAliasType.isPreview;
                 break;
             }
         }

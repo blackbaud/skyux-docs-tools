@@ -11,4 +11,6 @@ export interface SkyDocsClassDefinition extends SkyDocsEntryDefinition {
   methods?: SkyDocsClassMethodDefinition[];
 
   properties?: SkyDocsClassPropertyDefinition[];
+
+  hasPreviewFeatures: boolean;
 }

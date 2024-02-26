@@ -64,6 +64,7 @@ export class SkyDocsTypeDocAdapterService {
     const definition: SkyDocsClassDefinition = {
       anchorId: this.getAnchorId(entry),
       name: entry.name,
+      hasPreviewFeatures: false,
     };
 
     const tags = this.getCommentTags(entry.comment);
@@ -79,6 +80,10 @@ export class SkyDocsTypeDocAdapterService {
       definition.properties = properties;
     }
 
+    definition.hasPreviewFeatures =
+      !!definition.methods?.find((method) => method.isPreview) ||
+      !!definition.properties?.find((property) => property.isPreview);
+
     return definition;
   }
 
@@ -89,6 +94,7 @@ export class SkyDocsTypeDocAdapterService {
       anchorId: this.getAnchorId(entry),
       name: entry.name,
       selector: this.getSelector(entry),
+      hasPreviewFeatures: false,
     };
 
     const tags = this.getCommentTags(entry.comment);
@@ -110,6 +116,10 @@ export class SkyDocsTypeDocAdapterService {
       definition.inputProperties = inputProperties;
     }
 
+    definition.hasPreviewFeatures =
+      !!definition.inputProperties?.find((property) => property.isPreview) ||
+      !!definition.eventProperties?.find((property) => property.isPreview);
+
     return definition;
   }
 
@@ -121,6 +131,7 @@ export class SkyDocsTypeDocAdapterService {
       anchorId: this.getAnchorId(entry),
       members,
       name: entry.name,
+      hasPreviewFeatures: !!members.find((member) => member.isPreview),
     };
 
     const tags = this.getCommentTags(entry.comment);
@@ -136,6 +147,7 @@ export class SkyDocsTypeDocAdapterService {
     const definition: SkyDocsInterfaceDefinition = {
       anchorId: this.getAnchorId(entry),
       name: entry.name,
+      hasPreviewFeatures: !!properties.find((member) => member.isPreview),
       properties,
     };
 
@@ -173,6 +185,7 @@ export class SkyDocsTypeDocAdapterService {
     const definition: SkyDocsTypeAliasDefinition = {
       anchorId: this.getAnchorId(entry),
       name: entry.name,
+      isPreview: false,
       type: this.getTypeDefinition({
         comment: entry.comment,
         type: entry.type,
@@ -230,6 +243,7 @@ export class SkyDocsTypeDocAdapterService {
       .map((child) => {
         let definition: SkyDocsClassPropertyDefinition = {
           isOptional: true,
+          isPreview: false,
           name: this.getPropertyName(child),
           type: this.getTypeDefinition(child),
         };
@@ -352,6 +366,7 @@ export class SkyDocsTypeDocAdapterService {
           name: this.getPropertyName(child),
           type: this.getTypeDefinition(child),
           isStatic: !!child.flags?.isStatic,
+          isPreview: false,
           parentName: entry.name,
         };
 
@@ -397,6 +412,7 @@ export class SkyDocsTypeDocAdapterService {
         }
         const definition: SkyDocsInterfacePropertyDefinition = {
           isOptional: tags.extras.required ? false : !!child.flags?.isOptional,
+          isPreview: false,
           name: this.getPropertyName(child),
           type: this.getTypeDefinition(child),
         };
@@ -413,6 +429,7 @@ export class SkyDocsTypeDocAdapterService {
       const indexSignature = entry.indexSignature;
       const definition: SkyDocsInterfacePropertyDefinition = {
         isOptional: true,
+        isPreview: false,
         name: indexSignature.name,
         type: {
           indexSignature: this.getIndexSignatureDefinition(indexSignature),
@@ -442,6 +459,7 @@ export class SkyDocsTypeDocAdapterService {
     return entry.children.map((child) => {
       const definition: SkyDocsEnumerationMemberDefinition = {
         name: child.name,
+        isPreview: false,
       };
 
       const tags = this.getCommentTags(child.comment);
@@ -716,6 +734,9 @@ export class SkyDocsTypeDocAdapterService {
             case '@required':
               extras['required'] = true;
               break;
+            case '@preview':
+              extras['preview'] = true;
+              break;
             /* istanbul ignore next */
             default:
               break;
@@ -774,6 +795,7 @@ export class SkyDocsTypeDocAdapterService {
       codeExampleLanguage?: string;
       deprecationWarning?: string;
       description?: string;
+      isPreview?: boolean;
     },
     tags: SkyDocsCommentTags
   ): void {
@@ -788,6 +810,10 @@ export class SkyDocsTypeDocAdapterService {
 
     if (tags.description) {
       definition.description = tags.description;
+    }
+
+    if (tags.extras?.preview) {
+      definition.isPreview = tags.extras?.preview;
     }
   }
 

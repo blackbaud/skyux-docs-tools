@@ -9,7 +9,7 @@ import {
   SkyCodeModule,
 } from '@blackbaud/skyux-lib-code-block';
 
-import { SkyIconModule } from '@skyux/indicators';
+import { SkyIconModule, SkyStatusIndicatorModule } from '@skyux/indicators';
 
 import { SkyDefinitionListModule } from '@skyux/layout';
 
@@ -50,6 +50,7 @@ import { SkyDocsTypeAnchorLinksPipe } from './type-anchor-links.pipe';
     SkyDocsMarkdownModule,
     SkyDocsSafeHtmlModule,
     SkyIconModule,
+    SkyStatusIndicatorModule,
   ],
   declarations: [
     SkyDocsCallSignatureDefinitionComponent,
