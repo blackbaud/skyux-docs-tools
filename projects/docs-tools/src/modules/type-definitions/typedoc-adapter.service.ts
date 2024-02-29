@@ -81,8 +81,8 @@ export class SkyDocsTypeDocAdapterService {
     }
 
     definition.hasPreviewFeatures =
-      definition.methods?.some((method) => method.isPreview) ||
-      definition.properties?.some((property) => property.isPreview);
+      !!definition.methods?.some((method) => method.isPreview) ||
+      !!definition.properties?.some((property) => property.isPreview);
 
     return definition;
   }
@@ -117,8 +117,8 @@ export class SkyDocsTypeDocAdapterService {
     }
 
     definition.hasPreviewFeatures =
-      definition.inputProperties?.some((property) => property.isPreview) ||
-      definition.eventProperties?.some((property) => property.isPreview);
+      !!definition.inputProperties?.some((property) => property.isPreview) ||
+      !!definition.eventProperties?.some((property) => property.isPreview);
 
     return definition;
   }
