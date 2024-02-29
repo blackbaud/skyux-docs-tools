@@ -117,8 +117,8 @@ export class SkyDocsTypeDocAdapterService {
     }
 
     definition.hasPreviewFeatures =
-      !!definition.inputProperties?.find((property) => property.isPreview) ||
-      !!definition.eventProperties?.find((property) => property.isPreview);
+      definition.inputProperties?.some((property) => property.isPreview) ||
+      definition.eventProperties?.some((property) => property.isPreview);
 
     return definition;
   }
