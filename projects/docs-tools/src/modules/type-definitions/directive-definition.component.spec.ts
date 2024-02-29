@@ -61,6 +61,7 @@ describe('Directive definition component', function () {
       anchorId: 'foo-anchor-id',
       name: 'FooComponent',
       selector: 'app-foo',
+      hasPreviewFeatures: false,
     };
 
     fixture.detectChanges();
@@ -77,6 +78,7 @@ describe('Directive definition component', function () {
       anchorId: 'foo-anchor-id',
       name: 'FooComponent',
       selector: 'app-foo',
+      hasPreviewFeatures: false,
       inputProperties: [
         {
           name: 'config',
@@ -84,6 +86,7 @@ describe('Directive definition component', function () {
             name: 'Input',
           },
           isOptional: true,
+          isPreview: false,
           type: {
             type: 'reference',
             name: 'Config',
@@ -97,6 +100,7 @@ describe('Directive definition component', function () {
             name: 'Output',
           },
           isOptional: true,
+          isPreview: false,
           type: {
             type: 'reference',
             name: 'EventEmitter',
@@ -130,6 +134,7 @@ describe('Directive definition component', function () {
       anchorId: 'foo-anchor-id',
       name: 'FooComponent',
       selector: 'app-foo',
+      hasPreviewFeatures: false,
       eventProperties: [
         {
           name: 'click',
@@ -137,6 +142,7 @@ describe('Directive definition component', function () {
             name: 'Output',
           },
           isOptional: false,
+          isPreview: false,
           type: {},
         },
       ],
@@ -156,6 +162,7 @@ describe('Directive definition component', function () {
       anchorId: 'component-foocomponent',
       name: 'FooComponent',
       description: 'This description has a [[FooUser]].',
+      hasPreviewFeatures: false,
       selector: 'app-foo',
     };
 

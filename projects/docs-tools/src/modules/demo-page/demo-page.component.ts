@@ -9,6 +9,7 @@ import {
   Input,
   OnInit,
   QueryList,
+  inject,
 } from '@angular/core';
 
 import { ActivatedRoute, Router } from '@angular/router';
@@ -30,6 +31,7 @@ import { SkyDocsDemoPageDomAdapterService } from './demo-page-dom-adapter.servic
 import { SkyDocsDemoPageTitleService } from './demo-page-title.service';
 import { SkyDocsTypeDefinitionsService } from '../type-definitions/type-definitions.service';
 import { SkyDocsTypeDefinitions } from '../type-definitions/type-definitions';
+import { SkyDocsToolsSiteOptions } from '../shared/docs-tools-site-options';
 
 /**
  * The demo page component wraps all documentation components and handles the configuration and layout of the page.
@@ -161,11 +163,18 @@ export class SkyDocsDemoPageComponent
    */
   public sidebarRoutes: StacheNavLink[];
 
+  protected hasPreviewFeatures = false;
+
   @ContentChild(SkyDocsDesignGuidelinesComponent)
   private designGuidelinesComponent: SkyDocsDesignGuidelinesComponent;
 
   @ContentChildren(SkyDocsCodeExamplesComponent)
   private codeExampleComponents: QueryList<SkyDocsCodeExamplesComponent>;
+
+  protected readonly siteOptions: SkyDocsToolsSiteOptions | undefined = inject(
+    SkyDocsToolsSiteOptions,
+    { optional: true }
+  );
 
   #_additionalSourceCodePaths: string[] | undefined;
   #_additionalTestingSourceCodePaths: string[] | undefined;

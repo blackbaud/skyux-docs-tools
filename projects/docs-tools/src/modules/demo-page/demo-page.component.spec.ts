@@ -19,6 +19,16 @@ import { SkyDocsTypeDefinitionsService } from '../type-definitions/type-definiti
 import { MockTypeDocAdapterService } from '../type-definitions/fixtures/mock-type-definitions.service';
 import { SkyDocsTypeDocAdapterService } from '../type-definitions/typedoc-adapter.service';
 import { TypeDocKind } from '../type-definitions/typedoc-types';
+import { SkyDocsToolsSiteOptions } from '../shared/docs-tools-site-options';
+
+function getPreviewAlert(): HTMLElement | null {
+  return document.querySelector('.sky-docs-demo-page-preview-alert');
+}
+
+function getPreviewAlertLink(): HTMLAnchorElement | null {
+  return getPreviewAlert().querySelector('a');
+}
+
 function getService(
   provider: SkyDocsTypeDefinitionsProvider = {
     anchorIds: {},
@@ -181,7 +191,7 @@ describe('Demo page component', () => {
   let component: DemoPageFixtureComponent;
   let mockMediaQueryService: MockSkyMediaQueryService;
 
-  beforeEach(() => {
+  function setupTestBed(): void {
     mockMediaQueryService = new MockSkyMediaQueryService();
     TestBed.configureTestingModule({
       imports: [DemoPageFixturesModule],
@@ -191,8 +201,25 @@ describe('Demo page component', () => {
           useValue: mockMediaQueryService,
         },
         { provide: SkyDocsTypeDefinitionsService, useValue: getService() },
+        {
+          provide: SkyDocsTypeDefinitionsProvider,
+          useValue: {
+            anchorIds: {
+              FooUser: 'foo-user',
+            },
+            typeDefinitions: [
+              {
+                name: 'FooUser',
+              },
+            ],
+          },
+        },
       ],
     });
+  }
+
+  beforeEach(() => {
+    setupTestBed();
 
     fixture = TestBed.createComponent(DemoPageFixtureComponent);
     component = fixture.componentInstance;
@@ -320,5 +347,55 @@ describe('Demo page component', () => {
       'https://www.notmatchingsite.com/foo?svcid=test-svcid'
     );
     expect(sidebarLinks[1].getAttribute('href')).toEqual('/bar');
+  });
+
+  it('should not show the preview features alert if there are no preview features', () => {
+    fixture.detectChanges();
+    const previewAlert = getPreviewAlert();
+    expect(previewAlert).toBeNull();
+  });
+
+  it('should show the preview features alert if there are preview features - no link', () => {
+    spyOn(
+      MockTypeDocAdapterService.prototype,
+      'toClassDefinition'
+    ).and.callFake((entry) => {
+      return {
+        hasPreviewFeatures: true,
+        anchorId: entry.anchorId,
+        name: entry.name,
+      };
+    });
+    fixture.detectChanges();
+    const previewAlert = getPreviewAlert();
+    const previewAlertLink = getPreviewAlertLink();
+    expect(previewAlert).not.toBeNull();
+    expect(previewAlertLink).toBeNull();
+  });
+
+  it('should show the preview features alert if there are preview features - with a link when provided by the consumer', () => {
+    TestBed.resetTestingModule();
+    TestBed.overrideProvider(SkyDocsToolsSiteOptions, {
+      useValue: { previewFeaturesUrl: 'www.blackbaud.com' },
+    });
+    setupTestBed();
+
+    fixture = TestBed.createComponent(DemoPageFixtureComponent);
+    component = fixture.componentInstance;
+    spyOn(
+      MockTypeDocAdapterService.prototype,
+      'toClassDefinition'
+    ).and.callFake((entry) => {
+      return {
+        hasPreviewFeatures: true,
+        anchorId: entry.anchorId,
+        name: entry.name,
+      };
+    });
+    fixture.detectChanges();
+    const previewAlert = getPreviewAlert();
+    const previewAlertLink = getPreviewAlertLink();
+    expect(previewAlert).not.toBeNull();
+    expect(previewAlertLink).not.toBeNull();
   });
 });

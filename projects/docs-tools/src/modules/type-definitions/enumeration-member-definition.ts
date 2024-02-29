@@ -10,5 +10,7 @@ export interface SkyDocsEnumerationMemberDefinition {
 
   description?: string;
 
+  isPreview: boolean;
+
   name: string;
 }

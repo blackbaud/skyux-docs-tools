@@ -1,5 +1,9 @@
 # Changelog
 
+## 9.2.0 (2023-02-27)
+
+- Add ability to mark features as being in preview. [#272](https://github.com/blackbaud/skyux-docs-tools/pull/272)
+
 ## 9.1.5 (2023-10-09)
 
 - Allow a demo page to be created without the `moduleName` input. [#268](https://github.com/blackbaud/skyux-docs-tools/pull/268)

@@ -22,6 +22,7 @@ interface PropertyViewModel {
   formattedName: string;
   isOutput: boolean;
   isOptional: boolean;
+  isPreview: boolean;
 }
 
 @Component({
@@ -82,6 +83,7 @@ export class SkyDocsPropertyDefinitionsComponent implements OnInit {
         formattedName: this.formatService.getFormattedPropertyName(property),
         isOutput: property.decorator?.name === 'Output',
         isOptional: property.isOptional,
+        isPreview: property.isPreview,
       };
 
       return vm;

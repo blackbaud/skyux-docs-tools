@@ -138,6 +138,13 @@
 </ng-template>
 
 <ng-template let-method #descriptionTemplate>
+  <div
+    *ngIf="method.isPreview"
+    class="sky-docs-method-definition-preview-warning sky-docs-property-definition-label"
+  >
+    <sky-docs-preview-feature-indicator></sky-docs-preview-feature-indicator>
+  </div>
+
   <sky-docs-safe-html
     *ngIf="method.deprecationWarning !== undefined"
     class="sky-docs-method-definition-deprecation-warning"
