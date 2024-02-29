@@ -10,8 +10,8 @@ export interface TypeDocComment {
       | '@deprecated'
       | '@example'
       | '@param'
-      | '@required'
-      | '@preview';
+      | '@preview'
+      | '@required';
   }[];
 }
 

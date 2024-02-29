@@ -80,10 +80,7 @@
     *ngIf="property.isPreview"
     class="sky-docs-property-definition-preview-warning sky-docs-property-definition-label"
   >
-    <sky-status-indicator indicatorType="warning" descriptionType="warning"
-      >Preview. This feature may not be fully represented in the design
-      documentation, the demo, or code examples.</sky-status-indicator
-    >
+    <sky-docs-preview-feature-indicator></sky-docs-preview-feature-indicator>
   </div>
 
   <sky-docs-safe-html

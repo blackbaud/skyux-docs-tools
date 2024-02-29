@@ -22,6 +22,8 @@ export interface SkyDocsTypeDefinitions {
 
   enumerations: SkyDocsEnumerationDefinition[];
 
+  hasPreviewFeatures: boolean;
+
   interfaces: SkyDocsInterfaceDefinition[];
 
   pipes: SkyDocsPipeDefinition[];
@@ -29,6 +31,4 @@ export interface SkyDocsTypeDefinitions {
   services: SkyDocsClassDefinition[];
 
   typeAliases: SkyDocsTypeAliasDefinition[];
-
-  hasPreviewFeatures: boolean;
 }

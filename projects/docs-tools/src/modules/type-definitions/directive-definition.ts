@@ -8,9 +8,9 @@ import { SkyDocsEntryDefinition } from './entry-definition';
 export interface SkyDocsDirectiveDefinition extends SkyDocsEntryDefinition {
   eventProperties?: SkyDocsClassPropertyDefinition[];
 
+  hasPreviewFeatures: boolean;
+
   inputProperties?: SkyDocsClassPropertyDefinition[];
 
   selector: string;
-
-  hasPreviewFeatures: boolean;
 }

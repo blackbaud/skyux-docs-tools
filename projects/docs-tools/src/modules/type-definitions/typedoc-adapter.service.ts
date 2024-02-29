@@ -81,8 +81,8 @@ export class SkyDocsTypeDocAdapterService {
     }
 
     definition.hasPreviewFeatures =
-      !!definition.methods?.find((method) => method.isPreview) ||
-      !!definition.properties?.find((property) => property.isPreview);
+      definition.methods?.some((method) => method.isPreview) ||
+      definition.properties?.some((property) => property.isPreview);
 
     return definition;
   }
@@ -731,11 +731,11 @@ export class SkyDocsTypeDocAdapterService {
                   .trim(),
               });
               break;
-            case '@required':
-              extras['required'] = true;
-              break;
             case '@preview':
               extras['preview'] = true;
+              break;
+            case '@required':
+              extras['required'] = true;
               break;
             /* istanbul ignore next */
             default:

@@ -38,6 +38,7 @@ import { SkyDocsClassDefinitionComponent } from './class-definition.component';
 import { SkyDocsTypeAliasDefinitionComponent } from './type-alias-definition.component';
 
 import { SkyDocsTypeAnchorLinksPipe } from './type-anchor-links.pipe';
+import { SkyDocsPreviewIndicatorComponent } from './preview-feature-indicator.component';
 
 @NgModule({
   imports: [
@@ -48,6 +49,7 @@ import { SkyDocsTypeAnchorLinksPipe } from './type-anchor-links.pipe';
     SkyDefinitionListModule,
     SkyDocsHeadingAnchorModule,
     SkyDocsMarkdownModule,
+    SkyDocsPreviewIndicatorComponent,
     SkyDocsSafeHtmlModule,
     SkyIconModule,
     SkyStatusIndicatorModule,
