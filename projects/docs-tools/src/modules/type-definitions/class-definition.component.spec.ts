@@ -54,6 +54,7 @@ describe('Class definition component', function () {
       anchorId: 'service-fooservice',
       description: 'This description has a FooUser.',
       name: 'FooService',
+      hasPreviewFeatures: false,
     };
 
     fixture.detectChanges();

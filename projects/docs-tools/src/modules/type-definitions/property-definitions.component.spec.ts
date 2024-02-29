@@ -17,6 +17,14 @@ import { TypeDefinitionsFixturesModule } from './fixtures/type-definitions.modul
 
 import { SkyDocsTypeDefinitionsProvider } from './type-definitions-provider';
 
+function getPreviewWarnings(
+  fixture: ComponentFixture<PropertyDefinitionsFixtureComponent>
+): NodeListOf<HTMLElement> {
+  return (fixture.nativeElement as HTMLElement).querySelectorAll(
+    '.sky-docs-property-definitions .sky-docs-property-definition-preview-warning'
+  );
+}
+
 describe('Property definitions component', function () {
   let fixture: ComponentFixture<PropertyDefinitionsFixtureComponent>;
   let mockMediaQueryService: MockSkyMediaQueryService;
@@ -70,6 +78,7 @@ describe('Property definitions component', function () {
       properties: [
         {
           isOptional: false,
+          isPreview: false,
           decorator: {
             name: 'Input',
           },
@@ -92,11 +101,64 @@ describe('Property definitions component', function () {
     expect(element.textContent).toEqual('@Input()foobar: number');
   }));
 
+  it('should mark a method as preview', fakeAsync(() => {
+    fixture.componentInstance.config = {
+      properties: [
+        {
+          isOptional: false,
+          isPreview: true,
+          decorator: {
+            name: 'Input',
+          },
+          name: 'foobar',
+          type: {
+            type: 'intrinsic',
+            name: 'number',
+          },
+        },
+      ],
+    };
+
+    fixture.detectChanges();
+    tick();
+
+    const previewWarnings = getPreviewWarnings(fixture);
+
+    expect(previewWarnings.length).toBe(1);
+  }));
+
+  it('should not mark a method as preview when not in preview', fakeAsync(() => {
+    fixture.componentInstance.config = {
+      properties: [
+        {
+          isOptional: false,
+          isPreview: false,
+          decorator: {
+            name: 'Input',
+          },
+          name: 'foobar',
+          type: {
+            type: 'intrinsic',
+            name: 'number',
+          },
+        },
+      ],
+    };
+
+    fixture.detectChanges();
+    tick();
+
+    const previewWarnings = getPreviewWarnings(fixture);
+
+    expect(previewWarnings.length).toBe(0);
+  }));
+
   it('should add anchor links to default value', fakeAsync(() => {
     fixture.componentInstance.config = {
       properties: [
         {
           isOptional: true,
+          isPreview: false,
           decorator: {
             name: 'Input',
           },
@@ -127,6 +189,7 @@ describe('Property definitions component', function () {
       properties: [
         {
           isOptional: true,
+          isPreview: false,
           decorator: {
             name: 'Input',
           },
@@ -162,6 +225,7 @@ describe('Property definitions component', function () {
       properties: [
         {
           isOptional: true,
+          isPreview: false,
           decorator: {
             name: 'Input',
           },
@@ -197,6 +261,7 @@ describe('Property definitions component', function () {
       properties: [
         {
           isOptional: true,
+          isPreview: false,
           name: 'foobar',
           type: {
             type: 'reference',

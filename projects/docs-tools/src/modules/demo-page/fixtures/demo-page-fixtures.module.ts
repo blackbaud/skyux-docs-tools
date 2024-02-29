@@ -35,6 +35,9 @@ class MockSkyAppConfig {
       base: '/demo-test-base/',
     },
     routes: [],
+    params: {
+      getAll: (_: unknown) => {},
+    },
   };
 
   public skyux: any = {

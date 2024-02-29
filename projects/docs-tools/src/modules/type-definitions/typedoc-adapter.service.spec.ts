@@ -25,6 +25,7 @@ describe('TypeDoc adapter', () => {
       expect(def).toEqual({
         anchorId: 'foo-anchor-id',
         name: 'FooClass',
+        hasPreviewFeatures: false,
       });
     });
 
@@ -54,6 +55,7 @@ describe('TypeDoc adapter', () => {
         {
           name: 'fooA',
           isOptional: true,
+          isPreview: false,
           type: {
             name: 'string',
             type: 'intrinsic',
@@ -62,6 +64,7 @@ describe('TypeDoc adapter', () => {
         {
           name: 'fooB',
           isOptional: true,
+          isPreview: false,
           type: {
             name: 'number',
             type: 'intrinsic',
@@ -104,6 +107,7 @@ describe('TypeDoc adapter', () => {
         {
           name: 'fooZ',
           isOptional: false,
+          isPreview: false,
           type: {
             name: 'string',
             type: 'intrinsic',
@@ -112,6 +116,64 @@ describe('TypeDoc adapter', () => {
         {
           name: 'fooA',
           isOptional: true,
+          isPreview: false,
+          type: {
+            name: 'number',
+            type: 'intrinsic',
+          },
+        },
+      ]);
+    });
+
+    it('should properly denote preview features when a property is in preview', () => {
+      entry.children = [
+        {
+          name: 'fooA',
+          kind: TypeDocKind.Property,
+          type: {
+            type: 'intrinsic',
+            name: 'number',
+          },
+        },
+        {
+          name: 'fooZ',
+          kind: TypeDocKind.Property,
+          type: {
+            type: 'intrinsic',
+            name: 'string',
+          },
+          comment: {
+            blockTags: [
+              {
+                tag: '@preview',
+                content: [],
+              },
+              {
+                tag: '@required',
+                content: [],
+              },
+            ],
+          },
+        },
+      ];
+
+      const def = adapter.toClassDefinition(entry);
+
+      expect(def.hasPreviewFeatures).toBeTrue();
+      expect(def.properties).toEqual([
+        {
+          name: 'fooZ',
+          isOptional: false,
+          isPreview: true,
+          type: {
+            name: 'string',
+            type: 'intrinsic',
+          },
+        },
+        {
+          name: 'fooA',
+          isOptional: true,
+          isPreview: false,
           type: {
             name: 'number',
             type: 'intrinsic',
@@ -184,6 +246,7 @@ describe('TypeDoc adapter', () => {
       expect(def.properties).toEqual([
         {
           isOptional: true,
+          isPreview: false,
           name: 'foo',
           type: {
             type: 'intrinsic',
@@ -254,6 +317,149 @@ describe('TypeDoc adapter', () => {
       expect(def.properties).toEqual([
         {
           isOptional: false,
+          isPreview: false,
+          name: 'foo',
+          type: {
+            type: 'intrinsic',
+            name: 'number',
+          },
+          description: 'The foo of the FooClass.',
+          defaultValue: '10',
+          deprecationWarning: 'This property is deprecated.',
+        },
+      ]);
+    });
+
+    it('should handle property accessors', () => {
+      entry.children = [
+        {
+          name: 'foo',
+          kind: TypeDocKind.Accessor,
+          comment: {},
+          getSignature: {
+            name: '__get',
+            comment: {
+              summary: [{ kind: 'text', text: 'The foo of the FooClass.' }],
+              blockTags: [
+                {
+                  tag: '@default',
+                  content: [{ kind: 'code', text: '```ts\n10\n```' }],
+                },
+                {
+                  tag: '@preview',
+                  content: [],
+                },
+              ],
+            },
+            type: {
+              type: 'intrinsic',
+              name: 'number',
+            },
+          },
+          setSignature: {
+            name: '__set',
+            comment: {},
+            parameters: [
+              {
+                name: 'value',
+                kind: TypeDocKind.Parameter,
+                type: {
+                  type: 'intrinsic',
+                  name: 'number',
+                },
+              },
+            ],
+            type: {
+              type: 'intrinsic',
+              name: 'void',
+            },
+          },
+        },
+      ];
+
+      const def = adapter.toClassDefinition(entry);
+
+      expect(def.hasPreviewFeatures).toBeTrue();
+      expect(def.properties).toEqual([
+        {
+          isOptional: true,
+          isPreview: true,
+          name: 'foo',
+          type: {
+            type: 'intrinsic',
+            name: 'number',
+          },
+          description: 'The foo of the FooClass.',
+          defaultValue: '10',
+        },
+      ]);
+    });
+
+    it('should handle preview features when the comment is in the `setSignature`', () => {
+      entry.children = [
+        {
+          name: 'foo',
+          kind: TypeDocKind.Accessor,
+          getSignature: {
+            name: '__get',
+            comment: {
+              summary: [{ kind: 'text', text: 'The foo of the FooClass.' }],
+            },
+            type: {
+              type: 'intrinsic',
+              name: 'number',
+            },
+          },
+          setSignature: {
+            name: '__set',
+            comment: {
+              summary: [{ kind: 'text', text: 'The foo of the FooClass.' }],
+              blockTags: [
+                {
+                  tag: '@default',
+                  content: [{ kind: 'code', text: '```ts\n10\n```' }],
+                },
+                {
+                  tag: '@preview',
+                  content: [],
+                },
+                {
+                  tag: '@required',
+                  content: [],
+                },
+                {
+                  tag: '@deprecated',
+                  content: [
+                    { kind: 'text', text: 'This property is deprecated.\n' },
+                  ],
+                },
+              ],
+            },
+            parameters: [
+              {
+                name: 'value',
+                kind: TypeDocKind.Parameter,
+                type: {
+                  type: 'intrinsic',
+                  name: 'number',
+                },
+              },
+            ],
+            type: {
+              type: 'intrinsic',
+              name: 'void',
+            },
+          },
+        },
+      ];
+
+      const def = adapter.toClassDefinition(entry);
+
+      expect(def.hasPreviewFeatures).toBeTrue();
+      expect(def.properties).toEqual([
+        {
+          isOptional: false,
+          isPreview: true,
           name: 'foo',
           type: {
             type: 'intrinsic',
@@ -288,6 +494,7 @@ describe('TypeDoc adapter', () => {
       expect(def.properties).toEqual([
         {
           isOptional: true,
+          isPreview: false,
           name: 'foo',
           type: {
             type: 'intrinsic',
@@ -329,6 +536,7 @@ describe('TypeDoc adapter', () => {
       expect(def.properties).toEqual([
         {
           isOptional: true,
+          isPreview: false,
           name: 'foo',
           type: {
             type: 'intrinsic',
@@ -376,6 +584,7 @@ describe('TypeDoc adapter', () => {
       expect(def.properties).toEqual([
         {
           isOptional: true,
+          isPreview: false,
           name: 'foo',
           type: {
             type: 'intrinsic',
@@ -424,6 +633,7 @@ describe('TypeDoc adapter', () => {
       expect(def.properties).toEqual([
         {
           isOptional: true,
+          isPreview: false,
           name: 'foo',
           type: {
             type: 'intrinsic',
@@ -488,6 +698,7 @@ describe('TypeDoc adapter', () => {
       expect(def.properties).toEqual([
         {
           isOptional: true,
+          isPreview: false,
           name: 'foo',
           type: {
             type: 'intrinsic',
@@ -561,6 +772,7 @@ describe('TypeDoc adapter', () => {
       expect(def.properties).toEqual([
         {
           isOptional: true,
+          isPreview: false,
           name: 'foo',
           type: {
             type: 'intrinsic',
@@ -627,6 +839,7 @@ describe('TypeDoc adapter', () => {
           name: 'fooA',
           description: 'fooA description',
           isOptional: true,
+          isPreview: false,
           type: {
             name: 'string',
             type: 'intrinsic',
@@ -635,6 +848,7 @@ describe('TypeDoc adapter', () => {
         {
           name: 'fooB',
           isOptional: true,
+          isPreview: false,
           type: {
             name: 'number',
             type: 'intrinsic',
@@ -679,6 +893,7 @@ describe('TypeDoc adapter', () => {
         {
           name: 'fooA',
           isOptional: true,
+          isPreview: false,
           type: {
             name: 'string',
             type: 'intrinsic',
@@ -687,6 +902,7 @@ describe('TypeDoc adapter', () => {
         {
           name: 'fooB',
           isOptional: true,
+          isPreview: false,
           type: {
             name: 'number',
             type: 'intrinsic',
@@ -726,6 +942,7 @@ describe('TypeDoc adapter', () => {
         {
           name: 'fooUnion',
           isOptional: true,
+          isPreview: false,
           type: {
             type: 'union',
             unionTypes: [
@@ -860,6 +1077,7 @@ describe('TypeDoc adapter', () => {
       expect(def.properties).toEqual([
         {
           isOptional: false,
+          isPreview: false,
           codeExample: '[searchFunction]="mySearchFunction"',
           codeExampleLanguage: 'markup',
           decorator: {
@@ -950,6 +1168,7 @@ describe('TypeDoc adapter', () => {
       expect(def.properties as any).toEqual([
         {
           isOptional: true,
+          isPreview: false,
           name: 'messageStream',
           type: {
             type: 'reference',
@@ -1005,6 +1224,7 @@ describe('TypeDoc adapter', () => {
       expect(def.properties).toEqual([
         {
           isOptional: true,
+          isPreview: false,
           name: 'anchorIds',
           type: {
             type: 'reflection',
@@ -1084,6 +1304,7 @@ describe('TypeDoc adapter', () => {
         {
           name: 'getA',
           isStatic: true,
+          isPreview: false,
           type: {
             callSignature: {
               returnType: {
@@ -1098,6 +1319,7 @@ describe('TypeDoc adapter', () => {
         {
           name: 'getB',
           isStatic: false,
+          isPreview: false,
           type: {
             callSignature: {
               returnType: {
@@ -1112,6 +1334,119 @@ describe('TypeDoc adapter', () => {
         {
           name: 'getC',
           isStatic: false,
+          isPreview: false,
+          type: {
+            callSignature: {
+              returnType: {
+                name: 'void',
+                type: 'intrinsic',
+              },
+            },
+            name: 'getC',
+          },
+          parentName: 'FooClass',
+        },
+      ]);
+    });
+
+    it('should properly denote preview features when a method is in preview', () => {
+      entry.children = [
+        {
+          name: 'getB',
+          kind: TypeDocKind.Method,
+          signatures: [
+            {
+              kind: TypeDocKind.CallSignature,
+              name: 'getB',
+              type: {
+                type: 'intrinsic',
+                name: 'string',
+              },
+              comment: {
+                blockTags: [
+                  {
+                    tag: '@preview',
+                    content: [],
+                  },
+                ],
+              },
+            },
+          ],
+        },
+        {
+          name: 'getA',
+          kind: TypeDocKind.Method,
+          flags: {
+            isStatic: true,
+          },
+          signatures: [
+            {
+              kind: TypeDocKind.CallSignature,
+              name: 'getA',
+              type: {
+                type: 'intrinsic',
+                name: 'void',
+              },
+            },
+          ],
+        },
+        {
+          name: 'getC',
+          kind: TypeDocKind.Method,
+          flags: {
+            isStatic: false,
+          },
+          signatures: [
+            {
+              kind: TypeDocKind.CallSignature,
+              name: 'getC',
+              type: {
+                type: 'intrinsic',
+                name: 'void',
+              },
+            },
+          ],
+        },
+      ];
+
+      const def = adapter.toClassDefinition(entry);
+
+      expect(def.hasPreviewFeatures).toBeTrue();
+      expect(def.methods).toEqual([
+        {
+          name: 'getA',
+          isStatic: true,
+          isPreview: false,
+          type: {
+            callSignature: {
+              returnType: {
+                name: 'void',
+                type: 'intrinsic',
+              },
+            },
+            name: 'getA',
+          },
+          parentName: 'FooClass',
+        },
+        {
+          name: 'getB',
+          isStatic: false,
+          isPreview: true,
+          type: {
+            callSignature: {
+              returnType: {
+                name: 'string',
+                type: 'intrinsic',
+              },
+            },
+            name: 'getB',
+          },
+          parentName: 'FooClass',
+        },
+        {
+          name: 'getC',
+          isStatic: false,
+          isPreview: false,
           type: {
             callSignature: {
               returnType: {
@@ -1156,6 +1491,7 @@ describe('TypeDoc adapter', () => {
         {
           name: 'getUser',
           isStatic: false,
+          isPreview: false,
           type: {
             callSignature: {
               returnType: {
@@ -1261,6 +1597,7 @@ describe('TypeDoc adapter', () => {
           name: 'getUserById',
           description: 'Gets a user from the database.',
           isStatic: false,
+          isPreview: false,
           type: {
             callSignature: {
               returnType: {
@@ -1399,6 +1736,7 @@ describe('TypeDoc adapter', () => {
           codeExampleLanguage: 'markup',
           name: 'defaultProperty',
           isOptional: true,
+          isPreview: false,
           type: {
             name: 'void',
             type: 'intrinsic',
@@ -1409,6 +1747,7 @@ describe('TypeDoc adapter', () => {
           codeExampleLanguage: 'markup',
           name: 'markupProperty',
           isOptional: true,
+          isPreview: false,
           type: {
             name: 'void',
             type: 'intrinsic',
@@ -1419,6 +1758,7 @@ describe('TypeDoc adapter', () => {
           codeExampleLanguage: 'typescript',
           name: 'typescriptProperty',
           isOptional: true,
+          isPreview: false,
           type: {
             name: 'void',
             type: 'intrinsic',
@@ -1456,6 +1796,7 @@ describe('TypeDoc adapter', () => {
       expect(def).toEqual({
         anchorId: 'foo-anchor-id',
         name: 'FooDirective',
+        hasPreviewFeatures: false,
         selector: '[foo]',
       });
     });
@@ -1469,6 +1810,7 @@ describe('TypeDoc adapter', () => {
       expect(def).toEqual({
         anchorId: 'foo-anchor-id',
         name: 'FooDirective',
+        hasPreviewFeatures: false,
         selector:
           'input[fooComplex], textarea[fooComplex], [required][fooComplex]',
       });
@@ -1600,6 +1942,7 @@ describe('TypeDoc adapter', () => {
         {
           name: 'fooA',
           isOptional: true,
+          isPreview: false,
           type: {
             name: 'string',
             type: 'intrinsic',
@@ -1611,6 +1954,7 @@ describe('TypeDoc adapter', () => {
         {
           name: 'fooC',
           isOptional: true,
+          isPreview: false,
           type: {
             name: 'string',
             type: 'intrinsic',
@@ -1625,6 +1969,7 @@ describe('TypeDoc adapter', () => {
         {
           name: 'fooD',
           isOptional: true,
+          isPreview: false,
           type: {
             type: 'reference',
             name: 'EventEmitter',
@@ -1642,6 +1987,439 @@ describe('TypeDoc adapter', () => {
         },
         {
           isOptional: true,
+          isPreview: false,
+          name: 'stream',
+          type: {
+            type: 'reference',
+            name: 'EventEmitter',
+            typeArguments: [
+              {
+                type: 'union',
+                unionTypes: [
+                  {
+                    type: 'array',
+                    name: 'string',
+                  },
+                  {
+                    type: 'reference',
+                    name: 'Observable',
+                    typeArguments: [
+                      {
+                        type: 'array',
+                        name: 'string',
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+          decorator: {
+            name: 'Output',
+          },
+          defaultValue:
+            'new EventEmitter<Array<string> | Observable<Array<string>>>()',
+        },
+      ]);
+    });
+
+    it('should denote preview features when an input is in preview', () => {
+      entry.children = [
+        {
+          name: 'fooB',
+          kind: TypeDocKind.Property,
+          type: {
+            type: 'intrinsic',
+            name: 'number',
+          },
+        },
+        {
+          name: 'fooC',
+          kind: TypeDocKind.Property,
+          type: {
+            type: 'intrinsic',
+            name: 'string',
+          },
+          comment: {
+            blockTags: [
+              {
+                tag: '@preview',
+                content: [],
+              },
+            ],
+          },
+          decorators: [
+            {
+              name: 'Input',
+              type: {
+                type: 'reference',
+                name: 'Input',
+              },
+            },
+          ],
+        },
+        {
+          name: 'fooA',
+          kind: TypeDocKind.Property,
+          type: {
+            type: 'intrinsic',
+            name: 'string',
+          },
+          decorators: [
+            {
+              name: 'Input',
+              type: {
+                type: 'reference',
+                name: 'Input',
+              },
+            },
+          ],
+        },
+        {
+          name: 'fooD',
+          kind: TypeDocKind.Property,
+          type: {
+            type: 'reference',
+            typeArguments: [
+              {
+                type: 'array',
+                elementType: {
+                  type: 'reference',
+                  name: 'FooUser',
+                },
+              },
+            ],
+            name: 'EventEmitter',
+          },
+          defaultValue: 'new EventEmitter<FooUser[]>()',
+          decorators: [
+            {
+              name: 'Output',
+              type: {
+                type: 'reference',
+                name: 'Output',
+              },
+            },
+          ],
+        },
+        {
+          name: 'stream',
+          kind: TypeDocKind.Property,
+          decorators: [
+            {
+              name: 'Output',
+              type: {
+                type: 'reference',
+                name: 'Output',
+              },
+              arguments: {},
+            },
+          ],
+          type: {
+            type: 'reference',
+            typeArguments: [
+              {
+                type: 'union',
+                types: [
+                  {
+                    type: 'array',
+                    elementType: {
+                      type: 'intrinsic',
+                      name: 'string',
+                    },
+                  },
+                  {
+                    type: 'reference',
+                    typeArguments: [
+                      {
+                        type: 'array',
+                        elementType: {
+                          type: 'intrinsic',
+                          name: 'string',
+                        },
+                      },
+                    ],
+                    name: 'Observable',
+                  },
+                ],
+              },
+            ],
+            name: 'EventEmitter',
+          },
+          defaultValue:
+            'new EventEmitter<Array<string> | Observable<Array<string>>>()',
+        },
+      ];
+
+      const def = adapter.toDirectiveDefinition(entry);
+
+      expect(def.hasPreviewFeatures).toBeTrue();
+      expect(def.inputProperties).toEqual([
+        {
+          name: 'fooA',
+          isOptional: true,
+          isPreview: false,
+          type: {
+            name: 'string',
+            type: 'intrinsic',
+          },
+          decorator: {
+            name: 'Input',
+          },
+        },
+        {
+          name: 'fooC',
+          isOptional: true,
+          isPreview: true,
+          type: {
+            name: 'string',
+            type: 'intrinsic',
+          },
+          decorator: {
+            name: 'Input',
+          },
+        },
+      ]);
+
+      expect(def.eventProperties).toEqual([
+        {
+          name: 'fooD',
+          isOptional: true,
+          isPreview: false,
+          type: {
+            type: 'reference',
+            name: 'EventEmitter',
+            typeArguments: [
+              {
+                type: 'array',
+                name: 'FooUser',
+              },
+            ],
+          },
+          decorator: {
+            name: 'Output',
+          },
+          defaultValue: 'new EventEmitter<FooUser[]>()',
+        },
+        {
+          isOptional: true,
+          isPreview: false,
+          name: 'stream',
+          type: {
+            type: 'reference',
+            name: 'EventEmitter',
+            typeArguments: [
+              {
+                type: 'union',
+                unionTypes: [
+                  {
+                    type: 'array',
+                    name: 'string',
+                  },
+                  {
+                    type: 'reference',
+                    name: 'Observable',
+                    typeArguments: [
+                      {
+                        type: 'array',
+                        name: 'string',
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+          decorator: {
+            name: 'Output',
+          },
+          defaultValue:
+            'new EventEmitter<Array<string> | Observable<Array<string>>>()',
+        },
+      ]);
+    });
+
+    it('should denote preview features when an input is in preview', () => {
+      entry.children = [
+        {
+          name: 'fooB',
+          kind: TypeDocKind.Property,
+          type: {
+            type: 'intrinsic',
+            name: 'number',
+          },
+        },
+        {
+          name: 'fooC',
+          kind: TypeDocKind.Property,
+          type: {
+            type: 'intrinsic',
+            name: 'string',
+          },
+          decorators: [
+            {
+              name: 'Input',
+              type: {
+                type: 'reference',
+                name: 'Input',
+              },
+            },
+          ],
+        },
+        {
+          name: 'fooA',
+          kind: TypeDocKind.Property,
+          type: {
+            type: 'intrinsic',
+            name: 'string',
+          },
+          decorators: [
+            {
+              name: 'Input',
+              type: {
+                type: 'reference',
+                name: 'Input',
+              },
+            },
+          ],
+        },
+        {
+          name: 'fooD',
+          kind: TypeDocKind.Property,
+          type: {
+            type: 'reference',
+            typeArguments: [
+              {
+                type: 'array',
+                elementType: {
+                  type: 'reference',
+                  name: 'FooUser',
+                },
+              },
+            ],
+            name: 'EventEmitter',
+          },
+          defaultValue: 'new EventEmitter<FooUser[]>()',
+          decorators: [
+            {
+              name: 'Output',
+              type: {
+                type: 'reference',
+                name: 'Output',
+              },
+            },
+          ],
+        },
+        {
+          name: 'stream',
+          kind: TypeDocKind.Property,
+          comment: {
+            blockTags: [
+              {
+                tag: '@preview',
+                content: [],
+              },
+            ],
+          },
+          decorators: [
+            {
+              name: 'Output',
+              type: {
+                type: 'reference',
+                name: 'Output',
+              },
+              arguments: {},
+            },
+          ],
+          type: {
+            type: 'reference',
+            typeArguments: [
+              {
+                type: 'union',
+                types: [
+                  {
+                    type: 'array',
+                    elementType: {
+                      type: 'intrinsic',
+                      name: 'string',
+                    },
+                  },
+                  {
+                    type: 'reference',
+                    typeArguments: [
+                      {
+                        type: 'array',
+                        elementType: {
+                          type: 'intrinsic',
+                          name: 'string',
+                        },
+                      },
+                    ],
+                    name: 'Observable',
+                  },
+                ],
+              },
+            ],
+            name: 'EventEmitter',
+          },
+          defaultValue:
+            'new EventEmitter<Array<string> | Observable<Array<string>>>()',
+        },
+      ];
+
+      const def = adapter.toDirectiveDefinition(entry);
+
+      expect(def.hasPreviewFeatures).toBeTrue();
+      expect(def.inputProperties).toEqual([
+        {
+          name: 'fooA',
+          isOptional: true,
+          isPreview: false,
+          type: {
+            name: 'string',
+            type: 'intrinsic',
+          },
+          decorator: {
+            name: 'Input',
+          },
+        },
+        {
+          name: 'fooC',
+          isOptional: true,
+          isPreview: false,
+          type: {
+            name: 'string',
+            type: 'intrinsic',
+          },
+          decorator: {
+            name: 'Input',
+          },
+        },
+      ]);
+
+      expect(def.eventProperties).toEqual([
+        {
+          name: 'fooD',
+          isOptional: true,
+          isPreview: false,
+          type: {
+            type: 'reference',
+            name: 'EventEmitter',
+            typeArguments: [
+              {
+                type: 'array',
+                name: 'FooUser',
+              },
+            ],
+          },
+          decorator: {
+            name: 'Output',
+          },
+          defaultValue: 'new EventEmitter<FooUser[]>()',
+        },
+        {
+          isOptional: true,
+          isPreview: true,
           name: 'stream',
           type: {
             type: 'reference',
@@ -1707,6 +2485,7 @@ describe('TypeDoc adapter', () => {
         {
           name: 'boundName',
           isOptional: true,
+          isPreview: false,
           type: {
             name: 'string',
             type: 'intrinsic',
@@ -1735,6 +2514,7 @@ describe('TypeDoc adapter', () => {
       expect(def).toEqual({
         anchorId: 'foo-anchor-id',
         name: 'FooEnum',
+        hasPreviewFeatures: false,
         members: [],
       });
     });
@@ -1757,15 +2537,63 @@ describe('TypeDoc adapter', () => {
       expect(def).toEqual({
         anchorId: 'foo-anchor-id',
         name: 'FooEnum',
+        hasPreviewFeatures: false,
         members: [
           {
             name: 'A',
+            isPreview: false,
           },
           {
             name: 'B',
+            isPreview: false,
           },
           {
             name: 'C',
+            isPreview: false,
+          },
+        ],
+      });
+    });
+
+    it('should denote preview features when a enum member is in preview', () => {
+      entry.children = [
+        {
+          name: 'A',
+        },
+        {
+          name: 'B',
+        },
+        {
+          name: 'C',
+          comment: {
+            blockTags: [
+              {
+                tag: '@preview',
+                content: [],
+              },
+            ],
+          },
+        },
+      ];
+
+      const def = adapter.toEnumerationDefinition(entry);
+
+      expect(def).toEqual({
+        anchorId: 'foo-anchor-id',
+        name: 'FooEnum',
+        hasPreviewFeatures: true,
+        members: [
+          {
+            name: 'A',
+            isPreview: false,
+          },
+          {
+            name: 'B',
+            isPreview: false,
+          },
+          {
+            name: 'C',
+            isPreview: true,
           },
         ],
       });
@@ -1788,6 +2616,7 @@ describe('TypeDoc adapter', () => {
       expect(def).toEqual({
         anchorId: 'foo-anchor-id',
         name: 'FooInterface',
+        hasPreviewFeatures: false,
         properties: [],
       });
     });
@@ -1902,6 +2731,7 @@ describe('TypeDoc adapter', () => {
       expect(def.properties).toEqual([
         {
           isOptional: false,
+          isPreview: false,
           name: 'bar',
           description: 'method description',
           type: {
@@ -1916,6 +2746,7 @@ describe('TypeDoc adapter', () => {
         },
         {
           isOptional: false,
+          isPreview: false,
           name: 'fooC',
           type: {
             type: 'intrinsic',
@@ -1924,6 +2755,7 @@ describe('TypeDoc adapter', () => {
         },
         {
           isOptional: false,
+          isPreview: false,
           name: 'fooZ',
           type: {
             type: 'intrinsic',
@@ -1932,6 +2764,7 @@ describe('TypeDoc adapter', () => {
         },
         {
           isOptional: false,
+          isPreview: false,
           name: 'moo',
           description: 'method description',
           type: {
@@ -1946,6 +2779,7 @@ describe('TypeDoc adapter', () => {
         },
         {
           isOptional: true,
+          isPreview: false,
           name: 'fooA',
           type: {
             type: 'intrinsic',
@@ -1954,6 +2788,193 @@ describe('TypeDoc adapter', () => {
         },
         {
           isOptional: true,
+          isPreview: false,
+          name: 'fooB',
+          type: {
+            type: 'reference',
+            name: 'FooUser',
+          },
+        },
+      ]);
+    });
+
+    it('should denote preview features when a property is in preview', () => {
+      entry.children = [
+        {
+          name: 'fooB',
+          kind: TypeDocKind.Property,
+          flags: {
+            isOptional: true,
+          },
+          type: {
+            type: 'reference',
+            name: 'FooUser',
+          },
+        },
+        {
+          name: 'fooA',
+          kind: TypeDocKind.Property,
+          flags: {
+            isOptional: true,
+          },
+          comment: {
+            blockTags: [
+              {
+                tag: '@preview',
+                content: [],
+              },
+            ],
+          },
+          type: {
+            type: 'intrinsic',
+            name: 'string',
+          },
+        },
+        {
+          name: 'fooZ',
+          kind: TypeDocKind.Property,
+          type: {
+            type: 'intrinsic',
+            name: 'string',
+          },
+        },
+        {
+          name: 'fooC',
+          kind: TypeDocKind.Property,
+          type: {
+            type: 'intrinsic',
+            name: 'string',
+          },
+          comment: {
+            blockTags: [
+              {
+                tag: '@required',
+                content: [],
+              },
+            ],
+          },
+        },
+        {
+          name: 'bar',
+          kind: TypeDocKind.Method,
+          signatures: [
+            {
+              name: 'bar',
+              comment: {
+                summary: [
+                  {
+                    kind: 'text',
+                    text: 'method ',
+                  },
+                  {
+                    kind: 'text',
+                    text: 'description',
+                  },
+                ],
+              },
+              type: {
+                type: 'intrinsic',
+                name: 'void',
+              },
+            },
+          ],
+        },
+        {
+          name: 'moo',
+          kind: TypeDocKind.Property,
+          type: {
+            type: 'reflection',
+            declaration: {
+              signatures: [
+                {
+                  name: 'moo',
+                  comment: {
+                    summary: [
+                      {
+                        kind: 'text',
+                        text: 'method ',
+                      },
+                      {
+                        kind: 'text',
+                        text: 'description',
+                      },
+                    ],
+                  },
+                  type: {
+                    type: 'intrinsic',
+                    name: 'void',
+                  },
+                },
+              ],
+            },
+          },
+        },
+      ];
+
+      const def = adapter.toInterfaceDefinition(entry);
+
+      expect(def.hasPreviewFeatures).toBeTrue();
+      expect(def.properties).toEqual([
+        {
+          isOptional: false,
+          isPreview: false,
+          name: 'bar',
+          description: 'method description',
+          type: {
+            callSignature: {
+              returnType: {
+                type: 'intrinsic',
+                name: 'void',
+              },
+            },
+            name: 'bar',
+          },
+        },
+        {
+          isOptional: false,
+          isPreview: false,
+          name: 'fooC',
+          type: {
+            type: 'intrinsic',
+            name: 'string',
+          },
+        },
+        {
+          isOptional: false,
+          isPreview: false,
+          name: 'fooZ',
+          type: {
+            type: 'intrinsic',
+            name: 'string',
+          },
+        },
+        {
+          isOptional: false,
+          isPreview: false,
+          name: 'moo',
+          description: 'method description',
+          type: {
+            type: 'reflection',
+            callSignature: {
+              returnType: {
+                type: 'intrinsic',
+                name: 'void',
+              },
+            },
+          },
+        },
+        {
+          isOptional: true,
+          isPreview: true,
+          name: 'fooA',
+          type: {
+            type: 'intrinsic',
+            name: 'string',
+          },
+        },
+        {
+          isOptional: true,
+          isPreview: false,
           name: 'fooB',
           type: {
             type: 'reference',
@@ -2019,6 +3040,7 @@ describe('TypeDoc adapter', () => {
       expect(def.properties).toEqual([
         {
           isOptional: false,
+          isPreview: false,
           name: 'foo',
           type: {
             type: 'typeParameter',
@@ -2027,6 +3049,7 @@ describe('TypeDoc adapter', () => {
         },
         {
           isOptional: false,
+          isPreview: false,
           name: 'user',
           type: {
             type: 'typeParameter',
@@ -2061,6 +3084,7 @@ describe('TypeDoc adapter', () => {
       expect(def.properties).toEqual([
         {
           isOptional: true,
+          isPreview: false,
           name: '__index',
           description: 'All other properties for an item.',
           type: {
@@ -2115,6 +3139,7 @@ describe('TypeDoc adapter', () => {
       expect(def.properties).toEqual([
         {
           isOptional: true,
+          isPreview: false,
           name: '__index',
           description: 'Test description.',
           type: {
@@ -2169,6 +3194,7 @@ describe('TypeDoc adapter', () => {
       expect(def.properties).toEqual([
         {
           isOptional: false,
+          isPreview: false,
           name: 'route',
           type: {
             type: 'reflection',
@@ -2176,6 +3202,7 @@ describe('TypeDoc adapter', () => {
               properties: [
                 {
                   isOptional: true,
+                  isPreview: false,
                   name: 'commands',
                   type: {
                     type: 'array',
@@ -2247,6 +3274,49 @@ describe('TypeDoc adapter', () => {
         transformMethod: {
           name: 'transform',
           isStatic: false,
+          isPreview: false,
+          type: {
+            name: 'transform',
+            callSignature: {
+              parameters: [
+                {
+                  isOptional: false,
+                  name: 'value',
+                  type: {
+                    type: 'reference',
+                    name: 'Date',
+                  },
+                },
+              ],
+              returnType: {
+                type: 'intrinsic',
+                name: 'string',
+              },
+            },
+          },
+          parentName: 'FooPipe',
+        },
+      });
+    });
+
+    it('should denote preview features when the transform method is in preview', () => {
+      entry.children[0].signatures[0].comment = {
+        blockTags: [
+          {
+            tag: '@preview',
+            content: [],
+          },
+        ],
+      };
+      const def = adapter.toPipeDefinition(entry);
+
+      expect(def).toEqual({
+        anchorId: 'foo-anchor-id',
+        name: 'FooPipe',
+        transformMethod: {
+          name: 'transform',
+          isStatic: false,
+          isPreview: true,
           type: {
             name: 'transform',
             callSignature: {
@@ -2342,6 +3412,134 @@ describe('TypeDoc adapter', () => {
       expect(def).toEqual({
         anchorId: 'foo-anchor-id',
         name: 'FooTypeAlias',
+        isPreview: false,
+        type: {
+          type: 'union',
+          unionTypes: [
+            {
+              type: 'intrinsic',
+              name: 'string',
+            },
+            {
+              type: 'reference',
+              name: 'FooDate',
+            },
+            {
+              type: 'intrinsic',
+              name: 'number',
+            },
+            {
+              type: 'intrinsic',
+              name: 'false',
+            },
+            {
+              type: 'unknown',
+              name: '1',
+            },
+            {
+              type: 'literal',
+              name: 'left',
+            },
+            {
+              type: 'typeParameter',
+              name: 'T',
+            },
+            {
+              type: 'reflection',
+              callSignature: {
+                returnType: {
+                  type: 'intrinsic',
+                  name: 'void',
+                },
+              },
+            },
+            {
+              type: 'typeOperator',
+              name: 'keyof FooUser',
+            },
+          ],
+        },
+      });
+    });
+
+    it('should denote preview features if the type alias is in preview', () => {
+      const entry: TypeDocEntry = {
+        anchorId: 'foo-anchor-id',
+        name: 'FooTypeAlias',
+        comment: {
+          blockTags: [
+            {
+              tag: '@preview',
+              content: [],
+            },
+          ],
+        },
+        type: {
+          type: 'union',
+          types: [
+            {
+              type: 'intrinsic',
+              name: 'string',
+            },
+            {
+              type: 'reference',
+              name: 'FooDate',
+            },
+            {
+              type: 'intrinsic',
+              name: 'number',
+            },
+            {
+              type: 'intrinsic',
+              name: 'false',
+            },
+            {
+              type: 'unknown',
+              name: '1',
+            },
+            {
+              type: 'literal',
+              name: 'left',
+            },
+            {
+              type: 'typeParameter',
+              name: 'T',
+              constraint: {
+                name: 'FooUser',
+              },
+            },
+            {
+              type: 'reflection',
+              declaration: {
+                signatures: [
+                  {
+                    name: '__call',
+                    kind: TypeDocKind.CallSignature,
+                    type: {
+                      type: 'intrinsic',
+                      name: 'void',
+                    },
+                  },
+                ],
+              },
+            },
+            {
+              type: 'typeOperator',
+              operator: 'keyof',
+              target: {
+                name: 'FooUser',
+              },
+            },
+          ],
+        },
+      };
+
+      const def = adapter.toTypeAliasDefinition(entry);
+
+      expect(def).toEqual({
+        anchorId: 'foo-anchor-id',
+        name: 'FooTypeAlias',
+        isPreview: true,
         type: {
           type: 'union',
           unionTypes: [
@@ -2425,6 +3623,7 @@ describe('TypeDoc adapter', () => {
       expect(def).toEqual({
         anchorId: 'foo-anchor-id',
         name: 'FooTypeAlias',
+        isPreview: false,
         type: {
           type: 'reflection',
           indexSignature: {
@@ -2512,6 +3711,7 @@ describe('TypeDoc adapter', () => {
         anchorId: 'foo-anchor-id',
         name: 'FooTypeAlias',
         description: 'test description',
+        isPreview: false,
         type: {
           type: 'reflection',
           callSignature: {
@@ -2621,6 +3821,7 @@ describe('TypeDoc adapter', () => {
         anchorId: 'foo-anchor-id',
         name: 'FooTypeAlias',
         description: 'test description',
+        isPreview: false,
         type: {
           type: 'array',
           callSignature: {
@@ -2688,6 +3889,7 @@ describe('TypeDoc adapter', () => {
       expect(def).toEqual({
         anchorId: 'foo-anchor-id',
         name: 'FooTypeAlias',
+        isPreview: false,
         type: {
           type: 'union',
           unionTypes: [
@@ -2721,6 +3923,7 @@ describe('TypeDoc adapter', () => {
     expect(def).toEqual({
       anchorId: 'class-skyfoobar',
       name: 'SkyFoobar',
+      hasPreviewFeatures: false,
     });
   });
 
@@ -2737,6 +3940,7 @@ describe('TypeDoc adapter', () => {
     expect(def).toEqual({
       anchorId: '',
       name: 'SkyFoobar',
+      hasPreviewFeatures: false,
     });
   });
 
@@ -2750,6 +3954,7 @@ describe('TypeDoc adapter', () => {
     expect(def).toEqual({
       anchorId: '',
       name: 'SkyFoobar',
+      hasPreviewFeatures: false,
     });
   });
 });
