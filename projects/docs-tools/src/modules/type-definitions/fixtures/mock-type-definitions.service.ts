@@ -9,12 +9,14 @@ import { SkyDocsInterfaceDefinition } from '../interface-definition';
 import { SkyDocsPipeDefinition } from '../pipe-definition';
 
 import { SkyDocsTypeAliasDefinition } from '../type-alias-definition';
+import { SkyDocsTypeDocAdapterService } from '../typedoc-adapter.service';
 
 import { TypeDocEntry } from '../typedoc-types';
 
-export class MockTypeDocAdapterService {
+export class MockTypeDocAdapterService extends SkyDocsTypeDocAdapterService {
   public toClassDefinition(entry: TypeDocEntry): SkyDocsClassDefinition {
     return {
+      hasPreviewFeatures: false,
       anchorId: entry.anchorId,
       name: entry.name,
     };
@@ -24,6 +26,7 @@ export class MockTypeDocAdapterService {
     entry: TypeDocEntry
   ): SkyDocsDirectiveDefinition {
     return {
+      hasPreviewFeatures: false,
       anchorId: entry.anchorId,
       name: entry.name,
       selector: 'foo',
@@ -34,6 +37,7 @@ export class MockTypeDocAdapterService {
     entry: TypeDocEntry
   ): SkyDocsEnumerationDefinition {
     return {
+      hasPreviewFeatures: false,
       anchorId: entry.anchorId,
       members: undefined,
       name: entry.name,
@@ -44,6 +48,7 @@ export class MockTypeDocAdapterService {
     entry: TypeDocEntry
   ): SkyDocsInterfaceDefinition {
     return {
+      hasPreviewFeatures: false,
       anchorId: entry.anchorId,
       name: entry.name,
       properties: [],
@@ -54,7 +59,17 @@ export class MockTypeDocAdapterService {
     return {
       anchorId: entry.anchorId,
       name: entry.name,
-      transformMethod: undefined,
+      transformMethod: {
+        name: 'transform',
+        isPreview: false,
+        type: {
+          callSignature: {
+            returnType: {
+              name: 'stringj',
+            },
+          },
+        },
+      },
     };
   }
 
@@ -64,6 +79,7 @@ export class MockTypeDocAdapterService {
     return {
       anchorId: entry.anchorId,
       name: entry.name,
+      isPreview: false,
       type: {},
     };
   }

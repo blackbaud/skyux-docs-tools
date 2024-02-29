@@ -70,9 +70,17 @@
 <ng-template let-property #descriptionTemplate>
   <div
     *ngIf="!property.isOutput && !property.isOptional && showOptionalStatus"
-    class="sky-docs-property-definition-label sky-text-danger"
+    class="sky-docs-property-definition-label"
   >
-    Required.
+    <sky-status-indicator indicatorType="danger" descriptionType="danger"
+      >Required.</sky-status-indicator
+    >
+  </div>
+  <div
+    *ngIf="property.isPreview"
+    class="sky-docs-property-definition-preview-warning sky-docs-property-definition-label"
+  >
+    <sky-docs-preview-feature-indicator></sky-docs-preview-feature-indicator>
   </div>
 
   <sky-docs-safe-html

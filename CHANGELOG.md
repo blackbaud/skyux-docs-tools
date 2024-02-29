@@ -1,5 +1,9 @@
 # Changelog
 
+## 9.2.0 (2023-02-27)
+
+- Add ability to mark features as being in preview. [#272](https://github.com/blackbaud/skyux-docs-tools/pull/272)
+
 ## 10.0.0-alpha.0 (2024-01-30)
 
 ### ⚠ BREAKING CHANGES

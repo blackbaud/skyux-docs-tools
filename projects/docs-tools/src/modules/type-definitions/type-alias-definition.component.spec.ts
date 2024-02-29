@@ -13,6 +13,14 @@ import { TypeDefinitionsFixturesModule } from './fixtures/type-definitions.modul
 
 import { SkyDocsTypeDefinitionsProvider } from './type-definitions-provider';
 
+function getPreviewWarning(
+  fixture: ComponentFixture<TypeAliasDefinitionFixtureComponent>
+): HTMLElement | null {
+  return (fixture.nativeElement as HTMLElement).querySelector(
+    '.sky-docs-type-alias-definition .sky-docs-type-alias-preview-warning'
+  );
+}
+
 describe('Type alias definition component', function () {
   let fixture: ComponentFixture<TypeAliasDefinitionFixtureComponent>;
 
@@ -55,6 +63,7 @@ describe('Type alias definition component', function () {
       anchorId: 'foo-anchor-id',
       name: 'Foo',
       description: 'This description has a FooUser.',
+      isPreview: false,
       type: {
         callSignature: {
           returnType: {
@@ -75,5 +84,53 @@ describe('Type alias definition component', function () {
     expect(element.innerHTML).toContain(
       '<a class="sky-docs-anchor-link" href="#foo-user">FooUser</a>'
     );
+  }));
+
+  it('should mark a method as preview', fakeAsync(() => {
+    fixture.componentInstance.config = {
+      anchorId: 'foo-anchor-id',
+      name: 'Foo',
+      description: 'This description has a FooUser.',
+      isPreview: true,
+      type: {
+        callSignature: {
+          returnType: {
+            type: 'reference',
+            name: 'FooUser',
+          },
+        },
+      },
+    };
+
+    fixture.detectChanges();
+    tick();
+
+    const previewWarning = getPreviewWarning(fixture);
+
+    expect(previewWarning).not.toBeNull();
+  }));
+
+  it('should not mark a method as preview when not in preview', fakeAsync(() => {
+    fixture.componentInstance.config = {
+      anchorId: 'foo-anchor-id',
+      name: 'Foo',
+      description: 'This description has a FooUser.',
+      isPreview: false,
+      type: {
+        callSignature: {
+          returnType: {
+            type: 'reference',
+            name: 'FooUser',
+          },
+        },
+      },
+    };
+
+    fixture.detectChanges();
+    tick();
+
+    const previewWarning = getPreviewWarning(fixture);
+
+    expect(previewWarning).toBeNull();
   }));
 });

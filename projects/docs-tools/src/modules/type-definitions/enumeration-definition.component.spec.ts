@@ -66,9 +66,11 @@ describe('Enumeration definition component', function () {
       anchorId: 'foo-anchor-id',
       name: 'Foo',
       description: 'This description has a FooUser.',
+      hasPreviewFeatures: false,
       members: [
         {
           name: 'Bar',
+          isPreview: false,
         },
       ],
     };
@@ -90,9 +92,11 @@ describe('Enumeration definition component', function () {
       anchorId: 'foo-anchor-id',
       name: 'Foo',
       description: 'This description has a `Date`.',
+      hasPreviewFeatures: false,
       members: [
         {
           name: 'Bar',
+          isPreview: false,
         },
       ],
     };
@@ -112,10 +116,12 @@ describe('Enumeration definition component', function () {
       anchorId: 'foo-anchor-id',
       name: 'Foo',
       description: '',
+      hasPreviewFeatures: false,
       members: [
         {
           description: 'This description has a FooUser.',
           name: 'Bar',
+          isPreview: false,
         },
       ],
     };

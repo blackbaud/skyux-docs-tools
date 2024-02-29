@@ -35,11 +35,15 @@ import { SkyDocsDemoPageComponent } from './demo-page.component';
 import { SkyDocsDemoPageModuleInfoComponent } from './demo-page-module-info.component';
 
 import { SkyDocsDemoPageTypeDefinitionsComponent } from './demo-page-type-definitions.component';
+import { SkyAlertModule } from '@skyux/indicators';
+import { SkyAppLinkModule } from '@skyux/router';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule,
+    SkyAlertModule,
+    SkyAppLinkModule,
     SkyCodeBlockModule,
     SkyCodeModule,
     SkyDocsDemoModule,

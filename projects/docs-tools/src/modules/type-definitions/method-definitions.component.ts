@@ -23,6 +23,7 @@ interface MethodViewModel {
   formattedName: string;
   sourceCode: string;
   isStatic: boolean;
+  isPreview: boolean;
 }
 
 @Component({
@@ -89,6 +90,7 @@ export class SkyDocsMethodDefinitionsComponent implements OnInit {
           formattedName: this.#formatService.getFormattedMethodName(method),
           sourceCode: this.#formatService.getMethodSourceCode(method),
           isStatic: method.isStatic,
+          isPreview: method.isPreview,
         };
 
         if (vm.isStatic) {

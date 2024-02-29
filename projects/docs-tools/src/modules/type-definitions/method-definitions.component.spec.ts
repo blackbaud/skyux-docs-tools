@@ -13,6 +13,14 @@ import { TypeDefinitionsFixturesModule } from './fixtures/type-definitions.modul
 
 import { SkyDocsTypeDefinitionsProvider } from './type-definitions-provider';
 
+function getPreviewWarnings(
+  fixture: ComponentFixture<MethodDefinitionsFixtureComponent>
+): NodeListOf<HTMLElement> {
+  return (fixture.nativeElement as HTMLElement).querySelectorAll(
+    '.sky-docs-standard-method-definitions .sky-docs-method-definition-preview-warning'
+  );
+}
+
 describe('Method definitions component', function () {
   let fixture: ComponentFixture<MethodDefinitionsFixtureComponent>;
 
@@ -56,6 +64,7 @@ describe('Method definitions component', function () {
           name: 'FooMethod',
           description: 'This description has a FooUser.',
           isStatic: true,
+          isPreview: false,
           type: {
             callSignature: {
               returnType: {
@@ -86,12 +95,69 @@ describe('Method definitions component', function () {
     expect(methodElement.innerText).toContain('public static ');
   }));
 
+  it('should mark a method as preview', fakeAsync(() => {
+    fixture.componentInstance.config = {
+      methods: [
+        {
+          name: 'FooMethod',
+          description: 'This description has a FooUser.',
+          isStatic: false,
+          isPreview: true,
+          type: {
+            callSignature: {
+              returnType: {
+                type: 'reference',
+                name: 'FooUser',
+              },
+            },
+          },
+        },
+      ],
+    };
+
+    fixture.detectChanges();
+    tick();
+
+    const previewWarnings = getPreviewWarnings(fixture);
+
+    expect(previewWarnings.length).toBe(1);
+  }));
+
+  it('should not mark a method as preview when not in preview', fakeAsync(() => {
+    fixture.componentInstance.config = {
+      methods: [
+        {
+          name: 'FooMethod',
+          description: 'This description has a FooUser.',
+          isStatic: false,
+          isPreview: false,
+          type: {
+            callSignature: {
+              returnType: {
+                type: 'reference',
+                name: 'FooUser',
+              },
+            },
+          },
+        },
+      ],
+    };
+
+    fixture.detectChanges();
+    tick();
+
+    const previewWarnings = getPreviewWarnings(fixture);
+
+    expect(previewWarnings.length).toBe(0);
+  }));
+
   it('should add links to types within description', fakeAsync(() => {
     fixture.componentInstance.config = {
       methods: [
         {
           name: 'FooMethod',
           description: 'This description has a FooUser.',
+          isPreview: false,
           type: {
             callSignature: {
               returnType: {
@@ -122,6 +188,7 @@ describe('Method definitions component', function () {
         {
           name: 'FooMethod',
           deprecationWarning: 'This description has a FooUser.',
+          isPreview: false,
           type: {
             callSignature: {
               returnType: {

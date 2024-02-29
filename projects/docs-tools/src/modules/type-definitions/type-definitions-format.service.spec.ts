@@ -26,6 +26,7 @@ describe('Type definitions format service', () => {
   it('should generate method source code', () => {
     const def: SkyDocsClassMethodDefinition = {
       name: 'fooBar',
+      isPreview: false,
       type: {
         callSignature: {
           returnType: {
@@ -44,6 +45,7 @@ describe('Type definitions format service', () => {
     const def: SkyDocsClassMethodDefinition = {
       name: 'fooBar',
       isStatic: true,
+      isPreview: false,
       type: {
         callSignature: {
           returnType: {
@@ -61,6 +63,7 @@ describe('Type definitions format service', () => {
   it('should generate method source code with parameters', () => {
     const def: SkyDocsClassMethodDefinition = {
       name: 'fooBar',
+      isPreview: false,
       type: {
         callSignature: {
           parameters: [
@@ -99,6 +102,7 @@ describe('Type definitions format service', () => {
     const def: SkyDocsClassMethodDefinition = {
       name: 'getUserById',
       description: 'Gets a user from the database.',
+      isPreview: false,
       type: {
         callSignature: {
           returnType: {
@@ -169,9 +173,11 @@ describe('Type definitions format service', () => {
     const def: SkyDocsInterfaceDefinition = {
       anchorId: 'foo-anchor-id',
       name: 'Foo',
+      hasPreviewFeatures: false,
       properties: [
         {
           isOptional: true,
+          isPreview: false,
           name: 'foo',
           type: {
             type: 'typeParameter',
@@ -180,6 +186,7 @@ describe('Type definitions format service', () => {
         },
         {
           isOptional: true,
+          isPreview: false,
           name: 'user',
           type: {
             type: 'typeParameter',
@@ -188,6 +195,7 @@ describe('Type definitions format service', () => {
         },
         {
           isOptional: false,
+          isPreview: false,
           name: 'route',
           type: {
             type: 'reflection',
@@ -195,6 +203,7 @@ describe('Type definitions format service', () => {
               properties: [
                 {
                   isOptional: true,
+                  isPreview: false,
                   name: 'commands',
                   type: {
                     type: 'array',
@@ -207,6 +216,7 @@ describe('Type definitions format service', () => {
         },
         {
           isOptional: true,
+          isPreview: false,
           name: '__index',
           type: {
             indexSignature: {
@@ -252,6 +262,7 @@ describe('Type definitions format service', () => {
     const def: SkyDocsTypeAliasDefinition = {
       anchorId: 'foo-anchor-id',
       name: 'FooTypeAlias',
+      isPreview: false,
       type: {
         type: 'union',
         unionTypes: [
@@ -306,6 +317,7 @@ describe('Type definitions format service', () => {
     const def: SkyDocsTypeAliasDefinition = {
       anchorId: 'foo-anchor-id',
       name: 'FooTypeAlias',
+      isPreview: false,
       type: {
         type: 'reflection',
         indexSignature: {
@@ -334,6 +346,7 @@ describe('Type definitions format service', () => {
     const def: SkyDocsTypeAliasDefinition = {
       anchorId: 'foo-anchor-id',
       name: 'FooTypeAlias',
+      isPreview: false,
       type: {
         type: 'reflection',
         callSignature: {
@@ -382,6 +395,7 @@ describe('Type definitions format service', () => {
     const def: SkyDocsClassPropertyDefinition = {
       name: 'foo',
       isOptional: true,
+      isPreview: false,
       type: {
         type: 'reference',
         name: 'FooUser',
@@ -396,6 +410,7 @@ describe('Type definitions format service', () => {
   it('should generate HTML formatted property names without types', () => {
     const def: SkyDocsEnumerationMemberDefinition = {
       name: 'Foo',
+      isPreview: false,
     };
 
     const formattedName = service.getFormattedPropertyName(
@@ -407,6 +422,7 @@ describe('Type definitions format service', () => {
   it('should generate HTML formatted property names w/ call signature', () => {
     const def: SkyDocsClassPropertyDefinition = {
       isOptional: false,
+      isPreview: false,
       name: 'functions',
       type: {
         type: 'intrinsic',
@@ -436,6 +452,7 @@ describe('Type definitions format service', () => {
   it('should generate HTML formatted property names w/ call signature', () => {
     const def: SkyDocsClassPropertyDefinition = {
       isOptional: false,
+      isPreview: false,
       name: 'functions',
       type: {
         type: 'array',
@@ -465,6 +482,7 @@ describe('Type definitions format service', () => {
   it('should generate HTML formatted property names w/ union type parameters', () => {
     const def: SkyDocsClassPropertyDefinition = {
       isOptional: true,
+      isPreview: false,
       name: 'stream',
       type: {
         type: 'reference',
@@ -507,6 +525,7 @@ describe('Type definitions format service', () => {
   it('should generate HTML formatted index signature property names', () => {
     const def: SkyDocsClassPropertyDefinition = {
       isOptional: true,
+      isPreview: false,
       name: '__index',
       type: {
         indexSignature: {
@@ -533,6 +552,7 @@ describe('Type definitions format service', () => {
     const def: SkyDocsClassPropertyDefinition = {
       name: 'options',
       isOptional: false,
+      isPreview: false,
       type: {
         type: 'reference',
         name: 'Options',
@@ -550,6 +570,7 @@ describe('Type definitions format service', () => {
     const def: SkyDocsClassPropertyDefinition = {
       name: 'click',
       isOptional: true,
+      isPreview: false,
       type: {
         type: 'reference',
         name: 'EventEmitter',
@@ -576,6 +597,7 @@ describe('Type definitions format service', () => {
     const def: SkyDocsClassMethodDefinition = {
       name: 'getUserById',
       description: 'Gets a user from the database.',
+      isPreview: false,
       type: {
         callSignature: {
           returnType: {
@@ -605,6 +627,7 @@ describe('Type definitions format service', () => {
     const def: SkyDocsClassMethodDefinition = {
       name: 'getUserById',
       deprecationWarning: '',
+      isPreview: false,
       type: {
         callSignature: {
           returnType: {

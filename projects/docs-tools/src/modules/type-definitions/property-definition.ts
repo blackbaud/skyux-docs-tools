@@ -12,4 +12,6 @@ export interface SkyDocsClassPropertyDefinition
   defaultValue?: string;
 
   isOptional: boolean;
+
+  isPreview: boolean;
 }
