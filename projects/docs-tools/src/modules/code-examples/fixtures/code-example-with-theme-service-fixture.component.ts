@@ -30,12 +30,12 @@ export class CodeExampleWithThemeServiceFixtureComponent {
   constructor(
     private elRef: ElementRef,
     private renderer: Renderer2,
-    private themeSvc: SkyThemeService
+    private themeSvc: SkyThemeService,
   ) {
     this.themeSvc.init(
       this.elRef.nativeElement,
       this.renderer,
-      new SkyThemeSettings(SkyTheme.presets.modern, SkyThemeMode.presets.light)
+      new SkyThemeSettings(SkyTheme.presets.modern, SkyThemeMode.presets.light),
     );
   }
 

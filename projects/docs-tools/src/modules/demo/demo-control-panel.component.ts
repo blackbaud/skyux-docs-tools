@@ -101,7 +101,7 @@ export class SkyDocsDemoControlPanelComponent
 
     this.eventListeners = merge(
       ...this.checkboxes.map((c) => c.selectionChange),
-      ...this.radioGroups.map((c) => c.selectionChange)
+      ...this.radioGroups.map((c) => c.selectionChange),
     )
       .pipe(takeUntil(this.ngUnsubscribe))
       .subscribe((change) => {

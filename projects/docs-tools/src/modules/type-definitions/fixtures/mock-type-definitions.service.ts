@@ -23,7 +23,7 @@ export class MockTypeDocAdapterService extends SkyDocsTypeDocAdapterService {
   }
 
   public toDirectiveDefinition(
-    entry: TypeDocEntry
+    entry: TypeDocEntry,
   ): SkyDocsDirectiveDefinition {
     return {
       hasPreviewFeatures: false,
@@ -34,7 +34,7 @@ export class MockTypeDocAdapterService extends SkyDocsTypeDocAdapterService {
   }
 
   public toEnumerationDefinition(
-    entry: TypeDocEntry
+    entry: TypeDocEntry,
   ): SkyDocsEnumerationDefinition {
     return {
       hasPreviewFeatures: false,
@@ -45,7 +45,7 @@ export class MockTypeDocAdapterService extends SkyDocsTypeDocAdapterService {
   }
 
   public toInterfaceDefinition(
-    entry: TypeDocEntry
+    entry: TypeDocEntry,
   ): SkyDocsInterfaceDefinition {
     return {
       hasPreviewFeatures: false,
@@ -74,7 +74,7 @@ export class MockTypeDocAdapterService extends SkyDocsTypeDocAdapterService {
   }
 
   public toTypeAliasDefinition(
-    entry: TypeDocEntry
+    entry: TypeDocEntry,
   ): SkyDocsTypeAliasDefinition {
     return {
       anchorId: entry.anchorId,

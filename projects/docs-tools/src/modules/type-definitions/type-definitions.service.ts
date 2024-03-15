@@ -16,7 +16,7 @@ import { TypeDocKind } from './typedoc-types';
 export class SkyDocsTypeDefinitionsService {
   constructor(
     private typeDefinitionsProvider: SkyDocsTypeDefinitionsProvider,
-    private adapter: SkyDocsTypeDocAdapterService
+    private adapter: SkyDocsTypeDocAdapterService,
   ) {}
 
   /**
@@ -26,7 +26,7 @@ export class SkyDocsTypeDefinitionsService {
    */
   public getTypeDefinitions(
     sourceCodePath: string,
-    additionalSourceCodePaths?: string[]
+    additionalSourceCodePaths?: string[],
   ): SkyDocsTypeDefinitions {
     if (!sourceCodePath) {
       throw new Error('The `sourceCodePath` parameter is required');
@@ -40,7 +40,7 @@ export class SkyDocsTypeDefinitionsService {
     sourceCodePaths.forEach((path) => {
       if (!path.endsWith('/') && !path.endsWith('.ts')) {
         throw new Error(
-          'Source code paths must end with a forward slash (`/`) or `.ts`.'
+          'Source code paths must end with a forward slash (`/`) or `.ts`.',
         );
       }
     });
@@ -70,11 +70,11 @@ export class SkyDocsTypeDefinitionsService {
 
       // Only process types that match the requested source code location.
       const typeDefinitions = allDefinitions.filter(
-        (i) => i.sources && i.sources[0].fileName.match(requestedDir)
+        (i) => i.sources && i.sources[0].fileName.match(requestedDir),
       );
       if (typeDefinitions.length === 0) {
         console.warn(
-          `Type definitions were not found for location: ${requestedDir}`
+          `Type definitions were not found for location: ${requestedDir}`,
         );
       }
 

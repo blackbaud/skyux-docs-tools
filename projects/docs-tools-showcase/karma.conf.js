@@ -24,7 +24,7 @@ module.exports = function (config) {
     coverageReporter: {
       dir: require('path').join(
         __dirname,
-        '../../coverage/docs-tools-showcase'
+        '../../coverage/docs-tools-showcase',
       ),
       subdir: '.',
       reporters: [{ type: 'html' }, { type: 'text-summary' }],

@@ -18,10 +18,10 @@ import { TypeDefinitionsFixturesModule } from './fixtures/type-definitions.modul
 import { SkyDocsTypeDefinitionsProvider } from './type-definitions-provider';
 
 function getPreviewWarnings(
-  fixture: ComponentFixture<PropertyDefinitionsFixtureComponent>
+  fixture: ComponentFixture<PropertyDefinitionsFixtureComponent>,
 ): NodeListOf<HTMLElement> {
   return (fixture.nativeElement as HTMLElement).querySelectorAll(
-    '.sky-docs-property-definitions .sky-docs-property-definition-preview-warning'
+    '.sky-docs-property-definitions .sky-docs-property-definition-preview-warning',
   );
 }
 
@@ -95,7 +95,7 @@ describe('Property definitions component', function () {
     tick();
 
     const element = fixture.nativeElement.querySelector(
-      '.sky-docs-property-definitions-table-cell-name'
+      '.sky-docs-property-definitions-table-cell-name',
     );
 
     expect(element.textContent).toEqual('@Input()foobar: number');
@@ -176,11 +176,11 @@ describe('Property definitions component', function () {
     tick();
 
     const element = fixture.nativeElement.querySelector(
-      '.sky-docs-property-definition-label-optional'
+      '.sky-docs-property-definition-label-optional',
     );
 
     expect(element.innerHTML).toContain(
-      'new <a class="sky-docs-anchor-link" href="#foo-user">FooUser</a>()'
+      'new <a class="sky-docs-anchor-link" href="#foo-user">FooUser</a>()',
     );
   }));
 
@@ -208,7 +208,7 @@ describe('Property definitions component', function () {
     tick();
 
     const element = fixture.nativeElement.querySelector(
-      '.sky-docs-property-definitions-deprecation-warning'
+      '.sky-docs-property-definitions-deprecation-warning',
     );
 
     expect(element.innerHTML).toContain(
@@ -216,7 +216,7 @@ describe('Property definitions component', function () {
         'Use <code><a class="sky-docs-anchor-link" href="#foo">Foo</a></code> from',
         '<code><a class="sky-docs-anchor-link" href="#foo-user">FooUser</a></code> instead,',
         'because <code><a class="sky-docs-anchor-link" href="#foo">Foo</a></code> is now supported.',
-      ].join(' ')
+      ].join(' '),
     );
   }));
 
@@ -244,7 +244,7 @@ describe('Property definitions component', function () {
     tick();
 
     const element = fixture.nativeElement.querySelector(
-      '.sky-docs-property-definitions-description'
+      '.sky-docs-property-definitions-description',
     );
 
     expect(element.innerHTML).toContain(
@@ -252,7 +252,7 @@ describe('Property definitions component', function () {
         'Use <code><a class="sky-docs-anchor-link" href="#foo">Foo</a></code> from',
         '<code><a class="sky-docs-anchor-link" href="#foo-user">FooUser</a></code> instead,',
         'because <code><a class="sky-docs-anchor-link" href="#foo">Foo</a></code> is now supported.',
-      ].join(' ')
+      ].join(' '),
     );
   }));
 
@@ -275,11 +275,11 @@ describe('Property definitions component', function () {
     tick();
 
     const element = fixture.nativeElement.querySelector(
-      '.sky-docs-property-definitions-table-cell-name'
+      '.sky-docs-property-definitions-table-cell-name',
     );
 
     expect(element.innerHTML).toContain(
-      '<a class="sky-docs-anchor-link" href="#foo">Foo</a>'
+      '<a class="sky-docs-anchor-link" href="#foo">Foo</a>',
     );
   }));
 });

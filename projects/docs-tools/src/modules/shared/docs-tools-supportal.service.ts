@@ -19,7 +19,7 @@ export class SkyDocsSupportalService {
       .get('https://sky-pusa01.app.blackbaud.net/skysp/v1/docs/components-info')
       .pipe(
         map((results: any) => results.components),
-        share()
+        share(),
       );
   }
 }

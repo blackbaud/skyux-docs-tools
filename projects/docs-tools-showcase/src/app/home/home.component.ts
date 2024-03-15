@@ -54,7 +54,7 @@ export class HomeComponent {
 
   constructor(
     private changeRef: ChangeDetectorRef,
-    private formBuilder: UntypedFormBuilder
+    private formBuilder: UntypedFormBuilder,
   ) {
     this.fuzzyForm = this.formBuilder.group({
       myDate: new UntypedFormControl(new Date(1955, 10, 5)),
@@ -111,7 +111,7 @@ export class HomeComponent {
    * This is for demonstration purposes only.
    */
   private getCustomDates(
-    event: SkyDatepickerCalendarChange
+    event: SkyDatepickerCalendarChange,
   ): Observable<SkyDatepickerCustomDate[]> {
     const getNextDate = function (startDate: Date, daystoAdd: number): Date {
       let newDate = new Date(startDate);

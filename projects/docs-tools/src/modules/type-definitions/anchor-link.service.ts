@@ -16,7 +16,7 @@ import { SkyDocsTypeDefinitionsProvider } from './type-definitions-provider';
 function createRegex(keyword: string): RegExp {
   return new RegExp(
     `(^|[^a-zA-Z0-9>.[/])(${keyword})(\\.\\w+)?(?=[^a-zA-Z0-9<]+|$)`,
-    'g'
+    'g',
   );
 }
 
@@ -36,7 +36,7 @@ export class SkyDocsAnchorLinkService {
    */
   public applyTypeAnchorLinks(
     content: string,
-    config?: SkyDocsAnchorLinkConfig
+    config?: SkyDocsAnchorLinkConfig,
   ): string {
     if (!this.anchorIds || !content) {
       return content;

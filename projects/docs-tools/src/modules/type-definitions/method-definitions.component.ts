@@ -62,7 +62,7 @@ export class SkyDocsMethodDefinitionsComponent implements OnInit {
   constructor(
     changeDetector: ChangeDetectorRef,
     formatService: SkyDocsTypeDefinitionsFormatService,
-    mediaQueryService: SkyMediaQueryService
+    mediaQueryService: SkyMediaQueryService,
   ) {
     this.#changeDetector = changeDetector;
     this.#formatService = formatService;

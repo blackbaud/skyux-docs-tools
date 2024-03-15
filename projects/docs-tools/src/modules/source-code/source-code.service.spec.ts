@@ -46,7 +46,7 @@ describe('Source code service', () => {
     };
     service = new SkyDocsSourceCodeService(mockSourceCodeProvider);
     expect(service.getSourceCode(path)[0].rawContents).toEqual(
-      '<baz style="width: 50%;"></baz>'
+      '<baz style="width: 50%;"></baz>',
     );
   });
 });

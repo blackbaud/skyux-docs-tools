@@ -42,17 +42,17 @@ describe('Anchor links pipe', () => {
     const result = fixture.debugElement.query(By.css('[data-sky-id="basic"]'))
       .nativeElement.textContent;
     expect(result).toEqual(
-      '<code><a class="sky-docs-anchor-link" href="#foo-user">FooUser</a></code>'
+      '<code><a class="sky-docs-anchor-link" href="#foo-user">FooUser</a></code>',
     );
   });
 
   it('should allow omitting code tag formatting', () => {
     fixture.detectChanges();
     const result = fixture.debugElement.query(
-      By.css('[data-sky-id="no-code-tags"]')
+      By.css('[data-sky-id="no-code-tags"]'),
     ).nativeElement.textContent;
     expect(result).toEqual(
-      '<a class="sky-docs-anchor-link" href="#foo-user">FooUser</a>'
+      '<a class="sky-docs-anchor-link" href="#foo-user">FooUser</a>',
     );
   });
 });

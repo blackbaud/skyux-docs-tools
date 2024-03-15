@@ -84,11 +84,11 @@ describe('Interface definition component', function () {
     tick();
 
     const element = fixture.nativeElement.querySelector(
-      '.sky-docs-interface-definition-description'
+      '.sky-docs-interface-definition-description',
     );
 
     expect(element.innerHTML).toContain(
-      '<a class="sky-docs-anchor-link" href="#foo-user">FooUser</a>'
+      '<a class="sky-docs-anchor-link" href="#foo-user">FooUser</a>',
     );
   }));
 
@@ -116,11 +116,11 @@ describe('Interface definition component', function () {
     tick();
 
     const element = fixture.nativeElement.querySelector(
-      '.sky-docs-property-definitions-table-cell-description'
+      '.sky-docs-property-definitions-table-cell-description',
     );
 
     expect(element.innerHTML).toContain(
-      '<a class="sky-docs-anchor-link" href="#foo-user">FooUser</a>'
+      '<a class="sky-docs-anchor-link" href="#foo-user">FooUser</a>',
     );
   }));
 
@@ -161,11 +161,11 @@ describe('Interface definition component', function () {
     tick();
 
     const nameElement = fixture.nativeElement.querySelector(
-      '.sky-docs-property-definitions-table-cell-name:first-child'
+      '.sky-docs-property-definitions-table-cell-name:first-child',
     );
 
     expect(nameElement.textContent).toEqual(
-      'foo?: (userId: number) => string[]'
+      'foo?: (userId: number) => string[]',
     );
   }));
 });

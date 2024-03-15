@@ -67,7 +67,7 @@ describe('Directive definition component', function () {
     fixture.detectChanges();
 
     let selectorElement = fixture.nativeElement.querySelector(
-      '.sky-docs-directive-selector'
+      '.sky-docs-directive-selector',
     );
 
     expect(selectorElement.innerText).toEqual('app-foo');
@@ -118,14 +118,14 @@ describe('Directive definition component', function () {
     fixture.detectChanges();
 
     const rowElements = fixture.nativeElement.querySelectorAll(
-      '.sky-docs-property-definitions-table-cell-name'
+      '.sky-docs-property-definitions-table-cell-name',
     );
 
     expect(rowElements.item(0).innerText.replace(/\r?\n|\r/g, '')).toEqual(
-      '@Input()config?: Config'
+      '@Input()config?: Config',
     );
     expect(rowElements.item(1).innerText.replace(/\r?\n|\r/g, '')).toEqual(
-      '@Output()click: EventEmitter<string>'
+      '@Output()click: EventEmitter<string>',
     );
   });
 
@@ -151,7 +151,7 @@ describe('Directive definition component', function () {
     fixture.detectChanges();
 
     const rowElements = fixture.nativeElement.querySelectorAll(
-      '.sky-docs-property-definitions-table-cell-name'
+      '.sky-docs-property-definitions-table-cell-name',
     );
 
     expect(rowElements.item(0).innerText).toContain('@Output()');
@@ -169,11 +169,11 @@ describe('Directive definition component', function () {
     fixture.detectChanges();
 
     const element = fixture.nativeElement.querySelector(
-      '.sky-docs-directive-definition-description'
+      '.sky-docs-directive-definition-description',
     );
 
     expect(element.innerHTML).toContain(
-      '<a class="sky-docs-anchor-link" href="#foo-user">FooUser</a>'
+      '<a class="sky-docs-anchor-link" href="#foo-user">FooUser</a>',
     );
   });
 });

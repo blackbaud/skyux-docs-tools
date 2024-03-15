@@ -14,10 +14,10 @@ import { TypeDefinitionsFixturesModule } from './fixtures/type-definitions.modul
 import { SkyDocsTypeDefinitionsProvider } from './type-definitions-provider';
 
 function getPreviewWarnings(
-  fixture: ComponentFixture<MethodDefinitionsFixtureComponent>
+  fixture: ComponentFixture<MethodDefinitionsFixtureComponent>,
 ): NodeListOf<HTMLElement> {
   return (fixture.nativeElement as HTMLElement).querySelectorAll(
-    '.sky-docs-standard-method-definitions .sky-docs-method-definition-preview-warning'
+    '.sky-docs-standard-method-definitions .sky-docs-method-definition-preview-warning',
   );
 }
 
@@ -81,10 +81,10 @@ describe('Method definitions component', function () {
     tick();
 
     const staticTable = fixture.nativeElement.querySelector(
-      '.sky-docs-static-method-definitions'
+      '.sky-docs-static-method-definitions',
     );
     const standardTable = fixture.nativeElement.querySelector(
-      '.sky-docs-standard-method-definitions'
+      '.sky-docs-standard-method-definitions',
     );
 
     expect(staticTable).not.toBeNull();
@@ -174,11 +174,11 @@ describe('Method definitions component', function () {
     tick();
 
     const element = fixture.nativeElement.querySelector(
-      '.sky-docs-method-definition-description'
+      '.sky-docs-method-definition-description',
     );
 
     expect(element.innerHTML).toContain(
-      '<a class="sky-docs-anchor-link" href="#foo-user">FooUser</a>'
+      '<a class="sky-docs-anchor-link" href="#foo-user">FooUser</a>',
     );
   }));
 
@@ -205,11 +205,11 @@ describe('Method definitions component', function () {
     tick();
 
     const element = fixture.nativeElement.querySelector(
-      '.sky-docs-method-definition-deprecation-warning'
+      '.sky-docs-method-definition-deprecation-warning',
     );
 
     expect(element.innerHTML).toContain(
-      '<a class="sky-docs-anchor-link" href="#foo-user">FooUser</a>'
+      '<a class="sky-docs-anchor-link" href="#foo-user">FooUser</a>',
     );
   }));
 
@@ -220,7 +220,7 @@ describe('Method definitions component', function () {
     tick();
 
     expect(
-      fixture.nativeElement.querySelector('.sky-docs-method-definitions')
+      fixture.nativeElement.querySelector('.sky-docs-method-definitions'),
     ).toBeNull();
   }));
 });

@@ -18,15 +18,15 @@ export class AppComponent {
   constructor(
     renderer: Renderer2,
     themeService: SkyThemeService,
-    styleLoader: SkyAppStyleLoader
+    styleLoader: SkyAppStyleLoader,
   ) {
     themeService.init(
       document.body,
       renderer,
       new SkyThemeSettings(
         SkyTheme.presets['default'],
-        SkyThemeMode.presets.light
-      )
+        SkyThemeMode.presets.light,
+      ),
     );
 
     styleLoader.loadStyles().then(() => {

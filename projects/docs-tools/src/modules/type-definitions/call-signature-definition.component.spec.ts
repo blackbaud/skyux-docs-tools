@@ -46,7 +46,7 @@ describe('Call signature definition', () => {
   it('should set defaults', () => {
     fixture.detectChanges();
     expect(
-      fixture.componentInstance.callSignatureDefinitionRef.config
+      fixture.componentInstance.callSignatureDefinitionRef.config,
     ).toBeUndefined();
   });
 
@@ -63,11 +63,11 @@ describe('Call signature definition', () => {
     tick();
 
     const element = fixture.nativeElement.querySelector(
-      '.sky-docs-call-signature-definition-return-type'
+      '.sky-docs-call-signature-definition-return-type',
     );
 
     expect(element.innerHTML).toContain(
-      '<a class="sky-docs-anchor-link" href="#foo-user">FooUser</a>'
+      '<a class="sky-docs-anchor-link" href="#foo-user">FooUser</a>',
     );
   }));
 
@@ -94,11 +94,11 @@ describe('Call signature definition', () => {
     tick();
 
     const element = fixture.nativeElement.querySelector(
-      '.sky-docs-parameter-definition-description'
+      '.sky-docs-parameter-definition-description',
     );
 
     expect(element.innerHTML).toContain(
-      '<a class="sky-docs-anchor-link" href="#foo-user">FooUser</a>'
+      '<a class="sky-docs-anchor-link" href="#foo-user">FooUser</a>',
     );
   }));
 });

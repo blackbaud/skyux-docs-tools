@@ -18,7 +18,7 @@ export class SkyDocsTypeAnchorLinksPipe implements PipeTransform {
 
   public transform(
     value: string,
-    formatType?: SkyDocsAnchorLinkServiceFormatType
+    formatType?: SkyDocsAnchorLinkServiceFormatType,
   ): string {
     const anchorLinkConfig: SkyDocsAnchorLinkConfig = {
       applyCodeFormatting: formatType !== 'no-code-tags',
