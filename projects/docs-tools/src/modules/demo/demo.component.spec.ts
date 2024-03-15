@@ -1,5 +1,3 @@
-import { DebugElement } from '@angular/core';
-
 import {
   ComponentFixture,
   fakeAsync,
@@ -7,17 +5,11 @@ import {
   tick,
 } from '@angular/core/testing';
 
-import { By } from '@angular/platform-browser';
-
-import { SkyAuthTokenProvider } from '@skyux/http';
-
 import { expect } from '@skyux-sdk/testing';
 
 import { DemoFixturesModule } from './fixtures/demo-fixtures.module';
 
 import { DemoFixtureComponent } from './fixtures/demo.component.fixture';
-
-import { DemoAuthTokenMockProvider } from './fixtures/demo-auth-token-mock-provider';
 
 describe('Demo component', () => {
   let fixture: ComponentFixture<DemoFixtureComponent>;

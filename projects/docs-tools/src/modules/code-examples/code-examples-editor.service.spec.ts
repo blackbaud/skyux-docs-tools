@@ -354,7 +354,6 @@ describe('Code examples editor service', () => {
       '@skyux/core': skyuxVersion,
       '@skyux/errors': skyuxVersion,
       '@skyux/forms': skyuxVersion,
-      '@skyux/http': skyuxVersion,
       '@skyux/i18n': skyuxVersion,
       '@skyux/indicators': skyuxVersion,
       '@skyux/layout': skyuxVersion,
