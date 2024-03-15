@@ -31,7 +31,7 @@ class TestComponent {
 }
 
 function getRadioInputs(
-  fixture: ComponentFixture<TestComponent>
+  fixture: ComponentFixture<TestComponent>,
 ): NodeListOf<HTMLInputElement> {
   return fixture.nativeElement.querySelectorAll('input');
 }

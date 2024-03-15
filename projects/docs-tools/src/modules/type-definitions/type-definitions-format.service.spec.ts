@@ -94,7 +94,7 @@ describe('Type definitions format service', () => {
 
     const sourceCode = service.getMethodSourceCode(def);
     expect(sourceCode).toEqual(
-      'public fooBar(foo: string, args?: Options): FooUser'
+      'public fooBar(foo: string, args?: Options): FooUser',
     );
   });
 
@@ -165,7 +165,7 @@ describe('Type definitions format service', () => {
 
     const sourceCode = service.getMethodSourceCode(def);
     expect(sourceCode).toEqual(
-      'public getUserById(id: FooUser, user: Foo<T, U>, locale?: string): FooUser'
+      'public getUserById(id: FooUser, user: Foo<T, U>, locale?: string): FooUser',
     );
   });
 
@@ -309,7 +309,7 @@ describe('Type definitions format service', () => {
 
     const sourceCode = service.getTypeAliasSourceCode(def);
     expect(sourceCode).toEqual(
-      "type FooTypeAlias = string | FooDate | number | false | 1 | 'left' | T | () => void"
+      "type FooTypeAlias = string | FooDate | number | false | 1 | 'left' | T | () => void",
     );
   });
 
@@ -387,7 +387,7 @@ describe('Type definitions format service', () => {
 
     const sourceCode = service.getTypeAliasSourceCode(def);
     expect(sourceCode).toEqual(
-      'type FooTypeAlias = (args: FooUser, addl: T, data?: any[]) => void'
+      'type FooTypeAlias = (args: FooUser, addl: T, data?: any[]) => void',
     );
   });
 
@@ -414,7 +414,7 @@ describe('Type definitions format service', () => {
     };
 
     const formattedName = service.getFormattedPropertyName(
-      def as SkyDocsClassPropertyDefinition
+      def as SkyDocsClassPropertyDefinition,
     );
     expect(formattedName).toEqual('Foo');
   });
@@ -518,7 +518,7 @@ describe('Type definitions format service', () => {
 
     const formattedName = service.getFormattedPropertyName(def);
     expect(formattedName).toEqual(
-      '@Output()<br>stream: EventEmitter&lt;string[] | Observable&lt;string[]&gt;&gt;'
+      '@Output()<br>stream: EventEmitter&lt;string[] | Observable&lt;string[]&gt;&gt;',
     );
   });
 
@@ -589,7 +589,7 @@ describe('Type definitions format service', () => {
 
     const formattedName = service.getFormattedPropertyName(def);
     expect(formattedName).toEqual(
-      '@Output()<br>click: EventEmitter&lt;FooUser[]&gt;'
+      '@Output()<br>click: EventEmitter&lt;FooUser[]&gt;',
     );
   });
 

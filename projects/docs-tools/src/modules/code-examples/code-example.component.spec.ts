@@ -71,7 +71,7 @@ describe('Code example component with SkyThemeService', () => {
     });
 
     fixture = TestBed.createComponent(
-      CodeExampleWithThemeServiceFixtureComponent
+      CodeExampleWithThemeServiceFixtureComponent,
     );
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -82,7 +82,10 @@ describe('Code example component with SkyThemeService', () => {
     expect(codeExampleComponent.theme).toEqual(SkyDocsCodeExampleTheme.Modern);
 
     component.setTheme(
-      new SkyThemeSettings(SkyTheme.presets.default, SkyThemeMode.presets.light)
+      new SkyThemeSettings(
+        SkyTheme.presets.default,
+        SkyThemeMode.presets.light,
+      ),
     );
     fixture.detectChanges();
 

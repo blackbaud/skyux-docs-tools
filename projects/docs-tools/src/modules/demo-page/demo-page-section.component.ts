@@ -39,7 +39,7 @@ export class SkyDocsDemoPageSectionComponent {
       // Remove special characters.
       .replace(
         /[\_\~\`\@\!\#\$\%\^\&\*\(\)\[\]\{\}\;\:\'\/\\\<\>\,\.\?\=\+\|"]/g,
-        ''
+        '',
       )
 
       // Replace space characters with a dash.

@@ -70,7 +70,7 @@ export class SkyDocsCodeExamplesEditorService {
     const mergedDependencies = Object.assign(
       {},
       defaultDependencies,
-      codeExample.packageDependencies
+      codeExample.packageDependencies,
     );
 
     // Ensure any @skyux dependencies list the correct version of SKY UX.
@@ -92,7 +92,7 @@ export class SkyDocsCodeExamplesEditorService {
       codeExample.sourceCode,
       mergedDependencies,
       codeExample.theme,
-      codeExample.stylesheets
+      codeExample.stylesheets,
     );
 
     return {
@@ -113,7 +113,7 @@ export class SkyDocsCodeExamplesEditorService {
     sourceCode: SkyDocsSourceCodeFile[],
     dependencies: SkyDocsCodeExampleModuleDependencies,
     theme: SkyDocsCodeExampleTheme,
-    stylesheets: string[] = []
+    stylesheets: string[] = [],
   ): {
     [path: string]: string;
   } {
@@ -159,14 +159,14 @@ export class SkyDocsCodeExamplesEditorService {
         const exportedComponent = this.getExportedComponent(file.rawContents);
         const componentSelector = this.getComponentSelector(
           exportedComponent,
-          sourceCode
+          sourceCode,
         );
 
         appComponentTemplate += `<${componentSelector}></${componentSelector}>`;
 
         moduleImports.push(moduleName);
         moduleImportStatements.push(
-          `import {\n  ${moduleName}\n} from '${importPath}';`
+          `import {\n  ${moduleName}\n} from '${importPath}';`,
         );
       }
 
@@ -180,7 +180,7 @@ export class SkyDocsCodeExamplesEditorService {
 
         moduleImports.push(componentName);
         moduleImportStatements.push(
-          `import {\n  ${componentName}\n} from '${importPath}';`
+          `import {\n  ${componentName}\n} from '${importPath}';`,
         );
       }
     });
@@ -348,7 +348,7 @@ body {
         },
       },
       undefined,
-      2
+      2,
     );
 
     files['package.json'] = JSON.stringify(
@@ -361,7 +361,7 @@ body {
         },
       },
       undefined,
-      2
+      2,
     );
 
     files['tsconfig.app.json'] = JSON.stringify(
@@ -375,7 +375,7 @@ body {
         include: ['src/**/*.d.ts'],
       },
       undefined,
-      2
+      2,
     );
 
     files['tsconfig.json'] = JSON.stringify(
@@ -409,7 +409,7 @@ body {
         },
       },
       undefined,
-      2
+      2,
     );
 
     return files;
@@ -449,7 +449,7 @@ body {
 
   private getComponentSelector(
     componentClassName: string,
-    sourceCode: SkyDocsSourceCodeFile[]
+    sourceCode: SkyDocsSourceCodeFile[],
   ): string {
     const found = sourceCode.find((file) => {
       return file.rawContents.indexOf(`class ${componentClassName}`) > -1;

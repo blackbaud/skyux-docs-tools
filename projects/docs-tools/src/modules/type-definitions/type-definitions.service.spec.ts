@@ -211,7 +211,7 @@ describe('Type definitions service', function () {
           ],
         },
       ],
-    }
+    },
   ): {
     service: SkyDocsTypeDefinitionsService;
     adapter: SkyDocsTypeDocAdapterService;
@@ -220,7 +220,7 @@ describe('Type definitions service', function () {
     return {
       service: new SkyDocsTypeDefinitionsService(
         provider,
-        adapter as SkyDocsTypeDocAdapterService
+        adapter as SkyDocsTypeDocAdapterService,
       ),
       adapter: adapter,
     };
@@ -231,7 +231,7 @@ describe('Type definitions service', function () {
   it('should return type definitions from a specific source code path', () => {
     const service = getServiceAndAdapter().service;
     const result = service.getTypeDefinitions(
-      '/src/app/public/modules/_documentation-test/'
+      '/src/app/public/modules/_documentation-test/',
     );
 
     for (const key in result) {
@@ -242,7 +242,7 @@ describe('Type definitions service', function () {
         >;
         expect(result[lookup].length)
           .withContext(
-            'The result is expected to have one item in each category.'
+            'The result is expected to have one item in each category.',
           )
           .toEqual(1);
       }
@@ -252,7 +252,7 @@ describe('Type definitions service', function () {
   it('should return type definitions from a specific source code file', () => {
     const service = getServiceAndAdapter().service;
     const result = service.getTypeDefinitions(
-      '/src/app/public/modules/_documentation-test/foo-class.ts'
+      '/src/app/public/modules/_documentation-test/foo-class.ts',
     );
 
     for (const key in result) {
@@ -269,7 +269,7 @@ describe('Type definitions service', function () {
         } else {
           expect(result[lookup].length)
             .withContext(
-              'The result should not have any objects other than one class'
+              'The result should not have any objects other than one class',
             )
             .toEqual(0);
         }
@@ -281,7 +281,7 @@ describe('Type definitions service', function () {
     const service = getServiceAndAdapter().service;
     const result = service.getTypeDefinitions(
       '/src/app/public/modules/_documentation-test/',
-      ['/src/app/public/modules/_documentation-test-2/']
+      ['/src/app/public/modules/_documentation-test-2/'],
     );
 
     for (const key in result) {
@@ -292,7 +292,7 @@ describe('Type definitions service', function () {
         >;
         expect(result[lookup].length)
           .withContext(
-            'The result is expected to have one item in each category.'
+            'The result is expected to have one item in each category.',
           )
           .toEqual(2);
       }
@@ -334,7 +334,7 @@ describe('Type definitions service', function () {
       typeDefinitions: undefined,
     }).service;
     const result = service.getTypeDefinitions(
-      '/src/app/public/modules/_documentation-test/empty-file.ts'
+      '/src/app/public/modules/_documentation-test/empty-file.ts',
     );
     expect(result).toEqual({
       classes: [],
@@ -357,7 +357,7 @@ describe('Type definitions service', function () {
     }).service;
     service.getTypeDefinitions('/src/app/public/modules/empty/');
     expect(spy).toHaveBeenCalledWith(
-      'Type definitions were not found for location: modules/empty/'
+      'Type definitions were not found for location: modules/empty/',
     );
   });
 
@@ -367,22 +367,22 @@ describe('Type definitions service', function () {
       service.getTypeDefinitions('/src/app/public/modules/foobar');
     }).toThrow(
       new Error(
-        'Source code paths must end with a forward slash (`/`) or `.ts`.'
-      )
+        'Source code paths must end with a forward slash (`/`) or `.ts`.',
+      ),
     );
     expect(function () {
       service.getTypeDefinitions('/src/app/public/modules/foobar/thing.scss');
     }).toThrow(
       new Error(
-        'Source code paths must end with a forward slash (`/`) or `.ts`.'
-      )
+        'Source code paths must end with a forward slash (`/`) or `.ts`.',
+      ),
     );
   });
 
   it('should return type definitions which do not denote preview features when there are none', () => {
     const service = getServiceAndAdapter().service;
     const result = service.getTypeDefinitions(
-      '/src/app/public/modules/_documentation-test/'
+      '/src/app/public/modules/_documentation-test/',
     );
 
     expect(result.hasPreviewFeatures).toBeFalse();
@@ -413,10 +413,10 @@ describe('Type definitions service', function () {
           anchorId: entry.anchorId,
           name: entry.name,
         };
-      }
+      },
     );
     const result = service.getTypeDefinitions(
-      '/src/app/public/modules/_documentation-test/'
+      '/src/app/public/modules/_documentation-test/',
     );
 
     expect(result.hasPreviewFeatures).toBeTrue();
@@ -447,10 +447,10 @@ describe('Type definitions service', function () {
           anchorId: entry.anchorId,
           name: entry.name,
         };
-      }
+      },
     );
     const result = service.getTypeDefinitions(
-      '/src/app/public/modules/_documentation-test/'
+      '/src/app/public/modules/_documentation-test/',
     );
 
     expect(result.hasPreviewFeatures).toBeTrue();
@@ -482,10 +482,10 @@ describe('Type definitions service', function () {
           name: entry.name,
           selector: 'foo',
         };
-      }
+      },
     );
     const result = service.getTypeDefinitions(
-      '/src/app/public/modules/_documentation-test/'
+      '/src/app/public/modules/_documentation-test/',
     );
 
     expect(result.hasPreviewFeatures).toBeTrue();
@@ -517,10 +517,10 @@ describe('Type definitions service', function () {
           name: entry.name,
           selector: 'foo',
         };
-      }
+      },
     );
     const result = service.getTypeDefinitions(
-      '/src/app/public/modules/_documentation-test/'
+      '/src/app/public/modules/_documentation-test/',
     );
 
     expect(result.hasPreviewFeatures).toBeTrue();
@@ -552,10 +552,10 @@ describe('Type definitions service', function () {
           members: undefined,
           name: entry.name,
         };
-      }
+      },
     );
     const result = service.getTypeDefinitions(
-      '/src/app/public/modules/_documentation-test/'
+      '/src/app/public/modules/_documentation-test/',
     );
 
     expect(result.hasPreviewFeatures).toBeTrue();
@@ -584,10 +584,10 @@ describe('Type definitions service', function () {
           name: entry.name,
           properties: [],
         };
-      }
+      },
     );
     const result = service.getTypeDefinitions(
-      '/src/app/public/modules/_documentation-test/'
+      '/src/app/public/modules/_documentation-test/',
     );
 
     expect(result.hasPreviewFeatures).toBeTrue();
@@ -628,10 +628,10 @@ describe('Type definitions service', function () {
             },
           },
         };
-      }
+      },
     );
     const result = service.getTypeDefinitions(
-      '/src/app/public/modules/_documentation-test/'
+      '/src/app/public/modules/_documentation-test/',
     );
 
     expect(result.hasPreviewFeatures).toBeTrue();
@@ -663,10 +663,10 @@ describe('Type definitions service', function () {
           isPreview: true,
           type: {},
         };
-      }
+      },
     );
     const result = service.getTypeDefinitions(
-      '/src/app/public/modules/_documentation-test/'
+      '/src/app/public/modules/_documentation-test/',
     );
 
     expect(result.hasPreviewFeatures).toBeTrue();

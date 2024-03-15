@@ -24,7 +24,7 @@ describe('Demo component', () => {
 
   function showControlPanel(): void {
     const headingButton = fixture.nativeElement.querySelector(
-      '[data-test-selector="sky-docs-demo-heading-button"]'
+      '[data-test-selector="sky-docs-demo-heading-button"]',
     );
     headingButton.click();
     fixture.detectChanges();
@@ -32,7 +32,7 @@ describe('Demo component', () => {
 
   function resetControlPanel(): void {
     const resetButton = fixture.nativeElement.querySelector(
-      '[data-test-selector="sky-docs-demo-control-panel-reset-button"]'
+      '[data-test-selector="sky-docs-demo-control-panel-reset-button"]',
     );
     resetButton.click();
     fixture.detectChanges();
@@ -61,7 +61,7 @@ describe('Demo component', () => {
     fixture.componentInstance.alignContents = 'center';
     fixture.detectChanges();
     const viewport = fixture.nativeElement.querySelector(
-      '.sky-docs-demo-viewport'
+      '.sky-docs-demo-viewport',
     );
     expect(viewport).toHaveCssClass('sky-docs-demo-viewport-align-center');
   });
@@ -70,7 +70,7 @@ describe('Demo component', () => {
     fixture.detectChanges();
 
     const headingElement = fixture.nativeElement.querySelector(
-      '[data-test-selector="sky-docs-demo-heading-text"]'
+      '[data-test-selector="sky-docs-demo-heading-text"]',
     );
 
     fixture.componentInstance.heading = undefined;
@@ -88,7 +88,7 @@ describe('Demo component', () => {
     it('should expose a `reset` emitter', () => {
       const spy = spyOn(
         fixture.componentInstance,
-        'onDemoReset'
+        'onDemoReset',
       ).and.callThrough();
       fixture.detectChanges();
 
@@ -106,7 +106,7 @@ describe('Demo component', () => {
         fixture.componentInstance.demoControlPanelComponentRef;
       const unsubscribeSpy = spyOn(
         demoControlPanelComponentRef['eventListeners'],
-        'unsubscribe'
+        'unsubscribe',
       ).and.callThrough();
 
       fixture.componentInstance.changeFormControls();
@@ -119,7 +119,7 @@ describe('Demo component', () => {
     it('should emit value changes for controls', fakeAsync(() => {
       const selectionSpy = spyOn(
         fixture.componentInstance,
-        'onDemoSelectionChange'
+        'onDemoSelectionChange',
       ).and.callThrough();
 
       fixture.detectChanges();

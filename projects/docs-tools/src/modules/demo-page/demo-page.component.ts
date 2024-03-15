@@ -173,7 +173,7 @@ export class SkyDocsDemoPageComponent
 
   protected readonly siteOptions: SkyDocsToolsSiteOptions | undefined = inject(
     SkyDocsToolsSiteOptions,
-    { optional: true }
+    { optional: true },
   );
 
   #_additionalSourceCodePaths: string[] | undefined;
@@ -188,7 +188,7 @@ export class SkyDocsDemoPageComponent
     private domAdapter: SkyDocsDemoPageDomAdapterService,
     private supportalService: SkyDocsSupportalService,
     private titleService: SkyDocsDemoPageTitleService,
-    private typeDefinitionService: SkyDocsTypeDefinitionsService
+    private typeDefinitionService: SkyDocsTypeDefinitionsService,
   ) {}
 
   public ngOnInit(): void {
@@ -266,17 +266,17 @@ export class SkyDocsDemoPageComponent
   #updateTypes(): void {
     this.moduleTypeDefinitions = this.typeDefinitionService.getTypeDefinitions(
       this.moduleSourceCodePath,
-      this.additionalSourceCodePaths
+      this.additionalSourceCodePaths,
     );
   }
 
   #updateTestingTypes(): void {
     this.testingTypeDefinitions = this.typeDefinitionService.getTypeDefinitions(
       this.testingSourceCodePath,
-      this.additionalTestingSourceCodePaths
+      this.additionalTestingSourceCodePaths,
     );
     this.enableTestingTab = Object.values(this.testingTypeDefinitions).some(
-      (value) => value && value.length > 0
+      (value) => value && value.length > 0,
     );
   }
 }

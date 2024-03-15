@@ -57,7 +57,7 @@ describe('Anchor link service', function () {
         '<code><a class="sky-docs-anchor-link" href="#foo-enum">FooEnum</a>.Foo</code>',
         '<code><a class="sky-docs-anchor-link" href="#foo-user">FooUser</a></code>',
         '<a href="#">FooUser</a>',
-      ].join(' ')
+      ].join(' '),
     );
   });
 
@@ -86,7 +86,7 @@ describe('Anchor link service', function () {
         '<a class="sky-docs-anchor-link" href="#foo-enum">FooEnum</a>.Foo',
         '<a class="sky-docs-anchor-link" href="#foo-user">FooUser</a>',
         '<a href="#">FooUser</a>',
-      ].join(' ')
+      ].join(' '),
     );
   });
 
@@ -109,7 +109,7 @@ describe('Anchor link service', function () {
 
     expect(result).toEqual(
       content,
-      'Anchor tags should not be applied if anchorIds is undefined.'
+      'Anchor tags should not be applied if anchorIds is undefined.',
     );
   });
 
@@ -120,7 +120,7 @@ describe('Anchor link service', function () {
 
     expect(result).toEqual(
       content,
-      'Anchor tags should not be applied to empty content.'
+      'Anchor tags should not be applied to empty content.',
     );
   });
 });

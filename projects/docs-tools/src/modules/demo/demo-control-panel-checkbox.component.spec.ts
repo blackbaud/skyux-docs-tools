@@ -21,7 +21,7 @@ class TestComponent {
 }
 
 function getCheckboxInput(
-  fixture: ComponentFixture<TestComponent>
+  fixture: ComponentFixture<TestComponent>,
 ): HTMLInputElement {
   return fixture.nativeElement.querySelector('input');
 }

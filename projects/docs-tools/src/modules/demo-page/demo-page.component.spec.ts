@@ -171,17 +171,17 @@ function getService(
         ],
       },
     ],
-  }
+  },
 ): SkyDocsTypeDefinitionsService {
   const adapter = new MockTypeDocAdapterService();
   return new SkyDocsTypeDefinitionsService(
     provider,
-    adapter as SkyDocsTypeDocAdapterService
+    adapter as SkyDocsTypeDocAdapterService,
   );
 }
 //#region helpers
 function getSidebarLinks(
-  fixture: ComponentFixture<any>
+  fixture: ComponentFixture<any>,
 ): NodeListOf<HTMLAnchorElement> {
   return fixture.nativeElement.querySelectorAll('.stache-nav a');
 }
@@ -239,7 +239,7 @@ describe('Demo page component', () => {
   it('should show all items within the module source code', () => {
     fixture.detectChanges();
     const elements = document.querySelectorAll(
-      '.sky-docs-type-definition-wrapper sky-docs-heading-anchor'
+      '.sky-docs-type-definition-wrapper sky-docs-heading-anchor',
     );
     expect(elements.length).toBe(8);
     expect(elements[0]).toHaveText('FooComponent');
@@ -256,7 +256,7 @@ describe('Demo page component', () => {
     fixture.componentInstance.additionalPaths = true;
     fixture.detectChanges();
     const elements = document.querySelectorAll(
-      '.sky-docs-type-definition-wrapper sky-docs-heading-anchor'
+      '.sky-docs-type-definition-wrapper sky-docs-heading-anchor',
     );
     expect(elements.length).toBe(9);
     expect(elements[0]).toHaveText('FooComponent');
@@ -286,7 +286,7 @@ describe('Demo page component', () => {
           name: 'baz',
           url: '/baz',
         },
-      ])
+      ]),
     );
 
     fixture.detectChanges();
@@ -311,7 +311,7 @@ describe('Demo page component', () => {
           name: 'bar',
           url: 'https://www.anothersite.com/bar',
         },
-      ])
+      ]),
     );
 
     fixture.detectChanges();
@@ -320,7 +320,7 @@ describe('Demo page component', () => {
     expect(spy).toHaveBeenCalled();
     expect(sidebarLinks[0].getAttribute('href')).toEqual('/foo');
     expect(sidebarLinks[1].getAttribute('href')).toEqual(
-      'https://www.anothersite.com/bar'
+      'https://www.anothersite.com/bar',
     );
   });
 
@@ -336,7 +336,7 @@ describe('Demo page component', () => {
           name: 'bar',
           url: 'https://www.example.com/demo-test/bar?svcid=test-svcid',
         },
-      ])
+      ]),
     );
 
     fixture.detectChanges();
@@ -344,7 +344,7 @@ describe('Demo page component', () => {
 
     expect(spy).toHaveBeenCalled();
     expect(sidebarLinks[0].getAttribute('href')).toEqual(
-      'https://www.notmatchingsite.com/foo?svcid=test-svcid'
+      'https://www.notmatchingsite.com/foo?svcid=test-svcid',
     );
     expect(sidebarLinks[1].getAttribute('href')).toEqual('/bar');
   });
@@ -358,7 +358,7 @@ describe('Demo page component', () => {
   it('should show the preview features alert if there are preview features - no link', () => {
     spyOn(
       MockTypeDocAdapterService.prototype,
-      'toClassDefinition'
+      'toClassDefinition',
     ).and.callFake((entry) => {
       return {
         hasPreviewFeatures: true,
@@ -384,7 +384,7 @@ describe('Demo page component', () => {
     component = fixture.componentInstance;
     spyOn(
       MockTypeDocAdapterService.prototype,
-      'toClassDefinition'
+      'toClassDefinition',
     ).and.callFake((entry) => {
       return {
         hasPreviewFeatures: true,

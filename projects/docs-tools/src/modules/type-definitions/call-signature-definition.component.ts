@@ -53,7 +53,7 @@ export class SkyDocsCallSignatureDefinitionComponent {
     });
 
     this.returnTypeFormatted = this.formatService.getFormattedType(
-      this.config?.returnType
+      this.config?.returnType,
     );
   }
 }

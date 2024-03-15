@@ -11,10 +11,10 @@ describe('Module info component', () => {
     fixture: ComponentFixture<ModuleInfoFixtureComponent>,
     index: number,
     expectedText: string,
-    expectedUrl: string
+    expectedUrl: string,
   ) {
     const linkEl = fixture.debugElement.queryAll(
-      By.css('.sky-docs-module-info-external-link')
+      By.css('.sky-docs-module-info-external-link'),
     )[index].nativeElement;
 
     expect(linkEl).toHaveText(expectedText);
@@ -34,7 +34,7 @@ describe('Module info component', () => {
     fixture.detectChanges();
 
     const moduleNameEl = fixture.debugElement.query(
-      By.css('.sky-docs-module-info-module-name')
+      By.css('.sky-docs-module-info-module-name'),
     ).nativeElement;
 
     expect(moduleNameEl).toHaveText('Module name');
@@ -50,7 +50,7 @@ describe('Module info component', () => {
       fixture,
       0,
       'View in NPM',
-      'https://npmjs.org/package/@example/repo'
+      'https://npmjs.org/package/@example/repo',
     );
   });
 
@@ -65,7 +65,7 @@ describe('Module info component', () => {
       fixture,
       1,
       'View in GitHub',
-      'https://example.com/repo-url/'
+      'https://example.com/repo-url/',
     );
   });
 
@@ -94,14 +94,14 @@ describe('Module info component', () => {
       fixture,
       0,
       'View in NPM',
-      'https://npmjs.org/package/@example/repo-from-options'
+      'https://npmjs.org/package/@example/repo-from-options',
     );
 
     validateExternalLink(
       fixture,
       1,
       'View in GitHub',
-      'https://example.com/repo-url-from-options/'
+      'https://example.com/repo-url-from-options/',
     );
   });
 });

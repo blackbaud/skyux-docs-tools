@@ -61,7 +61,7 @@ export class SkyDocsPropertyDefinitionsComponent implements OnInit {
   constructor(
     private changeDetector: ChangeDetectorRef,
     private formatService: SkyDocsTypeDefinitionsFormatService,
-    private mediaQueryService: SkyMediaQueryService
+    private mediaQueryService: SkyMediaQueryService,
   ) {}
 
   public ngOnInit(): void {
@@ -76,7 +76,7 @@ export class SkyDocsPropertyDefinitionsComponent implements OnInit {
       const vm: PropertyViewModel = {
         callSignature: property.type?.callSignature,
         defaultValue: this.formatService.escapeSpecialCharacters(
-          property.defaultValue || ''
+          property.defaultValue || '',
         ),
         deprecationWarning: property.deprecationWarning,
         description: property.description,

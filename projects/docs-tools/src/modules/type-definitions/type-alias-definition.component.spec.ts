@@ -14,10 +14,10 @@ import { TypeDefinitionsFixturesModule } from './fixtures/type-definitions.modul
 import { SkyDocsTypeDefinitionsProvider } from './type-definitions-provider';
 
 function getPreviewWarning(
-  fixture: ComponentFixture<TypeAliasDefinitionFixtureComponent>
+  fixture: ComponentFixture<TypeAliasDefinitionFixtureComponent>,
 ): HTMLElement | null {
   return (fixture.nativeElement as HTMLElement).querySelector(
-    '.sky-docs-type-alias-definition .sky-docs-type-alias-preview-warning'
+    '.sky-docs-type-alias-definition .sky-docs-type-alias-preview-warning',
   );
 }
 
@@ -78,11 +78,11 @@ describe('Type alias definition component', function () {
     tick();
 
     const element = fixture.nativeElement.querySelector(
-      '.sky-docs-type-alias-definition-description'
+      '.sky-docs-type-alias-definition-description',
     );
 
     expect(element.innerHTML).toContain(
-      '<a class="sky-docs-anchor-link" href="#foo-user">FooUser</a>'
+      '<a class="sky-docs-anchor-link" href="#foo-user">FooUser</a>',
     );
   }));
 

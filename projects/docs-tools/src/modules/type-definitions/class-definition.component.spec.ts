@@ -61,11 +61,11 @@ describe('Class definition component', function () {
     tick();
 
     const element = fixture.nativeElement.querySelector(
-      '.sky-docs-class-definition-description'
+      '.sky-docs-class-definition-description',
     );
 
     expect(element.innerHTML).toContain(
-      '<a class="sky-docs-anchor-link" href="#foo-user">FooUser</a>'
+      '<a class="sky-docs-anchor-link" href="#foo-user">FooUser</a>',
     );
   }));
 });

@@ -1,10 +1,14 @@
 # Changelog
 
-## 10.0.0-alpha.1 (2023-02-29)
+## 10.0.0-alpha.2 (2024-03-15)
+
+- Update dependencies. []()
+
+## 10.0.0-alpha.1 (2024-02-29)
 
 - Add ability to mark features as being in preview. [#272](https://github.com/blackbaud/skyux-docs-tools/pull/272) [#273](https://github.com/blackbaud/skyux-docs-tools/pull/273)
 
-## 9.2.0 (2023-02-29)
+## 9.2.0 (2024-02-29)
 
 - Add ability to mark features as being in preview. [#272](https://github.com/blackbaud/skyux-docs-tools/pull/272)
 

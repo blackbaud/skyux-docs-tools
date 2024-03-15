@@ -64,7 +64,7 @@ export class SkyDocsCodeExamplesComponent implements AfterContentInit {
 
   constructor(
     private editorService: SkyDocsCodeExamplesEditorService,
-    private sourceCodeService: SkyDocsSourceCodeService
+    private sourceCodeService: SkyDocsSourceCodeService,
   ) {}
 
   public ngAfterContentInit(): void {
@@ -79,7 +79,7 @@ export class SkyDocsCodeExamplesComponent implements AfterContentInit {
 
       if (!sourceCode.length) {
         console.warn(
-          `Source code not found at location "${sourceCodePath}" for "${component.heading}"!`
+          `Source code not found at location "${sourceCodePath}" for "${component.heading}"!`,
         );
         return;
       }
