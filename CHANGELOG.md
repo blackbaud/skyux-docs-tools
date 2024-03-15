@@ -2,7 +2,7 @@
 
 ## 10.0.0-alpha.2 (2024-03-15)
 
-- Update dependencies. []()
+- Update dependencies. [#274](https://github.com/blackbaud/skyux-docs-tools/pull/274)
 
 ## 10.0.0-alpha.1 (2024-02-29)
 
