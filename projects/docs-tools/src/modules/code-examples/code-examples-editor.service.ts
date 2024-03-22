@@ -22,7 +22,15 @@ import { SkyDocsCodeExampleTheme } from './code-example-theme';
 export class SkyDocsCodeExamplesEditorService {
   public launchEditor(codeExample: SkyDocsCodeExample): void {
     const project = this.#getPayload(codeExample);
-    const options: StackBlitzOpenOptions = {};
+    const openFile: string[] = [];
+    if (project.files['src/app/demo.component.html']) {
+      openFile.push('src/app/demo.component.html');
+    } else if (project.files['src/app/demo.component.ts']) {
+      openFile.push('src/app/demo.component.ts');
+    }
+    const options: StackBlitzOpenOptions = {
+      openFile,
+    };
 
     StackBlitzSDK.openProject(project, options);
   }
@@ -100,6 +108,7 @@ export class SkyDocsCodeExamplesEditorService {
       title: 'SKY UX Demo',
       description: 'SKY UX Demo',
       template: 'angular-cli',
+      // template: 'node', // web-container
       dependencies: mergedDependencies,
       settings: {
         compile: {
@@ -263,8 +272,8 @@ export class AppModule { }
     This is a workaround for a known bug that prevents external imports in CSS.
     https://github.com/stackblitz/core/issues/133
   -->
-  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-  <link rel="stylesheet" type="text/css" href="https://sky.blackbaudcdn.net/static/skyux-icons/${SKY_UX_ICONS_VERSION.full}/assets/css/skyux-icons.min.css" />
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="https://sky.blackbaudcdn.net/static/skyux-icons/${SKY_UX_ICONS_VERSION.full}/assets/css/skyux-icons.min.css" crossorigin="anonymous">
 </head>
 <body>
   <sky-demo-app>
@@ -318,6 +327,7 @@ body {
                 options: {
                   index: 'src/index.html',
                   main: 'src/main.ts',
+                  outputPath: 'dist/demo',
                   tsConfig: 'tsconfig.app.json',
                   inlineStyleLanguage: 'scss',
                   styles: stylesheets,
@@ -354,6 +364,7 @@ body {
     files['package.json'] = JSON.stringify(
       {
         name: 'skyux-spa-demo',
+        version: '0.0.0',
         dependencies,
         scripts: {
           start: 'ng serve',
@@ -380,6 +391,7 @@ body {
 
     files['tsconfig.json'] = JSON.stringify(
       {
+        compileOnSave: false,
         compilerOptions: {
           strict: true,
           forceConsistentCasingInFileNames: true,
@@ -395,7 +407,7 @@ body {
           moduleResolution: 'node',
           importHelpers: true,
           typeRoots: ['node_modules/@types'],
-          target: 'ES2022',
+          target: 'ES2015',
           module: 'ES2022',
           useDefineForClassFields: false,
           lib: ['ES2022', 'dom'],

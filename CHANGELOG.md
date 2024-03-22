@@ -1,5 +1,10 @@
 # Changelog
 
+## 9.2.1 (2023-03-25)
+
+- Set code example project target to `ES2015` to resolve an issue when running code examples in StackBlitz. [#000](https://github.com/blackbaud/skyux-docs-tools/pull/000)
+
+
 ## 9.2.0 (2023-02-27)
 
 - Add ability to mark features as being in preview. [#272](https://github.com/blackbaud/skyux-docs-tools/pull/272)
