@@ -105,6 +105,11 @@ const codeExample: SkyDocsCodeExample = {
       rawContents: sampleComponentContents,
     },
     {
+      fileName: 'demo.component.html',
+      filePath: './',
+      rawContents: `<app-sample-demo></app-sample-demo>`,
+    },
+    {
       fileName: 'foo.module.ts',
       filePath: './',
       rawContents: sampleModuleContents,
@@ -388,7 +393,7 @@ describe('Code examples editor service', () => {
     expect(
       stackblitzSpy.calls.mostRecent().args[0].files['src/index.html']
     ).toContain(
-      `<link rel="stylesheet" type="text/css" href="https://sky.blackbaudcdn.net/static/skyux-icons/${SKY_UX_ICONS_VERSION.full}/assets/css/skyux-icons.min.css" />`
+      `<link rel="stylesheet" type="text/css" href="https://sky.blackbaudcdn.net/static/skyux-icons/${SKY_UX_ICONS_VERSION.full}/assets/css/skyux-icons.min.css" crossorigin="anonymous">`
     );
   });
 });
