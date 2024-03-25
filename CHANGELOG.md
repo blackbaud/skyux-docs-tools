@@ -1,5 +1,13 @@
 # Changelog
 
+## 10.0.0-alpha.3 (2023-03-25)
+
+- Set code example project target to `ES2015` to resolve an issue when running code examples in StackBlitz. [#276](https://github.com/blackbaud/skyux-docs-tools/pull/276)
+
+## 9.2.1 (2023-03-25)
+
+- Set code example project target to `ES2015` to resolve an issue when running code examples in StackBlitz. [#275](https://github.com/blackbaud/skyux-docs-tools/pull/275)
+
 ## 10.0.0-alpha.2 (2024-03-15)
 
 - Update dependencies. [#274](https://github.com/blackbaud/skyux-docs-tools/pull/274)
