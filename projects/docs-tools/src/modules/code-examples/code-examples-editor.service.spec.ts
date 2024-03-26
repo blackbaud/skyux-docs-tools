@@ -206,10 +206,10 @@ describe('Code examples editor service', () => {
     expect(stackblitzSpy).toHaveBeenCalled();
     const spyArgs = stackblitzSpy.calls.mostRecent().args;
     expect(spyArgs[0].files['src/app/app.component.ts']).toContain(
-      `SkyTheme.presets['modern']`
+      `SkyTheme.presets['modern']`,
     );
     expect(spyArgs[0].files['src/app/app.module.ts']).toContain(
-      'SkyThemeService'
+      'SkyThemeService',
     );
   });
 
@@ -221,10 +221,10 @@ describe('Code examples editor service', () => {
     expect(stackblitzSpy).toHaveBeenCalled();
     const spyArgs = stackblitzSpy.calls.mostRecent().args;
     expect(spyArgs[0].files['src/app/app.component.ts']).toContain(
-      `SkyTheme.presets['default']`
+      `SkyTheme.presets['default']`,
     );
     expect(spyArgs[0].files['src/app/app.module.ts']).toContain(
-      'SkyThemeService'
+      'SkyThemeService',
     );
   });
 
@@ -245,10 +245,10 @@ describe('Code examples editor service', () => {
     expect(stackblitzSpy).toHaveBeenCalled();
     const spyArgs = stackblitzSpy.calls.mostRecent().args;
     expect(spyArgs[0].files['src/app/app.module.ts']).toContain(
-      `import {\n  SampleDemoModule\n} from './foo.module';`
+      `import {\n  SampleDemoModule\n} from './foo.module';`,
     );
     expect(spyArgs[0].files['src/app/app.module.ts']).toContain(
-      `imports: [\n    ${moduleImports.join(',\n    ')}`
+      `imports: [\n    ${moduleImports.join(',\n    ')}`,
     );
   });
 
@@ -260,11 +260,11 @@ describe('Code examples editor service', () => {
     const appModuleContents = spyArgs[0].files['src/app/app.module.ts'];
 
     expect(appModuleContents).toContain(
-      `import {\n  DemoComponent\n} from './demo.component';`
+      `import {\n  DemoComponent\n} from './demo.component';`,
     );
 
     expect(appModuleContents).toContain(
-      `imports: [\n    ${moduleImports.join(',\n    ')}`
+      `imports: [\n    ${moduleImports.join(',\n    ')}`,
     );
   });
 
@@ -280,7 +280,7 @@ describe('Code examples editor service', () => {
       fail('Expected test to throw error!');
     } catch (error) {
       expect(error).toContain(
-        'You may only export a single component from the code example module'
+        'You may only export a single component from the code example module',
       );
     }
   });
@@ -382,7 +382,7 @@ describe('Code examples editor service', () => {
     service.launchEditor(codeExample);
     expect(
       JSON.parse(stackblitzSpy.calls.mostRecent().args[0].files['angular.json'])
-        .projects.demo.architect.build.options.styles
+        .projects.demo.architect.build.options.styles,
     ).toEqual(['@global/foo/css/styles.css', 'src/styles.scss']);
   });
 
@@ -390,9 +390,9 @@ describe('Code examples editor service', () => {
     service.launchEditor(codeExample);
 
     expect(
-      stackblitzSpy.calls.mostRecent().args[0].files['src/index.html']
+      stackblitzSpy.calls.mostRecent().args[0].files['src/index.html'],
     ).toContain(
-      `<link rel="stylesheet" type="text/css" href="https://sky.blackbaudcdn.net/static/skyux-icons/${SKY_UX_ICONS_VERSION.full}/assets/css/skyux-icons.min.css" crossorigin="anonymous">`
+      `<link rel="stylesheet" type="text/css" href="https://sky.blackbaudcdn.net/static/skyux-icons/${SKY_UX_ICONS_VERSION.full}/assets/css/skyux-icons.min.css" crossorigin="anonymous">`,
     );
   });
 });

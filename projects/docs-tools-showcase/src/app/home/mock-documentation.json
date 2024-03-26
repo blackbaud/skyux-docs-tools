@@ -709,28 +709,8 @@
           {
             "title": "Enumeration Members",
             "children": [
-              118,
-              116,
-              117,
-              132,
-              135,
-              126,
-              129,
-              123,
-              134,
-              137,
-              128,
-              131,
-              125,
-              119,
-              133,
-              136,
-              127,
-              130,
-              124,
-              121,
-              122,
-              120
+              118, 116, 117, 132, 135, 126, 129, 123, 134, 137, 128, 131, 125,
+              119, 133, 136, 127, 130, 124, 121, 122, 120
             ]
           }
         ],
@@ -870,12 +850,7 @@
         "groups": [
           {
             "title": "Enumeration Members",
-            "children": [
-              139,
-              140,
-              141,
-              142
-            ]
+            "children": [139, 140, 141, 142]
           }
         ],
         "sources": [
@@ -1132,16 +1107,11 @@
         "groups": [
           {
             "title": "Constructors",
-            "children": [
-              7
-            ]
+            "children": [7]
           },
           {
             "title": "Methods",
-            "children": [
-              17,
-              19
-            ]
+            "children": [17, 19]
           }
         ],
         "sources": [
@@ -1191,9 +1161,7 @@
         "groups": [
           {
             "title": "Constructors",
-            "children": [
-              4
-            ]
+            "children": [4]
           }
         ],
         "sources": [
@@ -1574,24 +1542,15 @@
         "groups": [
           {
             "title": "Constructors",
-            "children": [
-              87
-            ]
+            "children": [87]
           },
           {
             "title": "Properties",
-            "children": [
-              94,
-              91,
-              92
-            ]
+            "children": [94, 91, 92]
           },
           {
             "title": "Methods",
-            "children": [
-              95,
-              99
-            ]
+            "children": [95, 99]
           }
         ],
         "sources": [
@@ -1614,9 +1573,7 @@
         "groups": [
           {
             "title": "Constructors",
-            "children": [
-              54
-            ]
+            "children": [54]
           }
         ],
         "sources": [
@@ -1963,17 +1920,11 @@
         "groups": [
           {
             "title": "Constructors",
-            "children": [
-              58
-            ]
+            "children": [58]
           },
           {
             "title": "Methods",
-            "children": [
-              68,
-              74,
-              71
-            ]
+            "children": [68, 74, 71]
           }
         ],
         "sources": [
@@ -2165,18 +2116,11 @@
         "groups": [
           {
             "title": "Constructors",
-            "children": [
-              152
-            ]
+            "children": [152]
           },
           {
             "title": "Properties",
-            "children": [
-              154,
-              155,
-              156,
-              157
-            ]
+            "children": [154, 155, 156, 157]
           }
         ],
         "sources": [
@@ -2206,9 +2150,7 @@
         "groups": [
           {
             "title": "Constructors",
-            "children": [
-              164
-            ]
+            "children": [164]
           }
         ],
         "sources": [
@@ -2444,15 +2386,11 @@
         "groups": [
           {
             "title": "Constructors",
-            "children": [
-              44
-            ]
+            "children": [44]
           },
           {
             "title": "Methods",
-            "children": [
-              48
-            ]
+            "children": [48]
           }
         ],
         "sources": [
@@ -2493,9 +2431,7 @@
         "groups": [
           {
             "title": "Constructors",
-            "children": [
-              249
-            ]
+            "children": [249]
           }
         ],
         "sources": [
@@ -3789,51 +3725,22 @@
         "groups": [
           {
             "title": "Constructors",
-            "children": [
-              671
-            ]
+            "children": [671]
           },
           {
             "title": "Properties",
             "children": [
-              701,
-              689,
-              691,
-              706,
-              692,
-              693,
-              725,
-              708,
-              694,
-              695,
-              696,
-              697,
-              698,
-              680,
-              699,
-              700,
-              707,
-              709
+              701, 689, 691, 706, 692, 693, 725, 708, 694, 695, 696, 697, 698,
+              680, 699, 700, 707, 709
             ]
           },
           {
             "title": "Accessors",
-            "children": [
-              702,
-              681,
-              685
-            ]
+            "children": [702, 681, 685]
           },
           {
             "title": "Methods",
-            "children": [
-              728,
-              726,
-              737,
-              730,
-              732,
-              735
-            ]
+            "children": [728, 726, 737, 730, 732, 735]
           }
         ],
         "sources": [
@@ -5776,44 +5683,20 @@
         "groups": [
           {
             "title": "Constructors",
-            "children": [
-              538
-            ]
+            "children": [538]
           },
           {
             "title": "Properties",
-            "children": [
-              566
-            ]
+            "children": [566]
           },
           {
             "title": "Accessors",
-            "children": [
-              547,
-              551,
-              555,
-              559,
-              563,
-              567,
-              571
-            ]
+            "children": [547, 551, 555, 559, 563, 567, 571]
           },
           {
             "title": "Methods",
             "children": [
-              638,
-              600,
-              602,
-              604,
-              598,
-              611,
-              609,
-              606,
-              619,
-              625,
-              630,
-              635,
-              616,
+              638, 600, 602, 604, 598, 611, 609, 606, 619, 625, 630, 635, 616,
               613
             ]
           }
@@ -7761,44 +7644,20 @@
         "groups": [
           {
             "title": "Constructors",
-            "children": [
-              409
-            ]
+            "children": [409]
           },
           {
             "title": "Properties",
-            "children": [
-              438
-            ]
+            "children": [438]
           },
           {
             "title": "Accessors",
-            "children": [
-              418,
-              422,
-              426,
-              430,
-              434,
-              439,
-              443
-            ]
+            "children": [418, 422, 426, 430, 434, 439, 443]
           },
           {
             "title": "Methods",
             "children": [
-              510,
-              472,
-              474,
-              476,
-              470,
-              483,
-              481,
-              478,
-              491,
-              497,
-              502,
-              507,
-              488,
+              510, 472, 474, 476, 470, 483, 481, 478, 491, 497, 502, 507, 488,
               485
             ]
           }
@@ -9333,47 +9192,19 @@
         "groups": [
           {
             "title": "Constructors",
-            "children": [
-              252
-            ]
+            "children": [252]
           },
           {
             "title": "Properties",
-            "children": [
-              277,
-              278,
-              276,
-              274,
-              279,
-              280,
-              272,
-              275,
-              281,
-              282,
-              273
-            ]
+            "children": [277, 278, 276, 274, 279, 280, 272, 275, 281, 282, 273]
           },
           {
             "title": "Accessors",
-            "children": [
-              260,
-              264,
-              268
-            ]
+            "children": [260, 264, 268]
           },
           {
             "title": "Methods",
-            "children": [
-              312,
-              315,
-              310,
-              317,
-              325,
-              331,
-              336,
-              322,
-              319
-            ]
+            "children": [312, 315, 310, 317, 325, 331, 336, 322, 319]
           }
         ],
         "sources": [
@@ -10915,54 +10746,22 @@
         "groups": [
           {
             "title": "Constructors",
-            "children": [
-              759
-            ]
+            "children": [759]
           },
           {
             "title": "Properties",
             "children": [
-              789,
-              790,
-              822,
-              807,
-              791,
-              792,
-              793,
-              794,
-              796,
-              795,
-              797,
-              768,
-              798,
-              799,
-              805,
-              800,
-              806,
-              808
+              789, 790, 822, 807, 791, 792, 793, 794, 796, 795, 797, 768, 798,
+              799, 805, 800, 806, 808
             ]
           },
           {
             "title": "Accessors",
-            "children": [
-              769,
-              773,
-              777,
-              781,
-              785,
-              801
-            ]
+            "children": [769, 773, 777, 781, 785, 801]
           },
           {
             "title": "Methods",
-            "children": [
-              825,
-              823,
-              830,
-              835,
-              827,
-              832
-            ]
+            "children": [825, 823, 830, 835, 827, 832]
           }
         ],
         "sources": [
@@ -12310,40 +12109,20 @@
         "groups": [
           {
             "title": "Constructors",
-            "children": [
-              854
-            ]
+            "children": [854]
           },
           {
             "title": "Properties",
-            "children": [
-              859,
-              869
-            ]
+            "children": [859, 869]
           },
           {
             "title": "Accessors",
-            "children": [
-              870,
-              861,
-              865
-            ]
+            "children": [870, 861, 865]
           },
           {
             "title": "Methods",
             "children": [
-              887,
-              891,
-              889,
-              885,
-              896,
-              893,
-              898,
-              904,
-              909,
-              914,
-              920,
-              917
+              887, 891, 889, 885, 896, 893, 898, 904, 909, 914, 920, 917
             ]
           }
         ],
@@ -12499,10 +12278,7 @@
         "groups": [
           {
             "title": "Properties",
-            "children": [
-              80,
-              81
-            ]
+            "children": [80, 81]
           }
         ],
         "sources": [
@@ -12655,11 +12431,7 @@
         "groups": [
           {
             "title": "Properties",
-            "children": [
-              83,
-              84,
-              85
-            ]
+            "children": [83, 84, 85]
           }
         ],
         "sources": [
@@ -12830,12 +12602,7 @@
         "groups": [
           {
             "title": "Properties",
-            "children": [
-              108,
-              106,
-              107,
-              109
-            ]
+            "children": [108, 106, 107, 109]
           }
         ],
         "sources": [
@@ -12983,11 +12750,7 @@
         "groups": [
           {
             "title": "Properties",
-            "children": [
-              150,
-              148,
-              149
-            ]
+            "children": [150, 148, 149]
           }
         ],
         "sources": [
@@ -13140,12 +12903,7 @@
         "groups": [
           {
             "title": "Properties",
-            "children": [
-              159,
-              160,
-              161,
-              162
-            ]
+            "children": [159, 160, 161, 162]
           }
         ],
         "sources": [
@@ -13271,11 +13029,7 @@
         "groups": [
           {
             "title": "Properties",
-            "children": [
-              167,
-              168,
-              169
-            ]
+            "children": [167, 168, 169]
           }
         ],
         "sources": [
@@ -13508,15 +13262,7 @@
         "groups": [
           {
             "title": "Properties",
-            "children": [
-              247,
-              241,
-              245,
-              246,
-              243,
-              242,
-              244
-            ]
+            "children": [247, 241, 245, 246, 243, 242, 244]
           }
         ],
         "sources": [
@@ -13741,10 +13487,7 @@
     "groups": [
       {
         "title": "Modules",
-        "children": [
-          1,
-          2
-        ]
+        "children": [1, 2]
       }
     ],
     "packageName": "@skyux/datetime",
