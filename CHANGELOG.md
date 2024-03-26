@@ -1,5 +1,15 @@
 # Changelog
 
+## 10.0.0 (2024-03-27)
+
+### ⚠ BREAKING CHANGES
+
+- Dropped support for Angular 16. [#271](https://github.com/blackbaud/skyux-docs-tools/pull/271)
+
+### Features
+
+- Added support for Angular 17. [#271](https://github.com/blackbaud/skyux-docs-tools/pull/271)
+
 ## 10.0.0-alpha.3 (2023-03-25)
 
 - Set code example project target to `ES2015` to resolve an issue when running code examples in StackBlitz. [#276](https://github.com/blackbaud/skyux-docs-tools/pull/276)
