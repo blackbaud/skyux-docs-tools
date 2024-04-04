@@ -75,6 +75,7 @@ export class SkyDocsCodeExamplesEditorService {
       '@skyux/router': skyuxVersion,
       '@skyux/theme': skyuxVersion,
       '@types/jasmine': '~5.1.4',
+      'ng2-dragula': '5.0.1',
       rxjs: '^7',
       tslib: '^2.6.2',
       typescript: '~5.3.3',
