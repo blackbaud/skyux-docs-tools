@@ -367,12 +367,11 @@ describe('Code examples editor service', () => {
       '@skyux/popovers': skyuxVersion,
       '@skyux/router': skyuxVersion,
       '@skyux/theme': skyuxVersion,
-      '@types/jasmine': '~4.3.1',
-      'ng2-dragula': '^5.0.1',
+      '@types/jasmine': '~5.1.4',
       rxjs: '^7',
-      tslib: '^2.5.0',
-      typescript: '~5.1.6',
-      'zone.js': '~0.13.1',
+      tslib: '^2.6.2',
+      typescript: '~5.3.3',
+      'zone.js': '~0.14.4',
       '@skyux/foobar': skyuxVersion, // <-- Important
     });
   });
@@ -394,5 +393,10 @@ describe('Code examples editor service', () => {
     ).toContain(
       `<link rel="stylesheet" type="text/css" href="https://sky.blackbaudcdn.net/static/skyux-icons/${SKY_UX_ICONS_VERSION.full}/assets/css/skyux-icons.min.css" crossorigin="anonymous">`,
     );
+  });
+
+  it('should support node template', () => {
+    service.launchEditor(codeExample, 'node');
+    expect(stackblitzSpy.calls.mostRecent().args[0].template).toEqual('node');
   });
 });

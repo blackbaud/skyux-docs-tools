@@ -13,6 +13,8 @@ import { SkyDocsCodeExample } from './code-example';
 import { SkyDocsCodeExampleModuleDependencies } from './code-example-module-dependencies';
 import { SkyDocsCodeExampleTheme } from './code-example-theme';
 
+type StackblitzTemplate = 'angular-cli' | 'node';
+
 /**
  * @internal
  */
@@ -20,8 +22,11 @@ import { SkyDocsCodeExampleTheme } from './code-example-theme';
   providedIn: 'root',
 })
 export class SkyDocsCodeExamplesEditorService {
-  public launchEditor(codeExample: SkyDocsCodeExample): void {
-    const project = this.#getPayload(codeExample);
+  public launchEditor(
+    codeExample: SkyDocsCodeExample,
+    template: StackblitzTemplate = 'angular-cli',
+  ): void {
+    const project = this.#getPayload(codeExample, template);
     const openFile: string[] = [];
     if (project.files['src/app/demo.component.html']) {
       openFile.push('src/app/demo.component.html');
@@ -35,7 +40,10 @@ export class SkyDocsCodeExamplesEditorService {
     StackBlitzSDK.openProject(project, options);
   }
 
-  #getPayload(codeExample: SkyDocsCodeExample): StackBlitzProject {
+  #getPayload(
+    codeExample: SkyDocsCodeExample,
+    template: StackblitzTemplate,
+  ): StackBlitzProject {
     const angularVersion = `^${ANGULAR_VERSION.major}`;
     const skyuxVersion = `^${SKY_UX_VERSION.full}`;
 
@@ -66,12 +74,11 @@ export class SkyDocsCodeExamplesEditorService {
       '@skyux/popovers': skyuxVersion,
       '@skyux/router': skyuxVersion,
       '@skyux/theme': skyuxVersion,
-      '@types/jasmine': '~4.3.1',
-      'ng2-dragula': '^5.0.1',
+      '@types/jasmine': '~5.1.4',
       rxjs: '^7',
-      tslib: '^2.5.0',
-      typescript: '~5.1.6',
-      'zone.js': '~0.13.1',
+      tslib: '^2.6.2',
+      typescript: '~5.3.3',
+      'zone.js': '~0.14.4',
     };
 
     const mergedDependencies = Object.assign(
@@ -106,8 +113,7 @@ export class SkyDocsCodeExamplesEditorService {
       files,
       title: 'SKY UX Demo',
       description: 'SKY UX Demo',
-      template: 'angular-cli',
-      // template: 'node', // web-container
+      template,
       dependencies: mergedDependencies,
       settings: {
         compile: {

@@ -1,5 +1,9 @@
 # Changelog
 
+## 10.0.1 (2024-04-04)
+
+- Updated dependencies to work with Angular 17.3. [#278](https://github.com/blackbaud/skyux-docs-tools/pull/278)
+
 ## 10.0.0 (2024-03-27)
 
 ### ⚠ BREAKING CHANGES
