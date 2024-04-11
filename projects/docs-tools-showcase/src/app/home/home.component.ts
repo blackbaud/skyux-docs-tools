@@ -52,6 +52,23 @@ export class HomeComponent {
 
   public standardMinDate: Date | undefined = undefined;
 
+  protected examples = [
+    '/projects/lookup/documentation/code-examples/autocomplete/advanced',
+    '/projects/lookup/documentation/code-examples/autocomplete/basic',
+    '/projects/lookup/documentation/code-examples/autocomplete/custom-search',
+    '/projects/lookup/documentation/code-examples/autocomplete/search-filters',
+    '/projects/lookup/documentation/code-examples/country-field/basic',
+    '/projects/lookup/documentation/code-examples/lookup/add-item',
+    '/projects/lookup/documentation/code-examples/lookup/async',
+    '/projects/lookup/documentation/code-examples/lookup/custom-picker',
+    '/projects/lookup/documentation/code-examples/lookup/multi-select',
+    '/projects/lookup/documentation/code-examples/lookup/result-templates',
+    '/projects/lookup/documentation/code-examples/lookup/single-select',
+    '/projects/lookup/documentation/code-examples/search/basic',
+    '/projects/lookup/documentation/code-examples/selection-modal/add-item',
+    '/projects/lookup/documentation/code-examples/selection-modal/basic',
+  ];
+
   constructor(
     private changeRef: ChangeDetectorRef,
     private formBuilder: UntypedFormBuilder,
