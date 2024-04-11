@@ -75,7 +75,6 @@ export class SkyDocsCodeExamplesEditorService {
       '@skyux/router': skyuxVersion,
       '@skyux/theme': skyuxVersion,
       '@types/jasmine': '~5.1.4',
-      'ng2-dragula': '5.0.1',
       rxjs: '^7',
       tslib: '^2.6.2',
       typescript: '~5.3.3',
@@ -337,6 +336,11 @@ body {
                   tsConfig: 'tsconfig.app.json',
                   inlineStyleLanguage: 'scss',
                   styles: stylesheets,
+                  allowedCommonJsDependencies: [
+                    '@skyux/icons',
+                    'dom-autoscroller',
+                    'fontfaceobserver',
+                  ],
                 },
                 configurations: {
                   development: {
@@ -354,7 +358,7 @@ body {
                 builder: '@angular-devkit/build-angular:dev-server',
                 configurations: {
                   development: {
-                    browserTarget: 'demo:build:development',
+                    buildTarget: 'demo:build:development',
                   },
                 },
                 defaultConfiguration: 'development',
@@ -375,6 +379,13 @@ body {
         scripts: {
           start: 'ng serve',
           build: 'ng build',
+        },
+        overrides: {
+          'ng2-dragula@5.0.1': {
+            '@angular/animations': `^${ANGULAR_VERSION.major}`,
+            '@angular/core': `^${ANGULAR_VERSION.major}`,
+            '@angular/common': `^${ANGULAR_VERSION.major}`,
+          },
         },
       },
       undefined,

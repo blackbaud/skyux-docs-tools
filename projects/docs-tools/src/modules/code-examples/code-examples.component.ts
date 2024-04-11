@@ -94,8 +94,15 @@ export class SkyDocsCodeExamplesComponent implements AfterContentInit {
     });
   }
 
-  public launchEditor(codeExample: SkyDocsCodeExample): void {
-    this.editorService.launchEditor(codeExample);
+  public launchEditor(
+    codeExample: SkyDocsCodeExample,
+    event: MouseEvent,
+  ): void {
+    event.stopPropagation();
+    this.editorService.launchEditor(
+      codeExample,
+      event.metaKey || event.ctrlKey ? 'node' : 'angular-cli',
+    );
   }
 
   /**
