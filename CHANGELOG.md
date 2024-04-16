@@ -2,7 +2,7 @@
 
 ## 10.0.2 (2024-04-16)
 
-- Add support for `@skyux/help-inline` and bump `ng2-dragula` version [ADD PR]
+- Add support for `@skyux/help-inline` and bump `ng2-dragula` version [#279](https://github.com/blackbaud/skyux-docs-tools/pull/280)
 
 ## 10.0.1 (2024-04-04)
 
