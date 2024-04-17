@@ -1,5 +1,9 @@
 # Changelog
 
+## 10.1.0 (2024-04-16)
+
+- Add `@skyux/help-inline` dependency and bump `ng2-dragula` version [#279](https://github.com/blackbaud/skyux-docs-tools/pull/280)
+
 ## 10.0.1 (2024-04-04)
 
 - Updated dependencies to work with Angular 17.3. [#278](https://github.com/blackbaud/skyux-docs-tools/pull/278)
