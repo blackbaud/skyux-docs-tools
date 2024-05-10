@@ -1,8 +1,12 @@
 # Changelog
 
+## 10.1.1 (2024-05-10)
+
+- Switched to using `provideInitialTheme` and streamlined boilerplate code for examples. [#281](https://github.com/blackbaud/skyux-docs-tools/pull/281)
+
 ## 10.1.0 (2024-04-16)
 
-- Add `@skyux/help-inline` dependency and bump `ng2-dragula` version [#279](https://github.com/blackbaud/skyux-docs-tools/pull/280)
+- Added `@skyux/help-inline` dependency and bumped `ng2-dragula` version. [#280](https://github.com/blackbaud/skyux-docs-tools/pull/280)
 
 ## 10.0.1 (2024-04-04)
 
