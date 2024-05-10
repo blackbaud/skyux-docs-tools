@@ -143,14 +143,12 @@ export class SkyDocsCodeExamplesEditorService {
  `;
 
     const moduleImportStatements: string[] = [
-      `import {\n  NgModule\n} from '@angular/core';`,
-      `import {\n  FormsModule,\n  ReactiveFormsModule\n} from '@angular/forms';`,
-      `import {\n  BrowserAnimationsModule\n} from '@angular/platform-browser/animations';`,
-      `import {\n  RouterModule\n} from '@angular/router';`,
-      `import {\n  SkyAppLocaleProvider\n} from '@skyux/i18n';`,
-      `import {\n  SkyThemeService\n} from '@skyux/theme';`,
-      `import {\n  of as observableOf\n} from 'rxjs';`,
-      `import {\n  AppComponent\n} from './app.component';`,
+      `import { NgModule } from '@angular/core';`,
+      `import { FormsModule, ReactiveFormsModule } from '@angular/forms';`,
+      `import { BrowserAnimationsModule } from '@angular/platform-browser/animations';`,
+      `import { RouterModule } from '@angular/router';`,
+      `import { provideInitialTheme } from '@skyux/theme';`,
+      `import { AppComponent } from './app.component';`,
     ];
 
     const moduleImports: string[] = [
@@ -182,7 +180,7 @@ export class SkyDocsCodeExamplesEditorService {
 
         moduleImports.push(moduleName);
         moduleImportStatements.push(
-          `import {\n  ${moduleName}\n} from '${importPath}';`,
+          `import { ${moduleName} } from '${importPath}';`,
         );
       }
 
@@ -196,49 +194,20 @@ export class SkyDocsCodeExamplesEditorService {
 
         moduleImports.push(componentName);
         moduleImportStatements.push(
-          `import {\n  ${componentName}\n} from '${importPath}';`,
+          `import { ${componentName} } from '${importPath}';`,
         );
       }
     });
 
     files[`${appPath}app.component.ts`] = `${banner}
-import {
-  Component,
-  Renderer2
-} from '@angular/core';
-
-import {
-  SkyTheme,
-  SkyThemeMode,
-  SkyThemeService,
-  SkyThemeSettings
-} from '@skyux/theme';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'sky-demo-app',
   template: '${appComponentTemplate}'
 })
-export class AppComponent {
-
-  constructor(
-    themeSvc: SkyThemeService,
-    renderer: Renderer2
-  ) {
-    const themeSettings = new SkyThemeSettings(
-      SkyTheme.presets['${
-        theme === SkyDocsCodeExampleTheme.Modern ? 'modern' : 'default'
-      }'],
-      SkyThemeMode.presets.light
-    );
-
-    themeSvc.init(
-      document.body,
-      renderer,
-      themeSettings
-    );
-  }
-
-}`;
+export class AppComponent {}
+`;
 
     files[`${appPath}app.module.ts`] = `${moduleImportStatements.join('\n\n')}
 
@@ -246,25 +215,11 @@ export class AppComponent {
   imports: [
     ${moduleImports.join(',\n    ')}
   ],
-  declarations: [
-    AppComponent
-  ],
-  bootstrap: [
-    AppComponent
-  ],
-  providers: [
-    SkyThemeService,
-    {
-      provide: SkyAppLocaleProvider,
-      useValue: {
-        getLocaleInfo: () => observableOf({
-          locale: 'en-US'
-        })
-      }
-    }
-  ]
+  declarations: [AppComponent],
+  bootstrap: [AppComponent],
+  providers: [provideInitialTheme('${theme}')],
 })
-export class AppModule { }
+export class AppModule {}
 `;
 
     files[`${srcPath}index.html`] = `<!doctype html>
@@ -294,18 +249,13 @@ export class AppModule { }
 import 'zone.js';
 import '@skyux/packages/polyfills';
 
-import {
-  platformBrowserDynamic
-} from '@angular/platform-browser-dynamic';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
-import {
-  AppModule
-} from './app/app.module';
+import { AppModule } from './app/app.module';
 
 platformBrowserDynamic()
   .bootstrapModule(AppModule)
   .catch((err) => console.error(err));
-
 `;
 
     files[`${srcPath}styles.scss`] = `@import '@skyux/theme/css/sky';
@@ -314,7 +264,8 @@ platformBrowserDynamic()
 body {
   background-color: #fff;
   margin: 15px;
-}`;
+}
+`;
 
     stylesheets.push('src/styles.scss');
 
@@ -330,10 +281,10 @@ body {
             prefix: 'app',
             architect: {
               build: {
-                builder: '@angular-devkit/build-angular:browser',
+                builder: '@angular-devkit/build-angular:application',
                 options: {
                   index: 'src/index.html',
-                  main: 'src/main.ts',
+                  browser: 'src/main.ts',
                   outputPath: 'dist/demo',
                   tsConfig: 'tsconfig.app.json',
                   inlineStyleLanguage: 'scss',
@@ -341,12 +292,9 @@ body {
                 },
                 configurations: {
                   development: {
-                    buildOptimizer: false,
                     optimization: false,
-                    vendorChunk: true,
                     extractLicenses: false,
                     sourceMap: true,
-                    namedChunks: true,
                   },
                 },
                 defaultConfiguration: 'development',
