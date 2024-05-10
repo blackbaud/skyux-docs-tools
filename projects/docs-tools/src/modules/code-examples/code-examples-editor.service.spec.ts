@@ -205,11 +205,8 @@ describe('Code examples editor service', () => {
 
     expect(stackblitzSpy).toHaveBeenCalled();
     const spyArgs = stackblitzSpy.calls.mostRecent().args;
-    expect(spyArgs[0].files['src/app/app.component.ts']).toContain(
-      `SkyTheme.presets['modern']`,
-    );
     expect(spyArgs[0].files['src/app/app.module.ts']).toContain(
-      'SkyThemeService',
+      `provideInitialTheme('modern')`,
     );
   });
 
@@ -220,11 +217,8 @@ describe('Code examples editor service', () => {
 
     expect(stackblitzSpy).toHaveBeenCalled();
     const spyArgs = stackblitzSpy.calls.mostRecent().args;
-    expect(spyArgs[0].files['src/app/app.component.ts']).toContain(
-      `SkyTheme.presets['default']`,
-    );
     expect(spyArgs[0].files['src/app/app.module.ts']).toContain(
-      'SkyThemeService',
+      `provideInitialTheme('default')`,
     );
   });
 
@@ -245,7 +239,7 @@ describe('Code examples editor service', () => {
     expect(stackblitzSpy).toHaveBeenCalled();
     const spyArgs = stackblitzSpy.calls.mostRecent().args;
     expect(spyArgs[0].files['src/app/app.module.ts']).toContain(
-      `import {\n  SampleDemoModule\n} from './foo.module';`,
+      `import { SampleDemoModule } from './foo.module';`,
     );
     expect(spyArgs[0].files['src/app/app.module.ts']).toContain(
       `imports: [\n    ${moduleImports.join(',\n    ')}`,
@@ -260,7 +254,7 @@ describe('Code examples editor service', () => {
     const appModuleContents = spyArgs[0].files['src/app/app.module.ts'];
 
     expect(appModuleContents).toContain(
-      `import {\n  DemoComponent\n} from './demo.component';`,
+      `import { DemoComponent } from './demo.component';`,
     );
 
     expect(appModuleContents).toContain(
