@@ -5,6 +5,7 @@ import {
   Input,
   OnDestroy,
   OnInit,
+  TemplateRef,
 } from '@angular/core';
 
 import { ReplaySubject } from 'rxjs';
@@ -53,6 +54,23 @@ export class SkyDocsDemoControlPanelCheckboxComponent
    */
   @Input()
   public disabled: boolean = false;
+
+  /**
+   * The content of the help popover. When specified, a [help inline](https://developer.blackbaud.com/skyux/components/help-inline)
+   * button is added to the control panel checkbox label. The help inline button displays a [popover](https://developer.blackbaud.com/skyux/components/popover)
+   * when clicked using the specified content and optional title.
+   * @preview
+   */
+  @Input()
+  public helpPopoverContent: string | TemplateRef<unknown> | undefined;
+
+    /**
+   * The title of the help popover. This property only applies when `helpPopoverContent` is
+   * also specified.
+   * @preview
+   */
+    @Input()
+    public helpPopoverTitle: string | undefined;
 
   /**
    * The text label of the checkbox.

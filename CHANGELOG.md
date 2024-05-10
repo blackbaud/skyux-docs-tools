@@ -3,6 +3,7 @@
 ## 10.1.1 (2024-05-10)
 
 - Switched to using `provideInitialTheme` and streamlined boilerplate code for examples. [#281](https://github.com/blackbaud/skyux-docs-tools/pull/281)
+- Exposed help inline inputs on control panel checkbox. [#282](https://github.com/blackbaud/skyux-docs-tools/pull/282)
 
 ## 10.1.0 (2024-04-16)
 
