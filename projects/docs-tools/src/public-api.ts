@@ -56,6 +56,7 @@ export { SkyDocsDemoControlPanelRadioGroupComponent as λ6 } from './modules/dem
 export { SkyDocsDemoControlPanelSectionComponent as λ7 } from './modules/demo/demo-control-panel-section.component';
 export { SkyDocsDemoControlPanelComponent as λ8 } from './modules/demo/demo-control-panel.component';
 export { SkyDocsDemoComponent as λ9 } from './modules/demo/demo.component';
+export { SkyDocsDemoCustomControlPanelComponent as λ32 } from './modules/demo/demo-custom-control-panel.component';
 export { SkyDocsDemoPageModuleInfoComponent as λ10 } from './modules/demo-page/demo-page-module-info.component';
 export { SkyDocsDemoPageSectionComponent as λ11 } from './modules/demo-page/demo-page-section.component';
 export { SkyDocsDemoPageSummaryComponent as λ12 } from './modules/demo-page/demo-page-summary.component';

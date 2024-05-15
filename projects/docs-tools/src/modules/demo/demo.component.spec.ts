@@ -167,4 +167,24 @@ describe('Demo component', () => {
       ]);
     }));
   });
+
+  describe('custom control panel', () => {
+    it('should render the custom control panel content', () => {
+      fixture.componentInstance.showControlPanel = false;
+      fixture.componentInstance.showCustomControlPanel = true;
+      fixture.detectChanges();
+
+      showControlPanel();
+      fixture.detectChanges();
+
+      const customControlPanel = fixture.nativeElement.querySelector(
+        'sky-docs-demo-custom-control-panel',
+      );
+      const customControlPanelContent =
+        customControlPanel.querySelector('.custom-content');
+
+      expect(customControlPanel).toBeVisible();
+      expect(customControlPanelContent).toBeVisible();
+    });
+  });
 });
