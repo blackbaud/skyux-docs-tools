@@ -10,6 +10,7 @@ import {
 import { SkyDocsDemoContentAlignment } from './demo-content-alignment';
 
 import { SkyDocsDemoControlPanelComponent } from './demo-control-panel.component';
+import { SkyDocsDemoCustomControlPanelComponent } from './demo-custom-control-panel.component';
 
 /**
  * Wraps all behavior demo components and handles the configuration and appearance of the behavior demo.
@@ -47,11 +48,17 @@ export class SkyDocsDemoComponent {
   public heading: string;
 
   public get hasOptions(): boolean {
-    return this.controlPanels && this.controlPanels.length > 0;
+    return (
+      (this.controlPanels && this.controlPanels.length > 0) ||
+      (this.customControlPanels && this.customControlPanels.length > 0)
+    );
   }
 
   @ContentChildren(SkyDocsDemoControlPanelComponent, { read: ElementRef })
   private controlPanels: QueryList<SkyDocsDemoControlPanelComponent>;
+
+  @ContentChildren(SkyDocsDemoCustomControlPanelComponent, { read: ElementRef })
+  private customControlPanels: QueryList<SkyDocsDemoCustomControlPanelComponent>;
 
   public get toggleOptionsButtonIcon(): string {
     return this.areOptionsVisible ? 'chevron-up' : 'chevron-down';

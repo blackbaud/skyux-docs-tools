@@ -1,5 +1,6 @@
 <sky-docs-demo [alignContents]="alignContents" [heading]="heading">
   <sky-docs-demo-control-panel
+    *ngIf="showControlPanel"
     (reset)="onDemoReset()"
     (selectionChange)="onDemoSelectionChange($event)"
   >
@@ -29,6 +30,9 @@
       </sky-docs-demo-control-panel-checkbox>
     </sky-docs-demo-control-panel-section>
   </sky-docs-demo-control-panel>
+  <sky-docs-demo-custom-control-panel *ngIf="showCustomControlPanel">
+    <div class="custom-content">Custom control panel</div>
+  </sky-docs-demo-custom-control-panel>
 
   <button
     class="sky-btn"
