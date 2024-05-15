@@ -1,5 +1,9 @@
 # Changelog
 
+## 10.2.0 (2024-05-15)
+
+- Added the ability to provide a custom control panel for demos. [#283](https://github.com/blackbaud/skyux-docs-tools/pull/283)
+
 ## 10.1.1 (2024-05-10)
 
 - Switched to using `provideInitialTheme` and streamlined boilerplate code for examples. [#281](https://github.com/blackbaud/skyux-docs-tools/pull/281)
