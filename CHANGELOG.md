@@ -1,5 +1,9 @@
 # Changelog
 
+## 10.2.1 (2024-05-21)
+
+- Fix type kind enum for breaking change in Typdoc@0.25.x. [#284](https://github.com/blackbaud/skyux-docs-tools/pull/284)
+
 ## 10.2.0 (2024-05-15)
 
 - Added the ability to provide a custom control panel for demos. [#283](https://github.com/blackbaud/skyux-docs-tools/pull/283)
