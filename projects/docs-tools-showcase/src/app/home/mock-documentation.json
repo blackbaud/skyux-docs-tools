@@ -3055,15 +3055,22 @@
               }
             ],
             "type": {
-              "type": "intrinsic",
-              "name": "string"
+              "type": "reference",
+              "target": {
+                "sourceFileName": "node_modules/@angular/core/index.d.ts",
+                "qualifiedName": "InputSignal"
+              },
+              "typeArguments": [
+                {
+                  "type": "intrinsic",
+                  "name": "string"
+                }
+              ],
+              "name": "InputSignal",
+              "package": "@angular/core"
             },
             "defaultValue": "''",
-            "decorators": [
-              {
-                "name": "Input"
-              }
-            ]
+            "decorators": []
           },
           {
             "id": 699,

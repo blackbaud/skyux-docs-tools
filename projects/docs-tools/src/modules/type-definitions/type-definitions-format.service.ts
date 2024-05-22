@@ -143,10 +143,6 @@ export class SkyDocsTypeDefinitionsFormatService {
   ): string {
     let signature = '';
 
-    if (property.decorator?.name) {
-      signature += `@${property.decorator.name}()<br>`;
-    }
-
     const indexSignature = property.type?.indexSignature;
     let name: string;
     if (indexSignature) {
@@ -214,6 +210,14 @@ export class SkyDocsTypeDefinitionsFormatService {
 
     if (!type) {
       return formatted;
+    }
+
+    if (
+      type.name === 'InputSignal' &&
+      type.package === '@angular/core' &&
+      type.typeArguments?.length
+    ) {
+      type = type.typeArguments[0];
     }
 
     if (type.callSignature) {
