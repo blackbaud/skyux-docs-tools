@@ -98,7 +98,7 @@ describe('Property definitions component', function () {
       '.sky-docs-property-definitions-table-cell-name',
     );
 
-    expect(element.textContent).toEqual('@Input()foobar: number');
+    expect(element.textContent).toEqual('foobar: number');
   }));
 
   it('should mark a method as preview', fakeAsync(() => {

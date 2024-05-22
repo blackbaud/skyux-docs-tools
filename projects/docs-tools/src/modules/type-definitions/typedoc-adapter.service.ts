@@ -110,9 +110,7 @@ export class SkyDocsTypeDocAdapterService {
       definition.eventProperties = eventProperties;
     }
 
-    const inputProperties = properties.filter(
-      (p) => p.decorator?.name === 'Input',
-    );
+    const inputProperties = properties.filter((p) => this.#isInputProperty(p));
     if (inputProperties.length) {
       definition.inputProperties = inputProperties;
     }
@@ -552,6 +550,10 @@ export class SkyDocsTypeDocAdapterService {
           );
         }
 
+        if (child.type.package) {
+          definition.package = child.type.package;
+        }
+
         return definition;
     }
   }
@@ -861,6 +863,14 @@ export class SkyDocsTypeDocAdapterService {
       entry.anchorId ||
       this.typeDefinitionsProvider?.anchorIds[entry.name] ||
       ''
+    );
+  }
+
+  #isInputProperty(property: SkyDocsClassPropertyDefinition): boolean {
+    return (
+      property.decorator?.name === 'Input' ||
+      (property.type.name === 'InputSignal' &&
+        property.type.package === '@angular/core')
     );
   }
 }

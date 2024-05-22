@@ -2496,6 +2496,48 @@ describe('TypeDoc adapter', () => {
         },
       ]);
     });
+
+    it('should include input signals in the input properties collection', () => {
+      entry.children = [
+        {
+          name: 'propertyName',
+          kind: TypeDocKind.Property,
+          type: {
+            type: 'intrinsic',
+            typeArguments: [
+              {
+                type: 'intrinsic',
+                name: 'number',
+              },
+            ],
+            name: 'InputSignal',
+            package: '@angular/core',
+          },
+          decorators: [],
+        },
+      ];
+
+      const def = adapter.toDirectiveDefinition(entry);
+
+      expect(def.inputProperties).toEqual([
+        {
+          name: 'propertyName',
+          isOptional: true,
+          isPreview: false,
+          type: {
+            type: 'intrinsic',
+            typeArguments: [
+              {
+                type: 'intrinsic',
+                name: 'number',
+              },
+            ],
+            name: 'InputSignal',
+            package: '@angular/core',
+          },
+        },
+      ]);
+    });
   });
 
   describe('Enumeration definitions', () => {
