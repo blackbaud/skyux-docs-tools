@@ -1,5 +1,9 @@
 # Changelog
 
+## 10.3.0 (2024-05-22)
+
+- Add support for Angular input signals. [#285](https://github.com/blackbaud/skyux-docs-tools/pull/285)
+
 ## 10.2.1 (2024-05-21)
 
 - Fix type kind enum for breaking change in Typdoc@0.25.x. [#284](https://github.com/blackbaud/skyux-docs-tools/pull/284)
