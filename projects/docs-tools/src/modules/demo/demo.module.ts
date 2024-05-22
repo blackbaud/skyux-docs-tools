@@ -39,7 +39,7 @@ import { SkyDocsDemoCustomControlPanelComponent } from './demo-custom-control-pa
     SkyDocsDemoControlPanelComponent,
     SkyDocsDemoControlPanelRadioGroupComponent,
     SkyDocsDemoControlPanelSectionComponent,
-    SkyDocsDemoCustomControlPanelComponent
+    SkyDocsDemoCustomControlPanelComponent,
   ],
   exports: [
     SkyDocsDemoComponent,
@@ -47,7 +47,7 @@ import { SkyDocsDemoCustomControlPanelComponent } from './demo-custom-control-pa
     SkyDocsDemoControlPanelComponent,
     SkyDocsDemoControlPanelRadioGroupComponent,
     SkyDocsDemoControlPanelSectionComponent,
-    SkyDocsDemoCustomControlPanelComponent
+    SkyDocsDemoCustomControlPanelComponent,
   ],
 })
 export class SkyDocsDemoModule {}
