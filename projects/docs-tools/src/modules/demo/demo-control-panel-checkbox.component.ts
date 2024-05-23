@@ -64,13 +64,13 @@ export class SkyDocsDemoControlPanelCheckboxComponent
   @Input()
   public helpPopoverContent: string | TemplateRef<unknown> | undefined;
 
-    /**
+  /**
    * The title of the help popover. This property only applies when `helpPopoverContent` is
    * also specified.
    * @preview
    */
-    @Input()
-    public helpPopoverTitle: string | undefined;
+  @Input()
+  public helpPopoverTitle: string | undefined;
 
   /**
    * The text label of the checkbox.

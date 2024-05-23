@@ -66,5 +66,5 @@ describe('Demo control panel checkbox', () => {
     const helpInline = fixture.nativeElement.querySelector('sky-help-inline');
 
     expect(helpInline).toBeVisible();
-  })
+  });
 });
