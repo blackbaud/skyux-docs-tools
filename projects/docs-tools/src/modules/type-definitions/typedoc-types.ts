@@ -83,6 +83,8 @@ export interface TypeDocType {
   types?: TypeDocType[];
 
   value?: string;
+
+  package?: string;
 }
 
 export interface TypeDocParameter {

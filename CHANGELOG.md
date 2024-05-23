@@ -1,8 +1,12 @@
 # Changelog
 
-## 10.3.0 (2024-05-23)
+## 10.4.0 (2024-05-23)
 
-- Update control panel radio groups to use heading text inputs. [#285](https://github.com/blackbaud/skyux-docs-tools/pull/285)
+- Update control panel radio groups to use heading text inputs. [#286](https://github.com/blackbaud/skyux-docs-tools/pull/286)
+
+## 10.3.0 (2024-05-22)
+
+- Add support for Angular input signals. [#285](https://github.com/blackbaud/skyux-docs-tools/pull/285)
 
 ## 10.2.1 (2024-05-21)
 

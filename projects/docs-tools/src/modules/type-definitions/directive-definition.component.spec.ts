@@ -122,10 +122,10 @@ describe('Directive definition component', function () {
     );
 
     expect(rowElements.item(0).innerText.replace(/\r?\n|\r/g, '')).toEqual(
-      '@Input()config?: Config',
+      'config?: Config',
     );
     expect(rowElements.item(1).innerText.replace(/\r?\n|\r/g, '')).toEqual(
-      '@Output()click: EventEmitter<string>',
+      'click: EventEmitter<string>',
     );
   });
 
@@ -154,7 +154,7 @@ describe('Directive definition component', function () {
       '.sky-docs-property-definitions-table-cell-name',
     );
 
-    expect(rowElements.item(0).innerText).toContain('@Output()');
+    expect(rowElements.item(0).innerText).toBe('click: any');
   });
 
   it('should add links to types within description', () => {
