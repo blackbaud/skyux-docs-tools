@@ -1,5 +1,9 @@
 # Changelog
 
+## 10.5.0 (2024-05-23)
+
+- Make property definition table headers sticky. [#287](https://github.com/blackbaud/skyux-docs-tools/pull/287)
+
 ## 10.4.0 (2024-05-23)
 
 - Update control panel radio groups to use heading text inputs. [#286](https://github.com/blackbaud/skyux-docs-tools/pull/286)
