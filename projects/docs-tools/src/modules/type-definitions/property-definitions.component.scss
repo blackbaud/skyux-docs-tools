@@ -10,7 +10,15 @@
 .sky-docs-property-definitions {
   width: 100%;
   max-width: 100%;
-  overflow: auto;
+
+  th {
+    position: sticky;
+    top: var(--sky-viewport-top, 0);
+  }
+
+  &-table-cell-description {
+    word-break: break-word;
+  }
 }
 
 .sky-docs-table-column-header-name {
