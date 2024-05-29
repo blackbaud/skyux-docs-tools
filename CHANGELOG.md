@@ -1,5 +1,9 @@
 # Changelog
 
+## 10.5.1 (2024-05-29)
+
+- Update property definition table headers so content scrolls under. [#288](https://github.com/blackbaud/skyux-docs-tools/pull/288)
+
 ## 10.5.0 (2024-05-23)
 
 - Make property definition table headers sticky. [#287](https://github.com/blackbaud/skyux-docs-tools/pull/287)
