@@ -1,5 +1,9 @@
 # Changelog
 
+## 10.5.2 (2024-06-05)
+
+- Update `SkyDocsSourceCodeProvider` to be provided in root to allow for standalone component overwriting. [#289](https://github.com/blackbaud/skyux-docs-tools/pull/289)
+
 ## 10.5.1 (2024-05-29)
 
 - Update property definition table headers so content scrolls under. [#288](https://github.com/blackbaud/skyux-docs-tools/pull/288)
