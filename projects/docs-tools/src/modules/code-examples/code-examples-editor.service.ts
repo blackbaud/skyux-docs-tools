@@ -68,6 +68,7 @@ export class SkyDocsCodeExamplesEditorService {
       '@skyux/forms': skyuxVersion,
       '@skyux/help-inline': skyuxVersion,
       '@skyux/i18n': skyuxVersion,
+      '@skyux/icon': skyuxVersion,
       '@skyux/indicators': skyuxVersion,
       '@skyux/layout': skyuxVersion,
       '@skyux/modals': skyuxVersion,

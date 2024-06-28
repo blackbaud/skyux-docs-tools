@@ -4,6 +4,11 @@
 
 - Update `SkyDocsSourceCodeProvider` to be provided in root to allow for standalone component overwriting. [#289](https://github.com/blackbaud/skyux-docs-tools/pull/289)
 
+## 10.6.0 (2024-06-28)
+
+- Add `@skyux/icon` to code example dependencies. [#000](https://github.com/blackbaud/skyux-docs-tools/pull/000)
+
+
 ## 10.5.1 (2024-05-29)
 
 - Update property definition table headers so content scrolls under. [#288](https://github.com/blackbaud/skyux-docs-tools/pull/288)
