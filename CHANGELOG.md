@@ -1,5 +1,15 @@
 # Changelog
 
+## 11.0.0-alpha.0 (2024-07-19)
+
+### ⚠ BREAKING CHANGES
+
+- Dropped support for Angular 17. [#291](https://github.com/blackbaud/skyux-docs-tools/pull/291)
+
+### Features
+
+- Added support for Angular 18. [#291](https://github.com/blackbaud/skyux-docs-tools/pull/291)
+
 ## 10.5.2 (2024-06-05)
 
 - Update `SkyDocsSourceCodeProvider` to be provided in root to allow for standalone component overwriting. [#289](https://github.com/blackbaud/skyux-docs-tools/pull/289)
