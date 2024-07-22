@@ -80,7 +80,7 @@ export class SkyDocsCodeExamplesEditorService {
       'ng2-dragula': '5.1.0',
       rxjs: '^7',
       tslib: '^2.6.2',
-      typescript: '~5.3.3',
+      typescript: '~5.5.3',
       'zone.js': '~0.14.4',
     };
 
