@@ -1,5 +1,15 @@
 # Changelog
 
+## 11.0.0 (2024-09-11)
+
+### ⚠ BREAKING CHANGES
+
+- Dropped support for Angular 17. [#291](https://github.com/blackbaud/skyux-docs-tools/pull/291)
+
+### Features
+
+- Added support for Angular 18. [#291](https://github.com/blackbaud/skyux-docs-tools/pull/291)
+
 ## 11.0.0-alpha.0 (2024-07-19)
 
 ### ⚠ BREAKING CHANGES
@@ -17,7 +27,6 @@
 ## 10.6.0 (2024-06-28)
 
 - Add `@skyux/icon` to code example dependencies. [#000](https://github.com/blackbaud/skyux-docs-tools/pull/000)
-
 
 ## 10.5.1 (2024-05-29)
 

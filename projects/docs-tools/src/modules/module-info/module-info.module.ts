@@ -6,7 +6,7 @@ import { SkyClipboardModule } from '@blackbaud/skyux-lib-clipboard';
 
 import { SkyCodeModule } from '@blackbaud/skyux-lib-code-block';
 
-import { SkyHelpInlineModule } from '@skyux/indicators';
+import { SkyHelpInlineModule } from '@skyux/help-inline';
 
 import { SkyDescriptionListModule } from '@skyux/layout';
 

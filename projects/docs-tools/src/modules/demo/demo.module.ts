@@ -6,7 +6,7 @@ import { FormsModule } from '@angular/forms';
 
 import { SkyCheckboxModule, SkyRadioModule } from '@skyux/forms';
 
-import { SkyIconModule } from '@skyux/indicators';
+import { SkyIconModule } from '@skyux/icon';
 
 import { SkyThemeModule } from '@skyux/theme';
 

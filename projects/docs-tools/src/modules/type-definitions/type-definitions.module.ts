@@ -9,7 +9,8 @@ import {
   SkyCodeModule,
 } from '@blackbaud/skyux-lib-code-block';
 
-import { SkyIconModule, SkyStatusIndicatorModule } from '@skyux/indicators';
+import { SkyIconModule } from '@skyux/icon';
+import { SkyStatusIndicatorModule } from '@skyux/indicators';
 
 import { SkyDefinitionListModule } from '@skyux/layout';
 

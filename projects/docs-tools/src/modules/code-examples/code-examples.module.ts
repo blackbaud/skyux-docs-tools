@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 
 import { SkyCodeBlockModule } from '@blackbaud/skyux-lib-code-block';
 
-import { SkyIconModule } from '@skyux/indicators';
+import { SkyIconModule } from '@skyux/icon';
 
 import { SkyRepeaterModule } from '@skyux/lists';
 

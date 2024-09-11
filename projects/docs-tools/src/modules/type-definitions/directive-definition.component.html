@@ -33,7 +33,7 @@
     *ngIf="config.inputProperties?.length"
     propertyType="Input"
     [config]="{
-      properties: config.inputProperties
+      properties: config.inputProperties,
     }"
   ></sky-docs-property-definitions>
 
@@ -41,7 +41,7 @@
     *ngIf="config.eventProperties?.length"
     propertyType="Event"
     [config]="{
-      properties: config.eventProperties
+      properties: config.eventProperties,
     }"
   ></sky-docs-property-definitions>
 </div>

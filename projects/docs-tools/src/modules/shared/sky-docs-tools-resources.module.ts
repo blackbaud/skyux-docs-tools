@@ -6,7 +6,6 @@
  * the 'ng generate @skyux/i18n:lib-resources-module modules/shared/sky-docs-tools' schematic.
  * To update this file, simply rerun the command.
  */
-
 import { NgModule } from '@angular/core';
 import {
   SKY_LIB_RESOURCES_PROVIDERS,
@@ -18,7 +17,7 @@ import {
   getLibStringForLocale,
 } from '@skyux/i18n';
 
-const RESOURCES: { [locale: string]: SkyLibResources } = {
+const RESOURCES: Record<string, SkyLibResources> = {
   'EN-US': {
     'sky-docs-demo-heading': { message: 'Demo' },
     'sky-docs-demo-toggle-button-on': { message: 'Show options' },
