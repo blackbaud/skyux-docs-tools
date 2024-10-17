@@ -70,13 +70,16 @@ describe('Code example component', () => {
 
     launchEditor();
 
-    expect(editorService.launchEditor).toHaveBeenCalledWith({
-      heading: 'Basic',
-      packageDependencies: {},
-      sourceCode: MOCK_SOURCE_CODE,
-      theme: SkyDocsCodeExampleTheme.Default,
-      stylesheets: undefined,
-    });
+    expect(editorService.launchEditor).toHaveBeenCalledWith(
+      {
+        heading: 'Basic',
+        packageDependencies: {},
+        sourceCode: MOCK_SOURCE_CODE,
+        theme: SkyDocsCodeExampleTheme.Default,
+        stylesheets: undefined,
+      },
+      'angular-cli',
+    );
   });
 
   it('should allow setting package dependencies', () => {
@@ -86,15 +89,18 @@ describe('Code example component', () => {
 
     launchEditor();
 
-    expect(editorService.launchEditor).toHaveBeenCalledWith({
-      heading: 'Basic',
-      packageDependencies: {
-        foobar: 'latest',
+    expect(editorService.launchEditor).toHaveBeenCalledWith(
+      {
+        heading: 'Basic',
+        packageDependencies: {
+          foobar: 'latest',
+        },
+        sourceCode: MOCK_SOURCE_CODE,
+        theme: SkyDocsCodeExampleTheme.Default,
+        stylesheets: undefined,
       },
-      sourceCode: MOCK_SOURCE_CODE,
-      theme: SkyDocsCodeExampleTheme.Default,
-      stylesheets: undefined,
-    });
+      'angular-cli',
+    );
   });
 
   it('should allow setting stylesheets', () => {
@@ -104,12 +110,15 @@ describe('Code example component', () => {
 
     launchEditor();
 
-    expect(editorService.launchEditor).toHaveBeenCalledWith({
-      heading: 'Basic',
-      packageDependencies: {},
-      sourceCode: MOCK_SOURCE_CODE,
-      theme: SkyDocsCodeExampleTheme.Default,
-      stylesheets: ['styles.css'],
-    });
+    expect(editorService.launchEditor).toHaveBeenCalledWith(
+      {
+        heading: 'Basic',
+        packageDependencies: {},
+        sourceCode: MOCK_SOURCE_CODE,
+        theme: SkyDocsCodeExampleTheme.Default,
+        stylesheets: ['styles.css'],
+      },
+      'angular-cli',
+    );
   });
 });
