@@ -105,9 +105,21 @@ export class SkyDocsCodeExamplesEditorService {
       }
     }
 
+    const overrides =
+      template === 'node'
+        ? {
+            'ng2-dragula@5.1.0': {
+              '@angular/animations': '>=16.0.0 <19.0.0',
+              '@angular/core': '>=16.0.0 <19.0.0',
+              '@angular/common': '>=16.0.0 <19.0.0',
+            },
+          }
+        : undefined;
+
     const files = this.parseStackBlitzFiles(
       codeExample.sourceCode,
       mergedDependencies,
+      overrides,
       codeExample.theme,
       codeExample.stylesheets,
     );
@@ -129,6 +141,7 @@ export class SkyDocsCodeExamplesEditorService {
   private parseStackBlitzFiles(
     sourceCode: SkyDocsSourceCodeFile[],
     dependencies: SkyDocsCodeExampleModuleDependencies,
+    overrides: object | undefined,
     theme: SkyDocsCodeExampleTheme,
     stylesheets: string[] = [],
   ): {
@@ -304,7 +317,7 @@ body {
                 builder: '@angular-devkit/build-angular:dev-server',
                 configurations: {
                   development: {
-                    browserTarget: 'demo:build:development',
+                    buildTarget: 'demo:build:development',
                   },
                 },
                 defaultConfiguration: 'development',
@@ -326,6 +339,7 @@ body {
           start: 'ng serve',
           build: 'ng build',
         },
+        ...(overrides ? { overrides } : {}),
       },
       undefined,
       2,

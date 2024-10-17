@@ -77,7 +77,7 @@
       <button
         class="sky-btn sky-btn-default"
         type="button"
-        (click)="launchEditor(codeExample); $event.stopPropagation()"
+        (click)="launchEditor(codeExample, $event.metaKey); $event.stopPropagation()"
       >
         <sky-icon icon="pencil"></sky-icon>
         {{ 'sky-docs-code-example-launch-button-label' | skyLibResources }}
