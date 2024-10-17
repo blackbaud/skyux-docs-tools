@@ -2,7 +2,7 @@
 
 ## 11.1.0 (2024-10-17)
 
-- Fixed `<sky-docs-heading-anchor>` to pick up current tab url. [#000](https://github.com/blackbaud/skyux-docs-tools/pull/000)
+- Fixed `<sky-docs-heading-anchor>` to pick up current tab url. [#293](https://github.com/blackbaud/skyux-docs-tools/pull/293)
 
 ## 11.0.0 (2024-09-11)
 
