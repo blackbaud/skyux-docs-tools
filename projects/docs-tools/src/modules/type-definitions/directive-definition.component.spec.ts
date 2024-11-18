@@ -14,11 +14,8 @@ import { SkyDocsTypeDefinitionsProvider } from './type-definitions-provider';
 
 describe('Directive definition component', function () {
   let fixture: ComponentFixture<DirectiveDefinitionFixtureComponent>;
-  let mockMediaQueryService: MockSkyMediaQueryService;
 
   beforeEach(() => {
-    mockMediaQueryService = new MockSkyMediaQueryService();
-
     TestBed.configureTestingModule({
       imports: [TypeDefinitionsFixturesModule],
       providers: [
@@ -34,10 +31,6 @@ describe('Directive definition component', function () {
               },
             ],
           },
-        },
-        {
-          provide: SkyMediaQueryService,
-          useValue: mockMediaQueryService,
         },
       ],
     });

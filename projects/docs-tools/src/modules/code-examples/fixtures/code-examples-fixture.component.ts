@@ -13,11 +13,11 @@ import { SkyDocsCodeExamplesComponent } from '../code-examples.component';
       <sky-docs-code-example
         heading="Basic"
         sourceCodePath="src/app/public/plugin-resources/foobar"
-      ></sky-docs-code-example>
+      />
       <sky-docs-code-example
         heading="Advanced"
         sourceCodePath="src/app/public/plugin-resources/invalid/"
-      ></sky-docs-code-example>
+      />
     </sky-docs-code-examples>
   `,
 })

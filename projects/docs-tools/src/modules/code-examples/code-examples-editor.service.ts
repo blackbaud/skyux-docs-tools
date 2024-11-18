@@ -66,6 +66,7 @@ export class SkyDocsCodeExamplesEditorService {
       '@skyux/core': skyuxVersion,
       '@skyux/errors': skyuxVersion,
       '@skyux/forms': skyuxVersion,
+      '@skyux/help-inline': skyuxVersion,
       '@skyux/i18n': skyuxVersion,
       '@skyux/icon': skyuxVersion,
       '@skyux/indicators': skyuxVersion,
@@ -76,6 +77,7 @@ export class SkyDocsCodeExamplesEditorService {
       '@skyux/router': skyuxVersion,
       '@skyux/theme': skyuxVersion,
       '@types/jasmine': '~5.1.4',
+      'ng2-dragula': '5.1.0',
       rxjs: '^7',
       tslib: '^2.6.2',
       typescript: '~5.5.3',
@@ -103,9 +105,21 @@ export class SkyDocsCodeExamplesEditorService {
       }
     }
 
+    const overrides =
+      template === 'node'
+        ? {
+            'ng2-dragula@5.1.0': {
+              '@angular/animations': '>=16.0.0 <19.0.0',
+              '@angular/core': '>=16.0.0 <19.0.0',
+              '@angular/common': '>=16.0.0 <19.0.0',
+            },
+          }
+        : undefined;
+
     const files = this.parseStackBlitzFiles(
       codeExample.sourceCode,
       mergedDependencies,
+      overrides,
       codeExample.theme,
       codeExample.stylesheets,
     );
@@ -127,6 +141,7 @@ export class SkyDocsCodeExamplesEditorService {
   private parseStackBlitzFiles(
     sourceCode: SkyDocsSourceCodeFile[],
     dependencies: SkyDocsCodeExampleModuleDependencies,
+    overrides: object | undefined,
     theme: SkyDocsCodeExampleTheme,
     stylesheets: string[] = [],
   ): {
@@ -142,22 +157,23 @@ export class SkyDocsCodeExamplesEditorService {
  `;
 
     const moduleImportStatements: string[] = [
-      `import { NgModule } from '@angular/core';`,
-      `import { FormsModule, ReactiveFormsModule } from '@angular/forms';`,
-      `import { BrowserAnimationsModule } from '@angular/platform-browser/animations';`,
-      `import { RouterModule } from '@angular/router';`,
-      `import { provideInitialTheme } from '@skyux/theme';`,
-      `import { AppComponent } from './app.component';`,
+      `import { Component } from '@angular/core';`,
     ];
 
-    const moduleImports: string[] = [
-      'BrowserAnimationsModule',
-      'FormsModule',
-      'ReactiveFormsModule',
-      'RouterModule.forRoot([])',
-    ];
+    const moduleImports: string[] = [];
 
-    const files: { [_: string]: string } = {};
+    const files: { [_: string]: string } = {
+      '.stackblitzrc': JSON.stringify(
+        {
+          env: {
+            NG_BUILD_PARALLEL_TS: '0',
+            NODE_ENV: 'development',
+          },
+        },
+        undefined,
+        2,
+      ),
+    };
 
     let appComponentTemplate = '';
 
@@ -199,26 +215,17 @@ export class SkyDocsCodeExamplesEditorService {
     });
 
     files[`${appPath}app.component.ts`] = `${banner}
-import { Component } from '@angular/core';
+${moduleImportStatements.join('\n\n')}
 
 @Component({
   selector: 'sky-demo-app',
-  template: '${appComponentTemplate}'
+  template: '${appComponentTemplate}',
+  standalone: true,
+  imports: [
+    ${moduleImports.join(',\n    ')},
+  ],
 })
 export class AppComponent {}
-`;
-
-    files[`${appPath}app.module.ts`] = `${moduleImportStatements.join('\n\n')}
-
-@NgModule({
-  imports: [
-    ${moduleImports.join(',\n    ')}
-  ],
-  declarations: [AppComponent],
-  bootstrap: [AppComponent],
-  providers: [provideInitialTheme('${theme}')],
-})
-export class AppModule {}
 `;
 
     files[`${srcPath}index.html`] = `<!doctype html>
@@ -248,12 +255,23 @@ export class AppModule {}
 import 'zone.js';
 import '@skyux/packages/polyfills';
 
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { bootstrapApplication } from '@angular/platform-browser';
+import { provideAnimations } from '@angular/platform-browser/animations';
+import { provideRouter } from '@angular/router';
+import { provideInitialTheme } from '@skyux/theme';
 
-import { AppModule } from './app/app.module';
+import { AppComponent } from './app/app.component';
 
-platformBrowserDynamic()
-  .bootstrapModule(AppModule)
+void bootstrapApplication(AppComponent, {
+  providers: [
+    FormsModule,
+    ReactiveFormsModule,
+    provideAnimations(),
+    provideInitialTheme('${theme}'),
+    provideRouter([]),
+  ],
+})
   .catch((err) => console.error(err));
 `;
 
@@ -288,11 +306,6 @@ body {
                   tsConfig: 'tsconfig.app.json',
                   inlineStyleLanguage: 'scss',
                   styles: stylesheets,
-                  allowedCommonJsDependencies: [
-                    '@skyux/icons',
-                    'dom-autoscroller',
-                    'fontfaceobserver',
-                  ],
                 },
                 configurations: {
                   development: {
@@ -329,13 +342,7 @@ body {
           start: 'ng serve',
           build: 'ng build',
         },
-        overrides: {
-          'ng2-dragula@5.0.1': {
-            '@angular/animations': `^${ANGULAR_VERSION.major}`,
-            '@angular/core': `^${ANGULAR_VERSION.major}`,
-            '@angular/common': `^${ANGULAR_VERSION.major}`,
-          },
-        },
+        ...(overrides ? { overrides } : {}),
       },
       undefined,
       2,

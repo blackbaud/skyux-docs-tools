@@ -187,12 +187,7 @@ describe('Code examples editor service', () => {
   let service: SkyDocsCodeExamplesEditorService;
 
   beforeEach(() => {
-    moduleImports = [
-      'BrowserAnimationsModule',
-      'FormsModule',
-      'ReactiveFormsModule',
-      'RouterModule.forRoot([])',
-    ];
+    moduleImports = [];
 
     stackblitzSpy = spyOn(StackBlitzSDK, 'openProject').and.callFake(() => {});
     service = new SkyDocsCodeExamplesEditorService();
@@ -205,7 +200,7 @@ describe('Code examples editor service', () => {
 
     expect(stackblitzSpy).toHaveBeenCalled();
     const spyArgs = stackblitzSpy.calls.mostRecent().args;
-    expect(spyArgs[0].files['src/app/app.module.ts']).toContain(
+    expect(spyArgs[0].files['src/main.ts']).toContain(
       `provideInitialTheme('modern')`,
     );
   });
@@ -217,7 +212,7 @@ describe('Code examples editor service', () => {
 
     expect(stackblitzSpy).toHaveBeenCalled();
     const spyArgs = stackblitzSpy.calls.mostRecent().args;
-    expect(spyArgs[0].files['src/app/app.module.ts']).toContain(
+    expect(spyArgs[0].files['src/main.ts']).toContain(
       `provideInitialTheme('default')`,
     );
   });
@@ -231,33 +226,33 @@ describe('Code examples editor service', () => {
     expect(spyArgs[0].files['src/app/foo.component.spec.ts']).toBeDefined();
   });
 
-  it('should add modules from code example to app.module.ts', () => {
+  it('should add modules from code example to app.component.ts', () => {
     moduleImports.push('SampleDemoModule');
 
     service.launchEditor(codeExample);
 
     expect(stackblitzSpy).toHaveBeenCalled();
     const spyArgs = stackblitzSpy.calls.mostRecent().args;
-    expect(spyArgs[0].files['src/app/app.module.ts']).toContain(
+    expect(spyArgs[0].files['src/app/app.component.ts']).toContain(
       `import { SampleDemoModule } from './foo.module';`,
     );
-    expect(spyArgs[0].files['src/app/app.module.ts']).toContain(
+    expect(spyArgs[0].files['src/app/app.component.ts']).toContain(
       `imports: [\n    ${moduleImports.join(',\n    ')}`,
     );
   });
 
-  it('should add standalone components from code example to app.module.ts', () => {
+  it('should add standalone components from code example to app.component.ts', () => {
     moduleImports.push('DemoComponent');
     service.launchEditor(codeExampleWithStandaloneComponent);
 
     const spyArgs = stackblitzSpy.calls.mostRecent().args;
-    const appModuleContents = spyArgs[0].files['src/app/app.module.ts'];
+    const appComponentContents = spyArgs[0].files['src/app/app.component.ts'];
 
-    expect(appModuleContents).toContain(
+    expect(appComponentContents).toContain(
       `import { DemoComponent } from './demo.component';`,
     );
 
-    expect(appModuleContents).toContain(
+    expect(appComponentContents).toContain(
       `imports: [\n    ${moduleImports.join(',\n    ')}`,
     );
   });
