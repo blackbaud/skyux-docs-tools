@@ -37,6 +37,10 @@ export class DemoFixtureComponent {
 
   public showRadios: boolean = true;
 
+  public showControlPanel = true;
+
+  public showCustomControlPanel = false;
+
   @ViewChild(SkyDocsDemoComponent)
   public demoComponentRef: SkyDocsDemoComponent;
 

@@ -6,7 +6,7 @@ import { FormsModule } from '@angular/forms';
 
 import { SkyCheckboxModule, SkyRadioModule } from '@skyux/forms';
 
-import { SkyIconModule } from '@skyux/indicators';
+import { SkyIconModule } from '@skyux/icon';
 
 import { SkyThemeModule } from '@skyux/theme';
 
@@ -21,6 +21,7 @@ import { SkyDocsDemoControlPanelComponent } from './demo-control-panel.component
 import { SkyDocsDemoControlPanelRadioGroupComponent } from './demo-control-panel-radio-group.component';
 
 import { SkyDocsDemoControlPanelSectionComponent } from './demo-control-panel-section.component';
+import { SkyDocsDemoCustomControlPanelComponent } from './demo-custom-control-panel.component';
 
 @NgModule({
   imports: [
@@ -38,6 +39,7 @@ import { SkyDocsDemoControlPanelSectionComponent } from './demo-control-panel-se
     SkyDocsDemoControlPanelComponent,
     SkyDocsDemoControlPanelRadioGroupComponent,
     SkyDocsDemoControlPanelSectionComponent,
+    SkyDocsDemoCustomControlPanelComponent,
   ],
   exports: [
     SkyDocsDemoComponent,
@@ -45,6 +47,7 @@ import { SkyDocsDemoControlPanelSectionComponent } from './demo-control-panel-se
     SkyDocsDemoControlPanelComponent,
     SkyDocsDemoControlPanelRadioGroupComponent,
     SkyDocsDemoControlPanelSectionComponent,
+    SkyDocsDemoCustomControlPanelComponent,
   ],
 })
 export class SkyDocsDemoModule {}

@@ -1,8 +1,65 @@
 # Changelog
 
+## 11.0.0 (2024-09-11)
+
+### ⚠ BREAKING CHANGES
+
+- Dropped support for Angular 17. [#291](https://github.com/blackbaud/skyux-docs-tools/pull/291)
+
+### Features
+
+- Added support for Angular 18. [#291](https://github.com/blackbaud/skyux-docs-tools/pull/291)
+
+## 11.0.0-alpha.0 (2024-07-19)
+
+### ⚠ BREAKING CHANGES
+
+- Dropped support for Angular 17. [#291](https://github.com/blackbaud/skyux-docs-tools/pull/291)
+
+### Features
+
+- Added support for Angular 18. [#291](https://github.com/blackbaud/skyux-docs-tools/pull/291)
+
+## 10.5.2 (2024-06-05)
+
+- Update `SkyDocsSourceCodeProvider` to be provided in root to allow for standalone component overwriting. [#289](https://github.com/blackbaud/skyux-docs-tools/pull/289)
+
+## 10.6.0 (2024-06-28)
+
+- Add `@skyux/icon` to code example dependencies. [#000](https://github.com/blackbaud/skyux-docs-tools/pull/000)
+
+## 10.5.1 (2024-05-29)
+
+- Update property definition table headers so content scrolls under. [#288](https://github.com/blackbaud/skyux-docs-tools/pull/288)
+
+## 10.5.0 (2024-05-23)
+
+- Make property definition table headers sticky. [#287](https://github.com/blackbaud/skyux-docs-tools/pull/287)
+
+## 10.4.0 (2024-05-23)
+
+- Update control panel radio groups to use heading text inputs. [#286](https://github.com/blackbaud/skyux-docs-tools/pull/286)
+
+## 10.3.0 (2024-05-22)
+
+- Add support for Angular input signals. [#285](https://github.com/blackbaud/skyux-docs-tools/pull/285)
+
+## 10.2.1 (2024-05-21)
+
+- Fix type kind enum for breaking change in Typdoc@0.25.x. [#284](https://github.com/blackbaud/skyux-docs-tools/pull/284)
+
+## 10.2.0 (2024-05-15)
+
+- Added the ability to provide a custom control panel for demos. [#283](https://github.com/blackbaud/skyux-docs-tools/pull/283)
+
+## 10.1.1 (2024-05-10)
+
+- Switched to using `provideInitialTheme` and streamlined boilerplate code for examples. [#281](https://github.com/blackbaud/skyux-docs-tools/pull/281)
+- Exposed help inline inputs on control panel checkbox. [#282](https://github.com/blackbaud/skyux-docs-tools/pull/282)
+
 ## 10.1.0 (2024-04-16)
 
-- Add `@skyux/help-inline` dependency and bump `ng2-dragula` version [#279](https://github.com/blackbaud/skyux-docs-tools/pull/280)
+- Added `@skyux/help-inline` dependency and bumped `ng2-dragula` version. [#280](https://github.com/blackbaud/skyux-docs-tools/pull/280)
 
 ## 10.0.1 (2024-04-04)
 

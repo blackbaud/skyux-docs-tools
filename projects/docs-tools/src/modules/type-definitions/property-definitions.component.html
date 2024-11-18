@@ -1,35 +1,39 @@
 <div *ngIf="properties" class="sky-docs-property-definitions">
   <table *ngIf="!isMobile; else mobileTemplate" class="sky-docs-table">
-    <tr class="sky-docs-table-row">
-      <th
-        class="sky-docs-table-column-header sky-docs-table-column-header-name"
-      >
-        {{ propertyType }}
-      </th>
-      <th
-        class="sky-docs-table-column-header sky-docs-table-column-header-description"
-      >
-        Description
-      </th>
-    </tr>
-    <tr *ngFor="let property of properties" class="sky-docs-table-row">
-      <td
-        class="sky-docs-table-cell sky-docs-property-definitions-table-cell-name"
-      >
-        <ng-template
-          [ngTemplateOutlet]="nameTemplate"
-          [ngTemplateOutletContext]="{ $implicit: property }"
-        ></ng-template>
-      </td>
-      <td
-        class="sky-docs-table-cell sky-docs-property-definitions-table-cell-description"
-      >
-        <ng-template
-          [ngTemplateOutlet]="descriptionTemplate"
-          [ngTemplateOutletContext]="{ $implicit: property }"
-        ></ng-template>
-      </td>
-    </tr>
+    <thead>
+      <tr class="sky-docs-table-row">
+        <th
+          class="sky-docs-table-column-header sky-docs-table-column-header-name"
+        >
+          {{ propertyType }}
+        </th>
+        <th
+          class="sky-docs-table-column-header sky-docs-table-column-header-description"
+        >
+          Description
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let property of properties" class="sky-docs-table-row">
+        <td
+          class="sky-docs-table-cell sky-docs-property-definitions-table-cell-name"
+        >
+          <ng-template
+            [ngTemplateOutlet]="nameTemplate"
+            [ngTemplateOutletContext]="{ $implicit: property }"
+          ></ng-template>
+        </td>
+        <td
+          class="sky-docs-table-cell sky-docs-property-definitions-table-cell-description"
+        >
+          <ng-template
+            [ngTemplateOutlet]="descriptionTemplate"
+            [ngTemplateOutletContext]="{ $implicit: property }"
+          ></ng-template>
+        </td>
+      </tr>
+    </tbody>
   </table>
 
   <ng-template #mobileTemplate>

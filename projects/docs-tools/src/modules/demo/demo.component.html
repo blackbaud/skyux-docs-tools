@@ -15,7 +15,7 @@
           type="button"
           [attr.data-test-selector]="'sky-docs-demo-heading-button'"
           [ngClass]="{
-            'sky-docs-demo-heading-btn-open': areOptionsVisible
+            'sky-docs-demo-heading-btn-open': areOptionsVisible,
           }"
           (click)="onToggleOptionsButtonClick()"
         >
@@ -31,6 +31,7 @@
       <div class="sky-docs-demo-control-panel-wrapper-body">
         <ng-container *ngIf="areOptionsVisible">
           <ng-container *ngTemplateOutlet="controlPanels"></ng-container>
+          <ng-container *ngTemplateOutlet="customControlPanels"></ng-container>
         </ng-container>
       </div>
     </div>
@@ -47,5 +48,9 @@
 </div>
 
 <ng-template #controlPanels>
-  <ng-content select="sky-docs-demo-control-panel"></ng-content>
+  <ng-content select="sky-docs-demo-control-panel" />
+</ng-template>
+
+<ng-template #customControlPanels>
+  <ng-content select="sky-docs-demo-custom-control-panel" />
 </ng-template>

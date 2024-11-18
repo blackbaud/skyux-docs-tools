@@ -205,11 +205,8 @@ describe('Code examples editor service', () => {
 
     expect(stackblitzSpy).toHaveBeenCalled();
     const spyArgs = stackblitzSpy.calls.mostRecent().args;
-    expect(spyArgs[0].files['src/app/app.component.ts']).toContain(
-      `SkyTheme.presets['modern']`,
-    );
     expect(spyArgs[0].files['src/app/app.module.ts']).toContain(
-      'SkyThemeService',
+      `provideInitialTheme('modern')`,
     );
   });
 
@@ -220,11 +217,8 @@ describe('Code examples editor service', () => {
 
     expect(stackblitzSpy).toHaveBeenCalled();
     const spyArgs = stackblitzSpy.calls.mostRecent().args;
-    expect(spyArgs[0].files['src/app/app.component.ts']).toContain(
-      `SkyTheme.presets['default']`,
-    );
     expect(spyArgs[0].files['src/app/app.module.ts']).toContain(
-      'SkyThemeService',
+      `provideInitialTheme('default')`,
     );
   });
 
@@ -245,7 +239,7 @@ describe('Code examples editor service', () => {
     expect(stackblitzSpy).toHaveBeenCalled();
     const spyArgs = stackblitzSpy.calls.mostRecent().args;
     expect(spyArgs[0].files['src/app/app.module.ts']).toContain(
-      `import {\n  SampleDemoModule\n} from './foo.module';`,
+      `import { SampleDemoModule } from './foo.module';`,
     );
     expect(spyArgs[0].files['src/app/app.module.ts']).toContain(
       `imports: [\n    ${moduleImports.join(',\n    ')}`,
@@ -260,7 +254,7 @@ describe('Code examples editor service', () => {
     const appModuleContents = spyArgs[0].files['src/app/app.module.ts'];
 
     expect(appModuleContents).toContain(
-      `import {\n  DemoComponent\n} from './demo.component';`,
+      `import { DemoComponent } from './demo.component';`,
     );
 
     expect(appModuleContents).toContain(
@@ -361,6 +355,7 @@ describe('Code examples editor service', () => {
       '@skyux/forms': skyuxVersion,
       '@skyux/help-inline': skyuxVersion,
       '@skyux/i18n': skyuxVersion,
+      '@skyux/icon': skyuxVersion,
       '@skyux/indicators': skyuxVersion,
       '@skyux/layout': skyuxVersion,
       '@skyux/modals': skyuxVersion,
@@ -372,7 +367,7 @@ describe('Code examples editor service', () => {
       'ng2-dragula': '5.1.0',
       rxjs: '^7',
       tslib: '^2.6.2',
-      typescript: '~5.3.3',
+      typescript: '~5.5.3',
       'zone.js': '~0.14.4',
       '@skyux/foobar': skyuxVersion, // <-- Important
     });

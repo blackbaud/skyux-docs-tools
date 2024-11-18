@@ -518,7 +518,7 @@ describe('Type definitions format service', () => {
 
     const formattedName = service.getFormattedPropertyName(def);
     expect(formattedName).toEqual(
-      '@Output()<br>stream: EventEmitter&lt;string[] | Observable&lt;string[]&gt;&gt;',
+      'stream: EventEmitter&lt;string[] | Observable&lt;string[]&gt;&gt;',
     );
   });
 
@@ -548,7 +548,7 @@ describe('Type definitions format service', () => {
     expect(formattedName).toEqual('[_: string]: FooUser');
   });
 
-  it('should generate HTML formatted @Input names', () => {
+  it('should generate HTML formatted input names', () => {
     const def: SkyDocsClassPropertyDefinition = {
       name: 'options',
       isOptional: false,
@@ -563,10 +563,32 @@ describe('Type definitions format service', () => {
     };
 
     const formattedName = service.getFormattedPropertyName(def);
-    expect(formattedName).toEqual('@Input()<br>options: Options');
+    expect(formattedName).toEqual('options: Options');
   });
 
-  it('should generate HTML formatted @Output names', () => {
+  it('should handle input signals', () => {
+    const def: SkyDocsClassPropertyDefinition = {
+      name: 'size',
+      isOptional: false,
+      isPreview: false,
+      type: {
+        type: 'reference',
+        typeArguments: [
+          {
+            type: 'intrinsic',
+            name: 'number',
+          },
+        ],
+        name: 'InputSignal',
+        package: '@angular/core',
+      },
+    };
+
+    const formattedName = service.getFormattedPropertyName(def);
+    expect(formattedName).toEqual('size: number');
+  });
+
+  it('should generate HTML formatted output names', () => {
     const def: SkyDocsClassPropertyDefinition = {
       name: 'click',
       isOptional: true,
@@ -588,9 +610,7 @@ describe('Type definitions format service', () => {
     };
 
     const formattedName = service.getFormattedPropertyName(def);
-    expect(formattedName).toEqual(
-      '@Output()<br>click: EventEmitter&lt;FooUser[]&gt;',
-    );
+    expect(formattedName).toEqual('click: EventEmitter&lt;FooUser[]&gt;');
   });
 
   it('should generate HTML formatted method names', () => {

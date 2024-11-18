@@ -83,6 +83,8 @@ export interface TypeDocType {
   types?: TypeDocType[];
 
   value?: string;
+
+  package?: string;
 }
 
 export interface TypeDocParameter {
@@ -186,8 +188,8 @@ export interface TypeDocEntry {
 
 /**
  * This enum comes from:
- * https://github.com/TypeStrong/typedoc/blob/v0.24.8/src/lib/models/reflections/kind.ts
- * The enum is up to date as of version `0.24.8`.
+ * https://github.com/TypeStrong/typedoc/blob/v0.25.13/src/lib/models/reflections/kind.ts
+ * The enum is up to date as of version `0.25.13`.
  */
 export enum TypeDocKind {
   Project = 0x1,
@@ -211,8 +213,6 @@ export enum TypeDocKind {
   Accessor = 0x40000,
   GetSignature = 0x80000,
   SetSignature = 0x100000,
-  /** @deprecated will be removed in v0.25, not used */
-  ObjectLiteral = 0x200000,
-  TypeAlias = 0x400000,
-  Reference = 0x800000,
+  TypeAlias = 0x200000,
+  Reference = 0x400000,
 }

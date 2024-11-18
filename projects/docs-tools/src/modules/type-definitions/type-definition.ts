@@ -47,4 +47,9 @@ export interface SkyDocsTypeDefinition {
    * The types that compose a union type.
    */
   unionTypes?: SkyDocsTypeDefinition[];
+
+  /**
+   * The NPM package where the type is defined.
+   */
+  package?: string;
 }
