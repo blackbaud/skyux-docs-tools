@@ -189,17 +189,11 @@ function getSidebarLinks(
 describe('Demo page component', () => {
   let fixture: ComponentFixture<DemoPageFixtureComponent>;
   let component: DemoPageFixtureComponent;
-  let mockMediaQueryService: MockSkyMediaQueryService;
 
   function setupTestBed(): void {
-    mockMediaQueryService = new MockSkyMediaQueryService();
     TestBed.configureTestingModule({
       imports: [DemoPageFixturesModule],
       providers: [
-        {
-          provide: SkyMediaQueryService,
-          useValue: mockMediaQueryService,
-        },
         { provide: SkyDocsTypeDefinitionsService, useValue: getService() },
         {
           provide: SkyDocsTypeDefinitionsProvider,

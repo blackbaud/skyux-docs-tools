@@ -5,10 +5,6 @@ import {
   tick,
 } from '@angular/core/testing';
 
-import { SkyMediaQueryService } from '@skyux/core';
-
-import { MockSkyMediaQueryService } from '@skyux/core/testing';
-
 import { expect } from '@skyux-sdk/testing';
 
 import { EnumerationDefinitionFixtureComponent } from './fixtures/enumeration-definition.component.fixture';
@@ -19,11 +15,8 @@ import { SkyDocsTypeDefinitionsProvider } from './type-definitions-provider';
 
 describe('Enumeration definition component', function () {
   let fixture: ComponentFixture<EnumerationDefinitionFixtureComponent>;
-  let mockMediaQueryService: MockSkyMediaQueryService;
 
   beforeEach(() => {
-    mockMediaQueryService = new MockSkyMediaQueryService();
-
     TestBed.configureTestingModule({
       imports: [TypeDefinitionsFixturesModule],
       providers: [
@@ -39,10 +32,6 @@ describe('Enumeration definition component', function () {
               },
             ],
           },
-        },
-        {
-          provide: SkyMediaQueryService,
-          useValue: mockMediaQueryService,
         },
       ],
     });

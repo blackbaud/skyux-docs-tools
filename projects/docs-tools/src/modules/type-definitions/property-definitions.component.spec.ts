@@ -5,10 +5,6 @@ import {
   tick,
 } from '@angular/core/testing';
 
-import { SkyMediaQueryService } from '@skyux/core';
-
-import { MockSkyMediaQueryService } from '@skyux/core/testing';
-
 import { expect } from '@skyux-sdk/testing';
 
 import { PropertyDefinitionsFixtureComponent } from './fixtures/property-definitions.component.fixture';
@@ -27,11 +23,8 @@ function getPreviewWarnings(
 
 describe('Property definitions component', function () {
   let fixture: ComponentFixture<PropertyDefinitionsFixtureComponent>;
-  let mockMediaQueryService: MockSkyMediaQueryService;
 
   beforeEach(() => {
-    mockMediaQueryService = new MockSkyMediaQueryService();
-
     TestBed.configureTestingModule({
       imports: [TypeDefinitionsFixturesModule],
       providers: [
@@ -51,10 +44,6 @@ describe('Property definitions component', function () {
               },
             ],
           },
-        },
-        {
-          provide: SkyMediaQueryService,
-          useValue: mockMediaQueryService,
         },
       ],
     });

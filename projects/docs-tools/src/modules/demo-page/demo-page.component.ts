@@ -166,7 +166,7 @@ export class SkyDocsDemoPageComponent
   protected hasPreviewFeatures = false;
 
   @ContentChild(SkyDocsDesignGuidelinesComponent)
-  private designGuidelinesComponent: SkyDocsDesignGuidelinesComponent;
+  protected designGuidelinesComponent: SkyDocsDesignGuidelinesComponent;
 
   @ContentChildren(SkyDocsCodeExamplesComponent)
   private codeExampleComponents: QueryList<SkyDocsCodeExamplesComponent>;

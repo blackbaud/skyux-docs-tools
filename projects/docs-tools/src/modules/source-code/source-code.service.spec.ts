@@ -49,4 +49,18 @@ describe('Source code service', () => {
       '<baz style="width: 50%;"></baz>',
     );
   });
+
+  it('getSourceCode should handle missing files', () => {
+    const mockSourceCodeProvider: SkyDocsSourceCodeProvider = {
+      sourceCode: [],
+    };
+    expect(
+      new SkyDocsSourceCodeService(mockSourceCodeProvider).getSourceCode(path),
+    ).toEqual([]);
+    expect(
+      new SkyDocsSourceCodeService(
+        {} as SkyDocsSourceCodeProvider,
+      ).getSourceCode(path),
+    ).toEqual([]);
+  });
 });

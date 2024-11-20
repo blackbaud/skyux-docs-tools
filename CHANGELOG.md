@@ -1,5 +1,9 @@
 # Changelog
 
+## 11.1.0 (2024-11-20)
+
+- Option to use web containers by holding meta or control key. [#294](https://github.com/blackbaud/skyux-docs-tools/pull/294)
+
 ## 11.0.0 (2024-09-11)
 
 ### ⚠ BREAKING CHANGES

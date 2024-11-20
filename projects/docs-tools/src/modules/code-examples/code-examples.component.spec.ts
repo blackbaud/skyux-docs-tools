@@ -7,6 +7,7 @@ import { CodeExamplesFixtureComponent } from './fixtures/code-examples-fixture.c
 import { CodeExampleFixturesModule } from './fixtures/code-example-fixtures.module';
 import { SkyDocsCodeExamplesEditorService } from './code-examples-editor.service';
 import { SkyDocsCodeExampleTheme } from './code-example-theme';
+import { By } from '@angular/platform-browser';
 
 const MOCK_SOURCE_CODE = [
   {
@@ -70,13 +71,16 @@ describe('Code example component', () => {
 
     launchEditor();
 
-    expect(editorService.launchEditor).toHaveBeenCalledWith({
-      heading: 'Basic',
-      packageDependencies: {},
-      sourceCode: MOCK_SOURCE_CODE,
-      theme: SkyDocsCodeExampleTheme.Default,
-      stylesheets: undefined,
-    });
+    expect(editorService.launchEditor).toHaveBeenCalledWith(
+      {
+        heading: 'Basic',
+        packageDependencies: {},
+        sourceCode: MOCK_SOURCE_CODE,
+        theme: SkyDocsCodeExampleTheme.Default,
+        stylesheets: undefined,
+      },
+      'angular-cli',
+    );
   });
 
   it('should allow setting package dependencies', () => {
@@ -86,15 +90,18 @@ describe('Code example component', () => {
 
     launchEditor();
 
-    expect(editorService.launchEditor).toHaveBeenCalledWith({
-      heading: 'Basic',
-      packageDependencies: {
-        foobar: 'latest',
+    expect(editorService.launchEditor).toHaveBeenCalledWith(
+      {
+        heading: 'Basic',
+        packageDependencies: {
+          foobar: 'latest',
+        },
+        sourceCode: MOCK_SOURCE_CODE,
+        theme: SkyDocsCodeExampleTheme.Default,
+        stylesheets: undefined,
       },
-      sourceCode: MOCK_SOURCE_CODE,
-      theme: SkyDocsCodeExampleTheme.Default,
-      stylesheets: undefined,
-    });
+      'angular-cli',
+    );
   });
 
   it('should allow setting stylesheets', () => {
@@ -104,12 +111,41 @@ describe('Code example component', () => {
 
     launchEditor();
 
-    expect(editorService.launchEditor).toHaveBeenCalledWith({
-      heading: 'Basic',
-      packageDependencies: {},
-      sourceCode: MOCK_SOURCE_CODE,
-      theme: SkyDocsCodeExampleTheme.Default,
-      stylesheets: ['styles.css'],
-    });
+    expect(editorService.launchEditor).toHaveBeenCalledWith(
+      {
+        heading: 'Basic',
+        packageDependencies: {},
+        sourceCode: MOCK_SOURCE_CODE,
+        theme: SkyDocsCodeExampleTheme.Default,
+        stylesheets: ['styles.css'],
+      },
+      'angular-cli',
+    );
+  });
+
+  it('should use web containers', () => {
+    component.stylesheets = ['styles.css'];
+
+    fixture.detectChanges();
+    const stopPropagation = jasmine.createSpy('stopPropagation');
+
+    fixture.debugElement
+      .query(By.css('.sky-btn-default'))
+      .triggerEventHandler('click', {
+        metaKey: true,
+        stopPropagation,
+      });
+
+    expect(stopPropagation).toHaveBeenCalled();
+    expect(editorService.launchEditor).toHaveBeenCalledWith(
+      {
+        heading: 'Basic',
+        packageDependencies: {},
+        sourceCode: MOCK_SOURCE_CODE,
+        theme: SkyDocsCodeExampleTheme.Default,
+        stylesheets: ['styles.css'],
+      },
+      'node',
+    );
   });
 });
