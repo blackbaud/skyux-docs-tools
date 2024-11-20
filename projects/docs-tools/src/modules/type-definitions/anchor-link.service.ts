@@ -85,15 +85,15 @@ export class SkyDocsAnchorLinkService {
           // Regex Positive lookbehinds aren't supported in IE11 and Safari, so we have to check if the match has a starting extra character
           // (usually whitespace " Foo"), and then modify the starting/ending indexes to account for the extra character.
           const isMatchExact =
-            matches[0].substring(0, typeName.length) === typeName;
+            matches[0].substr(0, typeName.length) === typeName;
           const startIndex = isMatchExact ? matches.index : matches.index + 1;
           const endIndex = isMatchExact
             ? matches[0].length
             : matches[0].length - 1;
           let contentWithCodeTags =
-            content.substring(0, startIndex) +
+            content.substr(0, startIndex) +
             replacement +
-            content.substring(startIndex + endIndex);
+            content.substr(startIndex + endIndex);
 
           content = contentWithCodeTags;
           counter++;

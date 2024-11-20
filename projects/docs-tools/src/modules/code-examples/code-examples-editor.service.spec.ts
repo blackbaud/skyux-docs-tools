@@ -187,7 +187,7 @@ describe('Code examples editor service', () => {
   let service: SkyDocsCodeExamplesEditorService;
 
   beforeEach(() => {
-    moduleImports = [];
+    moduleImports = ['FormsModule', 'ReactiveFormsModule'];
 
     stackblitzSpy = spyOn(StackBlitzSDK, 'openProject').and.callFake(() => {});
     service = new SkyDocsCodeExamplesEditorService();

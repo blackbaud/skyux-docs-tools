@@ -120,6 +120,9 @@ export class SkyDocsCodeExamplesEditorService {
       codeExample.sourceCode,
       mergedDependencies,
       overrides,
+      {
+        target: template === 'node' ? 'ES2022' : 'ES2015',
+      },
       codeExample.theme,
       codeExample.stylesheets,
     );
@@ -142,6 +145,7 @@ export class SkyDocsCodeExamplesEditorService {
     sourceCode: SkyDocsSourceCodeFile[],
     dependencies: SkyDocsCodeExampleModuleDependencies,
     overrides: object | undefined,
+    compilerOptions: object,
     theme: SkyDocsCodeExampleTheme,
     stylesheets: string[] = [],
   ): {
@@ -157,10 +161,10 @@ export class SkyDocsCodeExamplesEditorService {
  `;
 
     const moduleImportStatements: string[] = [
-      `import { Component } from '@angular/core';`,
+      `import { FormsModule, ReactiveFormsModule } from '@angular/forms';`,
     ];
 
-    const moduleImports: string[] = [];
+    const moduleImports: string[] = ['FormsModule', 'ReactiveFormsModule'];
 
     const files: { [_: string]: string } = {
       '.stackblitzrc': JSON.stringify(
@@ -215,6 +219,7 @@ export class SkyDocsCodeExamplesEditorService {
     });
 
     files[`${appPath}app.component.ts`] = `${banner}
+import { Component } from '@angular/core';
 ${moduleImportStatements.join('\n\n')}
 
 @Component({
@@ -255,7 +260,6 @@ export class AppComponent {}
 import 'zone.js';
 import '@skyux/packages/polyfills';
 
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideRouter } from '@angular/router';
@@ -265,8 +269,6 @@ import { AppComponent } from './app/app.component';
 
 void bootstrapApplication(AppComponent, {
   providers: [
-    FormsModule,
-    ReactiveFormsModule,
     provideAnimations(),
     provideInitialTheme('${theme}'),
     provideRouter([]),
@@ -384,6 +386,7 @@ body {
           module: 'ES2022',
           useDefineForClassFields: false,
           lib: ['ES2022', 'dom'],
+          ...compilerOptions,
         },
         angularCompilerOptions: {
           fullTemplateTypeCheck: true,

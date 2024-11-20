@@ -7,8 +7,6 @@ import { CodeExamplesFixtureComponent } from './fixtures/code-examples-fixture.c
 import { CodeExampleFixturesModule } from './fixtures/code-example-fixtures.module';
 import { SkyDocsCodeExamplesEditorService } from './code-examples-editor.service';
 import { SkyDocsCodeExampleTheme } from './code-example-theme';
-import { HtmlElms } from 'axe-core';
-import { SkyAppTestUtility } from '@skyux-sdk/testing';
 import { By } from '@angular/platform-browser';
 
 const MOCK_SOURCE_CODE = [
