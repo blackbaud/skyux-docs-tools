@@ -219,8 +219,32 @@ export class SkyDocsCodeExamplesEditorService {
     });
 
     files[`${appPath}app.component.ts`] = `${banner}
-import { Component } from '@angular/core';
+import { Component, Injectable } from '@angular/core';
+import { SkyHelpOpenArgs, SkyHelpService, SkyHelpUpdateArgs } from '@skyux/core';
 ${moduleImportStatements.join('\n\n')}
+
+@Injectable()
+/*
+  This mocked \`SkyHelpService\` is needed for Stackbliz demos only.
+  To properly implement help service see: https://docs.blackbaud.com/bb-help-docs/
+*/
+export class StackblitzOnlyCodeExamplesHelpService extends SkyHelpService {
+  public override openHelp(args?: SkyHelpOpenArgs): void {
+    if (args) {
+      console.log('help key: ' + args.helpKey);
+    }
+  }
+
+  public override updateHelp(args: SkyHelpUpdateArgs): void {
+    if ('helpKey' in args) {
+      console.log('help key update: ' + args.helpKey);
+    }
+
+    if ('pageDefaultHelpKey' in args) {
+      console.log('page default help key update: ' + args.pageDefaultHelpKey);
+    }
+  }
+}
 
 @Component({
   selector: 'sky-demo-app',
@@ -229,6 +253,9 @@ ${moduleImportStatements.join('\n\n')}
   imports: [
     ${moduleImports.join(',\n    ')},
   ],
+  providers: [
+    {provide: SkyHelpService, useClass: StackblitzOnlyCodeExamplesHelpService}
+  ]
 })
 export class AppComponent {}
 `;
