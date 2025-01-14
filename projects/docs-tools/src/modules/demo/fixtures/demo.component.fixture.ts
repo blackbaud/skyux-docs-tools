@@ -13,6 +13,7 @@ import { SkyDocsDemoComponent } from '../demo.component';
 @Component({
   selector: 'sky-demo-fixture',
   templateUrl: './demo.component.fixture.html',
+  standalone: false,
 })
 export class DemoFixtureComponent {
   public alignContents: SkyDocsDemoContentAlignment;

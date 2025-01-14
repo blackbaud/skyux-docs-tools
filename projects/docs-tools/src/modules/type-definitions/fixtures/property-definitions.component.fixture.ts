@@ -7,6 +7,7 @@ import { SkyDocsPropertyDefinitionsComponent } from '../property-definitions.com
 @Component({
   selector: 'sky-property-definition-test',
   templateUrl: './property-definitions.component.fixture.html',
+  standalone: false,
 })
 export class PropertyDefinitionsFixtureComponent {
   public config: { properties: SkyDocsClassPropertyDefinition[] };

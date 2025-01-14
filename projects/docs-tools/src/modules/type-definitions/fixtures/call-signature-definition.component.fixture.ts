@@ -7,6 +7,7 @@ import { SkyDocsCallSignatureDefinitionComponent } from '../call-signature-defin
 @Component({
   selector: 'sky-call-signature-definition-test',
   templateUrl: './call-signature-definition.component.fixture.html',
+  standalone: false,
 })
 export class CallSignatureDefinitionFixtureComponent {
   public config: SkyDocsCallSignatureDefinition;

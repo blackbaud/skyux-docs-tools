@@ -5,6 +5,7 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
   templateUrl: './design-guideline-thumbnail.component.html',
   styleUrls: ['./design-guideline-thumbnail.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class SkyDocsDesignGuidelineThumbnailComponent {
   @Input()

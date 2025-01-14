@@ -35,6 +35,7 @@ import { SkyDocsDemoControlPanelChange } from './demo-control-panel-change';
   templateUrl: './demo-control-panel.component.html',
   styleUrls: ['./demo-control-panel.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class SkyDocsDemoControlPanelComponent
   implements OnDestroy, AfterContentInit

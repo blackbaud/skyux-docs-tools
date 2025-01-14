@@ -9,6 +9,7 @@ import { SkyDocsTypeDefinitions } from '../type-definitions/type-definitions';
   selector: 'sky-docs-demo-page-type-definitions',
   templateUrl: './demo-page-type-definitions.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class SkyDocsDemoPageTypeDefinitionsComponent {
   @Input()

@@ -7,6 +7,7 @@ import { SkyDocsEnumerationDefinitionComponent } from '../enumeration-definition
 @Component({
   selector: 'sky-enumeration-definition-test',
   templateUrl: './enumeration-definition.component.fixture.html',
+  standalone: false,
 })
 export class EnumerationDefinitionFixtureComponent {
   public config: SkyDocsEnumerationDefinition;

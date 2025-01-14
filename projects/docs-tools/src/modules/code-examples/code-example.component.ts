@@ -29,6 +29,7 @@ import { SkyDocsCodeExampleTheme } from './code-example-theme';
   selector: 'sky-docs-code-example',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class SkyDocsCodeExampleComponent implements OnDestroy {
   /**

@@ -19,6 +19,7 @@ import { SkyDocsDemoModule } from './demo.module';
     >
     </sky-docs-demo-control-panel-radio-group>
   `,
+  standalone: false,
 })
 class TestComponent {
   public alignmentChoices: SkyDocsDemoControlPanelRadioChoice[] = [

@@ -28,6 +28,7 @@ import { SkyDocsDemoControlPanelChange } from './demo-control-panel-change';
   selector: 'sky-docs-demo-control-panel-checkbox',
   templateUrl: './demo-control-panel-checkbox.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class SkyDocsDemoControlPanelCheckboxComponent
   implements OnInit, OnDestroy

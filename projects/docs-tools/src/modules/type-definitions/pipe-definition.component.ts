@@ -7,6 +7,7 @@ import { SkyDocsPipeDefinition } from './pipe-definition';
   templateUrl: './pipe-definition.component.html',
   styleUrls: ['./pipe-definition.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class SkyDocsPipeDefinitionComponent {
   @Input()

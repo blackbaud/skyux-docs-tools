@@ -35,6 +35,7 @@ import { SkyDocsDemoControlPanelRadioChoice } from './demo-control-panel-radio-c
   templateUrl: './demo-control-panel-radio-group.component.html',
   styleUrls: ['./demo-control-panel-radio-group.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class SkyDocsDemoControlPanelRadioGroupComponent
   implements OnInit, OnDestroy

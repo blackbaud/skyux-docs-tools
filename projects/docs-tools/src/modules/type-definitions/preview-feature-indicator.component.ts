@@ -6,7 +6,6 @@ import { SkyStatusIndicatorModule } from '@skyux/indicators';
   selector: 'sky-docs-preview-feature-indicator',
   templateUrl: './preview-feature-indicator.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
   imports: [SkyStatusIndicatorModule],
 })
 export class SkyDocsPreviewIndicatorComponent {}
