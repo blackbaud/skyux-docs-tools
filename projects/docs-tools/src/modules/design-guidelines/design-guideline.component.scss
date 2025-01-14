@@ -1,7 +1,7 @@
-@import '../../styles/mixins';
+@use '../../styles/mixins' as mixins;
 
 .sky-docs-design-guideline-heading {
-  @include sky-docs-tools-heading(3);
+  @include mixins.sky-docs-tools-heading(3);
 }
 
 .sky-docs-design-guideline-thumbnails {
@@ -10,7 +10,7 @@
 
   ::ng-deep {
     sky-docs-design-guideline-thumbnail:first-child {
-      padding-right: $sky-padding-double;
+      padding-right: mixins.$sky-padding-double;
     }
   }
 }

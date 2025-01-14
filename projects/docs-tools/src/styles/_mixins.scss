@@ -1,14 +1,20 @@
-@import 'node_modules/@skyux/theme/scss/mixins';
-@import 'node_modules/@skyux/theme/scss/variables';
-@import 'node_modules/@skyux/theme/scss/_compat/mixins';
-@import 'node_modules/@skyux/theme/scss/_compat/variables';
+@use 'node_modules/@skyux/theme/scss/_compat/mixins' as compat-mixins;
+@use 'node_modules/@skyux/theme/scss/_compat/variables' as compat-vars;
+@use 'node_modules/@blackbaud/skyux-design-tokens/scss/mixins' as token-mixins;
+@use 'node_modules/@blackbaud/skyux-design-tokens/scss/variables' as token-vars;
+
+@forward 'node_modules/@skyux/theme/scss/mixins';
+@forward 'node_modules/@skyux/theme/scss/variables';
+@forward 'node_modules/@skyux/theme/scss/_compat/variables';
+@forward 'node_modules/@blackbaud/skyux-design-tokens/scss/mixins';
+@forward 'node_modules/@blackbaud/skyux-design-tokens/scss/variables';
 
 @mixin sky-docs-tools-heading($level: 0) {
   line-height: 1.1;
-  font-family: $sky-font-family;
-  color: $sky-text-color-default;
+  font-family: compat-vars.$sky-font-family;
+  color: token-vars.$sky-text-color-default;
   font-weight: 400;
-  margin: $sky-margin-triple 0 $sky-margin-plus-half;
+  margin: compat-vars.$sky-margin-triple 0 compat-vars.$sky-margin-plus-half;
 
   @if $level == 1 {
     font-weight: 300;
@@ -18,7 +24,7 @@
   @if $level == 2 {
     font-weight: 300;
     font-size: 26px;
-    margin-bottom: $sky-margin-triple;
+    margin-bottom: compat-vars.$sky-margin-triple;
   }
 
   @if $level == 3 {
@@ -29,7 +35,7 @@
   @if $level == 4 {
     font-weight: 600;
     font-size: 15px;
-    margin: 0 0 $sky-margin;
+    margin: 0 0 compat-vars.$sky-margin;
   }
 
   @if $level == 5 {
@@ -69,11 +75,11 @@
 // Auto-generated code elements need to be styled like `sky-code` component.
 // TODO: Need to address this so that there isn't duplicate code.
 @mixin sky-docs-tools-code {
-  @include sky-border('dark', 'top', 'right', 'bottom', 'left');
+  @include token-mixins.sky-border('dark', 'top', 'right', 'bottom', 'left');
   overflow-wrap: break-word;
   font-family: 'Menlo', 'Monaco', 'Consolas', 'Courier New', monospace;
   font-size: 90%;
-  color: darken($sky-background-color-danger-dark, 5%);
+  color: darken(token-vars.$sky-background-color-danger-dark, 5%);
   padding: 0 4px;
-  background-color: $sky-background-color-selected;
+  background-color: token-vars.$sky-background-color-selected;
 }

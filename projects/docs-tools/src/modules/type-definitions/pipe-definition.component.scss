@@ -1,5 +1,5 @@
-@import '../../styles/mixins';
+@use '../../styles/mixins' as mixins;
 
 .sky-docs-pipe-definition-heading {
-  @include sky-docs-tools-heading(4);
+  @include mixins.sky-docs-tools-heading(4);
 }

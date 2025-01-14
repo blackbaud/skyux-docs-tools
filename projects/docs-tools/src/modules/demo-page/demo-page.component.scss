@@ -1,9 +1,9 @@
-@import '../../styles/mixins';
+@use '../../styles/mixins' as mixins;
 
 .sky-docs-demo-page {
   ::ng-deep {
     p {
-      margin: $sky-margin-plus-half 0;
+      margin: mixins.$sky-margin-plus-half 0;
     }
 
     .stache-max-width-container {
@@ -12,7 +12,7 @@
     }
 
     .sky-docs-code-block {
-      margin: $sky-margin-plus-half 0;
+      margin: mixins.$sky-margin-plus-half 0;
       display: block;
 
       .sky-code-block {
@@ -21,7 +21,7 @@
 
       .sky-code-output {
         margin: -2px 0 0 0;
-        padding: 0 0 0 $sky-padding-plus-half;
+        padding: 0 0 0 mixins.$sky-padding-plus-half;
         background: transparent;
         border: 0;
       }
@@ -36,17 +36,17 @@
     }
 
     .sky-docs-type-definition-wrapper {
-      margin-bottom: $sky-margin * 4;
+      margin-bottom: mixins.$sky-margin * 4;
     }
   }
 }
 
 .sky-docs-demo-page-main {
-  padding: $sky-padding-triple 0;
+  padding: mixins.$sky-padding-triple 0;
 
   table {
-    margin-top: $sky-margin-plus-half;
-    margin-bottom: $sky-margin-plus-half;
+    margin-top: mixins.$sky-margin-plus-half;
+    margin-bottom: mixins.$sky-margin-plus-half;
   }
 
   // Make the tabset's bottom border stretch the full width of the page.

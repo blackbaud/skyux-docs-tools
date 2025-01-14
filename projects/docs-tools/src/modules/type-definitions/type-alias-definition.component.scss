@@ -1,9 +1,9 @@
-@import '../../styles/mixins';
+@use '../../styles/mixins' as mixins;
 
 .sky-docs-type-alias-definition-heading {
-  @include sky-docs-tools-heading(4);
+  @include mixins.sky-docs-tools-heading(4);
 }
 
 .sky-docs-type-alias-definition-return-type {
-  margin-left: $sky-margin-plus-half;
+  margin-left: mixins.$sky-margin-plus-half;
 }
