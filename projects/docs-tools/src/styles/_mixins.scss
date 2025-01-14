@@ -2,6 +2,7 @@
 @use 'node_modules/@skyux/theme/scss/_compat/variables' as compat-vars;
 @use 'node_modules/@blackbaud/skyux-design-tokens/scss/mixins' as token-mixins;
 @use 'node_modules/@blackbaud/skyux-design-tokens/scss/variables' as token-vars;
+@use 'sass:color' as color;
 
 @forward 'node_modules/@skyux/theme/scss/mixins';
 @forward 'node_modules/@skyux/theme/scss/variables';
@@ -79,7 +80,7 @@
   overflow-wrap: break-word;
   font-family: 'Menlo', 'Monaco', 'Consolas', 'Courier New', monospace;
   font-size: 90%;
-  color: darken(token-vars.$sky-background-color-danger-dark, 5%);
+  color: color.adjust(token-vars.$sky-background-color-danger-dark, $lightness: -5%);
   padding: 0 4px;
   background-color: token-vars.$sky-background-color-selected;
 }
