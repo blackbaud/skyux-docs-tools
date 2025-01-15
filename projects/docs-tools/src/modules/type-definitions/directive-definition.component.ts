@@ -7,6 +7,7 @@ import { SkyDocsDirectiveDefinition } from './directive-definition';
   templateUrl: './directive-definition.component.html',
   styleUrls: ['./directive-definition.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class SkyDocsDirectiveDefinitionComponent {
   @Input()

@@ -20,6 +20,7 @@ interface ParameterViewModel {
   templateUrl: './call-signature-definition.component.html',
   styleUrls: ['./call-signature-definition.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class SkyDocsCallSignatureDefinitionComponent {
   @Input()

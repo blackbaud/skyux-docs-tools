@@ -50,6 +50,7 @@ import { SkyDocsToolsSiteOptions } from '../shared/docs-tools-site-options';
   styleUrls: ['./demo-page.component.scss'],
   providers: [SkyDocsDemoPageDomAdapterService],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class SkyDocsDemoPageComponent
   implements OnInit, AfterContentInit, AfterViewInit

@@ -14,6 +14,7 @@ import { SkyDocsAnatomyItemComponent } from './anatomy-item.component';
   templateUrl: './anatomy.component.html',
   styleUrls: ['./anatomy.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class SkyDocsAnatomyComponent implements AfterContentInit {
   @Input()

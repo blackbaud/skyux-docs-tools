@@ -7,6 +7,7 @@ import { SkyDocsDirectiveDefinitionComponent } from '../directive-definition.com
 @Component({
   selector: 'sky-directive-definition-test',
   templateUrl: './directive-definition.component.fixture.html',
+  standalone: false,
 })
 export class DirectiveDefinitionFixtureComponent {
   public config: SkyDocsDirectiveDefinition;

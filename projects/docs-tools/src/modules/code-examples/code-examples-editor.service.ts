@@ -79,9 +79,9 @@ export class SkyDocsCodeExamplesEditorService {
       '@types/jasmine': '~5.1.4',
       'ng2-dragula': '5.1.0',
       rxjs: '^7',
-      tslib: '^2.6.2',
-      typescript: '~5.5.3',
-      'zone.js': '~0.14.4',
+      tslib: '^2.8.1',
+      typescript: '~5.6.3',
+      'zone.js': '~0.15.0',
     };
 
     const mergedDependencies = Object.assign(
@@ -109,9 +109,9 @@ export class SkyDocsCodeExamplesEditorService {
       template === 'node'
         ? {
             'ng2-dragula@5.1.0': {
-              '@angular/animations': '>=16.0.0 <19.0.0',
-              '@angular/core': '>=16.0.0 <19.0.0',
-              '@angular/common': '>=16.0.0 <19.0.0',
+              '@angular/animations': '>=16.0.0',
+              '@angular/core': '>=16.0.0',
+              '@angular/common': '>=16.0.0',
             },
           }
         : undefined;
@@ -249,7 +249,6 @@ export class StackblitzOnlyCodeExamplesHelpService extends SkyHelpService {
 @Component({
   selector: 'sky-demo-app',
   template: '${appComponentTemplate}',
-  standalone: true,
   imports: [
     ${moduleImports.join(',\n    ')},
   ],

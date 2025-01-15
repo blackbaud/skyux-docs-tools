@@ -1,5 +1,15 @@
 # Changelog
 
+## 12.0.0-alpha.0 (2025-01-14)
+
+### ⚠ BREAKING CHANGES
+
+- Dropped support for Angular 18. [#296](https://github.com/blackbaud/skyux-docs-tools/pull/296)
+
+### Features
+
+- Added support for Angular 19. [#296](https://github.com/blackbaud/skyux-docs-tools/pull/296)
+
 ## 11.2.0 (2025-01-03)
 
 - Mock `SkyHelpService` in code examples. [#294](https://github.com/blackbaud/skyux-docs-tools/pull/294)

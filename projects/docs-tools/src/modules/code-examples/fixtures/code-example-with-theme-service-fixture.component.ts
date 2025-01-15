@@ -22,6 +22,7 @@ import { SkyDocsCodeExampleComponent } from '../code-example.component';
     sourceCodePath="src/app/public/plugin-resources/foobar"
   >
   </sky-docs-code-example>`,
+  standalone: false,
 })
 export class CodeExampleWithThemeServiceFixtureComponent {
   @ViewChildren(SkyDocsCodeExampleComponent)

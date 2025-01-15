@@ -31,6 +31,7 @@ interface MethodViewModel {
   templateUrl: './method-definitions.component.html',
   styleUrls: ['./method-definitions.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class SkyDocsMethodDefinitionsComponent implements OnInit {
   @Input()

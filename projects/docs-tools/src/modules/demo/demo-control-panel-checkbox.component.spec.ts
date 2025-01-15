@@ -18,6 +18,7 @@ import { SkyDocsDemoModule } from './demo.module';
     >
     </sky-docs-demo-control-panel-checkbox>
   `,
+  standalone: false,
 })
 class TestComponent {
   public disabled: boolean;

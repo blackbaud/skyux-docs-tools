@@ -26,6 +26,7 @@ import { SkyDocsDemoCustomControlPanelComponent } from './demo-custom-control-pa
   templateUrl: './demo.component.html',
   styleUrls: ['./demo.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class SkyDocsDemoComponent {
   /**

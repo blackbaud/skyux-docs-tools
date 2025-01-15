@@ -37,6 +37,7 @@ import { SkyDocsCodeExample } from './code-example';
   templateUrl: './code-examples.component.html',
   styleUrls: ['./code-examples.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class SkyDocsCodeExamplesComponent implements AfterContentInit {
   /**

@@ -8,6 +8,7 @@ import { SkyDocsTypeDefinitionsFormatService } from './type-definitions-format.s
   selector: 'sky-docs-interface-definition',
   templateUrl: './interface-definition.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class SkyDocsInterfaceDefinitionComponent {
   @Input()

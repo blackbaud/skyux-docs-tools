@@ -361,9 +361,9 @@ describe('Code examples editor service', () => {
       '@types/jasmine': '~5.1.4',
       'ng2-dragula': '5.1.0',
       rxjs: '^7',
-      tslib: '^2.6.2',
-      typescript: '~5.5.3',
-      'zone.js': '~0.14.4',
+      tslib: '^2.8.1',
+      typescript: '~5.6.3',
+      'zone.js': '~0.15.0',
       '@skyux/foobar': skyuxVersion, // <-- Important
     });
   });

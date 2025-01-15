@@ -17,5 +17,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   templateUrl: './demo-control-panel-section.component.html',
   styleUrls: ['./demo-control-panel-section.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class SkyDocsDemoControlPanelSectionComponent {}

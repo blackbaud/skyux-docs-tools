@@ -30,6 +30,7 @@ interface PropertyViewModel {
   templateUrl: './property-definitions.component.html',
   styleUrls: ['./property-definitions.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class SkyDocsPropertyDefinitionsComponent implements OnInit {
   @Input()

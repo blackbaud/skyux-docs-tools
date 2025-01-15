@@ -12,6 +12,7 @@ import { SkyDocsAnchorLinkServiceFormatType } from './anchor-link-service-format
 @Pipe({
   name: 'skyDocsTypeAnchorLinks',
   pure: true,
+  standalone: false,
 })
 export class SkyDocsTypeAnchorLinksPipe implements PipeTransform {
   constructor(private anchorLinkService: SkyDocsAnchorLinkService) {}

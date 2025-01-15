@@ -9,6 +9,7 @@ import { SkyDocsTypeDefinitionsFormatService } from './type-definitions-format.s
   templateUrl: './type-alias-definition.component.html',
   styleUrls: ['./type-alias-definition.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class SkyDocsTypeAliasDefinitionComponent {
   @Input()

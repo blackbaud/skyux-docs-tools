@@ -14,6 +14,7 @@ type ExternalLink = { label: string; url: string };
   templateUrl: './module-info.component.html',
   styleUrls: ['./module-info.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class SkyDocsModuleInfoComponent {
   @Input()

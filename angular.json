@@ -121,12 +121,6 @@
                   "maximumError": "4kb"
                 }
               ],
-              "fileReplacements": [
-                {
-                  "replace": "projects/docs-tools-showcase/src/environments/environment.ts",
-                  "with": "projects/docs-tools-showcase/src/environments/environment.prod.ts"
-                }
-              ],
               "outputHashing": "all"
             },
             "development": {

@@ -7,6 +7,7 @@ import { SkyDocsTypeAliasDefinitionComponent } from '../type-alias-definition.co
 @Component({
   selector: 'sky-type-alias-definition-test',
   templateUrl: './type-alias-definition.component.fixture.html',
+  standalone: false,
 })
 export class TypeAliasDefinitionFixtureComponent {
   public config: SkyDocsTypeAliasDefinition;

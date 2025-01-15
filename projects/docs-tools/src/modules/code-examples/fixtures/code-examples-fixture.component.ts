@@ -20,6 +20,7 @@ import { SkyDocsCodeExamplesComponent } from '../code-examples.component';
       ></sky-docs-code-example>
     </sky-docs-code-examples>
   `,
+  standalone: false,
 })
 export class CodeExamplesFixtureComponent {
   @ViewChild(SkyDocsCodeExamplesComponent)

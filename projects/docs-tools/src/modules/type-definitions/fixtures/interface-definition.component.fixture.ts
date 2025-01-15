@@ -7,6 +7,7 @@ import { SkyDocsInterfaceDefinitionComponent } from '../interface-definition.com
 @Component({
   selector: 'sky-interface-definition-test',
   templateUrl: './interface-definition.component.fixture.html',
+  standalone: false,
 })
 export class InterfaceDefinitionFixtureComponent {
   public config: SkyDocsInterfaceDefinition;

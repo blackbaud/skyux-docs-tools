@@ -6,6 +6,7 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
   selector: 'sky-docs-safe-html',
   templateUrl: './safe-html.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class SkyDocsSafeHtmlComponent {
   @Input()

@@ -10,6 +10,7 @@ import { SkyDocsCodeExampleComponent } from '../code-example.component';
     [theme]="theme"
   >
   </sky-docs-code-example>`,
+  standalone: false,
 })
 export class CodeExampleFixtureComponent {
   public theme: string;

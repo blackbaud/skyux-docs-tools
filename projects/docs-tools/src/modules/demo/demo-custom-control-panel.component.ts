@@ -8,6 +8,7 @@ import { ChangeDetectionStrategy, Component, HostBinding } from '@angular/core';
   templateUrl: './demo-custom-control-panel.component.html',
   styleUrl: './demo-custom-control-panel.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class SkyDocsDemoCustomControlPanelComponent {
   @HostBinding('class')

@@ -16,6 +16,7 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
   templateUrl: './demo-page-section.component.html',
   styleUrls: ['./demo-page-section.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class SkyDocsDemoPageSectionComponent {
   /**

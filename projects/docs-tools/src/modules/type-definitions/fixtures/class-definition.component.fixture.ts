@@ -7,6 +7,7 @@ import { SkyDocsClassDefinitionComponent } from '../class-definition.component';
 @Component({
   selector: 'sky-class-definition-test',
   templateUrl: './class-definition.component.fixture.html',
+  standalone: false,
 })
 export class ClassDefinitionFixtureComponent {
   public config: SkyDocsClassDefinition;

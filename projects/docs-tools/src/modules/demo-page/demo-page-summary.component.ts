@@ -15,5 +15,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   templateUrl: './demo-page-summary.component.html',
   styleUrls: ['./demo-page-summary.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class SkyDocsDemoPageSummaryComponent {}

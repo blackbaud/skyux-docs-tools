@@ -14,6 +14,7 @@ import { SkyDocsDesignGuidelineThumbnailComponent } from './design-guideline-thu
   templateUrl: './design-guideline.component.html',
   styleUrls: ['./design-guideline.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class SkyDocsDesignGuidelineComponent implements AfterContentInit {
   @Input()

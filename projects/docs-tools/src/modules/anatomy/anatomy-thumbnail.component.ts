@@ -5,6 +5,7 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
   templateUrl: './anatomy-thumbnail.component.html',
   styleUrls: ['./anatomy-thumbnail.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class SkyDocsAnatomyThumbnailComponent {
   @Input()

@@ -32,6 +32,7 @@ import { delay } from 'rxjs/operators';
       },
     },
   ],
+  standalone: false,
 })
 export class HomeComponent {
   public fuzzyForm: UntypedFormGroup;

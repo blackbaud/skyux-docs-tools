@@ -7,6 +7,7 @@ import { SkyDocsMethodDefinitionsComponent } from '../method-definitions.compone
 @Component({
   selector: 'sky-method-definitions-test',
   templateUrl: './method-definitions.component.fixture.html',
+  standalone: false,
 })
 export class MethodDefinitionsFixtureComponent {
   public config: { methods?: SkyDocsClassMethodDefinition[] };

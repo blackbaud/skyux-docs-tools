@@ -4,5 +4,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   selector: 'sky-docs-design-guidelines',
   templateUrl: './design-guidelines.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class SkyDocsDesignGuidelinesComponent {}
