@@ -125,6 +125,7 @@ export class SkyDocsTypeDefinitionsService {
                 types.hasPreviewFeatures ||= enumType.hasPreviewFeatures;
                 break;
               case TypeDocKind.TypeAlias:
+              case TypeDocKind.Reference:
                 const typeAliasType = this.adapter.toTypeAliasDefinition(item);
                 types.typeAliases.push(typeAliasType);
                 types.hasPreviewFeatures ||= !!typeAliasType.isPreview;
