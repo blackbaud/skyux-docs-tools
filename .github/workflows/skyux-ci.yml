@@ -3,10 +3,10 @@ name: SKY UX CI
 on:
   pull_request:
     branches:
-      - master
+      - 11.x.x
   push:
     branches:
-      - master
+      - 11.x.x
     tags:
       - '*.*.*'
 
@@ -20,7 +20,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version-file: '.nvmrc'
-      - uses: blackbaud/skyux-sdk-actions@ng-14
+      - uses: blackbaud/skyux-sdk-actions@skip-install-deps-for-speedy-browser-set
         with:
           github-token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
           npm-token: ${{ secrets.NPM_TOKEN }}

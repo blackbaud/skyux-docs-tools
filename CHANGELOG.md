@@ -1,5 +1,9 @@
 # Changelog
 
+## 11.2.1 (2025-01-30)
+
+- Map reference types to type-aliases. []()
+
 ## 11.2.0 (2025-01-03)
 
 - Mock `SkyHelpService` in code examples. [#294](https://github.com/blackbaud/skyux-docs-tools/pull/294)
