@@ -1,6 +1,6 @@
 {
   "name": "@skyux/docs-tools",
-  "version": "12.0.0-alpha.0",
+  "version": "12.0.0-alpha.1",
   "peerDependencies": {
     "@angular/common": "^19.0.6",
     "@angular/core": "^19.0.6",

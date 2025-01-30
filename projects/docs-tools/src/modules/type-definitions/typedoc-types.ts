@@ -173,6 +173,7 @@ export interface TypeDocEntry {
     | TypeDocKind.Class
     | TypeDocKind.Enum
     | TypeDocKind.Interface
+    | TypeDocKind.Reference
     | TypeDocKind.TypeAlias;
 
   indexSignature?: TypeDocSignature;
