@@ -671,4 +671,30 @@ describe('Type definitions service', function () {
 
     expect(result.hasPreviewFeatures).toBeTrue();
   });
+
+  it('should consider a "reference" type as a type alias', () => {
+    const serviceAndAdapter = getServiceAndAdapter({
+      anchorIds: {},
+      typeDefinitions: [
+        {
+          anchorId: '',
+          name: 'MyReferenceType',
+          kind: TypeDocKind.Reference,
+          sources: [
+            {
+              fileName:
+                'src/app/public/modules/_documentation-test/foo-reference.ts',
+            },
+          ],
+        },
+      ],
+    });
+
+    const service = serviceAndAdapter.service;
+    const result = service.getTypeDefinitions(
+      '/src/app/public/modules/_documentation-test/',
+    );
+
+    expect(result.typeAliases[0].name).toEqual('MyReferenceType');
+  });
 });

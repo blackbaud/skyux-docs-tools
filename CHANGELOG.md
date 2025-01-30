@@ -1,5 +1,13 @@
 # Changelog
 
+## 12.0.0-alpha.1 (2025-01-30)
+
+- Map reference types to type-aliases. ([#297](https://github.com/blackbaud/skyux-docs-tools/pull/297)) []()
+
+## 11.2.1 (2025-01-30)
+
+- Map reference types to type-aliases. [#297](https://github.com/blackbaud/skyux-docs-tools/pull/297)
+
 ## 12.0.0-alpha.0 (2025-01-14)
 
 ### ⚠ BREAKING CHANGES
